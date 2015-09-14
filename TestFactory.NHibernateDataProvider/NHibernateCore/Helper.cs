@@ -29,7 +29,7 @@ namespace NHibernateDataProviders.NHibernateCore
             sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
                               .ConnectionString(
-                                  @"Server=tcp:ead9qcxrdo.database.windows.net,1433;Database=abitcareerTest;User ID=abitcareer@ead9qcxrdo;Password=ISMabit3;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;")
+                                  @"Server=tcp:ee8affopfo.database.windows.net,1433;Database=TestFactoryData;User ID=TestFactoryDataBase@ee8affopfo;Password=TestFactoryData14092015@ISMProjects;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;")
                               .ShowSql()
                 )
                 .Mappings(m =>

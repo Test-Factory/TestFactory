@@ -13,13 +13,13 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
     {
         public GroupsMap()
         {
+            Id(x => x.Id);
+
             Map(x => x.FullName);
 
             Map(x => x.ShortName);
 
             Map(x => x.Students);
-
-            //students;
         }
     }
 }

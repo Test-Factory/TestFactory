@@ -19,7 +19,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.LastName);
 
-            Map(x => x.Group);
+            References(x => x.Group).Class<Groups>();
         }
     }
 }
