@@ -32,9 +32,9 @@
         @RenderBody();
     </div>
 
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.validate.js")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
-    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
 </html>
