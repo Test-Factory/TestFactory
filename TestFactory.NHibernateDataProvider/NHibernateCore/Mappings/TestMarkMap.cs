@@ -17,7 +17,7 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 
             References(x => x.Category).Class<TestDescription>();
 
-            Map(x => x.Mark);
+            Map(x => x.Value);
         }
     }
 }

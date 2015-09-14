@@ -18,10 +18,6 @@ namespace TestFactory.Controllers
             this.manager = manager;
         }
 
-        public UserController(UserManager manager)
-        {
-            this.manager = manager;
-        }
 
         public ActionResult Students()
         {
