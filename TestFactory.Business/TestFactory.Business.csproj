@@ -40,11 +40,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DataProviderContracts\IGroupsDataProvider.cs" />
+    <Compile Include="DataProviderContracts\IStudentsDataProvider.cs" />
+    <Compile Include="DataProviderContracts\IUsersDataProvider.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Groups.cs" />
+    <Compile Include="Models\Marks.cs" />
+    <Compile Include="Models\Students.cs" />
+    <Compile Include="Models\TestDescription.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Data Provider Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
