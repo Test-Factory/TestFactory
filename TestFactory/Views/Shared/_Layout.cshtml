@@ -7,33 +7,27 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/materialize/css/materialize.min.css")
-    @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/Site.css")
 </head>
 <body>
-    <nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <div class="right mobile-localization-changer">
-                <span class="collapsed-logout"> </span>
+    <header>
+        <nav class="grey darken-4">
+            <div class="nav-wrapper">
+                <a href="#" class="left">Test-Factory</a>
+                <a href="#" data-activates="mobile-nav" class="right button-collapse"><i class="mdi-navigation-more-vert"></i></a>
+                <div class="right">
+                    <form>
+                        <div class="input-field">
+                            <input type="search" id="search-field" class="field" required maxlength="">
+                            <label for="search-field"><i class="mdi-action-search"></i></label>
+                            <i class="mdi-navigation-close close"></i>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <a class="navbar-brand">Test-Factory</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <p>Тест Холланда</p>
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Пошук</button>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Search for...">
-                    </div><!-- /input-group -->
-                </div><!-- /.col-lg-6 -->
-            </div><!-- /.row -->
-        </div>
-    </div>
-</nav>
+        </nav>
+    </header>
+
     <div id="content">
         @RenderBody();
     </div>

@@ -59,3 +59,8 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+a.left {
+    font-size: 2em;
+}
+.input-field {
+    left: -550px;
