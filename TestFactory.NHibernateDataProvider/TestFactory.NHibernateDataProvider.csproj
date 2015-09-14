@@ -56,11 +56,11 @@
     <Compile Include="Data Providers\NHibernateDataProviderBase.cs" />
     <Compile Include="Data Providers\NHibernateUserDataProvider.cs" />
     <Compile Include="NHibernateCore\Helper.cs" />
-    <Compile Include="NHibernateCore\Mappings\GroupsMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />
     <Compile Include="NHibernateCore\Mappings\TestDescriptionMap.cs" />
-    <Compile Include="NHibernateCore\Mappings\StudentsMap.cs" />
-    <Compile Include="NHibernateCore\Mappings\TestMarksMap.cs" />
-    <Compile Include="NHibernateCore\Mappings\UsersMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\StudentMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\TestMarkMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

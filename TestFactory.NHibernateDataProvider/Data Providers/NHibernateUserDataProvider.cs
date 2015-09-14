@@ -9,16 +9,16 @@ using NHibernate.Criterion;
 
 namespace NHibernateDataProviders.Data_Providers
 {
-    public class NHibernateUserDataProvider : NHibernateDataProviderBase<Users>, IUsersDataProvider
+    public class NHibernateUserDataProvider : NHibernateDataProviderBase<User>, IUsersDataProvider
     {
-        public Users GetByEmail(string email)
+        public User GetByEmail(string email)
         {
             return Execute(session =>
             {
                 return session
-                    .CreateCriteria<Users>()
+                    .CreateCriteria<User>()
                     .Add(Restrictions.Eq("Email", email))
-                    .UniqueResult<Users>();
+                    .UniqueResult<User>();
             });
         }
     }

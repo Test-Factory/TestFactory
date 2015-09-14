@@ -9,17 +9,17 @@ using NHibernate;
 
 namespace NHibernateDataProviders.NHibernateCore.Mappings
 {
-    public class GroupsMap : ClassMap<Groups>
+    public class StudentMap : ClassMap<Student>
     {
-        public GroupsMap()
+        public StudentMap()
         {
             Id(x => x.Id);
 
-            Map(x => x.FullName);
+            Map(x => x.FirstName);
 
-            Map(x => x.ShortName);
+            Map(x => x.LastName);
 
-            Map(x => x.Students);
+            References(x => x.Group).Class<Group>();
         }
     }
 }

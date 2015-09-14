@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace TestFactory.Business.Models
 {
-    public class Groups : BaseModel
+    public class Group : BaseModel
     {
         public virtual string FullName { get; set; }
 
         public virtual string ShortName { get; set; }
 
-        public virtual IList<Students> Students { get; set; }
+        public virtual IList<Student> Students { get; set; }
 
-        public Groups()
+        public Group()
         {
-            Students = new List<Students>();
+            Students = new List<Student>();
         }
     }
 }

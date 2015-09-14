@@ -9,11 +9,11 @@ using NHibernate;
 
 namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 {
-    public class TestMarksMap : ClassMap<Marks>
+    public class TestMarkMap : ClassMap<Mark>
     {
-        public TestMarksMap()
+        public TestMarkMap()
         {
-            References(x => x.Students).Class<Students>();
+            References(x => x.Students).Class<Student>();
 
             References(x => x.Category).Class<TestDescription>();
 

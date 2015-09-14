@@ -9,21 +9,17 @@ using NHibernate;
 
 namespace NHibernateDataProviders.NHibernateCore.Mappings
 {
-    public class UsersMap : ClassMap<Users>
+    public class GroupsMap : ClassMap<Group>
     {
-        public UsersMap()
+        public GroupsMap()
         {
             Id(x => x.Id);
 
-            Map(x => x.Email);
+            Map(x => x.FullName);
 
-            Map(x => x.Password);
+            Map(x => x.ShortName);
 
-            Map(x => x.PasswordSalt);
-
-            Map(x => x.FirstName);
-
-            Map(x => x.LastName);
+            Map(x => x.Students);
         }
     }
 }

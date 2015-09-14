@@ -8,6 +8,7 @@ using FluentNHibernate;
 using NHibernate.Cfg;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using NHibernate.Tool.hbm2ddl;
 
 namespace NHibernateDataProviders.NHibernateCore
 {
@@ -35,8 +36,8 @@ namespace NHibernateDataProviders.NHibernateCore
                 .Mappings(m =>
                           m.FluentMappings
                               .AddFromAssemblyOf<Helper>())
-                //.ExposeConfiguration(cfg => new SchemaExport(cfg)
-                //                                .Create(true, true))
+                .ExposeConfiguration(cfg => new SchemaExport(cfg)
+                                                .Create(true, true))
                               .BuildSessionFactory();
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestFactory.Business.Models
 {
-    public class Users : BaseModel
+    public class User : BaseModel
     {
         public virtual string Email { get; set; }
 
@@ -18,7 +18,7 @@ namespace TestFactory.Business.Models
 
         public virtual string LastName { get; set; }
 
-        public Users()
+        public User()
         {
             Id = Guid.NewGuid().ToString();
         }

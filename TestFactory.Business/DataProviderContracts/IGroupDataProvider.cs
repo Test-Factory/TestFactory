@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestFactory.Business.Data_Provider_Contracts
 {
-    public interface IGroupsDataProvider
+    public interface IGroupDataProvider
     {
         void Delete(string name);
 
