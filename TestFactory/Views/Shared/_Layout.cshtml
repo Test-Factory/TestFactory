@@ -6,10 +6,40 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/materialize/css/materialize.min.css")
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/Site.css")
 </head>
 <body>
-    @RenderBody()
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="right mobile-localization-changer">
+                <span class="collapsed-logout"> </span>
+            </div>
+            <a class="navbar-brand">Test-Factory</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <p>Тест Холланда</p>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Пошук</button>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Search for...">
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </div>
+    </div>
+</nav>
+    <div id="content">
+        @RenderBody();
+    </div>
 
+    @Scripts.Render("~/Scripts/jquery.validate.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
