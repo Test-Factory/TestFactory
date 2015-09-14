@@ -18,6 +18,10 @@ namespace TestFactory.Business.Models
 
         public virtual string LastName { get; set; }
 
+        public virtual string AdminGroup { get; set; }
+
+        public virtual bool Role { get; set; } 
+
         public User()
         {
             Id = Guid.NewGuid().ToString();
