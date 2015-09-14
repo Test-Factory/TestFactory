@@ -237,6 +237,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestFactory.Business\TestFactory.Business.csproj">
+      <Project>{f1fdaf65-0026-4fd6-8842-1a68ecbb0196}</Project>
+      <Name>TestFactory.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestFactory.MVC\TestFactory.MVC.csproj">
+      <Project>{fc3a96a0-d66f-4b70-b409-01486c470ae9}</Project>
+      <Name>TestFactory.MVC</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
