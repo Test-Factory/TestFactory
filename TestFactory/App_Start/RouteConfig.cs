@@ -20,9 +20,9 @@ namespace TestFactory
                    );
 
             routes.MapRoute(
-               name: "studentsList",
-               url: "user/students/{id}",
-               defaults: new { controller = "User", action = "Students", id = UrlParameter.Optional }
+               name: "studentList",
+               url: "student/listStudents/{id}",
+               defaults: new { controller = "Student", action = "listStudents", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
@@ -39,8 +39,8 @@ namespace TestFactory
 
             routes.MapRoute(
                name: "results",
-               url: "user/results/{id}",
-               defaults: new { controller = "User", action = "Results", id = UrlParameter.Optional }
+               url: "result/results/{id}",
+               defaults: new { controller = "Result", action = "Results", id = UrlParameter.Optional }
            );
         }
     }

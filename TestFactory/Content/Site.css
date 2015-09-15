@@ -64,3 +64,13 @@ a.left {
 }
 .input-field {
     left: -550px;
+}
+nav ul a {
+    font-size: 1.3rem;
+}
+a#text 
+{
+    position: relative;
+    left: 221px;
+    font-size: 1.5em;
+}
