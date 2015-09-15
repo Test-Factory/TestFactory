@@ -47,6 +47,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
     <Compile Include="Components\Managers\UserManager.cs" />
+    <Compile Include="DataProviderContracts\IDataProvider.cs" />
     <Compile Include="DataProviderContracts\IGroupDataProvider.cs" />
     <Compile Include="DataProviderContracts\IStudentDataProvider.cs" />
     <Compile Include="DataProviderContracts\IUserDataProvider.cs" />
