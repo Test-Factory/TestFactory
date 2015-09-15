@@ -19,7 +19,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.ShortName);
 
-            Map(x => x.Students);
+            HasMany(x => x.Students);
         }
     }
 }
