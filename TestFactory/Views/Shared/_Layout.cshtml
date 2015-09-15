@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav class="grey darken-4">
+        <nav class="grey darken-3">
             <div class="nav-wrapper">
                 <a href="#" class="left">Test-Factory</a>
                 <a href="#" data-activates="mobile-nav" class="right button-collapse"><i class="mdi-navigation-more-vert"></i></a>
@@ -32,8 +32,6 @@
         @RenderBody();
     </div>
 
-    @Scripts.Render("~/Scripts/jquery.validate.js")
-    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
