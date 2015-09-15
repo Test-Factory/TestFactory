@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestFactory.Business.Models;
 using NHibernate;
-using System.Linq;
+using NHibernateDataProviders.NHibernateCore;
 
 namespace NHibernateDataProviders.Data_Providers
 {

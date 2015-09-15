@@ -24,6 +24,10 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
             Map(x => x.FirstName);
 
             Map(x => x.LastName);
+
+            References(x => x.AdminGroup).Class<Group>();
+
+            Map(x => x.Role);
         }
     }
 }

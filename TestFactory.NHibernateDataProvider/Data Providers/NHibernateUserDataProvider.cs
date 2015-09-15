@@ -9,7 +9,7 @@ using NHibernate.Criterion;
 
 namespace NHibernateDataProviders.Data_Providers
 {
-    public class NHibernateUserDataProvider : NHibernateDataProviderBase<User>, IUsersDataProvider
+    public class NHibernateUserDataProvider : NHibernateDataProviderBase<User>, IUserDataProvider
     {
         public User GetByEmail(string email)
         {

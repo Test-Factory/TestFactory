@@ -12,6 +12,6 @@ namespace TestFactory.Business.Models
 
         public virtual TestDescription Category { get; set; }
 
-        public virtual int Mark { get; set; }
+        public virtual int Value { get; set; }
     }
 }
