@@ -3,4 +3,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div id="partialView">
+    @{Html.RenderPartial("CreateGroup");}
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/jquery.validate.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+@Scripts.Render("~/Scripts/editGroups.js")

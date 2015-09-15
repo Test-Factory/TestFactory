@@ -74,3 +74,6 @@ a#text
     left: 221px;
     font-size: 1.5em;
 }
+div#partialView {
+    display: inline-block;
+}

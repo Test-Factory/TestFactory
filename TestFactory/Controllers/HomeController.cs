@@ -10,11 +10,15 @@ namespace TestFactory.Controllers
     {
         //
         // GET: /Home/
-
+        
         public ActionResult Index()
         {
             return View();
         }
-
+        public ActionResult CreateGroup()
+        {
+            ViewBag.Message = "Это частичное представление.";
+            return PartialView();
+        }
     }
 }
