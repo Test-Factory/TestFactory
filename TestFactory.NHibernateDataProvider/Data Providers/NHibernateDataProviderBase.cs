@@ -23,5 +23,58 @@ namespace NHibernateDataProviders.Data_Providers
                 return func(session);
             }
         }
+        protected void Execute(Action<ISession> action)
+        {
+            using (var session = CreateSession())
+                {
+                    action(session);
+                }
+        }
+
+        public IList<TEntity> GetList()
+        {
+            return Execute(session =>
+            {
+                var listTEntity = (List<TEntity>)session.CreateCriteria(typeof(TEntity)).List();
+
+                return listTEntity;
+            });
+        }
+        public void Create(TEntity model)
+        {
+            Execute(session =>
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.SaveOrUpdate(model);
+                    transaction.Commit();
+                }
+            });
+        }
+
+        public void Update(TEntity model)
+        {
+            Execute(session =>
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.SaveOrUpdate(model);
+                    session.Flush();
+                    transaction.Commit();
+                }
+            });
+        }
+        public void Delete(string id)
+        {
+            Execute(session =>
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.Delete(session.Load(typeof(TEntity), id));
+                    transaction.Commit();
+                }
+
+            });
+        }
     }
 }
