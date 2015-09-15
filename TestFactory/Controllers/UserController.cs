@@ -19,11 +19,6 @@ namespace TestFactory.Controllers
         }
 
 
-        public ActionResult Students()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult LogIn()
         {
@@ -59,9 +54,5 @@ namespace TestFactory.Controllers
             return RedirectToRoute("Home");
         }
 
-        public ActionResult Results()
-        {
-            return View();
-        }
     }
 }
