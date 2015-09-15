@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
+    <Compile Include="Components\Managers\StudentManager.cs" />
     <Compile Include="Components\Managers\UserManager.cs" />
     <Compile Include="DataProviderContracts\IDataProvider.cs" />
     <Compile Include="DataProviderContracts\IGroupDataProvider.cs" />

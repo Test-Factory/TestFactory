@@ -10,7 +10,7 @@ using NHibernateDataProviders.Data_Providers;
 
 namespace TestFactory.NHibernateDataProvider.Data_Providers
 {
-    class NHibernateGroupDataProvider : NHibernateDataProviderBase<Group>, IGroupDataProvider
+    public class NHibernateGroupDataProvider : NHibernateDataProviderBase<Group>, IGroupDataProvider
     {
 
     }
