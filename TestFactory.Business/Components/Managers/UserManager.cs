@@ -13,9 +13,9 @@ namespace TestFactory.Business.Components.Managers
     {
         public UserManager(IUserDataProvider provider) : base(provider){ }
 
-        public IList<User> GetList()
+        public User GetByEmail(string email)
         {
-            return null;
+            return provider.GetByEmail(email);
         }
 
         public bool IsPasswordValid(string email, string password)

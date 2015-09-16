@@ -22,13 +22,13 @@ namespace TestFactory
             routes.MapRoute(
                name: "studentList",
                url: "student/listStudents/{id}",
-               defaults: new { controller = "Student", action = "listStudents", id = UrlParameter.Optional }
+               defaults: new { controller = "Student", action = "ListStudents", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "groupsList",
                url: "groupList",
-               defaults: new { controller = "Home", action = "Index" }
+               defaults: new { controller = "Group", action = "ListGroup" }
            );
 
             routes.MapRoute(

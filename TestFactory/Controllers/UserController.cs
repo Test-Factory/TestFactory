@@ -15,9 +15,9 @@ namespace TestFactory.Controllers
 
         public UserController(UserManager manager)
         {
+
             this.manager = manager;
         }
-
 
         [HttpGet]
         public ActionResult LogIn()
@@ -30,7 +30,7 @@ namespace TestFactory.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(user);
+                return RedirectToRoute("Home");
             }
 
             if (manager.IsPasswordValid(user.Email, user.Password))
