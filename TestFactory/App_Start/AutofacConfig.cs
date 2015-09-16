@@ -9,6 +9,7 @@ using Autofac.Integration.Mvc;
 using NHibernateDataProviders.Data_Providers;
 using TestFactory.Business.Data_Provider_Contracts;
 using TestFactory.NHibernateDataProvider.Data_Providers;
+using TestFactory.Business.Components.Managers;
 
 namespace TestFactory.App_Start
 {
@@ -27,6 +28,10 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<NHibernateStudentDataProvider>()
                 .As<IStudentDataProvider>();
+
+            builder.RegisterType<UserManager>();
+
+            builder.RegisterType<StudentManager>();
 
             var container = builder.Build();
 
