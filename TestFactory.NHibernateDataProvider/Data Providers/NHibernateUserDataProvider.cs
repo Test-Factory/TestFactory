@@ -21,5 +21,10 @@ namespace NHibernateDataProviders.Data_Providers
                     .UniqueResult<User>();
             });
         }
+
+        public bool NewUser(User user)
+        {
+            return true;
+        }
     }
 }
