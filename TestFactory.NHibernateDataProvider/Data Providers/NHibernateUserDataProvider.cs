@@ -22,9 +22,9 @@ namespace NHibernateDataProviders.Data_Providers
             });
         }
 
-        public bool NewUser(User user);
+        public bool NewUser(User user)
         {
-            return null;
+            return true;
         }
     }
 }
