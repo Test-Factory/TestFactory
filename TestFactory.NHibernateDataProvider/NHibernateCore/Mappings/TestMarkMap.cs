@@ -13,6 +13,8 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
     {
         public TestMarkMap()
         {
+            Id(x => x.Id);
+
             References(x => x.Students).Class<Student>();
 
             References(x => x.Category).Class<TestDescription>();

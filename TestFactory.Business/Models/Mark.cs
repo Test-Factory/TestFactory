@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestFactory.Business.Models
 {
-    public class Mark
+    public class Mark : BaseModel
     {
         public virtual Student Students { get; set; }
 
