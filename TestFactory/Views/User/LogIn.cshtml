@@ -1,6 +1,19 @@
-﻿@{
+﻿@model TestFactory.MVC.ViewModels.UserViewModel
+@{
     ViewBag.Title = "LogIn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>LogIn</h2>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <h2>LogIn</h2>
+    
+        <div>
+            @Html.TextBoxFor(model => model.Email, new { @class="form-control", placeholder="Введіть логін"})
+        </div>
+        <div>
+            @Html.PasswordFor(model => model.Password, new { @class="form-control", placeholder="Введіть пароль"})
+        </div>
+        <button type="submit" class="btn waves-effect waves-light" id="logIn">Увійти</button>
+}
