@@ -23,18 +23,18 @@ namespace TestFactory.Business.Components.Managers
             provider.Create(model);
         }
 
-        IList<T> GetList()
+        public IList<T> GetList()
         {
            return provider.GetList();
            
         }
 
-        void Update(T model)
+        public void Update(T model)
         {
             provider.Update(model);
         }
 
-        void Delete(string id)
+        public void Delete(string id)
         {
             provider.Delete(id);
         }
