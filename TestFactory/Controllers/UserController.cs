@@ -15,8 +15,8 @@ namespace TestFactory.Controllers
 
         public UserController(UserManager manager)
         {
-
             this.manager = manager;
+            //manager.AddFirstRole();
         }
 
         [HttpGet]

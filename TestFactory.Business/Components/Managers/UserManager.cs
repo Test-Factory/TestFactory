@@ -18,6 +18,18 @@ namespace TestFactory.Business.Components.Managers
             return provider.GetByEmail(email);
         }
 
+        public void AddFirstRole()
+        {
+            User admin = new User();
+            admin.Email = "02bodia20@ukr.net";
+            admin.FirstName = "Bodia";
+            admin.LastName = "Semenets";
+            admin.Password = "123321";
+            admin.Role = true;
+
+            provider.Create(admin);
+        }
+
         public bool IsPasswordValid(string email, string password)
         {
             var user = provider.GetByEmail(email);

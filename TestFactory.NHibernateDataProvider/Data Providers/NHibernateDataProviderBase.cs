@@ -23,6 +23,7 @@ namespace NHibernateDataProviders.Data_Providers
                 return func(session);
             }
         }
+
         protected void Execute(Action<ISession> action)
         {
             using (var session = CreateSession())
