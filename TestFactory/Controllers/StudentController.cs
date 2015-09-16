@@ -19,12 +19,11 @@ namespace TestFactory.Controllers
         // GET: /Students/
 
         public ActionResult GetList()
-        {       
-            return View();
+        {
+            return View("ListStudents");
         }
         public ActionResult CreateStudent()
         {
-            ViewBag.Message = "Это частичное представление.";
             return PartialView();
         }
     }
