@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestFactory.MVC.ViewModels
 {
-    public class StudentViewModel
+    public class StudentViewModel     : BaseViewModel
     {
         [Required]
         [DataType(DataType.Text)]

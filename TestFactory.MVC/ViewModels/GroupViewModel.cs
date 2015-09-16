@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestFactory.MVC.ViewModels
 {
-    public class GroupViewModel
+    public class GroupViewModel : BaseViewModel
     {
         [Required]
         [DataType(DataType.Text)]

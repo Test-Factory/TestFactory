@@ -10,7 +10,7 @@ using System.Web;
 
 namespace TestFactory.MVC.ViewModels
 {
-    public class UserViewModel
+    public class UserViewModel   : BaseViewModel
     {
         [Required]
         [DataType(DataType.EmailAddress)]
