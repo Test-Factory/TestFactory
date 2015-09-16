@@ -13,5 +13,9 @@ namespace TestFactory.Controllers
         {
             return View();
         }
+        public ActionResult CreateGroup()
+        {
+            return PartialView();
+        }
     }
 }
