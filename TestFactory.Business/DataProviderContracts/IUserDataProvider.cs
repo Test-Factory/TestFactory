@@ -11,7 +11,5 @@ namespace TestFactory.Business.Data_Provider_Contracts
     public interface IUserDataProvider  : IDataProvider<User>
     {
         User GetByEmail(string email);
-
-        bool NewUser(User user);
     }
 }

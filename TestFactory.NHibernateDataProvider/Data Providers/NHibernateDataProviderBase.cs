@@ -40,6 +40,7 @@ namespace NHibernateDataProviders.Data_Providers
                 return listTEntity;
             });
         }
+
         public void Create(TEntity model)
         {
             Execute(session =>
