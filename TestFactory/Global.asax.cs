@@ -18,7 +18,7 @@ namespace TestFactory
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            AutomapperConfig.RegisterMaps();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
