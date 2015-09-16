@@ -22,7 +22,7 @@ namespace TestFactory
             routes.MapRoute(
                name: "studentList",
                url: "listStudents/{id}",
-               defaults: new { controller = "Student", action = "ListStudents", id = UrlParameter.Optional }
+               defaults: new { controller = "Student", action = "GetList", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(

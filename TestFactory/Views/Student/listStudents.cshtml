@@ -1,6 +1,11 @@
-﻿@{
-    ViewBag.Title = "listStudents";
+﻿
+@{
+    ViewBag.Title = "ListStudents";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>listStudents</h2>
+<h2>ListStudents</h2>
+<div id="partialView">
+    @{Html.RenderPartial("CreateStudent");}
+</div>
+

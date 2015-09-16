@@ -76,4 +76,6 @@ a#text
 }
 div#partialView {
     display: inline-block;
+    position:absolute;
+    left:15px;
 }
