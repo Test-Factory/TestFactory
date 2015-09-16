@@ -19,8 +19,8 @@ namespace TestFactory.Controllers
         // GET: /Students/
 
         public ActionResult GetList()
-        {       _studentManager.
-            return View( );
+        {       
+            return View();
         }
         public ActionResult CreateStudent()
         {
