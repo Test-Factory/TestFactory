@@ -55,7 +55,6 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Data Providers\NHibernateDataProviderBase.cs" />
     <Compile Include="Data Providers\NHibernateGroupDataProvider.cs" />
-    <Compile Include="Data Providers\NHibernateStudentDataProvider.cs" />
     <Compile Include="Data Providers\NHibernateUserDataProvider.cs" />
     <Compile Include="NHibernateCore\Helper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />
