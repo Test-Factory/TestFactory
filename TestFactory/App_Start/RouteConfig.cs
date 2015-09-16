@@ -16,7 +16,7 @@ namespace TestFactory
             routes.MapRoute(
                    name: "Default",
                    url: "",
-                   defaults: new { controller = "Group", action = "ListGroups" }
+                   defaults: new { controller = "Home", action = "Index" }
                    );
 
             routes.MapRoute(
