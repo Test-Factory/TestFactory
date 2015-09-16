@@ -12,8 +12,13 @@ namespace TestFactory.App_Start
         public static void RegisterMaps()
         {
             AutoMapper.Mapper
+                
                 .CreateMap<User, UserViewModel>()
                 .IncludeBase<BaseModel, BaseViewModel>();
+            AutoMapper.Mapper
+                .CreateMap<Student, StudentViewModel>();
+            AutoMapper.Mapper
+                .CreateMap<Group, GroupViewModel>();
         }
     }
 }
