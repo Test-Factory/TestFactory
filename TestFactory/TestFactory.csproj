@@ -271,7 +271,6 @@
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\Student\ListStudents.cshtml" />
     <Content Include="Views\Result\Results.cshtml" />
-    <Content Include="Views\Home\CreateGroup.cshtml" />
     <Content Include="Views\Group\ListGroups.cshtml" />
   </ItemGroup>
   <ItemGroup>

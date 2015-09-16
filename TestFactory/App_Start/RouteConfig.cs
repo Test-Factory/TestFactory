@@ -16,30 +16,30 @@ namespace TestFactory
             routes.MapRoute(
                    name: "Default",
                    url: "",
-                   defaults: new { controller = "Home", action = "Index" }
+                   defaults: new { controller = "Group", action = "ListGroups" }
                    );
 
             routes.MapRoute(
                name: "studentList",
-               url: "student/listStudents/{id}",
+               url: "listStudents/{id}",
                defaults: new { controller = "Student", action = "ListStudents", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                name: "groupsList",
                url: "groupList",
-               defaults: new { controller = "Group", action = "ListGroup" }
+               defaults: new { controller = "Group", action = "ListGroups" }
            );
 
             routes.MapRoute(
                name: "login",
-               url: "user/logIn",
+               url: "login",
                defaults: new { controller = "User", action = "LogIn" }
            );
 
             routes.MapRoute(
                name: "results",
-               url: "result/results/{id}",
+               url: "results/{id}",
                defaults: new { controller = "Result", action = "Results", id = UrlParameter.Optional }
            );
         }

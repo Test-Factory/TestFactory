@@ -15,6 +15,10 @@ namespace TestFactory.Controllers
         {
             return View();
         }
-
+        public ActionResult CreateStudent()
+        {
+            ViewBag.Message = "Это частичное представление.";
+            return PartialView();
+        }
     }
 }
