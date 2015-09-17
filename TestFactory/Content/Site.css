@@ -79,3 +79,7 @@ div#partialView {
     position:absolute;
     left:15px;
 }
+div#image {
+    position: relative;
+    left: 30%;
+}
