@@ -43,7 +43,7 @@ namespace TestFactory.Controllers
             }
             else
             {
-                ModelState.AddModelError("Password", "Pass is not correct");
+                ModelState.AddModelError("Email", "Data is not correct");
             }
 
             return View(user);

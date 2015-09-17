@@ -9,9 +9,9 @@ using NHibernate;
 
 namespace NHibernateDataProviders.NHibernateCore.Mappings
 {
-    public class GroupsMap : ClassMap<Group>
+    public class GroupMap : ClassMap<Group>
     {
-        public GroupsMap()
+        public GroupMap()
         {
             Id(x => x.Id);
 

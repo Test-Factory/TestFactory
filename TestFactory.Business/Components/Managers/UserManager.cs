@@ -22,12 +22,12 @@ namespace TestFactory.Business.Components.Managers
         public void AddFirstRole()
         {
             User admin = new User();
-            admin.Email = "02bodia20@ukr.net";
-            admin.FirstName = "Bodia";
-            admin.LastName = "Semenets";
+            admin.Email = "TF.Editor@ukr.net";
+            admin.FirstName = "Editor";
+            admin.LastName = "TF";
             admin.PasswordSalt = new PBKDF2().GenerateSalt();
-            admin.Password = new PBKDF2().Compute("123321", admin.PasswordSalt);
-            admin.Role = true;
+            admin.Password = new PBKDF2().Compute("IEditor", admin.PasswordSalt);
+            admin.Role = false;
 
             provider.Create(admin);
         }

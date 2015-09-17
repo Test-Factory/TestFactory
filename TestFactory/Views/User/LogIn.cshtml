@@ -10,7 +10,7 @@
     <h2>LogIn</h2>
     
         <div>
-
+            @Html.ValidationMessageFor(model => model.Email)
             @Html.TextBoxFor(model => model.Email, new { @class="form-control", placeholder="Введіть логін"})
         </div>
         <div>
