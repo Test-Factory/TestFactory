@@ -25,8 +25,8 @@ namespace TestFactory.Business.Components.Managers
             admin.Email = "02bodia20@ukr.net";
             admin.FirstName = "Bodia";
             admin.LastName = "Semenets";
-            admin.Password = "123321";
             admin.PasswordSalt = new PBKDF2().GenerateSalt();
+            admin.Password = new PBKDF2().Compute("123321", admin.PasswordSalt);
             admin.Role = true;
 
             provider.Create(admin);
@@ -38,7 +38,7 @@ namespace TestFactory.Business.Components.Managers
             if(user != null)
             {
                 var t = new PBKDF2().Compute(password, user.PasswordSalt);
-                return String.Equals(user.Password, password);
+                return String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
             }
             return false;
         }
