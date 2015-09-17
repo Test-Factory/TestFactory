@@ -22,17 +22,35 @@ namespace TestFactory.Controllers
 
         public ActionResult ListGroups()
         {
-            return View();
+            var spec = _groupManager.GetList();
+            var tmp = spec.Where(x =>
+                !String.IsNullOrEmpty(x.FullName) && !String.IsNullOrEmpty(x.ShortName)).ToList();
+            var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(tmp);
+            return View(result);
         }
 
         [HttpPost]
-        public ActionResult CreateGroup(GroupViewModel viewModel)
+        public ActionResult CreateGroup(GroupViewModel group)
         {
-            var model = AutoMapper.Mapper.Map<Group>(viewModel);
+
+            var model = AutoMapper.Mapper.Map<Group>(group);
             _groupManager.Create(model);
 
-            return RedirectToRoute("groupsList");
+            return View();
         }
 
+        [HttpGet]
+        public ActionResult CreateGroup()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult DeleteGroup(string id)
+        {
+            _groupManager.Delete(id);
+
+            return RedirectToRoute("listGroup");  
+        }
     }
 }
