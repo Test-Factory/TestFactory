@@ -14,6 +14,8 @@ namespace TestFactory.Business.Components.Managers
     {
         public UserManager(IUserDataProvider provider) : base(provider){ }
 
+        public bool UserRole { get; set; }
+
         public User GetByEmail(string email)
         {
             return provider.GetByEmail(email);
@@ -37,7 +39,12 @@ namespace TestFactory.Business.Components.Managers
             var user = provider.GetByEmail(email);
             if(user != null)
             {
-                return String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
+                bool correctPass = String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
+                if (correctPass)
+                {
+                    UserRole = user.Role;
+                }
+                return correctPass;
             }
             return false;
         }

@@ -9,6 +9,7 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.Business.Components.Managers
 {
+    //TODO: make methods virtual
     public abstract class BaseManager<T, TProvider>
         where T: BaseModel
         where TProvider: IDataProvider<T>
@@ -28,6 +29,11 @@ namespace TestFactory.Business.Components.Managers
            return provider.GetList();
            
         }
+        public T GetById(string id)
+        {
+            return provider.GetById(id);
+
+        }
 
         public void Update(T model)
         {
@@ -39,9 +45,5 @@ namespace TestFactory.Business.Components.Managers
             provider.Delete(id);
         }
 
-        public T GetById(string id)
-        {
-            return provider.GetById(id);
-        }
     }
 }

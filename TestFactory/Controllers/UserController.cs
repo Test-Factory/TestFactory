@@ -26,20 +26,18 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(UserViewModel user, string returnUrl)
+        public ActionResult LogIn(UserViewModel user)
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToRoute("Default");
+                return View(user);
             }
 
             if (manager.IsPasswordValid(user.Email, user.Password))
             {
                 FormsAuthentication.SetAuthCookie(user.Email, false);
 
-                if (returnUrl != null) return Redirect(returnUrl);
-                else
-                    return RedirectToRoute("Default");
+                return RedirectToRoute("Default");
             }
             else
             {

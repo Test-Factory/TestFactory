@@ -52,7 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Data Providers\NHibernateDataProviderBase.cs" />
     <Compile Include="Data Providers\NHibernateGroupDataProvider.cs" />
     <Compile Include="Data Providers\NHibernateStudentDataProvider.cs" />
