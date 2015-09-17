@@ -1,5 +1,10 @@
 ﻿@model TestFactory.MVC.ViewModels.StudentViewModel
 
+@{
+    ViewBag.Title = "CreateGroup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -32,5 +37,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Home page", "Student","GetList")
+    @Html.ActionLink("Back to Home page", "Student", "GetStudents")
 </div>

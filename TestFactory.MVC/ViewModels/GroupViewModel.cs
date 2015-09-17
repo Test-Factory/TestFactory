@@ -15,5 +15,10 @@ namespace TestFactory.MVC.ViewModels
         [Required]
         [DataType(DataType.Text)]
         public virtual string ShortName { get; set; }
+        public virtual IList<StudentViewModel> Students { get; set; }
+        public GroupViewModel()
+        {
+            Students = new List<StudentViewModel>();
+        }
     }
 }

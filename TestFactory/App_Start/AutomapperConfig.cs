@@ -27,7 +27,9 @@ namespace TestFactory.App_Start
                 .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper.CreateMap<Group, GroupViewModel>()
-               .IncludeBase<BaseModel, BaseViewModel>();
+               .IncludeBase<BaseModel, BaseViewModel>()
+               .ForMember(groupvm => groupvm.Students, otp => otp.Ignore());
+            
         }
         private static void RegisterFromViewModel()
         {
@@ -36,8 +38,8 @@ namespace TestFactory.App_Start
                .ForMember(studentvm => studentvm.Group, otp => otp.Ignore());
 
             Mapper.CreateMap<GroupViewModel, Group>()
-                .IncludeBase<BaseViewModel, BaseModel>()
-                .ForMember(groupvm => groupvm.Students, otp => otp.Ignore());
+                .IncludeBase<BaseViewModel, BaseModel>() ;
+               // .ForMember(groupvm => groupvm.Students, otp => otp.Ignore());
         }
     }
 }
