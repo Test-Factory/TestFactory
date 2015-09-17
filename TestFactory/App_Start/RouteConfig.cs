@@ -38,6 +38,12 @@ namespace TestFactory
            );
 
             routes.MapRoute(
+                name: "LogOut",
+                url: "logout",
+                defaults: new { controller = "User", action = "LogOut" }
+           );
+
+            routes.MapRoute(
                name: "results",
                url: "results/{id}",
                defaults: new { controller = "Result", action = "Results", id = UrlParameter.Optional }

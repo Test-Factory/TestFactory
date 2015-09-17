@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TestFactory.Business.Models;
 using TestFactory.Business.Data_Provider_Contracts;
 using SimpleCrypto;
+using System.Security.Cryptography;
 
 namespace TestFactory.Business.Components.Managers
 {
@@ -25,6 +26,7 @@ namespace TestFactory.Business.Components.Managers
             admin.FirstName = "Bodia";
             admin.LastName = "Semenets";
             admin.Password = "123321";
+            admin.PasswordSalt = new PBKDF2().GenerateSalt();
             admin.Role = true;
 
             provider.Create(admin);
@@ -35,7 +37,8 @@ namespace TestFactory.Business.Components.Managers
             var user = provider.GetByEmail(email);
             if(user != null)
             {
-                return String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
+                var t = new PBKDF2().Compute(password, user.PasswordSalt);
+                return String.Equals(user.Password, password);
             }
             return false;
         }

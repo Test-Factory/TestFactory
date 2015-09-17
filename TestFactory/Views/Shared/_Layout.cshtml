@@ -25,9 +25,19 @@
                         </div>
                     </form>
                 </div>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#">Ваш логин</a></li>
-                </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="#">@User.Identity.Name</a></li>
+                        <li>@Html.ActionLink("LogOut", "LogOut", "User", null, htmlAttributes: new { @class = "link" })</li>
+                    </ul>
+                }
+                else
+                {
+                     <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>@Html.ActionLink("LogIn", "login", "User", null, htmlAttributes: new { @class = "link" })</li>
+                    </ul>
+                }
             </div>
         </nav>
     </header>
