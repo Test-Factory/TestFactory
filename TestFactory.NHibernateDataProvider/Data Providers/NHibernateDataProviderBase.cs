@@ -7,6 +7,7 @@ using NHibernate.Linq;
 using TestFactory.Business.Models;
 using NHibernate;
 using NHibernateDataProviders.NHibernateCore;
+using NHibernate.Criterion;
 
 namespace NHibernateDataProviders.Data_Providers
 {
@@ -84,6 +85,16 @@ namespace NHibernateDataProviders.Data_Providers
                     transaction.Commit();
                 }
 
+            });
+        }
+        public TEntity GetById(string id)
+        {
+            return Execute(session =>
+            {
+                return session
+                    .CreateCriteria<TEntity>()
+                    .Add(Restrictions.Eq("Id", id))
+                    .UniqueResult<TEntity>();
             });
         }
     }
