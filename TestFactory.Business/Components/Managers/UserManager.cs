@@ -37,7 +37,6 @@ namespace TestFactory.Business.Components.Managers
             var user = provider.GetByEmail(email);
             if(user != null)
             {
-                var t = new PBKDF2().Compute(password, user.PasswordSalt);
                 return String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
             }
             return false;
