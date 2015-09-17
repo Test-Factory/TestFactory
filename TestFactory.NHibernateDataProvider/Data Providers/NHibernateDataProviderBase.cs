@@ -43,13 +43,6 @@ namespace NHibernateDataProviders.Data_Providers
                 return listTEntity;
             });
         }
-        public TEntity GetById(string id)
-        {
-            return Execute(session =>
-            {
-                return session.Get<TEntity>(id);
-            });
-        }
 
         public void Create(TEntity model)
         {
