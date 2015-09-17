@@ -28,6 +28,11 @@ namespace TestFactory.Business.Components.Managers
            return provider.GetList();
            
         }
+        public T GetById(string id)
+        {
+            return provider.GetById(id);
+
+        }
 
         public void Update(T model)
         {

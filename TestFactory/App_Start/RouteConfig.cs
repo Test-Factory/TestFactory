@@ -30,13 +30,33 @@ namespace TestFactory
                url: "groupList",
                defaults: new { controller = "Group", action = "Groups" }
            );
+            routes.MapRoute(
+               name : "updateList",
+               url : "updateStudents/{id}",
+               defaults : new { controller = "Student", action = "UpdateStudent", id = UrlParameter.Optional }
+           );
 
+            routes.MapRoute(
+            name : "listStudent",
+            url : "listStudent",
+            defaults : new { controller = "Student", action = "GetStudents" }
+        );
 
             routes.MapRoute(
               name: "createGroup",
               url: "createGroup",
               defaults: new { controller = "Group", action = "CreateGroup" }
           );
+            routes.MapRoute(
+             name : "createStudent",
+             url : "createStudent",
+             defaults : new { controller = "Student", action = "CreateStudent" }
+         );
+            routes.MapRoute(
+             name : "deleteStudent",
+             url : "deleteStudent/{id}",
+             defaults : new { controller = "Student", action = "DeleteStudent", id = UrlParameter.Optional }
+         );
 
             routes.MapRoute(
              name: "deleteGroup",
@@ -67,6 +87,7 @@ namespace TestFactory
                 url:  "{*url}",
                 defaults: new { controller = "Error", action = "Index"}
             );
+            
         }
     }
 }

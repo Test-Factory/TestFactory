@@ -36,8 +36,17 @@ namespace NHibernateDataProviders.Data_Providers
         {
             return Execute(session =>
             {
+                //var critetria = session.CreateCriteria(typeof (TEntity));
+                //var listTEntity = 
                 var listTEntity = session.Query<TEntity>().ToList();
                 return listTEntity;
+            });
+        }
+        public TEntity GetById(string id)
+        {
+            return Execute(session =>
+            {
+                return session.Get<TEntity>(id);
             });
         }
 
@@ -48,7 +57,6 @@ namespace NHibernateDataProviders.Data_Providers
                 using (var transaction = session.BeginTransaction())
                 {
                     session.SaveOrUpdate(model);
-
                     transaction.Commit();
                 }
             });
