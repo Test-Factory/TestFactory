@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
 using TestFactory.Business.Models;
-using NHibernate;
 
 namespace NHibernateDataProviders.NHibernateCore.Mappings
 {
@@ -18,8 +12,10 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
             Map(x => x.FirstName);
 
             Map(x => x.LastName);
+           
+            Map(x => x.GroupId);
 
-            References(x => x.Group).Class<Group>();
+            References(x => x.Group).Column("GroupId").Class<Group>();
         }
     }
 }

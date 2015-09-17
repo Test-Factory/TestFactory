@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,10 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data Providers\NHibernateDataProviderBase.cs" />
-    <Compile Include="Data Providers\NHibernateGroupDataProvider.cs" />
-    <Compile Include="Data Providers\NHibernateStudentDataProvider.cs" />
-    <Compile Include="Data Providers\NHibernateUserDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateDataProviderBase.cs" />
+    <Compile Include="DataProviders\NHibernateGroupDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateStudentDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateUserDataProvider.cs" />
     <Compile Include="NHibernateCore\Helper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />
     <Compile Include="NHibernateCore\Mappings\TestDescriptionMap.cs" />

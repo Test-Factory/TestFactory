@@ -19,7 +19,6 @@ namespace TestFactory.Controllers
             _groupManager = GroupManager;
         }
 
-
         public ActionResult ListGroups()
         {
             var groups = _groupManager.GetList();
