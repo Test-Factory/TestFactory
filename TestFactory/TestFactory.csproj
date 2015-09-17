@@ -275,8 +275,8 @@
     <Content Include="Views\Group\ListGroups.cshtml" />
     <Content Include="Views\Student\CreateStudent.cshtml" />
     <Content Include="Views\Student\ListStudents.cshtml" />
-    <Content Include="Views\Group\CreateGroup.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Group\CreateGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
