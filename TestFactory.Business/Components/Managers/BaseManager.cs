@@ -38,5 +38,10 @@ namespace TestFactory.Business.Components.Managers
         {
             provider.Delete(id);
         }
+
+        public T GetById(string id)
+        {
+            return provider.GetById(id);
+        }
     }
 }

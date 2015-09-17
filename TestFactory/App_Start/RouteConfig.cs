@@ -26,13 +26,6 @@ namespace TestFactory
            );
 
             routes.MapRoute(
-               name: "groupsList",
-               url: "groupList",
-               defaults: new { controller = "Group", action = "Groups" }
-           );
-
-
-            routes.MapRoute(
               name: "createGroup",
               url: "createGroup",
               defaults: new { controller = "Group", action = "CreateGroup" }
@@ -43,6 +36,12 @@ namespace TestFactory
              url: "deleteGroup/{id}",
              defaults: new { controller = "Group", action = "DeleteGroup", id=UrlParameter.Optional }
          );
+
+          routes.MapRoute(
+           name: "updateGroup",
+           url: "updateGroup/{id}",
+           defaults: new { controller = "Group", action = "UpdateGroup", id = UrlParameter.Optional }
+       );
 
             routes.MapRoute(
                name: "login",

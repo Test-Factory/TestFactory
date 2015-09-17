@@ -41,13 +41,26 @@ namespace TestFactory.Controllers
             return RedirectToRoute("Default");
         }
 
-       
+        [HttpGet]
+        public ActionResult UpdateGroup(string id)
+        {
+            var model = AutoMapper.Mapper.Map<GroupViewModel>(_groupManager.GetById(id));
+            return View("CreateGroup", model);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateGroup(GroupViewModel group)
+        {
+            var model = AutoMapper.Mapper.Map<Group>(group);
+            _groupManager.Update(model);
+            return RedirectToRoute("Default");
+        }
 
         [HttpGet]
         public ActionResult DeleteGroup(string id)
         {
             _groupManager.Delete(id);
-            return RedirectToRoute("listGroup");  
+            return RedirectToRoute("");  
         }
     }
 }

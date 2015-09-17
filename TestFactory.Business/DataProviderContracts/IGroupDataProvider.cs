@@ -10,6 +10,5 @@ namespace TestFactory.Business.Data_Provider_Contracts
 {
     public interface IGroupDataProvider : IDataProvider<Group>
     {
-       
     }
 }

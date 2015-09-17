@@ -12,6 +12,6 @@ namespace TestFactory.NHibernateDataProvider.Data_Providers
 {
     public class NHibernateGroupDataProvider : NHibernateDataProviderBase<Group>, IGroupDataProvider
     {
-
+ 
     }
 }
