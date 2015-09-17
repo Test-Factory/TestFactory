@@ -17,8 +17,5 @@ namespace TestFactory.Business.DataProviderContracts
 
         void Delete(string id);
 
-        T GetById(string id);
- 
-
     }
 }
