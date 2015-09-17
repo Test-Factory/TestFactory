@@ -37,7 +37,7 @@ namespace TestFactory.Controllers
         {
             var model = Mapper.Map<Student>(student);
             _studentManager.Create(model);
-            return RedirectToRoute("Default");
+            return RedirectToRoute("listStudent");
         }
         public ActionResult DeleteStudent(string id)
         {

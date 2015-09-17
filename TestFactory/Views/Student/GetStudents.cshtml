@@ -20,7 +20,8 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "DeleteGroup", new { id = item.Id })
+            @*@Html.RenderAction("DeleteStudent", new { id = item.Id })*@
+            @Html.ActionLink("Delete", "DeleteStudent", new { id = item.Id })
         </td>
     </tr>
     }
