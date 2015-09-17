@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TestFactory.Business.Models;
 using TestFactory.Business.Data_Provider_Contracts;
 using SimpleCrypto;
+using System.Security.Cryptography;
 
 namespace TestFactory.Business.Components.Managers
 {
@@ -24,7 +25,8 @@ namespace TestFactory.Business.Components.Managers
             admin.Email = "02bodia20@ukr.net";
             admin.FirstName = "Bodia";
             admin.LastName = "Semenets";
-            admin.Password = "123321";
+            admin.PasswordSalt = new PBKDF2().GenerateSalt();
+            admin.Password = new PBKDF2().Compute("123321", admin.PasswordSalt);
             admin.Role = true;
 
             provider.Create(admin);
