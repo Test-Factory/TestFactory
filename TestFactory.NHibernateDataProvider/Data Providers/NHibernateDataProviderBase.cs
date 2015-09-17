@@ -48,7 +48,7 @@ namespace NHibernateDataProviders.Data_Providers
                 using (var transaction = session.BeginTransaction())
                 {
                     session.SaveOrUpdate(model);
-                    session.Flush();
+
                     transaction.Commit();
                 }
             });

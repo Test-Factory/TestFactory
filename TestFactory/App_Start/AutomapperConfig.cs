@@ -11,25 +11,33 @@ namespace TestFactory.App_Start
     public class AutomapperConfig
     {
         public static void RegisterMaps()
+        {     
+            RegisterToViewModel();
+            RegisterFromViewModel();
+            Mapper.AssertConfigurationIsValid();
+        }
+        private static void RegisterToViewModel()
         {
-
             Mapper
-                .CreateMap<User, UserViewModel>()
-                .IncludeBase<BaseModel, BaseViewModel>();
+               .CreateMap<User, UserViewModel>()
+               .IncludeBase<BaseModel, BaseViewModel>();
+
             Mapper
                 .CreateMap<Student, StudentViewModel>()
                 .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper.CreateMap<Group, GroupViewModel>()
-                .IncludeBase<BaseModel, BaseViewModel>()
-                //.ForMember(groupvm => groupvm.Students, otp => otp.Ignore());
-            ;
+               .IncludeBase<BaseModel, BaseViewModel>();
+        }
+        private static void RegisterFromViewModel()
+        {
+            Mapper.CreateMap<StudentViewModel, Student>()
+               .IncludeBase<BaseViewModel, BaseModel>()
+               .ForMember(studentvm => studentvm.Group, otp => otp.Ignore());
 
             Mapper.CreateMap<GroupViewModel, Group>()
                 .IncludeBase<BaseViewModel, BaseModel>()
-                .ForMember(groupvm=> groupvm.Students, otp=>otp.Ignore());
-            
-            Mapper.AssertConfigurationIsValid();
+                .ForMember(groupvm => groupvm.Students, otp => otp.Ignore());
         }
     }
 }
