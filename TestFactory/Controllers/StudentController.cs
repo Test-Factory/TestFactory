@@ -14,34 +14,60 @@ namespace TestFactory.Controllers
 {
     public class StudentController : Controller
     {
-        private StudentManager _studentManager;
+        private readonly StudentManager studentManager;
 
         public StudentController(StudentManager studentManager)
         {
-            _studentManager = studentManager;
+            this.studentManager = studentManager;
         }
+
         // GET: /Students/
 
-        public ActionResult GetStudents()
+        [HttpGet]
+        public ActionResult GetStudents(string groupId=null)
         {
-            var students = _studentManager.GetList().ToList();
-            IList<StudentViewModel> result = Mapper.Map<List<StudentViewModel>>(students);
-            return View(result);
+            IList<Student> students;
+            if (string.IsNullOrEmpty(groupId))
+            {
+                students = studentManager.GetList();
+            }
+            else
+            {
+                students = studentManager.GetList(groupId);
+                
+            }
+            var result = Mapper.Map<List<StudentViewModel>>(students);
+            return View("List", result);
         }
-        public ActionResult CreateStudent()
+        //TODO:  modify as CreateStudent(string id)
+        [HttpGet]
+        public ActionResult CreateStudent(string id)
         {
+           // studentManager.
             return View();
         }
         [HttpPost]
         public ActionResult CreateStudent(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
-            _studentManager.Create(model);
+            studentManager.Create(model);
+            return RedirectToRoute("listStudent");
+        }
+        public ActionResult UpdateStudent(string id)
+        {
+            StudentViewModel student = Mapper.Map<StudentViewModel>(studentManager.GetById(id));
+            return View(student);
+        }
+        [HttpPost]
+        public ActionResult UpdateStudent(StudentViewModel student)
+        {
+            var model = Mapper.Map<Student>(student);
+            studentManager.Update(model);
             return RedirectToRoute("listStudent");
         }
         public ActionResult DeleteStudent(string id)
         {
-            _studentManager.Delete(id);
+            studentManager.Delete(id);
             return RedirectToRoute("listStudent");
         }
     }

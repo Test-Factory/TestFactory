@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NHibernate.Criterion;
+using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Models;
-using TestFactory.Business.Data_Provider_Contracts;
-using NHibernate.Criterion;
 
-namespace NHibernateDataProviders.Data_Providers
+namespace TestFactory.NHibernateDataProvider.DataProviders
 {
     public class NHibernateUserDataProvider : NHibernateDataProviderBase<User>, IUserDataProvider
     {

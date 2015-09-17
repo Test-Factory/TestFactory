@@ -6,10 +6,9 @@ using System.Web;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using NHibernateDataProviders.Data_Providers;
-using TestFactory.Business.Data_Provider_Contracts;
-using TestFactory.NHibernateDataProvider.Data_Providers;
+using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Components.Managers;
+using TestFactory.NHibernateDataProvider.DataProviders;
 
 namespace TestFactory.App_Start
 {

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NHibernate.Linq;
-using TestFactory.Business.Models;
 using NHibernate;
-using NHibernateDataProviders.NHibernateCore;
 using NHibernate.Criterion;
+using NHibernate.Linq;
+using NHibernateDataProviders.NHibernateCore;
 
-namespace NHibernateDataProviders.Data_Providers
+namespace TestFactory.NHibernateDataProvider.DataProviders
 {
     public class NHibernateDataProviderBase<TEntity>    where TEntity: class 
     {
