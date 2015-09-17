@@ -53,7 +53,7 @@ namespace TestFactory.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            return RedirectToRoute("Home");
+            return RedirectToRoute("Default");
         }
 
     }
