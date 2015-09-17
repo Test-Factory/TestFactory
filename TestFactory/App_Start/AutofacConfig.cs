@@ -22,7 +22,7 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<UserManager>();
             builder.RegisterType<StudentManager>();
-            //builder.RegisterType<GroupManager>();
+            builder.RegisterType<GroupManager>();
 
             builder.RegisterType<NHibernateUserDataProvider>()
                 .As<IUserDataProvider>();

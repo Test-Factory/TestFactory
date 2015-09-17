@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NHibernate.Linq;
 using TestFactory.Business.Models;
 using NHibernate;
 using NHibernateDataProviders.NHibernateCore;
 
 namespace NHibernateDataProviders.Data_Providers
 {
-    public class NHibernateDataProviderBase<TEntity>
+    public class NHibernateDataProviderBase<TEntity>    where TEntity: class 
     {
         private ISession CreateSession()
         {
@@ -23,7 +24,6 @@ namespace NHibernateDataProviders.Data_Providers
                 return func(session);
             }
         }
-
         protected void Execute(Action<ISession> action)
         {
             using (var session = CreateSession())
@@ -36,8 +36,7 @@ namespace NHibernateDataProviders.Data_Providers
         {
             return Execute(session =>
             {
-                var listTEntity = (List<TEntity>)session.CreateCriteria(typeof(TEntity)).List();
-
+                var listTEntity = session.Query<TEntity>().ToList();
                 return listTEntity;
             });
         }
