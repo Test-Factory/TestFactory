@@ -37,7 +37,13 @@ namespace TestFactory
               url: "createGroup",
               defaults: new { controller = "Group", action = "CreateGroup" }
           );
-            
+
+            routes.MapRoute(
+             name: "deleteGroup",
+             url: "deleteGroup/{id}",
+             defaults: new { controller = "Group", action = "DeleteGroup", id=UrlParameter.Optional }
+         );
+
             routes.MapRoute(
                name: "login",
                url: "login",
