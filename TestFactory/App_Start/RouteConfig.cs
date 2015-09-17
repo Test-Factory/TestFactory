@@ -28,7 +28,7 @@ namespace TestFactory
             routes.MapRoute(
                name: "groupsList",
                url: "groupList",
-               defaults: new { controller = "Group", action = "ListGroups" }
+               defaults: new { controller = "Group", action = "Groups" }
            );
 
             routes.MapRoute(
@@ -42,6 +42,12 @@ namespace TestFactory
                url: "results/{id}",
                defaults: new { controller = "Result", action = "Results", id = UrlParameter.Optional }
            );
+
+            routes.MapRoute(
+                name: "NotFound",
+                url:  "{*url}",
+                defaults: new { controller = "Error", action = "Index"}
+            );
         }
     }
 }
