@@ -26,6 +26,11 @@ namespace TestFactory.Controllers
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
+        [HttpGet]
+        public ActionResult CreateGroup()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult CreateGroup(GroupViewModel group)
@@ -33,14 +38,10 @@ namespace TestFactory.Controllers
 
             var model = AutoMapper.Mapper.Map<Group>(group);
             _groupManager.Create(model);
-            return View();
+            return RedirectToRoute("Default");
         }
 
-        [HttpGet]
-        public ActionResult CreateGroup()
-        {
-            return View();
-        }
+       
 
         [HttpGet]
         public ActionResult DeleteGroup(string id)
