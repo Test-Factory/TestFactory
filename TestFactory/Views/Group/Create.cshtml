@@ -3,7 +3,7 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 
-@using (Html.BeginForm("CreateGroup", "Group", FormMethod.Post))
+@using (Html.BeginForm("Create", "Group", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 

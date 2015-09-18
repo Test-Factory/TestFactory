@@ -277,8 +277,8 @@
     <Content Include="Views\Student\Create.cshtml" />
     <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
-    <Content Include="Views\Group\CreateGroup.cshtml" />
-    <Content Include="Views\Group\ListGroups.cshtml" />
+    <Content Include="Views\Group\Create.cshtml" />
+    <Content Include="Views\Group\List.cshtml" />
     <Content Include="Views\Student\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
