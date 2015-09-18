@@ -12,7 +12,7 @@ namespace TestFactory.Business.Models
 
         public virtual string LastName { get; set; }
         public virtual string GroupId { get; set; }
-
+ 
         public virtual Group Group { get; set; }
     }
 }

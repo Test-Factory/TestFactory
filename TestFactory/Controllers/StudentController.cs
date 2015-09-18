@@ -24,7 +24,7 @@ namespace TestFactory.Controllers
         // GET: /Students/
 
         [HttpGet]
-        public ActionResult GetStudents(string groupId=null)
+        public ActionResult List(string groupId=null)
         {
             IList<Student> students;
             if (string.IsNullOrEmpty(groupId))
@@ -41,31 +41,33 @@ namespace TestFactory.Controllers
         }
         //TODO:  modify as CreateStudent(string id)
         [HttpGet]
-        public ActionResult CreateStudent(string id)
+        public ActionResult Create(     )
         {
-           // studentManager.
+            //studentManager.Create();
             return View();
         }
         [HttpPost]
-        public ActionResult CreateStudent(StudentViewModel student)
+        public ActionResult Create(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
+            model.GroupId = RouteData.Values["groupId"].ToString();
+                //Request.Params["groupId"];
             studentManager.Create(model);
-            return RedirectToRoute("listStudent");
+            return RedirectToRoute("listStudent", new { groupId = model.GroupId });
         }
-        public ActionResult UpdateStudent(string id)
+        public ActionResult Update(string id)
         {
             StudentViewModel student = Mapper.Map<StudentViewModel>(studentManager.GetById(id));
             return View(student);
         }
         [HttpPost]
-        public ActionResult UpdateStudent(StudentViewModel student)
+        public ActionResult Update(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
             studentManager.Update(model);
             return RedirectToRoute("listStudent");
         }
-        public ActionResult DeleteStudent(string id)
+        public ActionResult Delete(string id)
         {
             studentManager.Delete(id);
             return RedirectToRoute("listStudent");
