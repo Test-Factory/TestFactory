@@ -1,22 +1,22 @@
-﻿@model IEnumerable<TestFactory.MVC.ViewModels.GroupViewModel>
+﻿@model List<GroupViewModel>
 
 @{
-    ViewBag.Title = "ListGroups";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@Styles.Render("~/Content/Site.css")
 <h2>ListGroups</h2>
 
-<p>
-    @Html.ActionLink("Create New", "CreateGroup")
-</p>
+<button type="submit" class="create">
+    Create new group
+</button>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FullName)
+           FullName
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShortName)
+            ShortName
         </th>
         <th></th>
     </tr>
@@ -29,12 +29,23 @@
         <td>
             @Html.DisplayFor(modelItem => item.ShortName)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "UpdateGroup", new { id=item.Id }) |
+        <td>                                                                     
+            @*@Html.ActionLink("Edit", "UpdateGroup","Group" ,new { id = item.Id }) |*@
             @Html.ActionLink("Details", "GetStudents", "Student", new { groupId = item.Id }, null) |
             @Html.ActionLink("Delete", "DeleteGroup", new {id = item.Id })
         </td>
     </tr>
 }
-
 </table>
+
+<div id ="createGroup">
+    <div id="create">
+        @Html.Partial("CreateGroup", new GroupViewModel())
+    </div>
+</div>
+
+@section Scripts
+{
+   @Scripts.Render("~/Scripts/groupList.js")
+}
+

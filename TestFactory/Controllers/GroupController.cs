@@ -40,11 +40,11 @@ namespace TestFactory.Controllers
             return RedirectToRoute("Default");
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult UpdateGroup(string id)
         {
             var model = AutoMapper.Mapper.Map<GroupViewModel>(_groupManager.GetById(id));
-            return View("CreateGroup", model);
+            return View("CreateGroup",model);
         }
 
         [HttpPost]

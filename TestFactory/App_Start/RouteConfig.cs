@@ -67,7 +67,7 @@ namespace TestFactory
 
             routes.MapRoute(
            name: "updateGroup",
-           url: "updateGroup/{id}",
+           url: "updateGroup",
            defaults: new { controller = "Group", action = "UpdateGroup", id = UrlParameter.Optional }
        );
 

@@ -9,7 +9,10 @@ header, footer, nav, section {
     display: block;
 }
 
-
+div#content {
+z-index:0;
+overflow:hidden;
+}
 /* Styles for basic forms
 -----------------------------------------------------------*/
 fieldset {
@@ -83,3 +86,19 @@ div#image {
     position: relative;
     left: 30%;
 }
+div#createGroup, div#updateGroup
+{
+    display:none;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index:100;
+}
+div#create, div#update {
+    position: fixed;
+    top: 25%;
+    left: 35%;
+    z-index:1000;
+    background:white;
+}
+
