@@ -274,12 +274,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\Result\Results.cshtml" />
-    <Content Include="Views\Student\CreateStudent.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
     <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Group\CreateGroup.cshtml" />
     <Content Include="Views\Group\ListGroups.cshtml" />
-    <Content Include="Views\Student\UpdateStudent.cshtml" />
+    <Content Include="Views\Student\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

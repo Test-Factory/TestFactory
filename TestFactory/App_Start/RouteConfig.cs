@@ -22,7 +22,7 @@ namespace TestFactory
             routes.MapRoute(
                name: "studentList",
                url: "listStudents/{id}",
-               defaults: new { controller = "Student", action = "GetList", id = UrlParameter.Optional }
+               defaults: new { controller = "Student", action = "List", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
@@ -34,13 +34,13 @@ namespace TestFactory
             routes.MapRoute(
                name : "updateList",
                url : "updateStudents/{id}",
-               defaults : new { controller = "Student", action = "UpdateStudent", id = UrlParameter.Optional }
+               defaults : new { controller = "Student", action = "Update", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
             name : "listStudent",
             url : "listStudent",
-            defaults : new { controller = "Student", action = "GetStudents" }
+            defaults : new { controller = "Student", action = "List" }
         );
 
             routes.MapRoute(
@@ -51,17 +51,12 @@ namespace TestFactory
             routes.MapRoute(
              name : "createStudent",
              url : "createStudent/{groupId}",
-             defaults : new { controller = "Student", action = "CreateStudent", groupId = UrlParameter.Optional }
+             defaults : new { controller = "Student", action = "Create", groupId = UrlParameter.Optional }
          );
-         //   routes.MapRoute(
-         //    name : "createStudent",
-         //    url : "createStudent",
-         //    defaults : new { controller = "Student", action = "CreateStudent", groupId = UrlParameter.Optional }
-         //);
             routes.MapRoute(
              name : "deleteStudent",
              url : "deleteStudent/{id}",
-             defaults : new { controller = "Student", action = "DeleteStudent", id = UrlParameter.Optional }
+             defaults : new { controller = "Student", action = "Delete", id = UrlParameter.Optional }
          );
 
             routes.MapRoute(
