@@ -14,8 +14,9 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
             Map(x => x.LastName);
            
             Map(x => x.GroupId);
+            //References(x => x.Group).Column("GroupId");
 
-            //References(x => x.Group).Column("GroupId").Class<Group>();
+           // References(x => x.Group).Column("GroupId").Class<Group>();
         }
     }
 }

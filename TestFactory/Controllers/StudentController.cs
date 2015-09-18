@@ -50,7 +50,8 @@ namespace TestFactory.Controllers
         public ActionResult CreateStudent(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
-            model.GroupId = Request.Params["groupId"];
+            model.GroupId = RouteData.Values["groupId"].ToString();
+                //Request.Params["groupId"];
             studentManager.Create(model);
             return RedirectToRoute("listStudent", new { groupId = model.GroupId });
         }

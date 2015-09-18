@@ -50,9 +50,14 @@ namespace TestFactory
           );
             routes.MapRoute(
              name : "createStudent",
-             url : "createStudent",
-             defaults : new { controller = "Student", action = "CreateStudent" }
+             url : "createStudent/{groupId}",
+             defaults : new { controller = "Student", action = "CreateStudent", groupId = UrlParameter.Optional }
          );
+         //   routes.MapRoute(
+         //    name : "createStudent",
+         //    url : "createStudent",
+         //    defaults : new { controller = "Student", action = "CreateStudent", groupId = UrlParameter.Optional }
+         //);
             routes.MapRoute(
              name : "deleteStudent",
              url : "deleteStudent/{id}",
