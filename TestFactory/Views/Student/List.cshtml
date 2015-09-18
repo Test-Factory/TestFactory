@@ -6,7 +6,7 @@
 
     <h2>List Students</h2>
     <p>
-        @Html.ActionLink("Create New", "CreateStudent")
+        @Html.ActionLink("Create New", "CreateStudent", new { groupId = Request.Params["groupId"] })
     </p>
 <table class="table">
     @foreach (var item in Model) { 

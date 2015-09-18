@@ -41,17 +41,18 @@ namespace TestFactory.Controllers
         }
         //TODO:  modify as CreateStudent(string id)
         [HttpGet]
-        public ActionResult CreateStudent(string id)
+        public ActionResult CreateStudent(     )
         {
-           // studentManager.
+            //studentManager.Create();
             return View();
         }
         [HttpPost]
         public ActionResult CreateStudent(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
+            model.GroupId = Request.Params["groupId"];
             studentManager.Create(model);
-            return RedirectToRoute("listStudent");
+            return RedirectToRoute("listStudent", new { groupId = model.GroupId });
         }
         public ActionResult UpdateStudent(string id)
         {
