@@ -1,9 +1,5 @@
 ﻿@model IList<TestFactory.MVC.ViewModels.StudentViewModel>
-    @{
-        ViewBag.Title = "Students";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-
+ 
     <h2>List Students</h2>
     <p>
         @Html.ActionLink("Create New", "Create", new { groupId = Request.Params["groupId"] })
