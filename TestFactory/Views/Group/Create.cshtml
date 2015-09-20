@@ -1,14 +1,11 @@
 ﻿@model GroupViewModel
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
-
-@using (Html.BeginForm("Create", "Group", FormMethod.Post))
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Create new group</h4>
+      <h4></h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -29,9 +26,9 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
+                <button type="reset" class="btn red darken-3 btn-default"> @Html.ActionLink("Decline", "List","Group")</button>
             </div>
         </div>
     </div>
 }
-
 

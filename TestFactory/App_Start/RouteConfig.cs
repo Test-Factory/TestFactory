@@ -26,12 +26,6 @@ namespace TestFactory
            );
 
             routes.MapRoute(
-               name: "groupsList",
-               url: "groupList",
-               defaults: new { controller = "Group", action = "Groups" }
-           );
-
-            routes.MapRoute(
                name : "updateList",
                url : "updateStudents/{id}",
                defaults : new { controller = "Student", action = "Update", id = UrlParameter.Optional }
@@ -67,7 +61,7 @@ namespace TestFactory
 
             routes.MapRoute(
            name: "updateGroup",
-           url: "updateGroup",
+           url: "updateGroup/{id}",
            defaults: new { controller = "Group", action = "Update", id = UrlParameter.Optional }
        );
 

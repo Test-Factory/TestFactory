@@ -1,15 +1,13 @@
 ﻿@model List<GroupViewModel>
 
-    @Styles.Render("~/Content/Site.css")
-    <h2>ListGroups</h2>
+    <h2>List of groups</h2>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <button type="submit" class="create btn btn-default">
-                Create new group
+                @Html.ActionLink("Create new group","Create","Group")
             </button>
         </div>
     </div>
-
     @foreach (var item in Model)
 {
         <div class="row">
@@ -22,20 +20,16 @@
                         </p>
                     </div>
                     <div class="card-action">
+                        @Html.ActionLink("Edit", "Update", "Group", new { Id = item.Id }, null)
                         @Html.ActionLink("Details", "GetStudents", "Student", new { groupId = item.Id }, null)
-                        @Html.ActionLink("Delete", "DeleteGroup", new { id = item.Id })
+                        @Html.ActionLink("Delete", "Delete", "Group", new { id = item.Id },null)
                     </div>
                 </div>
             </div>
         </div>
-        <div id="createGroup">
-            <div id="create">
-                @Html.Partial("Create", new GroupViewModel())
-            </div>
-        </div>
     }
-        @section Scripts
-{
-            @Scripts.Render("~/Scripts/Index.js")
-        }
+
+@section Scripts{
+     @Scripts.Render("~/Scripts/Index.js")
+}
 

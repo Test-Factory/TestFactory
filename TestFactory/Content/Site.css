@@ -97,8 +97,29 @@ div#createGroup, div#updateGroup
 div#create, div#update {
     position: fixed;
     top: 25%;
-    left: 35%;
+    left: 58%;
     z-index:1000;
     background:white;
 }
-
+a {
+   color:#FFF;
+}
+form {
+    margin-top: 3%;
+    margin-left: 1%;
+}
+label {
+    font-size: 1.2em;
+}
+input[type="text"] {
+    width:30%;
+}
+#error {
+    color:black;
+    font-size: 2em;
+}
+div#image {
+    position: fixed;
+    left: 35%;
+    top: 35%;
+}

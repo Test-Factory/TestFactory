@@ -12,16 +12,16 @@ namespace TestFactory.Controllers
     public class GroupController : Controller
     {
         // GET: Group
-       private GroupManager _groupManager;
+       private GroupManager groupManager;
 
-        public GroupController(GroupManager GroupManager)
+        public GroupController(GroupManager groupManager)
         {
-            _groupManager = GroupManager;
+            this.groupManager = groupManager;
         }
 
         public ActionResult List()
         {
-            var groups = _groupManager.GetList();
+            var groups = groupManager.GetList();
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
@@ -36,30 +36,30 @@ namespace TestFactory.Controllers
         {
 
             var model = AutoMapper.Mapper.Map<Group>(group);
-            _groupManager.Create(model);
+            groupManager.Create(model);
             return RedirectToRoute("Default");
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Update(string id)
         {
-            var model = AutoMapper.Mapper.Map<GroupViewModel>(_groupManager.GetById(id));
-            return View("CreateGroup",model);
+            var model = AutoMapper.Mapper.Map<GroupViewModel>(groupManager.GetById(id));            
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
             var model = AutoMapper.Mapper.Map<Group>(group);
-            _groupManager.Update(model);
+            groupManager.Update(model);
             return RedirectToRoute("Default");
         }
 
         [HttpGet]
         public ActionResult Delete(string id)
         {
-            _groupManager.Delete(id);
-            return RedirectToRoute("");  
+            groupManager.Delete(id);
+            return RedirectToRoute("Default");  
         }
     }
 }
