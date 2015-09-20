@@ -20,7 +20,7 @@ namespace TestFactory.Business.Models
 
         public virtual IList<Group> AdminGroup { get; set; }
 
-        public virtual bool Role { get; set; } 
+        public virtual Role Roles{ get; set; }
 
         public User()
         {

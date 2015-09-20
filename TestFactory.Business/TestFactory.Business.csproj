@@ -37,7 +37,11 @@
       <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,13 +54,17 @@
     <Compile Include="Components\Managers\GroupManager.cs" />
     <Compile Include="Components\Managers\StudentManager.cs" />
     <Compile Include="Components\Managers\UserManager.cs" />
+    <Compile Include="Components\Roles\RolsProvider.cs" />
+    <Compile Include="Components\UserContext.cs" />
     <Compile Include="DataProviderContracts\IDataProvider.cs" />
     <Compile Include="DataProviderContracts\IGroupDataProvider.cs" />
+    <Compile Include="DataProviderContracts\IRoleDataProvider.cs" />
     <Compile Include="DataProviderContracts\IStudentDataProvider.cs" />
     <Compile Include="DataProviderContracts\IUserDataProvider.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Mark.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\TestDescription.cs" />
     <Compile Include="Models\User.cs" />
