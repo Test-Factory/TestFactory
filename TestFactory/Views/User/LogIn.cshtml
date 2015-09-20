@@ -1,8 +1,4 @@
 ﻿@model TestFactory.MVC.ViewModels.UserViewModel
-@{
-    ViewBag.Title = "LogIn";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
