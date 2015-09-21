@@ -16,7 +16,5 @@ namespace TestFactory.Business.DataProviderContracts
 
         void Update(T model);
 
-        void Delete(string id);
-
     }
 }
