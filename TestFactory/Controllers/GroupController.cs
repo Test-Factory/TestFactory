@@ -25,6 +25,7 @@ namespace TestFactory.Controllers
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
+
         [HttpGet]
         public ActionResult Create()
         {

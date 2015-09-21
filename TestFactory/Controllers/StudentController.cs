@@ -41,13 +41,16 @@ namespace TestFactory.Controllers
             var result = Mapper.Map<List<StudentViewModel>>(students);
             return View("List", result);
         }
+
         //TODO:  modify as CreateStudent(string id)
+
         [HttpGet]
         public ActionResult Create(     )
         {
             //studentManager.Create();
             return View();
         }
+
         [HttpPost]
         public ActionResult Create(StudentViewModel student)
         {
@@ -58,11 +61,13 @@ namespace TestFactory.Controllers
             studentManager.Create(model);
             return RedirectToRoute("listStudent", new { groupId = model.Group.Id});
         }
+
         public ActionResult Update(string id)
         {
             StudentViewModel student = Mapper.Map<StudentViewModel>(studentManager.GetById(id));
             return View(student);
         }
+
         [HttpPost]
         public ActionResult Update(StudentViewModel student)
         {
@@ -70,6 +75,7 @@ namespace TestFactory.Controllers
             studentManager.Update(model);
             return RedirectToRoute("listStudent");
         }
+
         public ActionResult Delete(string id)
         {
             studentManager.Delete(id);
