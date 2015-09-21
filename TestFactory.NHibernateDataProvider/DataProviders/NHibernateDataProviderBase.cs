@@ -65,6 +65,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                 }
             });
         }
+
         public void Delete(string id)
         {
             Execute(session =>
@@ -77,6 +78,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
 
             });
         }
+
         public TEntity GetById(string id)
         {
             return Execute(session =>
