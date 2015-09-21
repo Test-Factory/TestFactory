@@ -14,7 +14,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.LastName);
 
-            References( x => x.Group, "GroupId") // you'll need 'Property' in your class definition too
+            References( x => x.Group, "GroupId") 
                 .Class<Group>().Not.LazyLoad();
            
         }
