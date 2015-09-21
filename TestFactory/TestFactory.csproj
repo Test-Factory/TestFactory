@@ -145,6 +145,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IRepository.cs" />
     <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -275,6 +276,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\Result\Results.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Group\List.cshtml" />
     <Content Include="Views\Group\Create.cshtml" />

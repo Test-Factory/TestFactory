@@ -20,73 +20,67 @@ namespace TestFactory
                 name: "studentCreate",
                 url: "Groups/{groupId}/Students/Create",
                 defaults: new {controller = "Student", action = "Create"}
-                );
+           );
 
             // update student in group
             routes.MapRoute(
                 name: "studentUpdate",
                 url: "Groups/{groupId}/Students/Update/{id}",
                 defaults: new {controller = "Student", action = "Update"}
-                );
+           );
 
             // students by group
             routes.MapRoute(
                 name: "groupStudentList",
                 url: "Groups/{groupId}/Students",
                 defaults: new {controller = "Student", action = "List"}
-                );
+           );
 
             // all students
             routes.MapRoute(
                 name: "studentList",
                 url: "Students",
                 defaults: new {controller = "Student", action = "List"}
-                );
-
+           );
+           
             #endregion
 
 
             #region Group map routes
 
             routes.MapRoute(
-                name: "deleteGroup",
-                url: "deleteGroup/{id}",
-                defaults: new {controller = "Group", action = "Delete", id = UrlParameter.Optional}
-                );
+             name: "updateGroup",
+             url: "group/update/{id}",
+             defaults: new { controller = "Group", action = "Update", id = UrlParameter.Optional }
+           );
 
             routes.MapRoute(
-                name: "updateGroup",
-                url: "updateGroup/{id}",
-                defaults: new {controller = "Group", action = "Update", id = UrlParameter.Optional}
-                );
-
-            routes.MapRoute(
-                name: "createGroup",
-                url: "createGroup",
-                defaults: new {controller = "Group", action = "Create"}
-                );
+             name: "createGroup",
+             url: "group/create",
+             defaults: new { controller = "Group", action = "Create" }
+           );
 
             #endregion
 
             #region User map routes
 
             routes.MapRoute(
-                name: "login",
-                url: "login",
+             name: "login",
+             url: "login",
                 defaults: new {controller = "User", action = "LogIn"}
-                );
+           );
 
             routes.MapRoute(
-                name: "LogOut",
-                url: "logout",
+             name: "LogOut",
+             url: "logout",
                 defaults: new {controller = "User", action = "LogOut"}
-                );
+           );
 
             #endregion
 
             routes.MapRoute(
-                name: "results",
-                url: "results/{id}",
+             name: "results",
+             url: "results/{id}",
                 defaults: new {controller = "Result", action = "Results", id = UrlParameter.Optional}
                 );
 
@@ -94,13 +88,13 @@ namespace TestFactory
              name : "Default",
              url : "",
              defaults : new { controller = "Group", action = "List" }
-             );
+           );
 
             routes.MapRoute(
-                name: "NotFound",
+              name: "NotFound",
                 url: "{*url}",
                 defaults: new {controller = "Error", action = "Index"}
-                );
+            );
         }
     }
 }

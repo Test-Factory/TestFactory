@@ -124,3 +124,11 @@ div#image {
     left: 35%;
     top: 35%;
 }
+div#returnIndex {
+    width: 600px;
+    height: 200px;
+    position: relative;
+    left: 750px;
+    top: 55px;
+    font-size: 3em;
+}
