@@ -10,9 +10,10 @@ namespace TestFactory.Controllers
     {
         // GET: Error
 
-        public ActionResult Index()
+        public ActionResult NotFound()
         {
-            return View("Error");
+            Response.StatusCode = 404;
+            return View();
         }
     }
 }
