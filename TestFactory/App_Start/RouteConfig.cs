@@ -13,89 +13,94 @@ namespace TestFactory
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                   name: "Default",
-                   url: "",
-                   defaults: new { controller = "Group", action = "List" }
-                   );
+            #region Student
 
-            #region Student map routes
-
+            // create student in group
             routes.MapRoute(
-               name: "studentList",
-               url: "listStudents/{id}",
-               defaults: new { controller = "Student", action = "List", id = UrlParameter.Optional }
-           );
+                name: "studentCreate",
+                url: "Groups/{groupId}/Students/Create",
+                defaults: new {controller = "Student", action = "Create"}
+                );
 
+            // update student in group
             routes.MapRoute(
-               name : "updateStudent",
-               url : "updateStudents/{id}",
-               defaults : new { controller = "Student", action = "Update", id = UrlParameter.Optional }
-           );
+                name: "studentUpdate",
+                url: "Groups/{groupId}/Students/Update/{id}",
+                defaults: new {controller = "Student", action = "Update"}
+                );
 
+            // students by group
             routes.MapRoute(
-            name : "listStudent",
-            url : "listStudent",
-            defaults : new { controller = "Student", action = "List" }
-           );
+                name: "groupStudentList",
+                url: "Groups/{groupId}/Students",
+                defaults: new {controller = "Student", action = "List"}
+                );
 
+            // all students
             routes.MapRoute(
-             name : "createStudent",
-             url : "createStudent/{groupId}",
-             defaults : new { controller = "Student", action = "Create", groupId = UrlParameter.Optional }
-           );
-           
+                name: "studentList",
+                url: "Students",
+                defaults: new {controller = "Student", action = "List"}
+                );
+
             #endregion
+
 
             #region Group map routes
 
             routes.MapRoute(
-             name: "deleteGroup",
-             url: "deleteGroup/{id}",
-             defaults: new { controller = "Group", action = "Delete", id=UrlParameter.Optional }
-           );
+                name: "deleteGroup",
+                url: "deleteGroup/{id}",
+                defaults: new {controller = "Group", action = "Delete", id = UrlParameter.Optional}
+                );
 
             routes.MapRoute(
-             name: "updateGroup",
-             url: "updateGroup/{id}",
-             defaults: new { controller = "Group", action = "Update", id = UrlParameter.Optional }
-           );
+                name: "updateGroup",
+                url: "updateGroup/{id}",
+                defaults: new {controller = "Group", action = "Update", id = UrlParameter.Optional}
+                );
 
             routes.MapRoute(
-             name: "createGroup",
-             url: "createGroup",
-             defaults: new { controller = "Group", action = "Create" }
-           );
+                name: "createGroup",
+                url: "createGroup",
+                defaults: new {controller = "Group", action = "Create"}
+                );
+
             #endregion
 
             #region User map routes
 
             routes.MapRoute(
-             name: "login",
-             url: "login",
-             defaults: new { controller = "User", action = "LogIn" }
-           );
+                name: "login",
+                url: "login",
+                defaults: new {controller = "User", action = "LogIn"}
+                );
 
             routes.MapRoute(
-             name: "LogOut",
-             url: "logout",
-             defaults: new { controller = "User", action = "LogOut" }
-           );
+                name: "LogOut",
+                url: "logout",
+                defaults: new {controller = "User", action = "LogOut"}
+                );
 
             #endregion
 
             routes.MapRoute(
-             name: "results",
-             url: "results/{id}",
-             defaults: new { controller = "Result", action = "Results", id = UrlParameter.Optional }
-           );
+                name: "results",
+                url: "results/{id}",
+                defaults: new {controller = "Result", action = "Results", id = UrlParameter.Optional}
+                );
 
             routes.MapRoute(
-              name: "NotFound",
-              url:  "{*url}",
-              defaults: new { controller = "Error", action = "Index"}
-            );
-            
+             name : "Default",
+             url : "",
+             defaults : new { controller = "Group", action = "List" }
+             );
+
+            routes.MapRoute(
+                name: "NotFound",
+                url: "{*url}",
+                defaults: new {controller = "Error", action = "Index"}
+                );
         }
     }
 }

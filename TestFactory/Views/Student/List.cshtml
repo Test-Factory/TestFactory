@@ -3,6 +3,11 @@
     <h2>List Students</h2>
     
 <table class="table">
+    <p>
+        @Html.RouteLink("Create new student", "studentCreate", new { groupId = ViewContext.RouteData.Values["groupId"] })
+    </p>
+    
+
     @foreach (var item in Model) { 
         <tr>
             <td>
@@ -12,13 +17,10 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.RouteLink("Edit", "updateStudent", new { id = item.Id }) 
+                @Html.RouteLink("Edit", "studentUpdate", new { id = item.Id }) 
             </td>
         </tr>
     }
-    <p>
-        @Html.RouteLink("Create new student", "createStudent", new { groupId = Request.Params["groupId"] })
-    </p>
 </table>
 
 
