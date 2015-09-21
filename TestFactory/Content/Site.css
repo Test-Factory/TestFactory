@@ -66,7 +66,7 @@ a.left {
     font-size: 2em;
 }
 .input-field {
-    left: -550px;
+   left: -455px;
 }
 nav ul a {
     font-size: 1.3rem;
@@ -74,7 +74,7 @@ nav ul a {
 a#text 
 {
     position: relative;
-    left: 221px;
+    left: 134px;
     font-size: 1.5em;
 }
 div#partialView {
