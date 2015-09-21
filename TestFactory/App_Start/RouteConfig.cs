@@ -44,13 +44,7 @@ namespace TestFactory
              url : "createStudent/{groupId}",
              defaults : new { controller = "Student", action = "Create", groupId = UrlParameter.Optional }
            );
-
-            routes.MapRoute(
-             name : "deleteStudent",
-             url : "deleteStudent/{id}",
-             defaults : new { controller = "Student", action = "Delete", id = UrlParameter.Optional }
-           );
-
+           
             #endregion
 
             #region Group map routes
