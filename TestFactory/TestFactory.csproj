@@ -280,11 +280,12 @@
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Group\List.cshtml" />
     <Content Include="Views\Student\Update.cshtml" />
-    <Content Include="Views\Group\Update.cshtml" />
     <Content Include="Views\Group\Create.cshtml" />
+    <Content Include="Views\Group\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
