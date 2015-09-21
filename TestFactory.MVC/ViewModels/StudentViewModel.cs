@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace TestFactory.MVC.ViewModels
 {
-    public class StudentViewModel     : BaseViewModel
+    public class StudentViewModel : BaseViewModel
     {
         [Required]
         [DataType(DataType.Text)]
         public virtual string FirstName { get; set; }
+
         [Required]
         [DataType(DataType.Text)]
         public virtual string LastName { get; set; }
