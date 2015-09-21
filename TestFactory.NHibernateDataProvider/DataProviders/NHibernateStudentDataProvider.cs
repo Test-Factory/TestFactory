@@ -14,9 +14,14 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
     {
         public IList<Student> GetByGroupId(string groupId)
         {
-            return Execute(session => session.Query<Student>()
-                .Where(s => s.Group.Id == groupId)
-                .ToList<Student>()); 
+            return Execute(session =>
+            {
+                IList<Student> students = session
+                                     .Query<Student>()
+                                     .Where(s => s.GroupId == groupId)
+                                     .ToList<Student>();
+                return students;
+            });
         }
     }
 }

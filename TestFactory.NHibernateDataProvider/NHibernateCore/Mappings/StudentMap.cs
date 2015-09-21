@@ -1,5 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
+using NHibernate.Mapping;
 using TestFactory.Business.Models;
+using ForeignKey = FluentNHibernate.Conventions.Helpers.ForeignKey;
 
 namespace NHibernateDataProviders.NHibernateCore.Mappings
 {
@@ -14,9 +16,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.LastName);
 
-            References( x => x.Group, "GroupId") 
-                .Class<Group>().Not.LazyLoad();
-           
+            Map(x => x.GroupId).Not.Nullable();
         }
     }
 }
