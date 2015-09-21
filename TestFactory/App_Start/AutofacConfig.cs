@@ -9,6 +9,7 @@ using Autofac.Integration.Mvc;
 using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Components.Managers;
 using TestFactory.NHibernateDataProvider.DataProviders;
+using TestFactory.Business.Components.Rols;
 
 namespace TestFactory.App_Start
 {
@@ -22,6 +23,10 @@ namespace TestFactory.App_Start
             builder.RegisterType<UserManager>();
             builder.RegisterType<StudentManager>();
             builder.RegisterType<GroupManager>();
+            builder.RegisterType<RolsProvider>();
+
+            builder.RegisterType<NHibernateRoleDataProvider>()
+                .As<IRoleDataProvider>();
 
             builder.RegisterType<NHibernateUserDataProvider>()
                 .As<IUserDataProvider>();
@@ -32,9 +37,6 @@ namespace TestFactory.App_Start
             builder.RegisterType<NHibernateStudentDataProvider>()
                 .As<IStudentDataProvider>();
 
-            builder.RegisterType<UserManager>();
-
-            builder.RegisterType<StudentManager>();
 
             var container = builder.Build();
 

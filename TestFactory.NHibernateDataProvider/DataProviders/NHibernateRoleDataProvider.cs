@@ -8,10 +8,11 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernateDataProviders.NHibernateCore;
 using TestFactory.Business.DataProviderContracts;
+using TestFactory.NHibernateDataProvider.DataProviders;
 
 namespace TestFactory.NHibernateDataProvider.DataProviders
 {
-    public class NHibernateRoleDataProvider : IRoleDataProvider
+    public class NHibernateRoleDataProvider :  NHibernateDataProviderBase<Role>, IRoleDataProvider
     {
         public Role GetRole(string rolename)
         {

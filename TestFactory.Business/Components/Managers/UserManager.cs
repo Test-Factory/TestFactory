@@ -29,7 +29,11 @@ namespace TestFactory.Business.Components.Managers
             admin.LastName = "TF";
             admin.PasswordSalt = new PBKDF2().GenerateSalt();
             admin.Password = new PBKDF2().Compute("IFiller", admin.PasswordSalt);
-            //admin.Role = false;
+
+            Role rol = new Role();
+            rol.Id = "12dc6a23-8454-419f-ac75-2ea0560d27ef";
+                rol.Name = "Filler";
+            admin.Roles = rol;
 
             provider.Create(admin);
         }
@@ -42,7 +46,6 @@ namespace TestFactory.Business.Components.Managers
                 bool correctPass = String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
                 if (correctPass)
                 {
-                    //UserRole = user.Role;
                 }
                 return correctPass;
             }
