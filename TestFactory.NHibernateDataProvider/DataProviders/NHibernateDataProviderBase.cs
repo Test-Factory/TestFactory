@@ -12,7 +12,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
     {
         private ISession CreateSession()
         {
-            return Helper.OpenSession();
+            return SessionHelper.OpenSession();
         }
 
         protected T Execute<T>(Func<ISession, T> func)
@@ -30,7 +30,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                 }
         }
 
-        public IList<TEntity> GetList()
+        public virtual IList<TEntity> GetList()
         {
             return Execute(session =>
             {
@@ -41,7 +41,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
             });
         }
 
-        public void Create(TEntity model)
+        public virtual void Create(TEntity model)
         {
             Execute(session =>
             {
@@ -53,7 +53,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
             });
         }
 
-        public void Update(TEntity model)
+        public virtual void Update(TEntity model)
         {
             Execute(session =>
             {
@@ -65,7 +65,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                 }
             });
         }
-        public void Delete(string id)
+        public virtual void Delete(string id)
         {
             Execute(session =>
             {
@@ -77,7 +77,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
 
             });
         }
-        public TEntity GetById(string id)
+        public virtual TEntity GetById(string id)
         {
             return Execute(session =>
             {

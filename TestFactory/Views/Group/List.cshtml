@@ -21,7 +21,7 @@
                     </div>
                     <div class="card-action">
                         @Html.ActionLink("Edit", "Update", "Group", new { Id = item.Id }, null)
-                        @Html.ActionLink("Details", "GetStudents", "Student", new { groupId = item.Id }, null)
+                        @Html.ActionLink("Details", "List", "Student", new { groupId = item.Id }, null)
                         @Html.ActionLink("Delete", "Delete", "Group", new { id = item.Id },null)
                     </div>
                 </div>

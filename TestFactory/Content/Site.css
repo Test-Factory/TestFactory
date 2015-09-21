@@ -102,7 +102,8 @@ div#create, div#update {
     background:white;
 }
 a {
-   color:#FFF;
+    /*TODO: Fix style, as now it is corrupting all links on white background*/
+   /*color:#FFF;*/
 }
 form {
     margin-top: 3%;
