@@ -13,12 +13,15 @@ namespace TestFactory.Business.Components.Managers
     public abstract class BaseManager<T, TProvider>
         where T: BaseModel
         where TProvider: IDataProvider<T>
+
     {
         protected TProvider provider;
+
         protected BaseManager(TProvider provider)
         {
             this.provider = provider;
         }
+
         public void Create(T model)
         {
             provider.Create(model);
@@ -27,12 +30,11 @@ namespace TestFactory.Business.Components.Managers
         public IList<T> GetList()
         {
            return provider.GetList();
-           
         }
+
         public T GetById(string id)
         {
             return provider.GetById(id);
-
         }
 
         public void Update(T model)

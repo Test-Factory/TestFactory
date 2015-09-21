@@ -7,16 +7,16 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
     {
         public StudentMap()
         {
+            Table("Student");
             Id(x => x.Id);
 
             Map(x => x.FirstName);
 
             Map(x => x.LastName);
-           
-            Map(x => x.GroupId);
-            //References(x => x.Group).Column("GroupId");
 
-           // References(x => x.Group).Column("GroupId").Class<Group>();
+            References( x => x.Group, "GroupId") // you'll need 'Property' in your class definition too
+                .Class<Group>().Not.LazyLoad();
+           
         }
     }
 }

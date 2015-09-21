@@ -16,7 +16,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
     {
         public Role GetRole(string rolename)
         {
-            using (ISession session = Helper.OpenSession())
+            using (ISession session = SessionHelper.OpenSession())
             {
                 return session.CreateCriteria(typeof(Role))
                     .Add(NHibernate.Criterion.Restrictions.Eq("Name", rolename))
@@ -26,7 +26,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
 
         public bool IsUserInRole(string username, string rolename)
         {
-            using (ISession session = Helper.OpenSession())
+            using (ISession session = SessionHelper.OpenSession())
             {
                 var usr = session.CreateCriteria(typeof(User))
                                 .Add(NHibernate.Criterion.Restrictions.Eq("Roles", username))

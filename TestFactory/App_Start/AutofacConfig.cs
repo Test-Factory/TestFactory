@@ -21,7 +21,9 @@ namespace TestFactory.App_Start
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
             builder.RegisterType<UserManager>();
+
             builder.RegisterType<StudentManager>();
+
             builder.RegisterType<GroupManager>();
             builder.RegisterType<RolsProvider>();
 
