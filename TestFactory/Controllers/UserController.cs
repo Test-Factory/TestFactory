@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using TestFactory.MVC.ViewModels;
 using TestFactory.Business.Components.Managers;
 using System.Web.Security;
+using TestFactory.Business.Components.Rols;
+using TestFactory.Components;
 
 namespace TestFactory.Controllers
 {
@@ -36,7 +38,8 @@ namespace TestFactory.Controllers
             if (manager.IsPasswordValid(user.Email, user.Password))
             {
                 FormsAuthentication.SetAuthCookie(user.Email, false);
-
+                UserViewContext c = new UserViewContext();
+                c.IsLogged(user.Email);
                 return RedirectToRoute("Default");
             }
             else

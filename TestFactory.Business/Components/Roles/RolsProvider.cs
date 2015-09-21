@@ -9,12 +9,18 @@ using System.Web.Mvc;
 using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Models;
 using System.Collections.Specialized;
+using TestFactory.Business.Components.Managers;
 
 namespace TestFactory.Business.Components.Rols
 {
     public class RolsProvider : SqlRoleProvider
     {
         IRoleDataProvider dataProvider;
+
+        public RolsProvider(IRoleDataProvider provider)
+        {
+            this.dataProvider = provider;
+        }
 
         public override bool IsUserInRole(string username, string rolename)
         {
