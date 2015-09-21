@@ -42,10 +42,6 @@ namespace TestFactory.Business.Components.Managers
             provider.Update(model);
         }
 
-        public void Delete(string id)
-        {
-            provider.Delete(id);
-        }
 
     }
 }

@@ -55,12 +55,5 @@ namespace TestFactory.Controllers
             groupManager.Update(model);
             return RedirectToRoute("Default");
         }
-
-        [HttpGet]
-        public ActionResult Delete(string id)
-        {
-            groupManager.Delete(id);
-            return RedirectToRoute("Default");  
-        }
     }
 }

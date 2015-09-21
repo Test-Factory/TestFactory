@@ -5,10 +5,11 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Linq;
 using NHibernateDataProviders.NHibernateCore;
+using TestFactory.Business.Models;
 
 namespace TestFactory.NHibernateDataProvider.DataProviders
 {
-    public class NHibernateDataProviderBase<TEntity>    where TEntity: class 
+    public class NHibernateDataProviderBase<TEntity>    where TEntity: BaseModel
     {
         private ISession CreateSession()
         {
@@ -34,8 +35,6 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
         {
             return Execute(session =>
             {
-                //var critetria = session.CreateCriteria(typeof (TEntity));
-                //var listTEntity = 
                 var listTEntity = session.Query<TEntity>().ToList();
                 return listTEntity;
             });
@@ -47,7 +46,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    session.SaveOrUpdate(model);
+                    session.Save(model);
                     transaction.Commit();
                 }
             });
@@ -59,8 +58,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    session.SaveOrUpdate(model);
-                    session.Flush();
+                    session.Update(model);
                     transaction.Commit();
                 }
             });
