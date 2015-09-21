@@ -47,7 +47,6 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            //studentManager.Create();
             return View();
         }
 
@@ -62,7 +61,7 @@ namespace TestFactory.Controllers
             return RedirectToRoute("listStudent", new {groupId = model.Group.Id});
         }
 
-        public ActionResult Update(string id)
+         public ActionResult Update(string id)
         {
             StudentViewModel student = Mapper.Map<StudentViewModel>(studentManager.GetById(id));
             return View(student);
@@ -72,8 +71,9 @@ namespace TestFactory.Controllers
         public ActionResult Update(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
+            model.Group = groupManager.GetById(student.Group.Id);
             studentManager.Update(model);
-            return RedirectToRoute("listStudent");
+            return RedirectToRoute("listStudent", new { groupId = model.Group.Id });
         }
     }
 }
