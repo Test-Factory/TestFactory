@@ -54,16 +54,16 @@ namespace TestFactory.Controllers
         public ActionResult Create(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
+            // TODO: take from model
             string groupId = RouteData.Values["groupId"].ToString();
-            model.Group = groupManager.GetById(groupId);
-            //model.Group.Id = RouteData.Values["groupId"].ToString();
+            model.GroupId = groupId;
             studentManager.Create(model);
-            return RedirectToRoute("listStudent", new {groupId = model.Group.Id});
+            return RedirectToRoute("groupStudentList", new { groupId = model.GroupId });
         }
 
          public ActionResult Update(string id)
         {
-            StudentViewModel student = Mapper.Map<StudentViewModel>(studentManager.GetById(id));
+            var student = Mapper.Map<StudentViewModel>(studentManager.GetById(id));
             return View(student);
         }
 
@@ -71,9 +71,8 @@ namespace TestFactory.Controllers
         public ActionResult Update(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
-            model.Group = groupManager.GetById(student.Group.Id);
             studentManager.Update(model);
-            return RedirectToRoute("listStudent", new { groupId = model.Group.Id });
+            return RedirectToRoute("groupStudentList", new { groupId = model.GroupId });
         }
     }
 }

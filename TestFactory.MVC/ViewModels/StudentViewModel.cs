@@ -18,6 +18,6 @@ namespace TestFactory.MVC.ViewModels
         [DataType(DataType.Text)]
         public virtual string LastName { get; set; }
         
-        public virtual GroupViewModel Group { get; set; }
+        public virtual string GroupId { get; set; }
     }
 }

@@ -34,7 +34,7 @@
 }
 
 <div>
-    @Html.RouteLink("Back to Home page", "listStudent",new { groupId = Request.Params["groupId"])
+    @Html.RouteLink("Back to Home page", "groupStudentList", new { groupId = ViewContext.RouteData.Values["groupId"] })
 </div>
 
 
