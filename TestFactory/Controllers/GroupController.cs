@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
+using TestFactory.Business.Components;
+using System.Web.Security;
 
 namespace TestFactory.Controllers
 {
@@ -21,9 +23,21 @@ namespace TestFactory.Controllers
 
         public ActionResult List()
         {
-            var groups = groupManager.GetList();
-            var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
-            return View(result);
+            //string[] rolename = Roles.GetRolesForUser();
+            var tt = HttpContext.User.Identity.IsAuthenticated;
+            //var t = System.Web.HttpContext.Current.User.IsInRole("Filler");
+
+            if (UserContext.Current.IsLogged("Filler"))
+            {
+           
+                var groups = groupManager.GetList();
+                var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
+                return View(result);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpGet]

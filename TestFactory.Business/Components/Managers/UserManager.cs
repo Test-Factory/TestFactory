@@ -7,6 +7,7 @@ using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Models;
 using SimpleCrypto;
 using System.Security.Cryptography;
+using System.Web;
 
 namespace TestFactory.Business.Components.Managers
 {
@@ -14,7 +15,7 @@ namespace TestFactory.Business.Components.Managers
     {
         public UserManager(IUserDataProvider provider) : base(provider){ }
 
-        public bool UserRole { get; set; }
+        public string UserName { get; set; }
 
         public User GetByEmail(string email)
         {
@@ -46,6 +47,13 @@ namespace TestFactory.Business.Components.Managers
                 bool correctPass = String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
                 if (correctPass)
                 {
+                    string[] t = new string[]{user.Roles.Name};
+                    HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(new System.Security.Principal.GenericIdentity(user.FirstName), t);
+                    var tt = UserContext.Current.IsLogged(user.Roles.Name);
+                    if (HttpContext.Current.User.IsInRole("Filler"))
+                    {
+                        return true;
+                    }
                 }
                 return correctPass;
             }

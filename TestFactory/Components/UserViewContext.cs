@@ -40,7 +40,8 @@ namespace TestFactory.Components
 
         public override bool IsLogged(string role)
         {
-             return IsPrincipalAvailable() && WebUser.IsInRole(role);
+            bool r = WebUser.IsInRole(role);
+             return IsPrincipalAvailable() && r;
         }
 
         public override bool IsLoggedIn

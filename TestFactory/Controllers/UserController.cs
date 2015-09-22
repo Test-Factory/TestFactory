@@ -8,6 +8,7 @@ using TestFactory.Business.Components.Managers;
 using System.Web.Security;
 using TestFactory.Business.Components.Rols;
 using TestFactory.Components;
+using TestFactory.Business.Components;
 
 namespace TestFactory.Controllers
 {
@@ -24,6 +25,7 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult LogIn()
         {
+
             return View();
         }
 
@@ -38,13 +40,11 @@ namespace TestFactory.Controllers
             if (manager.IsPasswordValid(user.Email, user.Password))
             {
                 FormsAuthentication.SetAuthCookie(user.Email, false);
-                UserViewContext c = new UserViewContext();
-                c.IsLogged(user.Email);
                 return RedirectToRoute("Default");
             }
             else
             {
-                ModelState.AddModelError("Email", "Data is not correct");
+                ModelState.AddModelError("Email", "Дані не коректні");
             }
 
             return View(user);

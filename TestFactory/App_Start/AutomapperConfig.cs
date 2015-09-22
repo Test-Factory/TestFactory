@@ -38,6 +38,14 @@ namespace TestFactory.App_Start
 
             Mapper.CreateMap<GroupViewModel, Group>()
                 .IncludeBase<BaseViewModel, BaseModel>();
+
+            Mapper.CreateMap<UserViewModel, User>()
+                .IncludeBase<BaseViewModel, BaseModel>()
+                .ForMember(groupvm => groupvm.Roles, otp => otp.Ignore())
+                .ForMember(groupvm => groupvm.PasswordSalt, otp => otp.Ignore())
+                .ForMember(groupvm => groupvm.AdminGroup, otp => otp.Ignore())
+                .ForMember(groupvm => groupvm.FirstName, otp => otp.Ignore())
+                .ForMember(groupvm => groupvm.LastName, otp => otp.Ignore());
         }
     }
 }

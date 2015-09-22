@@ -10,6 +10,8 @@ using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Components.Managers;
 using TestFactory.NHibernateDataProvider.DataProviders;
 using TestFactory.Business.Components.Rols;
+using TestFactory.Components;
+using TestFactory.Business.Components;
 
 namespace TestFactory.App_Start
 {
@@ -39,6 +41,7 @@ namespace TestFactory.App_Start
             builder.RegisterType<NHibernateStudentDataProvider>()
                 .As<IStudentDataProvider>();
 
+            builder.RegisterType<UserViewContext>().As<UserContext>();
 
             var container = builder.Build();
 
