@@ -1,4 +1,5 @@
-﻿<div class='liveExample'>
+﻿@model List<StudentViewModel>
+<div class='liveExample'>
 
     <form action='/someServerSideHandler'>
         <p>Name of group<span data-bind='text: gifts().length'>&nbsp;</span> gift(s)<button data-bind='enable: gifts().length > 0' type='submit'>Submit</button></p>
@@ -16,16 +17,17 @@
                     <th />
                 </tr>
             </thead>
+
             <tbody data-bind='foreach: gifts'>
                 <tr>
-                    <td><input class='required' data-bind='value: name, uniqueName: true' /></td>
-                    <td><input class='required' data-bind='value: name, uniqueName: true' /></td>
-                    <td id="qwert"><input class='required number' data-bind='value: price, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price, uniqueName: true' /></td>
+                    <td><input class='required' data-bind='value: firstName, uniqueName: true' /></td>
+                    <td><input class='required' data-bind='value: lastName, uniqueName: true' /></td>
+                    <td id="qwert"><input class='required number' data-bind='value: price1, uniqueName: true' /></td>
+                    <td><input class='required number' data-bind='value: price2, uniqueName: true' /></td>
+                    <td><input class='required number' data-bind='value: price3, uniqueName: true' /></td>
+                    <td><input class='required number' data-bind='value: price4, uniqueName: true' /></td>
+                    <td><input class='required number' data-bind='value: price5, uniqueName: true' /></td>
+                    <td><input class='required number' data-bind='value: price6, uniqueName: true' /></td>
                 </tr>
             </tbody>
         </table>
@@ -67,6 +69,8 @@ li { list-style-type: disc; margin-left: 20px; }
             });
         };
 
+       
+
         self.removeGift = function (gift) {
             self.gifts.remove(gift);
         };
@@ -76,11 +80,17 @@ li { list-style-type: disc; margin-left: 20px; }
             // To actually transmit to server as a regular form post, write this: ko.utils.postJson($("form")[0], self.gifts);
         };
     };
+    var viewModel  = new GiftModel([
+            @foreach(var i in Model)
+            {
+                var name = i.FirstName;
+                var lastname = i.LastName;
+                //var marks = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize((object)i.Marks);
+                @Html.Raw("{ firstName: '" + name + "', lastName: '" + lastname + "', price1: '"+ i.Marks[0].Value +"', price2: '"+ i.Marks[1].Value +"', price3: '"+ i.Marks[2].Value +"', price4: '"+ i.Marks[3].Value +"', price5: '"+ i.Marks[4].Value +"', price6: '"+ i.Marks[5].Value +"'},");
+            }
 
-    var viewModel = new GiftModel([
-        { name: "Tall Hat", price: "39.95" },
-        { name: "Long Cloak", price: "120.00" }
-    ]);
+
+     ]);
     ko.applyBindings(viewModel);
 
     // Activate jQuery Validation

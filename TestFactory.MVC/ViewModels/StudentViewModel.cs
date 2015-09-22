@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TestFactory.Business.Models;
 
 namespace TestFactory.MVC.ViewModels
 {
@@ -20,6 +21,6 @@ namespace TestFactory.MVC.ViewModels
         
         public virtual string GroupId { get; set; }
 
-        //public virtual IList<MarkViewModel> Marks { get; set; }
+        public virtual IList<Mark> Marks { get; set; }
     }
 }
