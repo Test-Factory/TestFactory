@@ -50,12 +50,12 @@ namespace TestFactory.Controllers
             return View("List", result);
         }
 
-        //TODO:  modify as CreateStudent(string id)
-
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(string groupId)
         {
-            return View();
+            var model = new StudentViewModel();
+            model.GroupId = groupId;
+            return View(model);
         }
 
         [HttpPost]
@@ -63,8 +63,8 @@ namespace TestFactory.Controllers
         {
             var model = Mapper.Map<Student>(student);
             // TODO: take from model
-            string groupId = RouteData.Values["groupId"].ToString();
-            model.GroupId = groupId;
+            //string groupId = RouteData.Values["groupId"].ToString();
+            //model.GroupId = groupId;
             studentManager.Create(model);
             return RedirectToRoute("groupStudentList", new { groupId = model.GroupId });
         }

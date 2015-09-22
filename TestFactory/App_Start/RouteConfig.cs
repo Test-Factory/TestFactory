@@ -15,28 +15,24 @@ namespace TestFactory
 
             #region Student
 
-            // create student in group
             routes.MapRoute(
                 name: "studentCreate",
                 url: "group/{groupId}/students/create",
                 defaults: new {controller = "Student", action = "Create"}
            );
 
-            // update student in group
             routes.MapRoute(
                 name: "studentUpdate",
                 url: "group/{groupId}/students/update/{id}",
                 defaults: new {controller = "Student", action = "Update"}
            );
 
-            // students by group
             routes.MapRoute(
                 name: "groupStudentList",
                 url: "group/{groupId}/students",
                 defaults: new {controller = "Student", action = "List"}
            );
 
-            // all students
             routes.MapRoute(
                 name: "studentList",
                 url: "students",
