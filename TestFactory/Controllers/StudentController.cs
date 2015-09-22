@@ -42,7 +42,6 @@ namespace TestFactory.Controllers
                 foreach (Student stud in students)
                 {
                     stud.Marks = markManager.GetList(stud.Id);
-                    var Id = Guid.NewGuid().ToString();
                 }
 
             }
