@@ -25,6 +25,9 @@ namespace TestFactory.App_Start
             builder.RegisterType<StudentManager>();
 
             builder.RegisterType<GroupManager>();
+
+            builder.RegisterType<MarkManager>();
+
             builder.RegisterType<RolsProvider>();
 
             builder.RegisterType<NHibernateRoleDataProvider>()
@@ -38,6 +41,9 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<NHibernateStudentDataProvider>()
                 .As<IStudentDataProvider>();
+
+            builder.RegisterType<NHibernateMarkDataProvider>()
+                .As<IMarkDataProvider>();
 
 
             var container = builder.Build();
