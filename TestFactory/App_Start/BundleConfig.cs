@@ -18,6 +18,12 @@ namespace TestFactory
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/knockoutjs.js").Include(
+                        "~/Scripts/knockout-3.1.0.debug.js",
+                        "~/Scripts/perpetuum.knockout.js",
+                        "~/Scripts/knockout.mapping-latest.debug.js",
+                         "~/Scripts/knockout.mapping-latest.js"));
+
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // используйте средство построения на сайте http://modernizr.com, чтобы выбрать только нужные тесты.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
