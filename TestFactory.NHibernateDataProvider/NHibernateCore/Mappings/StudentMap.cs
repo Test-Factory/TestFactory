@@ -17,6 +17,8 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
             Map(x => x.LastName);
 
             Map(x => x.GroupId).Not.Nullable();
+
+            References(x => x.Marks).Class<Mark>();
         }
     }
 }

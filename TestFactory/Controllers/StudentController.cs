@@ -16,11 +16,13 @@ namespace TestFactory.Controllers
     {
         private readonly StudentManager studentManager;
         private readonly GroupManager groupManager;
+        private readonly MarkManager markManager;
 
-        public StudentController(StudentManager studentManager, GroupManager groupManager)
+        public StudentController(StudentManager studentManager, GroupManager groupManager, MarkManager markManager)
         {
             this.studentManager = studentManager;
             this.groupManager = groupManager;
+            this.markManager = markManager;
         }
 
         // GET: /Students/
@@ -36,6 +38,12 @@ namespace TestFactory.Controllers
             else
             {
                 students = studentManager.GetList(groupId);
+                //checking role
+                foreach (Student stud in students)
+                {
+                    stud.Marks = markManager.GetList(stud.Id);
+                    var Id = Guid.NewGuid().ToString();
+                }
 
             }
             var result = Mapper.Map<List<StudentViewModel>>(students);

@@ -29,12 +29,14 @@ namespace TestFactory.App_Start
             Mapper.CreateMap<Group, GroupViewModel>()
                .IncludeBase<BaseModel, BaseViewModel>()
                .ForMember(groupvm => groupvm.Students, otp => otp.Ignore());
+
             
         }
         private static void RegisterFromViewModel()
         {
             Mapper.CreateMap<StudentViewModel, Student>()
-                .IncludeBase<BaseViewModel, BaseModel>();
+                .IncludeBase<BaseViewModel, BaseModel>()
+                .ForMember(studentvm => studentvm.Marks, otp => otp.Ignore());
 
             Mapper.CreateMap<GroupViewModel, Group>()
                 .IncludeBase<BaseViewModel, BaseModel>();
