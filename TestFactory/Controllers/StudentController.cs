@@ -119,16 +119,13 @@ namespace TestFactory.Controllers
             foreach (Student st in model)
             {
                 st.GroupId = groupId;
+                studentManager.Update(st);
+                st.GroupId = groupId;
                 foreach (Mark mr in st.Marks)
                 {
                     mr.StudentId = st.Id;
-                    
-                    TestDescription tes = new TestDescription();
-                    tes.Id = Guid.NewGuid().ToString();
-                    mr.Category = tes;
                     markManager.Update(mr);
                 }
-                studentManager.Update(st);
             }
             return RedirectToRoute("groupStudentList", new { groupId = groupId });
         }
