@@ -1,6 +1,6 @@
 ﻿function StudentProvider() {}
 
-(function() {
+$(function() {
     var path = settings.basePath + "/api/students";
 
     StudentProvider.prototype.get = function (callback) {
@@ -14,6 +14,6 @@
     StudentProvider.prototype.put = function (callback) {
         $.put(path).done(callback);
     }
-})();
+});
 
   

@@ -2,97 +2,43 @@
 <div class='liveExample'>
 
     <form action='/someServerSideHandler'>
-        <p>Name of group<span data-bind='text: gifts().length'>&nbsp;</span> gift(s)<button data-bind='enable: gifts().length > 0' type='submit'>Submit</button></p>
-        <table data-bind='visible: gifts().length > 0'>
+        <p>
+            <button class="btn btn-primary" id="create">Create</button>
+        </p>
+        <table class="table">
             <thead>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th>R</th>
-                    <th>I</th>
-                    <th>A</th>
-                    <th>S</th>
-                    <th>E</th>
-                    <th>C</th>
+                    <th>FirestName</th>
+                    <th>LastName</th>
+                    <th>GroupId</th>
+                    <th>Mode</th>
                     <th />
                 </tr>
             </thead>
-
-            <tbody data-bind='foreach: gifts'>
+            <tbody data-bind="foreach: students">
                 <tr>
-                    <td><input class='required' data-bind='value: firstName, uniqueName: true' /></td>
-                    <td><input class='required' data-bind='value: lastName, uniqueName: true' /></td>
-                    <td id="qwert"><input class='required number' data-bind='value: price1, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price2, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price3, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price4, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price5, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price6, uniqueName: true' /></td>
+                    <td data-bind="text: id"></td>
+                    <td data-bind="text: firstName"></td>
+                    <td data-bind="text: lastName"></td>
+                    <td data-bind="text: groupId"></td>
+                    <td>
+                        <button class="btn btn-success">Edit</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <a href="#" data-bind='click: addGift' id="addStudent">Додати студента</a>
+        <a href="#" data-bind='click: addStudent' id="addStudent">Додати студента</a>
     </form>
 
 </div>
-<style>
-    body { font-family: arial; font-size: 14px; }
-th{text-align:center;}
-.liveExample input.qwert{width:5em;}
-.liveExample { padding: 1em; background-color: #EEEEDD; border: 1px solid #CCC; max-width: 855px; }
-.liveExample input { font-family: Arial; }
-.liveExample b { font-weight: bold; }
-.liveExample p { margin-top: 0.9em; margin-bottom: 0.9em; }
-.liveExample select[multiple] { width: 100%; height: 8em; }
-.liveExample h2 { margin-top: 0.4em; font-weight: bold; font-size: 1.2em; }
+@section Scripts{
+               <script>
+    $(document).ready(function () {
+        var viewModel = new StudentsViewModel();
+        ko.applyBindings(viewModel);
+    });
 
-.liveExample table, .liveExample td, .liveExample th { padding: 0.2em; border-width: 0; }
-.liveExample td input{ width: 7em; }
-tr { vertical-align: top; }
-.liveExample input.error { border: 1px solid red; background-color: #FDC; }
-.liveExample label.error { display: block; color: Red; font-size: 0.8em; } 
-.liveExample th { font-weight: bold; }
-li { list-style-type: disc; margin-left: 20px; }
-#addStudent{color:blue;text-decoration:none;border-bottom:dotted;}
-#submitButton{position:relative;left:150px;}
-
-</style>
-<script>
-    var GiftModel = function (gifts) {
-        var self = this;
-        self.gifts = ko.observableArray(gifts);
-
-        self.addGift = function () {
-            self.gifts.push({
-                name: "",
-                price: ""
-            });
-        };
-
-       
-
-        self.removeGift = function (gift) {
-            self.gifts.remove(gift);
-        };
-
-        self.save = function (form) {
-            alert("Could now transmit to server: " + ko.utils.stringifyJson(self.gifts));
-            // To actually transmit to server as a regular form post, write this: ko.utils.postJson($("form")[0], self.gifts);
-        };
-    };
-    var viewModel  = new GiftModel([
-            @foreach(var i in Model)
-            {
-                var name = i.FirstName;
-                var lastname = i.LastName;
-                //var marks = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize((object)i.Marks);
-                @Html.Raw("{ firstName: '" + name + "', lastName: '" + lastname + "', price1: '"+ i.Marks[0].Value +"', price2: '"+ i.Marks[1].Value +"', price3: '"+ i.Marks[2].Value +"', price4: '"+ i.Marks[3].Value +"', price5: '"+ i.Marks[4].Value +"', price6: '"+ i.Marks[5].Value +"'},");
-            }
-
-
-     ]);
-    ko.applyBindings(viewModel);
-
-    // Activate jQuery Validation
-    $("form").validate({ submitHandler: viewModel.save });
 </script>
+}
+
+   

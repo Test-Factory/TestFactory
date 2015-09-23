@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
+using System.Web.Optimization;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 
@@ -20,9 +21,9 @@ namespace TestFactory.Controllers.Api
         [HttpGet]
         public IEnumerable<Student> Get()
         {
-            IEnumerable<Student> students = studentManager.GetList();
+            IList<Student> students = new List<Student>() {new Student(){Id="11",FirstName="f",LastName="l", GroupId = "gg"}};
             
-            return new List<Student>();
+            return students ;
         }
        
         [HttpPost]

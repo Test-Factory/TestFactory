@@ -6,8 +6,7 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/knockoutjs.js")
-    @Scripts.Render("~/bundles/app")
+
     @Styles.Render("~/Content/materialize/css/materialize.min.css")
     @Styles.Render("~/Content/Site.css")
 </head>
@@ -51,6 +50,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.validate.js")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+    @Scripts.Render("~/bundles/knockoutjs.js")
+    @Scripts.Render("~/bundles/app")
     @RenderSection("scripts", required: false)
 </body>
 </html>
