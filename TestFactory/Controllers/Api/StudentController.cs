@@ -27,9 +27,9 @@ namespace TestFactory.Controllers.Api
         }
        
         [HttpPost]
-        public IHttpActionResult Create()
+        public IHttpActionResult Create(Student student)
         {
-            return Ok();
+            return Ok(1);
         }
         [HttpPut]
         public IHttpActionResult Update(Student student)

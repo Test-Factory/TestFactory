@@ -33,6 +33,17 @@
                 </tr>
                 <!-- /ko -->
             </tbody>
+            <tfoot>
+                <!-- ko if: $root.studentForCreate.mode() == $root.mods.create -->
+                <tr>
+                    <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" /></td>
+                    <td>
+                        <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Save</button>
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </tfoot>
         </table>
         <a href="#" data-bind='click: addStudent' id="addStudent">Додати студента</a>
     </form>
