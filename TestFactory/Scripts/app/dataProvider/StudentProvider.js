@@ -1,16 +1,19 @@
-﻿function  StudentProvider() {
-    var self = this;
-    var path = settings.basePath;
+﻿function StudentProvider() {}
 
-    self.get = function(callback) {
+(function() {
+    var path = settings.basePath + "/api/students";
+
+    StudentProvider.prototype.get = function (callback) {
         $.get(path).done(callback);
     }
 
-    self.post = function(callback) {
+    StudentProvider.prototype.post = function (callback) {
         $.post(path).done(callback);
     }
 
-    self.put = function(callback){
+    StudentProvider.prototype.put = function (callback) {
         $.put(path).done(callback);
     }
-}
+})();
+
+  
