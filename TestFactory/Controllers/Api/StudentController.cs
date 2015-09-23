@@ -32,7 +32,7 @@ namespace TestFactory.Controllers.Api
             return Ok();
         }
         [HttpPut]
-        public IHttpActionResult Update()
+        public IHttpActionResult Update(Student student)
         {
             return Ok();
         }

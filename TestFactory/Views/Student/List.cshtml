@@ -10,21 +10,28 @@
                 <tr>
                     <th>FirestName</th>
                     <th>LastName</th>
-                    <th>GroupId</th>
-                    <th>Mode</th>
                     <th />
                 </tr>
             </thead>
             <tbody data-bind="foreach: students">
+                <!-- ko if: mode() == $root.mods.display -->
                 <tr>
-                    <td data-bind="text: id"></td>
                     <td data-bind="text: firstName"></td>
                     <td data-bind="text: lastName"></td>
-                    <td data-bind="text: groupId"></td>
                     <td>
-                        <button class="btn btn-success">Edit</button>
+                        <button class="btn btn-success" data-bind="click: $root.editStudent">Edit</button>
                     </td>
                 </tr>
+                <!-- /ko -->
+                <!-- ko if: mode() == $root.mods.edit -->
+                <tr>
+                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.firstName" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.lastName" /></td>
+                    <td>
+                        <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Save</button>
+                    </td>
+                </tr>
+                <!-- /ko -->
             </tbody>
         </table>
         <a href="#" data-bind='click: addStudent' id="addStudent">Додати студента</a>
