@@ -1,14 +1,10 @@
-﻿//$(document).ready(function () {
+﻿$(document).ready(function () {
 
-//    $(".create").on("click", function (){
-//        $("#createGroup").show();
-//    })
+    $("#addGroup").on("click", function () {
+        $("#createGroup").show();
+    })
+    $(".decline").on("click", function () {
+        $("#createGroup").hide();
+    })
 
-//    $(".update").on("click", function () {
-//        $("#updateGroup").show();
-//    })
-//    $(".decline").on("click", function () {
-//        $("#createGroup").hide();
-//    })
-
-//});
+});

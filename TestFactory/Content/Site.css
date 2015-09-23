@@ -85,21 +85,31 @@ div#partialView {
 div#image {
     position: relative;
     left: 30%;
+    top: 0px;
+    background-color: #201F1F;
+    opacity: 0.97;
 }
 div#createGroup, div#updateGroup
 {
     display:none;
+    top: 64px;
     height: 100%;
     width: 100%;
     position: fixed;
     z-index:100;
+    background:black;
+    opacity:0.97;
 }
 div#create, div#update {
     position: fixed;
     top: 25%;
-    left: 58%;
-    z-index:1000;
-    background:white;
+    opacity: 1;
+    left: 35%;
+    width: 370px;
+    height: 300px;
+    z-index: 1000;
+    background: white;
+    border-radius: 3px;
 }
 a {
     /*TODO: Fix style, as now it is corrupting all links on white background*/
@@ -113,7 +123,8 @@ label {
     font-size: 1.2em;
 }
 input[type="text"] {
-    width:30%;
+    width:75%;
+    margin-left: 10px;
 }
 #error {
     color:black;
@@ -131,4 +142,79 @@ div#returnIndex {
     left: 750px;
     top: 55px;
     font-size: 3em;
+}
+#addGroup {
+    width: 250px;
+    height: 150px;
+    margin-left: 10px;
+    margin-top: 23px;
+    display:block;
+}
+#addIcon {
+    position: relative;
+    top: 50px;
+    font-size: 50px;
+}
+#groupAdd {
+    position: relative;
+    top: 39px;
+    left: -7px;
+    font-size: 25px;
+    line-height: 37px;
+}
+div#content {
+    width: 100%;
+}
+.card.blue-grey.darken-1.card-action {
+    width: 250px;
+    height: 150px;
+}
+.card-content.white-text{
+        height: 95px;
+}
+.row {
+    float: left;
+    margin-top: 15px;
+}
+#forCreate {
+    float:left;
+    width:201px;
+    height:151px;
+    margin-right: 68px;
+}
+a.toDetails, a.toEdit {
+    height: 100%;
+    display: block;
+}
+#textLik {
+    height: 100%;
+    position: relative;
+    font-size: 45px;
+    text-align: center;
+    top: 10px;
+    color: #ffab40;
+}
+.card-content.white-text {
+    padding:0px;
+}
+p#textLik:hover {
+    color:#ffd8a6;
+}
+label.createPop-Up {
+    margin-left: 10px;
+}
+h4.createPop-Up {
+margin-left:10px;
+}
+div.createPop-Up {
+    position: relative;
+    left: 100px;
+    top: 20px;
+}
+#whiteText {
+color:white;
+
+}
+button.whiteText {
+color:white;
 }
