@@ -23,9 +23,37 @@ namespace TestFactory.Controllers
             this.studentManager = studentManager;
             this.groupManager = groupManager;
             this.markManager = markManager;
+            //addTestStudent();
         }
 
         // GET: /Students/
+
+        private void addTestStudent()
+        {
+            Student st = new Student();
+            st.FirstName = "Bogdan";
+            st.LastName = "Semenets";
+            st.GroupId = "13b66a40-5b78-48a0-b209-1390e420a11e";
+            var t = st.Id;
+            List<Mark> mrList = new List<Mark>();
+            for (int i = 0; i < 6; i++)
+            {
+                Mark mr = new Mark();
+                mr.StudentId = st.Id;
+                mr.Category = null;
+                mr.Value = 85;
+                mrList.Add(mr);
+            }
+            studentManager.Create(st);
+            st.Marks = mrList;
+            foreach (var model in mrList)
+            {
+
+                markManager.Create(model);
+            }
+            st.Marks = mrList;
+        }
+
 
         [HttpGet]
         public ActionResult List(string groupId = null)

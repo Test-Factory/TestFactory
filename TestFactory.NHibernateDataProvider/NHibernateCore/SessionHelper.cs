@@ -43,7 +43,7 @@ namespace NHibernateDataProviders.NHibernateCore
                           m.FluentMappings
                               .AddFromAssemblyOf<SessionHelper>())
                 //.ExposeConfiguration(cfg => new SchemaExport(cfg)
-                 //                               .Create(true, true))
+                //                                .Create(true, true))
                               .BuildSessionFactory();
         }
     }
