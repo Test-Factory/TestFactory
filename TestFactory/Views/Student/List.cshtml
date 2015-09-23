@@ -1,13 +1,15 @@
 ﻿@model List<StudentViewModel>
 <div class='liveExample'>
 
-    <form action='/someServerSideHandler'>
-        <p>Name of group<span data-bind='text: gifts().length'>&nbsp;</span> gift(s)<button data-bind='enable: gifts().length > 0' type='submit'>Submit</button></p>
+    @using (Html.BeginForm("Update", "Student", FormMethod.Post))
+    {
+    @Html.AntiForgeryToken()
+        <p><button type='submit'></button></p>
         <table data-bind='visible: gifts().length > 0'>
             <thead>
                 <tr>
-                    <th></th>
-                    <th></th>
+                    <th>Ім'я</th>
+                    <th>Прізвище</th>
                     <th>R</th>
                     <th>I</th>
                     <th>A</th>
@@ -17,22 +19,23 @@
                     <th />
                 </tr>
             </thead>
-
-            <tbody data-bind='foreach: gifts'>
+            <tbody id="tableStudent">
+                @for (var i = 0; i < Model.Count; i++)
+                {
                 <tr>
-                    <td><input class='required' data-bind='value: firstName, uniqueName: true' /></td>
-                    <td><input class='required' data-bind='value: lastName, uniqueName: true' /></td>
-                    <td id="qwert"><input class='required number' data-bind='value: price1, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price2, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price3, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price4, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price5, uniqueName: true' /></td>
-                    <td><input class='required number' data-bind='value: price6, uniqueName: true' /></td>
+                    <td>@Html.EditorFor(model => model[i].FirstName, new { @class = "form-control" })</td>
+                    <td>@Html.EditorFor(model => model[i].LastName, new { @class = "form-control" })</td>
+                    @for (var j = 0; j < Model[i].Marks.Count; j++)
+                    {
+                    <td>@Html.EditorFor(model => model[i].Marks[j].Value, new { @class = "form-control" })</td>
+                    }
                 </tr>
+                }
+               
             </tbody>
         </table>
-        <a href="#" data-bind='click: addGift' id="addStudent">Додати студента</a>
-    </form>
+        <div onclick="" id="addStudent">Додати студента</div>
+    }
 
 </div>
 <style>
@@ -57,42 +60,11 @@ li { list-style-type: disc; margin-left: 20px; }
 #submitButton{position:relative;left:150px;}
 
 </style>
-<script>
-    var GiftModel = function (gifts) {
-        var self = this;
-        self.gifts = ko.observableArray(gifts);
 
-        self.addGift = function () {
-            self.gifts.push({
-                name: "",
-                price: ""
-            });
-        };
-
-       
-
-        self.removeGift = function (gift) {
-            self.gifts.remove(gift);
-        };
-
-        self.save = function (form) {
-            alert("Could now transmit to server: " + ko.utils.stringifyJson(self.gifts));
-            // To actually transmit to server as a regular form post, write this: ko.utils.postJson($("form")[0], self.gifts);
-        };
-    };
-    var viewModel  = new GiftModel([
-            @foreach(var i in Model)
-            {
-                var name = i.FirstName;
-                var lastname = i.LastName;
-                //var marks = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize((object)i.Marks);
-                @Html.Raw("{ firstName: '" + name + "', lastName: '" + lastname + "', price1: '"+ i.Marks[0].Value +"', price2: '"+ i.Marks[1].Value +"', price3: '"+ i.Marks[2].Value +"', price4: '"+ i.Marks[3].Value +"', price5: '"+ i.Marks[4].Value +"', price6: '"+ i.Marks[5].Value +"'},");
-            }
-
-
-     ]);
-    ko.applyBindings(viewModel);
-
-    // Activate jQuery Validation
-    $("form").validate({ submitHandler: viewModel.save });
-</script>
+    <script>
+        $("#addStudent").click(function () {
+            var students = $("#tableStudent").html()
+            students = students + "@Html.Partial("Create", new StudentViewModel())"
+            $("#tableStudent").html() = students
+        })
+        </script>

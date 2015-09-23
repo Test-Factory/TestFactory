@@ -18,7 +18,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.GroupId).Not.Nullable();
 
-            References(x => x.Marks).Class<Mark>();
+            HasMany(x => x.Marks).KeyColumn("StudentId");
         }
     }
 }

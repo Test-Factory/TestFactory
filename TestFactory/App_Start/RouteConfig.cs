@@ -23,7 +23,7 @@ namespace TestFactory
 
             routes.MapRoute(
                 name: "studentUpdate",
-                url: "group/{groupId}/students/update/{id}",
+                url: "group/{groupId}/students/update",
                 defaults: new {controller = "Student", action = "Update"}
            );
 

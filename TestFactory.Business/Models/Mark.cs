@@ -8,7 +8,7 @@ namespace TestFactory.Business.Models
 {
     public class Mark : BaseModel
     {
-        public virtual Student Students { get; set; }
+        public virtual string StudentId { get; set; }
 
         public virtual TestDescription Category { get; set; }
 

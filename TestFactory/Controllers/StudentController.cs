@@ -49,23 +49,31 @@ namespace TestFactory.Controllers
             return View("List", result);
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult Create(string groupId)
         {
             var model = new StudentViewModel();
             model.GroupId = groupId;
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpPost]
-        public ActionResult Create(StudentViewModel student)
+        public ActionResult Create(IList<StudentViewModel> student)
         {
-            var model = Mapper.Map<Student>(student);
+            var model = Mapper.Map<IList<Student>>(student);
             // TODO: take from model
-            //string groupId = RouteData.Values["groupId"].ToString();
-            //model.GroupId = groupId;
-            studentManager.Create(model);
-            return RedirectToRoute("groupStudentList", new { groupId = model.GroupId });
+            string groupId = RouteData.Values["groupId"].ToString();
+            foreach (Student st in model)
+            {
+                st.GroupId = groupId;
+                foreach (Mark mr in st.Marks)
+                {
+                    mr.StudentId = st.Id;
+                    markManager.Create(mr);
+                }
+                studentManager.Create(st);
+            }
+            return RedirectToRoute("groupStudentList", new { groupId = groupId });
         }
 
          public ActionResult Update(string id)
@@ -75,11 +83,26 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update(StudentViewModel student)
+        public ActionResult Update(IList<StudentViewModel> student)
         {
-            var model = Mapper.Map<Student>(student);
-            studentManager.Update(model);
-            return RedirectToRoute("groupStudentList", new { groupId = model.GroupId });
+            var model = Mapper.Map<IList<Student>>(student);
+            // TODO: take from model
+            string groupId = RouteData.Values["groupId"].ToString();
+            foreach (Student st in model)
+            {
+                st.GroupId = groupId;
+                foreach (Mark mr in st.Marks)
+                {
+                    mr.StudentId = st.Id;
+                    
+                    TestDescription tes = new TestDescription();
+                    tes.Id = Guid.NewGuid().ToString();
+                    mr.Category = tes;
+                    markManager.Update(mr);
+                }
+                studentManager.Update(st);
+            }
+            return RedirectToRoute("groupStudentList", new { groupId = groupId });
         }
     }
 }
