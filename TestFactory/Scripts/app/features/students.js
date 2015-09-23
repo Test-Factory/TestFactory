@@ -16,6 +16,9 @@
     };
 
     self.editStudent = function (student) {
+        for (var k in self.students) {
+            self.students[k].mode(self.mods.display);
+        }
         mapStudent(student, self.studentForUpdate);
         student.mode(self.mods.edit);
     };
@@ -26,7 +29,7 @@
             mapStudent(self.studentForUpdate, student);
             student.mode(self.mods.display);
         });
-    }
+    }       
 
     self.init = function() {
         sp.get(function (data) {
