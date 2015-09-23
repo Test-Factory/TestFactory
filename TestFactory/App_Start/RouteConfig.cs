@@ -89,7 +89,7 @@ namespace TestFactory
             routes.MapRoute(
               name: "NotFound",
                 url: "{*url}",
-                defaults: new {controller = "Error", action = "Index"}
+                defaults: new {controller = "Error", action = "NotFound"}
             );
         }
     }
