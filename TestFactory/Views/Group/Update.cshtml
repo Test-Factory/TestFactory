@@ -3,7 +3,7 @@
 @using (Html.BeginForm("Update", "Group", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+    @Html.HiddenFor(model=>model.Id)
     <div class="form-horizontal">
         <h4>Edit group</h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -14,7 +14,7 @@
                 @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
             </div>
         </div>
-
+       
         <div class="form-group">
             @Html.LabelFor(model => model.ShortName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

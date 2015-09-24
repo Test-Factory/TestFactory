@@ -11,7 +11,6 @@ namespace TestFactory.MVC.ViewModels
     {
         public BaseViewModel()
         {
-            Id = Guid.NewGuid().ToString();
         }
 
         [ScaffoldColumn(false)]
