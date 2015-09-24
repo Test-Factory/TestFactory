@@ -24,7 +24,6 @@
 
     self.addStudent = function () {
         closeAllEditing();
-        //clear student for create
         mapStudent(new StudentModel(), self.studentForCreate);
         self.studentForCreate.mode(self.mods.create);
     };
