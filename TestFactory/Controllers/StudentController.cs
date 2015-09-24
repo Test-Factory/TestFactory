@@ -26,9 +26,27 @@ namespace TestFactory.Controllers
             this.markManager = markManager;
             this.testDescriptionManager = testDescriptionManager;
             //addTestStudent();
+            //addTestDiscription();
+            //ListDiscription();
         }
 
         // GET: /Students/
+
+        private void addTestDiscription()
+        {
+            TestDescription tDesc = new TestDescription();
+            tDesc.Category = "Артистический";
+            tDesc.Code = "A";
+            tDesc.LongDescription = "rlkgklrjt krt gkrjtgjl gdtjhgl dg";
+            tDesc.ShortDescription = "lkjrgtdskhfle h kger";
+            testDescriptionManager.Create(tDesc);
+        }
+
+        private void ListDiscription()
+        {
+            IList<TestDescription> tDesc = testDescriptionManager.GetList();
+        }
+
 
         private void addTestStudent()
         {
@@ -95,10 +113,14 @@ namespace TestFactory.Controllers
             string groupId = RouteData.Values["groupId"].ToString();
             model.GroupId = groupId;
             studentManager.Create(model);
+            IList<TestDescription> tDesc = testDescriptionManager.GetList();
+            var i = 0;
             foreach (Mark mr in model.Marks)
             {
+                mr.Category = tDesc[i];
                 mr.StudentId = model.Id;
                 markManager.Create(mr);
+                i++;
             }
             return RedirectToRoute("groupStudentList", new { groupId = groupId });
         }

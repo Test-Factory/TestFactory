@@ -15,16 +15,19 @@ namespace TestFactory.Controllers.Api
     {
         private readonly StudentManager studentManager;
 
-        public StudentsController(StudentManager studentManager)
+        private readonly MarkManager markManager;
+
+        public StudentsController(StudentManager studentManager, MarkManager markManager)
         {
             this.studentManager = studentManager;
+            this.markManager = markManager;
         }
         // GET: API/Student
         [HttpGet]
         public IEnumerable<Student> Get()
         {
             IList<Student> students;
-            string groupId = "55f05128-1f74-4af6-aa75-54b7b2c2aa99";
+            string groupId = "13b66a40-5b78-48a0-b209-1390e420a11e";
             if (string.IsNullOrEmpty(groupId))
             {
                 students = studentManager.GetList();
@@ -32,6 +35,10 @@ namespace TestFactory.Controllers.Api
             else
             {
                 students = studentManager.GetList(groupId);
+                /*foreach (Student stud in students)
+                {
+                    stud.Marks = markManager.GetList(stud.Id);
+                }*/
                 //checking role
 
             }
