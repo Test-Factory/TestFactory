@@ -46,7 +46,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    session.SaveOrUpdate(model);
+                    session.Save(model);
                     transaction.Commit();
                 }
             });
@@ -58,7 +58,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    session.SaveOrUpdate(model);
+                    session.Update(model);
                     transaction.Commit();
                 }
             });

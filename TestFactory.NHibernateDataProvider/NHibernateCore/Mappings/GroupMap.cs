@@ -19,7 +19,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.ShortName);
             
-            HasMany(x => x.Students).KeyColumn("GroupId");
+            //HasMany(x => x.Students).KeyColumn("GroupId");
         }
     }
 }

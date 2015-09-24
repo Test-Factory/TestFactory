@@ -12,11 +12,11 @@ namespace TestFactory.Business.Models
 
         public virtual string ShortName { get; set; }
 
-        public virtual IList<Student> Students { get; set; }
+        //public virtual IList<Student> Students { get; set; }
 
-        public Group()
-        {
-            Students = new List<Student>();
-        }
+        //public Group()
+        //{
+        //    Students = new List<Student>();
+        //}
     }
 }
