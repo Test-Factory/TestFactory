@@ -90,7 +90,7 @@
         to.lastName(from.lastName());
         to.groupId(from.groupId());
         to.marks.removeAll();
-        for (var m in to.marks()) {
+        for (var m in from.marks()) {
             to.marks.push(from.marks()[m]);
         }
     }

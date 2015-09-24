@@ -33,6 +33,9 @@
                 <tr>
                     <td><input type="text" data-bind="textInput: $root.studentForUpdate.firstName" /></td>
                     <td><input type="text" data-bind="textInput: $root.studentForUpdate.lastName" /></td>
+                    <!-- ko foreach: $root.studentForUpdate.marks -->
+                        <td><input type="text" data-bind="textInput: value" /></td>
+                    <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Save</button>
                     </td>
