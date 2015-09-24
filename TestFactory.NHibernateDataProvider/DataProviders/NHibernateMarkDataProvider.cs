@@ -15,7 +15,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
         public IList<Mark> GetByStudentId(string studentId)
         {
             return Execute(session => session.Query<Mark>()
-                .Where(s => s.Students.Id == studentId)
+                .Where(s => s.StudentId == studentId)
                 .ToList<Mark>());
         }
     }

@@ -23,7 +23,7 @@ namespace TestFactory
 
             routes.MapRoute(
                 name: "studentUpdate",
-                url: "group/{groupId}/students/update/{id}",
+                url: "group/{groupId}/students/update",
                 defaults: new {controller = "Student", action = "Update"}
            );
 
@@ -89,7 +89,7 @@ namespace TestFactory
             routes.MapRoute(
               name: "NotFound",
                 url: "{*url}",
-                defaults: new {controller = "Error", action = "Index"}
+                defaults: new {controller = "Error", action = "NotFound"}
             );
         }
     }

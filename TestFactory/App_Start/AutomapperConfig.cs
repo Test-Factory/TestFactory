@@ -35,8 +35,7 @@ namespace TestFactory.App_Start
         private static void RegisterFromViewModel()
         {
             Mapper.CreateMap<StudentViewModel, Student>()
-                .IncludeBase<BaseViewModel, BaseModel>()
-                .ForMember(studentvm => studentvm.Marks, otp => otp.Ignore());
+                .IncludeBase<BaseViewModel, BaseModel>();
 
             Mapper.CreateMap<GroupViewModel, Group>()
                 .IncludeBase<BaseViewModel, BaseModel>();

@@ -9,17 +9,14 @@ using NHibernate;
 
 namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 {
-    public class TestMarkMap : ClassMap<Mark>
+    class UserRoleMap : ClassMap<UserRole>
     {
-        public TestMarkMap()
+        public UserRoleMap()
         {
             Id(x => x.Id);
 
-            Map(x => x.StudentId).Not.Nullable();
-
-            References(x => x.Category).Class<TestDescription>();
-
-            Map(x => x.Value);
+            Map(x => x.RoleName);
         }
+
     }
 }
