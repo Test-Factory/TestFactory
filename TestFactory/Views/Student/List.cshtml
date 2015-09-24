@@ -7,13 +7,9 @@
                 <tr>
                     <th>FirestName</th>
                     <th>LastName</th>
-                    <th>R</th>
-                    <th>I</th>
-                    <th>A</th>
-                    <th>S</th>
-                    <th>E</th>
-                    <th>C</th>
-                    <th />
+                    <!-- ko foreach: $root.categories -->
+                    <th data-bind="text: category"></th>
+                    <!-- /ko -->
                 </tr>
             </thead>
             <tbody data-bind="foreach: students">
@@ -47,6 +43,9 @@
                 <tr>
                     <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" /></td>
                     <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" /></td>
+                    <!-- ko foreach: $root.studentForCreate.marks -->
+                        <td><input type="text" data-bind="textInput: value" /></td>
+                    <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Save</button>
                     </td>

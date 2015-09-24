@@ -2,6 +2,14 @@
     var sp = new StudentProvider();
     var self = this;
     self.students = ko.observableArray();
+    self.categories = ko.observableArray([
+        new TestDescriptionModel({Id:1, Category: "R"}),
+        new TestDescriptionModel({Id:2, Category: "I"}),
+        new TestDescriptionModel({Id:3, Category: "A"}),
+        new TestDescriptionModel({Id:4, Category: "S"}),
+        new TestDescriptionModel({Id:5, Category: "E"}),
+        new TestDescriptionModel({Id:6, Category: "C"})
+    ]);
 
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
@@ -25,6 +33,11 @@
     self.addStudent = function () {
         closeAllEditing();
         mapStudent(new StudentModel(), self.studentForCreate);
+        for (var c in self.categories()) {
+            var mark = new MarkModel();
+            mark.categoryId(self.categories()[c].id());
+            self.studentForCreate.marks.push(mark);
+        }
         self.studentForCreate.mode(self.mods.create);
     };
 
