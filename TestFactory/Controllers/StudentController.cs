@@ -60,7 +60,7 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult List(string groupId = null)
         {
-            IList<Student> students;
+            /*IList<Student> students;
             if (string.IsNullOrEmpty(groupId))
             {
                 students = studentManager.GetList();
@@ -75,8 +75,8 @@ namespace TestFactory.Controllers
                 }
 
             }
-            var result = Mapper.Map<List<StudentViewModel>>(students);
-            return View("List", result);
+            var result = Mapper.Map<List<StudentViewModel>>(students);*/
+            return View(/*"List", result*/);
         }
 
         [HttpPost]
