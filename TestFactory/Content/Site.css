@@ -203,10 +203,10 @@ p#textLik:hover {
 label.createPop-Up {
     margin-left: 10px;
 }
-h4.createPop-Up {
+h4.createPop-Up, h4.updatePop-Up {
 margin-left:10px;
 }
-div.createPop-Up {
+div.createPop-Up, div.updatePop-Up {
     position: relative;
     left: 100px;
     top: 20px;
