@@ -27,6 +27,9 @@ namespace TestFactory.App_Start
             builder.RegisterType<StudentManager>();
 
             builder.RegisterType<GroupManager>();
+
+            builder.RegisterType<RoleManager>();
+
             builder.RegisterType<RolsProvider>();
 
             builder.RegisterType<NHibernateRoleDataProvider>()

@@ -17,6 +17,13 @@ namespace TestFactory.Business.Components.Rols
     {
         IRoleDataProvider dataProvider;
 
+        public override void Initialize(string name, NameValueCollection config)
+        {
+
+            dataProvider = (IRoleDataProvider)DependencyResolver.Current.GetService(typeof(IRoleDataProvider));
+            base.Initialize(name, config);
+        }
+
         public override bool IsUserInRole(string username, string rolename)
         {
             return dataProvider.IsUserInRole(username, rolename);

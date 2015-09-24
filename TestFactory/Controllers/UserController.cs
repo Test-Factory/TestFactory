@@ -9,17 +9,40 @@ using System.Web.Security;
 using TestFactory.Business.Components.Rols;
 using TestFactory.Components;
 using TestFactory.Business.Components;
+using TestFactory.Business.DataProviderContracts;
+using TestFactory.Business.Models;
+using System.Security.Cryptography;
+using SimpleCrypto;
 
 namespace TestFactory.Controllers
 {
     public class UserController : Controller
     {
         UserManager manager;
+        RoleManager roleManager;
 
-        public UserController(UserManager manager)
+        public UserController(UserManager manager, RoleManager provider)
         {
             this.manager = manager;
-            //manager.AddFirstRole();
+            this.roleManager = provider;
+            AddFirstRole();
+        }
+
+        public void AddFirstRole()
+        {
+            User admin = new User();
+            admin.Email = "TF.Filler@ukr.net";
+            admin.FirstName = "Filler";
+            admin.LastName = "TF";
+            admin.PasswordSalt = new PBKDF2().GenerateSalt();
+            admin.Password = new PBKDF2().Compute("IFiller", admin.PasswordSalt);
+
+            Role rol = new Role();
+            rol.Name = "Filler";
+            roleManager.Create(rol);
+            admin.Roles = rol;
+
+            manager.Create(admin);
         }
 
         [HttpGet]
