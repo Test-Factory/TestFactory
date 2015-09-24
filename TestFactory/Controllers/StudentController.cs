@@ -17,12 +17,14 @@ namespace TestFactory.Controllers
         private readonly StudentManager studentManager;
         private readonly GroupManager groupManager;
         private readonly MarkManager markManager;
+        private readonly TestDescriptionManager testDescriptionManager;
 
-        public StudentController(StudentManager studentManager, GroupManager groupManager, MarkManager markManager)
+        public StudentController(StudentManager studentManager, GroupManager groupManager, MarkManager markManager, TestDescriptionManager testDescriptionManager)
         {
             this.studentManager = studentManager;
             this.groupManager = groupManager;
             this.markManager = markManager;
+            this.testDescriptionManager = testDescriptionManager;
             //addTestStudent();
         }
 
@@ -119,13 +121,14 @@ namespace TestFactory.Controllers
             foreach (Student st in model)
             {
                 st.GroupId = groupId;
-                studentManager.Update(st);
+                
                 st.GroupId = groupId;
                 foreach (Mark mr in st.Marks)
                 {
                     mr.StudentId = st.Id;
                     markManager.Update(mr);
                 }
+                studentManager.Update(st);
             }
             return RedirectToRoute("groupStudentList", new { groupId = groupId });
         }

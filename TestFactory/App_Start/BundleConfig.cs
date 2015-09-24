@@ -21,10 +21,7 @@ namespace TestFactory
                         "~/Scripts/app","*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/knockoutjs.js").Include(
-                        "~/Scripts/knockout-3.1.0.debug.js",
-                        "~/Scripts/perpetuum.knockout.js",
-                        "~/Scripts/knockout.mapping-latest.debug.js",
-                         "~/Scripts/knockout.mapping-latest.js"));
+                        "~/Scripts/knockout-3.3.0.js"));
 
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // используйте средство построения на сайте http://modernizr.com, чтобы выбрать только нужные тесты.

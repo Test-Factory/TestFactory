@@ -54,6 +54,7 @@
     <Compile Include="Components\Managers\GroupManager.cs" />
     <Compile Include="Components\Managers\MarkManager.cs" />
     <Compile Include="Components\Managers\StudentManager.cs" />
+    <Compile Include="Components\Managers\TestDescriptionManager.cs" />
     <Compile Include="Components\Managers\UserManager.cs" />
     <Compile Include="Components\Roles\RolsProvider.cs" />
     <Compile Include="Components\UserContext.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="DataProviderContracts\IMarkDataProvider.cs" />
     <Compile Include="DataProviderContracts\IRoleDataProvider.cs" />
     <Compile Include="DataProviderContracts\IStudentDataProvider.cs" />
+    <Compile Include="DataProviderContracts\ITestDescriptionDataProvider.cs" />
     <Compile Include="DataProviderContracts\IUserDataProvider.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Group.cs" />

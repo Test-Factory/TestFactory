@@ -8,6 +8,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/knockoutjs.js")
+    @Scripts.Render("~/bundles/app")
     @Styles.Render("~/Content/materialize/css/materialize.min.css")
     @Styles.Render("~/Content/Site.css")
 </head>
@@ -36,19 +37,23 @@
                 }
                 else
                 {
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>@Html.RouteLink("Вхід", "login")</li>
                     </ul>
                 }
             </div>
         </nav>
     </header>
+
     <div id="content">
         @RenderBody()
     </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.validate.js")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+    @Scripts.Render("~/bundles/knockoutjs.js")
+    @Scripts.Render("~/bundles/app")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -254,6 +254,8 @@
     <None Include="Properties\PublishProfiles\TestFactory - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\dataProvider\studentProvider.js" />
+    <Content Include="Scripts\app\features\students.js" />
+    <Content Include="Scripts\app\models\studentModel.js" />
     <Content Include="Scripts\app\settings\config.js" />
     <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />

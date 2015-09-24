@@ -58,6 +58,7 @@
     <Compile Include="DataProviders\NHibernateDataProviderBase.cs" />
     <Compile Include="DataProviders\NHibernateGroupDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateStudentDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateTestDescriptionDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateUserDataProvider.cs" />
     <Compile Include="NHibernateCore\SessionHelper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />
