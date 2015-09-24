@@ -68,10 +68,19 @@
 
     function toServerStudentModel(student) {
         return {
-            Id:student.id(),
+            Id: student.id(),
             FirstName: student.firstName(),
             LastName: student.lastName(),
-            GroupId: student.groupId()
+            GroupId: student.groupId(),
+            Marks: ko.utils.arrayMap(student.marks(), toServerMarkModel)
+        }
+    }
+
+    function toServerMarkModel(mark) {
+        return {
+            Id: mark.id(),
+            StudentId: mark.studentId(),
+            Value: mark.value()
         }
     }
 
@@ -80,5 +89,9 @@
         to.firstName(from.firstName());
         to.lastName(from.lastName());
         to.groupId(from.groupId());
+        to.marks.removeAll();
+        for (var m in to.marks()) {
+            to.marks.push(from.marks()[m]);
+        }
     }
 }

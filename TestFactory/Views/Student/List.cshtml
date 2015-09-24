@@ -7,6 +7,12 @@
                 <tr>
                     <th>FirestName</th>
                     <th>LastName</th>
+                    <th>R</th>
+                    <th>I</th>
+                    <th>A</th>
+                    <th>S</th>
+                    <th>E</th>
+                    <th>C</th>
                     <th />
                 </tr>
             </thead>
@@ -15,6 +21,9 @@
                 <tr>
                     <td data-bind="text: firstName"></td>
                     <td data-bind="text: lastName"></td>
+                    <!-- ko foreach: marks -->
+                        <td data-bind="text: value"></td>
+                    <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.editStudent">Edit</button>
                     </td>
