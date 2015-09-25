@@ -75,11 +75,6 @@ namespace TestFactory.Controllers.Api
         {
             var model = Mapper.Map<Student>(student);
             // TODO: take from model
-            foreach (Mark mr in model.Marks)
-            {
-                mr.StudentId = model.Id;
-                markManager.Update(mr);
-            }
             studentManager.Update(model);
             return Ok();
         }
