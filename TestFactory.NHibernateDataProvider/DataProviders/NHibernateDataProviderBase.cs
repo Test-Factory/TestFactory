@@ -9,7 +9,7 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.NHibernateDataProvider.DataProviders
 {
-    public class NHibernateDataProviderBase<TEntity>    where TEntity: BaseModel
+    public class NHibernateDataProviderBase<TEntity> where TEntity : BaseModel
     {
         private ISession CreateSession()
         {
@@ -26,9 +26,17 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
         protected void Execute(Action<ISession> action)
         {
             using (var session = CreateSession())
+            {
+                try
                 {
                     action(session);
                 }
+                catch (Exception)
+                {
+                    throw;
+                }
+                
+            }
         }
 
         public virtual IList<TEntity> GetList()
