@@ -31,10 +31,9 @@ namespace TestFactory.Controllers.Api
         }
         // GET: API/Student
         [HttpGet]
-        public IEnumerable<StudentViewModel> Get(string GroupId)
+        public IEnumerable<StudentViewModel> Get(string groupId)
         {
             IList<Student> students;
-            string groupId = GroupId;
             if (string.IsNullOrEmpty(groupId))
             {
                 students = studentManager.GetList();
@@ -59,8 +58,6 @@ namespace TestFactory.Controllers.Api
             model = Mapper.Map<Student>(student);
             model.Id =  Guid.NewGuid().ToString();
             // TODO: take from model
-            string groupId = "13b66a40-5b78-48a0-b209-1390e420a11e";
-            model.GroupId = groupId;
             for (int i = 0; i < model.Marks.Count; i++ )
             {
                 model.Marks[i].Id = Guid.NewGuid().ToString();
