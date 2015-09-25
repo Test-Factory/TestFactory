@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
+using TestFactory.MVC.ViewModels;
 
 namespace TestFactory.Controllers.Api
 {
@@ -19,10 +20,9 @@ namespace TestFactory.Controllers.Api
        }
         // GET: API/Student
         [HttpGet]
-       public IEnumerable<CategoryViewModel> Get()
+       public IEnumerable<Category> Get()
         {
-
-            return null ;
+            return categoryManager.GetList();
         }
        
         [HttpPost]
