@@ -9,7 +9,6 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.Business.Components.Managers
 {
-    //TODO: make methods virtual
     public abstract class BaseManager<T, TProvider>
         where T: BaseModel
         where TProvider: IDataProvider<T>
@@ -22,22 +21,22 @@ namespace TestFactory.Business.Components.Managers
             this.provider = provider;
         }
 
-        public void Create(T model)
+        public virtual void Create(T model)
         {
             provider.Create(model);
         }
 
-        public IList<T> GetList()
+        public virtual IList<T> GetList()
         {
            return provider.GetList();
         }
 
-        public T GetById(string id)
+        public virtual T GetById(string id)
         {
             return provider.GetById(id);
         }
 
-        public void Update(T model)
+        public virtual void Update(T model)
         {
             provider.Update(model);
         }

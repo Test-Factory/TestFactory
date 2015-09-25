@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TestFactory.Business.Models
 {
-    public class TestDescription: BaseModel       //TODO: TestCategory
+    public class TestDescription: BaseModel   
     {
-        public virtual string Category { get; set; }   //TODO:  Name
+        public virtual string Category { get; set; }   
 
         public virtual string Code { get; set; }
 

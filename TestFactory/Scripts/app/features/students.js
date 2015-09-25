@@ -3,12 +3,12 @@
     var self = this;
     self.students = ko.observableArray();
     self.categories = ko.observableArray([
-        new TestDescriptionModel({Id:1, Category: "R"}),
-        new TestDescriptionModel({Id:2, Category: "I"}),
-        new TestDescriptionModel({Id:3, Category: "A"}),
-        new TestDescriptionModel({Id:4, Category: "S"}),
-        new TestDescriptionModel({Id:5, Category: "E"}),
-        new TestDescriptionModel({Id:6, Category: "C"})
+        new CategoryModel({Id:1, Category: "R"}),
+        new CategoryModel({Id:2, Category: "I"}),
+        new CategoryModel({Id:3, Category: "A"}),
+        new CategoryModel({Id:4, Category: "S"}),
+        new CategoryModel({Id:5, Category: "E"}),
+        new CategoryModel({Id:6, Category: "C"})
     ]);
 
     self.studentForUpdate = new StudentModel();
