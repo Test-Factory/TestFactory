@@ -19,7 +19,7 @@ namespace TestFactory.Controllers.Api
        }
         // GET: API/Student
         [HttpGet]
-       public IEnumerable<CategoryViewModel> Get()
+       public IEnumerable<Category> Get()
         {
 
             return null ;

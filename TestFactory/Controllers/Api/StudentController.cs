@@ -20,18 +20,20 @@ namespace TestFactory.Controllers.Api
         private readonly StudentManager studentManager;
 
         private readonly MarkManager markManager;
+        private readonly CategoryManager categoryManager;
 
-        public StudentsController(StudentManager studentManager, MarkManager markManager)
+        public StudentsController(StudentManager studentManager, MarkManager markManager, CategoryManager categoryManager)
         {
             this.studentManager = studentManager;
             this.markManager = markManager;
+            this.categoryManager = categoryManager;
         }
         // GET: API/Student
         [HttpGet]
         public IEnumerable<StudentViewModel> Get()
         {
             IList<Student> students;
-            //string groupId = "13b66a40-5b78-48a0-b209-1390e420a11e";
+           string groupId = "13b66a40-5b78-48a0-b209-1390e420a11e";
             if (string.IsNullOrEmpty(groupId))
             {
                 students = studentManager.GetList();
@@ -54,19 +56,18 @@ namespace TestFactory.Controllers.Api
         {
             var model = Mapper.Map<Student>(student);
             // TODO: take from model
-            string groupId = RouteData.Values["groupId"].ToString();
-            model.GroupId = groupId;
+            //string groupId = RouteData.Values["groupId"].ToString();
+            //model.GroupId = groupId;
             studentManager.Create(model);
             IList<Category> tDesc = categoryManager.GetList();
             var i = 0;
             foreach (Mark mr in model.Marks)
             {
-                mr.Category = tDesc[i];
+                mr.CategoryId = tDesc[i].Id;
                 mr.StudentId = model.Id;
                 markManager.Create(mr);
                 i++;
             }
-            return
             return Ok(1);
         }
         [HttpPut]
