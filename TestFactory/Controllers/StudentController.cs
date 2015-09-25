@@ -60,7 +60,7 @@ namespace TestFactory.Controllers
             {
                 Mark mr = new Mark();
                 mr.StudentId = st.Id;
-                mr.Category = null;
+                mr.CategoryId = null;
                 mr.Value = 85;
                 mrList.Add(mr);
             }
@@ -117,7 +117,7 @@ namespace TestFactory.Controllers
             var i = 0;
             foreach (Mark mr in model.Marks)
             {
-                mr.Category = tDesc[i];
+                mr.CategoryId = tDesc[i].Id;
                 mr.StudentId = model.Id;
                 markManager.Create(mr);
                 i++;

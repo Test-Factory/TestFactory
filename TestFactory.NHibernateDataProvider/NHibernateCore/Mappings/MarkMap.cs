@@ -9,15 +9,15 @@ using NHibernate;
 
 namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 {
-    public class TestMarkMap : ClassMap<Mark>
+    public class MarkMap : ClassMap<Mark>
     {
-        public TestMarkMap()
+        public MarkMap()
         {
             Id(x => x.Id);
 
             Map(x => x.StudentId).Not.Nullable();
 
-            //References(x => x.Category).Class<TestDescription>();
+            Map(x => x.CategoryId);
 
             Map(x => x.Value);
         }
