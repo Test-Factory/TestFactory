@@ -153,6 +153,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\CategoryController.cs" />
     <Compile Include="Controllers\Api\StudentController.cs" />
     <Compile Include="Components\UserViewContext.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -306,6 +307,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Categoty\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
