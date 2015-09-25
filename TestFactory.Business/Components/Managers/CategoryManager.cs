@@ -8,11 +8,11 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.Business.Components.Managers
 {
-    public class TestDescriptionManager : BaseManager<TestDescription, ITestDescriptionDataProvider>
+    public class CategoryManager : BaseManager<Category, ICategoryDataProvider>
     {
-        public TestDescriptionManager(ITestDescriptionDataProvider provider) : base(provider) { }
+        public CategoryManager(ICategoryDataProvider provider) : base(provider) { }
 
-        public IList<TestDescription> GetList()
+        public IList<Category> GetList()
         {
             return provider.GetList();
         } 

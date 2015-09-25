@@ -9,7 +9,7 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.NHibernateDataProvider.DataProviders
 {
-    public class NHibernateTestDescriptionDataProvider :  NHibernateDataProviderBase<TestDescription>, ITestDescriptionDataProvider
+    public class NHibernateCategoryDataProvider :  NHibernateDataProviderBase<Category>, ICategoryDataProvider
     {
     }
 }

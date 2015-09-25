@@ -17,7 +17,7 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 
             Map(x => x.StudentId).Not.Nullable();
 
-            References(x => x.Category).Class<TestDescription>();
+            References(x => x.Category).Class<Category>();
 
             Map(x => x.Value);
         }

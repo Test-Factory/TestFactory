@@ -34,7 +34,7 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<RolsProvider>();
 
-            builder.RegisterType<TestDescriptionManager>();
+            builder.RegisterType<CategoryManager>();
 
             builder.RegisterType<NHibernateRoleDataProvider>()
                 .As<IRoleDataProvider>();
@@ -51,8 +51,8 @@ namespace TestFactory.App_Start
             builder.RegisterType<NHibernateMarkDataProvider>()
                 .As<IMarkDataProvider>();
 
-            builder.RegisterType<NHibernateTestDescriptionDataProvider>()
-                .As<ITestDescriptionDataProvider>();
+            builder.RegisterType<NHibernateCategoryDataProvider>()
+                .As<ICategoryDataProvider>();
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             var container = builder.Build();

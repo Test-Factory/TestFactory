@@ -9,13 +9,13 @@ using NHibernate;
 
 namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 {
-    public class TestDescriptionMap : ClassMap<TestDescription>
+    public class CategoryMap : ClassMap<Category>
     {
-        public TestDescriptionMap()
+        public CategoryMap()
         {
             Id(x => x.Id);
 
-            Map(x => x.Category);
+            Map(x => x.Name);
 
             Map(x => x.Code);
 

@@ -10,7 +10,7 @@ namespace TestFactory.Business.Models
     {
         public virtual string StudentId { get; set; }
 
-        public virtual TestDescription Category { get; set; }
+        public virtual Category Category { get; set; }//testdesc - > category 
 
         public virtual int Value { get; set; }
     }
