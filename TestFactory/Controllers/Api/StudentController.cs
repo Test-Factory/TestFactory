@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Providers.Entities;
 using TestFactory.MVC.ViewModels;
 using AutoMapper;
+using System;
 
 namespace TestFactory.Controllers.Api
 {
@@ -52,14 +53,21 @@ namespace TestFactory.Controllers.Api
         }
        
         [HttpPost]
-        public IHttpActionResult Create(Student student)
+        public IHttpActionResult Create(StudentViewModel student)
         {
-            /*var model = Mapper.Map<Student>(student);
+            Student model = new Student();
+            model = Mapper.Map<Student>(student);
+            model.Id =  Guid.NewGuid().ToString();
             // TODO: take from model
             string groupId = "13b66a40-5b78-48a0-b209-1390e420a11e";
             model.GroupId = groupId;
+            for (int i = 0; i < model.Marks.Count; i++ )
+            {
+                model.Marks[i].Id = Guid.NewGuid().ToString();
+                model.Marks[i].StudentId = model.Id;
+            }
             studentManager.Create(model);
-            IList<Category> tDesc = categoryManager.GetList();
+            /*IList<Category> tDesc = categoryManager.GetList();
             var i = 0;
             foreach (Mark mr in model.Marks)
             {
