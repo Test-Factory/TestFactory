@@ -1,5 +1,6 @@
 ﻿function StudentsViewModel() {
     var sp = new StudentProvider();
+    var cp = new CategoryProvider();
     var self = this;
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
@@ -71,7 +72,7 @@
                 self.students.push(mappedItem);
             });
         });
-        sp.get(function (data) {
+        cp.get(function (data) {
             $(data).each(function (index, element) {
                 var mappedItem = new CategoryModel(element);
                 self.categories.push(mappedItem);
