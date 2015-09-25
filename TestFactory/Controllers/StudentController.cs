@@ -17,14 +17,14 @@ namespace TestFactory.Controllers
         private readonly StudentManager studentManager;
         private readonly GroupManager groupManager;
         private readonly MarkManager markManager;
-        private readonly TestDescriptionManager testDescriptionManager;
+        private readonly CategoryManager categoryManager;
 
-        public StudentController(StudentManager studentManager, GroupManager groupManager, MarkManager markManager, TestDescriptionManager testDescriptionManager)
+        public StudentController(StudentManager studentManager, GroupManager groupManager, MarkManager markManager, CategoryManager categoryManager)
         {
             this.studentManager = studentManager;
             this.groupManager = groupManager;
             this.markManager = markManager;
-            this.testDescriptionManager = testDescriptionManager;
+            this.categoryManager = categoryManager;
             //addTestStudent();
             //addTestDiscription();
             //ListDiscription();
@@ -34,17 +34,17 @@ namespace TestFactory.Controllers
 
         private void addTestDiscription()
         {
-            TestDescription tDesc = new TestDescription();
-            tDesc.Category = "Артистический";
+            Category tDesc = new Category();
+            tDesc.Name = "Артистический";
             tDesc.Code = "A";
             tDesc.LongDescription = "rlkgklrjt krt gkrjtgjl gdtjhgl dg";
             tDesc.ShortDescription = "lkjrgtdskhfle h kger";
-            testDescriptionManager.Create(tDesc);
+            categoryManager.Create(tDesc);
         }
 
         private void ListDiscription()
         {
-            IList<TestDescription> tDesc = testDescriptionManager.GetList();
+            IList<Category> tDesc = categoryManager.GetList();
         }
 
 
@@ -113,7 +113,7 @@ namespace TestFactory.Controllers
             string groupId = RouteData.Values["groupId"].ToString();
             model.GroupId = groupId;
             studentManager.Create(model);
-            IList<TestDescription> tDesc = testDescriptionManager.GetList();
+            IList<Category> tDesc = categoryManager.GetList();
             var i = 0;
             foreach (Mark mr in model.Marks)
             {

@@ -25,7 +25,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.LastName);
 
-            References(x => x.Roles).Class<Role>();
+            References(x => x.Roles).Class<Role>().Not.LazyLoad();
         }
     }
 }

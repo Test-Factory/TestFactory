@@ -3,7 +3,7 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.Business.DataProviderContracts
 {
-    public interface ITestDescriptionDataProvider : IDataProvider<TestDescription>
+    public interface ICategoryDataProvider : IDataProvider<Category>
     {
     }
 }

@@ -58,12 +58,12 @@
     <Compile Include="DataProviders\NHibernateDataProviderBase.cs" />
     <Compile Include="DataProviders\NHibernateGroupDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateStudentDataProvider.cs" />
-    <Compile Include="DataProviders\NHibernateTestDescriptionDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateCategoryDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateUserDataProvider.cs" />
     <Compile Include="NHibernateCore\SessionHelper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />
     <Compile Include="NHibernateCore\Mappings\RoleMap.cs" />
-    <Compile Include="NHibernateCore\Mappings\TestDescriptionMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\CategoryMap.cs" />
     <Compile Include="NHibernateCore\Mappings\StudentMap.cs" />
     <Compile Include="NHibernateCore\Mappings\TestMarkMap.cs" />
     <Compile Include="NHibernateCore\Mappings\UserMap.cs" />
