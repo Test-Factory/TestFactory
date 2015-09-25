@@ -7,6 +7,8 @@ using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using System.Web;
 using System.Web.Providers.Entities;
+using TestFactory.MVC.ViewModels;
+using AutoMapper;
 
 namespace TestFactory.Controllers.Api
 {
@@ -51,8 +53,16 @@ namespace TestFactory.Controllers.Api
             return Ok(1);
         }
         [HttpPut]
-        public IHttpActionResult Update(Student student)
+        public IHttpActionResult Update(StudentViewModel student)
         {
+            var model = Mapper.Map<Student>(student);
+            // TODO: take from model
+            studentManager.Update(model);
+            foreach (Mark mr in model.Marks)
+            {
+                mr.StudentId = model.Id;
+                markManager.Update(mr);
+            }
             return Ok();
         }
     }
