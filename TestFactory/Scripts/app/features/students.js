@@ -1,5 +1,5 @@
 ﻿function StudentsViewModel(GroupId) {
-   //.groupId = GroupId;
+  
    var sp = new StudentProvider(GroupId);
     var cp = new CategoryProvider();
     var self = this;
@@ -8,7 +8,7 @@
 
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
-
+    self.groupId = GroupId;
     self.mods = {
         display: "display",
         edit: "edit",
@@ -85,7 +85,8 @@
             Id: student.id(),
             FirstName: student.firstName(),
             LastName: student.lastName(),
-            GroupId: student.groupId(),
+            GroupId: self.groupId,
+            //GroupId: student.groupId(),
             Marks: ko.utils.arrayMap(student.marks(), toServerMarkModel)
         }
     }

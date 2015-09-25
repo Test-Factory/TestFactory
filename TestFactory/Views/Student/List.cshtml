@@ -60,7 +60,7 @@
 @section Scripts{
 <script>
     $(document).ready(function () {
-        var groupId = '@Model';
+        var groupId = '@(Model)';
         var viewModel = new StudentsViewModel(groupId);
         ko.applyBindings(viewModel);
     });

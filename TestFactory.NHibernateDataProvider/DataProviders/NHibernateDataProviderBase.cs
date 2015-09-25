@@ -35,7 +35,6 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                 {
                     throw;
                 }
-                
             }
         }
 
