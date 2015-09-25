@@ -97,10 +97,10 @@ namespace TestFactory.Controllers
 
         [HttpGet]
         public ActionResult Create(string groupId)
-        //{
+        {
         //    var model = new StudentViewModel();
         //    model.GroupId = groupId;
-        //    return PartialView(model);
+          return null;
         }
 
         [HttpPost]
