@@ -2,6 +2,14 @@
     var sp = new StudentProvider();
     var self = this;
     self.students = ko.observableArray();
+    self.categories = ko.observableArray([
+        new CategoryModel({Id:1, Category: "R"}),
+        new CategoryModel({Id:2, Category: "I"}),
+        new CategoryModel({Id:3, Category: "A"}),
+        new CategoryModel({Id:4, Category: "S"}),
+        new CategoryModel({Id:5, Category: "E"}),
+        new CategoryModel({Id:6, Category: "C"})
+    ]);
 
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
@@ -25,6 +33,11 @@
     self.addStudent = function () {
         closeAllEditing();
         mapStudent(new StudentModel(), self.studentForCreate);
+        for (var c in self.categories()) {
+            var mark = new MarkModel();
+            mark.categoryId(self.categories()[c].id());
+            self.studentForCreate.marks.push(mark);
+        }
         self.studentForCreate.mode(self.mods.create);
     };
 
@@ -68,10 +81,19 @@
 
     function toServerStudentModel(student) {
         return {
-            Id:student.id(),
+            Id: student.id(),
             FirstName: student.firstName(),
             LastName: student.lastName(),
-            GroupId: student.groupId()
+            GroupId: student.groupId(),
+            Marks: ko.utils.arrayMap(student.marks(), toServerMarkModel)
+        }
+    }
+
+    function toServerMarkModel(mark) {
+        return {
+            Id: mark.id(),
+            StudentId: mark.studentId(),
+            Value: mark.value()
         }
     }
 
@@ -80,5 +102,9 @@
         to.firstName(from.firstName());
         to.lastName(from.lastName());
         to.groupId(from.groupId());
+        to.marks.removeAll();
+        for (var m in from.marks()) {
+            to.marks.push(from.marks()[m]);
+        }
     }
 }

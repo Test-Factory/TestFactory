@@ -7,7 +7,9 @@
                 <tr>
                     <th>FirestName</th>
                     <th>LastName</th>
-                    <th />
+                    <!-- ko foreach: $root.categories -->
+                    <th data-bind="text: name"></th>
+                    <!-- /ko -->
                 </tr>
             </thead>
             <tbody data-bind="foreach: students">
@@ -15,6 +17,9 @@
                 <tr>
                     <td data-bind="text: firstName"></td>
                     <td data-bind="text: lastName"></td>
+                    <!-- ko foreach: marks -->
+                        <td data-bind="text: value"></td>
+                    <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.editStudent">Edit</button>
                     </td>
@@ -24,6 +29,9 @@
                 <tr>
                     <td><input type="text" data-bind="textInput: $root.studentForUpdate.firstName" /></td>
                     <td><input type="text" data-bind="textInput: $root.studentForUpdate.lastName" /></td>
+                    <!-- ko foreach: $root.studentForUpdate.marks -->
+                        <td><input type="text" data-bind="textInput: value" /></td>
+                    <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Save</button>
                     </td>
@@ -35,6 +43,9 @@
                 <tr>
                     <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" /></td>
                     <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" /></td>
+                    <!-- ko foreach: $root.studentForCreate.marks -->
+                        <td><input type="text" data-bind="textInput: value" /></td>
+                    <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Save</button>
                     </td>

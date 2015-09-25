@@ -4,7 +4,7 @@ $(function() {
     var path = settings.basePath + "/api/students";
     var contentType = "application/json; charset=utf-8";
     StudentProvider.prototype.get = function (callback) {
-        $.get(path).done(callback);
+        $.get(path).done(callback).error(function() { console.log("error") ;} );
     }
     
     StudentProvider.prototype.post = function (data, callback) {
