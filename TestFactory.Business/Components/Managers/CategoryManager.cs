@@ -12,9 +12,5 @@ namespace TestFactory.Business.Components.Managers
     {
         public CategoryManager(ICategoryDataProvider provider) : base(provider) { }
 
-        public IList<Category> GetList()
-        {
-            return provider.GetList();
-        } 
     }
 }

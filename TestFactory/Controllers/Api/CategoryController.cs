@@ -8,6 +8,7 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.Controllers.Api
 {
+    [RoutePrefix("api/categories")]
     public class CategoryController: ApiController
     {
        private readonly CategoryManager categoryManager;
@@ -18,8 +19,9 @@ namespace TestFactory.Controllers.Api
        }
         // GET: API/Student
         [HttpGet]
-       public IEnumerable<Category> Get()
+       public IEnumerable<CategoryViewModel> Get()
         {
+
             return null ;
         }
        

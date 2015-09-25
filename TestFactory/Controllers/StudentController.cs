@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Providers.Entities;
+using System.Web.Routing;
 using AutoMapper;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
@@ -25,9 +26,6 @@ namespace TestFactory.Controllers
             this.groupManager = groupManager;
             this.markManager = markManager;
             this.categoryManager = categoryManager;
-            //addTestStudent();
-            //addTestDiscription();
-            //ListDiscription();
         }
 
         // GET: /Students/
@@ -97,12 +95,12 @@ namespace TestFactory.Controllers
             return View(/*"List", result*/);
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Create(string groupId)
-        {
-            var model = new StudentViewModel();
-            model.GroupId = groupId;
-            return PartialView(model);
+        //{
+        //    var model = new StudentViewModel();
+        //    model.GroupId = groupId;
+        //    return PartialView(model);
         }
 
         [HttpPost]

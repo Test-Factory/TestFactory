@@ -17,7 +17,7 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 
             Map(x => x.StudentId).Not.Nullable();
 
-            Map(x => x.CategoryId);
+            Map(x => x.CategoryId).Not.Nullable().Not.LazyLoad();
 
             Map(x => x.Value);
         }

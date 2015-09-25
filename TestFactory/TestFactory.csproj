@@ -262,6 +262,9 @@
     <None Include="Properties\PublishProfiles\TestFactory - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - Web Deploy.pubxml" />
+    <Content Include="Scripts\app\dataProvider\categoryProvider.js" />
+    <Content Include="Scripts\app\dataProvider\groupProvider.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\dataProvider\studentProvider.js" />
     <Content Include="Scripts\app\features\students.js" />
@@ -269,7 +272,11 @@
     <Content Include="Scripts\app\models\markModel.js" />
     <Content Include="Scripts\app\models\studentModel.js" />
     <Content Include="Scripts\app\settings\config.js" />
+    <Content Include="Scripts\groupList.js" />
     <Content Include="Scripts\Index.js" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
