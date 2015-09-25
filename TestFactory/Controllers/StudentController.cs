@@ -26,9 +26,27 @@ namespace TestFactory.Controllers
             this.markManager = markManager;
             this.testDescriptionManager = testDescriptionManager;
             //addTestStudent();
+            //addTestDiscription();
+            //ListDiscription();
         }
 
         // GET: /Students/
+
+        private void addTestDiscription()
+        {
+            TestDescription tDesc = new TestDescription();
+            tDesc.Category = "Артистический";
+            tDesc.Code = "A";
+            tDesc.LongDescription = "rlkgklrjt krt gkrjtgjl gdtjhgl dg";
+            tDesc.ShortDescription = "lkjrgtdskhfle h kger";
+            testDescriptionManager.Create(tDesc);
+        }
+
+        private void ListDiscription()
+        {
+            IList<TestDescription> tDesc = testDescriptionManager.GetList();
+        }
+
 
         private void addTestStudent()
         {
@@ -88,20 +106,21 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(IList<StudentViewModel> student)
+        public ActionResult Create(StudentViewModel student)
         {
-            var model = Mapper.Map<IList<Student>>(student);
+            var model = Mapper.Map<Student>(student);
             // TODO: take from model
             string groupId = RouteData.Values["groupId"].ToString();
-            foreach (Student st in model)
+            model.GroupId = groupId;
+            studentManager.Create(model);
+            IList<TestDescription> tDesc = testDescriptionManager.GetList();
+            var i = 0;
+            foreach (Mark mr in model.Marks)
             {
-                st.GroupId = groupId;
-                foreach (Mark mr in st.Marks)
-                {
-                    mr.StudentId = st.Id;
-                    markManager.Create(mr);
-                }
-                studentManager.Create(st);
+                mr.Category = tDesc[i];
+                mr.StudentId = model.Id;
+                markManager.Create(mr);
+                i++;
             }
             return RedirectToRoute("groupStudentList", new { groupId = groupId });
         }
@@ -113,22 +132,17 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update(IList<StudentViewModel> student)
+        public ActionResult Update(StudentViewModel student)
         {
-            var model = Mapper.Map<IList<Student>>(student);
+            var model = Mapper.Map<Student>(student);
             // TODO: take from model
             string groupId = RouteData.Values["groupId"].ToString();
-            foreach (Student st in model)
+            model.GroupId = groupId;
+            studentManager.Update(model);
+            foreach (Mark mr in model.Marks)
             {
-                st.GroupId = groupId;
-                
-                st.GroupId = groupId;
-                foreach (Mark mr in st.Marks)
-                {
-                    mr.StudentId = st.Id;
-                    markManager.Update(mr);
-                }
-                studentManager.Update(st);
+                mr.StudentId = model.Id;
+                markManager.Update(mr);
             }
             return RedirectToRoute("groupStudentList", new { groupId = groupId });
         }

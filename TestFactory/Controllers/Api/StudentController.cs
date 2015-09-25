@@ -15,9 +15,12 @@ namespace TestFactory.Controllers.Api
     {
         private readonly StudentManager studentManager;
 
-        public StudentsController(StudentManager studentManager)
+        private readonly MarkManager markManager;
+
+        public StudentsController(StudentManager studentManager, MarkManager markManager)
         {
             this.studentManager = studentManager;
+            this.markManager = markManager;
         }
         // GET: API/Student
         [HttpGet]
@@ -32,6 +35,12 @@ namespace TestFactory.Controllers.Api
             else
             {
                 students = studentManager.GetList(groupId);
+                /*foreach (Student stud in students)
+                {
+                    stud.Marks = markManager.GetList(stud.Id);
+                }*/
+                //checking role
+
             }
             return students ;
         }

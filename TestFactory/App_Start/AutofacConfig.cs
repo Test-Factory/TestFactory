@@ -30,6 +30,8 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<MarkManager>();
 
+            builder.RegisterType<RoleManager>();
+
             builder.RegisterType<RolsProvider>();
 
             builder.RegisterType<TestDescriptionManager>();

@@ -11,5 +11,10 @@ namespace TestFactory.Business.Components.Managers
     public class TestDescriptionManager : BaseManager<TestDescription, ITestDescriptionDataProvider>
     {
         public TestDescriptionManager(ITestDescriptionDataProvider provider) : base(provider) { }
+
+        public IList<TestDescription> GetList()
+        {
+            return provider.GetList();
+        } 
     }
 }
