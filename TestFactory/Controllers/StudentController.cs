@@ -74,25 +74,10 @@ namespace TestFactory.Controllers
 
 
         [HttpGet]
-        public ActionResult List(string groupId = null)
+        public ActionResult List(string groupId)
         {
-            /*IList<Student> students;
-            if (string.IsNullOrEmpty(groupId))
-            {
-                students = studentManager.GetList();
-            }
-            else
-            {
-                students = studentManager.GetList(groupId);
-                //checking role
-                foreach (Student stud in students)
-                {
-                    stud.Marks = markManager.GetList(stud.Id);
-                }
-
-            }
-            var result = Mapper.Map<List<StudentViewModel>>(students);*/
-            return View(/*"List", result*/);
+            //var r = (int)groupId;
+            return View("List", (object)groupId);
         }
 
         [HttpGet]

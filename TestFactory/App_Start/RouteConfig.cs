@@ -30,7 +30,7 @@ namespace TestFactory
             routes.MapRoute(
                 name: "groupStudentList",
                 url: "group/{groupId}/students",
-                defaults: new {controller = "Student", action = "List"}
+                defaults : new { controller = "Student", action = "List", groupId = UrlParameter.Optional }
            );
 
             routes.MapRoute(

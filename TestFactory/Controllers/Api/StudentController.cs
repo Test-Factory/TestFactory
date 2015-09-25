@@ -30,10 +30,10 @@ namespace TestFactory.Controllers.Api
         }
         // GET: API/Student
         [HttpGet]
-        public IEnumerable<StudentViewModel> Get()
+        public IEnumerable<StudentViewModel> Get(string GroupId)
         {
             IList<Student> students;
-            string groupId = "13b66a40-5b78-48a0-b209-1390e420a11e";
+            string groupId = GroupId;
             if (string.IsNullOrEmpty(groupId))
             {
                 students = studentManager.GetList();

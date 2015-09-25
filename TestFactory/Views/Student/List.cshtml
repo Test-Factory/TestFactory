@@ -1,4 +1,4 @@
-﻿@model List<StudentViewModel>
+﻿@model System.String
 <div class='liveExample'>
 
     <form action='/someServerSideHandler'>
@@ -60,7 +60,8 @@
 @section Scripts{
 <script>
     $(document).ready(function () {
-        var viewModel = new StudentsViewModel();
+        var groupId = '@Model';
+        var viewModel = new StudentsViewModel(groupId);
         ko.applyBindings(viewModel);
     });
 

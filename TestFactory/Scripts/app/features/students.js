@@ -1,19 +1,10 @@
-﻿function StudentsViewModel() {
-    var sp = new StudentProvider();
+﻿function StudentsViewModel(GroupId) {
+   //.groupId = GroupId;
+   var sp = new StudentProvider(GroupId);
     var cp = new CategoryProvider();
     var self = this;
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
-//TODO: get category
-    //[
-    //    new CategoryModel({Id:1, Name: "R"}),
-    //    new CategoryModel({ Id: 2, Name: "I" }),
-    //    new CategoryModel({ Id: 3, Name: "A" }),
-    //    new CategoryModel({ Id: 4, Name: "S" }),
-    //    new CategoryModel({ Id: 5, Name: "E" }),
-    //    new CategoryModel({ Id: 6, Name: "C" })
-
-    //]);
 
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
@@ -72,7 +63,7 @@
                 self.categories.push(mappedItem);
             });
         });
-        sp.get(function (data) {
+        sp.get({ groupId: GroupId }, function (data) {
             $(data).each(function (index, element) {
                 var mappedItem = new StudentModel(element, self.mods.display);
                 self.students.push(mappedItem);

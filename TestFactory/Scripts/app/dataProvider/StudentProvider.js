@@ -1,10 +1,13 @@
-﻿function StudentProvider() {}
+﻿function StudentProvider(GroupId) {
+    self = this;
+    self.groupId = GroupId;
+}
 
 $(function() {
     var path = settings.basePath + "/api/Student";
     var contentType = "application/json; charset=utf-8";
-    StudentProvider.prototype.get = function (callback) {
-        $.get(path).done(callback).error(function() { console.log("error") ;} );
+    StudentProvider.prototype.get = function (id,callback) {
+        $.get(path, id).done(callback).error(function() { console.log("error") ;} );
     }
     
     StudentProvider.prototype.post = function (data, callback) {
