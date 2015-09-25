@@ -1,7 +1,7 @@
 ﻿function CategoryProvider() { }
 
 $(function () {
-    var path = settings.basePath + "/api/categories";
+    var path = settings.basePath + "/api/Category";
     var contentType = "application/json; charset=utf-8";
     CategoryProvider.prototype.get = function (callback) {
         $.get(path).done(callback).error(function () { console.log("error"); });

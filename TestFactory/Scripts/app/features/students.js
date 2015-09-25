@@ -65,17 +65,17 @@
         });
     }       
 
-    self.init = function() {
-        sp.get(function (data) {
-            $(data).each(function (index, element) {
-                var mappedItem = new StudentModel(element, self.mods.display);
-                self.students.push(mappedItem);
-            });
-        });
+    self.init = function () {
         cp.get(function (data) {
             $(data).each(function (index, element) {
                 var mappedItem = new CategoryModel(element);
                 self.categories.push(mappedItem);
+            });
+        });
+        sp.get(function (data) {
+            $(data).each(function (index, element) {
+                var mappedItem = new StudentModel(element, self.mods.display);
+                self.students.push(mappedItem);
             });
         });
     }
@@ -103,6 +103,7 @@
         return {
             Id: mark.id(),
             StudentId: mark.studentId(),
+            CategoryId: mark.categoryId(),
             Value: mark.value()
         }
     }

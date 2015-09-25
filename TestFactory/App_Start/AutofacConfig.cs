@@ -22,6 +22,8 @@ namespace TestFactory.App_Start
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
             builder.RegisterType<UserManager>();
 
             builder.RegisterType<StudentManager>();
@@ -53,8 +55,6 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<NHibernateCategoryDataProvider>()
                 .As<ICategoryDataProvider>();
-
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             var container = builder.Build();
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

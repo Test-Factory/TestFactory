@@ -6,6 +6,7 @@ using System.Web.Http;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
+using AutoMapper;
 
 namespace TestFactory.Controllers.Api
 {
@@ -20,9 +21,11 @@ namespace TestFactory.Controllers.Api
        }
         // GET: API/Student
         [HttpGet]
-       public IEnumerable<Category> Get()
+       public IEnumerable<CategoryWebModel> Get()
         {
-            return categoryManager.GetList();
+            var category = categoryManager.GetList();
+            var rezult = Mapper.Map<IEnumerable<CategoryWebModel>>(category);
+            return rezult;
         }
        
         [HttpPost]

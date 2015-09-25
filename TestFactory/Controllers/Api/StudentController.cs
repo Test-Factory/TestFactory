@@ -14,15 +14,15 @@ using AutoMapper;
 
 namespace TestFactory.Controllers.Api
 {
-    [RoutePrefix("api/students")]
-    public class StudentsController : ApiController
+    //[RoutePrefix("api/students")]
+    public class StudentController : ApiController
     {
         private readonly StudentManager studentManager;
 
         private readonly MarkManager markManager;
         private readonly CategoryManager categoryManager;
 
-        public StudentsController(StudentManager studentManager, MarkManager markManager, CategoryManager categoryManager)
+        public StudentController(StudentManager studentManager, MarkManager markManager, CategoryManager categoryManager)
         {
             this.studentManager = studentManager;
             this.markManager = markManager;
@@ -75,12 +75,12 @@ namespace TestFactory.Controllers.Api
         {
             var model = Mapper.Map<Student>(student);
             // TODO: take from model
-            studentManager.Update(model);
             foreach (Mark mr in model.Marks)
-        {
+            {
                 mr.StudentId = model.Id;
                 markManager.Update(mr);
             }
+            studentManager.Update(model);
             return Ok();
         }
     }
