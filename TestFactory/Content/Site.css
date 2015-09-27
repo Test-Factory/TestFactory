@@ -261,3 +261,10 @@ img#errorImage {
     background: white;
     border-radius: 3px;
 }
+input.createPop-up,input.updatePop-Up {
+    width: 70%;
+    margin-left: 10px;
+}
+.card-content.white-text {
+    overflow: hidden;
+}

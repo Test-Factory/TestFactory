@@ -5,8 +5,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>FirestName</th>
-                    <th>LastName</th>
+                    <th>@GlobalRes_ua.name</th>
+                    <th>@GlobalRes_ua.surname</th>
                     <!-- ko foreach: $root.categories -->
                     <th data-bind="text: code"></th>
                     <!-- /ko -->
@@ -53,7 +53,7 @@
                 <!-- /ko -->
             </tfoot>
         </table>
-        <a href="#" data-bind='click: addStudent' id="addStudent">Додати студента</a>
+        <a href="#" data-bind='click: addStudent' id="addStudent">@GlobalRes_ua.addStudent</a>
     </form>
 
 </div>

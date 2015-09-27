@@ -1,5 +1,4 @@
 ﻿@model TestFactory.MVC.ViewModels.UserViewModel
-
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <div id ="LoginForm">
@@ -13,6 +12,6 @@
             @Html.ValidationMessageFor(model => model.Password)
             @Html.PasswordFor(model => model.Password, new { @class="form-control", placeholder="Введіть пароль"})
         </div>
-        <button type="submit" class="btn waves-effect waves-light" id="logIn">Увійти</button>
+        <button type="submit" class="btn waves-effect waves-light" id="logIn">@GlobalRes_ua.loginAction</button>
     </div>
 }

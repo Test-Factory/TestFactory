@@ -151,6 +151,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GlobalRes.ua.resx</DependentUpon>
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </Compile>
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\AutomapperConfig.cs" />
@@ -342,11 +343,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\GlobalRes.ua.resx">
+    <EmbeddedResource Include="App_LocalResources\GlobalRes.ua.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.ua.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Embedded Resource</CustomToolNamespace>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
