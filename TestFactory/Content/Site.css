@@ -123,9 +123,19 @@ label {
     font-size: 1.2em;
 }
 input[type="text"] {
-    width:75%;
-    margin-left: 10px;
+    
 }
+
+#logIn
+{
+    float: right;
+}
+
+#LoginForm h2
+{
+    text-align: center;
+}
+
 #error {
     color:black;
     font-size: 2em;
@@ -237,4 +247,17 @@ img#errorImage {
 }
 .input-field input[type=search] ~ .mdi-navigation-close {
         top: -8px;
+}
+
+#LoginForm
+{
+    position: fixed;
+    top: 100px;
+    opacity: 1;
+    left: 35%;
+    width: 370px;
+    height: 300px;
+    z-index: 1000;
+    background: white;
+    border-radius: 3px;
 }

@@ -66,7 +66,7 @@ namespace TestFactory.Controllers
             }
             else
             {
-                ModelState.AddModelError("Email", "Data is not correct");
+                ModelState.AddModelError("Email", "Введені дані не коректні");
             }
 
             return View(user);
