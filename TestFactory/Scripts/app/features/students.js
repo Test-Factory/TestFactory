@@ -1,6 +1,6 @@
-﻿function StudentsViewModel(GroupId) {
+﻿function StudentsViewModel(groupId) {
   
-    var sp = new StudentProvider(GroupId);
+    var sp = new StudentProvider(groupId);
     var cp = new CategoryProvider();
     var mp = new MarkProvider();
     var self = this;
@@ -10,7 +10,7 @@
 
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
-    self.groupId = GroupId;
+    self.groupId = groupId;
     self.mods = {
         display: "display",
         edit: "edit",
@@ -41,12 +41,14 @@
     self.saveAddedStudent = function () {
         var studentServerModel = toServerStudentModel(self.studentForCreate);
         sp.post(studentServerModel, function (id) {
+
             var newStudent = new StudentModel();
             mapStudent(self.studentForCreate, newStudent);
             newStudent.id(id);
-            mp.get(id, function(data) {
-                for (m in newStudent.marks()) { }
-            });
+
+            //mp.get(id, function(data) {
+            //    for (m in newStudent.marks()) { }
+            //});
             closeAllEditing();
             self.students.push(newStudent);
         });
@@ -68,7 +70,7 @@
                 self.categories.push(mappedItem);
             });
         });
-        sp.get({ groupId: GroupId }, function (data) {
+        sp.get(function (data) {
             $(data).each(function (index, element) {
                 var mappedItem = new StudentModel(element, self.mods.display);
                 self.students.push(mappedItem);

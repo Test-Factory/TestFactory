@@ -1,19 +1,19 @@
-﻿function StudentProvider(GroupId) {
-    self = this;
-    self.groupId = GroupId;
+﻿function StudentProvider(groupId) {
+    var self = this;
+    self.apiPath = settings.basePath + "/api/students";
+    self.groupId = groupId;
 }
 
-$(function() {
-    var path = settings.basePath + "/api/students";
+$(function () {
     var contentType = "application/json; charset=utf-8";
-    StudentProvider.prototype.get = function (id,callback) {
-        $.get(path, id).done(callback).error(function() { console.log("error") ;} );
+    StudentProvider.prototype.get = function (callback) {
+        $.get(this.apiPath, {groupId: this.groupId}).done(callback).error(function () { console.log("error"); });
     }
     
     StudentProvider.prototype.post = function (data, callback) {
         $.ajax({
             method: "POST",
-            url: path,
+            url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
         }).done(callback);
@@ -22,7 +22,7 @@ $(function() {
     StudentProvider.prototype.put = function (data, callback) {
         $.ajax({
             method: "PUT",
-            url: path,
+            url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
         }).done(callback);
