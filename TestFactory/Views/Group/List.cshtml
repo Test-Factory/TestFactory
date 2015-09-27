@@ -1,8 +1,9 @@
 ﻿@model List<GroupViewModel>
+    @using Embedded_Resource
     <div id="forCreate">
         <a class="waves-effect waves-light btn-large" href="#" id="addGroup">
             <i id="addIcon" class="large material-icons left">note_add</i>
-            <div id="groupAdd">Нова<br> група</div>
+            <div id="groupAdd">@GlobalRes_ua.createGroup</div>
         </a>
     </div>
     @foreach (var item in Model)
@@ -15,7 +16,7 @@
                             <a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = item.Id }, null)"><p id="textLik">@item.ShortName</p></a>
                         </div>
                         <div class="card-action updateGroup">
-                            <a class="toEdit">Редагувати</a>
+                            <a class="toEdit">@GlobalRes_ua.edit</a>
                         </div>
                     </div>
                 </div>

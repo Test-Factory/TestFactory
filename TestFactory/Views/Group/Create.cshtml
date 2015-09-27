@@ -1,14 +1,13 @@
 ﻿@model GroupViewModel
-
 @using (Html.BeginForm("Create", "Group", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4 class="createPop-Up">Створіть групу</h4>
+        <h4 class="createPop-Up">@GlobalRes_ua.createAction</h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            <label class="control-label col-md-2 createPop-Up">Коротке ім'я</label>
+            <label class="control-label col-md-2 createPop-Up">@GlobalRes_ua.shortName</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control createPop-Up" } })
                 @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
@@ -16,7 +15,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2 createPop-Up">Повне ім'я</label>
+            <label class="control-label col-md-2 createPop-Up">@GlobalRes_ua.longName</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ShortName, new { htmlAttributes = new { @class = "form-control createPop-Up" } })
                 @Html.ValidationMessageFor(model => model.ShortName, "", new { @class = "text-danger" })
@@ -26,7 +25,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10 createPop-Up">
                 <button type="reset" class="btn red darken-3 btn-default">@Html.RouteLink("Відмінити", "Default", null, new { id = "whiteText" })</button>
-                <input type="submit" value="Зберегти" class="btn btn-default" />
+                <input type="submit" value="@GlobalRes_ua.save" class="btn btn-default" />
             </div>
         </div>
     </div>
