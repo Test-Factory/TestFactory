@@ -65,13 +65,12 @@ namespace TestFactory.Controllers.Api
                 markManager.Create(mr);
                 i++;
             }*/
-            return Ok(1);
+            return Ok(model);
         }
         [HttpPut]
         public IHttpActionResult Update(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
-            // TODO: take from model
             studentManager.Update(model);
             return Ok();
         }

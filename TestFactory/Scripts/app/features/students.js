@@ -40,17 +40,23 @@
 
     self.saveAddedStudent = function () {
         var studentServerModel = toServerStudentModel(self.studentForCreate);
-        sp.post(studentServerModel, function (id) {
-
+        sp.post(studentServerModel, function (data) {
+            debugger;
             var newStudent = new StudentModel();
             mapStudent(self.studentForCreate, newStudent);
-            newStudent.id(id);
-
-            //mp.get(id, function(data) {
-            //    for (m in newStudent.marks()) { }
-            //});
+            newStudent.id(data.Id);
+            for(i in newStudent.marks()) {
+                newStudent.marks()[i].studentId(newStudent.id());
+                for (j in data.Marks) {
+                    if (newStudent.marks()[i].categoryId() == data.Marks[j].CategoryId) {
+                        newStudent.marks()[i].id(data.Marks[j].Id);
+                        break;
+                    }
+                }
+            }
             closeAllEditing();
             self.students.push(newStudent);
+          
         });
     };
 
