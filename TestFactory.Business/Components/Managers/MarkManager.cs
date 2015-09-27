@@ -12,7 +12,7 @@ namespace TestFactory.Business.Components.Managers
     {
         public MarkManager(IMarkDataProvider provider) : base(provider){}
 
-        public IList<Mark> GetList(string studentId)
+        public IList<Mark> Get(string studentId)
         {
             return provider.GetByStudentId(studentId);
         }

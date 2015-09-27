@@ -158,8 +158,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Api\CategoryController.cs" />
-    <Compile Include="Controllers\Api\StudentController.cs" />
+    <Compile Include="Controllers\Api\CategoriesController.cs" />
+    <Compile Include="Controllers\Api\MarksController.cs" />
+    <Compile Include="Controllers\Api\StudentsController.cs" />
     <Compile Include="Components\UserViewContext.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -264,6 +265,7 @@
     <None Include="Properties\PublishProfiles\TestFactory - Web Deploy.pubxml" />
     <Content Include="Scripts\app\dataProvider\categoryProvider.js" />
     <Content Include="Scripts\app\dataProvider\groupProvider.js" />
+    <Content Include="Scripts\app\dataProvider\markProvider.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\dataProvider\studentProvider.js" />
@@ -320,6 +322,7 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Categoty\" />
+    <Folder Include="Views\Marks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

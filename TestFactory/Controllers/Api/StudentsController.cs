@@ -1,29 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
+﻿using System.Collections.Generic;
 using System.Web.Http;
-using System.Web.Optimization;
-using System.Web.Routing;
 using AutoMapper;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
-using System.Web;
-using System.Web.Providers.Entities;
 using TestFactory.MVC.ViewModels;
-using AutoMapper;
 using System;
 
 namespace TestFactory.Controllers.Api
 {
-    //[RoutePrefix("api/students")]
-    public class StudentController : ApiController
+    [RoutePrefix("api/students")]
+    public class StudentsController : ApiController
     {
         private readonly StudentManager studentManager;
 
         private readonly MarkManager markManager;
         private readonly CategoryManager categoryManager;
 
-        public StudentController(StudentManager studentManager, MarkManager markManager, CategoryManager categoryManager)
+        public StudentsController(StudentManager studentManager, MarkManager markManager, CategoryManager categoryManager)
         {
             this.studentManager = studentManager;
             this.markManager = markManager;
@@ -31,6 +24,7 @@ namespace TestFactory.Controllers.Api
         }
         // GET: API/Student
         [HttpGet]
+        [Route("{groupId}")]
         public IEnumerable<StudentViewModel> Get(string groupId)
         {
             IList<Student> students;

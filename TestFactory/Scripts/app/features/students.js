@@ -1,10 +1,12 @@
 ﻿function StudentsViewModel(GroupId) {
   
-   var sp = new StudentProvider(GroupId);
+    var sp = new StudentProvider(GroupId);
     var cp = new CategoryProvider();
+    var mp = new MarkProvider();
     var self = this;
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
+
 
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
@@ -42,6 +44,9 @@
             var newStudent = new StudentModel();
             mapStudent(self.studentForCreate, newStudent);
             newStudent.id(id);
+            mp.get(id, function(data) {
+                for (m in newStudent.marks()) { }
+            });
             closeAllEditing();
             self.students.push(newStudent);
         });
@@ -86,7 +91,6 @@
             FirstName: student.firstName(),
             LastName: student.lastName(),
             GroupId: self.groupId,
-            //GroupId: student.groupId(),
             Marks: ko.utils.arrayMap(student.marks(), toServerMarkModel)
         }
     }
