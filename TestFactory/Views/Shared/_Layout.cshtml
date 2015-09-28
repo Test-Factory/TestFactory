@@ -6,7 +6,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/materialize/css/materialize.min.css")
     @Styles.Render("~/Content/Site.css")
 </head>
@@ -52,6 +51,7 @@
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/modernizr")
     @RenderSection("scripts", required: false)
 </body>
 </html>
