@@ -72,6 +72,10 @@ namespace TestFactory.Controllers
             st.Marks = mrList;
         }
 
+        public ActionResult Result()
+        {
+            return null;
+        }
 
         [HttpGet]
         public ActionResult List(string groupId = null)
