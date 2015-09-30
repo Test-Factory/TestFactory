@@ -62,7 +62,8 @@
                 }
             }
             closeAllEditing();
-            self.students.push(newStudent);
+            self.students.splice(0, 0, newStudent);
+            //self.students.push(newStudent);
             self.addStudent();
           
         });
