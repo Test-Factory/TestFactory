@@ -37,6 +37,11 @@
         }
         self.studentForCreate.mode(self.mods.create);
     };
+    self.download = function() {
+        sp.loadReport(function() {
+            console.log("result");
+        });
+    }
 
     self.saveAddedStudent = function () {
         var studentServerModel = toServerStudentModel(self.studentForCreate);

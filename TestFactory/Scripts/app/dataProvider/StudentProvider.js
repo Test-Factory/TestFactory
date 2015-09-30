@@ -7,7 +7,11 @@
 $(function () {
     var contentType = "application/json; charset=utf-8";
     StudentProvider.prototype.get = function (callback) {
-        $.get(this.apiPath, {groupId: this.groupId}).done(callback).error(function () { console.log("error"); });
+        $.get(this.apiPath, { groupId: this.groupId }).done(callback).error(function () { console.log("error"); });
+    }
+
+    StudentProvider.prototype.loadReport = function (callback) {
+        $.get(settings.basePath + "/students/result").done(callback).error(function () { console.log("error"); });
     }
     
     StudentProvider.prototype.post = function (data, callback) {

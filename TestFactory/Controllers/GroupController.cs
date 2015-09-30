@@ -13,8 +13,7 @@ namespace TestFactory.Controllers
 {
     public class GroupController : Controller
     {
-        // GET: Group
-       private GroupManager groupManager;
+        private GroupManager groupManager;
 
         public GroupController(GroupManager groupManager)
         {
@@ -38,8 +37,9 @@ namespace TestFactory.Controllers
         public ActionResult Create(GroupViewModel group)
         {
             if (!ModelState.IsValid)
+            {
                 return View(group);
-
+            }
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Create(model);
             return RedirectToRoute("Default");
@@ -49,9 +49,10 @@ namespace TestFactory.Controllers
         public ActionResult Update(string id)
         {
             var group = groupManager.GetById(id);
-
             if (group == null)
+            {
                 return RedirectToRoute("NotFound");
+            }
 
             var model = AutoMapper.Mapper.Map<GroupViewModel>(group);            
             return View(model);
@@ -61,8 +62,9 @@ namespace TestFactory.Controllers
         public ActionResult Update(GroupViewModel group)
         {
             if (!ModelState.IsValid)
+            {
                 return View(group);
-
+            }
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Update(model);
             return RedirectToRoute("Default");

@@ -68,7 +68,6 @@ namespace TestFactory.Controllers
             {
                 ModelState.AddModelError("Email", "Введені дані не коректні");
             }
-
             return View(user);
         }
 

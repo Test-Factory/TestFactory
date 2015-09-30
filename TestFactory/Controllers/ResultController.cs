@@ -8,13 +8,9 @@ namespace TestFactory.Controllers
 {
     public class ResultController : Controller
     {
-        //
-        // GET: /Results/
-
         public ActionResult Results()
         {
             return View();
         }
-
     }
 }

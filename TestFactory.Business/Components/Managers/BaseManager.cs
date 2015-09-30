@@ -40,7 +40,5 @@ namespace TestFactory.Business.Components.Managers
         {
             provider.Update(model);
         }
-
-
     }
 }

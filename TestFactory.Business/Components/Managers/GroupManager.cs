@@ -11,7 +11,6 @@ namespace TestFactory.Business.Components.Managers
     public class GroupManager : BaseManager<Group, IGroupDataProvider>
     {
         public GroupManager(IGroupDataProvider provider) : base(provider) { }
-      
     }
 }
 
