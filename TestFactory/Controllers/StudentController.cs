@@ -16,8 +16,11 @@ namespace TestFactory.Controllers
     public class StudentController : Controller
     {
         private readonly StudentManager studentManager;
+
         private readonly GroupManager groupManager;
+
         private readonly MarkManager markManager;
+
         private readonly CategoryManager categoryManager;
 
         public StudentController(StudentManager studentManager, GroupManager groupManager, MarkManager markManager, CategoryManager categoryManager)
@@ -28,53 +31,9 @@ namespace TestFactory.Controllers
             this.categoryManager = categoryManager;
         }
 
-        // GET: /Students/
-
-        private void addTestDiscription()
-        {
-            Category tDesc = new Category();
-            tDesc.Name = "Артистический";
-            tDesc.Code = "A";
-            tDesc.LongDescription = "rlkgklrjt krt gkrjtgjl gdtjhgl dg";
-            tDesc.ShortDescription = "lkjrgtdskhfle h kger";
-            categoryManager.Create(tDesc);
-        }
-
-        private void ListDiscription()
-        {
-            IList<Category> tDesc = categoryManager.GetList();
-        }
-
-
-        private void addTestStudent()
-        {
-            Student st = new Student();
-            st.FirstName = "Bogdan";
-            st.LastName = "Semenets";
-            st.GroupId = "13b66a40-5b78-48a0-b209-1390e420a11e";
-            var t = st.Id;
-            List<Mark> mrList = new List<Mark>();
-            for (int i = 0; i < 6; i++)
-            {
-                Mark mr = new Mark();
-                mr.StudentId = st.Id;
-                mr.CategoryId = null;
-                mr.Value = 85;
-                mrList.Add(mr);
-            }
-            studentManager.Create(st);
-            st.Marks = mrList;
-            foreach (var model in mrList)
-            {
-
-                markManager.Create(model);
-            }
-            st.Marks = mrList;
-        }
-
         public ActionResult Result()
         {
-            return null;
+            return View();
         }
 
         [HttpGet]
@@ -95,7 +54,6 @@ namespace TestFactory.Controllers
         public ActionResult Create(StudentViewModel student)
         {
             var model = Mapper.Map<Student>(student);
-            // TODO: take from model
             string groupId = RouteData.Values["groupId"].ToString();
             model.GroupId = groupId;
             studentManager.Create(model);

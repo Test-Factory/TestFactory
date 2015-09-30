@@ -14,6 +14,7 @@ namespace TestFactory.Controllers.Api
         private readonly StudentManager studentManager;
 
         private readonly MarkManager markManager;
+
         private readonly CategoryManager categoryManager;
 
         public StudentsController(StudentManager studentManager, MarkManager markManager, CategoryManager categoryManager)
@@ -22,7 +23,7 @@ namespace TestFactory.Controllers.Api
             this.markManager = markManager;
             this.categoryManager = categoryManager;
         }
-        // GET: API/Student
+
         [HttpGet]
         public IEnumerable<StudentViewModel> Get([FromUri]string groupId)
         {
@@ -34,11 +35,6 @@ namespace TestFactory.Controllers.Api
             else
             {
                 students = studentManager.GetList(groupId);
-                /*foreach (Student stud in students)
-                {
-                    stud.Marks = markManager.GetList(stud.Id);
-                }*/
-                //checking role
             }
             var result = Mapper.Map<IEnumerable<StudentViewModel>>(students);
             return result;
@@ -56,17 +52,9 @@ namespace TestFactory.Controllers.Api
                 model.Marks[i].StudentId = model.Id;
             }
             studentManager.Create(model);
-            /*IList<Category> tDesc = categoryManager.GetList();
-            var i = 0;
-            foreach (Mark mr in model.Marks)
-            {
-                mr.CategoryId = tDesc[i].Id;
-                mr.StudentId = model.Id;
-                markManager.Create(mr);
-                i++;
-            }*/
             return Ok(model);
         }
+
         [HttpPut]
         public IHttpActionResult Update(StudentViewModel student)
         {

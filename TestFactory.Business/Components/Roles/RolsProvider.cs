@@ -31,6 +31,5 @@ namespace TestFactory.Business.Components.Rols
         {
             return dataProvider.GetRole(rolename);
         }
-
     }
 }
