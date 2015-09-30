@@ -6,14 +6,13 @@ using System.Web.Mvc;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
-using Microsoft.Office.Interop.Word;
-using System.Drawing;
 
 namespace TestFactory.Controllers
 {
     public class GroupController : Controller
     {
-        private GroupManager groupManager;
+        // GET: Group
+       private GroupManager groupManager;
 
         public GroupController(GroupManager groupManager)
         {
@@ -37,34 +36,19 @@ namespace TestFactory.Controllers
         public ActionResult Create(GroupViewModel group)
         {
             if (!ModelState.IsValid)
-            {
-                return View(group);
-            }
+                return View("Default");
+
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Create(model);
-            return RedirectToRoute("Default");
-        }
-
-        [HttpGet]
-        public ActionResult Update(string id)
-        {
-            var group = groupManager.GetById(id);
-            if (group == null)
-            {
-                return RedirectToRoute("NotFound");
-            }
-
-            var model = AutoMapper.Mapper.Map<GroupViewModel>(group);            
-            return View(model);
+            return RedirectToRoute("groupStudentList", new { groupId = group.Id });
         }
 
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
             if (!ModelState.IsValid)
-            {
                 return View(group);
-            }
+
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Update(model);
             return RedirectToRoute("Default");
