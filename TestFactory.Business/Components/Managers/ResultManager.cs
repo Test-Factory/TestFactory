@@ -21,9 +21,11 @@ namespace TestFactory.Business.Components.Managers
             Microsoft.Office.Interop.Word.Document doc = word.Documents.Add();
 
             var pText = doc.Paragraphs.Add();
+            pText.Range.Font.Size = 14;
             pText.Format.SpaceAfter = 10f;
-            pText.Range.Text = String.Format("This is line #{0}", 1);
-            pText.Range.InsertParagraphAfter();
+            pText.Range.Text += String.Format(student.FirstName + " " + student.LastName);
+
+
 
             Microsoft.Office.Interop.Word.Chart wdChart = doc.InlineShapes.AddChart(Microsoft.Office.Core.XlChartType.xlRadarFilled).Chart;
 
@@ -33,32 +35,44 @@ namespace TestFactory.Business.Components.Managers
             Microsoft.Office.Interop.Excel.Worksheet dataSheet = (Microsoft.Office.Interop.Excel.Worksheet)dataWorkbook.Worksheets[1];
 
             Microsoft.Office.Interop.Excel.Range tRange = dataSheet.Cells.get_Range("A1", "B7");
-            Microsoft.Office.Interop.Excel.ListObject tbl1 = dataSheet.ListObjects["Таблица1"];
+            Microsoft.Office.Interop.Excel.ListObject tbl1 = dataSheet.ListObjects["Таблиця1"];
             tbl1.Resize(tRange);
+
             ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A1")).FormulaR1C1 = "легенда A";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A2")).FormulaR1C1 = "Рациональный";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A3")).FormulaR1C1 = "Артистический";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A4")).FormulaR1C1 = "Исследовательский";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A5")).FormulaR1C1 = "Социальный";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A6")).FormulaR1C1 = "Предпринимательский";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A7")).FormulaR1C1 = "Систематический";
+            for (int i = 0; i < category.Count; i++)
+            {
+                int j = i + 2;
+                ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A"+j)).FormulaR1C1 = category[i].Name;
+            }
+
 
             ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B1")).FormulaR1C1 = "";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B2")).FormulaR1C1 = "90%";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B3")).FormulaR1C1 = "55%";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B4")).FormulaR1C1 = "85%";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B5")).FormulaR1C1 = "90%";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B6")).FormulaR1C1 = "90%";
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B7")).FormulaR1C1 = "90%";
+            for(int i = 0; i < student.Marks.Count; i++)
+            {
+                int j = i+2;
+                ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B"+j)).FormulaR1C1 = student.Marks[i].Value + "%";
+            }
 
 
-            wdChart.ChartTitle.Font.Size = 18;
-          // wdChart.ChartTitle.Font.Color = Color.Black.ToArgb();
-            wdChart.ChartTitle.Text = "Имя Фамалия";
+            wdChart.ChartTitle.Font.Size = 16;
+            wdChart.ChartTitle.Text = "Результати тесту по профорієнтації ДЖ. Холланда";
 
 
 
             dataWorkbook.Application.Quit();
+
+            for (int i = 0; i < category.Count; i++)
+            {
+                pText.Range.Text += String.Format(category[i].Code + "-(" + student.Marks[i].Value + ")—" + category[i].Name);
+            }
+            for (int i = 0; i < category.Count; i++)
+            {
+                pText.Range.InsertParagraphAfter();
+                pText.Range.Font.Size = 14;
+                pText.Range.Text += String.Format(category[i].Name + " тип");
+                pText.Range.Text += String.Format("Короткий опис: " + category[i].ShortDescription);
+                pText.Range.Text += String.Format("Детальний опис: " + category[i].LongDescription);
+            }
 
         }
     }
