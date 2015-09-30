@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Office.Core;
 using Microsoft.Office.Interop;
 using TestFactory.Business.Models;
-
+using System.Drawing;
 
 namespace TestFactory.Business.Components.Managers
 {
@@ -53,7 +53,7 @@ namespace TestFactory.Business.Components.Managers
 
 
             wdChart.ChartTitle.Font.Size = 18;
-            wdChart.ChartTitle.Font.Color = Color.Black.ToArgb();
+          // wdChart.ChartTitle.Font.Color = Color.Black.ToArgb();
             wdChart.ChartTitle.Text = "Имя Фамалия";
 
 
