@@ -22,25 +22,6 @@ namespace TestFactory.Controllers
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
-            //AddFirstRole();
-        }
-
-        public void AddFirstRole()
-        {
-            User admin = new User();
-            admin.Email = "TF.Filler@ukr.net";
-            admin.FirstName = "Filler";
-            admin.LastName = "TF";
-            admin.PasswordSalt = new PBKDF2().GenerateSalt();
-            admin.Password = new PBKDF2().Compute("IFiller", admin.PasswordSalt);
-
-            Role rol = new Role();
-            rol.Id = "12dc6a23-8454-419f-ac75-2ea0560d27ef";
-            rol.Name = "Filler";
-            roleManager.Create(rol);
-            admin.Roles = rol;
-
-            userManager.Create(admin);
         }
 
         [HttpGet]

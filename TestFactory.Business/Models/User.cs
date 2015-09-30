@@ -24,7 +24,6 @@ namespace TestFactory.Business.Models
 
         public User()
         {
-            Id = Guid.NewGuid().ToString();
             AdminGroup = new List<Group>();
         }
     }

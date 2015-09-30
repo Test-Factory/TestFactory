@@ -43,8 +43,7 @@ namespace TestFactory.Controllers.Api
         [HttpPost]
         public IHttpActionResult Create(StudentViewModel student)
         {
-            var model = new Student();
-            model = Mapper.Map<Student>(student);
+            Student model = Mapper.Map<Student>(student);
             model.Id =  Guid.NewGuid().ToString();
             for (int i = 0; i < model.Marks.Count; i++ )
             {

@@ -30,15 +30,8 @@ namespace TestFactory.Business.Components.Managers
                 bool correctPass = String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
                 if (correctPass)
                 {
-                    string[] t = new string[] { user.Roles.Name };
-                    HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(new System.Security.Principal.GenericIdentity(user.FirstName), t);
-                    var tet = HttpContext.Current.User.IsInRole("Filler");
-
-                    //var tt = UserContext.Current.IsLogged(user.Roles.Name);
-                    if (HttpContext.Current.User.IsInRole("Filler"))
-                    {
-                        return true;
-                    }
+                    HttpContext.Current.User = new System.Security.Principal
+                        .GenericPrincipal(new System.Security.Principal.GenericIdentity(user.FirstName), new[] { user.Roles.Name });
                 }
                 return correctPass;
             }
