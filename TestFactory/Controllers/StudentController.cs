@@ -31,7 +31,7 @@ namespace TestFactory.Controllers
             this.categoryManager = categoryManager;
         }
 
-        public ActionResult Result()
+        public ActionResult Result(StudentViewModel student)
         {
             return View();
         }

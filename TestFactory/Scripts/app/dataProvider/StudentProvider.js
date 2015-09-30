@@ -10,8 +10,14 @@ $(function () {
         $.get(this.apiPath, { groupId: this.groupId }).done(callback).error(function () { console.log("error"); });
     }
 
-    StudentProvider.prototype.loadReport = function (callback) {
-        $.get(settings.basePath + "/students/result").done(callback).error(function () { console.log("error"); });
+    StudentProvider.prototype.loadReport = function (data, callback) {
+        $.ajax({
+            method: "POST",
+            url: settings.basePath + "/students/result",
+            data: JSON.stringify(data),
+            contentType: contentType,
+        }).done(callback);
+        //$.post(settings.basePath + "/students/result").done(callback).error(function () { console.log("error"); });
     }
     
     StudentProvider.prototype.post = function (data, callback) {
