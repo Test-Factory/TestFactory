@@ -10,6 +10,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
         public StudentMap()
         {
             Table("Student");
+
             Id(x => x.Id);
 
             Map(x => x.FirstName);

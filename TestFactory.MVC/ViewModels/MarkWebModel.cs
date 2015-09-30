@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestFactory.MVC.ViewModels
 {
-    public class MarkWebModel    : BaseViewModel
+    public class MarkWebModel : BaseViewModel
     {
         public virtual string StudentId { get; set; }
 
