@@ -10,6 +10,7 @@
 
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
+    
     self.groupId = groupId;
     self.mods = {
         display: "display",
@@ -38,6 +39,13 @@
         self.studentForCreate.mode(self.mods.create);
     };
 
+    self.download = function (student) {
+        var studentServerModel = toServerStudentModel(student);
+        sp.loadReport(studentServerModel, function () {
+            console.log("result");
+        });
+    }
+
     self.saveAddedStudent = function () {
         var studentServerModel = toServerStudentModel(self.studentForCreate);
         sp.post(studentServerModel, function (data) {
@@ -55,7 +63,8 @@
                 }
             }
             closeAllEditing();
-            self.students.push(newStudent);
+            self.students.splice(0, 0, newStudent); //self.students.push(newStudent);
+            self.addStudent();
           
         });
     };
@@ -67,6 +76,7 @@
             mapStudent(self.studentForUpdate, student);
             student.mode(self.mods.display);
         });
+
     }       
 
     self.init = function () {
@@ -75,7 +85,9 @@
                 var mappedItem = new CategoryModel(element);
                 self.categories.push(mappedItem);
             });
+            self.addStudent();
         });
+        
         sp.get(function (data) {
             $(data).each(function (index, element) {
                 var mappedItem = new StudentModel(element, self.mods.display);
@@ -83,7 +95,7 @@
             });
         });
     }
-
+   
     self.init();
 
     function closeAllEditing() {

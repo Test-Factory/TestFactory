@@ -11,7 +11,20 @@
                     <th data-bind="text: code"></th>
                     <!-- /ko -->
                 </tr>
+                
+                <tr>
+                    <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" /></td>
+                    <!-- ko foreach: $root.studentForCreate.marks -->
+                    <td><input type="text" data-bind="textInput: value" /></td>
+                    <!-- /ko -->
+                    <td>
+                        <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Добавити</button>
+                    </td>
+                </tr>
+               
             </thead>
+           
             <tbody data-bind="foreach: students">
                 <!-- ko if: mode() == $root.mods.display -->
                 <tr>
@@ -21,7 +34,10 @@
                         <td data-bind="text: value"></td>
                     <!-- /ko -->
                     <td>
-                        <button class="btn btn-success" data-bind="click: $root.editStudent">Edit</button>
+                        <button class="btn btn-success" data-bind="click: $root.editStudent">Змінити</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" data-bind="click: $root.download">Завантажити</button>
                     </td>
                 </tr>
                 <!-- /ko -->
@@ -33,27 +49,12 @@
                         <td><input type="text" data-bind="textInput: value" /></td>
                     <!-- /ko -->
                     <td>
-                        <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Save</button>
+                        <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Зберегти</button>
                     </td>
                 </tr>
                 <!-- /ko -->
             </tbody>
-            <tfoot>
-                <!-- ko if: $root.studentForCreate.mode() == $root.mods.create -->
-                <tr>
-                    <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" /></td>
-                    <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" /></td>
-                    <!-- ko foreach: $root.studentForCreate.marks -->
-                        <td><input type="text" data-bind="textInput: value" /></td>
-                    <!-- /ko -->
-                    <td>
-                        <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Save</button>
-                    </td>
-                </tr>
-                <!-- /ko -->
-            </tfoot>
         </table>
-        <a href="#" data-bind='click: addStudent' id="addStudent">@GlobalRes_ua.addStudent</a>
     </form>
 
 </div>
