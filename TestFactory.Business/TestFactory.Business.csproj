@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
     <Compile Include="Components\Managers\GroupManager.cs" />
     <Compile Include="Components\Managers\MarkManager.cs" />
