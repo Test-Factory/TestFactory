@@ -15,13 +15,13 @@
                 </tr>
                 
                 <tr>
-                    <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" /></td>
-                    <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" maxlength="20" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" maxlength="30" /></td>
                     <!-- ko foreach: $root.studentForCreate.marks -->
-                    <td><input type="text" data-bind="textInput: value" /></td>
+                    <td><input type="number" data-bind="textInput: value" max="100" /></td>
                     <!-- /ko -->
                     <td>
-                        <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Добавити</button>
+                        <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Додати</button>
                     </td>
                 </tr>
                
@@ -45,10 +45,10 @@
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
-                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.firstName" maxlength="30" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.firstName" maxlength="20" /></td>
                     <td><input type="text" data-bind="textInput: $root.studentForUpdate.lastName" maxlength="30" /></td>
                     <!-- ko foreach: $root.studentForUpdate.marks -->
-                    <td><input type="text" data-bind="textInput: value"  /></td>
+                    <td><input type="number" data-bind="textInput: value" max="100" /></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Зберегти</button>
