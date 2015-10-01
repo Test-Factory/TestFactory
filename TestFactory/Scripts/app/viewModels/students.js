@@ -18,10 +18,6 @@
         create:"create"
     };
 
-    self.addStudent = function() {
-        console.log("add student");
-    };
-
     self.editStudent = function (student) {
         closeAllEditing();
         mapStudent(student, self.studentForUpdate);
@@ -39,7 +35,7 @@
         self.studentForCreate.mode(self.mods.create);
     };
 
-    self.download = function (student) {
+    self.downloadReport = function (student) {
         var studentServerModel = toServerStudentModel(student);
         sp.loadReport(studentServerModel, function () {
             console.log("result");
@@ -63,7 +59,7 @@
                 }
             }
             closeAllEditing();
-            self.students.splice(0, 0, newStudent); //self.students.push(newStudent);
+            self.students.splice(0, 0, newStudent);
             self.addStudent();
           
         });
