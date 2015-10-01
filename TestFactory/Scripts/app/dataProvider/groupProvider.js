@@ -3,11 +3,11 @@
 $(function () {
     var path = settings.basePath + "/api/groups";
     var contentType = "application/json; charset=utf-8";
-    StudentProvider.prototype.get = function (callback) {
+    GroupProvider.prototype.get = function (callback) {
         $.get(path).done(callback).error(function () { console.log("error"); });
     }
 
-    StudentProvider.prototype.post = function (data, callback) {
+    GroupProvider.prototype.post = function (data, callback) {
         $.ajax({
             method: "POST",
             url: path,
@@ -16,7 +16,7 @@ $(function () {
         }).done(callback);
     }
 
-    StudentProvider.prototype.put = function (data, callback) {
+    GroupProvider.prototype.put = function (data, callback) {
         $.ajax({
             method: "PUT",
             url: path,
