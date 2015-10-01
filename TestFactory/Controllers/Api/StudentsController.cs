@@ -13,15 +13,9 @@ namespace TestFactory.Controllers.Api
     {
         private readonly StudentManager studentManager;
 
-        private readonly MarkManager markManager;
-
-        private readonly CategoryManager categoryManager;
-
-        public StudentsController(StudentManager studentManager, MarkManager markManager, CategoryManager categoryManager)
+        public StudentsController(StudentManager studentManager)
         {
             this.studentManager = studentManager;
-            this.markManager = markManager;
-            this.categoryManager = categoryManager;
         }
 
         [HttpGet]

@@ -17,7 +17,6 @@ $(function () {
             data: JSON.stringify(data),
             contentType: contentType,
         }).done(callback);
-        //$.post(settings.basePath + "/students/result").done(callback).error(function () { console.log("error"); });
     }
     
     StudentProvider.prototype.post = function (data, callback) {
