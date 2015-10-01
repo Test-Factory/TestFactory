@@ -13,7 +13,6 @@
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
     
-    //self.groupId = groupId;
     self.mods = {
         display: "display",
         edit: "edit",
@@ -47,7 +46,6 @@
     self.saveAddedStudent = function () {
         var studentServerModel = toServerStudentModel(self.studentForCreate);
         sp.post(studentServerModel, function (data) {
-            debugger;
             var newStudent = new StudentModel();
             mapStudent(self.studentForCreate, newStudent);
             newStudent.id(data.Id);
@@ -108,7 +106,7 @@
             Id: student.id(),
             FirstName: student.firstName(),
             LastName: student.lastName(),
-            GroupId: self.groupId,
+            GroupId: self.group.id(),
             Marks: ko.utils.arrayMap(student.marks(), toServerMarkModel)
         }
     }

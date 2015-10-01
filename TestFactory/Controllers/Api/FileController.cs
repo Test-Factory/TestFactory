@@ -29,7 +29,6 @@ namespace TestFactory.Controllers.Api
             IList<Category> categories = categoryManager.GetList();
             resultManager.SaveToWord(studentSave, categories);
             return true;
-
         }
     }
 }
