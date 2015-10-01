@@ -1,17 +1,19 @@
-﻿function StudentsViewModel(groupId) {
-  
-    var sp = new StudentProvider(groupId);
+﻿function StudentsViewModel(group) {
+
+    var self = this;
+    self.group = new GroupModel(group);
+
+    var sp = new StudentProvider(self.group.id);
     var cp = new CategoryProvider();
     var mp = new MarkProvider();
-    var self = this;
+    
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
-
-
+    
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
     
-    self.groupId = groupId;
+    //self.groupId = groupId;
     self.mods = {
         display: "display",
         edit: "edit",

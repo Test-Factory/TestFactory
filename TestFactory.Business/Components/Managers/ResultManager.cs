@@ -31,35 +31,35 @@ namespace TestFactory.Business.Components.Managers
 
             Microsoft.Office.Interop.Word.ChartData chartData = wdChart.ChartData;
 
-            Microsoft.Office.Interop.Excel.Workbook dataWorkbook = (Microsoft.Office.Interop.Excel.Workbook)chartData.Workbook;
-            Microsoft.Office.Interop.Excel.Worksheet dataSheet = (Microsoft.Office.Interop.Excel.Worksheet)dataWorkbook.Worksheets[1];
+            //Microsoft.Office.Interop.Excel.Workbook dataWorkbook = (Microsoft.Office.Interop.Excel.Workbook)chartData.Workbook;
+            //Microsoft.Office.Interop.Excel.Worksheet dataSheet = (Microsoft.Office.Interop.Excel.Worksheet)dataWorkbook.Worksheets[1];
 
-            Microsoft.Office.Interop.Excel.Range tRange = dataSheet.Cells.get_Range("A1", "B7");
-            Microsoft.Office.Interop.Excel.ListObject tbl1 = dataSheet.ListObjects["Таблиця1"];
-            tbl1.Resize(tRange);
+            //Microsoft.Office.Interop.Excel.Range tRange = dataSheet.Cells.get_Range("A1", "B7");
+            //Microsoft.Office.Interop.Excel.ListObject tbl1 = dataSheet.ListObjects["Таблиця1"];
+            //tbl1.Resize(tRange);
 
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A1")).FormulaR1C1 = "легенда A";
-            for (int i = 0; i < category.Count; i++)
-            {
-                int j = i + 2;
-                ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A"+j)).FormulaR1C1 = category[i].Name;
-            }
-
-
-            ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B1")).FormulaR1C1 = "";
-            for(int i = 0; i < student.Marks.Count; i++)
-            {
-                int j = i+2;
-                ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B"+j)).FormulaR1C1 = student.Marks[i].Value + "%";
-            }
+            //((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A1")).FormulaR1C1 = "легенда A";
+            //for (int i = 0; i < category.Count; i++)
+            //{
+            //    int j = i + 2;
+            //    ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("A"+j)).FormulaR1C1 = category[i].Name;
+            //}
 
 
-            wdChart.ChartTitle.Font.Size = 16;
-            wdChart.ChartTitle.Text = "Результати тесту по профорієнтації ДЖ. Холланда";
+            //((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B1")).FormulaR1C1 = "";
+            //for(int i = 0; i < student.Marks.Count; i++)
+            //{
+            //    int j = i+2;
+            //    ((Microsoft.Office.Interop.Excel.Range)dataSheet.Cells.get_Range("B"+j)).FormulaR1C1 = student.Marks[i].Value + "%";
+            //}
+
+
+            //wdChart.ChartTitle.Font.Size = 16;
+            //wdChart.ChartTitle.Text = "Результати тесту по профорієнтації ДЖ. Холланда";
 
 
 
-            dataWorkbook.Application.Quit();
+            //dataWorkbook.Application.Quit();
 
             for (int i = 0; i < category.Count; i++)
             {

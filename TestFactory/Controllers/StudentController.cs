@@ -15,10 +15,19 @@ namespace TestFactory.Controllers
 {
     public class StudentController : Controller
     {
+        private readonly GroupManager groupManager;
+
+        public StudentController(GroupManager groupManager)
+        {
+            this.groupManager = groupManager;
+        }
+
         [HttpGet]
         public ActionResult List(string groupId = null)
         {
-            return View("List", (object)groupId);
+            var group = groupManager.GetById(groupId);
+            var result = Mapper.Map<GroupViewModel>(group);
+            return View("List", result);
         }
     }
 }

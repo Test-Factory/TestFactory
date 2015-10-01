@@ -1,7 +1,9 @@
-﻿@model System.String
+﻿@model TestFactory.MVC.ViewModels.GroupViewModel
 <div class='liveExample'>
-
+    
+    <h3 data-bind="text: $root.group.shortName" ></h3>
     <form action='/someServerSideHandler'>
+       
         <table class="table">
             <thead>
                 <tr>
@@ -31,7 +33,7 @@
                     <td data-bind="text: firstName"></td>
                     <td data-bind="text: lastName"></td>
                     <!-- ko foreach: marks -->
-                        <td data-bind="text: value"></td>
+                    <td data-bind="text: value"></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.editStudent">Змінити</button>
@@ -43,10 +45,10 @@
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
-                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.firstName" /></td>
-                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.lastName" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.firstName" maxlength="30" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.lastName" maxlength="30" /></td>
                     <!-- ko foreach: $root.studentForUpdate.marks -->
-                        <td><input type="text" data-bind="textInput: value" /></td>
+                    <td><input type="text" data-bind="textInput: value"  /></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Зберегти</button>
@@ -57,12 +59,13 @@
         </table>
     </form>
 
+
 </div>
 @section Scripts{
 <script>
     $(document).ready(function () {
-        var groupId = '@(Model)';
-        var viewModel = new StudentsViewModel(groupId);
+        var group = @Html.Raw(Json.Encode(Model));//'@(Model)';
+        var viewModel = new StudentsViewModel(group);
         ko.applyBindings(viewModel);
     });
 
