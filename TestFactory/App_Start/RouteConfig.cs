@@ -32,11 +32,12 @@ namespace TestFactory
                 url: "group/{groupId}/students",
                 defaults : new { controller = "Student", action = "List", groupId = UrlParameter.Optional }
            );
+
             routes.MapRoute(
                name : "studentResult",
                url : "students/result",
                defaults : new { controller = "Result", action = "Result" }
-          );
+            );
 
             routes.MapRoute(
                 name: "studentList",

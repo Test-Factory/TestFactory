@@ -9,11 +9,6 @@ namespace TestFactory.MVC.ViewModels
 {
     public class BaseViewModel
     {
-        public BaseViewModel()
-        {
-            Id = Guid.NewGuid().ToString();
-        }
-
         [ScaffoldColumn(false)]
         public virtual string Id { get; set; }
     }
