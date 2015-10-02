@@ -1,39 +1,39 @@
 ﻿@model TestFactory.MVC.ViewModels.GroupViewModel
 <div class='liveExample'>
     
-    <h3 id="groupName" data-bind="text: $root.group.shortName"></h3>
+    
     <form action='/someServerSideHandler'>
-       
-        <table class="table">
+        <h3 id="groupName" data-bind="text: $root.group.shortName"></h3>
+        <table class="table" id="tbStudentList">
             <thead>
                 <tr>
-                    <th>@GlobalRes_ua.name</th>
-                    <th>@GlobalRes_ua.surname</th>
+                    <th class="first-name">@GlobalRes_ua.name</th>
+                    <th class="last-name">@GlobalRes_ua.surname</th>
                     <!-- ko foreach: $root.categories -->
-                    <th data-bind="text: code"></th>
+                    <th class="marks" data-bind="text: code"></th>
                     <!-- /ko -->
                 </tr>
-                
+
                 <tr>
-                    <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" maxlength="20" placeholder="@GlobalRes_ua.name" /></td>
-                    <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" maxlength="30" placeholder="@GlobalRes_ua.surname" /></td>
+                    <td class="first-name"><input type="text" data-bind="textInput: $root.studentForCreate.firstName" maxlength="20" placeholder=" @GlobalRes_ua.name" /></td>
+                    <td class="last-name"><input type="text" data-bind="textInput: $root.studentForCreate.lastName" maxlength="30" placeholder=" @GlobalRes_ua.surname" /></td>
                     <!-- ko foreach: $root.studentForCreate.marks -->
-                    <td><input type="number" data-bind="textInput: value" max="100" placeholder=" 0 "  /></td>
+                    <td class="marks"><input type="text" data-bind="textInput: value" placeholder=" 0 " maxlength="3" /></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Додати</button>
                     </td>
                 </tr>
-               
+
             </thead>
-           
+
             <tbody data-bind="foreach: students">
                 <!-- ko if: mode() == $root.mods.display -->
                 <tr>
-                    <td data-bind="text: firstName"></td>
-                    <td data-bind="text: lastName"></td>
+                    <td class="first-name" data-bind="text: firstName"></td>
+                    <td class="last-name" data-bind="text: lastName"></td>
                     <!-- ko foreach: marks -->
-                    <td data-bind="text: value"></td>
+                    <td class="marks" data-bind="text: value" maxlength="3"></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.editStudent">Змінити</button>
@@ -45,10 +45,10 @@
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
-                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.firstName" maxlength="20" /></td>
-                    <td><input type="text" data-bind="textInput: $root.studentForUpdate.lastName" maxlength="30" /></td>
+                    <td><input class="first-name"  type="text" data-bind="textInput: $root.studentForUpdate.firstName" maxlength="20" /></td>
+                    <td><input class="last-name" type="text" data-bind="textInput: $root.studentForUpdate.lastName" maxlength="30" /></td>
                     <!-- ko foreach: $root.studentForUpdate.marks -->
-                    <td><input type="number" data-bind="textInput: value" max="100" /></td>
+                    <td class="marks"><input type="text" data-bind="textInput: value" maxlength="3" /></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Зберегти</button>

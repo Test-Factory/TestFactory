@@ -12,7 +12,6 @@
     
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
-    
     self.mods = {
         display: "display",
         edit: "edit",
@@ -44,6 +43,10 @@
     }
 
     self.saveAddedStudent = function () {
+        //if (self.errors().length > 0) {
+        //    self.errors.showAllMessages();
+        //    return;
+        //}
         var studentServerModel = toServerStudentModel(self.studentForCreate);
         sp.post(studentServerModel, function (data) {
             var newStudent = new StudentModel();

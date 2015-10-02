@@ -269,5 +269,17 @@ input.createPop-up,input.updatePop-Up {
     overflow: hidden;
 }
 #groupName {
-    margin-left: 100px;
+    margin-left: 30px;
 }
+#tbStudentList {
+   margin-left: 30px;
+}
+#tbStudentList .first-name {
+    width: 12%;
+}
+#tbStudentList .last-name {
+    width: 17%;
+}
+    #tbStudentList .marks {
+        width: 3%;
+    }
