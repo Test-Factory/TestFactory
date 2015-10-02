@@ -1,7 +1,7 @@
 ﻿@model TestFactory.MVC.ViewModels.GroupViewModel
 <div class='liveExample'>
     
-    <h3 data-bind="text: $root.group.shortName" ></h3>
+    <h3 id="groupName" data-bind="text: $root.group.shortName"></h3>
     <form action='/someServerSideHandler'>
        
         <table class="table">
@@ -15,10 +15,10 @@
                 </tr>
                 
                 <tr>
-                    <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" maxlength="20" /></td>
-                    <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" maxlength="30" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForCreate.firstName" maxlength="20" placeholder="@GlobalRes_ua.name" /></td>
+                    <td><input type="text" data-bind="textInput: $root.studentForCreate.lastName" maxlength="30" placeholder="@GlobalRes_ua.surname" /></td>
                     <!-- ko foreach: $root.studentForCreate.marks -->
-                    <td><input type="number" data-bind="textInput: value" max="100" /></td>
+                    <td><input type="number" data-bind="textInput: value" max="100" placeholder=" 0 "  /></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Додати</button>

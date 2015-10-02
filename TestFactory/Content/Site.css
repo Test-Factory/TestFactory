@@ -268,3 +268,6 @@ input.createPop-up,input.updatePop-Up {
 .card-content.white-text {
     overflow: hidden;
 }
+#groupName {
+    margin-left: 100px;
+}
