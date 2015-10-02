@@ -12,6 +12,7 @@
     
     self.studentForUpdate = new StudentModel();
     self.studentForCreate = new StudentModel();
+
     self.mods = {
         display: "display",
         edit: "edit",
@@ -43,10 +44,13 @@
     }
 
     self.saveAddedStudent = function () {
-        //if (self.errors().length > 0) {
-        //    self.errors.showAllMessages();
-        //    return;
-        //}
+        //self.studentForCreate.errors = ko.validation.group(self.studentForCreate);
+        var result = ko.validation.group(self.studentForCreate, { deep: true });
+        if (result().length > 0 ){
+            //alert("Please fix all errors before preceding");
+            result.showAllMessages(true);
+            return false;
+        }
         var studentServerModel = toServerStudentModel(self.studentForCreate);
         sp.post(studentServerModel, function (data) {
             var newStudent = new StudentModel();

@@ -283,3 +283,6 @@ input.createPop-up,input.updatePop-Up {
     #tbStudentList .marks {
         width: 3%;
     }
+/*input:required {
+    border: 1px solid red; 
+   }*/

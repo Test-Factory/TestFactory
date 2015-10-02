@@ -15,7 +15,7 @@
                 </tr>
 
                 <tr>
-                    <td class="first-name"><input type="text" data-bind="textInput: $root.studentForCreate.firstName" maxlength="20" placeholder=" @GlobalRes_ua.name" /></td>
+                    <td class="first-name"><input type="text" required data-bind="textInput: $root.studentForCreate.firstName" maxlength="20" placeholder=" @GlobalRes_ua.name " /></td>
                     <td class="last-name"><input type="text" data-bind="textInput: $root.studentForCreate.lastName" maxlength="30" placeholder=" @GlobalRes_ua.surname" /></td>
                     <!-- ko foreach: $root.studentForCreate.marks -->
                     <td class="marks"><input type="text" data-bind="textInput: value" placeholder=" 0 " maxlength="3" /></td>

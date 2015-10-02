@@ -1,10 +1,8 @@
 ﻿function StudentModel(item, defaultMode) {
     var self = this;
     self.id = ko.observable(item ? item.Id : "");
-    self.firstName = ko.observable(item ? item.FirstName : "").extend({ 
-        required: { message: 'Please supply your Name.' }
-    });
-    self.lastName = ko.observable(item ? item.LastName : "");
+    self.firstName = ko.observable(item ? item.FirstName : "").extend({ required: true });
+    self.lastName = ko.observable(item ? item.LastName : "").extend({ required: true });
     self.groupId = ko.observable(item ? item.GroupId : "");
     self.mode = ko.observable(defaultMode || "display");
 
@@ -17,3 +15,7 @@
         });
     }
 }
+
+var validationOptions =
+      { insertMessages: true, decorateElement: true, errorElementClass: 'errorFill' };
+ko.validation.init(validationOptions);
