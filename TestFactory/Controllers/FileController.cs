@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
 using AutoMapper;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
+using System.Web.Mvc;
 
 namespace TestFactory.Controllers.Api
 {
-    public class FileController : ApiController
+    public class FileController : Controller
     {
         private readonly CategoryManager categoryManager;
         private readonly ResultManager resultManager;
@@ -22,7 +20,7 @@ namespace TestFactory.Controllers.Api
             this.resultManager = resultManager;
         }
 
-        [HttpGet]
+        [HttpPost]
         public bool GetReport(StudentViewModel student)
         {  
             var  studentSave = Mapper.Map<Student>(student);
