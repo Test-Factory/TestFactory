@@ -192,7 +192,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
-    <Compile Include="Controllers\Api\FileController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\Api\MarksController.cs" />
     <Compile Include="Controllers\Api\StudentsController.cs" />
     <Compile Include="Components\UserViewContext.cs" />

@@ -22,11 +22,14 @@ namespace TestFactory.Controllers
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
+           // userManager.AddFirstRole();
         }
 
+       
         [HttpGet]
         public ActionResult LogIn()
         {
+         
             return View();
         }
 
