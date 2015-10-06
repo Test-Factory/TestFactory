@@ -44,10 +44,8 @@
     }
 
     self.saveAddedStudent = function () {
-        //self.studentForCreate.errors = ko.validation.group(self.studentForCreate);
         var result = ko.validation.group(self.studentForCreate, { deep: true });
         if (result().length > 0 ){
-            //alert("Please fix all errors before preceding");
             result.showAllMessages(true);
             return false;
         }
@@ -73,13 +71,16 @@
     };
 
     self.saveEditedStudent = function (student) {
+        var result = ko.validation.group(self.studentForCreate, { deep: true });
+        if (result().length > 0) {
+            result.showAllMessages(true);
+            return false;
+        }
         var studentServerModel = toServerStudentModel(self.studentForUpdate);
-        
         sp.put(studentServerModel, function () {
             mapStudent(self.studentForUpdate, student);
             student.mode(self.mods.display);
         });
-
     }       
 
     self.init = function () {

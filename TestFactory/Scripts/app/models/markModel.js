@@ -3,7 +3,20 @@
     self.id = ko.observable(item ? item.Id : "");
     self.studentId = ko.observable(item ? item.StudentId : "");
     self.categoryId = ko.observable(item ? item.CategoryId : "");
-    self.value = ko.observable(item ? item.Value : "").extend({ required: true }).extend({ number: true });
+    self.value = ko.observable(item ? item.Value : "").extend({
+        required: {
+            params: true,
+            message: "Це поле є обов'язковим"
+        }
+    }).extend({
+        number:{
+            params: true,
+            message: "Будь ласка, введіть число."
+        }
+    }).extend({ max: {
+        params: 100,
+        message: "Будь ласка, введіть значення менше або рівне 100."
+    }});
 }
 var validationOptions =
       { insertMessages: true, decorateElement: true, errorElementClass: 'errorFill' };
