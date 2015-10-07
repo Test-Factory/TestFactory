@@ -7,9 +7,9 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.Business.DataProviderContracts
 {
-    public interface IRoleDataProvider : IDataProvider<Role>
+    public interface IRoleDataProvider: IDataProvider<Models.Role>
     {
-        Role GetRole(string rolename);
+        Models.Role GetRole(string rolename);
 
         bool IsUserInRole(string username, string rolename);
     }
