@@ -71,16 +71,16 @@
 
 </div>
 @section Scripts{
-    <script>
-        var globalView = null;
-        $(document).ready(function () {
-            var group = @Html.Raw(Json.Encode(Model));
-            var viewModel = new StudentsViewModel(group);
-            globalView = viewModel;
-            ko.applyBindings(viewModel);
-        });
+<script>
+    var globalView = null;
+    $(document).ready(function () {
+        var group = @Html.Raw(Json.Encode(Model));
+        var viewModel = new StudentsViewModel(group);
+        globalView = viewModel;
+        ko.applyBindings(viewModel);
+    });
 
-    </script>
+</script>
 }
 
    

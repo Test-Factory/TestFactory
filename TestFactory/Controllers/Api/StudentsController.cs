@@ -33,7 +33,7 @@ namespace TestFactory.Controllers.Api
             var result = Mapper.Map<IEnumerable<StudentViewModel>>(students);
             return result;
         }
-       
+        [Authorize]
         [HttpPost]
         public IHttpActionResult Create(StudentViewModel student)
         {
@@ -47,7 +47,7 @@ namespace TestFactory.Controllers.Api
             studentManager.Create(model);
             return Ok(model);
         }
-
+         [Authorize]
         [HttpPut]
         public IHttpActionResult Update(StudentViewModel student)
         {

@@ -38,14 +38,10 @@ namespace TestFactory.Business.Components.Managers
             provider.Create(admin);
         }
         public bool IsPasswordValid(string email, string password)
-        {
-            password = "3253v";
-            email = "TF.Filler@ukr.net";
+        {       
             var user = provider.GetByEmail(email);
             if(user != null)
             {
-                user.Password = "3253v";
-                user.Email = "TF.Filler@ukr.net";
                 bool correctPass = String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
                 if (correctPass)
                 {
