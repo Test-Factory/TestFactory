@@ -18,6 +18,3 @@
         message: "Будь ласка, введіть значення менше або рівне 100."
     }});
 }
-var validationOptions =
-      { insertMessages: true, decorateElement: true, errorElementClass: 'errorFill' };
-    ko.validation.init(validationOptions);

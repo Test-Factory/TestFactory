@@ -26,6 +26,3 @@
     }
 }
 
-var validationOptions =
-      { insertMessages: true, decorateElement: true, errorElementClass: 'errorFill' };
-ko.validation.init(validationOptions);

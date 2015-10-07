@@ -5,5 +5,8 @@ ko.validation.init({
     messagesOnModified: false,
     insertMessages: false,
     parseInputAttributes: true,
-    messageTemplate: null
+    messageTemplate: null,
+    decorateElement: true,
+    decorateInputElement: true
 }, false);
+

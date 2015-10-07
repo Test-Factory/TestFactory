@@ -333,7 +333,6 @@
     <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\themes\sand-signika.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\themes\skies.js" />
-    <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\dataProvider\studentProvider.js" />
     <Content Include="Scripts\app\viewModels\students.js" />
@@ -343,9 +342,6 @@
     <Content Include="Scripts\app\settings\config.js" />
     <Content Include="Scripts\groupList.js" />
     <Content Include="Scripts\Index.js" />
-    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.1.js" />
-    <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />

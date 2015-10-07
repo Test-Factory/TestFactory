@@ -286,8 +286,8 @@ input.createPop-up,input.updatePop-Up {
 #tbStudentList .marks {
         width: 3%;
     }
-input:required {
-    border-bottom: 1px solid red; 
+.errorFill {
+    border-bottom: 3px solid red; 
    }
 table {
     table-layout: fixed;

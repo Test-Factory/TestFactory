@@ -1,4 +1,18 @@
-﻿function StudentsViewModel(group) {
+﻿ko.bindingHandlers.tooltip = {
+    update: function (element, valueAccessor) {
+        var options = valueAccessor() || {};
+        ko.utils.unwrapObservable(valueAccessor());
+        if (options.message()) {
+            $(element).tooltip("remove");
+            $(element).attr('data-tooltip', options.message());
+            $(element).tooltip({ delay: 0 });
+        } else {
+            $(element).tooltip("remove");
+        }
+    }
+};
+
+function StudentsViewModel(group) {
 
     var self = this;
     self.group = new GroupModel(group);
@@ -10,8 +24,8 @@
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
     
-    self.studentForUpdate = new StudentModel();
-    self.studentForCreate = new StudentModel();
+    self.studentForUpdate = ko.validatedObservable(new StudentModel(), { deep: true });
+    self.studentForCreate = ko.validatedObservable(new StudentModel(), { deep: true });
 
     self.mods = {
         display: "display",
@@ -21,19 +35,20 @@
 
     self.editStudent = function (student) {
         closeAllEditing();
-        mapStudent(student, self.studentForUpdate);
+        mapStudent(student, self.studentForUpdate());
+        self.studentForUpdate.valueHasMutated();
         student.mode(self.mods.edit);
     };
 
     self.addStudent = function () {
         closeAllEditing();
-        mapStudent(new StudentModel(), self.studentForCreate);
+        mapStudent(new StudentModel(), self.studentForCreate());
         for (var c in self.categories()) {
             var mark = new MarkModel();
             mark.categoryId(self.categories()[c].id());
-            self.studentForCreate.marks.push(mark);
+            self.studentForCreate().marks.push(mark);
         }
-        self.studentForCreate.mode(self.mods.create);
+        self.studentForCreate().mode(self.mods.create);
     };
 
     self.downloadReport = function (student) {
@@ -44,15 +59,14 @@
     }
 
     self.saveAddedStudent = function () {
-        var result = ko.validation.group(self.studentForCreate, { deep: true });
-        if (result().length > 0 ){
-            result.showAllMessages(true);
+        if (!self.studentForCreate.isValid()) {
             return false;
         }
-        var studentServerModel = toServerStudentModel(self.studentForCreate);
+        
+        var studentServerModel = toServerStudentModel(self.studentForCreate());
         sp.post(studentServerModel, function (data) {
             var newStudent = new StudentModel();
-            mapStudent(self.studentForCreate, newStudent);
+            mapStudent(self.studentForCreate(), newStudent);
             newStudent.id(data.Id);
             for(i in newStudent.marks()) {
                 newStudent.marks()[i].studentId(newStudent.id());
@@ -71,14 +85,12 @@
     };
 
     self.saveEditedStudent = function (student) {
-        var result = ko.validation.group(self.studentForCreate, { deep: true });
-        if (result().length > 0) {
-            result.showAllMessages(true);
+        if (!self.studentForUpdate.isValid()) {
             return false;
         }
-        var studentServerModel = toServerStudentModel(self.studentForUpdate);
+        var studentServerModel = toServerStudentModel(self.studentForUpdate());
         sp.put(studentServerModel, function () {
-            mapStudent(self.studentForUpdate, student);
+            mapStudent(self.studentForUpdate(), student);
             student.mode(self.mods.display);
         });
     }       
@@ -106,7 +118,7 @@
         for (var k in self.students()) {
             self.students()[k].mode(self.mods.display);
         }
-        self.studentForCreate.mode(self.mods.display);
+        self.studentForUpdate().mode(self.mods.display);
     }
 
     function toServerStudentModel(student) {
@@ -139,3 +151,5 @@
         }
     }
 }
+
+
