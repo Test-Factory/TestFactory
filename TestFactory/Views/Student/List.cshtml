@@ -1,24 +1,24 @@
 ﻿@model TestFactory.MVC.ViewModels.GroupViewModel
 <div class='liveExample'>
     
-    
+    <div id="saveZip" onclick ="saveZipArr()">Зберегти в zip архів<div>
     <form action='/someServerSideHandler'>
         <h3 id="groupName" data-bind="text: $root.group.shortName"></h3>
         <table class="table" id="tbStudentList">
             <thead>
                 <tr>
-                    <th class="first-name">@GlobalRes_ua.name</th>
+                    <th class="first-name"  >@GlobalRes_ua.name</th>
                     <th class="last-name">@GlobalRes_ua.surname</th>
                     <!-- ko foreach: $root.categories -->
                     <th class="marks" data-bind="text: code"></th>
                     <!-- /ko -->
                 </tr>
 
-                <tr>
-                    <td class="first-name"><input type="text" required data-bind="textInput: $root.studentForCreate.firstName" maxlength="20" placeholder=" @GlobalRes_ua.name " /></td>
-                    <td class="last-name"><input type="text" data-bind="textInput: $root.studentForCreate.lastName" maxlength="30" placeholder=" @GlobalRes_ua.surname" /></td>
+                <tr class ="create">
+                    <td  class="first-name"><input id="fn" type="text" data-bind="textInput: $root.studentForCreate.firstName" maxlength="255" placeholder=" @GlobalRes_ua.name " /></td>
+                    <td class="last-name"><input type="text" data-bind="textInput: $root.studentForCreate.lastName" maxlength="255" placeholder=" @GlobalRes_ua.surname " /></td>
                     <!-- ko foreach: $root.studentForCreate.marks -->
-                    <td class="marks"><input type="text" data-bind="textInput: value" placeholder=" 0 " maxlength="3" /></td>
+                    <td class="marks"><input type="text"  data-bind="textInput: value" placeholder=" 0 " maxlength="3" /></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Додати</button>
@@ -45,8 +45,8 @@
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
-                    <td><input class="first-name"  type="text" data-bind="textInput: $root.studentForUpdate.firstName" maxlength="20" /></td>
-                    <td><input class="last-name" type="text" data-bind="textInput: $root.studentForUpdate.lastName" maxlength="30" /></td>
+                    <td class="first-name"><input type="text" data-bind="textInput: $root.studentForUpdate.firstName" maxlength="255" /></td>
+                    <td class="first-name"><input  type="text" data-bind="textInput: $root.studentForUpdate.lastName" maxlength="255" /></td>
                     <!-- ko foreach: $root.studentForUpdate.marks -->
                     <td class="marks"><input type="text" data-bind="textInput: value" maxlength="3" /></td>
                     <!-- /ko -->
@@ -63,9 +63,11 @@
 </div>
 @section Scripts{
 <script>
+    var globalView = null;
     $(document).ready(function () {
-        var group = @Html.Raw(Json.Encode(Model));//'@(Model)';
+        var group = @Html.Raw(Json.Encode(Model));
         var viewModel = new StudentsViewModel(group);
+        globalView = viewModel;
         ko.applyBindings(viewModel);
     });
 

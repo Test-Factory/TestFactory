@@ -275,14 +275,23 @@ input.createPop-up,input.updatePop-Up {
    margin-left: 30px;
 }
 #tbStudentList .first-name {
-    width: 12%;
+    width: 25%;
+    word-wrap:break-word;
+    
 }
 #tbStudentList .last-name {
-    width: 17%;
+    width: 25%;
+    word-wrap:break-word;
 }
-    #tbStudentList .marks {
+#tbStudentList .marks {
         width: 3%;
     }
-/*input:required {
-    border: 1px solid red; 
-   }*/
+input:required {
+    border-bottom: 1px solid red; 
+   }
+table {
+    table-layout: fixed;
+    width: 95%;
+}
+
+

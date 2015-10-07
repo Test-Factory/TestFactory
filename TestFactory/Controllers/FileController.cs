@@ -6,6 +6,7 @@ using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
 using System.Web.Mvc;
+using System.IO.Compression;
 
 namespace TestFactory.Controllers.Api
 {
@@ -13,11 +14,13 @@ namespace TestFactory.Controllers.Api
     {
         private readonly CategoryManager categoryManager;
         private readonly ResultManager resultManager;
+        private readonly StudentManager studentManager;
 
-        public FileController(CategoryManager categoryManager, ResultManager resultManager)
+        public FileController(CategoryManager categoryManager, ResultManager resultManager, StudentManager studentManager)
         {
             this.categoryManager = categoryManager;
             this.resultManager = resultManager;
+            this.studentManager = studentManager;
         }
 
         [HttpPost]
@@ -27,6 +30,15 @@ namespace TestFactory.Controllers.Api
             IList<Category> categories = categoryManager.GetList();
             resultManager.SaveToWord(studentSave, categories);
             return true;
+        }
+
+        [HttpPost]
+        public void SaveZip()
+        {
+            IList<Student> students = studentManager.GetList("13b66a40-5b78-48a0-b209-1390e420a11e");
+            var studentSave = Mapper.Map<IList<Student>>(students);
+            IList<Category> categories = categoryManager.GetList();
+            resultManager.SaveToZip(studentSave, categories);
         }
     }
 }

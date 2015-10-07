@@ -7,12 +7,43 @@ using Microsoft.Office.Core;
 using Microsoft.Office.Interop;
 using TestFactory.Business.Models;
 using System.Drawing;
+using Ionic.Zip;
+using Microsoft.Win32;
 
 namespace TestFactory.Business.Components.Managers
 {
     public class ResultManager
     {
-        public bool SaveToWord(Student student, IList<Category> category)
+        public void SaveToZip(IList<Student> students, IList<Category> category)
+        {
+            ZipFile zip = new ZipFile("E:\\GroupSave.zip");
+            foreach (Student st in students)
+            {
+                var doc = ConvertToWord(st, category);
+                string docName = "E:\\GroupSave\\" + st.FirstName + st.LastName + ".docx";
+                doc.SaveAs2(docName);
+                break;
+            }
+            zip.Save();
+            
+        }
+
+        public void SaveToWord(Student student, IList<Category> category)
+        {
+            var doc = ConvertToWord(student, category);
+            try
+            {
+                doc.Save();
+                doc.Close();
+            }
+            catch (Exception)
+            {
+                //doc.Close();
+            }
+            
+        }
+
+        public Microsoft.Office.Interop.Word.Document ConvertToWord(Student student, IList<Category> category)
         {
             Microsoft.Office.Interop.Word.Application word = null;
 
@@ -31,6 +62,8 @@ namespace TestFactory.Business.Components.Managers
             Microsoft.Office.Interop.Word.ChartData chartData = wdChart.ChartData;
 
             Microsoft.Office.Interop.Excel.Workbook dataWorkbook = (Microsoft.Office.Interop.Excel.Workbook)chartData.Workbook;
+            dataWorkbook.Application.Visible = false;
+            
             Microsoft.Office.Interop.Excel.Worksheet dataSheet = (Microsoft.Office.Interop.Excel.Worksheet)dataWorkbook.Worksheets[1];
 
             Microsoft.Office.Interop.Excel.Range tRange = dataSheet.Cells.get_Range("A1", "B7");
@@ -82,16 +115,7 @@ namespace TestFactory.Business.Components.Managers
             }
             dataWorkbook.Application.Quit();
 
-            try
-            {
-                doc.Save();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
+            return doc;
         }
     }
 }
