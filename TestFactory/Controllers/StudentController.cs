@@ -21,7 +21,7 @@ namespace TestFactory.Controllers
         {
             this.groupManager = groupManager;
         }
-
+        
         [HttpGet]
         public ActionResult List(string groupId = null)
         {
