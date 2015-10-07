@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using AutoMapper;
 using TestFactory.Business.Components.Managers;
@@ -21,14 +22,14 @@ namespace TestFactory.Controllers.Api
         [HttpGet]
         public IEnumerable<StudentViewModel> Get([FromUri]string groupId)
         {
-            IList<Student> students;
+            IEnumerable<Student> students;
             if (string.IsNullOrEmpty(groupId))
             {
-                students = studentManager.GetList();
+                students = studentManager.GetList().OrderBy(s => s.LastName);
             }
             else
             {
-                students = studentManager.GetList(groupId);
+                 students = studentManager.GetList(groupId).OrderBy(s=>s.LastName);
             }
             var result = Mapper.Map<IEnumerable<StudentViewModel>>(students);
             return result;
