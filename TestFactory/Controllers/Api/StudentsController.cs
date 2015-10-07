@@ -29,19 +29,19 @@ namespace TestFactory.Controllers.Api
             IEnumerable<Student> students;
             if (string.IsNullOrEmpty(groupId))
             {
-                throw new HttpResponseException(HttpStatusCode.PreconditionFailed);     //TODO: return error
+                throw new HttpResponseException(HttpStatusCode.PreconditionFailed);
             }
             students = studentManager.GetList(groupId).OrderBy(s => s.LastName);
             if (students == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound); //TODO: return error
+                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             var result = Mapper.Map<IEnumerable<StudentViewModel>>(students);
             return result;
 
         }
        
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ValidateModel]
         public IHttpActionResult Create(StudentViewModel student)
@@ -56,7 +56,7 @@ namespace TestFactory.Controllers.Api
                 studentManager.Create(model);
                 return Ok(model);
         }
-       //  [Authorize]
+        [Authorize]
         [HttpPut]
         [ValidateModel]
         public IHttpActionResult Update(StudentViewModel student)
