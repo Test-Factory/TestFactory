@@ -28,7 +28,7 @@
                                placeholder="@GlobalRes_ua.name" />
                     </td>
                     <!-- ko foreach: $root.studentForCreate().marks -->
-                    <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " maxlength="3" /></td>
+                    <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Додати</button>
@@ -41,7 +41,7 @@
                     <td class="last-name" data-bind="text: lastName"></td>
                     <td class="first-name" data-bind="text: firstName"></td>
                     <!-- ko foreach: marks -->
-                    <td class="marks" data-bind="text: value" maxlength="3"></td>
+                    <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.editStudent">Змінити</button>
@@ -56,7 +56,7 @@
                     <td class="last-name"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().lastName,  tooltip: { message: $root.studentForUpdate().lastName.error }" maxlength="255" /></td>
                     <td class="first-name"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().firstName,  tooltip: { message: $root.studentForUpdate().firstName.error }" maxlength="255" /></td>
                     <!-- ko foreach: $root.studentForUpdate().marks -->
-                    <td class="marks"><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" maxlength="3" /></td>
+                    <td class="marks"><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
                     <!-- /ko -->
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Зберегти</button>
