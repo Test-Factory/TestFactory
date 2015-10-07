@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
+using TestFactory.Components;
 
 namespace TestFactory.Controllers
 {
@@ -13,13 +14,18 @@ namespace TestFactory.Controllers
     {
        private GroupManager groupManager;
 
+       private UserViewContext user;
+
         public GroupController(GroupManager groupManager)
         {
             this.groupManager = groupManager;
+            this.user = new UserViewContext();
         }
 
         public ActionResult List()
         {
+            if (!user.IsLoggedIn || user.User.Roles.Name != "Filler")
+                return RedirectToRoute("login");
             var groups = groupManager.GetList();
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
@@ -28,6 +34,8 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (!user.IsLoggedIn || user.User.Roles.Name != "Filler")
+                return RedirectToRoute("login");
             return PartialView();
         }
 
@@ -47,6 +55,8 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
+            if (!user.IsLoggedIn || user.User.Roles.Name != "Filler")
+                return RedirectToRoute("login");
             if (!ModelState.IsValid)
             {
                 return View(group);

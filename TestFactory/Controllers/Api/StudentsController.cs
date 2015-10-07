@@ -10,6 +10,7 @@ using TestFactory.Business.Models;
 using TestFactory.Filters;
 using TestFactory.MVC.ViewModels;
 using System;
+using TestFactory.Controllers;
 
 namespace TestFactory.Controllers.Api
 {
@@ -40,8 +41,7 @@ namespace TestFactory.Controllers.Api
             return result;
 
         }
-       
-        [Authorize]
+
         [HttpPost]
         [ValidateModel]
         public IHttpActionResult Create(StudentViewModel student)
@@ -56,7 +56,6 @@ namespace TestFactory.Controllers.Api
                 studentManager.Create(model);
                 return Ok(model);
         }
-        [Authorize]
         [HttpPut]
         [ValidateModel]
         public IHttpActionResult Update(StudentViewModel student)
