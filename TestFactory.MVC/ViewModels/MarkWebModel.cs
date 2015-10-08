@@ -16,7 +16,7 @@ namespace TestFactory.MVC.ViewModels
         public virtual string CategoryId { get; set; }
 
         [Required]
-        [Range(1, 100)]
+        [Range(0, 100)]
         public virtual int Value { get; set; }
     }
 }

@@ -17,12 +17,7 @@
             params: true,
             message: "Це поле є обов'язковим"
         }
-    }).extend({
-        maxLength: {
-            params: 255,
-            message: "Перевищує ліміт в 255 символів."
-        }
-    });;
+    });
     self.groupId = ko.observable(item ? item.GroupId : "");
     self.mode = ko.observable(defaultMode || "display");
 
