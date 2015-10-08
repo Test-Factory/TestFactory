@@ -13,12 +13,14 @@ namespace TestFactory.MVC.ViewModels
     {
         [Required]
         [DataType(DataType.Text)]
+        [StringLength(255)]
         public virtual string FirstName { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
+        [StringLength(255)]
         public virtual string LastName { get; set; }
-        
+        [Required]
         public virtual string GroupId { get; set; }
 
         public virtual IList<Mark> Marks { get; set; }

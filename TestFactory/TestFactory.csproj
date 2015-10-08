@@ -201,6 +201,7 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -294,7 +295,6 @@
     <Content Include="Content\materialize\font\roboto\Roboto-Thin.woff2" />
     <None Include="Properties\PublishProfiles\TestFactory - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\TestFactory - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - Web Deploy.pubxml" />
     <Content Include="Scripts\app\dataProvider\categoryProvider.js" />
     <Content Include="Scripts\app\dataProvider\groupProvider.js" />
@@ -419,15 +419,6 @@
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>5</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="Microsoft.Office.Interop.Excel">
-      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>7</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
