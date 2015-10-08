@@ -34,11 +34,8 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(UserViewModel user, string returnUrl)
-        {
-            string decodedUrl = "";
-            if (!string.IsNullOrEmpty(returnUrl))
-                decodedUrl = Server.UrlDecode(returnUrl);
+        public ActionResult LogIn(UserViewModel user)
+        {          
             if (!ModelState.IsValid)
             {
                 return View(user);
@@ -47,10 +44,7 @@ namespace TestFactory.Controllers
             if (userManager.IsPasswordValid(user.Email, user.Password))
             {
                 FormsAuthentication.SetAuthCookie(user.Email, false);
-                if (Url.IsLocalUrl(decodedUrl))
-                {
-                    return Redirect(decodedUrl);
-                }
+
                 return RedirectToRoute("Default");
             }
             else

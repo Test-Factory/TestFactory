@@ -24,7 +24,7 @@ namespace TestFactory.Controllers
 
         public ActionResult List()
         {
-            if (!user.IsLoggedIn || user.User.Roles.Name != "Filler")
+            if (!user.IsLoggedIn)
                 return RedirectToRoute("login");
             var groups = groupManager.GetList();
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
@@ -42,6 +42,8 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Create(GroupViewModel group)
         {
+            if (!user.IsLoggedIn || user.User.Roles.Name != "Filler")
+                return RedirectToRoute("login");
             if (!ModelState.IsValid)
             {
                 return View("Default");
