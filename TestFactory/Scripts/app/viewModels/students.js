@@ -37,6 +37,7 @@ function StudentsViewModel(group) {
         closeAllEditing();
         mapStudent(student, self.studentForUpdate());
         self.studentForUpdate.valueHasMutated();
+
         student.mode(self.mods.edit);
     };
 
