@@ -23,22 +23,22 @@ namespace TestFactory.Business.Components.Managers
         }
         public void AddFirstRole()
         {
-            User admin = new User();
-            admin.Email = "TF.Filler@ukr.net";
-            admin.FirstName = "Filler";
-            admin.LastName = "TF";
-            admin.PasswordSalt = new PBKDF2().GenerateSalt();
-            admin.Password = new PBKDF2().Compute("IFiller", admin.PasswordSalt);
+            User admin1 = new User();
+            admin1.Email = "TF.Editor@ukr.net";
+            admin1.FirstName = "Editor";
+            admin1.LastName = "Ed";
+            admin1.PasswordSalt = new PBKDF2().GenerateSalt();
+            admin1.Password = new PBKDF2().Compute("IEditor", admin1.PasswordSalt);
 
-            Role rol = new Role();
-            rol.Id = "12dc6a23-8454-419f-ac75-2ea0560d27ef";
-            rol.Name = "Filler";
-            admin.Roles = rol;
+            Role rol1 = new Role();
+            rol1.Id = "316987d9-9e4e-4cc4-b32a-b64112ca20be";
+            rol1.Name = "Editor";
+            admin1.Roles = rol1;
 
-            provider.Create(admin);
+            provider.Create(admin1);
         }
         public bool IsPasswordValid(string email, string password)
-        {       
+        {
             var user = provider.GetByEmail(email);
             if(user != null)
             {

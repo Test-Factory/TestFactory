@@ -33,7 +33,7 @@ namespace TestFactory.Controllers
             if (groupId == null) 
                 throw new ArgumentNullException("groupId");
 
-            if (!user.IsLoggedIn||user.User.Roles.Name!="Filler") 
+            if (!user.IsLoggedIn) 
                     return RedirectToRoute("login");
 
             var group = groupManager.GetById(groupId);

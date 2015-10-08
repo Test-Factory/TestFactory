@@ -293,6 +293,10 @@ table {
     table-layout: fixed;
     width: 95%;
 }
+input#FullName,input#ShortName{
+    margin-left: 10px;
+    width: 340px;
+}
 .error-massage {
     font-weight: bold;
     color: #f00;
