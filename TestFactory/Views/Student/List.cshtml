@@ -12,6 +12,8 @@
                     <th class="marks" data-bind="text: code"></th>
                     <!-- /ko -->
                 </tr>
+                @if (User.Identity.Name == "TF.Filler@ukr.net")
+                { 
                 <tr>
                     <td class="last-name">
                         <input type="text"
@@ -34,6 +36,7 @@
                         <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Додати</button>
                     </td>
                 </tr>
+                }
             </thead>
             <tbody data-bind="foreach: students">
                 <!-- ko if: mode() == $root.mods.display -->
@@ -43,9 +46,12 @@
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
+                   @if (User.Identity.Name == "TF.Filler@ukr.net") 
+                   { 
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.editStudent">Змінити</button>
                     </td>
+                   }
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.downloadReport">Завантажити</button>
                     </td>

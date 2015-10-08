@@ -28,14 +28,13 @@ namespace TestFactory.Controllers
        
         [HttpGet]
         public ActionResult LogIn()
-        {
-         
+        {       
             return View();
         }
 
         [HttpPost]
         public ActionResult LogIn(UserViewModel user)
-        {          
+        {           
             if (!ModelState.IsValid)
             {
                 return View(user);
@@ -44,7 +43,6 @@ namespace TestFactory.Controllers
             if (userManager.IsPasswordValid(user.Email, user.Password))
             {
                 FormsAuthentication.SetAuthCookie(user.Email, false);
-
                 return RedirectToRoute("Default");
             }
             else
