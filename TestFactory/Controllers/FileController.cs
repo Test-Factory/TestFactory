@@ -28,7 +28,8 @@ namespace TestFactory.Controllers.Api
         {  
             var  studentSave = Mapper.Map<Student>(student);
             IList<Category> categories = categoryManager.GetList();
-            resultManager.SaveToWord(studentSave, categories);
+            //resultManager.SaveToWord(studentSave, categories);
+            resultManager.ConvertToWordX(studentSave, categories);
             return true;
         }
 
