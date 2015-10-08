@@ -29,7 +29,7 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult List(string groupId = null)
         {
-            if (!user.IsLoggedIn||user.User.Roles.Name!="Filler") 
+            if (!user.IsLoggedIn) 
                     return RedirectToRoute("login");
 
             var group = groupManager.GetById(groupId);
