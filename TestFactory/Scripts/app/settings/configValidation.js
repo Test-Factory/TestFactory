@@ -7,8 +7,6 @@ ko.validation.init({
     parseInputAttributes: true,
     messageTemplate: null,
     decorateElement: true,
-    //errorElementClass: 'invalid',
-    grouping: { deep: true, observable: false },
     decorateInputElement: true
-}, false);
+}, true);
 

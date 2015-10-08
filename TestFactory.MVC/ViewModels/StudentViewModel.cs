@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TestFactory.Business.Models;
+//using TestFactory.Business.ValidationAttributes;
 
 namespace TestFactory.MVC.ViewModels
 {
@@ -21,6 +22,7 @@ namespace TestFactory.MVC.ViewModels
         [StringLength(255)]
         public virtual string LastName { get; set; }
         [Required]
+        //[ExsistGroupId]
         public virtual string GroupId { get; set; }
 
         public virtual IList<Mark> Marks { get; set; }

@@ -32,6 +32,12 @@ function StudentsViewModel(group) {
         edit: "edit",
         create:"create"
     };
+    self.downloadReport = function (student) {
+        var studentServerModel = toServerStudentModel(student);
+        sp.loadReport(studentServerModel, function () {
+            console.log("result");
+        });
+    }
 
     self.editStudent = function (student) {
         closeAllEditing();
@@ -52,18 +58,12 @@ function StudentsViewModel(group) {
         self.studentForCreate().mode(self.mods.create);
     };
 
-    self.downloadReport = function (student) {
-        var studentServerModel = toServerStudentModel(student);
-        sp.loadReport(studentServerModel, function () {
-            console.log("result");
-        });
-    }
+    
 
     self.saveAddedStudent = function () {
         if (!self.studentForCreate.isValid()) {
             return false;
         }
-        
         var studentServerModel = toServerStudentModel(self.studentForCreate());
         sp.post(studentServerModel, function (data) {
             var newStudent = new StudentModel();
@@ -81,7 +81,6 @@ function StudentsViewModel(group) {
             closeAllEditing();
             self.students.splice(0, 0, newStudent);
             self.addStudent();
-          
         });
     };
 
