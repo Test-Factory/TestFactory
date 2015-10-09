@@ -2,15 +2,15 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <div id ="LoginForm">
-        <h2>Авторизація</h2>
+        <h2>@GlobalRes_ua.authorization</h2>
     
         <div>
             @Html.ValidationMessageFor(model => model.Email)
-            @Html.TextBoxFor(model => model.Email, new { @class="form-control", placeholder="Введіть логін"})
+            @Html.TextBoxFor(model => model.Email, new { @class="form-control", placeholder=GlobalRes_ua.enterLogin})
         </div>
         <div>
             @Html.ValidationMessageFor(model => model.Password)
-            @Html.PasswordFor(model => model.Password, new { @class="form-control", placeholder="Введіть пароль"})
+            @Html.PasswordFor(model => model.Password, new { @class="form-control", placeholder=GlobalRes_ua.enterPassword})
         </div>
         <button type="submit" class="btn waves-effect waves-light" id="logIn">@GlobalRes_ua.loginAction</button>
     </div>

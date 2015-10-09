@@ -11,8 +11,8 @@
     </head>
     <body>
 
-        <noscript><h3 class="error-massage">Відключений JavaScript.</h3></noscript>
-        <h3 id="error-cookie" class="error-massage">Не підключені Cookie.</h3>
+        <noscript><h3 class="error-massage">@GlobalRes_ua.offJavascript</h3></noscript>
+        <h3 id="error-cookie" class="error-massage">@GlobalRes_ua.offCookie</h3>
         <header>
             <nav class=" blue-grey darken-1">
                 <div class="nav-wrapper">
@@ -32,13 +32,13 @@
                     {
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li><a href="#">@User.Identity.Name</a></li>
-                            <li>@Html.RouteLink("Вихід", "LogOut")</li>
+                            <li>@Html.RouteLink(GlobalRes_ua.exit, "LogOut")</li>
                         </ul>
                     }
                     else
                     {
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            <li>@Html.RouteLink("Вхід", "login")</li>
+                            <li>@Html.RouteLink(GlobalRes_ua.wayIn, "login")</li>
                         </ul>
                     }
                 </div>
