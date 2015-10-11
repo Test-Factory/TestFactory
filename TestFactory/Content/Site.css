@@ -317,3 +317,10 @@ color: #f00;
 #error-cookie {
 display: none;
 }
+div#count {
+    margin-top: 22px;
+    color:#F3F1EF;
+}
+a.toEdit {
+    margin-top: -32px;
+}
