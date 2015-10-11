@@ -12,6 +12,11 @@ namespace TestFactory.Business.Components.Managers
     {
         public GroupManager(IGroupDataProvider provider) : base(provider) { }
 
+        public int GetCount(string gropId)
+        {
+            return provider.GetCount(gropId);
+        }
+
     }
 }
 

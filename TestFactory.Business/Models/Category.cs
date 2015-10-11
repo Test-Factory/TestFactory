@@ -15,5 +15,7 @@ namespace TestFactory.Business.Models
         public virtual string ShortDescription { get; set; }
 
         public virtual string LongDescription { get; set; }
+
+        //public virtual string Specialization { get; set; }
     }
 }

@@ -13,10 +13,11 @@ namespace TestFactory.Controllers
     public class GroupController : Controller
     {
        private GroupManager groupManager;
+       private readonly StudentManager studentManager;
 
        private UserViewContext user;
 
-        public GroupController(GroupManager groupManager)
+        public GroupController(GroupManager groupManager, StudentManager studentManager)
         {
             this.groupManager = groupManager;
             this.user = new UserViewContext();
@@ -30,6 +31,18 @@ namespace TestFactory.Controllers
             var groups = groupManager.GetList();
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
+        }
+
+        
+        public ActionResult GetStudentCount(string id)
+        {
+            return View(groupManager.GetCount(id));
+        }
+
+        public ActionResult GetStudentsCount(string id)
+        {
+            int count = groupManager.GetCount(id);
+            return Json(count);
         }
 
         [HttpGet]

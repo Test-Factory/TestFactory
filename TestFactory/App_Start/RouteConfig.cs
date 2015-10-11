@@ -57,6 +57,12 @@ namespace TestFactory
            );
 
             routes.MapRoute(
+             name: "GetStudentCount",
+             url: "GetStudentCount/{id}",
+             defaults: new { controller = "Group", action = "GetStudentCount", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
              name: "createGroup",
              url: "group/create",
              defaults: new { controller = "Group", action = "Create" }
@@ -82,7 +88,7 @@ namespace TestFactory
 
             routes.MapRoute(
                 name: "GetReport",
-                url: "students/result/{id}",
+                url: "students/results/{id}",
                 defaults: new { controller = "File", action = "GetReport", id = UrlParameter.Optional }
                 );
 

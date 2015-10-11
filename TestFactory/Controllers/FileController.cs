@@ -31,22 +31,9 @@ namespace TestFactory.Controllers.Api
         {
             var studentSave = Mapper.Map<Student>(student);
             IList<Category> categories = categoryManager.GetList();
-            Student st = new Student();
-            st.FirstName = "Богдан";
-            st.LastName = "Семенець";
-            st.Id = "ergerge23-efew";
-            Mark mr = new Mark();
-            mr.CategoryId = "erf";
-            mr.Id = "ergergger";
-            mr.StudentId = "ergerge23-efew";
-            mr.Value = 1;
-            IList<Mark> lm = new List<Mark>();
-            for (int i = 0; i < 6; i++)
-            {
-                lm.Add(mr);
-            }
-            st.Marks = lm;
+            Student st1 = studentManager.GetById("04b0fd13-22e6-48ac-a2aa-85be9fa93d8b");
 
+            Group gr = groupManager.GetById(st1.GroupId);
 
 
             //resultManager.SaveToWord(studentSave, categories);
@@ -56,9 +43,11 @@ namespace TestFactory.Controllers.Api
 
             IList<Category> ct = new List<Category>();
             ct = categoryManager.GetList();
-            var tuple = new Tuple<Student, IList<Category>>(st, ct);
+            var tuple = new Tuple<Student, IList<Category>, Group>(st1, ct, gr);
             return View(tuple);
+            //return View(tuple);
         }
+
 
         [HttpPost]
         public void SaveZip()
