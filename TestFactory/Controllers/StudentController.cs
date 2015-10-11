@@ -31,7 +31,12 @@ namespace TestFactory.Controllers
         [Authorize(Roles = "Filler, Editor")]
         public ActionResult List(string groupId = null)
         {
+            
+            if (groupId == null)
+                throw new ArgumentNullException("groupId");
             var group = groupManager.GetById(groupId);
+            if (group == null)
+                throw new InvalidOperationException("Group does not exist.");
             var result = Mapper.Map<GroupViewModel>(group);
             return View("List", result);
         }
