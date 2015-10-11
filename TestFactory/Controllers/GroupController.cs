@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
-using TestFactory.Components;
+using TestFactory.Business.Components;
 
 namespace TestFactory.Controllers
 {
@@ -15,14 +15,15 @@ namespace TestFactory.Controllers
        private GroupManager groupManager;
        private readonly StudentManager studentManager;
 
-       private UserViewContext user;
+       private UserContext user;
 
         public GroupController(GroupManager groupManager, StudentManager studentManager)
         {
             this.groupManager = groupManager;
-            this.user = new UserViewContext();
+            this.user = new UserContext();
         }
 
+        [Authorize(Roles = "Filler, Editor")]
         public ActionResult List()
         {
             if (!user.IsLoggedIn)
@@ -45,6 +46,7 @@ namespace TestFactory.Controllers
             return Json(count);
         }
 
+        [Authorize(Roles = "Filler")]
         [HttpGet]
         public ActionResult Create()
         {
