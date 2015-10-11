@@ -1,58 +1,72 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/materialize/css/materialize.min.css")
-    @Styles.Render("~/Content/Site.css")
-</head>
-<body>
-    <header>
-        <nav class=" blue-grey darken-1">
-            <div class="nav-wrapper">
-                <a href=@Url.RouteUrl("Default") class="left">@GlobalRes_ua.testHolland</a>
-                <a href="#" class="center" id="text">@GlobalRes_ua.testHolland</a>
-                <a href="#" data-activates="mobile-nav" class="right button-collapse"><i class="mdi-navigation-more-vert"></i></a>
-                <div class="right">
-                    <form>
-                        <div class="input-field">
-                            <input type="search" id="search-field" class="field" required maxlength="">
-                            <label for="search-field" class=" for-input"><i class="mdi-action-search"></i></label>
-                            <i class="mdi-navigation-close close for-input"></i>
-                        </div>
-                    </form>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>@ViewBag.Title</title>
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/materialize/css/materialize.min.css")
+        @Styles.Render("~/Content/Site.css")
+    </head>
+    <body>
+
+        <noscript><h3 class="error-massage">@GlobalRes_ua.offJavascript</h3></noscript>
+        <h3 id="error-cookie" class="error-massage">@GlobalRes_ua.offCookie</h3>
+        <header>
+            <nav class=" blue-grey darken-1">
+                <div class="nav-wrapper">
+                    <a href=@Url.RouteUrl("Default") class="left">@GlobalRes_ua.testHolland</a>
+                    <a href="#" class="center" id="text">@GlobalRes_ua.testHolland</a>
+                    <a href="#" data-activates="mobile-nav" class="right button-collapse"><i class="mdi-navigation-more-vert"></i></a>
+                    <div class="right">
+                        <form>
+                            <div class="input-field">
+                                <input type="search" id="search-field" class="field" required maxlength="">
+                                <label for="search-field" class=" for-input"><i class="mdi-action-search"></i></label>
+                                <i class="mdi-navigation-close close for-input"></i>
+                            </div>
+                        </form>
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li><a href="#">@User.Identity.Name</a></li>
+                            <li>@Html.RouteLink(GlobalRes_ua.exit, "LogOut")</li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li>@Html.RouteLink(GlobalRes_ua.wayIn, "login")</li>
+                        </ul>
+                    }
                 </div>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="#">@User.Identity.Name</a></li>
-                        <li>@Html.RouteLink("Вихід", "LogOut")</li>
-                    </ul>
-                }
-                else
-                {
-                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li>@Html.RouteLink("Вхід", "login")</li>
-                    </ul>
-                }
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
-    <div id="content">
-        @RenderBody()
-    </div>
+        <div id="content">
+            @RenderBody()
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/jquery.validate.js")
-    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
-    @Scripts.Render("~/Scripts/materialize/materialize.js")
-    @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/app")
-    @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("scripts", required: false)
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/Scripts/jquery.validate.js")
+        @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+        @Scripts.Render("~/Scripts/materialize/materialize.js")
+        @Scripts.Render("~/bundles/knockout")
+        @Scripts.Render("~/bundles/app")
+        @Scripts.Render("~/bundles/modernizr")
+        @RenderSection("scripts", required: false)
+        <script>
+        $(document).ready(function () {
+        if (!navigator.cookieEnabled) {
+            $("#error-cookie").css("display", "block");
+        }
+        debugger;
+        
+         });
+        </script>
+       
+    </body>
 </html>
+

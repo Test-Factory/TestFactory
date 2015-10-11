@@ -18,10 +18,12 @@ namespace TestFactory.Controllers.Api
     public class StudentsController : ApiController
     {
         private readonly StudentManager studentManager;
+        private readonly GroupManager groupManager;
 
-        public StudentsController(StudentManager studentManager)
+        public StudentsController(StudentManager studentManager, GroupManager groupManager)
         {
             this.studentManager = studentManager;
+            this.groupManager = groupManager;
         }
 
         [HttpGet]
@@ -32,6 +34,12 @@ namespace TestFactory.Controllers.Api
             {
                 throw new HttpResponseException(HttpStatusCode.PreconditionFailed);
             }
+            var group = groupManager.GetById(groupId);
+            if (group == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.PreconditionFailed);
+            }
+            
             students = studentManager.GetList(groupId).OrderBy(s => s.LastName);
             if (students == null)
             {

@@ -212,7 +212,7 @@
     <Content Include="App_Data\TestFactoryData_log.ldf">
       <DependentUpon>TestFactoryData.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\images\404.jpg" />
+    <Content Include="Content\images\error.jpg" />
     <Content Include="Content\materialize\css\materialize.css" />
     <Content Include="Content\materialize\css\materialize.min.css" />
     <Content Include="Content\materialize\font\material-design-icons\LICENSE.txt" />
@@ -379,9 +379,10 @@
     <Content Include="Views\Group\Update.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Shared\_LayoutWord.cshtml" />
-    <Content Include="Views\Student\Result.cshtml" />
+    <Content Include="Views\File\GetReport.cshtml" />
     <Content Include="Views\Group\List.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
+    <Content Include="Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -411,6 +412,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.ua.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Embedded Resource</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

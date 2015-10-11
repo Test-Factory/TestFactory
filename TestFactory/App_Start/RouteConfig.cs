@@ -81,6 +81,12 @@ namespace TestFactory
             #endregion
 
             routes.MapRoute(
+                name: "GetReport",
+                url: "students/result/{id}",
+                defaults: new { controller = "File", action = "GetReport", id = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
                 name: "saveZip",
                 url: "SaveZip",
                 defaults: new { controller = "File", action = "SaveZip" }

@@ -12,7 +12,7 @@
                     <th class="marks" data-bind="text: code"></th>
                     <!-- /ko -->
                 </tr>
-                @if (User.IsInRole("Filler"))
+                @if (User.Identity.Name == "TF.Filler@ukr.net")
                 { 
                 <tr>
                     <td class="last-name">
@@ -20,7 +20,7 @@
                                data-position="bottom"
                                data-bind="textInput: $root.studentForCreate().lastName,  tooltip: { message: $root.studentForCreate().lastName.error }"
                                maxlength=" 255"
-                               placeholder=" @GlobalRes_ua.surname " />
+                               placeholder="@GlobalRes_ua.surname" />
                     </td>
                     <td class="first-name">
                         <input type="text"
@@ -33,7 +33,7 @@
                     <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
                     <!-- /ko -->
                     <td>
-                        <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">Додати</button>
+                        <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
                     </td>
                 </tr>
                 }
@@ -46,14 +46,14 @@
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
-                   @if (User.IsInRole("Filler")) 
+                   @if (User.Identity.Name == "TF.Filler@ukr.net") 
                    { 
                     <td>
-                        <button class="btn btn-success" data-bind="click: $root.editStudent">Змінити</button>
+                        <button class="btn btn-success" data-bind="click: $root.editStudent">@GlobalRes_ua.edit</button>
                     </td>
                    }
                     <td>
-                        <button class="btn btn-success" data-bind="click: $root.downloadReport">Завантажити</button>
+                        <button class="btn btn-success" data-bind="click: $root.downloadReport">@GlobalRes_ua.download</button>
                     </td>
                 </tr>
                 <!-- /ko -->
@@ -65,7 +65,7 @@
                     <td class="marks"><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
                     <!-- /ko -->
                     <td>
-                        <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">Зберегти</button>
+                        <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</button>
                     </td>
                 </tr>
                 <!-- /ko -->

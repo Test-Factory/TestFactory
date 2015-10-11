@@ -120,6 +120,9 @@
   <data name="addStudent" xml:space="preserve">
     <value>Додати студента</value>
   </data>
+  <data name="authorization" xml:space="preserve">
+    <value />
+  </data>
   <data name="cancel" xml:space="preserve">
     <value>Відмінити</value>
   </data>
@@ -129,11 +132,23 @@
   <data name="createGroup" xml:space="preserve">
     <value>Нова група</value>
   </data>
+  <data name="download" xml:space="preserve">
+    <value>Завантажити</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>Редагувати</value>
   </data>
   <data name="editAction" xml:space="preserve">
     <value>Редагуйте групу</value>
+  </data>
+  <data name="enterLogin" xml:space="preserve">
+    <value>Введіть логін</value>
+  </data>
+  <data name="enterPassword" xml:space="preserve">
+    <value>Введіть пароль</value>
+  </data>
+  <data name="exit" xml:space="preserve">
+    <value>Вихід</value>
   </data>
   <data name="loginAction" xml:space="preserve">
     <value>Увійти</value>
@@ -143,6 +158,12 @@
   </data>
   <data name="name" xml:space="preserve">
     <value>Ім'я</value>
+  </data>
+  <data name="offCookie" xml:space="preserve">
+    <value>У вас відключені Cookie</value>
+  </data>
+  <data name="offJavascript" xml:space="preserve">
+    <value>У вас відключений Javascript</value>
   </data>
   <data name="save" xml:space="preserve">
     <value>Зберегти</value>
@@ -158,5 +179,8 @@
   </data>
   <data name="testHolland" xml:space="preserve">
     <value>Тест Холланда</value>
+  </data>
+  <data name="wayIn" xml:space="preserve">
+    <value>Вхід</value>
   </data>
 </root>
