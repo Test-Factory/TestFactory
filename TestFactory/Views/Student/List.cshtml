@@ -12,7 +12,7 @@
                     <th class="marks" data-bind="text: code"></th>
                     <!-- /ko -->
                 </tr>
-                @if (User.Identity.Name == "TF.Filler@ukr.net")
+                @if (User.IsInRole("Filler"))
                 { 
                 <tr>
                     <td class="last-name">
@@ -46,7 +46,7 @@
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
-                   @if (User.Identity.Name == "TF.Filler@ukr.net") 
+                   @if (User.IsInRole("Filler")) 
                    { 
                     <td>
                         <button class="btn btn-success" data-bind="click: $root.editStudent">@GlobalRes_ua.edit</button>

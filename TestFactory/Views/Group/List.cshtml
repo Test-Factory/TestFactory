@@ -1,6 +1,6 @@
 ﻿@model List<GroupViewModel>
     @using Embedded_Resource
-   @if (User.Identity.Name == "TF.Filler@ukr.net") { 
+   @if (User.IsInRole("Filler")) { 
     <div id="forCreate">
         <a class="waves-effect waves-light btn-large" href="#" id="addGroup">
             <i id="addIcon" class="large material-icons left">note_add</i>
@@ -20,7 +20,7 @@
                                 @{Html.RenderAction("GetStudentCount", "Group", new { id = item.Id });}
                             </a>
                         </div>
-                        @if (User.Identity.Name == "TF.Filler@ukr.net")
+                        @if (User.IsInRole("Filler"))
                         { 
                         <div class="card-action updateGroup">
                           <a class="toEdit">@GlobalRes_ua.edit</a>
