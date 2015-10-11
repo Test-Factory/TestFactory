@@ -1,6 +1,6 @@
 ﻿@model List<GroupViewModel>
     @using Embedded_Resource
-   @if (User.Identity.Name == "TF.Filler@ukr.net") { 
+   @if (User.IsInRole("Filler")) { 
     <div id="forCreate">
         <a class="waves-effect waves-light btn-large" href="#" id="addGroup">
             <i id="addIcon" class="large material-icons left">note_add</i>
@@ -17,7 +17,7 @@
                         <div class="card-content white-text">
                             <a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = item.Id }, null)"><p id="textLik">@item.ShortName</p></a>
                         </div>
-                        @if (User.Identity.Name == "TF.Filler@ukr.net")
+                        @if (User.IsInRole("Filler"))
                         { 
                         <div class="card-action updateGroup">
                           <a class="toEdit">@GlobalRes_ua.edit</a>

@@ -194,7 +194,7 @@ div#content {
 }
 a.toDetails, a.toEdit {
     height: 100%;
-    display: block;
+    margin-right: 0px;
 }
 a.toEdit {
 cursor:pointer;
@@ -205,13 +205,13 @@ cursor:pointer;
     font-size: 45px;
     text-align: center;
     top: 10px;
-    color: #ffab40;
+    color: #F3F1EF;
 }
 .card-content.white-text {
     padding:0px;
 }
 p#textLik:hover {
-    color:#ffd8a6;
+    color:#D6A76A;
 }
 label.createPop-Up {
     margin-left: 10px;
@@ -297,5 +297,15 @@ input#FullName,input#ShortName{
     margin-left: 10px;
     width: 340px;
 }
-
-
+.blue-grey.darken-1 {
+    background-color: #607d8b !important;
+}
+a.toEdit {
+    float: right;
+}
+.card .card-action a {
+    color: #FBF9F6 !important;
+}
+.card .card-action a:hover {
+    color: #E08715 !important;
+}
