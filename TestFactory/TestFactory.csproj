@@ -384,6 +384,7 @@
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Group\GetStudentCount.cshtml" />
+    <Content Include="Views\File\GetAllReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
