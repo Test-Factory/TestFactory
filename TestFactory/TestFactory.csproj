@@ -380,7 +380,7 @@
     <Content Include="Views\Group\Update.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Shared\_LayoutWord.cshtml" />
-    <Content Include="Views\Student\Result.cshtml" />
+    <Content Include="Views\File\GetReport.cshtml" />
     <Content Include="Views\Group\List.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\Shared\Error.cshtml" />
