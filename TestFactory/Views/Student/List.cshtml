@@ -54,11 +54,11 @@
                    @if (User.IsInRole("Filler")) 
                    { 
                     <td>
-                        <button class="  btn disabled bt-size " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</button>
+                        <button class="  btn  bt-size  btnStudent" data-bind="click: $root.editStudent">@GlobalRes_ua.edit</button>
                     </td>
                    }
                     <td>
-                        <a class="btn disabled bt-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
+                        <a class="btn btnStudent bt-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
                     </td>
                 </tr>
                 <!-- /ko -->
