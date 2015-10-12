@@ -6,15 +6,10 @@
         <table class="table" id="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
             <thead>
                 <tr>
-                    
-                    <th class="last-name">@GlobalRes_ua.surname <a class="btn-flat disabled sort-link" data-bind="click:  function(){ $root.sorting('lastName');} "><i class="tiny material-icons">swap_vert</i></a></th>
-                    <th class="first-name">@GlobalRes_ua.name <a class="btn-flat disabled sort-link" data-bind="click: function(){ $root.sorting('firstName'); } "><i class="tiny material-icons">swap_vert</i></a></th>
+                    <th class="last-name">@GlobalRes_ua.surname</th>
+                    <th class="first-name">@GlobalRes_ua.name</th>
                     <!-- ko foreach: $root.categories -->
-                    <th class="marks" >
-                        <span data-bind="text: code"></span>
-                        <a class="btn-flat disabled sort-link" data-bind="click: function(){ $root.sorting('marks', $data.id); } "><i class="tiny material-icons">swap_vert</i></a>
-                    </th>
-
+                    <th class="marks" data-bind="text: code"></th>
                     <!-- /ko -->
                 </tr>
                 @if (User.IsInRole("Filler"))
@@ -54,11 +49,11 @@
                    @if (User.IsInRole("Filler")) 
                    { 
                     <td>
-                        <button class="  btn disabled bt-size " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</button>
+                        <button class="btn btn-success" data-bind="click: $root.editStudent">@GlobalRes_ua.edit</button>
                     </td>
                    }
                     <td>
-                        <button class="btn disabled bt-size" data-bind="click: $root.downloadReport">@GlobalRes_ua.download</button>
+                        <button class="btn btn-success" data-bind="click: $root.downloadReport">@GlobalRes_ua.download</button>
                     </td>
                 </tr>
                 <!-- /ko -->
@@ -70,7 +65,7 @@
                     <td class="marks"><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
                     <!-- /ko -->
                     <td>
-                        <button class="btn disabled" data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</button>
+                        <button class="btn btn-success" data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</button>
                     </td>
                 </tr>
                 <!-- /ko -->
