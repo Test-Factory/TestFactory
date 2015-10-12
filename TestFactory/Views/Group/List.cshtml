@@ -16,7 +16,7 @@
                     <div class="card blue-grey darken-1 card-action">
                         <div class="card-content white-text">                
                             <a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = item.Id }, null)">
-                                <p id="textLik">@item.ShortName</p>
+                                <p id="textLik">@item.ShortName</p>                               
                                 @{Html.RenderAction("GetStudentCount", "Group", new { id = item.Id });}
                             </a>
                         </div>
