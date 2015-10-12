@@ -32,13 +32,13 @@
                     {
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li><a href="#">@User.Identity.Name</a></li>
-                            <li>@Html.RouteLink(GlobalRes_ua.exit, "LogOut")</li>
+                            <li>@Html.RouteLink(GlobalRes_ua.exit, "LogOut",null)</li>
                         </ul>
                     }
                     else
                     {
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            <li>@Html.RouteLink(GlobalRes_ua.wayIn, "login")</li>
+                            <li>@Html.RouteLink(GlobalRes_ua.wayIn, "login", null)</li>
                         </ul>
                     }
                 </div>
@@ -61,7 +61,8 @@
         $(document).ready(function () {
         if (!navigator.cookieEnabled) {
             $("#error-cookie").css("display", "block");
-        }} );
+        }  
+         });
         </script>
        
     </body>

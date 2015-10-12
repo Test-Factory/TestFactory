@@ -35,8 +35,8 @@ namespace TestFactory
 
             routes.MapRoute(
                name : "studentResult",
-               url : "students/result",
-               defaults: new { controller = "File", action = "GetReport" }
+               url: "group/{groupId}/{Id}",
+               defaults: new { controller = "File", action = "GetReport", groupId = UrlParameter.Optional, Id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
