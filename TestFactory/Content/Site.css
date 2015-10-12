@@ -408,3 +408,6 @@ ul#nav-mobile {
     position: relative;
     left: -400px;
 }
+.btnStudent:hover {
+    background-color: #9e9e9e;
+}
