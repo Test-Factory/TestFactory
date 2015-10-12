@@ -71,7 +71,7 @@
                 <div id="chart-container" style="min-width: 500px; max-width: 600px; height: 400px; float: left;"></div>
                 <canvas id="canvas" width="400px" height="600px" style="display: none;"></canvas> 
                 <div style="float: left; display: inline; line-height: 1.5; margin-left: 20px; margin-top: 40px;">
-                    @foreach(var mark in Model.Item1.Marks)
+                    @foreach (var mark in Model.Item1.Marks)
                     {
                         <div>R - @mark.Value % - реалістичний</div>
                     }
@@ -86,11 +86,11 @@
             </thead>
 
             <tbody>
-                @foreach(var items in Model.Item2)
+                @foreach (var items in Model.Item2)
                 {
               <tr>
                 <td class="borderTable">@items.Name</td>
-                <td class="borderLeftTable">@items.ShortDescription</td>
+                <td class="borderLeftTable">@items.Features</td>
               </tr>
                 }
             </tbody>
@@ -102,25 +102,67 @@
                 {
                 
                     <h3 style="text-align: center">@type.Name тип</h3>
-                    <div><strong>Близькі типи:</strong>  інтелектуальний і конвенціональний.</div>
-                    <div><strong>Протилежний тип:</strong> соціальний.</div>
+                    <div><strong>Близькі типи:</strong>  @type.ACloseTypes</div>
+                    <div><strong>Протилежний тип:</strong> @type.OppositeType.</div>
                     <div>
                          <strong>Характерні особливості:</strong>
                         <ul>
-                            <li>емоційна стабільність;</li>
-                            <li>моторика і спритність розвинена на високому рівні;</li>
-                            <li>просторова уява;</li>
+                         @{
+                    string[] spl = type.Features.Split(new Char[] { ';' });
+
+                    for (int i = 0; i < spl.Length; i++)
+                    {
+                                    <li>@spl[i]</li>
+                    }
+                         }
                         </ul>
                     </div>
                     <div>
                         <strong>Надається перевага</strong>
-                        професії з чіткими завданнями і результатами. Мають шанси домогтися успіху в спорті, фізики, хімії, економіці, інформатиці. Людей реалістичного типу часто називають "виконавцями". Вони напористі і люблять змагатися. Такі люди воліють працювати з реальними об'єктами, машинами та інструментами. Їм подобається діяльність, що вимагає координації, спритності і сили. Люди реалістичного типу володіють практичним складом розуму і орієнтуються на сьогодення. Вони воліють вирішувати проблеми, пробуючи щось зробити замість того, щоб довго думати або обговорювати. Їм подобається "працювати руками", і тому вони люблять розбиратися в техніці, електриці або сільському господарстві. Такі люди часто займаються спортом, намагаються багато часу проводити на природі і ведуть активний спосіб життя</div>
+                        @type.PreferredAreasOfActivity</div>
                     <div>
                         <strong>Детальний опис</strong>
-                        @type.LongDescription</div>
+                        @type.Details</div>
+                    
+                    <table class="striped" style="width: 650px;">
+                        <thead>
+                          <tr>
+                              <th data-field="id" style="text-align: center;">Людям типу "@type.Name" подобається</th>
+                              <th style="border-left: solid 1px; text-align: center;" data-field="name">Люди типу "@type.Name" цінують</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr>
+                            <td class="borderTable">
+                                <ul>
+                                         @{
+                                    string[] splLike = type.Likes.Split(new Char[] { ';' });
+
+                                    for (int i = 0; i < splLike.Length; i++)
+                                    {
+                                                    <li>@splLike[i]</li>
+                                    }
+                                         }
+                                </ul>
+                            </td>
+                            <td class="borderLeftTable">
+                                <ul>
+                                    @{
+                                        string[] splAppreciate = type.Appreciate.Split(new Char[] { ';' });
+
+                                        for (int i = 0; i < splAppreciate.Length; i++)
+                                            {
+                                                            <li>@splAppreciate[i]</li>
+                                            }
+                                    }
+                                </ul>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
                 }
             </div>
-
         </div>
     </div>
 </body>
