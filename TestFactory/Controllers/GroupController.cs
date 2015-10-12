@@ -14,16 +14,13 @@ namespace TestFactory.Controllers
     {
        private GroupManager groupManager;
        private readonly StudentManager studentManager;
-       private readonly CategoryManager categoryManager;
 
        private UserContext user;
 
-       public GroupController(GroupManager groupManager, StudentManager studentManager, CategoryManager categoryManager)
+        public GroupController(GroupManager groupManager, StudentManager studentManager)
         {
             this.groupManager = groupManager;
             this.user = new UserContext();
-           this.categoryManager = categoryManager;
-           //categoryManager.AddNewCategory();
         }
 
         [Authorize(Roles = "Filler, Editor")]

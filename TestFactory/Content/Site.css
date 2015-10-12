@@ -5,6 +5,12 @@
     background-color: #fff;
 }
 
+.btn-hover :hover{
+    background-color: red !important; 
+    color: black;
+}
+
+
 header, footer, nav, section {
     display: block;
 }
@@ -280,18 +286,18 @@ input.createPop-up,input.updatePop-Up {
     
 }
 #tbStudentList .last-name {
-    width: 25%;
+    width: 23%;
     word-wrap:break-word;
 }
 #tbStudentList .marks {
-        width: 3%;
+        width: 6%;
     }
 .errorFill {
     border-bottom: 3px solid red; 
    }
 table {
     table-layout: fixed;
-    width: 95%;
+    width: 90%;
 }
 input#FullName,input#ShortName{
     margin-left: 10px;
@@ -310,12 +316,12 @@ a.toEdit {
     color: #E08715 !important;
 }
 .error-massage {
-font-weight: bold;
-color: #f00;
+    font-weight: bold;
+    color: #f00;
 }
 
 #error-cookie {
-display: none;
+    display: none;
 }
 div#count {
     margin-top: 22px;
@@ -324,3 +330,11 @@ div#count {
 a.toEdit {
     margin-top: -32px;
 }
+.sort-link {
+    padding: 0px;
+}
+.bt-size {
+    padding-left: 5px;
+    padding-right: 5px;}
+
+
