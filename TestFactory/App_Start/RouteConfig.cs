@@ -34,12 +34,6 @@ namespace TestFactory
            );
 
             routes.MapRoute(
-               name : "studentResult",
-               url: "group/{groupId}/{Id}",
-               defaults: new { controller = "File", action = "GetReport", groupId = UrlParameter.Optional, Id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
                 name: "studentsResult",
                 url: "{groupId}/students/results",
                 defaults: new { controller = "File", action = "GetAllReport", groupId = UrlParameter.Optional }
@@ -73,6 +67,12 @@ namespace TestFactory
              url: "group/create",
              defaults: new { controller = "Group", action = "Create" }
            );
+
+            routes.MapRoute(
+               name: "studentResult",
+               url: "group/{groupId}/{Id}",
+               defaults: new { controller = "File", action = "GetReport", groupId = UrlParameter.Optional, Id = UrlParameter.Optional }
+            );
 
             #endregion
 

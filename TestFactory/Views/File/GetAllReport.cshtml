@@ -64,108 +64,150 @@
 <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
 </head>
 <body>
-    @for (int j = 0; j < Model.Item1.Count; j++)
+    @for (int ind = 0; ind < Model.Item1.Count; ind++)
     {
-    <div style="width: 60%; margin: 0 20%">
-        <h2 style="text-align: center">@Model.Item1[j].FirstName @Model.Item1[j].LastName (@Model.Item3.ShortName)</h2>
-        <div>
-                <div id="chart-container" style="min-width: 500px; max-width: 600px; height: 400px; float: left;"></div>
-                <canvas id="canvas" width="400px" height="600px" style="display: none;"></canvas> 
-                <div style="float: left; display: inline; line-height: 1.5; margin-left: 20px; margin-top: 40px;">
-                    @foreach (var mark in Model.Item1[j].Marks)
+        <div style="width: 60%; margin: 0 20%">
+            @{    //sort Marks
+            var mas = Model.Item1[ind].Marks;
+            int s = -1;
+            int maxi = 0;
+            for (int j = 0; j < Model.Item1[ind].Marks.Count; j++)
+            {
+                for (int i = 0; i < Model.Item1[ind].Marks.Count - 1; i++)
+                {
+                    if (Model.Item1[ind].Marks[i].Value > maxi)
                     {
-                        <div>R - @mark.Value % - реалістичний</div>
+                        maxi = Model.Item1[ind].Marks[i].Value;
+                    }
+                    if (Model.Item1[ind].Marks[i].Value * s > Model.Item1[ind].Marks[i + 1].Value * s)
+                    {
+                        var temp = Model.Item1[ind].Marks[i];
+                        Model.Item1[ind].Marks[i] = Model.Item1[ind].Marks[i + 1];
+                        Model.Item1[ind].Marks[i + 1] = temp;
+                    }
+                }
+            }
+                        }
+            <h2 style="text-align: center;">@{ var t = Model.Item1[ind].FirstName + " " + Model.Item1[ind].LastName + "(" + Model.Item3.ShortName + ")";} @t </h2>
+            <div>
+                    <div id="chart-container" style="min-width: 500px; max-width: 600px; height: 400px; float: left;"></div>
+                    <canvas id="canvas" width="400px" height="600px" style="display: none;"></canvas> 
+                    <div style="float: left; display: inline; line-height: 1.5; margin-left: 20px; margin-top: 40px;">
+                        @foreach (var mark in Model.Item1[ind].Marks)
+                        {
+                            foreach (var type in Model.Item2)
+                            {
+                                if (mark.CategoryId == type.Id)
+                                {
+                                    <div>@type.Code - @mark.Value% - @type.Name</div>
+                                }
+                            }
+                        }
+                    </div>
+            </div>
+            <table class="striped" style="width: 600px;">
+                <thead>
+                  <tr>
+                      <th data-field="id" style="text-align: center;">Основний тип</th>
+                      <th style="border-left: solid 1px; text-align: center;" data-field="name">Спеціалізація в ІТ</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var items in Model.Item2)
+                    {
+                  <tr>
+                    <td class="borderTable">@items.Name</td>
+                    <td class="borderLeftTable">@items.Features</td>
+                  </tr>
+                    }
+                </tbody>
+              </table>
+            <div style="width: 800px; margin: 0 auto;">
+        
+                <div style="width: 100%; overflow: hidden; line-height: 1.5;">
+                    @foreach (var mark in Model.Item1[ind].Marks)
+                    {
+                        foreach (var type in Model.Item2)
+                        {
+                            if (mark.CategoryId == type.Id)
+                            {
+                                var typ = type.Name + " тип";
+                                <h3 style="text-align: center">@typ</h3>
+                                if (mark.Value == maxi)
+                                {
+                                    <div><strong>Близькі типи:</strong>  @type.ACloseTypes</div>
+                                    <div><strong>Протилежний тип:</strong> @type.OppositeType.</div>
+                                }
+                                <div>
+                                     <strong>Характерні особливості:</strong>
+                                    <ul>
+                                     @{
+                                string[] spl = type.Features.Split(new Char[] { ';' });
+
+                                for (int i = 0; i < spl.Length; i++)
+                                {
+                                                        <li>@spl[i]</li>
+                                }
+                                     }
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong>Надається перевага професії</strong>
+                                    @type.PreferredAreasOfActivity
+                                </div>
+                                if (mark.Value == maxi)
+                                {
+                                        <div>
+                                        <strong>Детальний опис</strong>
+                                        @type.Details
+
+                                        </div>
+                    
+                                    <table class="striped" style="width: 600px;">
+                                        <thead>
+                                          <tr>
+                                              <th data-field="id" style="text-align: center;">Людям типу "@type.Name" подобається</th>
+                                              <th style="border-left: solid 1px; text-align: center;" data-field="name">Люди типу "@type.Name" цінують</th>
+                                          </tr>
+                                        </thead>
+
+                                        <tbody>
+                                          <tr>
+                                            <td class="borderTable">
+                                                <ul>
+                                                         @{
+                                    string[] splLike = type.Likes.Split(new Char[] { ';' });
+
+                                    for (int i = 0; i < splLike.Length; i++)
+                                    {
+                                                                    <li>@splLike[i]</li>
+                                    }
+                                                         }
+                                                </ul>
+                                            </td>
+                                            <td class="borderLeftTable">
+                                                <ul>
+                                                    @{
+                                    string[] splAppreciate = type.Appreciate.Split(new Char[] { ';' });
+
+                                    for (int i = 0; i < splAppreciate.Length; i++)
+                                    {
+                                                                            <li>@splAppreciate[i]</li>
+                                    }
+                                                    }
+                                                </ul>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                }
+                            }
+                        }
                     }
                 </div>
-        </div>
-        <table class="striped" style="width: 650px;">
-            <thead>
-              <tr>
-                  <th data-field="id" style="text-align: center;">Основний тип</th>
-                  <th style="border-left: solid 1px; text-align: center;" data-field="name">Спеціалізація в ІТ</th>
-              </tr>
-            </thead>
-
-            <tbody>
-                @foreach (var items in Model.Item2)
-                {
-              <tr>
-                <td class="borderTable">@items.Name</td>
-                <td class="borderLeftTable">@items.Features</td>
-              </tr>
-                }
-            </tbody>
-          </table>
-        <div style="width: 800px; margin: 0 auto;">
-        
-            <div style="width: 100%; overflow: hidden; line-height: 1.5;">
-                @foreach (var type in Model.Item2)
-                {
-                
-                    <h3 style="text-align: center">@type.Name тип</h3>
-                    <div><strong>Близькі типи:</strong>  @type.ACloseTypes</div>
-                    <div><strong>Протилежний тип:</strong> @type.OppositeType.</div>
-                    <div>
-                         <strong>Характерні особливості:</strong>
-                        <ul>
-                         @{
-                    string[] spl = type.Features.Split(new Char[] { ';' });
-
-                    for (int i = 0; i < spl.Length; i++)
-                    {
-                                    <li>@spl[i]</li>
-                    }
-                         }
-                        </ul>
-                    </div>
-                    <div>
-                        <strong>Надається перевага</strong>
-                        @type.PreferredAreasOfActivity</div>
-                    <div>
-                        <strong>Детальний опис</strong>
-                        @type.Details</div>
-                    
-                    <table class="striped" style="width: 650px;">
-                        <thead>
-                          <tr>
-                              <th data-field="id" style="text-align: center;">Людям типу "@type.Name" подобається</th>
-                              <th style="border-left: solid 1px; text-align: center;" data-field="name">Люди типу "@type.Name" цінують</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          <tr>
-                            <td class="borderTable">
-                                <ul>
-                                         @{
-                    string[] splLike = type.Likes.Split(new Char[] { ';' });
-
-                    for (int i = 0; i < splLike.Length; i++)
-                    {
-                                                    <li>@splLike[i]</li>
-                    }
-                                         }
-                                </ul>
-                            </td>
-                            <td class="borderLeftTable">
-                                <ul>
-                                    @{
-                    string[] splAppreciate = type.Appreciate.Split(new Char[] { ';' });
-
-                    for (int i = 0; i < splAppreciate.Length; i++)
-                    {
-                                                            <li>@splAppreciate[i]</li>
-                    }
-                                    }
-                                </ul>
-                            </td>
-                          </tr>
-                        </tbody>
-                    </table>
-                }
             </div>
         </div>
-    </div>
     }
 </body>
 </html>
