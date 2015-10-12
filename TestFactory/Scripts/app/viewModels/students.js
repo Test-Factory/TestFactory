@@ -17,8 +17,8 @@ function StudentsViewModel(group) {
     var self = this;
     self.group = new GroupModel(group);
 
-    var sp = new StudentProvider(self.group.id);
-    var cp = new CategoryProvider();
+    var studentProvider = new StudentProvider(self.group.id);
+    var categoryProvider = new CategoryProvider();
     var mp = new MarkProvider();
     
     self.students = ko.observableArray();
@@ -32,9 +32,56 @@ function StudentsViewModel(group) {
         edit: "edit",
         create:"create"
     };
+
+    self.sortDescending = false;
+    self.sortKey = {
+        lastName: "lastName",
+        edit: "firstName"
+    };
+    self.sorting = function (key, id) {
+        debugger;
+        if (key == "marks") {
+            self.students.sort(function (left, right) {
+                var getMark = function (item) {
+                    var m = item.categoryId == id();
+                }
+                var leftMark = ko.utils.arrayFilter(left.marks(), getMark)[0];
+                var rightMark = ko.utils.arrayFilter(right.marks(), getMark)[0];
+                if (leftMark['value']() == rightMark['value']())
+                    return 0;
+                else if (leftMark[value]() < rightMark[value]())
+                    return 1;
+                else
+                    return -1;
+            });
+        }
+        else if (self.sortDescending) {
+                self.students.sort(function(left, right) {
+                    if (left[key]().toUpperCase() == right[key]().toUpperCase())
+                        return 0;
+                    else if (left[key]().toUpperCase() < right[key]().toUpperCase())
+                        return 1;
+                    else
+                        return -1;
+                });
+                self.sortDescending = false;
+        } else {
+            self.students.sort(function(left, right) {
+                if (left[key]().toUpperCase() == right[key]().toUpperCase())
+                    return 0;
+                else if (left[key]().toUpperCase() < right[key]().toUpperCase())
+                    return -1;
+                else
+                    return 1;
+            });
+            self.sortDescending = true;
+        }
+
+    }
+
     self.downloadReport = function (student) {
         var studentServerModel = toServerStudentModel(student);
-        sp.loadReport(studentServerModel, function () {
+        studentProvider.loadReport(studentServerModel, function () {
             console.log("result");
         });
     }
@@ -65,7 +112,7 @@ function StudentsViewModel(group) {
             return false;
         }
         var studentServerModel = toServerStudentModel(self.studentForCreate());
-        sp.post(studentServerModel, function (data) {
+        studentProvider.post(studentServerModel, function (data) {
             var newStudent = new StudentModel();
             mapStudent(self.studentForCreate(), newStudent);
             newStudent.id(data.Id);
@@ -89,14 +136,14 @@ function StudentsViewModel(group) {
             return false;
         }
         var studentServerModel = toServerStudentModel(self.studentForUpdate());
-        sp.put(studentServerModel, function () {
+        studentProvider.put(studentServerModel, function () {
             mapStudent(self.studentForUpdate(), student);
             student.mode(self.mods.display);
         });
     }       
 
     self.init = function () {
-        cp.get(function (data) {
+        categoryProvider.get(function (data) {
             $(data).each(function (index, element) {
                 var mappedItem = new CategoryModel(element);
                 self.categories.push(mappedItem);
@@ -104,7 +151,7 @@ function StudentsViewModel(group) {
             self.addStudent();
         });
         
-        sp.get(function (data) {
+        studentProvider.get(function (data) {
             $(data).each(function (index, element) {
                 var mappedItem = new StudentModel(element, self.mods.display);
                 self.students.push(mappedItem);
@@ -149,6 +196,22 @@ function StudentsViewModel(group) {
         for (var m in from.marks()) {
             to.marks.push(from.marks()[m]);
         }
+    }
+    function  comparedDescending(obj1, obj2, key) {
+        if (obj1[key]().toUpperCase() == obj2[key]().toUpperCase())
+            return 0;
+        else if (obj1[key]().toUpperCase() < obj2[key]().toUpperCase())
+            return 1;
+        else
+            return -1;
+    }
+    function compared(obj1, obj2, key) {
+        if (obj1[key]().toUpperCase() == obj2[key]().toUpperCase())
+            return 0;
+        else if (obj1[key]().toUpperCase() < obj2[key]().toUpperCase())
+            return -1;
+        else
+            return 1;
     }
 }
 
