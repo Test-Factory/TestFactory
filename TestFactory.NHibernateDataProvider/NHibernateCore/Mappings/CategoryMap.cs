@@ -19,9 +19,21 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 
             Map(x => x.Code);
 
-            Map(x => x.ShortDescription);
+            Map(x => x.ACloseTypes);
 
-            Map(x => x.LongDescription);
+            Map(x => x.Appreciate);
+
+            Map(x => x.Details);
+
+            Map(x => x.Features);
+
+            Map(x => x.Likes);
+
+            Map(x => x.OppositeType);
+
+            Map(x => x.PreferredAreasOfActivity);
+
+
         }
     }
 }
