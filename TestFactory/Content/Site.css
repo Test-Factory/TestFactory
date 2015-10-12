@@ -205,13 +205,14 @@ cursor:pointer;
     font-size: 45px;
     text-align: center;
     top: 10px;
-    color: #F3F1EF;
+    color: #909393;
+    cursor: pointer;
 }
 .card-content.white-text {
     padding:0px;
 }
 p#textLik:hover {
-    color:#D6A76A;
+   color: #2E2D2D;
 }
 label.createPop-Up {
     margin-left: 10px;
@@ -298,16 +299,13 @@ input#FullName,input#ShortName{
     width: 340px;
 }
 .blue-grey.darken-1 {
-    background-color: #607d8b !important;
+    background-color: white !important;
 }
 a.toEdit {
     float: right;
 }
 .card .card-action a {
     color: #FBF9F6 !important;
-}
-.card .card-action a:hover {
-    color: #E08715 !important;
 }
 .error-massage {
 font-weight: bold;
@@ -323,4 +321,38 @@ div#count {
 }
 a.toEdit {
     margin-top: -32px;
+}
+i.material-icons.downloadIcon {
+    position: relative;
+    left: 70px;
+    top: -6px;
+}
+body{
+    background: #F3F3F4;
+}
+nav .nav-wrapper {
+    background: black;
+}
+.card .card-action {
+    padding: 0px;
+}
+.donwloadStudent {
+    position: relative;
+    left: 5px;
+    top: 12px;
+    width:115px;
+}
+a.toEdit.waves-effect.waves-light.btn.group-update {
+    margin: 0px;
+    padding: 0px;
+}
+a.waves-effect.waves-light.btn.donwloadStudent {
+    margin: 0px;
+    padding: 0px;
+}
+.group-update {
+    position: relative;
+    left: -6px;
+    top: 12px;
+    width:115px;
 }
