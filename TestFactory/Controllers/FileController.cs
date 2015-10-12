@@ -26,12 +26,13 @@ namespace TestFactory.Controllers.Api
         }
 
         //[HttpGet]
-        //[WordDocument]
-        public ActionResult GetReport(StudentViewModel student)
+        [WordDocument]
+        public ActionResult GetReport(string id)
         {
-            var studentSave = Mapper.Map<Student>(student);
+
+            //var studentSave = Mapper.Map<Student>(student);
             IList<Category> categories = categoryManager.GetList();
-            Student st = studentManager.GetById("ff01b3cd-951a-4faf-9bf5-781b3f700eae");
+            Student st = studentManager.GetById(id);
             Group gr = groupManager.GetById(st.GroupId);
             IList<Category> ct = new List<Category>();
             ct = categoryManager.GetList();

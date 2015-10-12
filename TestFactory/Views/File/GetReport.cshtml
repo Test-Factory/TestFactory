@@ -9,7 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>@Model.Item1.FirstName @Model.Item1.LastName</title>
+    <!--<title>@Model.Item1.FirstName @Model.Item1.LastName</title>-->
     <script src="~/bundles/jquery"></script>
     <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
     <script src="~/Scripts/Highcharts-4.0.1/js/highcharts-more.js"></script>
@@ -66,7 +66,7 @@
 </head>
 <body>
     <div style="width: 60%; margin: 0 20%">
-        <h2 style="text-align: center">@Model.Item1.FirstName @Model.Item1.LastName (@Model.Item3.ShortName)</h2>
+        <h2 style="text-align: center;">@{ var t = Model.Item1.FirstName + " " + Model.Item1.LastName + "(" + Model.Item3.ShortName + ")";} @t </h2>
         <div>
                 <div id="chart-container" style="min-width: 500px; max-width: 600px; height: 400px; float: left;"></div>
                 <canvas id="canvas" width="400px" height="600px" style="display: none;"></canvas> 
@@ -100,8 +100,8 @@
             <div style="width: 100%; overflow: hidden; line-height: 1.5;">
                 @foreach (var type in Model.Item2)
                 {
-                
-                    <h3 style="text-align: center">@type.Name тип</h3>
+                    var typ = type.Name + " тип";
+                    <h3 style="text-align: center">@typ</h3>
                     <div><strong>Близькі типи:</strong>  @type.ACloseTypes</div>
                     <div><strong>Протилежний тип:</strong> @type.OppositeType.</div>
                     <div>
