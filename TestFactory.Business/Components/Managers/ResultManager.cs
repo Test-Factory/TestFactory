@@ -53,7 +53,7 @@ namespace TestFactory.Business.Components.Managers
             //word.Visible = true;
             Microsoft.Office.Interop.Word.Document doc = word.Documents.Add();
 
-            var pText = doc.Paragraphs.Add();
+            /*var pText = doc.Paragraphs.Add();
             pText.Range.Font.Size = 14;
             pText.Range.Text += String.Format(student.FirstName + " " + student.LastName);
             pText.Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
@@ -108,7 +108,7 @@ namespace TestFactory.Business.Components.Managers
                 
                 pText.Range.Bold = 0;
             }
-            dataWorkbook.Application.Quit();
+            dataWorkbook.Application.Quit();*/
 
             return doc;
         }
