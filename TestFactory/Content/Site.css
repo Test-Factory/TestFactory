@@ -382,3 +382,10 @@ p.countUsers {
 .donwloadStudent:hover {
     background-color:#037986;
 }
+.btnStudent:hover {
+    background-color:#9e9e9e ;
+}
+.btnStudent {
+    background-color:#bdbdbd;
+}
+
