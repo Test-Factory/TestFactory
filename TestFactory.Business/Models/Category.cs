@@ -12,10 +12,17 @@ namespace TestFactory.Business.Models
 
         public virtual string Code { get; set; }
 
-        public virtual string ShortDescription { get; set; }
+        public virtual string ACloseTypes { get; set; }
+ 
+        public virtual string OppositeType { get; set; }
 
-        public virtual string LongDescription { get; set; }
+        public virtual string Features { get; set; }
+        public virtual string PreferredAreasOfActivity { get; set; }
 
-        //public virtual string Specialization { get; set; }
+        public virtual string Details { get; set; }
+
+        public virtual string Likes { get; set; }
+
+        public virtual string Appreciate { get; set; }
     }
 }
