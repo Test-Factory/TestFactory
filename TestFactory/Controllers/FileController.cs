@@ -25,15 +25,15 @@ namespace TestFactory.Controllers.Api
             this.groupManager = groupManager;
         }
 
-        //[HttpGet]
+       // [HttpGet]
         [WordDocument]
         public ActionResult GetReport(string id)
         {
 
-            //var studentSave = Mapper.Map<Student>(student);
+           // var studentSave = Mapper.Map<Student>(student);
             IList<Category> categories = categoryManager.GetList();
             Student st = studentManager.GetById(id);
-            Group gr = groupManager.GetById(st.GroupId);
+             Group gr = groupManager.GetById(st.GroupId);
             IList<Category> ct = new List<Category>();
             ct = categoryManager.GetList();
             var tuple = new Tuple<Student, IList<Category>, Group>(st, ct, gr);

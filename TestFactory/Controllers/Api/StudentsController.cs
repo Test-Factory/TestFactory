@@ -40,7 +40,8 @@ namespace TestFactory.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.PreconditionFailed);
             }
             
-            students = studentManager.GetList(groupId).OrderBy(s => s.LastName);
+            students = studentManager.GetList(groupId).OrderBy(s => s.LastName).ThenBy(s=>s.FirstName);
+            //students = students.Select(s => s.Marks.OrderBy(m => m.CategoryId)); 
             if (students == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Http;
 using AutoMapper;
@@ -29,7 +30,8 @@ namespace TestFactory.Controllers.Api
 
                 throw new HttpResponseException(HttpStatusCode.PreconditionFailed);
             }
-            var marks = markManager.Get(studentId);
+            var marks = markManager.Get(studentId).OrderBy(m => m.CategoryId);
+            ;
             if (marks == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
