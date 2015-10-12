@@ -31,21 +31,24 @@ namespace TestFactory.Controllers.Api
         {
             var studentSave = Mapper.Map<Student>(student);
             IList<Category> categories = categoryManager.GetList();
-            Student st1 = studentManager.GetById("04b0fd13-22e6-48ac-a2aa-85be9fa93d8b");
-
-            Group gr = groupManager.GetById(st1.GroupId);
-
-
-            //resultManager.SaveToWord(studentSave, categories);
-            //resultManager.ConvertToWordX(studentSave, categories);
-            //var result = AutoMapper.Mapper.Map<List<StudentViewModel>>(st);
-
-
+            Student st = studentManager.GetById("ff01b3cd-951a-4faf-9bf5-781b3f700eae");
+            Group gr = groupManager.GetById(st.GroupId);
             IList<Category> ct = new List<Category>();
             ct = categoryManager.GetList();
-            var tuple = new Tuple<Student, IList<Category>, Group>(st1, ct, gr);
+            var tuple = new Tuple<Student, IList<Category>, Group>(st, ct, gr);
             return View(tuple);
-            //return View(tuple);
+        }
+
+        [WordDocument]
+        public ActionResult GetAllReport(string groupId)
+        {
+            IList<Category> categories = categoryManager.GetList();
+            IList<Student> st = studentManager.GetList(groupId);
+            Group gr = groupManager.GetById(groupId);
+            IList<Category> ct = new List<Category>();
+            ct = categoryManager.GetList();
+            var tuple = new Tuple<IList<Student>, IList<Category>, Group>(st, ct, gr);
+            return View(tuple);
         }
 
 

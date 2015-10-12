@@ -1,4 +1,4 @@
-﻿@model Tuple<TestFactory.Business.Models.Student, IList<TestFactory.Business.Models.Category>, TestFactory.Business.Models.Group>
+﻿@model Tuple<IList<TestFactory.Business.Models.Student>, IList<TestFactory.Business.Models.Category>, TestFactory.Business.Models.Group>
 @{
     Layout = null;
 }
@@ -9,7 +9,6 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>@Model.Item1.FirstName @Model.Item1.LastName</title>
     <script src="~/bundles/jquery"></script>
     <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
     <script src="~/Scripts/Highcharts-4.0.1/js/highcharts-more.js"></script>
@@ -65,13 +64,15 @@
 <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
 </head>
 <body>
+    @for (int j = 0; j < Model.Item1.Count; j++)
+    {
     <div style="width: 60%; margin: 0 20%">
-        <h2 style="text-align: center">@Model.Item1.FirstName @Model.Item1.LastName (@Model.Item3.ShortName)</h2>
+        <h2 style="text-align: center">@Model.Item1[j].FirstName @Model.Item1[j].LastName (@Model.Item3.ShortName)</h2>
         <div>
                 <div id="chart-container" style="min-width: 500px; max-width: 600px; height: 400px; float: left;"></div>
                 <canvas id="canvas" width="400px" height="600px" style="display: none;"></canvas> 
                 <div style="float: left; display: inline; line-height: 1.5; margin-left: 20px; margin-top: 40px;">
-                    @foreach (var mark in Model.Item1.Marks)
+                    @foreach (var mark in Model.Item1[j].Marks)
                     {
                         <div>R - @mark.Value % - реалістичний</div>
                     }
@@ -137,24 +138,24 @@
                             <td class="borderTable">
                                 <ul>
                                          @{
-                                    string[] splLike = type.Likes.Split(new Char[] { ';' });
+                    string[] splLike = type.Likes.Split(new Char[] { ';' });
 
-                                    for (int i = 0; i < splLike.Length; i++)
-                                    {
+                    for (int i = 0; i < splLike.Length; i++)
+                    {
                                                     <li>@splLike[i]</li>
-                                    }
+                    }
                                          }
                                 </ul>
                             </td>
                             <td class="borderLeftTable">
                                 <ul>
                                     @{
-                                        string[] splAppreciate = type.Appreciate.Split(new Char[] { ';' });
+                    string[] splAppreciate = type.Appreciate.Split(new Char[] { ';' });
 
-                                        for (int i = 0; i < splAppreciate.Length; i++)
-                                            {
+                    for (int i = 0; i < splAppreciate.Length; i++)
+                    {
                                                             <li>@splAppreciate[i]</li>
-                                            }
+                    }
                                     }
                                 </ul>
                             </td>
@@ -165,5 +166,6 @@
             </div>
         </div>
     </div>
+    }
 </body>
 </html>

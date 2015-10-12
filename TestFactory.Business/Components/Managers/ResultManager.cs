@@ -53,7 +53,7 @@ namespace TestFactory.Business.Components.Managers
             //word.Visible = true;
             Microsoft.Office.Interop.Word.Document doc = word.Documents.Add();
 
-            var pText = doc.Paragraphs.Add();
+            /*var pText = doc.Paragraphs.Add();
             pText.Range.Font.Size = 14;
             pText.Range.Text += String.Format(student.FirstName + " " + student.LastName);
             pText.Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
@@ -106,16 +106,9 @@ namespace TestFactory.Business.Components.Managers
                 pText.Range.InsertParagraphAfter();
                 pText.Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphJustify;
                 
-                pText.Range.Text += String.Format("Короткий опис: ");
-                pText.Range.Bold = 1;
-                pText.Range.Text += String.Format(category[i].ShortDescription);
-                pText.Range.Bold = 0;
-                pText.Range.Text += String.Format("Детальний опис: ");
-                pText.Range.Bold = 1;
-                pText.Range.Text += String.Format(category[i].LongDescription);
                 pText.Range.Bold = 0;
             }
-            dataWorkbook.Application.Quit();
+            dataWorkbook.Application.Quit();*/
 
             return doc;
         }
@@ -148,14 +141,6 @@ namespace TestFactory.Business.Components.Managers
                 
                 string headlineText = category[i].Name + " тип";
                 string paragraph;
-                if (student.Marks[i].Value == mx)
-                {
-                    paragraph = category[i].LongDescription;
-                }
-                else
-                {
-                    paragraph = category[i].ShortDescription;
-                }
 
                 // A formatting object for our headline:
                 var headLineFormat = new Formatting();
@@ -173,8 +158,6 @@ namespace TestFactory.Business.Components.Managers
                 Paragraph title = doc.InsertParagraph(headlineText, false, headLineFormat);
                 title.Alignment = Alignment.center;
                 title.Bold();
-                Paragraph text = doc.InsertParagraph(paragraph, false, paraFormat);
-                text.Alignment = Alignment.both;
             }
 
             // Save to the output directory:
