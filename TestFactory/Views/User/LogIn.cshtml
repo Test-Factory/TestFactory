@@ -2,7 +2,7 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <div id ="LoginForm">
-        <h2>@GlobalRes_ua.authorization</h2>
+        <h2>Авторизація</h2>
     
         <div>
             @Html.ValidationMessageFor(model => model.Email)
