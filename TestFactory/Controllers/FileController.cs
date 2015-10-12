@@ -15,23 +15,42 @@ namespace TestFactory.Controllers.Api
         private readonly CategoryManager categoryManager;
         private readonly ResultManager resultManager;
         private readonly StudentManager studentManager;
+        private readonly GroupManager groupManager;
 
-        public FileController(CategoryManager categoryManager, ResultManager resultManager, StudentManager studentManager)
+        public FileController(CategoryManager categoryManager, ResultManager resultManager, StudentManager studentManager, GroupManager groupManager)
         {
             this.categoryManager = categoryManager;
             this.resultManager = resultManager;
             this.studentManager = studentManager;
+            this.groupManager = groupManager;
         }
 
-        [HttpPost]
-        public bool GetReport(StudentViewModel student)
-        {  
-            var  studentSave = Mapper.Map<Student>(student);
+        //[HttpGet]
+        [WordDocument]
+        public ActionResult GetReport(StudentViewModel student)
+        {
+            var studentSave = Mapper.Map<Student>(student);
             IList<Category> categories = categoryManager.GetList();
-            //resultManager.SaveToWord(studentSave, categories);
-            resultManager.ConvertToWordX(studentSave, categories);
-            return true;
+            Student st = studentManager.GetById("04b0fd13-22e6-48ac-a2aa-85be9fa93d8b");
+            Group gr = groupManager.GetById(st.GroupId);
+            IList<Category> ct = new List<Category>();
+            ct = categoryManager.GetList();
+            var tuple = new Tuple<Student, IList<Category>, Group>(st, ct, gr);
+            return View(tuple);
         }
+
+        [WordDocument]
+        public ActionResult GetAllReport(string groupId)
+        {
+            IList<Category> categories = categoryManager.GetList();
+            IList<Student> st = studentManager.GetList(groupId);
+            Group gr = groupManager.GetById(groupId);
+            IList<Category> ct = new List<Category>();
+            ct = categoryManager.GetList();
+            var tuple = new Tuple<IList<Student>, IList<Category>, Group>(st, ct, gr);
+            return View(tuple);
+        }
+
 
         [HttpPost]
         public void SaveZip()

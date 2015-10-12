@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFactory", "TestFactory\TestFactory.csproj", "{DABA1C33-7A7F-40EC-823F-51BDD2DC2470}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFactory.NHibernateDataProvider", "TestFactory.NHibernateDataProvider\TestFactory.NHibernateDataProvider.csproj", "{2449CB0D-A4AE-4728-B0BF-31725657420D}"

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,7 +10,8 @@ using AutoMapper;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
-using TestFactory.Components;
+using TestFactory.Business.Components;
+
 
 namespace TestFactory.Controllers
 {
@@ -19,27 +19,24 @@ namespace TestFactory.Controllers
     {
         private readonly GroupManager groupManager;
 
-        private UserViewContext user;
+        private UserContext user;
 
         public StudentController(GroupManager groupManager)
         {
             this.groupManager = groupManager;
-            this.user = new UserViewContext();
+            this.user = new UserContext();
         }
-        
+
         [HttpGet]
-        public ActionResult List(string groupId)
+        [Authorize(Roles = "Filler, Editor")]
+        public ActionResult List(string groupId = null)
         {
-            if (groupId == null) 
+            
+            if (groupId == null)
                 throw new ArgumentNullException("groupId");
-
-            if (!user.IsLoggedIn) 
-                    return RedirectToRoute("login");
-
             var group = groupManager.GetById(groupId);
-            if (group == null) 
+            if (group == null)
                 throw new InvalidOperationException("Group does not exist.");
-
             var result = Mapper.Map<GroupViewModel>(group);
             return View("List", result);
         }

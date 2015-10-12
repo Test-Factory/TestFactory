@@ -196,7 +196,6 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\Api\MarksController.cs" />
     <Compile Include="Controllers\Api\StudentsController.cs" />
-    <Compile Include="Components\UserViewContext.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -380,10 +379,12 @@
     <Content Include="Views\Group\Update.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Shared\_LayoutWord.cshtml" />
-    <Content Include="Views\Student\Result.cshtml" />
+    <Content Include="Views\File\GetReport.cshtml" />
     <Content Include="Views\Group\List.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Group\GetStudentCount.cshtml" />
+    <Content Include="Views\File\GetAllReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

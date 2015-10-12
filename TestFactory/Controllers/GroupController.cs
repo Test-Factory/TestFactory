@@ -6,46 +6,56 @@ using System.Web.Mvc;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
-using TestFactory.Components;
+using TestFactory.Business.Components;
 
 namespace TestFactory.Controllers
 {
     public class GroupController : Controller
     {
        private GroupManager groupManager;
+       private readonly StudentManager studentManager;
+       private readonly CategoryManager categoryManager;
 
-       private UserViewContext user;
+       private UserContext user;
 
-        public GroupController(GroupManager groupManager)
+       public GroupController(GroupManager groupManager, StudentManager studentManager, CategoryManager categoryManager)
         {
             this.groupManager = groupManager;
-            this.user = new UserViewContext();
+            this.user = new UserContext();
+           this.categoryManager = categoryManager;
+           //categoryManager.AddNewCategory();
         }
 
+        [Authorize(Roles = "Filler, Editor")]
         public ActionResult List()
         {
-            if (!user.IsLoggedIn)
-                return RedirectToRoute("login");
-
             var groups = groupManager.GetList();
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
 
+        
+        public ActionResult GetStudentCount(string id)
+        {
+            return View(groupManager.GetCount(id));
+        }
+
+        public ActionResult GetStudentsCount(string id)
+        {
+            int count = groupManager.GetCount(id);
+            return Json(count);
+        }
+
+        [Authorize(Roles = "Filler")]
         [HttpGet]
         public ActionResult Create()
         {
-            if (!user.IsLoggedIn || user.User.Roles.Name != "Filler")
-                return RedirectToRoute("login");
-
             return PartialView();
         }
 
         [HttpPost]
         public ActionResult Create(GroupViewModel group)
         {
-            if (!user.IsLoggedIn || user.User.Roles.Name != "Filler")
-                return RedirectToRoute("login");
             if (!ModelState.IsValid)
             {
                 return View("Default");
@@ -59,9 +69,6 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
-            if (!user.IsLoggedIn)
-                return RedirectToRoute("login");
-
             if (!ModelState.IsValid)
             {
                 return View(group);

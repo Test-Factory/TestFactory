@@ -1,0 +1,127 @@
+﻿@model Tuple<TestFactory.Business.Models.Student, IList<TestFactory.Business.Models.Category>, TestFactory.Business.Models.Group>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>@Model.Item1.FirstName @Model.Item1.LastName</title>
+    <script src="~/bundles/jquery"></script>
+    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
+    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts-more.js"></script>
+    <script src="~/Scripts/Highcharts-4.0.1/js/modules/exporting.js"></Script>
+    <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
+    <script>
+        $(document).ready(function () {
+            chart = new Highcharts.Chart({
+
+                chart: {
+                    renderTo: 'chart-container'
+                },
+
+                title: {
+                    text: ''
+                },
+
+                xAxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+
+                series: [{
+                    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+                }],
+
+                navigation: {
+                    buttonOptions: {
+                        align: 'center'
+                    }
+                }
+            });
+
+            canvg(document.getElementById('canvas'), chart.getSVG())
+            var canvas = document.getElementById("canvas");
+            var img = canvas.toDataURL("image/png");
+            $("#canvas").remove()
+            $("#chart-container").empty();
+            $("#chart-container").html('<img src="' + img + '"/>');
+        });
+</script>
+    @Styles.Render("~/Content/materialize/css/materialize.min.css")
+    <style>
+        .borderTable {
+            border-top: solid 1px;
+            padding: 10px;
+        }
+        .borderLeftTable {
+            border-left: solid 1px;
+            border-top: solid 1px;
+            padding: 10px;
+        }
+    </style>
+<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
+</head>
+<body>
+    <div style="width: 60%; margin: 0 20%">
+        <h2 style="text-align: center">@Model.Item1.FirstName @Model.Item1.LastName (@Model.Item3.ShortName)</h2>
+        <div>
+                <div id="chart-container" style="min-width: 500px; max-width: 600px; height: 400px; float: left;"></div>
+                <canvas id="canvas" width="400px" height="600px" style="display: none;"></canvas> 
+                <div style="float: left; display: inline; line-height: 1.5; margin-left: 20px; margin-top: 40px;">
+                    @foreach(var mark in Model.Item1.Marks)
+                    {
+                        <div>R - @mark.Value % - реалістичний</div>
+                    }
+                </div>
+        </div>
+        <table class="striped" style="width: 650px;">
+            <thead>
+              <tr>
+                  <th data-field="id" style="text-align: center;">Основний тип</th>
+                  <th style="border-left: solid 1px; text-align: center;" data-field="name">Спеціалізація в ІТ</th>
+              </tr>
+            </thead>
+
+            <tbody>
+                @foreach(var items in Model.Item2)
+                {
+              <tr>
+                <td class="borderTable">@items.Name</td>
+                <td class="borderLeftTable">@items.ShortDescription</td>
+              </tr>
+                }
+            </tbody>
+          </table>
+        <div style="width: 800px; margin: 0 auto;">
+        
+            <div style="width: 100%; overflow: hidden; line-height: 1.5;">
+                @foreach (var type in Model.Item2)
+                {
+                
+                    <h3 style="text-align: center">@type.Name тип</h3>
+                    <div><strong>Близькі типи:</strong>  інтелектуальний і конвенціональний.</div>
+                    <div><strong>Протилежний тип:</strong> соціальний.</div>
+                    <div>
+                         <strong>Характерні особливості:</strong>
+                        <ul>
+                            <li>емоційна стабільність;</li>
+                            <li>моторика і спритність розвинена на високому рівні;</li>
+                            <li>просторова уява;</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Надається перевага</strong>
+                        професії з чіткими завданнями і результатами. Мають шанси домогтися успіху в спорті, фізики, хімії, економіці, інформатиці. Людей реалістичного типу часто називають "виконавцями". Вони напористі і люблять змагатися. Такі люди воліють працювати з реальними об'єктами, машинами та інструментами. Їм подобається діяльність, що вимагає координації, спритності і сили. Люди реалістичного типу володіють практичним складом розуму і орієнтуються на сьогодення. Вони воліють вирішувати проблеми, пробуючи щось зробити замість того, щоб довго думати або обговорювати. Їм подобається "працювати руками", і тому вони люблять розбиратися в техніці, електриці або сільському господарстві. Такі люди часто займаються спортом, намагаються багато часу проводити на природі і ведуть активний спосіб життя</div>
+                    <div>
+                        <strong>Детальний опис</strong>
+                        @type.LongDescription</div>
+                }
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
