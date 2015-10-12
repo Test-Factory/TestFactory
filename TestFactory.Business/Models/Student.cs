@@ -20,5 +20,13 @@ namespace TestFactory.Business.Models
         {
             Marks = new List<Mark>();
         }
+
+        //public int CompareTo(object obj)
+        //{
+        //    if (obj == null)
+        //        return 1;
+        //    var otherStudent = obj as Student;
+        //    return Id.CompareTo(otherStudent.Id);
+        //}
     }
 }

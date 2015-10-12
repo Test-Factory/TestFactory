@@ -39,20 +39,20 @@ function StudentsViewModel(group) {
         edit: "firstName"
     };
     self.sorting = function (key, id) {
-        debugger;
         if (key == "marks") {
             self.students.sort(function (left, right) {
                 var getMark = function (item) {
-                    var m = item.categoryId == id();
+                    return  item.categoryId() == id();
                 }
                 var leftMark = ko.utils.arrayFilter(left.marks(), getMark)[0];
                 var rightMark = ko.utils.arrayFilter(right.marks(), getMark)[0];
-                if (leftMark['value']() == rightMark['value']())
+
+                if (leftMark.value() == rightMark.value())
                     return 0;
-                else if (leftMark[value]() < rightMark[value]())
-                    return 1;
-                else
+                else if (leftMark.value() < rightMark.value())
                     return -1;
+                else
+                    return 1;
             });
         }
         else if (self.sortDescending) {
@@ -103,11 +103,14 @@ function StudentsViewModel(group) {
             self.studentForCreate().marks.push(mark);
         }
         self.studentForCreate().mode(self.mods.create);
+
+        self.studentForCreate().lastName.isModified(false);
+        ko.validation.group(self.studentForCreate);
     };
 
-    
-
     self.saveAddedStudent = function () {
+        //ko.validation.group(self.studentForCreate(), {deep:true});
+        self.studentForCreate().lastName.isModified(true);
         if (!self.studentForCreate.isValid()) {
             return false;
         }
@@ -125,6 +128,10 @@ function StudentsViewModel(group) {
                     }
                 }
             }
+
+            
+
+
             closeAllEditing();
             self.students.splice(0, 0, newStudent);
             self.addStudent();
@@ -153,13 +160,26 @@ function StudentsViewModel(group) {
         
         studentProvider.get(function (data) {
             $(data).each(function (index, element) {
-                var mappedItem = new StudentModel(element, self.mods.display);
-                self.students.push(mappedItem);
+                var mappedStudent = new StudentModel(element, self.mods.display);
+                sortStudentMarksByCategoryIdDesc(mappedStudent);
+                self.students.push(mappedStudent);
             });
+
         });
     }
    
     self.init();
+
+    function sortStudentMarksByCategoryIdDesc(student) {
+        student.marks.sort(function (leftMark, rightMark) {
+            if (leftMark.categoryId() == rightMark.categoryId())
+                return 0;
+            else if (leftMark.categoryId() < rightMark.categoryId())
+                return -1;
+            else
+                return 1;
+        });
+    }
 
     function closeAllEditing() {
         for (var k in self.students()) {
@@ -197,7 +217,7 @@ function StudentsViewModel(group) {
             to.marks.push(from.marks()[m]);
         }
     }
-    function  comparedDescending(obj1, obj2, key) {
+    function comparedDescending(obj1, obj2, key) {
         if (obj1[key]().toUpperCase() == obj2[key]().toUpperCase())
             return 0;
         else if (obj1[key]().toUpperCase() < obj2[key]().toUpperCase())
