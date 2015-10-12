@@ -34,12 +34,6 @@ namespace TestFactory
            );
 
             routes.MapRoute(
-               name : "studentResult",
-               url: "group/{groupId}/{Id}",
-               defaults: new { controller = "File", action = "GetReport", groupId = UrlParameter.Optional, Id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
                 name: "studentsResult",
                 url: "{groupId}/students/results",
                 defaults: new { controller = "File", action = "GetAllReport", groupId = UrlParameter.Optional }
@@ -116,6 +110,11 @@ namespace TestFactory
               name: "NotFound",
                 url: "{*url}",
                 defaults: new {controller = "Error", action = "NotFound"}
+            );
+            routes.MapRoute(
+               name: "studentResult",
+               url: "group/{groupId}/{Id}",
+               defaults: new { controller = "File", action = "GetReport", groupId = UrlParameter.Optional, Id = UrlParameter.Optional }
             );
         }
     }

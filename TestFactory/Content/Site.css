@@ -70,9 +70,10 @@ textarea {
 }
 a.left {
     font-size: 2em;
+    margin-left: 10px;
 }
 .input-field {
-   left: -455px;
+   left: 0px;
 }
 nav ul a {
     font-size: 1.3rem;
@@ -201,6 +202,7 @@ div#content {
 a.toDetails, a.toEdit {
     height: 100%;
     margin-right: 0px;
+    color:#909393
 }
 a.toEdit {
 cursor:pointer;
@@ -381,4 +383,28 @@ p.countUsers {
 }
 .donwloadStudent:hover {
     background-color:#037986;
+}
+@media screen and (max-width: 560px) {
+    a#addGroup {
+    top: -14px;
+}
+    div#updateGroup{
+        display: none;
+        top: 0px;
+        left:0%;
+    }
+}
+@media screen and (max-width: 560px) {
+    div#create {       
+        left: 2%;
+    }
+}
+@media screen and (max-width: 560px) {
+    div#LoginForm {       
+        left: 2%;
+    }
+}
+ul#nav-mobile {
+    position: relative;
+    left: -400px;
 }
