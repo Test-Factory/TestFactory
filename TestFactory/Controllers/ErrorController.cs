@@ -15,5 +15,9 @@ namespace TestFactory.Controllers
             Response.StatusCode = 404;
             return View();
         }
+        public ActionResult ForbiddenAction()
+        {
+            return View();
+        }
     }
 }

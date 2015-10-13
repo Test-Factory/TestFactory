@@ -47,6 +47,11 @@ namespace TestFactory
            
             #endregion
 
+            routes.MapRoute(
+                   name: "forbiddenAction",
+                   url: "forbiden",
+                   defaults: new { controller = "Error", action = "ForbiddenAction" }
+                );
 
             #region Group map routes
 
