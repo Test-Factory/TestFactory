@@ -29,7 +29,6 @@ namespace TestFactory.Controllers.Api
         [WordDocument]
         public ActionResult GetReport(string id)
         {
-
            // var studentSave = Mapper.Map<Student>(student);
             IList<Category> categories = categoryManager.GetList();
             Student st = studentManager.GetById(id);
@@ -37,6 +36,7 @@ namespace TestFactory.Controllers.Api
             IList<Category> ct = new List<Category>();
             ct = categoryManager.GetList();
             var tuple = new Tuple<Student, IList<Category>, Group>(st, ct, gr);
+            ViewBag.WordDocumentFilename = st.FirstName + " " + st.LastName + " (" + gr.ShortName + ")";
             return View(tuple);
         }
 
@@ -49,6 +49,7 @@ namespace TestFactory.Controllers.Api
             IList<Category> ct = new List<Category>();
             ct = categoryManager.GetList();
             var tuple = new Tuple<IList<Student>, IList<Category>, Group>(st, ct, gr);
+            ViewBag.WordDocumentFilename = gr.ShortName;
             return View(tuple);
         }
 
