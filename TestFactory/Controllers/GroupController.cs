@@ -22,7 +22,7 @@ namespace TestFactory.Controllers
             this.groupManager = groupManager;
             this.user = new UserContext();
         }
-
+     
         [Authorize(Roles = "Filler, Editor")]
         public ActionResult List()
         {

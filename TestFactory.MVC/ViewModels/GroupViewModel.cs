@@ -9,11 +9,11 @@ namespace TestFactory.MVC.ViewModels
 {
     public class GroupViewModel : BaseViewModel
     {
-        [Required]
+        [Required(ErrorMessage="Поле повинно бути заповненим")]
         [DataType(DataType.Text)]
         public virtual string FullName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Поле повинно бути заповненим")]
         [DataType(DataType.Text)]
         public virtual string ShortName { get; set; }      
 
