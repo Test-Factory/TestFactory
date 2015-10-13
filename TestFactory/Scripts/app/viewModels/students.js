@@ -50,9 +50,9 @@ function StudentsViewModel(group) {
                 if (leftMark.value() == rightMark.value())
                     return 0;
                 else if (leftMark.value() < rightMark.value())
-                    return -1;
-                else
                     return 1;
+                else
+                    return -1;
             });
             self.sortDescending = false;
         } else {
@@ -66,9 +66,9 @@ function StudentsViewModel(group) {
                 if (leftMark.value() == rightMark.value())
                     return 0;
                 else if (leftMark.value() < rightMark.value())
-                    return 1;
-                else
                     return -1;
+                else
+                    return 1;
             });
             self.sortDescending = true;
         }

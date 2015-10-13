@@ -7,12 +7,11 @@
             <thead>
                 <tr>
                     
-                    <th class="last-name">@GlobalRes_ua.surname <a class="btn-flat disabled sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} "><i class="tiny material-icons">swap_vert</i></a></th>
-                    <th class="first-name">@GlobalRes_ua.name <a class="btn-flat disabled sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } "><i class="tiny material-icons">swap_vert</i></a></th>
+                    <th class="last-name"><a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname</a> </th>
+                    <th class="first-name"><a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a> </th>
                     <!-- ko foreach: $root.categories -->
                     <th class="marks" >
-                        <span data-bind="text: code"></span>
-                        <a class="btn-flat disabled sort-link" data-bind="click: function(){ $root.sortingByMark('marks', $data.id); } "><i class="tiny material-icons">swap_vert</i></a>
+                        <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id); } "> </a>
                     </th>
 
                     <!-- /ko -->
