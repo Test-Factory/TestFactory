@@ -433,3 +433,17 @@ ul#nav-mobile {
 input[type=text].updatePop-Up, input[type=text].createPop-Up{
     margin: 0px 0 6px 0;
 }
+.screenMediaBelow {
+    display: none;
+}
+@media screen  and (max-width: 1270px) {
+   .screenMediaAbove {
+       display: none;
+   }
+    .screenMediaBelow {
+        display: block;
+        margin: 3px;
+        padding: 0px;
+        float: left;
+    }
+}
