@@ -385,6 +385,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Group\GetStudentCount.cshtml" />
     <Content Include="Views\File\GetAllReport.cshtml" />
+    <Content Include="Views\Error\ForbiddenAction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

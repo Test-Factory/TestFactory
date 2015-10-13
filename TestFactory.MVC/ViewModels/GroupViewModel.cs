@@ -4,17 +4,19 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Web.Mvc;
 namespace TestFactory.MVC.ViewModels
 {
     public class GroupViewModel : BaseViewModel
     {
         [Required(ErrorMessage="Поле повинно бути заповненим")]
         [DataType(DataType.Text)]
+        [AllowHtml]
         public virtual string FullName { get; set; }
 
         [Required(ErrorMessage="Поле повинно бути заповненим")]
         [DataType(DataType.Text)]
+        [AllowHtml]
         public virtual string ShortName { get; set; }      
 
         public virtual IList<StudentViewModel> Students { get; set; }

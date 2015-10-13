@@ -70,7 +70,7 @@ namespace Embedded_Resource {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на .
+        ///   Ищет локализованную строку, похожую на Авторизація.
         /// </summary>
         public static string authorization {
             get {
@@ -151,11 +151,29 @@ namespace Embedded_Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вхід.
+        /// </summary>
+        public static string entry {
+            get {
+                return ResourceManager.GetString("entry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вихід.
         /// </summary>
         public static string exit {
             get {
                 return ResourceManager.GetString("exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на На жаль, неможливо створити або відредаугвати групу з таким ім`я.
+        /// </summary>
+        public static string forbidenAction {
+            get {
+                return ResourceManager.GetString("forbidenAction", resourceCulture);
             }
         }
         
@@ -205,6 +223,15 @@ namespace Embedded_Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вибачте....Але сторінка не знайдена :(.
+        /// </summary>
+        public static string pageNotFound {
+            get {
+                return ResourceManager.GetString("pageNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Зберегти.
         /// </summary>
         public static string save {
@@ -223,15 +250,6 @@ namespace Embedded_Resource {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Вибачте....Але сторінка не знайдена :(.
-        /// </summary>
-        public static string sorry {
-            get {
-                return ResourceManager.GetString("sorry", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Прізвище.
         /// </summary>
         public static string surname {
@@ -246,15 +264,6 @@ namespace Embedded_Resource {
         public static string testHolland {
             get {
                 return ResourceManager.GetString("testHolland", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Вхід.
-        /// </summary>
-        public static string wayIn {
-            get {
-                return ResourceManager.GetString("wayIn", resourceCulture);
             }
         }
     }
