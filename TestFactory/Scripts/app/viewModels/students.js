@@ -38,11 +38,27 @@ function StudentsViewModel(group) {
         lastName: "lastName",
         edit: "firstName"
     };
-    self.sorting = function (key, id) {
-        if (key == "marks") {
+    self.sortingByMark = function (key, id) {
+        if (self.sortDescending) {
             self.students.sort(function (left, right) {
                 var getMark = function (item) {
-                    return  item.categoryId() == id();
+                    return item.categoryId() == id();
+                }
+                var leftMark = ko.utils.arrayFilter(left.marks(), getMark)[0];
+                var rightMark = ko.utils.arrayFilter(right.marks(), getMark)[0];
+
+                if (leftMark.value() == rightMark.value())
+                    return 0;
+                else if (leftMark.value() < rightMark.value())
+                    return 1;
+                else
+                    return -1;
+            });
+            self.sortDescending = false;
+        } else {
+            self.students.sort(function (left, right) {
+                var getMark = function (item) {
+                    return item.categoryId() == id();
                 }
                 var leftMark = ko.utils.arrayFilter(left.marks(), getMark)[0];
                 var rightMark = ko.utils.arrayFilter(right.marks(), getMark)[0];
@@ -54,8 +70,13 @@ function StudentsViewModel(group) {
                 else
                     return 1;
             });
+            self.sortDescending = true;
         }
-        else if (self.sortDescending) {
+        
+    } 
+
+    self.sortingByName = function (key) {
+        if (self.sortDescending) {
                 self.students.sort(function(left, right) {
                     if (left[key]().toUpperCase() == right[key]().toUpperCase())
                         return 0;
