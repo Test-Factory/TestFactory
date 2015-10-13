@@ -242,8 +242,12 @@ color:white;
 button.whiteText {
 color:white;
 }
-#errorText, erroImage {
-text-align:center;
+.error-text {
+    text-align: center;
+}
+.error-image {
+    background-color:#F3F3F4;
+    margin: 0 auto;
 }
 img#errorImage {
     position: relative;

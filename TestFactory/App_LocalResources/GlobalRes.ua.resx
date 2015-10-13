@@ -154,7 +154,7 @@
     <value>Вихід</value>
   </data>
   <data name="forbidenAction" xml:space="preserve">
-    <value>На жаль, неможливо створити або відредаугвати групу з таким ім`я</value>
+    <value>На жаль, неможливо створити або відредаугвати групу з таким ім`ям</value>
   </data>
   <data name="loginAction" xml:space="preserve">
     <value>Увійти</value>
