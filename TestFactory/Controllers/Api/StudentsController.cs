@@ -32,22 +32,17 @@ namespace TestFactory.Controllers.Api
             IEnumerable<Student> students;
             if (string.IsNullOrEmpty(groupId))
             {
-                throw new HttpResponseException(HttpStatusCode.PreconditionFailed);
+                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             var group = groupManager.GetById(groupId);
             if (group == null)
             {
-                throw new HttpResponseException(HttpStatusCode.PreconditionFailed);
+                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
             students = studentManager.GetList(groupId).OrderBy(s => s.LastName);
-            if (students == null)
-            {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            }
             var result = Mapper.Map<IEnumerable<StudentViewModel>>(students);
             return result;
-
         }
 
         [HttpPost]
