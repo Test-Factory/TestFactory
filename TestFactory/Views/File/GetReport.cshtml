@@ -17,30 +17,76 @@
     <script src="~/Scripts/Highcharts-4.0.1/js/modules/exporting.js"></Script>
     <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
     <script>
+        var mark = [];
+        var categ = [];
+        var i = 0;
+    </script>
+    @{
+        foreach(var mar in Model.Item1.Marks)
+        {
+            <script>
+                mark[i] = @mar.Value
+                i++;
+            </script>
+        }
+        <script>i = 0;</script>
+        foreach(var cat in Model.Item2)
+        {
+            <script>
+                categ[i] = "" + "@cat.Name.ToString()"
+                i++;
+            </script>
+        }
+    }
+    <script>
         $(document).ready(function () {
             chart = new Highcharts.Chart({
 
                 chart: {
-                    renderTo: 'chart-container'
+                    renderTo: 'chart-container',
+                    polar: true,
                 },
-
+ 
                 title: {
-                    text: ''
+                    text: 'Результати теста по профорієнтації Дж. Холланда',
+                    align: "center"
                 },
-
+         
+                pane: {
+                    size: '70%'
+                },
+         
                 xAxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    categories: categ,
+                    tickmarkPlacement: 'on',
+                    lineWidth: 0
                 },
-
+         
+                yAxis: {
+                    gridLineInterpolation: 'polygon',
+                    lineWidth: 0,
+                    min: 0
+                },
+         
+                tooltip: {
+                    shared: true,
+                    pointFormat: '<span>{series.name}: <b>{point.y:,.0f}%</b><br/>'
+                },
+         
+                legend: {
+                    enabled: false,
+                    align: 'right',
+                    verticalAlign: 'top',
+                    y: 70,
+                    layout: 'vertical'
+                },
+         
                 series: [{
-                    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-                }],
-
-                navigation: {
-                    buttonOptions: {
-                        align: 'center'
-                    }
-                }
+                    type: 'area',
+                    name: "@Model.Item1.FirstName " + "@Model.Item1.LastName",
+                    data: mark,
+                    pointPlacement: 'on'
+                }]
             });
 
             canvg(document.getElementById('canvas'), chart.getSVG())
@@ -48,6 +94,7 @@
             var img = canvas.toDataURL("image/png");
             $("#canvas").remove()
             $("#chart-container").empty();
+            alert(img);
             $("#chart-container").html('<img src="' + img + '"/>');
         });
 </script>
@@ -105,42 +152,6 @@
                     }
                 </div>
         </div>
-        <table class="striped" style="width: 600px;">
-
-            <thead>
-              <tr>
-                  <th data-field="id" style="text-align: center;">Основний тип</th>
-                  <th style="border-left: solid 1px; text-align: center;" data-field="name">Спеціалізація в ІТ</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td class="borderTable">@Model.Item2[0].Name</td>
-                <td class="borderLeftTable">Спеціаліст по інфраструктурі, сховищам даних і хмарних технологій (RC)<br /> Спеціаліст по комп'ютерних мережах / мережевий адміністратор (RI, RC)<br /> Програміст мікроконтролерів і роботів (RC, RI)<br /> Системний програміст (RC)</td>
-              </tr>
-                    <tr>
-                <td class="borderTable">@Model.Item2[1].Name</td>
-                <td class="borderLeftTable">Дизайнер (AS)<br /> Продюсер (AE)<br /> Технічний письменник (AS, AI)</td>
-              </tr>
-                    <tr>
-                <td class="borderTable">@Model.Item2[2].Name</td>
-                <td class="borderLeftTable">Дослідник великих масивів даних (IC)<br /> Фахівець з комп'ютерного моделювання (процесів) (IC)<br /> Фахівець з мережевої та комп'ютерної безпеки (IC, IA, IR)<br /> Спеціаліст по дослідницькому тестуванню (exploratory testing) (IC)<br /> Фахівець з автоматизації процесів (IC)</td>
-              </tr>
-                    <tr>
-                <td class="borderTable">@Model.Item2[3].Name</td>
-                <td class="borderLeftTable">Системний адміністратор (SA)<br /> Оператор служби технічної підтримки (SC)<br /> Бізнес-консультант (SI, SE)<br /> Менеджер проектів (SE)<br /> СкрамМастер (SE)</td>
-              </tr>
-                    <tr>
-                <td class="borderTable">@Model.Item2[4].Name</td>
-                <td class="borderLeftTable">Бізнес-аналітик, системний аналітик (ES, EC)<br /> Бізнес-консультант (ES, EI)<br /> Маркетолог (EI, EC)<br /> Менеджер продуктів (ES, EI, EC)</td>
-              </tr>
-                    <tr>
-                <td class="borderTable">@Model.Item2[5].Name</td>
-                <td class="borderLeftTable">Адміністратор баз даних (CI, CR)<br /> Прикладної програміст (CI, CR)<br /> Тестировщик / менеджер з якості / QA (CI, CR)<br /> Фахівець з автоматизації процесів (CI)<br /> Інженер з автоматизації тестування</td>
-              </tr>
-            </tbody>
-          </table>
         <div style="width: 800px; margin: 0 auto;">
         
             <div style="width: 100%; overflow: hidden; line-height: 1.5;">
