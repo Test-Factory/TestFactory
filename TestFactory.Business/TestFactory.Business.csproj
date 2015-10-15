@@ -49,7 +49,7 @@
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Managers\BaseManager.cs" />
+    <Compile Include="Components\Managers\GroupForUserManager.cs" />
     <Compile Include="Components\Managers\GroupManager.cs" />
     <Compile Include="Components\Managers\MarkManager.cs" />
     <Compile Include="Components\Managers\ResultManager.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Components\UserContext.cs" />
     <Compile Include="DataProviderContracts\IDataProvider.cs" />
     <Compile Include="DataProviderContracts\IGroupDataProvider.cs" />
-    <Compile Include="DataProviderContracts\IGroupForUserDataProvidercs.cs" />
+    <Compile Include="DataProviderContracts\IGroupForUserDataProvider.cs" />
     <Compile Include="DataProviderContracts\IMarkDataProvider.cs" />
     <Compile Include="DataProviderContracts\IRoleDataProvider.cs" />
     <Compile Include="DataProviderContracts\IStudentDataProvider.cs" />
