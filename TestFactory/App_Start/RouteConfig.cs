@@ -33,11 +33,7 @@ namespace TestFactory
                 defaults : new { controller = "Student", action = "List", groupId = UrlParameter.Optional }
            );
 
-            routes.MapRoute(
-                name: "studentsResult",
-                url: "{groupId}/students/results",
-                defaults: new { controller = "File", action = "GetAllReport", groupId = UrlParameter.Optional }
-            );
+         
 
             routes.MapRoute(
                 name: "studentList",
@@ -73,12 +69,6 @@ namespace TestFactory
              defaults: new { controller = "Group", action = "Create" }
            );
 
-            routes.MapRoute(
-               name: "studentResult",
-               url: "group/{groupId}/{Id}",
-               defaults: new { controller = "File", action = "GetReport", groupId = UrlParameter.Optional, Id = UrlParameter.Optional }
-            );
-
             #endregion
 
             #region User map routes
@@ -110,7 +100,17 @@ namespace TestFactory
              url: "results/{id}",
                 defaults: new {controller = "Result", action = "Results", id = UrlParameter.Optional}
                 );
+            routes.MapRoute(
+          name: "studentsResult",
+          url: "{groupId}/students/results",
+          defaults: new { controller = "File", action = "GetAllReport", groupId = UrlParameter.Optional }
+      );
 
+            routes.MapRoute(
+               name: "studentResult",
+               url: "group/{groupId}/{Id}",
+               defaults: new { controller = "File", action = "GetReport", groupId = UrlParameter.Optional, Id = UrlParameter.Optional }
+            );
             routes.MapRoute(
              name : "Default",
              url : "",
@@ -122,6 +122,9 @@ namespace TestFactory
                 url: "{*url}",
                 defaults: new {controller = "Error", action = "NotFound"}
             );
+         
+
+
         }
     }
 }

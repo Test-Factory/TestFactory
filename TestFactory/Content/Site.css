@@ -473,3 +473,6 @@ input[type=text].updatePop-Up, input[type=text].createPop-Up{
 	border-right: 5px solid transparent;
 	border-top: 10px solid grey;
 }
+a.toEdit {
+    top: -24px;
+}

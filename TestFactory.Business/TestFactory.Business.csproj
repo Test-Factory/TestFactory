@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Managers\BaseManager.cs" />
+    <Compile Include="Components\Managers\GroupForUserManager.cs" />
     <Compile Include="Components\Managers\GroupManager.cs" />
     <Compile Include="Components\Managers\MarkManager.cs" />
     <Compile Include="Components\Managers\ResultManager.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Components\UserContext.cs" />
     <Compile Include="DataProviderContracts\IDataProvider.cs" />
     <Compile Include="DataProviderContracts\IGroupDataProvider.cs" />
-    <Compile Include="DataProviderContracts\IGroupForUserDataProvidercs.cs" />
+    <Compile Include="DataProviderContracts\IGroupForUserDataProvider.cs" />
     <Compile Include="DataProviderContracts\IMarkDataProvider.cs" />
     <Compile Include="DataProviderContracts\IRoleDataProvider.cs" />
     <Compile Include="DataProviderContracts\IStudentDataProvider.cs" />
