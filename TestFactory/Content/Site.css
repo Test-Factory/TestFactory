@@ -242,8 +242,12 @@ color:white;
 button.whiteText {
 color:white;
 }
-#errorText, erroImage {
-text-align:center;
+.error-text {
+    text-align: center;
+}
+.error-image {
+    background-color:#F3F3F4;
+    margin: 0 auto;
 }
 img#errorImage {
     position: relative;
@@ -432,4 +436,18 @@ ul#nav-mobile {
 }
 input[type=text].updatePop-Up, input[type=text].createPop-Up{
     margin: 0px 0 6px 0;
+}
+.screenMediaBelow {
+    display: none;
+}
+@media screen  and (max-width: 1270px) {
+   .screenMediaAbove {
+       display: none;
+   }
+    .screenMediaBelow {
+        display: block;
+        margin: 3px;
+        padding: 0px;
+        float: left;
+    }
 }

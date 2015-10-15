@@ -121,7 +121,7 @@
     <value>Додати студента</value>
   </data>
   <data name="authorization" xml:space="preserve">
-    <value />
+    <value>Авторизація</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Відмінити</value>
@@ -147,8 +147,14 @@
   <data name="enterPassword" xml:space="preserve">
     <value>Введіть пароль</value>
   </data>
+  <data name="entry" xml:space="preserve">
+    <value>Вхід</value>
+  </data>
   <data name="exit" xml:space="preserve">
     <value>Вихід</value>
+  </data>
+  <data name="forbidenAction" xml:space="preserve">
+    <value>На жаль, неможливо створити або відредаугвати групу з таким ім`ям</value>
   </data>
   <data name="loginAction" xml:space="preserve">
     <value>Увійти</value>
@@ -165,22 +171,19 @@
   <data name="offJavascript" xml:space="preserve">
     <value>У вас відключений Javascript</value>
   </data>
+  <data name="pageNotFound" xml:space="preserve">
+    <value>Вибачте....Але сторінка не знайдена :(</value>
+  </data>
   <data name="save" xml:space="preserve">
     <value>Зберегти</value>
   </data>
   <data name="shortName" xml:space="preserve">
     <value>Коротке ім'я</value>
   </data>
-  <data name="sorry" xml:space="preserve">
-    <value>Вибачте....Але сторінка не знайдена :(</value>
-  </data>
   <data name="surname" xml:space="preserve">
     <value>Прізвище</value>
   </data>
   <data name="testHolland" xml:space="preserve">
     <value>Тест Холланда</value>
-  </data>
-  <data name="wayIn" xml:space="preserve">
-    <value>Вхід</value>
   </data>
 </root>

@@ -13,7 +13,6 @@
                     <th class="marks" >
                         <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id); } "> </a>
                     </th>
-
                     <!-- /ko -->
                 </tr>
                 @if (User.IsInRole("Filler"))
@@ -50,15 +49,25 @@
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
-                   @if (User.IsInRole("Filler")) 
-                   { 
-                    <td>
-                        <button class="  btn  bt-size  btnStudent" data-bind="click: $root.editStudent">@GlobalRes_ua.edit</button>
-                    </td>
-                   }
-                    <td>
-                        <a class="btn btnStudent bt-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
-                    </td>
+                        @if (User.IsInRole("Filler"))
+                        {
+                            <td class="screenMediaBelow">
+                                <button class="  btn editStudent bt-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></button>
+                            </td>
+
+                        }
+                        <td class="screenMediaBelow">
+                            <button class="  btn bt-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/down.png" /></button>
+                        </td>
+                        @if (User.IsInRole("Filler"))
+                        {
+                            <td class ="screenMediaAbove">
+                                <button class="  btn  bt-size  btnStudent" data-bind="click: $root.editStudent">@GlobalRes_ua.edit</button>
+                            </td>
+                        }
+                        <td class="screenMediaAbove">
+                            <a class="btn btnStudent bt-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
+                        </td>
                 </tr>
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
@@ -68,7 +77,10 @@
                     <!-- ko foreach: $root.studentForUpdate().marks -->
                     <td class="marks"><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
                     <!-- /ko -->
-                    <td>
+                    <td class="screenMediaBelow">
+                        <button class="  btn bt-size btnStudent" data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></button>
+                    </td>
+                    <td class="screenMediaAbove">
                         <button class=" btn  bt-size  btnStudent" data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</button>
                     </td>
                 </tr>

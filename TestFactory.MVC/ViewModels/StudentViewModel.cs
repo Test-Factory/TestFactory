@@ -21,6 +21,7 @@ namespace TestFactory.MVC.ViewModels
         [DataType(DataType.Text)]
         [StringLength(255)]
         public virtual string LastName { get; set; }
+
         [Required]
         //[ExsistGroupId]
         public virtual string GroupId { get; set; }

@@ -212,6 +212,9 @@
     <Content Include="App_Data\TestFactoryData_log.ldf">
       <DependentUpon>TestFactoryData.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\images\document_save.png" />
+    <Content Include="Content\images\down.png" />
+    <Content Include="Content\images\edit.png" />
     <Content Include="Content\images\error.jpg" />
     <Content Include="Content\materialize\css\materialize.css" />
     <Content Include="Content\materialize\css\materialize.min.css" />
@@ -397,6 +400,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Group\GetStudentCount.cshtml" />
     <Content Include="Views\File\GetAllReport.cshtml" />
+    <Content Include="Views\Error\ForbiddenAction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
