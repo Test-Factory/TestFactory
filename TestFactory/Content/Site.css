@@ -338,6 +338,7 @@ a.toEdit {
 }
 .sort-link {
     padding: 0px;
+    float: none;
 }
 .bt-size {
     padding-left: 5px;
@@ -450,4 +451,25 @@ input[type=text].updatePop-Up, input[type=text].createPop-Up{
         padding: 0px;
         float: left;
     }
+}
+.triangle-up {
+    float: none;
+    display: block;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 10px solid grey;
+    margin-bottom: 3px;
+}
+
+.triangle-down {
+ 
+    display: block;
+    float: none;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 10px solid grey;
 }
