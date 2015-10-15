@@ -7,22 +7,23 @@
             <thead>
                 <tr>
                     
-                    <th class="last-name"><a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname 
-                         <!-- ko if: $root.sortKey() == "lastName" -->
-                                <div data-bind="css: selectedClassForSortedField"></div>
-                         <!-- /ko -->
-                        </a></th>
-                    <th class="first-name"><a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name
-                        <!-- ko if: $root.sortKey() == "firstName" -->
-                            <div  data-bind="css: selectedClassForSortedField"></div>
+                    <th class="last-name">
+                        <!-- ko if: $root.sortKey() == "lastName" -->
+                        <span data-bind="css: selectedClassForSortedField"></span>
                         <!-- /ko -->
-                        </a></th>
+                        <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
+                        </th>
+                    <th class="first-name">
+                        <!-- ko if: $root.sortKey() == "firstName" -->
+                        <div data-bind="css: selectedClassForSortedField"></div>
+                        <!-- /ko -->
+                         <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a></th>
                     <!-- ko foreach: $root.categories -->
                     <th class="marks" >
-                       <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
                         <!-- ko if: $root.sortKey() == $data.code() -->
                         <div data-bind="css: $root.selectedClassForSortedField"></div>
                         <!-- /ko -->
+                       <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
                     </th>
                     <!-- /ko -->
                 </tr>

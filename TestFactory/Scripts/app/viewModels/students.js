@@ -192,6 +192,7 @@ function StudentsViewModel(group) {
             });
 
         });
+        self.sortingByName("lastName");
     }
    
     self.init();
