@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using TestFactory.Filters.WebApi;
 
 namespace TestFactory
 {
@@ -13,6 +14,8 @@ namespace TestFactory
                 routeTemplate : "api/{controller}/{id}",
                 defaults : new { id = RouteParameter.Optional }
             );
+
+            config.Filters.Add(new ExceptionHandlingAttribute());
         }
     }
 }
