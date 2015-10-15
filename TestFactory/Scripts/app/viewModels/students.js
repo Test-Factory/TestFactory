@@ -33,12 +33,11 @@ function StudentsViewModel(group) {
     };
 
     self.sortDescending = ko.observable(false);
-    self.sortKey = {
-        lastName: "lastName",
-        edit: "firstName"
-    };
-    self.sortingByMark = function (key, id) {
-        if (self.sortDescending) {
+    self.sortKey = ko.observable("lastName");
+
+    self.sortingByMark = function (key, id, code) {
+        self.sortKey(code());
+        if (self.sortDescending()) {
             self.students.sort(function (left, right) {
                
                 var getMark = function (item) {
@@ -54,9 +53,7 @@ function StudentsViewModel(group) {
                 else
                     return -1;
             });
-            $('#' + key).removeClass();
-            $('#' + key).addClass("triangle-up");
-            self.sortDescending = false;
+            self.sortDescending(false);
         } else {
             self.students.sort(function (left, right) {
                
@@ -73,14 +70,13 @@ function StudentsViewModel(group) {
                 else
                     return 1;
             });
-            $('#' + key).removeClass();
-            $('#' + key).addClass("triangle-down");
-            self.sortDescending = true;
+            self.sortDescending(true);
         }
         
     } 
 
     self.sortingByName = function (key) {
+        self.sortKey(key);
         if (self.sortDescending()) {
             self.students.sort(function (left, right) {
               
@@ -106,7 +102,7 @@ function StudentsViewModel(group) {
 
     }
     self.selectedClassForSortedField = ko.pureComputed(function () {
-        return self.sortDescending() ? "triangle-down" : "triangle-up";
+        return self.sortDescending() ? "triangle-up" : "triangle-down";
     }, self);
 
     self.downloadReport = function (student) {
