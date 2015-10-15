@@ -17,6 +17,17 @@ namespace TestFactory.Business.Components.Managers
             return provider.GetCount(gropId);
         }
 
+        public IList<Group> GetListForUser(string userId)
+        {
+            var UserGroupsId = provider.GetListForUser(userId);
+            var ListGroup = new List<Group>();
+            foreach (var gr in UserGroupsId)
+            {
+                var groupById = provider.GetById(gr.GroupId);
+                ListGroup.Add(groupById);
+            }
+            return ListGroup;
+        }
     }
 }
 

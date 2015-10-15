@@ -27,11 +27,12 @@ namespace TestFactory.Controllers
             this.userManager = userManager;
             this.groupForUserManager = groupForUserManager;
         }
-     
-      
+
+        [Authorize(Roles = "Filler,Editor")]
         public ActionResult List()
         {              
-            var groups = groupManager.GetList();
+            //var groups = groupManager.GetList();
+            var groups = groupManager.GetListForUser(user.User.Id);
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
@@ -77,9 +78,8 @@ namespace TestFactory.Controllers
             groupManager.Create(model);
             //далі штука для створення начень в базі даних
             GroupForUser gfu = new GroupForUser();
-            UserContext uc= new UserContext();
             gfu.GroupId = group.Id;
-            gfu.UserId = uc.User.Id;
+            gfu.UserId = user.User.Id;
             groupForUserManager.Create(gfu);
             return RedirectToRoute("groupStudentList", new { groupId = group.Id });
         }
