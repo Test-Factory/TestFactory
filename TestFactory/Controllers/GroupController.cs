@@ -14,17 +14,23 @@ namespace TestFactory.Controllers
     {
        private GroupManager groupManager;
 
+       private UserManager userManager;
+
        private UserContext user;
 
-        public GroupController(GroupManager groupManager, StudentManager studentManager)
+       private GroupForUserManager groupForUserManager;
+
+        public GroupController(GroupManager groupManager, StudentManager studentManager,UserManager userManager,GroupForUserManager groupForUserManager)
         {
             this.groupManager = groupManager;
             this.user = new UserContext();
+            this.userManager = userManager;
+            this.groupForUserManager = groupForUserManager;
         }
      
       
         public ActionResult List()
-        {
+        {              
             var groups = groupManager.GetList();
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
@@ -48,7 +54,7 @@ namespace TestFactory.Controllers
             return Json(count);
         }
 
-        [Authorize(Roles = "Filler")]
+        [Authorize(Roles = "Filler,Editor")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -57,7 +63,8 @@ namespace TestFactory.Controllers
 
         [HttpPost]
         public ActionResult Create(GroupViewModel group)
-        {      
+        {
+            
             if (isIncludeHTMLAttributes(group)) 
             {
                 return RedirectToRoute("forbiddenAction");
@@ -68,7 +75,12 @@ namespace TestFactory.Controllers
             }
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Create(model);
-
+            //далі штука для створення начень в базі даних
+            GroupForUser gfu = new GroupForUser();
+            UserContext uc= new UserContext();
+            gfu.GroupId = group.Id;
+            gfu.UserId = uc.User.Id;
+            groupForUserManager.Create(gfu);
             return RedirectToRoute("groupStudentList", new { groupId = group.Id });
         }
 

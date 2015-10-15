@@ -7,5 +7,8 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.Business.DataProviderContracts
 {
-    public interface IGroupForUserDataProvidercs : IDataProvider<GroupForUser>{ }
+    public interface IGroupForUserDataProvider : IDataProvider<GroupForUser>
+    {
+       
+    }
 }
