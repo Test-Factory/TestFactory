@@ -17,6 +17,7 @@ namespace TestFactory.Controllers
         }
         public ActionResult ForbiddenAction()
         {
+            Response.StatusCode = 403;
             return View();
         }
     }

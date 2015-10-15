@@ -71,7 +71,7 @@
 
                         }
                         <td class="screenMediaBelow">
-                            <button class="  btn bt-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/down.png" /></button> 
+                            <a class="  btn bt-size btnStudent" data-bind="attr:{id: id, href: id}"><img src="~/Content/images/down.png" /></a> 
                         </td>
                         @if (User.IsInRole("Filler"))
                         {
