@@ -19,7 +19,6 @@ function StudentsViewModel(group) {
 
     var studentProvider = new StudentProvider(self.group.id);
     var categoryProvider = new CategoryProvider();
-    var mp = new MarkProvider();
     
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
@@ -33,7 +32,7 @@ function StudentsViewModel(group) {
         create:"create"
     };
 
-    self.sortDescending = false;
+    self.sortDescending = ko.observable(false);
     self.sortKey = {
         lastName: "lastName",
         edit: "firstName"
@@ -41,6 +40,7 @@ function StudentsViewModel(group) {
     self.sortingByMark = function (key, id) {
         if (self.sortDescending) {
             self.students.sort(function (left, right) {
+               
                 var getMark = function (item) {
                     return item.categoryId() == id();
                 }
@@ -54,9 +54,12 @@ function StudentsViewModel(group) {
                 else
                     return -1;
             });
+            $('#' + key).removeClass();
+            $('#' + key).addClass("triangle-up");
             self.sortDescending = false;
         } else {
             self.students.sort(function (left, right) {
+               
                 var getMark = function (item) {
                     return item.categoryId() == id();
                 }
@@ -70,22 +73,25 @@ function StudentsViewModel(group) {
                 else
                     return 1;
             });
+            $('#' + key).removeClass();
+            $('#' + key).addClass("triangle-down");
             self.sortDescending = true;
         }
         
     } 
 
     self.sortingByName = function (key) {
-        if (self.sortDescending) {
-                self.students.sort(function(left, right) {
+        if (self.sortDescending()) {
+            self.students.sort(function (left, right) {
+              
                     if (left[key]().toUpperCase() == right[key]().toUpperCase())
                         return 0;
                     else if (left[key]().toUpperCase() < right[key]().toUpperCase())
                         return 1;
                     else
                         return -1;
-                });
-                self.sortDescending = false;
+            });
+            self.sortDescending(false);
         } else {
             self.students.sort(function(left, right) {
                 if (left[key]().toUpperCase() == right[key]().toUpperCase())
@@ -95,10 +101,13 @@ function StudentsViewModel(group) {
                 else
                     return 1;
             });
-            self.sortDescending = true;
+            self.sortDescending(true);
         }
 
     }
+    self.selectedClassForSortedField = ko.pureComputed(function () {
+        return self.sortDescending() ? "triangle-down" : "triangle-up";
+    }, self);
 
     self.downloadReport = function (student) {
         var studentServerModel = toServerStudentModel(student);
@@ -125,7 +134,7 @@ function StudentsViewModel(group) {
         }
         self.studentForCreate().mode(self.mods.create);
 
-        self.studentForCreate().lastName.isModified(false);
+        //self.studentForCreate().lastName.isModified(false);
         ko.validation.group(self.studentForCreate);
     };
 

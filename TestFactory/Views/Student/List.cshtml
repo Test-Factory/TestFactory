@@ -7,11 +7,11 @@
             <thead>
                 <tr>
                     
-                    <th class="last-name"><a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname</a> </th>
-                    <th class="first-name"><a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a> </th>
+                    <th class="last-name"><a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname <div id="lastName" data-bind="css: selectedClassForSortedField"></div></a></th>
+                    <th class="first-name"><a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name<div id="firstName"></div></a></th>
                     <!-- ko foreach: $root.categories -->
                     <th class="marks" >
-                        <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id); } "> </a>
+                       <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id); } "> </a><div id=$data.code></div>
                     </th>
                     <!-- /ko -->
                 </tr>
@@ -35,8 +35,11 @@
                     <!-- ko foreach: $root.studentForCreate().marks -->
                     <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
                     <!-- /ko -->
-                    <td>
+                    <td class="screenMediaAbove">
                         <button class="btn btn-success" data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
+                    </td>
+                    <td class="screenMediaBelow">
+                        <button class="btn btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></button>
                     </td>
                 </tr>
                 }
@@ -57,7 +60,7 @@
 
                         }
                         <td class="screenMediaBelow">
-                            <button class="  btn bt-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/down.png" /></button>
+                            <button class="  btn bt-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/down.png" /></button> 
                         </td>
                         @if (User.IsInRole("Filler"))
                         {
