@@ -20,11 +20,15 @@ namespace TestFactory.Business.Models
 
         public virtual IList<Group> AdminGroup { get; set; }
 
+        public virtual IList<GroupForUser> ManagerGroup { get; set; }
+
         public virtual Role Roles{ get; set; }
 
         public User()
         {
             AdminGroup = new List<Group>();
+
+            ManagerGroup = new List<GroupForUser>();
         }
     }
 }

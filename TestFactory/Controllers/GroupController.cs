@@ -13,7 +13,6 @@ namespace TestFactory.Controllers
     public class GroupController : Controller
     {
        private GroupManager groupManager;
-       private readonly StudentManager studentManager;
 
        private UserContext user;
 
@@ -23,7 +22,7 @@ namespace TestFactory.Controllers
             this.user = new UserContext();
         }
      
-        [Authorize(Roles = "Filler, Editor")]
+      
         public ActionResult List()
         {
             var groups = groupManager.GetList();

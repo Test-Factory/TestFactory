@@ -24,7 +24,9 @@
                             <a class = "waves-effect waves-light btn donwloadStudent" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)">@GlobalRes_ua.download</a>                       
                                 @if (User.IsInRole("Filler"))
                             {
-                                <a class="toEdit waves-effect waves-light btn group-update">@GlobalRes_ua.edit</a>
+                                    <div class="groupUpdate">
+                                        <a class="toEdit waves-effect waves-light btn group-update">@GlobalRes_ua.edit</a>
+                                    </div>
                             }
                         </div>
                     </div>
