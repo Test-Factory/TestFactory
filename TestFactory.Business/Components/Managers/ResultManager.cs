@@ -115,56 +115,56 @@ namespace TestFactory.Business.Components.Managers
 
         public void ConvertToWordX(Student student, IList<Category> category)
         {
-            string fileName = @"D:\" + student.FirstName + "_" + student.LastName + ".docx";
-            var doc = DocX.Create(fileName);
+            //string fileName = @"D:\" + student.FirstName + "_" + student.LastName + ".docx";
+            //var doc = DocX.Create(fileName);
 
-            Table t = doc.AddTable(category.Count + 1, 2);
-            t.Alignment = Alignment.both;
-            t.Design = TableDesign.MediumList1Accent1;
+            //Table t = doc.AddTable(category.Count + 1, 2);
+            //t.Alignment = Alignment.both;
+            //t.Design = TableDesign.MediumList1Accent1;
 
-            t.Rows[0].Cells[0].Paragraphs.First().Append("Основний тип");
-            t.Rows[0].Cells[1].Paragraphs.First().Append("Спеціалізація в ІТ").Bold();
-            for(int i = 1; i < category.Count + 1; i++)
-            {
-                t.Rows[i].Cells[0].Paragraphs.First().Append(category[i - 1].Name);
-                t.Rows[i].Cells[1].Paragraphs.First().Append("The above code will creates a document that looks like the below image.");
-            }
-            doc.InsertTable(t);
+            //t.Rows[0].Cells[0].Paragraphs.First().Append("Основний тип");
+            //t.Rows[0].Cells[1].Paragraphs.First().Append("Спеціалізація в ІТ").Bold();
+            //for(int i = 1; i < category.Count + 1; i++)
+            //{
+            //    t.Rows[i].Cells[0].Paragraphs.First().Append(category[i - 1].Name);
+            //    t.Rows[i].Cells[1].Paragraphs.First().Append("The above code will creates a document that looks like the below image.");
+            //}
+            //doc.InsertTable(t);
 
-            int mx = 0;
+            //int mx = 0;
 
-            for (int i = 0; i < student.Marks.Count; i++)
-                if (student.Marks[i].Value > mx) mx = student.Marks[i].Value;
+            //for (int i = 0; i < student.Marks.Count; i++)
+            //    if (student.Marks[i].Value > mx) mx = student.Marks[i].Value;
 
-            for (int i = 0; i < category.Count; i++)
-            {
+            //for (int i = 0; i < category.Count; i++)
+            //{
                 
-                string headlineText = category[i].Name + " тип";
-                string paragraph;
+            //    string headlineText = category[i].Name + " тип";
+            //    string paragraph;
 
-                // A formatting object for our headline:
-                var headLineFormat = new Formatting();
-                headLineFormat.FontFamily = new System.Drawing.FontFamily("Calibri");
-                headLineFormat.Size = 14D;
-                headLineFormat.Position = 12;
+            //    // A formatting object for our headline:
+            //    var headLineFormat = new Formatting();
+            //    headLineFormat.FontFamily = new System.Drawing.FontFamily("Calibri");
+            //    headLineFormat.Size = 14D;
+            //    headLineFormat.Position = 12;
 
-                // A formatting object for our normal paragraph text:
-                var paraFormat = new Formatting();
-                paraFormat.FontFamily = new System.Drawing.FontFamily("Calibri");
-                paraFormat.Size = 12D;
+            //    // A formatting object for our normal paragraph text:
+            //    var paraFormat = new Formatting();
+            //    paraFormat.FontFamily = new System.Drawing.FontFamily("Calibri");
+            //    paraFormat.Size = 12D;
 
-                // Insert the now text obejcts;
-                if(i!=0)doc.InsertParagraph(Environment.NewLine);
-                Paragraph title = doc.InsertParagraph(headlineText, false, headLineFormat);
-                title.Alignment = Alignment.center;
-                title.Bold();
-            }
+            //    // Insert the now text obejcts;
+            //    if(i!=0)doc.InsertParagraph(Environment.NewLine);
+            //    Paragraph title = doc.InsertParagraph(headlineText, false, headLineFormat);
+            //    title.Alignment = Alignment.center;
+            //    title.Bold();
+            //}
 
-            // Save to the output directory:
-            doc.Save();
+            //// Save to the output directory:
+            //doc.Save();
 
-            // Open in Word:
-            Process.Start("WINWORD.EXE", fileName);
+            //// Open in Word:
+            //Process.Start("WINWORD.EXE", fileName);
         }
     }
 }
