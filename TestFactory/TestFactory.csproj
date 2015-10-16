@@ -217,6 +217,8 @@
     <Content Include="Content\images\down.png" />
     <Content Include="Content\images\edit.png" />
     <Content Include="Content\images\error.jpg" />
+    <Content Include="Content\images\sort-down.png" />
+    <Content Include="Content\images\sort-up.png" />
     <Content Include="Content\materialize\css\materialize.css" />
     <Content Include="Content\materialize\css\materialize.min.css" />
     <Content Include="Content\materialize\font\material-design-icons\LICENSE.txt" />

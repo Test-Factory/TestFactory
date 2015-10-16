@@ -7,11 +7,6 @@
 html {
     line-height: 1.45;
 }
-.btn-hover :hover{
-    background-color: red !important; 
-    color: black;
-}
-
 
 header, footer, nav, section {
     display: block;
@@ -339,8 +334,9 @@ a.toEdit {
 .sort-link {
     padding: 0px;
     float: none;
+    display: inline;
 }
-.bt-size {
+.btn-size {
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -421,6 +417,28 @@ p.countUsers {
         top: 56px;
     }
 }
+@media screen and (max-width: 550px) {
+    #groupName {
+        margin-left: 5px;
+    }
+    #tbStudentList {
+         margin-left: 5px;
+    }
+    .btn-size {
+        display: table-cell;
+        height: 30px;
+        width: 30px;
+    }
+    #tbStudentList .first-name {
+        width: 20%;
+         word-wrap:break-word;
+    
+    }
+    #tbStudentList .last-name {
+     width: 19%;
+     word-wrap:break-word;
+    }
+}
 ul#nav-mobile {
     position: relative;
     left: -250px;
@@ -430,6 +448,12 @@ ul#nav-mobile {
 }
 .btnStudent {
     background-color: #9e9e9e;
+}
+.btnStudent img {
+    vertical-align: middle;
+}
+.btn-success img {
+    padding-top: 5px;
 }
 .field-validation-error {
     position: relative;
@@ -453,22 +477,18 @@ input[type=text].updatePop-Up, input[type=text].createPop-Up{
     }
 }
 .triangle-up {
-    float: none;
-    display: block;
-	width: 0;
-	height: 0;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	border-bottom: 10px solid grey;
-    margin-bottom: 3px;
+    margin: 0 0 3px 5px;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 .triangle-down {
- 
-    display: block;
-    float: none;
-	width: 0;
-	height: 0;
+    margin: 0 0 0 5px;
+    vertical-align: middle;
+    display: inline-block;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	border-top: 10px solid grey;
@@ -476,3 +496,8 @@ input[type=text].updatePop-Up, input[type=text].createPop-Up{
 a.toEdit {
     top: -24px;
 }
+.iconsStudent {
+    
+}
+
+
