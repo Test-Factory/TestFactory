@@ -402,114 +402,124 @@ p.countUsers {
     #forCreate {
         height: 190px;
     }
-
-@media screen and (max-width: 560px) {
-    div#create {       
-        left: 2%;
-    }
 }
 
-@media screen and (max-width: 560px) {
-    div#LoginForm {       
-        left: 2%;
+    @media screen and (max-width: 560px) {
+        div#create {
+            left: 2%;
+        }
     }
-}
 
-@media screen and (max-width: 370px) {
-    div#create, div#updateGroup {       
-        left: 3%;
+    @media screen and (max-width: 560px) {
+        div#LoginForm {
+            left: 2%;
+        }
     }
-}
 
-@media screen and (max-width: 500px) {
-    div#create, div#updateGroup {       
-        top: 56px;
+    @media screen and (max-width: 370px) {
+        div#create, div#updateGroup {
+            left: 3%;
+        }
     }
-}
+
+    @media screen and (max-width: 500px) {
+        div#create, div#updateGroup {
+            top: 56px;
+        }
+    }
+
 @media screen and (max-width: 550px) {
     #groupName {
         margin-left: 5px;
     }
-    #tbStudentList {
-         margin-left: 5px;
-    }
-    .btn-size {
-        display: table-cell;
-        height: 30px;
-        width: 30px;
-    }
-    #tbStudentList .first-name {
-        width: 20%;
-         word-wrap:break-word;
-    
-    }
-    #tbStudentList .last-name {
-     width: 19%;
-     word-wrap:break-word;
-}
-ul#nav-mobile {
-    position: relative;
-    left: -250px;
 }
 
-.btnStudent:hover {
-    background-color: #757575;
-}
+        #tbStudentList {
+            margin-left: 5px;
+        }
 
-.btnStudent {
-    background-color: #9e9e9e;
-}
-.btnStudent img {
-    vertical-align: middle;
-}
-.btn-success img {
-    padding-top: 5px;
-}
-.field-validation-error {
-    position: relative;
-    left: 10px;
-}
+        .btn-size {
+            display: table-cell;
+            height: 30px;
+            width: 30px;
+        }
 
-    input[type=text].updatePop-Up, input[type=text].createPop-Up {
-    margin: 0px 0 6px 0;
-}
+        #tbStudentList .first-name {
+            width: 20%;
+            word-wrap: break-word;
+        }
 
-.screenMediaBelow {
-    display: none;
-}
+        #tbStudentList .last-name {
+            width: 19%;
+            word-wrap: break-word;
+        }
 
-@media screen and (max-width: 1270px) {
-   .screenMediaAbove {
-       display: none;
-   }
+        ul#nav-mobile {
+            position: relative;
+            left: -250px;
+        }
 
-    .screenMediaBelow {
-        display: block;
-        margin: 3px;
-        padding: 0px;
-        float: left;
-    }
-}
+        .btnStudent:hover {
+            background-color: #757575;
+        }
 
-.triangle-up {
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-bottom: 10px solid grey;
-    margin: 0 0 3px 5px;
-    vertical-align: middle;
-    display: inline-block;
-}
+        .btnStudent {
+            background-color: #9e9e9e;
+        }
 
-.triangle-down {
-    margin: 0 0 0 5px;
-    vertical-align: middle;
-    display: inline-block;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-top: 10px solid grey;
-}
+            .btnStudent img {
+                vertical-align: middle;
+            }
 
-    a.toEdit.waves-effect.waves-light.btn.group-update {
-    top: -24px;
-}
-}
+        .btn-success img {
+            padding-top: 5px;
+        }
+
+        .field-validation-error {
+            position: relative;
+            left: 10px;
+        }
+
+        input[type=text].updatePop-Up, input[type=text].createPop-Up {
+            margin: 0px 0 6px 0;
+        }
+
+        .screenMediaBelow {
+            display: none;
+        }
+
+        @media screen and (max-width: 1270px) {
+            .screenMediaAbove {
+                display: none;
+            }
+
+            .screenMediaBelow {
+                display: block;
+                margin: 3px;
+                padding: 0px;
+                float: left;
+            }
+        }
+
+        .triangle-up {
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid grey;
+            margin: 0 0 3px 5px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .triangle-down {
+            margin: 0 0 0 5px;
+            vertical-align: middle;
+            display: inline-block;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid grey;
+        }
+
+        a.toEdit.waves-effect.waves-light.btn.group-update {
+            top: -24px;
+        }
+ 
