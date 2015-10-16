@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Text;
 
 namespace TestFactory
 {
@@ -25,10 +26,15 @@ namespace TestFactory
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {
             var filename = filterContext.Controller.ViewBag.WordDocumentFilename;
+
+            byte[] bytesName = Encoding.UTF8.GetBytes(filename);
+            filename = Encoding.UTF8.GetString(bytesName);
+
             filename = filename ?? DefaultFilename ?? "Document";
 
-            filterContext.HttpContext.Response.AppendHeader("Content-Disposition", string.Format("filename={0}.doc", filename));
-            filterContext.HttpContext.Response.ContentType = "application/msword";
+            filterContext.HttpContext.Response.AppendHeader("Content-Disposition", string.Format("filename={0}.doc; charset=utf-8", filename));
+            filterContext.HttpContext.Response.ContentType = "application/msword; charset=utf-8";
+
 
             base.OnResultExecuted(filterContext);
         }

@@ -9,7 +9,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script src="~/bundles/jquery"></script>
+    <title>@Model.Item3.FullName</title>
+    <!--<script src="~/bundles/jquery"></script>
     <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
     <script src="~/Scripts/Highcharts-4.0.1/js/highcharts-more.js"></script>
     <script src="~/Scripts/Highcharts-4.0.1/js/modules/exporting.js"></Script>
@@ -48,8 +49,7 @@
             $("#chart-container").empty();
             $("#chart-container").html('<img src="' + img + '"/>');
         });
-</script>
-    @Styles.Render("~/Content/materialize/css/materialize.min.css")
+</script>-->
     <style>
         .borderTable {
             border-top: solid 1px;
@@ -61,7 +61,7 @@
             padding: 10px;
         }
     </style>
-<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
+<!--<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> -->
 </head>
 <body>
     @for (int ind = 0; ind < Model.Item1.Count; ind++)
@@ -105,41 +105,6 @@
                         }
                     </div>
             </div>
-            <table class="striped" style="width: 600px;">
-                <thead>
-                  <tr>
-                      <th data-field="id" style="text-align: center;">Основний тип</th>
-                      <th style="border-left: solid 1px; text-align: center;" data-field="name">Спеціалізація в ІТ</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td class="borderTable">@Model.Item2[0].Name</td>
-                        <td class="borderLeftTable">Спеціаліст по інфраструктурі, сховищам даних і хмарних технологій (RC)<br /> Спеціаліст по комп'ютерних мережах / мережевий адміністратор (RI, RC)<br /> Програміст мікроконтролерів і роботів (RC, RI)<br /> Системний програміст (RC)</td>
-                      </tr>
-                            <tr>
-                        <td class="borderTable">@Model.Item2[1].Name</td>
-                        <td class="borderLeftTable">Дизайнер (AS)<br /> Продюсер (AE)<br /> Технічний письменник (AS, AI)</td>
-                      </tr>
-                            <tr>
-                        <td class="borderTable">@Model.Item2[2].Name</td>
-                        <td class="borderLeftTable">Дослідник великих масивів даних (IC)<br /> Фахівець з комп'ютерного моделювання (процесів) (IC)<br /> Фахівець з мережевої та комп'ютерної безпеки (IC, IA, IR)<br /> Спеціаліст по дослідницькому тестуванню (exploratory testing) (IC)<br /> Фахівець з автоматизації процесів (IC)</td>
-                      </tr>
-                            <tr>
-                        <td class="borderTable">@Model.Item2[3].Name</td>
-                        <td class="borderLeftTable">Системний адміністратор (SA)<br /> Оператор служби технічної підтримки (SC)<br /> Бізнес-консультант (SI, SE)<br /> Менеджер проектів (SE)<br /> СкрамМастер (SE)</td>
-                      </tr>
-                            <tr>
-                        <td class="borderTable">@Model.Item2[4].Name</td>
-                        <td class="borderLeftTable">Бізнес-аналітик, системний аналітик (ES, EC)<br /> Бізнес-консультант (ES, EI)<br /> Маркетолог (EI, EC)<br /> Менеджер продуктів (ES, EI, EC)</td>
-                      </tr>
-                            <tr>
-                        <td class="borderTable">@Model.Item2[5].Name</td>
-                        <td class="borderLeftTable">Адміністратор баз даних (CI, CR)<br /> Прикладної програміст (CI, CR)<br /> Тестировщик / менеджер з якості / QA (CI, CR)<br /> Фахівець з автоматизації процесів (CI)<br /> Інженер з автоматизації тестування</td>
-                    </tr>
-                </tbody>
-              </table>
             <div style="width: 800px; margin: 0 auto;">
         
                 <div style="width: 100%; overflow: hidden; line-height: 1.5;">
