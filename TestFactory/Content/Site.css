@@ -1,27 +1,27 @@
-﻿body {
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
+﻿
+body {
     background-color: #fff;
-}
-html {
-    line-height: 1.45;
+    color: #232323;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-size: .85em;
 }
 
-header, footer, nav, section {
-    display: block;
-}
+html { line-height: 1.45; }
+
+header, footer, nav, section { display: block; }
 
 div#content {
-z-index:0;
-overflow:hidden;
+    overflow: hidden;
+    z-index: 0;
 }
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
+
 fieldset {
     border: 1px solid #ddd;
-    padding: 0 1.4em 1.4em 1.4em;
     margin: 0 0 1.5em 0;
+    padding: 0 1.4em 1.4em 1.4em;
 }
 
 legend {
@@ -29,533 +29,359 @@ legend {
     font-weight: bold;
 }
 
-textarea {
-    min-height: 75px;
-}
+textarea { min-height: 75px; }
 
-.editor-label {
-    margin: 1em 0 0 0;
-}
+.editor-label { margin: 1em 0 0 0; }
 
-.editor-field {
-    margin: 0.5em 0 0 0;
-}
+.editor-field { margin: 0.5em 0 0 0; }
 
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
-.field-validation-error {
-    color: #f00;
-}
 
-.field-validation-valid {
-    display: none;
-}
+.field-validation-error { color: #f00; }
+
+.field-validation-valid { display: none; }
 
 .input-validation-error {
-    border: 1px solid #f00;
     background-color: #fee;
+    border: 1px solid #f00;
 }
 
 .validation-summary-errors {
-    font-weight: bold;
     color: #f00;
+    font-weight: bold;
 }
 
-.validation-summary-valid {
-    display: none;
-}
+.validation-summary-valid { display: none; }
+
 a.left {
     font-size: 2em;
     margin-left: 10px;
 }
-.input-field {
-   left: 0px;
-}
-nav ul a {
-    font-size: 1.3rem;
-}
-a#text 
-{
-    position: relative;
-    left: 134px;
+
+.input-field { left: 0px; }
+
+nav ul a { font-size: 1.3rem; }
+
+a#text {
     font-size: 1.5em;
+    left: 134px;
+    position: relative;
 }
+
 div#partialView {
     display: inline-block;
-    position:absolute;
-    left:15px;
+    left: 15px;
+    position: absolute;
 }
+
 div#image {
-    position: relative;
-    left: 30%;
-    top: 0px;
     background-color: #201F1F;
+    left: 30%;
     opacity: 0.97;
+    position: relative;
+    top: 0px;
 }
-div#createGroup, div#updateGroup
-{
-    display:none;
-    top: 64px;
+
+div#createGroup, div#updateGroup {
+    background: black;
+    display: none;
     height: 100%;
+    opacity: 0.97;
+    position: fixed;
+    top: 64px;
     width: 100%;
-    position: fixed;
-    z-index:100;
-    background:black;
-    opacity:0.97;
+    z-index: 100;
 }
+
 div#create, div#update {
-    position: fixed;
-    top: 25%;
-    opacity: 1;
-    left: 35%;
-    width: 370px;
-    height: 306px;
-    z-index: 1000;
     background: white;
     border-radius: 3px;
+    height: 306px;
+    left: 35%;
+    opacity: 1;
+    position: fixed;
+    top: 25%;
+    width: 370px;
+    z-index: 1000;
 }
+
 a {
     /*TODO: Fix style, as now it is corrupting all links on white background*/
-   /*color:#FFF;*/
+    /*color:#FFF;*/
 }
+
 form {
-    margin-top: 3%;
     margin-left: 1%;
-}
-label {
-    font-size: 1.2em;
-}
-input[type="text"] {
-    
+    margin-top: 3%;
 }
 
-#logIn
-{
-    float: right;
-}
+label { font-size: 1.2em; }
 
-#LoginForm h2
-{
-    text-align: center;
-}
+input[type="text"] { }
+
+#logIn { float: right; }
+
+#LoginForm h2 { text-align: center; }
 
 #error {
-    color:black;
+    color: black;
     font-size: 2em;
 }
+
 div#image {
-    position: fixed;
     left: 35%;
+    position: fixed;
     top: 35%;
 }
+
 div#returnIndex {
-    width: 600px;
-    height: 200px;
-    position: relative;
-    left: 750px;
-    top: 55px;
     font-size: 3em;
+    height: 200px;
+    left: 750px;
+    position: relative;
+    top: 55px;
+    width: 600px;
 }
+
 #addGroup {
-    width: 250px;
+    display: block;
     height: 150px;
     margin-left: 10px;
     margin-top: 23px;
-    display:block;
+    width: 250px;
 }
+
 #addIcon {
+    font-size: 50px;
     position: relative;
     top: 50px;
-    font-size: 50px;
 }
+
 #groupAdd {
+    font-size: 25px;
+    left: -7px;
+    line-height: 37px;
     position: relative;
     top: 39px;
-    left: -7px;
-    font-size: 25px;
-    line-height: 37px;
 }
-div#content {
-    width: 100%;
-}
+
+div#content { width: 100%; }
+
 .card.blue-grey.darken-1.card-action {
-    width: 250px;
     height: 150px;
+    width: 250px;
 }
-.card-content.white-text{
-        height: 95px;
-}
+
+.card-content.white-text { height: 95px; }
+
 .row {
     float: left;
     margin-top: 15px;
 }
+
 #forCreate {
-    float:left;
-       width: 205px;
+    float: left;
     height: 170px;
     margin-right: 68px;
+    width: 205px;
 }
+
 a.toDetails, a.toEdit {
+    color: #909393;
     height: 100%;
     margin-right: 0px;
-    color:#909393
 }
-a.toEdit {
-cursor:pointer;
-}
+
+a.toEdit { cursor: pointer; }
+
 #textLik {
+    color: #909393;
+    cursor: pointer;
+    font-size: 45px;
     height: 100%;
     position: relative;
-    font-size: 45px;
     text-align: center;
     top: 15px;
-    color: #909393;
-    cursor:pointer;
 }
-.card-content.white-text {
-    padding:0px;
-}
-p#textLik:hover {
-    color:#26A69A;
-}
-label.createPop-Up {
-    margin-left: 10px;
-}
-h4.createPop-Up, h4.updatePop-Up {
-margin-left:10px;
-}
+
+.card-content.white-text { padding: 0px; }
+
+p#textLik:hover { color: #26A69A; }
+
+label.createPop-Up { margin-left: 10px; }
+
+h4.createPop-Up, h4.updatePop-Up { margin-left: 10px; }
+
 div.createPop-Up, div.updatePop-Up {
-    position: relative;
     left: 100px;
+    position: relative;
     top: 20px;
 }
-#whiteText {
-color:white;
 
-}
-button.whiteText {
-color:white;
-}
-.error-text {
-    text-align: center;
-}
+#whiteText { color: white; }
+
+button.whiteText { color: white; }
+
+.error-text { text-align: center; }
+
 .error-image {
-    background-color:#F3F3F4;
+    background-color: #F3F3F4;
     margin: 0 auto;
 }
+
 img#errorImage {
-    position: relative;
     left: 370px;
+    position: relative;
 }
+
 .input-field input[type=search] {
     position: relative;
     top: -7px;
 }
-.input-field input[type=search] + label {
-        top: -7px;
-}
-.input-field input[type=search] ~ .mdi-navigation-close {
-        top: -8px;
-}
 
-#LoginForm
-{
-    position: fixed;
-    top: 100px;
-    opacity: 1;
-    left: 35%;
-    width: 370px;
-    height: 300px;
-    z-index: 1000;
+.input-field input[type=search] + label { top: -7px; }
+
+.input-field input[type=search] ~ .mdi-navigation-close { top: -8px; }
+
+#LoginForm {
     background: #F3F3F4;
     border-radius: 3px;
+    height: 300px;
+    left: 35%;
+    opacity: 1;
+    position: fixed;
+    top: 100px;
+    width: 370px;
+    z-index: 1000;
 }
-input.createPop-up,input.updatePop-Up {
-    width: 70%;
+
+input.createPop-up, input.updatePop-Up {
     margin-left: 10px;
-}
-.card-content.white-text {
-    overflow: hidden;
-}
-#groupName {
-    margin-left: 30px;
+    width: 70%;
 }
 
-.errorFill {
-    border-bottom: 3px solid red; 
-   }
+.card-content.white-text { overflow: hidden; }
 
-input#FullName,input#ShortName{
+#groupName { margin-left: 30px; }
+
+.errorFill { border-bottom: 3px solid red; }
+
+input#FullName, input#ShortName {
     margin-left: 10px;
     width: 340px;
 }
-.blue-grey.darken-1 {
-    background-color: white !important;
-}
-a.toEdit {
-    float: right;
-}
-.card .card-action a {
-    color: #FBF9F6 !important;
-}
+
+.blue-grey.darken-1 { background-color: white !important; }
+
+a.toEdit { float: right; }
+
+.card .card-action a { color: #FBF9F6 !important; }
+
 .error-massage {
-    font-weight: bold;
     color: #f00;
+    font-weight: bold;
 }
 
-#error-cookie {
-    display: none;
-}
+#error-cookie { display: none; }
+
 div#count {
+    color: #F3F1EF;
     margin-top: 22px;
-    color:#F3F1EF;
 }
-a.toEdit {
-    margin-top: -32px;
-}
+
+a.toEdit { margin-top: -32px; }
 
 
 i.material-icons.downloadIcon {
-    position: relative;
     left: 70px;
+    position: relative;
     top: -6px;
 }
-body{
-    background: #F3F3F4;
-}
-nav .nav-wrapper {
-    background: teal;
-}
-.card .card-action {
-    padding: 0px;
-}
+
+body { background: #F3F3F4; }
+
+nav .nav-wrapper { background: teal; }
+
+.card .card-action { padding: 0px; }
+
 .donwloadStudent {
-    position: relative;
     left: 5px;
+    position: relative;
     top: 12px;
-    width:115px;
+    width: 115px;
 }
+
 a.toEdit.waves-effect.waves-light.btn.group-update {
     margin: 0px;
-    top: -24px;
     padding: 0px;
+    top: -24px;
 }
+
 a.waves-effect.waves-light.btn.donwloadStudent {
     margin: 0px;
     padding: 0px;
 }
+
 .group-update {
-    position: relative;
     left: -6px;
-    top: 12px;
-    width:115px;
-}
-p.countUsers {
-    padding-right:8px;
-    text-align: right;
-    font-size: 1.25em;
     position: relative;
+    top: 12px;
+    width: 115px;
+}
+
+p.countUsers {
+    font-size: 1.25em;
+    padding-right: 8px;
+    position: relative;
+    text-align: right;
     top: -4px;
 }
 
 @media screen and (max-width: 560px) {
-    a#addGroup {
-    top: -14px;
-}
-    div#updateGroup{
+    a#addGroup { top: -14px; }
+
+    div#updateGroup {
         display: none;
+        left: 0%;
         top: 0px;
-        left:0%;
     }
 }
 
 @media screen and (max-width: 539px) {
-    #forCreate {
-        height: 190px;
-    }
+    #forCreate { height: 190px; }
 }
 
-    @media screen and (max-width: 560px) {
-        div#create {
-            left: 2%;
-        }
-    }
+@media screen and (max-width: 560px) {
+    div#create { left: 2%; }
+}
 
-    @media screen and (max-width: 560px) {
-        div#LoginForm {
-            left: 2%;
-        }
-    }
+@media screen and (max-width: 560px) {
+    div#LoginForm { left: 2%; }
+}
 
-    @media screen and (max-width: 370px) {
-        div#create, div#updateGroup {
-            left: 3%;
-        }
-    }
+@media screen and (max-width: 370px) {
+    div#create, div#updateGroup { left: 3%; }
+}
 
-    @media screen and (max-width: 500px) {
-        div#create, div#updateGroup {
-            top: 56px;
-        }
-    }
+@media screen and (max-width: 500px) {
+    div#create, div#updateGroup { top: 56px; }
+}
 
  
 
-        ul#nav-mobile {
-            position: relative;
-            left: -250px;
-        }
-
-        .field-validation-error {
-            position: relative;
-            left: 10px;
-        }
-
-        input[type=text].updatePop-Up, input[type=text].createPop-Up {
-            margin: 0px 0 6px 0;
-        }
-
-        a.toEdit.waves-effect.waves-light.btn.group-update {
-            top: -24px;
-        }
-
-/* Styles for student list view
------------------------------------------------------------*/
-.screenMediaBelow {
-    display: none;
+ul#nav-mobile {
+    left: -250px;
+    position: relative;
 }
 
-@media screen  and (max-width: 1270px) {
-   .screenMediaAbove {
-       display: none !important;
-   }
-    .screenMediaBelow {
-        display: block;
-        margin: 3px;
-        padding: 0px;
-        float: left;
-    }
+.field-validation-error {
+    left: 10px;
+    position: relative;
 }
 
+input[type=text].updatePop-Up, input[type=text].createPop-Up { margin: 0px 0 6px 0; }
 
+a.toEdit.waves-effect.waves-light.btn.group-update { top: -24px; }
 
-  @media screen and (max-width: 550px) {
-    #groupName {
-        margin-left: 5px;
-    }
-    #tbStudentList {
-        margin-left: 5px;
-    }
-    #tbStudentList .first-name {
-            width: 15%;
-            word-wrap: break-word;
-        }
-    #tbStudentList .last-name {
-            width: 20%;
-            word-wrap: break-word;
-        }
-    #tbStudentList .marks {
-        width: 6%;
-    }
-}
-
-table {
-    table-layout: fixed;
-}
-
-#tbStudentList {
-        margin-left: 30px;
-    }
-
-#tbStudentList .first-name {
-    width: 20%;
-    word-wrap:break-word;
-}
-
-#tbStudentList .last-name {
-    width: 23%;
-    word-wrap:break-word;
-}
-
-#tbStudentList .marks {
-        width: 5%;
-    }
-
-.sort-link {
-    padding: 0px;
-    display: inline;
-}
-
-.btn-size {
-            display: table-cell;
-            height: 30px;
-            width: 30px;
-        }
-
-#tbStudentList .first-name {
-            width: 20%;
-            word-wrap: break-word;
-        }
-
-#tbStudentList .last-name {
-            width: 25%;
-            word-wrap: break-word;
-        }
-
- .btnStudent:hover {
-            background-color: #757575;
-        }
-
-.btnStudent {
-            background-color: #9e9e9e;
-        }
-
-.btnStudent img {
-                vertical-align: middle;
-            }
-
-.btn-success img {
-            padding-top: 5px;
-        }
-
-.screenMediaAbove {
-     display: inline-block;
-}
-
-.triangle-down {
-            margin: 0 0 0 5px;
-            vertical-align: middle;
-            display: inline-block;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 10px solid grey;
-        }
-
-.triangle-up {
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 10px solid grey;
-            margin: 0 0 3px 5px;
-            vertical-align: middle;
-            display: inline-block;
-        }
-
-.donwloadStudent {
-    background-color: #0097A7;
-}
-
-.donwloadStudent:hover {
-    background-color:#037986;
-}
-
-.noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* ----------------------------------------------------------*/
