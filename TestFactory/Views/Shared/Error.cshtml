@@ -1,18 +1,9 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 @{
-    Layout = null;
+    ViewBag.Title = "Errors";
+    Layout = "_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h4>Помилка: </h4>
+<h3 class="error-text"> @Model.Exception.Message</h3>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <div>
-        Error: @Model.Exception.Message 
-    </div>
-</body>
-</html>
