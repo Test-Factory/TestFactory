@@ -156,6 +156,12 @@
   <data name="forbidenAction" xml:space="preserve">
     <value>На жаль, неможливо виконати таку дію</value>
   </data>
+  <data name="GroupIdIsEmpty" xml:space="preserve">
+    <value>Ідентифікатор групи пустий.</value>
+  </data>
+  <data name="InternalServerError" xml:space="preserve">
+    <value>Помилка сервера.</value>
+  </data>
   <data name="loginAction" xml:space="preserve">
     <value>Увійти</value>
   </data>
@@ -164,6 +170,9 @@
   </data>
   <data name="name" xml:space="preserve">
     <value>Ім'я</value>
+  </data>
+  <data name="NoSuchGroupFound" xml:space="preserve">
+    <value>Групу не знайдено.</value>
   </data>
   <data name="offCookie" xml:space="preserve">
     <value>У вас відключені Cookie</value>

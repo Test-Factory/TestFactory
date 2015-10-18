@@ -1,9 +1,16 @@
-﻿@model System.Web.Mvc.HandleErrorInfo
+﻿@using System.Web;
+@model TestFactory.Business.Models.Error
 @{
     ViewBag.Title = "Errors";
     Layout = "_Layout.cshtml";
 }
 
-<h4>Помилка: </h4>
-<h3 class="error-text"> @Model.Exception.Message</h3>
+@Styles.Render("~/Error/css")
+
+
+<h1>@Model.HttpErrorCode</h1>
+<h3 class="error-text"> @Model.Message</h3>
+
+
+
 

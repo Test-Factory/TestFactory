@@ -105,6 +105,7 @@
     <Compile Include="DataProviderContracts\ICategoryDataProvider.cs" />
     <Compile Include="DataProviderContracts\IUserDataProvider.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\GroupForUser.cs" />
     <Compile Include="Models\Mark.cs" />

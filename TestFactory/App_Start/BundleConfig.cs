@@ -32,6 +32,7 @@ namespace TestFactory
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Students/css").Include("~/Content/students.css"));
+            bundles.Add(new StyleBundle("~/Error/css").Include("~/Content/error.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
