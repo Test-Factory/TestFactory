@@ -4,14 +4,14 @@
         <h3 id="groupName" data-bind="text: $root.group.shortName"></h3>
         <table id="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
             <thead>
-                <tr>
+                <tr class="noselect">
                     <th class="last-name">
-                       
+
                         <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
                         <!-- ko if: $root.sortKey() == "lastName" -->
                         <div data-bind="css: selectedClassForSortedField"></div>
                         <!-- /ko -->
-                        </th>
+                    </th>
                     <th class="first-name">
 
                         <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
@@ -21,7 +21,7 @@
                     </th>
                     <!-- ko foreach: $root.categories -->
                     <th class="marks">
-                      
+
                         <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
                         <!-- ko if: $root.sortKey() == $data.code() -->
                         <div data-bind="css: $root.selectedClassForSortedField"></div>
