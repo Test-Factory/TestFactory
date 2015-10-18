@@ -76,7 +76,7 @@ namespace TestFactory.Controllers
             }
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Create(model);
-            //далі штука для створення начень в базі даних
+     
             GroupForUser gfu = new GroupForUser();
             gfu.GroupId = group.Id;
             gfu.UserId = user.User.Id;

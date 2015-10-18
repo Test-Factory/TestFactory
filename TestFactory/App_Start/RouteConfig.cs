@@ -45,7 +45,7 @@ namespace TestFactory
 
             routes.MapRoute(
                    name: "forbiddenAction",
-                   url: "forbiden",
+                   url: "forbidden",
                    defaults: new { controller = "Error", action = "ForbiddenAction" }
                 );
 
