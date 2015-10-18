@@ -28,6 +28,25 @@ namespace TestFactory.Business.Components.Managers
             }
             return ListGroup;
         }
+        public bool isOwnerOfGroup(string groupID, string userId)
+        {
+            var UserGroupsId = provider.GetListForUser(userId);
+            var ListGroup = new List<Group>();
+            foreach (var gr in UserGroupsId)
+            {
+                var groupById = provider.GetById(gr.GroupId);
+                ListGroup.Add(groupById);
+            }
+            Group currentGroup = provider.GetById(groupID);
+
+            foreach (var group in ListGroup) 
+            {
+                if (group.Id == currentGroup.Id)
+                    return true;
+                continue; 
+            }
+            return false;
+        } 
     }
 }
 
