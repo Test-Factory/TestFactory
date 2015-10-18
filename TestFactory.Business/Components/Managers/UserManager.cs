@@ -44,8 +44,6 @@ namespace TestFactory.Business.Components.Managers
             var user = provider.GetByEmail(email);
             if(user != null)
             {
-                //string salt = HashDecoder.GenarateSalt();
-                //string d = HashDecoder.ComputeHash("IEditorFICT", salt);
                 bool correctPass = HashDecoder.VerifyHash(password, user.Password, user.PasswordSalt);
                 if (correctPass)
                 {
