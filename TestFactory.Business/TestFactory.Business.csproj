@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\HashDecoder.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
     <Compile Include="Components\Managers\GroupForUserManager.cs" />
     <Compile Include="Components\Managers\GroupManager.cs" />

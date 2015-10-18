@@ -7,6 +7,8 @@ using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
 using System.Web.Mvc;
 using System.IO.Compression;
+using DotNet.Highcharts.Options;
+using DotNet.Highcharts.Helpers;
 
 namespace TestFactory.Controllers.Api
 {
@@ -53,6 +55,11 @@ namespace TestFactory.Controllers.Api
             return View(tuple);
         }
 
+        public ActionResult GenerateChart(Student student, IList<Category> category)
+        {
+            var tuple = new Tuple<Student, IList<Category>>(student, category);
+            return View(tuple);
+        }
 
         [HttpPost]
         public void SaveZip()
