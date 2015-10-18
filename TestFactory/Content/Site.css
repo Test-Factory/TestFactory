@@ -422,19 +422,23 @@ p.countUsers {
 
 /* Styles for student list view
 -----------------------------------------------------------*/
-  @media screen and (max-width: 1270px) {
-       .screenMediaBelow {
-                display: inline-block;
-                margin: 3px;
-                padding: 0px;
-                float: left;
-            }
-      .screenMediaAbove {
-                display: none;
-            }
-
-     
+.screenMediaBelow {
+    display: none;
 }
+
+@media screen  and (max-width: 1270px) {
+   .screenMediaAbove {
+       display: none !important;
+   }
+    .screenMediaBelow {
+        display: block;
+        margin: 3px;
+        padding: 0px;
+        float: left;
+    }
+}
+
+
 
   @media screen and (max-width: 550px) {
     #groupName {
@@ -458,7 +462,6 @@ p.countUsers {
 
 table {
     table-layout: fixed;
-    width: 90%;
 }
 
 #tbStudentList {
@@ -515,10 +518,6 @@ table {
 .btn-success img {
             padding-top: 5px;
         }
-
-.screenMediaBelow {
-      display: none;
-}
 
 .screenMediaAbove {
      display: inline-block;
