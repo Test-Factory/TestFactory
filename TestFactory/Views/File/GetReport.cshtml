@@ -136,8 +136,7 @@
                     }
         <h2 style="text-align: center;">@{ var t = Model.Item1.FirstName + " " + Model.Item1.LastName + "(" + Model.Item3.ShortName + ")";} @t </h2>
         <div>
-                <div id="chart-container" style="min-width: 500px; max-width: 600px; height: 400px; float: left;"></div>
-                <canvas id="canvas" width="400px" height="600px" style="display: none;"></canvas> 
+                @{Html.RenderAction("GenerateChart", "File", new { student = Model.Item1, category = Model.Item2});}
                 <div style="float: left; display: inline; line-height: 1.5; margin-left: 20px; margin-top: 40px;">
                     @foreach(var mark in Model.Item1.Marks)
                     {

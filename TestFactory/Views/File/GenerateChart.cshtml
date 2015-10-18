@@ -1,0 +1,96 @@
+﻿@model Tuple<TestFactory.Business.Models.Student, IList<TestFactory.Business.Models.Category>>
+@{
+    Layout = null;
+}
+@using System.Collections.Generic;
+    <!--<script src="~/bundles/jquery"></script>
+    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
+    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts-more.js"></script>
+    <script src="~/Scripts/Highcharts-4.0.1/js/modules/exporting.js"></Script>
+    <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
+    <script>
+        var mark = [];
+        var categ = [];
+        var i = 0;
+    </script>
+    @{
+        foreach(var mar in Model.Item1.Marks)
+        {
+            <script>
+                mark[i] = @mar.Value
+                i++;
+            </script>
+        }
+        <script>i = 0;</script>
+        foreach(var cat in Model.Item2)
+        {
+            <script>
+                categ[i] = "" + "@cat.Name.ToString()"
+                i++;
+            </script>
+        }
+    }
+    <script>
+        $(document).ready(function () {
+            chart = new Highcharts.Chart({
+
+                chart: {
+                    renderTo: 'chart-container',
+                    polar: true,
+                },
+ 
+                title: {
+                    text: 'Результати теста по профорієнтації Дж. Холланда',
+                    align: "center"
+                },
+         
+                pane: {
+                    size: '70%'
+                },
+         
+                xAxis: {
+                    categories: categ,
+                    tickmarkPlacement: 'on',
+                    lineWidth: 0
+                },
+         
+                yAxis: {
+                    gridLineInterpolation: 'polygon',
+                    lineWidth: 0,
+                    min: 0
+                },
+         
+                tooltip: {
+                    shared: true,
+                    pointFormat: '<span>{series.name}: <b>{point.y:,.0f}%</b><br/>'
+                },
+         
+                legend: {
+                    enabled: false,
+                    align: 'right',
+                    verticalAlign: 'top',
+                    y: 70,
+                    layout: 'vertical'
+                },
+         
+                series: [{
+                    type: 'area',
+                    name: "@Model.Item1.FirstName " + "@Model.Item1.LastName",
+                    data: mark,
+                    pointPlacement: 'on'
+                }]
+            });
+
+            canvg(document.getElementById('canvas'), chart.getSVG())
+            var canvas = document.getElementById("canvas");
+            var img = canvas.toDataURL("image/jpeg");
+            $("#canvas").remove()
+            $("#chart-container").empty();
+            $("#chart-container").html('<img src="' + img + '"/>');
+        });
+</script>
+<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script>-->
+    <div id="chart-container" style="min-width: 500px; max-width: 600px; height: 400px; float: left;">
+        
+    </div>
+    <canvas id="canvas" width="400px" height="600px" style="display: none;"></canvas> 

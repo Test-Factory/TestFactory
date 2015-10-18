@@ -8,6 +8,7 @@ using TestFactory.Business.Models;
 using SimpleCrypto;
 using System.Security.Cryptography;
 using System.Web;
+using TestFactory.Business.Components;
 
 namespace TestFactory.Business.Components.Managers
 {
@@ -43,7 +44,9 @@ namespace TestFactory.Business.Components.Managers
             var user = provider.GetByEmail(email);
             if(user != null)
             {
-                bool correctPass = String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
+                //string salt = HashDecoder.GenarateSalt();
+                //string d = HashDecoder.ComputeHash("IEditorFICT", salt);
+                bool correctPass = HashDecoder.VerifyHash(password, user.Password, user.PasswordSalt);
                 if (correctPass)
                 {
                     HttpContext.Current.User = new System.Security.Principal
