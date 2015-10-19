@@ -156,10 +156,10 @@
   <data name="forbidenAction" xml:space="preserve">
     <value>Створити або відредагувати групу з такими ім'ям заборонено </value>
   </data>
-  <data name="GroupIdIsEmpty" xml:space="preserve">
+  <data name="groupIdIsEmpty" xml:space="preserve">
     <value>Ідентифікатор групи пустий.</value>
   </data>
-  <data name="InternalServerError" xml:space="preserve">
+  <data name="internalServerError" xml:space="preserve">
     <value>Помилка сервера.</value>
   </data>
   <data name="loginAction" xml:space="preserve">
@@ -171,7 +171,7 @@
   <data name="name" xml:space="preserve">
     <value>Ім'я</value>
   </data>
-  <data name="NoSuchGroupFound" xml:space="preserve">
+  <data name="noSuchGroupFound" xml:space="preserve">
     <value>Групу не знайдено.</value>
   </data>
   <data name="offCookie" xml:space="preserve">
@@ -201,7 +201,7 @@
   <data name="noAccessToGroup" xml:space="preserve">
     <value>Ви на маєте доступу до цієї групи</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+  <data name="requiredField" xml:space="preserve">
+    <value>Поле повинно бути заповненим</value>
   </data>
 </root>

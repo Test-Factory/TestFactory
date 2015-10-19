@@ -35,12 +35,12 @@ namespace TestFactory.Controllers
         public ActionResult List(string groupId = null)
         {
             if (groupId == null)
-                throw new HttpException(400, GlobalRes_ua.GroupIdIsEmpty);
+                throw new HttpException(400, GlobalRes_ua.groupIdIsEmpty);
 
              Group group = groupManager.GetById(groupId);
 
             if (group == null)
-                throw new HttpException(404, GlobalRes_ua.NoSuchGroupFound);
+                throw new HttpException(404, GlobalRes_ua.noSuchGroupFound);
 
             if (!groupManager.HasAccessToGroup(groupId, user.User.Id))
                 throw new HttpException(403, GlobalRes_ua.noAccessToGroup);

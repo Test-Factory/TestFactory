@@ -18,7 +18,7 @@ namespace TestFactory.Filters
             var model = new Error()
             {
                 HttpErrorCode = httpError != null ? httpError.GetHttpCode() : 500,
-                Message = httpError != null ? ex.Message : GlobalRes_ua.InternalServerError
+                Message = httpError != null ? ex.Message : GlobalRes_ua.internalServerError
             };
 
             filterContext.Result = new ViewResult()
