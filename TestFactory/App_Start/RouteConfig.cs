@@ -43,11 +43,7 @@ namespace TestFactory
            
             #endregion
 
-            routes.MapRoute(
-                   name: "forbiddenAction",
-                   url: "forbidden",
-                   defaults: new { controller = "Error", action = "ForbiddenAction" }
-                );
+          
 
             #region Group map routes
 
@@ -104,6 +100,7 @@ namespace TestFactory
              url: "results/{id}",
                 defaults: new {controller = "Result", action = "Results", id = UrlParameter.Optional}
                 );
+
             routes.MapRoute(
           name: "studentsResult",
           url: "{groupId}/students/results",
@@ -126,9 +123,7 @@ namespace TestFactory
                 url: "{*url}",
                 defaults: new {controller = "Error", action = "NotFound"}
             );
-         
-
-
+        
         }
     }
 }

@@ -11,7 +11,8 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
         {
             return Execute(session =>
             {
-                var criteria = session.CreateCriteria(typeof(Student))
+                var criteria = session
+                    .CreateCriteria(typeof(Student))
                     .Add(Restrictions.Eq("GroupId", gropId))
                     .SetProjection(Projections.CountDistinct("Id"));
                 return (int)criteria.UniqueResult();
@@ -22,9 +23,20 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
         {
             return Execute(session =>
             {
-                return session.CreateCriteria(typeof(GroupForUser))
+                return session
+                    .CreateCriteria(typeof(GroupForUser))
                     .Add(Restrictions.Eq("UserId", userId))
                     .List<GroupForUser>();
+            });
+        }
+        public Group GetByShortName(string shortName)
+        {
+            return Execute(session =>
+            {
+                return session
+                    .CreateCriteria<Group>()
+                    .Add(Restrictions.Eq("ShortName", shortName))
+                    .UniqueResult<Group>();
             });
         }
  

@@ -8,5 +8,7 @@ namespace TestFactory.Business.DataProviderContracts
         int GetCount(string gropId);
 
         IList<GroupForUser> GetListForUser(string userId);
+
+        Group GetByShortName(string shortName);
     }
 }

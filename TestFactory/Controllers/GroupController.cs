@@ -7,6 +7,7 @@ using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
 using TestFactory.Business.Components;
+using Embedded_Resource;
 
 namespace TestFactory.Controllers
 {
@@ -66,14 +67,16 @@ namespace TestFactory.Controllers
         public ActionResult Create(GroupViewModel group)
         {
             
-            if (isIncludeHTMLAttributes(group)) 
+            if (isIncludeHTMLAttributes(group)||groupManager.GroupIsAlreadyExist(group.ShortName)) 
             {
-                return RedirectToRoute("forbiddenAction");
+                throw new HttpException(403,GlobalRes_ua.forbidenAction);
             }
+
             if (!ModelState.IsValid)
             {
                 return RedirectToRoute("Default");
             }
+
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Create(model);
      
@@ -89,13 +92,14 @@ namespace TestFactory.Controllers
         {
             if (isIncludeHTMLAttributes(group))
             {
-                return RedirectToRoute("forbiddenAction");
+                throw new HttpException(403, GlobalRes_ua.forbidenAction);
             }
 
             if (!ModelState.IsValid)
             {
                 return View(group);
             }
+
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Update(model);
 

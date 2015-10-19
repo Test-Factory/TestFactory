@@ -1,2 +1,12 @@
-﻿
-<h2 class="error-text">@GlobalRes_ua.pageNotFound</h2>
+﻿@using System.Web;
+@model TestFactory.Business.Models.Error
+
+
+@Styles.Render("~/Error/css")
+
+
+<h1>@Model.HttpErrorCode</h1>
+<h3 class="error-text"> @Model.Message</h3>
+
+
+

@@ -36,16 +36,17 @@ namespace TestFactory.Controllers
         {
             if (groupId == null)
                 throw new HttpException(400, GlobalRes_ua.GroupIdIsEmpty);
+
              Group group = groupManager.GetById(groupId);
+
             if (group == null)
                 throw new HttpException(404, GlobalRes_ua.NoSuchGroupFound);
-         
-            if (groupManager.HasAccessToGroup(groupId,user.User.Id))
-            {
+
+            if (!groupManager.HasAccessToGroup(groupId, user.User.Id))
+                throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
+
                 var result = Mapper.Map<GroupViewModel>(group);
                 return View("List", result);
-            }
-            return RedirectToRoute("forbiddenAction");
         }
     }
 }

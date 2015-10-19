@@ -47,7 +47,15 @@ namespace TestFactory.Business.Components.Managers
                 continue; 
             }
             return false;
-        } 
+        }
+        public bool GroupIsAlreadyExist(string shortName) 
+        {
+            var a = provider.GetByShortName(shortName);
+
+            if (a != null)
+                return true;
+            return false;
+        }
     }
 }
 

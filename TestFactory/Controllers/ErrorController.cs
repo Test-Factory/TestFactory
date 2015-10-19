@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Embedded_Resource;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,13 +13,7 @@ namespace TestFactory.Controllers
 
         public ActionResult NotFound()
         {
-            Response.StatusCode = 404;
-            return View();
-        }
-        public ActionResult ForbiddenAction()
-        {
-            Response.StatusCode = 403;
-            return View();
+            throw new HttpException(404, GlobalRes_ua.pageNotFound);
         }
     }
 }
