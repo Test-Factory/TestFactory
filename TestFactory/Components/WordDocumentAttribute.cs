@@ -34,7 +34,7 @@ namespace TestFactory
 
             string contentDisposition = "attachment; filename=\"" + filename + "\"; filename*=UTF-8''" + Uri.EscapeDataString(filename);
             filterContext.HttpContext.Response.AppendHeader("Content-Disposition", string.Format("filename={0}.doc;", contentDisposition));
-            filterContext.HttpContext.Response.ContentType = "application/msword; charset=utf-8";
+            filterContext.HttpContext.Response.ContentType = "application/msword";
 
             base.OnResultExecuted(filterContext);
         }

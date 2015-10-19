@@ -38,8 +38,6 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<CategoryManager>();
 
-            builder.RegisterType<ResultManager>();
-
             builder.RegisterType<GroupForUserManager>();
 
             builder.RegisterType<NHibernateRoleDataProvider>()

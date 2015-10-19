@@ -89,7 +89,6 @@
     <Compile Include="Components\Managers\GroupForUserManager.cs" />
     <Compile Include="Components\Managers\GroupManager.cs" />
     <Compile Include="Components\Managers\MarkManager.cs" />
-    <Compile Include="Components\Managers\ResultManager.cs" />
     <Compile Include="Components\Managers\RoleManager.cs" />
     <Compile Include="Components\Managers\StudentManager.cs" />
     <Compile Include="Components\Managers\CategoryManager.cs" />
