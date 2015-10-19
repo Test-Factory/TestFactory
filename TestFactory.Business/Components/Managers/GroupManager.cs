@@ -16,10 +16,8 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetCount(gropId);
         }
-
-        public IList<Group> GetListForUser(string userId)
+        private IList<Group> GetUsersGroups(IList<GroupForUser> UserGroupsId) 
         {
-            var UserGroupsId = provider.GetListForUser(userId);
             var ListGroup = new List<Group>();
             foreach (var gr in UserGroupsId)
             {
@@ -28,16 +26,19 @@ namespace TestFactory.Business.Components.Managers
             }
             return ListGroup;
         }
-        public bool isOwnerOfGroup(string groupID, string userId)
+
+        public IList<Group> GetListForUser(string userId)
         {
             var UserGroupsId = provider.GetListForUser(userId);
-            var ListGroup = new List<Group>();
-            foreach (var gr in UserGroupsId)
-            {
-                var groupById = provider.GetById(gr.GroupId);
-                ListGroup.Add(groupById);
-            }
-            Group currentGroup = provider.GetById(groupID);
+
+            return GetUsersGroups(UserGroupsId);
+        }
+
+        public bool HasAccessToGroup(string groupId, string userId)
+        {
+            var ListGroup = GetListForUser(userId);
+
+            Group currentGroup = provider.GetById(groupId);
 
             foreach (var group in ListGroup) 
             {

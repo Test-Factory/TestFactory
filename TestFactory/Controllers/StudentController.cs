@@ -40,7 +40,7 @@ namespace TestFactory.Controllers
             if (group == null)
                 throw new HttpException(404, GlobalRes_ua.NoSuchGroupFound);
          
-            if (groupManager.isOwnerOfGroup(groupId,user.User.Id))
+            if (groupManager.HasAccessToGroup(groupId,user.User.Id))
             {
                 var result = Mapper.Map<GroupViewModel>(group);
                 return View("List", result);
