@@ -84,6 +84,11 @@ namespace TestFactory
             #endregion
 
             routes.MapRoute(
+                name: "saveChart",
+                url: "saveChart.jpg"
+                );
+
+            routes.MapRoute(
                 name: "GenerateChart",
                 url: "generateChart",
                 defaults: new { controller = "File", action = "GenerateChart" }
