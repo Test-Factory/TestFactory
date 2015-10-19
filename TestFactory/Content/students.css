@@ -1,8 +1,4 @@
-﻿html {
-   
-}
-
-/* Styles for student list view
+﻿/* Styles for student list view
 -----------------------------------------------------------*/
 .screenMediaBelow {
     display: none;
@@ -17,6 +13,9 @@
         margin: 3px;
         padding: 0px;
         float: left;
+    }
+    .alignmentWithInput {
+        padding-top: 19px !important;
     }
 }
 
@@ -72,8 +71,6 @@ table {
 
 .btn-size {
             display: table-cell;
-            height: 30px;
-            width: 30px;
         }
 
 #tbStudentList .first-name {
@@ -103,7 +100,7 @@ table {
         }
 
 .screenMediaAbove {
-     display: inline-block;
+    display: inline-block;
 }
 
 .triangle-down {
@@ -125,11 +122,11 @@ table {
         }
 
 .donwloadStudent {
-    background-color: #0097A7;
+    background-color: #9e9e9e;
 }
 
 .donwloadStudent:hover {
-    background-color:#037986;
+    background-color:#757575;
 }
 
 .noselect {
@@ -139,6 +136,10 @@ table {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.alignmentWithInput {
+     padding-top: 25px;
 }
 
 /* ----------------------------------------------------------*/
