@@ -44,6 +44,7 @@
 
 table {
     table-layout: fixed;
+    width:95%;
 }
 
 #tbStudentList {
@@ -89,6 +90,7 @@ table {
 
 .btnStudent {
             background-color: #9e9e9e;
+            padding: 0 1rem;
         }
 
 .btnStudent img {
