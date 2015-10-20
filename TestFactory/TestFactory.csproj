@@ -398,7 +398,7 @@
     <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Group\Create.cshtml" />
     <Content Include="Views\Group\Update.cshtml" />
-    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Group\NotFound.cshtml" />
     <Content Include="Views\Shared\_LayoutWord.cshtml" />
     <Content Include="Views\File\GetReport.cshtml" />
     <Content Include="Views\Group\List.cshtml" />
@@ -412,6 +412,7 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Categoty\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

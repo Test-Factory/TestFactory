@@ -181,7 +181,7 @@
     <value>У вас відключений Javascript</value>
   </data>
   <data name="pageNotFound" xml:space="preserve">
-    <value>Вибачте....Але сторінка не знайдена :(</value>
+    <value>Вибачте... Але сторінка не знайдена </value>
   </data>
   <data name="save" xml:space="preserve">
     <value>Зберегти</value>
@@ -199,7 +199,7 @@
     <value>Група з таким ім'ям уже існує</value>
   </data>
   <data name="noAccessToGroup" xml:space="preserve">
-    <value>Ви на маєте доступу до цієї групи</value>
+    <value>Ви не маєте доступу до цієї групи</value>
   </data>
   <data name="requiredField" xml:space="preserve">
     <value>Поле повинно бути заповненим</value>
