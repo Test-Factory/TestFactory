@@ -28,6 +28,15 @@ $(function () {
         }).done(callback);
     }
 
+    StudentProvider.prototype.delete= function (data,callback) {
+        $.ajax({
+            method: "POST",
+            url: this.apiPath + "/delete",
+            data: JSON.stringify(data),
+            contentType: contentType,
+        }).done(callback);
+    }
+
     StudentProvider.prototype.put = function (data, callback) {
         $.ajax({
             method: "PUT",

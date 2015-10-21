@@ -20,5 +20,17 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                 return students;
             });
         }
+        //public void Delete(string id)
+        //{
+        //    Execute(session =>
+        //    {
+        //        using (var transaction = session.BeginTransaction())
+        //        {
+        //            session.Delete(session.Load(typeof(Student), id));
+        //            transaction.Commit();
+        //        }
+
+        //    });
+        //}
     }
 }

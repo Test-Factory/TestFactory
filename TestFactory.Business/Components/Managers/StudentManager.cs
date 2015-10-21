@@ -15,6 +15,10 @@ namespace TestFactory.Business.Components.Managers
         public IList<Student> GetList(string groupId)
         {
             return provider.GetByGroupId(groupId);
-        } 
+        }
+        public void Delete(string id) 
+        {
+            provider.Delete(id);
+        }
     }
 }
