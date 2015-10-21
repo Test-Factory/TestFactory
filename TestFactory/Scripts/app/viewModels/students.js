@@ -123,20 +123,20 @@ function StudentsViewModel(group) {
         student.mode(self.mods.edit);
     };
 
-    //self.deleteStudent = function (student)
-    //{
-    //    closeAllEditing();
-    //    mapStudent(student, self.studentForDelete());
-    //    self.students.remove(student);
+    self.deleteStudent = function (student)
+    {
+        closeAllEditing();
+        mapStudent(student, self.studentForDelete());
+        self.students.remove(student);
 
-    //    student.mode(self.mods.deleting);
+        student.mode(self.mods.deleting);
 
-    //    var studentServerModel = toServerStudentModel(self.studentForDelete());
-    //    studentProvider.post(studentServerModel,function () {
-    //        mapStudent(self.studentForDelete(), student);
-    //        student.mode(self.mods.deleting);
-    //    });
-    //}
+        var studentServerModel = toServerStudentModel(self.studentForDelete());
+        studentProvider.delete(studentServerModel,function () {
+            mapStudent(self.studentForDelete(), student);
+            student.mode(self.mods.deleting);
+        });
+    }
     self.addStudent = function () {
         closeAllEditing();
         mapStudent(new StudentModel(), self.studentForCreate());

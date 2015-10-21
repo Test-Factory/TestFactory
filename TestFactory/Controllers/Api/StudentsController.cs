@@ -67,15 +67,15 @@ namespace TestFactory.Controllers.Api
             studentManager.Update(model);
             return Ok();
         }
-        //[HttpPost]
-        //[ValidateModel]
-        //[Route("delete")]
-        //public IHttpActionResult Delete(StudentViewModel student)
-        //{
-        //    var model = Mapper.Map<Student>(student);
-        //    studentManager.Delete(model.Id);
-        //    return Ok();
-        //}
+        [HttpPost]
+        [ValidateModel]
+        [Route("delete")]
+        public IHttpActionResult Delete(StudentViewModel student)
+        {
+            var model = Mapper.Map<Student>(student);
+            studentManager.Delete(model.Id);
+            return Ok();
+        }
 
     }
 }
