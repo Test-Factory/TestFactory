@@ -25,11 +25,13 @@ function StudentsViewModel(group) {
     
     self.studentForUpdate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForCreate = ko.validatedObservable(new StudentModel(), { deep: true });
+    self.studentForDelete = ko.validatedObservable(new StudentModel(), { deep: true });
 
     self.mods = {
         display: "display",
         edit: "edit",
-        create:"create"
+        create: "create",
+        deleting:"delete"
     };
 
     self.sortDescending = ko.observable(false);
@@ -121,6 +123,20 @@ function StudentsViewModel(group) {
         student.mode(self.mods.edit);
     };
 
+    //self.deleteStudent = function (student)
+    //{
+    //    closeAllEditing();
+    //    mapStudent(student, self.studentForDelete());
+    //    self.students.remove(student);
+
+    //    student.mode(self.mods.deleting);
+
+    //    var studentServerModel = toServerStudentModel(self.studentForDelete());
+    //    studentProvider.post(studentServerModel,function () {
+    //        mapStudent(self.studentForDelete(), student);
+    //        student.mode(self.mods.deleting);
+    //    });
+    //}
     self.addStudent = function () {
         closeAllEditing();
         mapStudent(new StudentModel(), self.studentForCreate());
@@ -172,7 +188,13 @@ function StudentsViewModel(group) {
             student.mode(self.mods.display);
         });
     }       
-
+    self.finallyDeletedStudent = function (student) {
+        var studentServerModel = toServerStudentModel(self.studentForDelete());
+        studentProvider.post(studentServerModel,"/delete", function () {
+            mapStudent(self.studentForDelete(), student);
+            student.mode(self.mods.deleting);
+        });
+    }
     self.init = function () {
         categoryProvider.get(function (data) {
             $(data).each(function (index, element) {

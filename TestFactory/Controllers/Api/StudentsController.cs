@@ -63,9 +63,19 @@ namespace TestFactory.Controllers.Api
         [ValidateModel]
         public IHttpActionResult Update(StudentViewModel student)
         {
-                 var model = Mapper.Map<Student>(student);
-                 studentManager.Update(model);
-                 return Ok();
-             }
+            var model = Mapper.Map<Student>(student);
+            studentManager.Update(model);
+            return Ok();
+        }
+        //[HttpPost]
+        //[ValidateModel]
+        //[Route("delete")]
+        //public IHttpActionResult Delete(StudentViewModel student)
+        //{
+        //    var model = Mapper.Map<Student>(student);
+        //    studentManager.Delete(model.Id);
+        //    return Ok();
+        //}
+
     }
 }
