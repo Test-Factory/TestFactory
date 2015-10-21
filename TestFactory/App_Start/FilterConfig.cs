@@ -7,7 +7,7 @@ namespace TestFactory
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new MvcHandleErrorAttribute());
+           // filters.Add(new MvcHandleErrorAttribute());
         }
     }
 }

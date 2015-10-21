@@ -124,9 +124,9 @@ namespace TestFactory
            );
 
             routes.MapRoute(
-              name: "NotFound",
-                url: "{*url}",
-                defaults: new {controller = "Error", action = "NotFound"}
+              name: "Error",
+                url: "error/{code}",
+                defaults : new { controller = "Error", action = "Error" }
             );
         
         }

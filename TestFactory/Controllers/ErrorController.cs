@@ -1,9 +1,11 @@
-﻿using Embedded_Resource;
+﻿using System.EnterpriseServices;
+using Embedded_Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TestFactory.Business.Models;
 
 namespace TestFactory.Controllers
 {
@@ -11,9 +13,21 @@ namespace TestFactory.Controllers
     {
         // GET: Error
 
-        public ActionResult NotFound()
+        public ActionResult Error(int code = 500)
         {
-            throw new HttpException(404, GlobalRes_ua.pageNotFound);
+            var error = new Error()
+            {
+                HttpErrorCode = code,
+                Message = MapErrorMessage(code)
+            };
+            return View(error);
+
+        }
+
+        private string MapErrorMessage(int statusCode)
+        {
+            return GlobalRes_ua.ResourceManager.GetString(string.Format("error_{0}", statusCode)) ??
+                   GlobalRes_ua.error_500;
         }
     }
 }

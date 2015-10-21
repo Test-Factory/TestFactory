@@ -51,11 +51,11 @@
                     <!-- ko foreach: $root.studentForCreate().marks -->
                     <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
                     <!-- /ko -->
-                    <td class="screenMediaAbove alignmentWithInput">
+                    <td class="screenMediaAbove ">
                         <button class="btn btn-success  " data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
                     </td>
-                    <td class="screenMediaBelow alignmentWithInput">
-                        <button class="btn btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></button>
+                    <td colspan="2" class="screenMediaBelow ">
+                        <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
 
                     </td>
                 </tr>
@@ -71,35 +71,35 @@
                     <!-- /ko -->
                         @if (User.IsInRole("Filler"))
                         {
-                            <td class="screenMediaBelow">
+                            <td class="screenMediaBelow ">
                                 <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
                             </td>
 
-                        <td class="screenMediaAbove">
+                        <td class="screenMediaAbove ">
                              <a class="  btn  btn-size btnStudent " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</a>
                         </td>
 
                         }
-                        <td class="screenMediaBelow">
-                            <a class="  btn btn-size btnStudent" data-bind="attr:{id: id, href: id}"><img src="~/Content/images/down.png" /></a> 
+                        <td class="screenMediaBelow ">
+                            <a class="btn btn-size btnStudent" data-bind="attr:{id: id, href: id}"><img src="~/Content/images/down.png" /></a> 
                         </td>
-                        <td class="screenMediaAbove">
+                        <td class="screenMediaAbove ">
                             <a class="btn btnStudent btn-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
                         </td>
                 </tr>
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
-                    <td class="last-name"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().lastName,  tooltip: { message: $root.studentForUpdate().lastName.error }" maxlength="255" /></td>
-                    <td class="first-name"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().firstName,  tooltip: { message: $root.studentForUpdate().firstName.error }" maxlength="255" /></td>
+                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().lastName,  tooltip: { message: $root.studentForUpdate().lastName.error }" maxlength="255" /></td>
+                    <td class="first-name edit "><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().firstName,  tooltip: { message: $root.studentForUpdate().firstName.error }" maxlength="255" /></td>
                     <!-- ko foreach: $root.studentForUpdate().marks -->
-                    <td class="marks"><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
+                    <td class="marks edit "><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
                     <!-- /ko -->
-                    <td class="screenMediaBelow alignmentWithInput">
-                        <button class="btn btn-size btnStudent " data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></button>
+                    <td class="screenMediaBelow ">
+                        <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></a>
                     </td>
-                    <td class="screenMediaAbove alignmentWithInput">
-                        <button class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</button>
+                    <td class="screenMediaAbove ">
+                        <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
                     </td>
                 </tr>
                 <!-- /ko -->

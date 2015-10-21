@@ -398,21 +398,19 @@
     <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Group\Create.cshtml" />
     <Content Include="Views\Group\Update.cshtml" />
-    <Content Include="Views\Group\NotFound.cshtml" />
     <Content Include="Views\Shared\_LayoutWord.cshtml" />
     <Content Include="Views\File\GetReport.cshtml" />
     <Content Include="Views\Group\List.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\Group\GetStudentCount.cshtml" />
     <Content Include="Views\File\GetAllReport.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\File\GenerateChart.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Categoty\" />
-    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
