@@ -1,6 +1,5 @@
 ﻿@model TestFactory.MVC.ViewModels.GroupViewModel
 @Styles.Render("~/Students/css")
-
 <div>
     <form>
         <h3 id="groupName" data-bind="text: $root.group.shortName"></h3>
@@ -86,9 +85,14 @@
                     <td class="screenMediaBelow">
                         <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent"><img src="~/Content/images/delete.png" /></a>
                     </td>
+              
                     <td class="screenMediaAbove">
-                        <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent">@GlobalRes_ua.delete</a>
+                        <a class="  btn  btn-size btnStudent " data-bind="click:$root.deleteStudent">Видалити</a>
                     </td>
+                    
+                    <div style="display:none;"  id="dialog" title="Видалення">
+                        <p>Повернути сдутента після видалення буде неможливо.Ви дісно хочете видалити даного студента?</p>
+                    </div>
                 </tr>
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
@@ -110,10 +114,12 @@
         </table>
     </form>
 
-
 </div>
+@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
 @section Scripts{
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 <script>
+
     var globalView = null;
     $(document).ready(function () {
         var group = @Html.Raw(Json.Encode(Model));

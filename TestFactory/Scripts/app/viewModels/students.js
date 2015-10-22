@@ -19,10 +19,10 @@ function StudentsViewModel(group) {
 
     var studentProvider = new StudentProvider(self.group.id);
     var categoryProvider = new CategoryProvider();
-    
+
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
-    
+
     self.studentForUpdate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForCreate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForDelete = ko.validatedObservable(new StudentModel(), { deep: true });
@@ -31,7 +31,7 @@ function StudentsViewModel(group) {
         display: "display",
         edit: "edit",
         create: "create",
-        deleting:"delete"
+        deleting: "delete"
     };
 
     self.sortDescending = ko.observable(false);
@@ -41,7 +41,7 @@ function StudentsViewModel(group) {
         self.sortKey(code());
         if (self.sortDescending()) {
             self.students.sort(function (left, right) {
-               
+
                 var getMark = function (item) {
                     return item.categoryId() == id();
                 }
@@ -58,7 +58,7 @@ function StudentsViewModel(group) {
             self.sortDescending(false);
         } else {
             self.students.sort(function (left, right) {
-               
+
                 var getMark = function (item) {
                     return item.categoryId() == id();
                 }
@@ -74,24 +74,24 @@ function StudentsViewModel(group) {
             });
             self.sortDescending(true);
         }
-        
-    } 
+
+    }
 
     self.sortingByName = function (key) {
         self.sortKey(key);
         if (self.sortDescending()) {
             self.students.sort(function (left, right) {
-              
-                    if (left[key]().toUpperCase() == right[key]().toUpperCase())
-                        return 0;
-                    else if (left[key]().toUpperCase() < right[key]().toUpperCase())
-                        return 1;
-                    else
-                        return -1;
+
+                if (left[key]().toUpperCase() == right[key]().toUpperCase())
+                    return 0;
+                else if (left[key]().toUpperCase() < right[key]().toUpperCase())
+                    return 1;
+                else
+                    return -1;
             });
             self.sortDescending(false);
         } else {
-            self.students.sort(function(left, right) {
+            self.students.sort(function (left, right) {
                 if (left[key]().toUpperCase() == right[key]().toUpperCase())
                     return 0;
                 else if (left[key]().toUpperCase() < right[key]().toUpperCase())
@@ -123,18 +123,30 @@ function StudentsViewModel(group) {
         student.mode(self.mods.edit);
     };
 
-    self.deleteStudent = function (student)
-    {
-        closeAllEditing();
-        mapStudent(student, self.studentForDelete());
-        self.students.remove(student);
+    self.deleteStudent = function (student) {
+        $("#dialog").dialog({
+            resizable: false,
+            height: 200,
+            modal: true,
+            buttons: {
+                "Видалити": function () {
+                    closeAllEditing();
+                    mapStudent(student, self.studentForDelete());
+                    self.students.remove(student);
 
-        student.mode(self.mods.deleting);
+                    student.mode(self.mods.deleting);
 
-        var studentServerModel = toServerStudentModel(self.studentForDelete());
-        studentProvider.delete(studentServerModel,function () {
-            mapStudent(self.studentForDelete(), student);
-            student.mode(self.mods.deleting);
+                    var studentServerModel = toServerStudentModel(self.studentForDelete());
+                    studentProvider.delete(studentServerModel, function () {
+                        mapStudent(self.studentForDelete(), student);
+                        student.mode(self.mods.deleting);
+                    });
+                    $(this).dialog("close");
+                },
+                Відмінити: function () {
+                    $(this).dialog("close");
+                }
+            }
         });
     }
     self.addStudent = function () {
@@ -159,7 +171,7 @@ function StudentsViewModel(group) {
             var newStudent = new StudentModel();
             mapStudent(self.studentForCreate(), newStudent);
             newStudent.id(data.Id);
-            for(i in newStudent.marks()) {
+            for (i in newStudent.marks()) {
                 newStudent.marks()[i].studentId(newStudent.id());
                 for (j in data.Marks) {
                     if (newStudent.marks()[i].categoryId() == data.Marks[j].CategoryId) {
@@ -169,7 +181,7 @@ function StudentsViewModel(group) {
                 }
             }
 
-            
+
 
 
             closeAllEditing();
@@ -187,10 +199,10 @@ function StudentsViewModel(group) {
             mapStudent(self.studentForUpdate(), student);
             student.mode(self.mods.display);
         });
-    }       
+    }
     self.finallyDeletedStudent = function (student) {
         var studentServerModel = toServerStudentModel(self.studentForDelete());
-        studentProvider.post(studentServerModel,"/delete", function () {
+        studentProvider.post(studentServerModel, "/delete", function () {
             mapStudent(self.studentForDelete(), student);
             student.mode(self.mods.deleting);
         });
@@ -203,7 +215,7 @@ function StudentsViewModel(group) {
             });
             self.addStudent();
         });
-        
+
         studentProvider.get(function (data) {
             $(data).each(function (index, element) {
                 var mappedStudent = new StudentModel(element, self.mods.display);
@@ -214,7 +226,7 @@ function StudentsViewModel(group) {
         });
         self.sortingByName("lastName");
     }
-   
+
     self.init();
 
     function sortStudentMarksByCategoryIdDesc(student) {
@@ -264,6 +276,5 @@ function StudentsViewModel(group) {
             to.marks.push(from.marks()[m]);
         }
     }
+
 }
-
-
