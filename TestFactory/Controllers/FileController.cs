@@ -25,7 +25,6 @@ namespace TestFactory.Controllers.Api
             this.groupManager = groupManager;
         }
 
-       // [HttpGet]
         [WordDocument]
         public ActionResult GetReport(string id)
         {
