@@ -69,8 +69,6 @@
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
-                        @if (User.IsInRole("Filler"))
-                        {
                             <td class="screenMediaBelow ">
                                 <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
                             </td>
@@ -79,18 +77,18 @@
                              <a class="  btn  btn-size btnStudent " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</a>
                         </td>
                             
-                            <td class="screenMediaAbove">
-                             <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent">Видалити</a>
-                        </td>
-                           
-                            
-                        }
                         <td class="screenMediaBelow ">
                             <a class="btn btn-size btnStudent" data-bind="attr:{id: id, href: id}"><img src="~/Content/images/down.png" /></a> 
                         </td>
                         <td class="screenMediaAbove ">
                             <a class="btn btnStudent btn-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
                         </td>
+                    <td class="screenMediaBelow">
+                        <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent"><img src="~/Content/images/delete.png" /></a>
+                    </td>
+                    <td class="screenMediaAbove">
+                        <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent">@GlobalRes_ua.delete</a>
+                    </td>
                 </tr>
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->

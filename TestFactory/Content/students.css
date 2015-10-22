@@ -95,6 +95,7 @@ table {
 
 .btnStudent img {
                 vertical-align: middle;
+                width: 20px;
             }
 
 .btn-success img {
@@ -143,5 +144,13 @@ table {
 .alignmentWithInput {
      padding-top: 25px;
 }
-
+.btnStudent {
+    padding: 0 0.45rem;
+}
+td.screenMediaAbove {
+    padding: 15px 4px;
+}
+a.btn.btn-size.btnStudent {
+    font-size: .9em;
+}
 /* ----------------------------------------------------------*/

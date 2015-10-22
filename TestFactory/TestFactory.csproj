@@ -214,6 +214,7 @@
       <DependentUpon>TestFactoryData.mdf</DependentUpon>
     </Content>
     <Content Include="Content\error.css" />
+    <Content Include="Content\images\delete.png" />
     <Content Include="Content\images\document_save.png" />
     <Content Include="Content\images\down.png" />
     <Content Include="Content\images\edit.png" />
