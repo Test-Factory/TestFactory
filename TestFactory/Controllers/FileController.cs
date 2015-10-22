@@ -27,9 +27,9 @@ namespace TestFactory.Controllers.Api
 
        // [HttpGet]
         [WordDocument]
-        public ActionResult GetReport(string studentId)
+        public ActionResult GetReport(string id)
         {
-            Student student = studentManager.GetById(studentId);
+            Student student = studentManager.GetById(id);
             Group group = groupManager.GetById(student.GroupId);
             IList<Category> categories = categoryManager.GetList();
 
