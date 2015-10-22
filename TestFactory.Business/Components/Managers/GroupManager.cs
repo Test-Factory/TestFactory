@@ -16,6 +16,7 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetCount(gropId);
         }
+
         private IList<Group> GetUsersGroups(IList<GroupForUser> UserGroupsId) 
         {
             var ListGroup = new List<Group>();
@@ -30,7 +31,6 @@ namespace TestFactory.Business.Components.Managers
         public IList<Group> GetListForUser(string userId)
         {
             var UserGroupsId = provider.GetListForUser(userId);
-
             return GetUsersGroups(UserGroupsId);
         }
 
@@ -43,8 +43,9 @@ namespace TestFactory.Business.Components.Managers
             foreach (var group in ListGroup) 
             {
                 if (group.Id == currentGroup.Id)
+                {
                     return true;
-                continue; 
+                }
             }
             return false;
         }
@@ -53,7 +54,9 @@ namespace TestFactory.Business.Components.Managers
             var a = provider.GetByShortName(shortName);
 
             if (a != null)
+            {
                 return true;
+            }
             return false;
         }
     }

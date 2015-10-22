@@ -22,6 +22,7 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetByEmail(email);
         }
+
         public void AddFirstRole()
         {
             User admin1 = new User();
@@ -38,9 +39,9 @@ namespace TestFactory.Business.Components.Managers
 
             provider.Create(admin1);
         }
+
         public bool IsPasswordValid(string email, string password)
         {
-            //AddFirstRole();
             var user = provider.GetByEmail(email);
             if(user != null)
             {

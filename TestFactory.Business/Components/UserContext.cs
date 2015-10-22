@@ -26,14 +26,20 @@ namespace TestFactory.Business.Components
         private bool IsPrincipalAvailable()
         {
             if (HttpContext.Current == null)
+            {
                 return false;
+            }
 
             var principal = HttpContext.Current.User;
             if (principal == null)
+            {
                 return false;
+            }
 
             if (principal.Identity == null)
+            {
                 return false;
+            }
 
             return true;
         }
@@ -43,7 +49,9 @@ namespace TestFactory.Business.Components
             get
             {
                 if (!IsPrincipalAvailable())
+                {
                     return null;
+                }
 
                 return HttpContext.Current.User;
             }
@@ -67,23 +75,29 @@ namespace TestFactory.Business.Components
             get
             {
                 if (!IsLoggedIn)
+                {
                     return null;
+                }
 
                 return DependencyResolver.Current.GetService<UserManager>().GetByEmail(WebUser.Identity.Name);
             }
         }
+
         public override string[] GetRolesForUser(string email)
         {
             return new[] { User.Roles.Name };
         }
+
         public override void CreateRole(string roleName)
         {
             throw new NotImplementedException();
         }
+
         public override bool IsUserInRole(string username, string roleName)
         {
             throw new NotImplementedException();
         }
+
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
             throw new NotImplementedException();
