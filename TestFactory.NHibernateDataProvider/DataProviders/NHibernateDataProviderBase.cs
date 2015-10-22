@@ -23,6 +23,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                 return func(session);
             }
         }
+
         protected void Execute(Action<ISession> action)
         {
             using (var session = CreateSession())
@@ -70,6 +71,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                 }
             });
         }
+
         public virtual void Delete(string id)
         {
             Execute(session =>
@@ -82,6 +84,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
 
             });
         }
+
         public virtual TEntity GetById(string id)
         {
             return Execute(session =>
