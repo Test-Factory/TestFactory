@@ -153,4 +153,10 @@ td.screenMediaAbove {
 a.btn.btn-size.btnStudent {
     font-size: .9em;
 }
+.ui-widget-overlay {
+    background: BLACK;
+    opacity: 0.9;
+}
+#dialog {
+display:none;}
 /* ----------------------------------------------------------*/

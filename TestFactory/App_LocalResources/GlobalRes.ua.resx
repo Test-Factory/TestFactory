@@ -210,4 +210,10 @@
   <data name="delete" xml:space="preserve">
     <value>Видалити</value>
   </data>
+  <data name="conformationOnDeleteStudent" xml:space="preserve">
+    <value>Повернути сдутента після видалення буде неможливо. Ви дісно хочете його видалити?</value>
+  </data>
+  <data name="deleting" xml:space="preserve">
+    <value>Видалення</value>
+  </data>
 </root>
