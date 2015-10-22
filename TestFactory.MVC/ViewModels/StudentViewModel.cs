@@ -23,7 +23,6 @@ namespace TestFactory.MVC.ViewModels
         public virtual string LastName { get; set; }
 
         [Required]
-        //[ExsistGroupId]
         public virtual string GroupId { get; set; }
 
         public virtual IList<Mark> Marks { get; set; }
