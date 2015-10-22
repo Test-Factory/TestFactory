@@ -27,29 +27,28 @@ namespace TestFactory.Controllers.Api
 
        // [HttpGet]
         [WordDocument]
-        public ActionResult GetReport(string id)
+        public ActionResult GetReport(string studentId)
         {
-           // var studentSave = Mapper.Map<Student>(student);
+            Student student = studentManager.GetById(studentId);
+            Group group = groupManager.GetById(student.GroupId);
             IList<Category> categories = categoryManager.GetList();
-            Student st = studentManager.GetById(id);
-             Group gr = groupManager.GetById(st.GroupId);
-            IList<Category> ct = new List<Category>();
-            ct = categoryManager.GetList();
-            var tuple = new Tuple<Student, IList<Category>, Group>(st, ct, gr);
-            ViewBag.WordDocumentFilename = st.FirstName + " " + st.LastName + " (" + gr.ShortName + ")";
+
+            ViewBag.WordDocumentFilename = student.FirstName + " " + student.LastName + " (" + group.ShortName + ")";
+
+            var tuple = new Tuple<Student, IList<Category>, Group>(student, categories, group);
             return View(tuple);
         }
 
         [WordDocument]
         public ActionResult GetAllReport(string groupId)
         {
+            IList<Student> students = studentManager.GetList(groupId);
+            Group group = groupManager.GetById(groupId);
             IList<Category> categories = categoryManager.GetList();
-            IList<Student> st = studentManager.GetList(groupId);
-            Group gr = groupManager.GetById(groupId);
-            IList<Category> ct = new List<Category>();
-            ct = categoryManager.GetList();
-            var tuple = new Tuple<IList<Student>, IList<Category>, Group>(st, ct, gr);
-            ViewBag.WordDocumentFilename = gr.ShortName;
+
+            ViewBag.WordDocumentFilename = group.ShortName;
+
+            var tuple = new Tuple<IList<Student>, IList<Category>, Group>(students, categories, group);
             return View(tuple);
         }
 

@@ -21,7 +21,6 @@ namespace TestFactory.Controllers
                 Message = MapErrorMessage(code)
             };
             return View(error);
-
         }
 
         private string MapErrorMessage(int statusCode)

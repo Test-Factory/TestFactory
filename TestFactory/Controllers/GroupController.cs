@@ -13,13 +13,10 @@ namespace TestFactory.Controllers
 {
     public class GroupController : Controller
     {
-       private GroupManager groupManager;
-
-       private UserManager userManager;
-
-       private UserContext user;
-
-       private GroupForUserManager groupForUserManager;
+        private readonly GroupManager groupManager;
+        private readonly UserManager userManager;
+        private UserContext user;
+        private GroupForUserManager groupForUserManager;
 
         public GroupController(GroupManager groupManager, StudentManager studentManager,UserManager userManager,GroupForUserManager groupForUserManager)
         {
@@ -31,12 +28,12 @@ namespace TestFactory.Controllers
 
         [Authorize(Roles = "Filler,Editor")]
         public ActionResult List()
-        {              
-            //var groups = groupManager.GetList();
+        {
             var groups = groupManager.GetListForUser(user.User.Id);
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
+
         private bool isIncludeHTMLAttributes(GroupViewModel group) 
         {
             string regEx = @"<\\?([A-Z][A-Z0-9]*)\b[^>]*>";
@@ -47,7 +44,8 @@ namespace TestFactory.Controllers
         
         public ActionResult GetStudentCount(string id)
         {
-            return View(groupManager.GetCount(id));
+            int count = groupManager.GetCount(id);
+            return View(count);
         }
 
         public ActionResult GetStudentsCount(string id)
@@ -66,8 +64,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Create(GroupViewModel group)
         {
-            
-            if (isIncludeHTMLAttributes(group)||groupManager.GroupIsAlreadyExist(group.ShortName)) 
+            if (isIncludeHTMLAttributes(group) || groupManager.GroupIsAlreadyExist(group.ShortName)) 
             {
                 throw new HttpException(403,GlobalRes_ua.forbidenAction);
             }
