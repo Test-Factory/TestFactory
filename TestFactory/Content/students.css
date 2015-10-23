@@ -9,82 +9,61 @@
        display: none !important;
    }
     .screenMediaBelow {
-        display: block;
-        margin: 3px;
-        padding: 0px;
-        float: left;
-    }
-    .alignmentWithInput {
-        padding-top: 19px !important;
+        display: table-cell;
+        padding: 0 3px;
     }
 }
 
   @media screen and (max-width: 770px) {
       html {
-           min-width: 750px;
+           min-width: 770px;
       }
     #groupName {
         margin-left: 5px;
     }
     #tbStudentList {
-        margin-left: 5px !important;
     }
     #tbStudentList .first-name {
-            width: 15%;
             word-wrap: break-word;
         }
     #tbStudentList .last-name {
-            width: 20%;
             word-wrap: break-word;
         }
     #tbStudentList .marks {
-        width: 6%;
     }
 }
 
-table {
-    table-layout: fixed;
-    width:95%;
+
+#tbStudentList .marks input {
+    width: 40px;
 }
-
-#tbStudentList {
-        margin-left: 30px;
-    }
-
+ 
 #tbStudentList .first-name {
-    width: 20%;
     word-wrap:break-word;
 }
 
 #tbStudentList .last-name {
-    width: 23%;
     word-wrap:break-word;
 }
-
-#tbStudentList .marks {
-        width: 5%;
-    }
-
+ 
 .sort-link {
     padding: 0px;
     display: inline;
 }
 
 .btn-size {
-            display: table-cell;
+            display: table-cell ;
         }
 
 #tbStudentList .first-name {
-            width: 20%;
             word-wrap: break-word;
         }
 
 #tbStudentList .last-name {
-            width: 25%;
             word-wrap: break-word;
         }
 
- .btnStudent:hover {
+.btnStudent:hover {
             background-color: #757575;
         }
 
@@ -102,7 +81,6 @@ table {
         }
 
 .screenMediaAbove {
-    display: inline-block;
 }
 
 .triangle-down {
@@ -137,11 +115,13 @@ table {
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
 }
 
-.alignmentWithInput {
-     padding-top: 25px;
+#tbStudentList tbody input[type=text] {
+    margin: 0px;
 }
+/*td .edit {
+    padding: 10px 5px;
+}*/
 
 /* ----------------------------------------------------------*/
