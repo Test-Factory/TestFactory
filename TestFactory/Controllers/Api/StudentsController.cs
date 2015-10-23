@@ -49,16 +49,17 @@ namespace TestFactory.Controllers.Api
         [ValidateModel]
         public IHttpActionResult Create(StudentViewModel student)
         {
-                Student model = Mapper.Map<Student>(student);
-                model.Id = Guid.NewGuid().ToString();
-                for (int i = 0; i < model.Marks.Count; i++)
-                {
-                    model.Marks[i].Id = Guid.NewGuid().ToString();
-                    model.Marks[i].StudentId = model.Id;
-                }
-                studentManager.Create(model);
-                return Ok(model);
+            Student model = Mapper.Map<Student>(student);
+            model.Id = Guid.NewGuid().ToString();
+            for (int i = 0; i < model.Marks.Count; i++)
+            {
+                model.Marks[i].Id = Guid.NewGuid().ToString();
+                model.Marks[i].StudentId = model.Id;
+            }
+            studentManager.Create(model);
+            return Ok(model);
         }
+
         [HttpPut]
         [ValidateModel]
         public IHttpActionResult Update(StudentViewModel student)
@@ -67,6 +68,7 @@ namespace TestFactory.Controllers.Api
             studentManager.Update(model);
             return Ok();
         }
+
         [HttpPost]
         [ValidateModel]
         [Route("delete")]
@@ -76,6 +78,5 @@ namespace TestFactory.Controllers.Api
             studentManager.Delete(model.Id);
             return Ok();
         }
-
     }
 }

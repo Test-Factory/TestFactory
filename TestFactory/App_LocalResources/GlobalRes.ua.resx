@@ -199,12 +199,21 @@
     <value>Група з таким ім'ям уже існує</value>
   </data>
   <data name="noAccessToGroup" xml:space="preserve">
-    <value />
+    <value>У вас немає доступу до даної групи</value>
   </data>
   <data name="requiredField" xml:space="preserve">
     <value>Поле повинно бути заповненим</value>
   </data>
   <data name="error_403" xml:space="preserve">
     <value>Заборонено. Доступ обмежено.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="conformationOnDeleteStudent" xml:space="preserve">
+    <value>Повернути сдутента після видалення буде неможливо. Ви дісно хочете його видалити?</value>
+  </data>
+  <data name="deleting" xml:space="preserve">
+    <value>Видалення</value>
   </data>
 </root>

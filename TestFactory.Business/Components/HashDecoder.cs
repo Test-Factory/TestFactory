@@ -9,8 +9,6 @@ namespace TestFactory.Business.Components
     class HashDecoder
     {
         private static Random random = new Random();
-
-        // Define min and max salt sizes.
         private const int MinSaltSize = 4;
         private const int MaxSaltSize = 8;
 

@@ -32,8 +32,6 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
             Map(x => x.OppositeType);
 
             Map(x => x.PreferredAreasOfActivity);
-
-
         }
     }
 }

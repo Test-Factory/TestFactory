@@ -27,11 +27,9 @@ namespace TestFactory.Controllers.Api
         {
             if (string.IsNullOrEmpty(studentId))
             {
-
                 throw new HttpResponseException(HttpStatusCode.PreconditionFailed);
             }
             var marks = markManager.Get(studentId).OrderBy(m => m.CategoryId);
-            ;
             if (marks == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

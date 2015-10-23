@@ -10,46 +10,6 @@
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>@Model.Item3.FullName</title>
-    <!--<script src="~/bundles/jquery"></script>
-    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
-    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts-more.js"></script>
-    <script src="~/Scripts/Highcharts-4.0.1/js/modules/exporting.js"></Script>
-    <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
-    <script>
-        $(document).ready(function () {
-            chart = new Highcharts.Chart({
-
-                chart: {
-                    renderTo: 'chart-container'
-                },
-
-                title: {
-                    text: ''
-                },
-
-                xAxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                },
-
-                series: [{
-                    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-                }],
-
-                navigation: {
-                    buttonOptions: {
-                        align: 'center'
-                    }
-                }
-            });
-
-            canvg(document.getElementById('canvas'), chart.getSVG())
-            var canvas = document.getElementById("canvas");
-            var img = canvas.toDataURL("image/png");
-            $("#canvas").remove()
-            $("#chart-container").empty();
-            $("#chart-container").html('<img src="' + img + '"/>');
-        });
-</script>-->
     <style>
         .borderTable {
             border-top: solid 1px;
@@ -61,7 +21,6 @@
             padding: 10px;
         }
     </style>
-<!--<script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> -->
 </head>
 <body>
     @for (int ind = 0; ind < Model.Item1.Count; ind++)
@@ -88,10 +47,9 @@
                 }
             }
                         }
-            <h2 style="text-align: center;  page-break-before: always;">@{ var t = Model.Item1[ind].FirstName + " " + Model.Item1[ind].LastName + "(" + Model.Item3.ShortName + ")";} @t </h2>
+            <h2 style="text-align: center;  page-break-before: always;">@{ var t = Model.Item1[ind].FirstName + " " + Model.Item1[ind].LastName + " (" + Model.Item3.ShortName + ")";} @t</h2>
             <div>
-                    <div id="chart-container" style="min-width: 500px; max-width: 600px; height: 400px; float: left;"></div>
-                    <canvas id="canvas" width="400px" height="600px" style="display: none;"></canvas> 
+                    @{Html.RenderAction("GenerateChart", "File", new { student = Model.Item1[ind], category = Model.Item2});}
                     <div style="float: left; display: inline; line-height: 1.5; margin-left: 20px; margin-top: 40px;">
                         @foreach (var mark in Model.Item1[ind].Marks)
                         {

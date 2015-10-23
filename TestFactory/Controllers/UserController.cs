@@ -21,10 +21,8 @@ namespace TestFactory.Controllers
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
-           // userManager.AddFirstRole();
         }
 
-       
         [HttpGet]
         [AllowAnonymous]
         public ActionResult LogIn()
@@ -59,6 +57,5 @@ namespace TestFactory.Controllers
             FormsAuthentication.SignOut();
             return RedirectToRoute("Default");
         }
-
     }
 }

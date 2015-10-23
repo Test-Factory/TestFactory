@@ -17,8 +17,10 @@
             desc[i] = descr.Name;
             i++;
         }
+
+        string chartName = Model.Item1.Id;
         
-    var filePathName = "~/saveChart.png";
+    var filePathName = "~/Charts/" + chartName + ".png";
         var chartImage = new Chart(600, 400);
         chartImage.AddTitle("Результати тесту з профорієнтації Дж. Холланда");
         chartImage.AddSeries(
@@ -28,6 +30,6 @@
                 xValue: new[] {  desc[0], desc[1], desc[2], desc[3], desc[4], desc[5] },
                 yValues: new[] { mark });
         chartImage.Save(path: filePathName);
-        var st = "http://testfactorystaging.azurewebsites.net/saveChart.png";
+        var st = "http://testfactorystaging.azurewebsites.net/Charts/" + chartName + ".png";
 }
     <img src="@st" />

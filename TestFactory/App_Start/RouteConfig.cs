@@ -43,8 +43,6 @@ namespace TestFactory
            
             #endregion
 
-          
-
             #region Group map routes
 
             routes.MapRoute(
@@ -83,6 +81,7 @@ namespace TestFactory
 
             #endregion
 
+            #region Chart map routes
             routes.MapRoute(
                 name: "GenerateChart",
                 url: "generateChart",
@@ -95,40 +94,35 @@ namespace TestFactory
                 );
 
             routes.MapRoute(
-                name: "saveZip",
-                url: "SaveZip",
-                defaults: new { controller = "File", action = "SaveZip" }
-                );
-
-            routes.MapRoute(
-             name: "results",
-             url: "results/{id}",
+                name: "results",
+                url: "results/{id}",
                 defaults: new {controller = "Result", action = "Results", id = UrlParameter.Optional}
                 );
 
             routes.MapRoute(
-          name: "studentsResult",
-          url: "{groupId}/students/results",
-          defaults: new { controller = "File", action = "GetAllReport", groupId = UrlParameter.Optional }
-      );
+                name: "studentsResult",
+                url: "{groupId}/students/results",
+                defaults: new { controller = "File", action = "GetAllReport", groupId = UrlParameter.Optional }
+                );
 
             routes.MapRoute(
                name: "studentResult",
                url: "group/{groupId}/{Id}",
                defaults: new { controller = "File", action = "GetReport", groupId = UrlParameter.Optional, Id = UrlParameter.Optional }
-            );
+               );
+            #endregion
+
             routes.MapRoute(
-             name : "Default",
-             url : "",
-             defaults : new { controller = "Group", action = "List" }
-           );
+               name : "Default",
+               url : "",
+               defaults : new { controller = "Group", action = "List" }
+               );
 
             routes.MapRoute(
               name: "Error",
                 url: "error/{code}",
                 defaults : new { controller = "Error", action = "Error" }
             );
-        
         }
     }
 }

@@ -40,5 +40,10 @@ namespace TestFactory.Business.Components.Managers
         {
             provider.Update(model);
         }
+
+        public virtual void Delete(string id)
+        {
+            provider.Delete(id);
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                     .List<GroupForUser>();
             });
         }
+
         public Group GetByShortName(string shortName)
         {
             return Execute(session =>
