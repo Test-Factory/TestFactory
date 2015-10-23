@@ -32,7 +32,7 @@ namespace TestFactory.Controllers.Api
             Group group = groupManager.GetById(student.GroupId);
             IList<Category> categories = categoryManager.GetList();
 
-            ViewBag.WordDocumentFilename = student.FirstName + " " + student.LastName + " (" + group.ShortName + ")";
+            ViewBag.WordDocumentFilename = "(" + group.ShortName + ") " + student.FirstName + " " + student.LastName;
 
             var tuple = new Tuple<Student, IList<Category>, Group>(student, categories, group);
             return View(tuple);

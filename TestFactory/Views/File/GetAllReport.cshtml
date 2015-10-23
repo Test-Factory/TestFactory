@@ -47,7 +47,7 @@
                 }
             }
                         }
-            <h2 style="text-align: center;  page-break-before: always;">@{ var t = Model.Item1[ind].FirstName + " " + Model.Item1[ind].LastName + "(" + Model.Item3.ShortName + ")";} @t </h2>
+            <h2 style="text-align: center;  page-break-before: always;">@{ var t = Model.Item1[ind].FirstName + " " + Model.Item1[ind].LastName + " (" + Model.Item3.ShortName + ")";} @t</h2>
             <div>
                     @{Html.RenderAction("GenerateChart", "File", new { student = Model.Item1[ind], category = Model.Item2});}
                     <div style="float: left; display: inline; line-height: 1.5; margin-left: 20px; margin-top: 40px;">
