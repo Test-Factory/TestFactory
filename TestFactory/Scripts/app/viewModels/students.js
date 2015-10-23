@@ -200,13 +200,6 @@ function StudentsViewModel(group) {
             student.mode(self.mods.display);
         });
     }
-    self.finallyDeletedStudent = function (student) {
-        var studentServerModel = toServerStudentModel(self.studentForDelete());
-        studentProvider.post(studentServerModel, "/delete", function () {
-            mapStudent(self.studentForDelete(), student);
-            student.mode(self.mods.deleting);
-        });
-    }
     self.init = function () {
         categoryProvider.get(function (data) {
             $(data).each(function (index, element) {
