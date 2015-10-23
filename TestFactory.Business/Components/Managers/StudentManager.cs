@@ -16,10 +16,5 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetByGroupId(groupId);
         }
-
-        public void Delete(string id) 
-        {
-            provider.Delete(id);
-        }
     }
 }

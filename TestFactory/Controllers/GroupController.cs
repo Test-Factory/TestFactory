@@ -102,5 +102,11 @@ namespace TestFactory.Controllers
 
             return RedirectToRoute("Default");
         }
+
+        [HttpPost]
+        public void Delete(string id)
+        {
+        }
+
     }
 }
