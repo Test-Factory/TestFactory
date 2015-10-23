@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using TestFactory.Filters;
 
 namespace TestFactory
 {
@@ -7,7 +6,6 @@ namespace TestFactory
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-           // filters.Add(new MvcHandleErrorAttribute());
         }
     }
 }

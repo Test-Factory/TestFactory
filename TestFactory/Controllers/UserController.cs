@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using TestFactory.MVC.ViewModels;
 using TestFactory.Business.Components.Managers;
 using System.Web.Security;
-using TestFactory.Business.Components.Rols;
-using TestFactory.Business.Models;
-using SimpleCrypto;
 
 namespace TestFactory.Controllers
 {

@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
-using TestFactory.MVC.ViewModels;
 using System.Web.Mvc;
-using System.IO.Compression;
-using DotNet.Highcharts.Options;
-using DotNet.Highcharts.Helpers;
 
 namespace TestFactory.Controllers.Api
 {

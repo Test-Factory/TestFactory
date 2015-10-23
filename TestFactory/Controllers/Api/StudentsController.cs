@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Services.Description;
 using AutoMapper;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.Filters;
 using TestFactory.MVC.ViewModels;
 using System;
-using TestFactory.Controllers;
 using TestFactory.Business.Components;
 
 namespace TestFactory.Controllers.Api

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestFactory.Business.DataProviderContracts;
+﻿using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Models;
 using SimpleCrypto;
-using System.Security.Cryptography;
 using System.Web;
-using TestFactory.Business.Components;
 
 namespace TestFactory.Business.Components.Managers
 {

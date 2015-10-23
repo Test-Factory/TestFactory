@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using NHibernate;
-using FluentNHibernate;
-using NHibernate.Cfg;
+﻿using NHibernate;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using NHibernate.Proxy;
-using NHibernate.Tool.hbm2ddl;
 
 namespace NHibernateDataProviders.NHibernateCore
 {
