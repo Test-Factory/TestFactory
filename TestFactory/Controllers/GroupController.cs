@@ -33,14 +33,6 @@ namespace TestFactory.Controllers
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
-
-        private bool isIncludeHTMLAttributes(GroupViewModel group) 
-        {
-            string regEx = @"<\\?([A-Z][A-Z0-9]*)\b[^>]*>";
-            System.Text.RegularExpressions.Regex regular = new System.Text.RegularExpressions.Regex(regEx, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-            var matches = regular.Match(group.FullName + group.ShortName);
-            return matches.Success;
-        }
         
         public ActionResult GetStudentCount(string id)
         {
@@ -64,7 +56,8 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Create(GroupViewModel group)
         {
-            if (isIncludeHTMLAttributes(group) || groupManager.GroupIsAlreadyExist(group.ShortName)) 
+            var model = AutoMapper.Mapper.Map<Group>(group);
+            if (groupManager.IsIncludeHTMLAttributes(model) || groupManager.GroupIsAlreadyExist(model.ShortName)) 
             {
                 throw new HttpException(403,GlobalRes_ua.forbidenAction);
             }
@@ -74,7 +67,6 @@ namespace TestFactory.Controllers
                 return RedirectToRoute("Default");
             }
 
-            var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Create(model);
      
             GroupForUser gfu = new GroupForUser();
@@ -87,7 +79,9 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
-            if (isIncludeHTMLAttributes(group))
+            var model = AutoMapper.Mapper.Map<Group>(group);
+
+            if (groupManager.IsIncludeHTMLAttributes(model))
             {
                 throw new HttpException(403, GlobalRes_ua.forbidenAction);
             }
@@ -97,7 +91,6 @@ namespace TestFactory.Controllers
                 return View(group);
             }
 
-            var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Update(model);
 
             return RedirectToRoute("Default");
@@ -106,7 +99,8 @@ namespace TestFactory.Controllers
         [HttpPost]
         public void Delete(string id)
         {
+            groupForUserManager.DeleteByGroupId(id);
+            groupManager.Delete(id);
         }
-
     }
 }

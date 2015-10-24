@@ -331,6 +331,21 @@ a.waves-effect.waves-light.btn.donwloadStudent {
     width: 115px;
 }
 
+.deleteGroup {
+    color: darkgrey;
+    font-size: 21px !important;
+    right: 0px;
+    padding: 5px;
+    z-index: 50;
+    position: absolute;
+    cursor: pointer;
+}
+    .deleteGroup :hover {
+        color: red;
+    }
+
+
+
 p.countUsers {
     font-size: 1.25em;
     padding-right: 8px;

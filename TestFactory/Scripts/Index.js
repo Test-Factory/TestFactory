@@ -12,4 +12,23 @@
         $("#updateGroup").hide();
     })
 
+    Delete = function (group, id) {
+        $.ajax({
+            method: "POST",
+            url: settings.basePath + "/group/delete/" + id,
+            data: JSON.stringify(id),
+        })
+    }
+
+    /*$(".card").mouseenter(function () {
+        $(".deleteContainer").stop(true);
+        $(".deleteContainer").show("slow");
+    });
+
+    $(".card").mouseleave(function () {
+        $(".deleteContainer").stop(true);
+        $(".deleteContainer").hide("slow");
+    });*/
+
+
 });

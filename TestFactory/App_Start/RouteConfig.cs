@@ -63,6 +63,12 @@ namespace TestFactory
              defaults: new { controller = "Group", action = "Create" }
            );
 
+            routes.MapRoute(
+                name: "deleteGroup",
+                url: "group/delete/{id}",
+                defaults: new { controller = "Group", action = "Delete", id = UrlParameter.Optional }
+            );
+
             #endregion
 
             #region User map routes
