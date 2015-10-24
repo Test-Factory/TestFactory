@@ -13,6 +13,7 @@
     })
 
     Delete = function (group, id) {
+        group.parent().parent().parent().parent().parent().remove();
         $.ajax({
             method: "POST",
             url: settings.basePath + "/group/delete/" + id,
