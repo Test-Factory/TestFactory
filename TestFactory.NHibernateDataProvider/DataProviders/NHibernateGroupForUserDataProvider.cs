@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ using NHibernate.Criterion;
 using NHibernate.Linq;
 using NHibernateDataProviders.NHibernateCore;
 using TestFactory.Business.DataProviderContracts;
+=======
+﻿using TestFactory.Business.DataProviderContracts;
+>>>>>>> origin/master
 using TestFactory.Business.Models;
 
 namespace TestFactory.NHibernateDataProvider.DataProviders

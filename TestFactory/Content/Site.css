@@ -113,7 +113,7 @@ a {
 }
 
 form {
-    margin-left: 1%;
+    /*margin-left: 1%;*/
     margin-top: 3%;
 }
 
@@ -167,7 +167,10 @@ div#returnIndex {
     top: 39px;
 }
 
-div#content { width: 100%; }
+div#content {
+     max-width: 960px;
+    margin: auto;
+}
 
 .card.blue-grey.darken-1.card-action {
     height: 150px;
@@ -406,7 +409,9 @@ ul#nav-mobile {
     position: relative;
 }
 
-input[type=text].updatePop-Up, input[type=text].createPop-Up { margin: 0px 0 6px 0; }
+input[type=text].updatePop-Up, input[type=text].createPop-Up {
+     margin: 0px 0 6px 0;
+}
 
 a.toEdit.waves-effect.waves-light.btn.group-update { top: -24px; }
 

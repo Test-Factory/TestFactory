@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TestFactory.Business.Models;
+﻿using TestFactory.Business.Models;
 
 namespace TestFactory.Business.DataProviderContracts
 {

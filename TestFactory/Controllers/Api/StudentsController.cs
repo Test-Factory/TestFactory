@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Services.Description;
 using AutoMapper;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.Filters;
 using TestFactory.MVC.ViewModels;
 using System;
-using TestFactory.Controllers;
+using TestFactory.Business.Components;
 
 namespace TestFactory.Controllers.Api
 {
@@ -19,11 +17,12 @@ namespace TestFactory.Controllers.Api
     {
         private readonly StudentManager studentManager;
         private readonly GroupManager groupManager;
-
+        private UserContext user;
         public StudentsController(StudentManager studentManager, GroupManager groupManager)
         {
             this.studentManager = studentManager;
             this.groupManager = groupManager;
+            this.user = new UserContext();
         }
 
         [HttpGet]
@@ -74,6 +73,8 @@ namespace TestFactory.Controllers.Api
         [Route("delete")]
         public IHttpActionResult Delete(StudentViewModel student)
         {
+            if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
+                return Ok();
             var model = Mapper.Map<Student>(student);
             studentManager.Delete(model.Id);
             return Ok();

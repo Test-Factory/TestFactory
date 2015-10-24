@@ -1,7 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
-using NHibernate.Mapping;
 using TestFactory.Business.Models;
-using ForeignKey = FluentNHibernate.Conventions.Helpers.ForeignKey;
 
 namespace NHibernateDataProviders.NHibernateCore.Mappings
 {
