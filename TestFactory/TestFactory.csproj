@@ -413,6 +413,7 @@
     <Content Include="Views\File\GetAllReport.cshtml" />
     <Content Include="Views\File\GenerateChart.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Charts\" />

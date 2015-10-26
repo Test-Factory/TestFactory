@@ -130,6 +130,12 @@ namespace TestFactory
               url : "error/404",
               defaults : new { controller = "Error", action = "List" }
               );
+
+            routes.MapRoute(
+               name: "NotFound",
+               url: "{*url}",
+               defaults: new { controller = "Error", action = "NotFound" }
+               );
         }
     }
 }
