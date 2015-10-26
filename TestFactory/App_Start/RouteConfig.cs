@@ -125,6 +125,11 @@ namespace TestFactory
                 url: "error/{code}",
                 defaults : new { controller = "Error", action = "Error" }
             );
+            routes.MapRoute(
+              name : "Error404",
+              url : "error/404",
+              defaults : new { controller = "Error", action = "List" }
+              );
         }
     }
 }
