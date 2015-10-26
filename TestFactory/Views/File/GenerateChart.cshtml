@@ -2,20 +2,22 @@
 @{
     Layout = null;
 }
-        @{
+ @{
         int[] mark = new int[Model.Item1.Marks.Count];
         int i=0;
-        foreach(var mr in Model.Item1.Marks)
-        {
-            mark[i] = mr.Value;
-            i++;
-        }
         string[] desc = new string[Model.Item2.Count];
-        i = 0;
-        foreach(var descr in Model.Item2)
+        
+        foreach (var type in Model.Item2)
         {
-            desc[i] = descr.Name;
-            i++;
+            foreach (var mr in Model.Item1.Marks)
+            {
+                if(mr.CategoryId == type.Id)
+                {
+                    mark[i] = mr.Value;
+                    desc[i] = type.Name;
+                    i++;
+                }
+            }
         }
 
         string chartName = Model.Item1.Id;
@@ -30,6 +32,9 @@
                 xValue: new[] {  desc[0], desc[1], desc[2], desc[3], desc[4], desc[5] },
                 yValues: new[] { mark });
         chartImage.Save(path: filePathName);
-        var st = "http://testfactorystaging.azurewebsites.net/Charts/" + chartName + ".png";
+        
+        var url = Request.Url.ToString();
+        string[] splitUrl = url.Split(new Char[] { '/' });
+        var st = splitUrl[0] + "//" + splitUrl[2] + "/Charts/" + chartName + ".png";
 }
     <img src="@st" />

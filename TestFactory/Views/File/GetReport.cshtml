@@ -41,10 +41,12 @@
                                 {
                                     var temp = Model.Item1.Marks[i];
                                     Model.Item1.Marks[i] = Model.Item1.Marks[i + 1];
-                                    Model.Item1.Marks[i + 1] = temp; 
+                                    Model.Item1.Marks[i + 1] = temp;
+                                    
                                 }
                             }
                         }
+                        
                     }
         <h2 style="text-align: center;">@{ var t = Model.Item1.FirstName + " " + Model.Item1.LastName + " (" + Model.Item3.ShortName + ")";} @t</h2>
         <div>
