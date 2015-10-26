@@ -1,0 +1,3 @@
+user-agent: *
+# Tell all robots not to index any of the pages under the /error path.
+disallow: /error/
