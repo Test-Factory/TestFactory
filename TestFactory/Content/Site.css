@@ -89,6 +89,7 @@ div#createGroup, div#updateGroup {
     display: none;
     height: 100%;
     opacity: 0.97;
+    left: 0px;
     position: fixed;
     top: 64px;
     width: 100%;
