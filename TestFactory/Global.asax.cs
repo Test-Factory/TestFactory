@@ -21,7 +21,7 @@ namespace TestFactory
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.RegisterDependencies();
-            DatabaseConfig.MigrateDatabase(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            //DatabaseConfig.MigrateDatabase(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
             GlobalConfiguration.Configuration.EnsureInitialized();
         }
