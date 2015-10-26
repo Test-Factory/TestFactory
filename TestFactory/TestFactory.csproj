@@ -353,6 +353,7 @@
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %286%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %287%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %288%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %289%29.pubxml" />
     <None Include="Properties\PublishProfiles\testfactorystaging - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %283%29.pubxml" />
@@ -361,6 +362,7 @@
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %286%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %287%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %288%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %289%29.pubxml" />
     <None Include="Properties\PublishProfiles\testfactorystaging - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\dataProvider\studentProvider.js" />
