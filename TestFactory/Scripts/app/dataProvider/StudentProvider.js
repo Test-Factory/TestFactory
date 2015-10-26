@@ -10,14 +10,6 @@ $(function () {
         $.getJSON(this.apiPath, { groupId: this.groupId }).done(callback).error(function () { console.log("error"); });
     }
 
-    StudentProvider.prototype.loadReport = function (data, callback) {
-        $.ajax({
-            method: "POST",
-            url: settings.basePath + "/students/result",
-            data: JSON.stringify(data),
-            contentType: contentType,
-        }).done(callback);
-    }
     
     StudentProvider.prototype.post = function (data, callback) {
         $.ajax({
@@ -28,19 +20,19 @@ $(function () {
         }).done(callback);
     }
 
-    StudentProvider.prototype.delete= function (data,callback) {
+    StudentProvider.prototype.put = function (data, callback) {
         $.ajax({
-            method: "POST",
-            url: this.apiPath + "/delete",
+            method: "PUT",
+            url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
         }).done(callback);
     }
 
-    StudentProvider.prototype.put = function (data, callback) {
+    StudentProvider.prototype.delete= function (data,callback) {
         $.ajax({
-            method: "PUT",
-            url: this.apiPath,
+            method: "POST",
+            url: this.apiPath + "/delete",
             data: JSON.stringify(data),
             contentType: contentType,
         }).done(callback);
