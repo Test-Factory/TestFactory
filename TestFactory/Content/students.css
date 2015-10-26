@@ -29,8 +29,6 @@
     #tbStudentList .last-name {
             word-wrap: break-word;
         }
-    #tbStudentList .marks {
-    }
 }
 
 
@@ -80,9 +78,6 @@
 .btn-success img {
             padding-top: 5px;
         }
-
-.screenMediaAbove {
-}
 
 .triangle-down {
             margin: 0 0 0 5px;
