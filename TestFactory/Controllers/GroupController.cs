@@ -15,13 +15,15 @@ namespace TestFactory.Controllers
         private readonly UserManager userManager;
         private UserContext user;
         private GroupForUserManager groupForUserManager;
+        private StudentManager studentManager;
 
-        public GroupController(GroupManager groupManager, StudentManager studentManager,UserManager userManager,GroupForUserManager groupForUserManager)
+        public GroupController(GroupManager groupManager, StudentManager studentManager, UserManager userManager, GroupForUserManager groupForUserManager)
         {
             this.groupManager = groupManager;
             this.user = new UserContext();
             this.userManager = userManager;
             this.groupForUserManager = groupForUserManager;
+            this.studentManager = studentManager;
         }
 
         [Authorize(Roles = "Filler,Editor")]
@@ -95,10 +97,16 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
-        public void Delete(string id)
+        public JsonResult Delete(string id)
         {
-            groupForUserManager.DeleteByGroupId(id);
-            groupManager.Delete(id);
+            if (groupManager.HasAccessToGroup(id, user.User.Id))
+            {
+                groupForUserManager.DeleteByGroupId(id);
+                studentManager.DeleteByGroupId(id);
+                groupManager.Delete(id);
+                return Json(true);
+            }
+            return Json(false);
         }
     }
 }

@@ -12,5 +12,14 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetByGroupId(groupId);
         }
+
+        public void DeleteByGroupId(string id)
+        {
+            var groupForUserList = provider.GetByGroupId(id);
+            foreach (var el in groupForUserList)
+            {
+                provider.Delete(el.Id);
+            }
+        }
     }
 }

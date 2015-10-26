@@ -47,12 +47,17 @@
             </div>
         </div>
     }
+    <div id="dialog" title="Видалити" style="display: none;">
+                        <p>Повернути сдутента після видалення буде неможливо. Ви дісно хочете його видалити?</p>
+                    </div>
     <div id="createGroup">
         <div id="create">
             @Html.Partial("Create", new GroupViewModel())
         </div>
     </div>
-    @section Scripts{
+    @Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
+@section Scripts{
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
         @Scripts.Render("~/Scripts/Index.js")
     }
 

@@ -13,23 +13,27 @@
     })
 
     Delete = function (group, id) {
-        group.parent().parent().parent().parent().parent().remove();
-        $.ajax({
-            method: "POST",
-            url: settings.basePath + "/group/delete/" + id,
-            data: JSON.stringify(id),
-        })
+            $("#dialog").dialog({
+                resizable: false,
+                height: 200,
+                modal: true,
+                buttons: {
+                    "Видалити": function () {
+                        $.ajax({
+                            method: "POST",
+                            url: settings.basePath + "/group/delete/" + id,
+                            data: JSON.stringify(id),
+                            success: function (msg) {
+                                if (msg) group.parent().parent().parent().parent().parent().remove();
+                            }
+                        })
+                        $(this).dialog("close");
+                    },
+                    "Відмінити": function () {
+                        $(this).dialog("close");
+                        return false;
+                    }
+                }
+            });
     }
-
-    /*$(".card").mouseenter(function () {
-        $(".deleteContainer").stop(true);
-        $(".deleteContainer").show("slow");
-    });
-
-    $(".card").mouseleave(function () {
-        $(".deleteContainer").stop(true);
-        $(".deleteContainer").hide("slow");
-    });*/
-
-
 });
