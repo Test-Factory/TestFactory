@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentMigrator, Version=1.6.0.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentMigrator.1.6.0\lib\40\FluentMigrator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentMigrator.Runner, Version=1.6.0.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentMigrator.Runner.1.6.0\lib\40\FluentMigrator.Runner.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -61,6 +69,9 @@
     <Compile Include="DataProviders\NHibernateStudentDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateCategoryDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateUserDataProvider.cs" />
+    <Compile Include="DbVersioning\Migrations\Version1\M001_CreateTables.cs" />
+    <Compile Include="DbVersioning\Migrations\Version1\M002_DefaultData.cs" />
+    <Compile Include="DbVersioning\Migrator.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupForUserMap.cs" />
     <Compile Include="NHibernateCore\SessionHelper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />
