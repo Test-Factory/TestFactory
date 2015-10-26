@@ -188,6 +188,7 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\AutomapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Filters\MvcHandleErrorAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -306,6 +307,7 @@
     <None Include="Properties\PublishProfiles\TestFactory - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - Web Deploy.pubxml" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\app\dataProvider\categoryProvider.js" />
     <Content Include="Scripts\app\dataProvider\groupProvider.js" />
     <Content Include="Scripts\app\dataProvider\markProvider.js" />
