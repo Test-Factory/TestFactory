@@ -10,6 +10,7 @@ namespace TestFactory.Controllers
 
         public ActionResult Error(int code = 500)
         {
+            Response.StatusCode = code;
             var error = new Error()
             {
                 HttpErrorCode = code,
@@ -22,12 +23,6 @@ namespace TestFactory.Controllers
         {
             return GlobalRes_ua.ResourceManager.GetString(string.Format("error_{0}", statusCode)) ??
                    GlobalRes_ua.error_500;
-        }
-
-        public ActionResult NotFound() 
-        {
-            Response.StatusCode = 404;
-            return View();
         }
     }
 }
