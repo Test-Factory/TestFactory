@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using System.Web.Mvc;
+using System.Web;
+using Embedded_Resource;
 
 namespace TestFactory.Controllers.Api
 {
@@ -22,8 +24,13 @@ namespace TestFactory.Controllers.Api
         [WordDocument]
         public ActionResult GetReport(string id)
         {
+            
             Student student = studentManager.GetById(id);
-            Group group = groupManager.GetById(student.GroupId);
+            if (student == null)
+            {
+                throw new HttpException(404, GlobalRes_ua.error_404);
+            }
+            Group group = groupManager.GetById(student.GroupId);          
             IList<Category> categories = categoryManager.GetList();
 
             ViewBag.WordDocumentFilename = "(" + group.ShortName + ") " + student.FirstName + " " + student.LastName;
