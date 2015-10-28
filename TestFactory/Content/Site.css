@@ -416,3 +416,9 @@ input[type=text].updatePop-Up, input[type=text].createPop-Up {
 
 a.toEdit.waves-effect.waves-light.btn.group-update { top: -24px; }
 
+.deleteGroup:hover {
+    color: #008080;
+}
+div#content {
+    margin-top: 12px;
+}
