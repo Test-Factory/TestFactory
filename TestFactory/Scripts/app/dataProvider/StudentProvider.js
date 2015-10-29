@@ -1,7 +1,9 @@
 ﻿function StudentProvider(groupId) {
     var self = this;
     self.apiPath = settings.basePath + "/api/students";
-    self.groupId = groupId();
+    if (groupId) {
+        self.groupId = groupId();
+    }
 }
 
 $(function () {
