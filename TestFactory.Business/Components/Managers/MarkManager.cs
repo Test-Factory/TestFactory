@@ -12,5 +12,13 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetByStudentId(studentId);
         }
+        public void DeleteByStudentId(string studentId) 
+        {
+            IList<Mark> studentMarks = provider.GetByStudentId(studentId);
+            foreach (var el in studentMarks)
+            {
+                provider.Delete(el.Id);
+            }
+        }
     }
 }

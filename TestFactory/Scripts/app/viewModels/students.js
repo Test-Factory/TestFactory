@@ -132,6 +132,8 @@ function StudentsViewModel(group) {
                 "Видалити": function () {
                     closeAllEditing();
                     mapStudent(student, self.studentForDelete());
+
+                    self.categories.removeAll();
                     self.students.remove(student);
 
                     student.mode(self.mods.deleting);

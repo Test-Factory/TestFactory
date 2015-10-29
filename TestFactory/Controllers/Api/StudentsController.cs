@@ -17,11 +17,13 @@ namespace TestFactory.Controllers.Api
     {
         private readonly StudentManager studentManager;
         private readonly GroupManager groupManager;
+        private readonly MarkManager markManager;
         private UserContext user;
-        public StudentsController(StudentManager studentManager, GroupManager groupManager)
+        public StudentsController(StudentManager studentManager, GroupManager groupManager, MarkManager markManager)
         {
             this.studentManager = studentManager;
             this.groupManager = groupManager;
+            this.markManager = markManager;
             this.user = new UserContext();
         }
 
@@ -89,6 +91,7 @@ namespace TestFactory.Controllers.Api
             if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
                 return BadRequest();
             var model = Mapper.Map<Student>(student);
+            markManager.DeleteByStudentId(student.Id);
             studentManager.Delete(model.Id);
             return Ok();
         }
