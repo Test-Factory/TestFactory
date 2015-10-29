@@ -23,29 +23,30 @@ namespace TestFactory.Controllers
             this.user = new UserContext();
         }
 
-        [System.Web.Mvc.HttpGet]
-        [System.Web.Mvc.Authorize(Roles = "Filler, Editor")]
+        [HttpGet]
+        [Authorize(Roles = "Filler, Editor")]
         public ActionResult List(string groupId = null)
         {
             if (String.IsNullOrEmpty(groupId))
             {
                 throw new HttpException(400, GlobalRes_ua.error_400);
             }
-
             Group group = groupManager.GetById(groupId);
-
             if (group == null)
             {
                 throw new HttpException(404, GlobalRes_ua.error_404);
             }
-
             if (!groupManager.HasAccessToGroup(groupId, user.User.Id))
             {
                 throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
             }
-
             var result = Mapper.Map<GroupViewModel>(group);
             return View("List", result);
+        }
+        [HttpGet]
+        public ActionResult ListAll()
+        {
+            return View("ListAllStudents");
         }
     }
 }

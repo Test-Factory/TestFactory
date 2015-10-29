@@ -26,6 +26,15 @@ namespace TestFactory.Controllers.Api
         }
 
         [HttpGet]
+        public IEnumerable<StudentViewModel> Get()
+        {
+            IEnumerable<Student> students;
+            students = studentManager.GetList().OrderBy(s => s.LastName);
+            var result = Mapper.Map<IEnumerable<StudentViewModel>>(students);
+            return result;
+        }
+
+        [HttpGet]
         public IEnumerable<StudentViewModel> Get([FromUri]string groupId)
         {
             IEnumerable<Student> students;
