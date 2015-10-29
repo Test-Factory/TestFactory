@@ -1,0 +1,7 @@
+INSERT INTO [dbo].[Group] ([Id], [FullName], [ShortName], [Faculty]) VALUES (N'022483b5-32de-454b-a6c7-41c0b213e82f', N'Програмна інженерія 52', N'ПІ 52', N'FICT')
+INSERT INTO [dbo].[Group] ([Id], [FullName], [ShortName], [Faculty]) VALUES (N'1cb8a5d5-e644-48f8-b8b6-ee0c3cf4700f', N'Комп''ютерна інженерія', N'КІ 1', N'FICT')
+INSERT INTO [dbo].[Group] ([Id], [FullName], [ShortName], [Faculty]) VALUES (N'42548ebc-2407-484f-822e-9dc487f925f9', N'Програмна інженерія Комплекс', N'ПІК 13', N'FICT')
+INSERT INTO [dbo].[Group] ([Id], [FullName], [ShortName], [Faculty]) VALUES (N'5de0fbe3-9301-465f-abe7-fa46042dbd55', N'Програмна інженерія 51', N'ПІ 51', N'FICT')
+INSERT INTO [dbo].[Group] ([Id], [FullName], [ShortName], [Faculty]) VALUES (N'b1ba3efd-5deb-48fd-ad64-cc836230fc74', N'ффо1', N'фоф1', N'FOFF')
+INSERT INTO [dbo].[Group] ([Id], [FullName], [ShortName], [Faculty]) VALUES (N'c16854bd-a3cf-48fa-853c-61ed4cbc45bd', N'пи-49', N'пи-49', N'FICT')
+INSERT INTO [dbo].[Group] ([Id], [FullName], [ShortName], [Faculty]) VALUES (N'f31cd62e-b042-43ca-b7e7-0e3ab6f025c9', N'йцу', N'йцу', N'FICT')
