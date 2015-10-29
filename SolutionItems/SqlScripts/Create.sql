@@ -16,6 +16,7 @@ CREATE TABLE [dbo].[Group] (
     [Id]        NVARCHAR (45) NOT NULL,
     [FullName]  NVARCHAR (50) NULL,
     [ShortName] NVARCHAR (20) NULL,
+    [Faculty]   NVARCHAR (20) NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
@@ -64,6 +65,7 @@ CREATE TABLE [dbo].[User] (
     [FirstName]    NVARCHAR (30)  NULL,
     [LastName]     NVARCHAR (30)  NULL,
     [Roles_id]     NVARCHAR (45)  NULL,
+    [Faculty]      NVARCHAR (20)  NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK7185C17C4ED5C847] FOREIGN KEY ([Roles_id]) REFERENCES [dbo].[Role] ([Id])
 );
