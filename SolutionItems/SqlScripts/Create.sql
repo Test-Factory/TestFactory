@@ -56,7 +56,6 @@ CREATE TABLE [dbo].[Student] (
 );
 
 
-
 CREATE TABLE [dbo].[User] (
     [Id]           NVARCHAR (45)  NOT NULL,
     [Email]        NVARCHAR (50)  NULL,
@@ -68,4 +67,10 @@ CREATE TABLE [dbo].[User] (
     [Faculty]      NVARCHAR (20)  NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK7185C17C4ED5C847] FOREIGN KEY ([Roles_id]) REFERENCES [dbo].[Role] ([Id])
+);
+
+CREATE TABLE [dbo].[VersionInfo] (
+    [Version]     BIGINT          NOT NULL,
+    [AppliedOn]   DATETIME        NULL,
+    [Description] NVARCHAR (1024) NULL
 );
