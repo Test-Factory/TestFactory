@@ -29,7 +29,7 @@ namespace TestFactory.Controllers
         [Authorize(Roles = "Filler,Editor")]
         public ActionResult List()
         {
-            var groups = groupManager.GetListForUser(user.User.Id);
+            var groups = groupManager.GetListForFaculty(user.User.Faculty);
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
@@ -46,16 +46,18 @@ namespace TestFactory.Controllers
             return Json(count);
         }
 
-        [Authorize(Roles = "Filler,Editor")]
+        [Authorize(Roles = "Filler")]
         [HttpGet]
         public ActionResult Create()
         {
             return PartialView();
         }
 
+        [Authorize(Roles = "Filler")]
         [HttpPost]
         public ActionResult Create(GroupViewModel group)
         {
+            group.Faculty = user.User.Faculty;
             var model = AutoMapper.Mapper.Map<Group>(group);
             if (groupManager.IsIncludeHTMLAttributes(model) || groupManager.GroupIsAlreadyExist(model.ShortName)) 
             {
@@ -66,16 +68,11 @@ namespace TestFactory.Controllers
             {
                 return RedirectToRoute("Default");
             }
-
             groupManager.Create(model);
      
-            GroupForUser gfu = new GroupForUser();
-            gfu.GroupId = group.Id;
-            gfu.UserId = user.User.Id;
-            groupForUserManager.Create(gfu);
             return RedirectToRoute("groupStudentList", new { groupId = group.Id });
         }
-
+        [Authorize(Roles = "Filler")]
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
@@ -99,7 +96,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public JsonResult Delete(string id)
         {
-            if (groupManager.HasAccessToGroup(id, user.User.Id))
+            if (user.User.Faculty == groupManager.GetById(id).Faculty)
             {
                 groupForUserManager.DeleteByGroupId(id);
                 studentManager.DeleteByGroupId(id);

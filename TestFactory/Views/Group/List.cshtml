@@ -47,9 +47,11 @@
             </div>
         </div>
     }
+@if (User.IsInRole("Filler")) { 
     <div id="dialog" title="Видалити" style="display: none;">
                         <p>Повернути студентів групи після видалення буде неможливо. Ви дісно хочете видалити групу?</p>
                     </div>
+}
     <div id="createGroup">
         <div id="create">
             @Html.Partial("Create", new GroupViewModel())

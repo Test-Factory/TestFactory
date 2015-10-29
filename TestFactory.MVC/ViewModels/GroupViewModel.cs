@@ -18,6 +18,9 @@ namespace TestFactory.MVC.ViewModels
 
         public virtual IList<StudentViewModel> Students { get; set; }
 
+        [ScaffoldColumn(false)]
+        public virtual string Faculty { get; set; }      
+
         public GroupViewModel()
         {
             Students = new List<StudentViewModel>();

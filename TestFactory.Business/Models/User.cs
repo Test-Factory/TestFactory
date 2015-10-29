@@ -20,6 +20,8 @@ namespace TestFactory.Business.Models
 
         public virtual Role Roles{ get; set; }
 
+        public virtual string Faculty { get; set; }
+
         public User()
         {
             AdminGroup = new List<Group>();

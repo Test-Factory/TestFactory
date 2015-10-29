@@ -48,7 +48,7 @@ namespace TestFactory.Controllers.Api
         [ValidateModel]
         public IHttpActionResult Create(StudentViewModel student)
         {
-            if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
                 return BadRequest();
             Student model = Mapper.Map<Student>(student);
             model.Id = Guid.NewGuid().ToString();
@@ -65,7 +65,7 @@ namespace TestFactory.Controllers.Api
         [ValidateModel]
         public IHttpActionResult Update(StudentViewModel student)
         {
-            if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
                 return BadRequest();
             var model = Mapper.Map<Student>(student);
             studentManager.Update(model);
@@ -77,7 +77,7 @@ namespace TestFactory.Controllers.Api
         [Route("delete")]
         public IHttpActionResult Delete(StudentViewModel student)
         {
-            if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
+            if (!groupManager.HasAccessToGroup(user.User.Faculty,student.GroupId))
                 return BadRequest();
             var model = Mapper.Map<Student>(student);
             studentManager.Delete(model.Id);

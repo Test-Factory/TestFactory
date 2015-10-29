@@ -12,6 +12,8 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
             Map(x => x.FullName);
 
             Map(x => x.ShortName);
+
+            Map(x => x.Faculty);
         }
     }
 }

@@ -68,6 +68,8 @@
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
+@if (User.IsInRole("Filler"))
+                {
                             <td class="screenMediaBelow ">
                                 <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
                             </td>
@@ -93,7 +95,9 @@
                     <div id="dialog" title="Видалити">
                         <p>Повернути сдутента після видалення буде неможливо. Ви дісно хочете його видалити?</p>
                     </div>
+                }
                 </tr>
+
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>

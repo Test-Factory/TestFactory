@@ -11,5 +11,8 @@ namespace TestFactory.MVC.ViewModels
         [Required(ErrorMessage = "Поле повинно бути заповненим")]
         [DataType(DataType.Password,ErrorMessage="Введіть пароль")]
         public string Password { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual string Faculty { get; set; }    
     }
 }

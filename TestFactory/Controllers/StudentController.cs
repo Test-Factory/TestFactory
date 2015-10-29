@@ -39,7 +39,7 @@ namespace TestFactory.Controllers
                 throw new HttpException(404, GlobalRes_ua.error_404);
             }
 
-            if (!groupManager.HasAccessToGroup(groupId, user.User.Id))
+            if (group.Faculty!=user.User.Faculty)
             {
                 throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
             }
