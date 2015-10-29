@@ -282,6 +282,14 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="dbo.Category.data.sql" />
+    <Content Include="dbo.Group.data.sql" />
+    <Content Include="dbo.GroupForUser.data.sql" />
+    <Content Include="dbo.Mark.data.sql" />
+    <Content Include="dbo.Role.data.sql" />
+    <Content Include="dbo.Student.data.sql" />
+    <Content Include="dbo.User.data.sql" />
+    <Content Include="dbo.VersionInfo.data.sql" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\materialize\font\material-design-icons\Material-Design-Icons.eot" />
