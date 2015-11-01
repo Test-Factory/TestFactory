@@ -7,10 +7,9 @@
     self.lastName = ko.observable(item ? item.LastName : "");
     self.groupId = ko.observable(item ? item.GroupId : "");
 
-    self.group = ko.observable();
-    groupProvider.get(self.groupId, function(data) {
-        var mappedItem = new GroupModel(data);
-        self.group(mappedItem);
+    self.groupShortName = ko.observable();
+    groupProvider.get(self.groupId(), function(data) {
+        self.groupShortName(data.ShortName);
     });
 
     self.marks = ko.observableArray();

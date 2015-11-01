@@ -4,6 +4,7 @@
         <table id="tbStudentList" >
             <thead>
                 <tr class="noselect">
+                    @*TODO: fix sorting position*@
                     <th class="last-name">
                         <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
                         <!-- ko if: $root.sortKey() == "lastName" -->
@@ -17,8 +18,8 @@
                         <!-- /ko -->
                     </th>
                     <th class="group">
-                        <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('group'); } ">Group</a>
-                        <!-- ko if: $root.sortKey() == "group" -->
+                        <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">Група</a> @*TODO: add to resourse*@
+                        <!-- ko if: $root.sortKey() == "groupShortName" -->
                         <span data-bind="css: selectedClassForSortedField"></span>
                         <!-- /ko -->
                     </th>
@@ -32,13 +33,13 @@
                     </th>
                     <!-- /ko -->
                 </tr>
-                                             @*averege marks*@
+                                             @*TODO:averege marks*@
             </thead>
             <tbody data-bind="foreach: students">
                 <tr>
                     <td class="last-name" data-bind="text: lastName"></td>
                 <td class="first-name" data-bind="text: firstName"></td>
-                    <td class="group" data-bind="text: group.shortName"></td>
+                    <td class="group" data-bind="text: groupShortName"></td>
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
