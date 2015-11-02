@@ -14,5 +14,12 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                 .Where(s => s.StudentId == studentId)
                 .ToList<Mark>());
         }
+        public IEnumerable<Mark> GetMarksByCategoryId(string id)
+        {
+            return Execute(session => session.Query<Mark>()
+                .Where(s => s.CategoryId == id)
+                .ToList<Mark>());
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Models;
 
@@ -12,6 +13,10 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetByStudentId(studentId);
         }
+        public IEnumerable<Mark> GetMarksByCategoryId(string categoryId)
+        {
+            return provider.GetMarksByCategoryId(categoryId);
+        }
         public void DeleteByStudentId(string studentId) 
         {
             IList<Mark> studentMarks = provider.GetByStudentId(studentId);
@@ -19,6 +24,13 @@ namespace TestFactory.Business.Components.Managers
             {
                 provider.Delete(el.Id);
             }
+        }
+
+        public double AveregeMarkByCategoryId(string categoryId)
+        {
+            var marksByCategoryId = this.GetMarksByCategoryId(categoryId);
+            var avaregeMark = marksByCategoryId.Average(m => m.Value);
+            return avaregeMark;
         }
     }
 }
