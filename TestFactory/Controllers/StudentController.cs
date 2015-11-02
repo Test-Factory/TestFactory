@@ -62,7 +62,11 @@ namespace TestFactory.Controllers
             var result = AutoMapper.Mapper.Map<List<StudentViewModel>>(student);
             return View(result);
         }
-
+        [HttpGet]
+        public ActionResult ListAll()
+        {
+            return View("ListAllStudents");
+        }
         [AllowAnonymous]
         [HttpPost]
         public ActionResult SearchForStudents(string name)
