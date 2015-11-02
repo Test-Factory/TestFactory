@@ -23,6 +23,7 @@ namespace TestFactory.Controllers.Api
             this.user = new UserContext();
             this.groupManager = groupManager;
         }
+
         [Authorize(Roles = "Filler,Editor")]
         [WordDocument]
         public ActionResult GetReport(string id)
@@ -41,6 +42,7 @@ namespace TestFactory.Controllers.Api
             var tuple = new Tuple<Student, IList<Category>, Group>(student, categories, group);
             return View(tuple);
         }
+
         [Authorize(Roles = "Filler,Editor")]
         [WordDocument]
         public ActionResult GetAllReport(string groupId)

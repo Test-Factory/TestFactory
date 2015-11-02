@@ -27,8 +27,8 @@ namespace TestFactory.Controllers
             this.user = new UserContext();
         }
 
-        [System.Web.Mvc.HttpGet]
-        [System.Web.Mvc.Authorize(Roles = "Filler, Editor")]
+        [HttpGet]
+        [Authorize(Roles = "Filler, Editor")]
         public ActionResult List(string groupId = null)
         {
             if (String.IsNullOrEmpty(groupId))
@@ -62,11 +62,14 @@ namespace TestFactory.Controllers
             var result = AutoMapper.Mapper.Map<List<StudentViewModel>>(student);
             return View(result);
         }
+
         [HttpGet]
+        [Authorize]
         public ActionResult ListAll()
         {
             return View("ListAllStudents");
         }
+
         [AllowAnonymous]
         [HttpPost]
         public ActionResult SearchForStudents(string name)
