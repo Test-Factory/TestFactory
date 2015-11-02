@@ -47,11 +47,10 @@ namespace TestFactory.Business.Components.Managers
 
         public IList<string> Search(string name)
         {
-            var splitFirstSecondName = name.Split(' ');
 
 
             var searcher = new Searcher<Student>(luceneDirectory);
-            var listFirstName = searcher.Search(splitFirstSecondName[0], "FirstName");
+            var listFirstName = searcher.Search(name, "Name");
 
             var list = new List<Student>();
             var result = new List<string>();

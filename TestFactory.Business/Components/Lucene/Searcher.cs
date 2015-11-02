@@ -71,6 +71,9 @@ namespace TestFactory.Business.Components.Lucene
         {
             var doc = new Document();
             var properties = typeof(T).GetProperties();
+
+            var formingName = "";
+            var attrSave = new Storable().Type;
             foreach (PropertyInfo property in properties)
             {
                 var attr = property.GetCustomAttribute<Storable>();
@@ -78,8 +81,20 @@ namespace TestFactory.Business.Components.Lucene
                     continue;
                 string fieldName = property.Name;
                 object fieldValue = property.GetValue(TValue);
-                doc.Add(new Field(fieldName, fieldValue.ToString(), Field.Store.YES, attr.Type));
+
+                if (fieldName == "FirstName"){
+                    attrSave = attr.Type;
+                    formingName += fieldValue + " ";
+                }
+                else
+                if (fieldName == "LastName")
+                {
+                    formingName += fieldValue;
+                }
+                else
+                    doc.Add(new Field(fieldName, fieldValue.ToString(), Field.Store.YES, attr.Type));
             }
+            doc.Add(new Field("Name", formingName.ToString(), Field.Store.YES, attrSave));
             return doc;
         }
 
