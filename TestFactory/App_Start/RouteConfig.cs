@@ -29,7 +29,11 @@ namespace TestFactory
                 defaults : new { controller = "Student", action = "List", groupId = UrlParameter.Optional }
            );
 
-         
+            routes.MapRoute(
+                   name: "studentListAll",
+                   url: "students/all",
+                   defaults: new { controller = "Student", action = "ListAll" }
+              );
 
             routes.MapRoute(
                 name: "studentList",
