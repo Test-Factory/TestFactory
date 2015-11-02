@@ -7,6 +7,7 @@ using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
 using TestFactory.Business.Components;
+using System.Collections.Generic;
 
 
 namespace TestFactory.Controllers
@@ -15,11 +16,14 @@ namespace TestFactory.Controllers
     {
         private readonly GroupManager groupManager;
 
+        private readonly StudentManager studentManager;
+
         private UserContext user;
 
-        public StudentController(GroupManager groupManager)
+        public StudentController(GroupManager groupManager, StudentManager studentManager)
         {
             this.groupManager = groupManager;
+            this.studentManager = studentManager;
             this.user = new UserContext();
         }
 
@@ -46,6 +50,25 @@ namespace TestFactory.Controllers
 
             var result = Mapper.Map<GroupViewModel>(group);
             return View("List", result);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Search()
+        {
+            var student = studentManager.GetList();
+            studentManager.AddLuceneIndex(student);
+
+            var result = AutoMapper.Mapper.Map<List<StudentViewModel>>(student);
+            return View(result);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult SearchForStudents(string name)
+        {
+            var list = studentManager.Search(name);
+            return Json(list);
         }
     }
 }

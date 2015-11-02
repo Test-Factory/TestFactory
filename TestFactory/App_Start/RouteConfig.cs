@@ -36,6 +36,18 @@ namespace TestFactory
                 url: "students",
                 defaults: new {controller = "Student", action = "List"}
            );
+
+            routes.MapRoute(
+                name: "studentSearch",
+                url: "search",
+                defaults: new { controller = "Student", action = "Search" }
+           );
+
+            routes.MapRoute(
+                name: "searchForStudents",
+                url: "searchForStudents",
+                defaults: new { controller = "Student", action = "SearchForStudents" }
+           );
            
             #endregion
 
