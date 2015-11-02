@@ -14,6 +14,8 @@ namespace TestFactory.Business.Models
 
         public virtual string LastName { get; set; }
 
+        public virtual string Faculty { get; set; }
+
         public virtual IList<Group> AdminGroup { get; set; }
 
         public virtual IList<GroupForUser> ManagerGroup { get; set; }

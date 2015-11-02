@@ -9,7 +9,7 @@ namespace TestFactory
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            #region Student
+            #region Student map
 
             routes.MapRoute(
                 name: "studentCreate",

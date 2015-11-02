@@ -7,9 +7,14 @@
                 var $groupContainer = $(this).parents('.group-container').first();		
                 $('#updateGroup',$groupContainer).show();		
     })
-    $(".decline").on("click", function () {
+
+    $(".declineCreate").on("click", function () {
         $("#createGroup").hide();
-        $("#updateGroup").hide();
+    })
+
+    $(".declineUpdate").on("click", function () {
+        var $groupContainer = $(this).parents('.group-container').first();
+        $('#updateGroup', $groupContainer).hide();
     })
 
     Delete = function (group, id) {

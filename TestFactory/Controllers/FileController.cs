@@ -28,13 +28,20 @@ namespace TestFactory.Controllers.Api
         [WordDocument]
         public ActionResult GetReport(string id)
         {
-            
             Student student = studentManager.GetById(id);
+
             if (student == null)
             {
                 throw new HttpException(404, GlobalRes_ua.error_404);
-            }
-            Group group = groupManager.GetById(student.GroupId);          
+            }   
+
+            Group group = groupManager.GetById(student.GroupId);         
+
+            if (group.Faculty != user.User.Faculty)
+            {
+                throw new HttpException(403, GlobalRes_ua.error_403);
+            }          
+                 
             IList<Category> categories = categoryManager.GetList();
 
             ViewBag.WordDocumentFilename = "(" + group.ShortName + ") " + student.FirstName + " " + student.LastName;
@@ -47,12 +54,15 @@ namespace TestFactory.Controllers.Api
         [WordDocument]
         public ActionResult GetAllReport(string groupId)
         {
-            if (!groupManager.HasAccessToGroup(user.User.Id, groupId)) 
-            {
-            throw new HttpException(403, GlobalRes_ua.error_403);
-            }
-            IList<Student> students = studentManager.GetList(groupId);
             Group group = groupManager.GetById(groupId);
+
+            if (group.Faculty != user.User.Faculty)
+            {
+                throw new HttpException(403, GlobalRes_ua.error_403);
+            }
+
+            IList<Student> students = studentManager.GetList(groupId);
+    
             IList<Category> categories = categoryManager.GetList();
 
             ViewBag.WordDocumentFilename = group.ShortName;

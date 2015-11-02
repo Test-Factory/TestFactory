@@ -19,6 +19,7 @@ namespace TestFactory.Controllers.Api
         private readonly GroupManager groupManager;
         private readonly MarkManager markManager;
         private UserContext user;
+
         public StudentsController(StudentManager studentManager, GroupManager groupManager, MarkManager markManager)
         {
             this.studentManager = studentManager;
@@ -55,11 +56,13 @@ namespace TestFactory.Controllers.Api
             return result;
         }
 
+        
         [HttpPost]
         [ValidateModel]
+        [Authorize(Roles = "Filler")]
         public IHttpActionResult Create(StudentViewModel student)
         {
-            if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
                 return BadRequest();
             Student model = Mapper.Map<Student>(student);
             model.Id = Guid.NewGuid().ToString();
@@ -72,11 +75,13 @@ namespace TestFactory.Controllers.Api
             return Ok(model);
         }
 
+       
         [HttpPut]
         [ValidateModel]
+        [Authorize(Roles = "Filler")]
         public IHttpActionResult Update(StudentViewModel student)
         {
-            if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
                 return BadRequest();
             var model = Mapper.Map<Student>(student);
             studentManager.Update(model);
@@ -86,9 +91,10 @@ namespace TestFactory.Controllers.Api
         [HttpPost]
         [ValidateModel]
         [Route("delete")]
+        [Authorize(Roles = "Filler")]
         public IHttpActionResult Delete(StudentViewModel student)
         {
-            if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
                 return BadRequest();
             var model = Mapper.Map<Student>(student);
             markManager.DeleteByStudentId(student.Id);

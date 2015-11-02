@@ -30,8 +30,8 @@ namespace TestFactory.Controllers
             this.categoryManager = categoryManager;
         }
 
-        [System.Web.Mvc.HttpGet]
-        [System.Web.Mvc.Authorize(Roles = "Filler, Editor")]
+        [HttpGet]
+        [Authorize(Roles = "Filler, Editor")]
         public ActionResult List(string groupId = null)
         {
             if (String.IsNullOrEmpty(groupId))
@@ -46,7 +46,7 @@ namespace TestFactory.Controllers
                 throw new HttpException(404, GlobalRes_ua.error_404);
             }
 
-            if (!groupManager.HasAccessToGroup(groupId, user.User.Id))
+            if (group.Faculty != user.User.Faculty)
             {
                 throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
             }
@@ -69,6 +69,7 @@ namespace TestFactory.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Filler, Editor")]
         public ActionResult ListAll()
         {
             return View("ListAllStudents");
@@ -83,11 +84,15 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Filler")]
         public JsonResult Delete(string studentId)
         {
             var student = studentManager.GetById(studentId);
-            if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
+            var group = groupManager.GetById(student.GroupId);
+
+            if (group.Faculty != user.User.Faculty)
                 throw new HttpException(403, GlobalRes_ua.error_403);
+
             studentManager.Delete(studentId);
             return Json(true);
         }

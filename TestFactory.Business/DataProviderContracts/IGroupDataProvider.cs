@@ -10,5 +10,7 @@ namespace TestFactory.Business.DataProviderContracts
         IList<GroupForUser> GetListForUser(string userId);
 
         Group GetByShortName(string shortName);
+
+        IList<Group> GetListForFaculty(string faculty);
     }
 }

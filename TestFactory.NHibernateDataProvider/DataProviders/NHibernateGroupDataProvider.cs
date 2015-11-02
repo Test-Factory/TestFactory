@@ -40,6 +40,15 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                     .UniqueResult<Group>();
             });
         }
- 
+        public IList<Group> GetListForFaculty(string faculty)
+        {
+            return Execute(session =>
+            {
+                return session
+                    .CreateCriteria(typeof(Group))
+                    .Add(Restrictions.Eq("Faculty", faculty))
+                    .List<Group>();
+            });
+        }
     }
 }

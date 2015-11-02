@@ -30,13 +30,13 @@ namespace TestFactory.Business.Components.Managers
             return GetUsersGroups(UserGroupsId);
         }
 
-        public bool HasAccessToGroup(string groupId, string userId)
+        public bool HasAccessToGroup(string faculty, string groupId)
         {
-            var ListGroup = GetListForUser(userId);
+            var ListGroup = GetListForFaculty(faculty);
 
             Group currentGroup = provider.GetById(groupId);
 
-            foreach (var group in ListGroup) 
+            foreach (var group in ListGroup)
             {
                 if (group.Id == currentGroup.Id)
                 {
@@ -63,6 +63,10 @@ namespace TestFactory.Business.Components.Managers
                 return true;
             }
             return false;
+        }
+        public IList<Group> GetListForFaculty(string faculty)
+        {
+            return provider.GetListForFaculty(faculty);
         }
     }
 }
