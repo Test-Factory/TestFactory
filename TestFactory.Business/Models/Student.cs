@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using TestFactory.Business.Components.Lucene.Attributes;
+using Lucene.Net.Documents;
 
 namespace TestFactory.Business.Models
 {
     public class Student : BaseModel
     {
+        [Storable(Type = Field.Index.ANALYZED)]
         public virtual string FirstName { get; set; }
 
         public virtual string LastName { get; set; }

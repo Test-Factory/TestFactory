@@ -1,0 +1,27 @@
+﻿@model IList<TestFactory.MVC.ViewModels.StudentViewModel>
+    <style>
+        body {
+            overflow: scroll;
+        }
+    </style>
+<div class="search">
+    <input  class="form-search" type="search" placeholder="Введіть ім'я студента" id="search"/>
+    <i id="search-clear" class="material-icons">close</i>
+</div>
+    <div class="search-result-conteiner">
+        @foreach(var student in Model)
+        {
+            <div class="card-search-container" id="@student.Id">
+                <div class="card-search">
+                    <div class="content-search">
+                        <div class="main-search">@student.FirstName @student.LastName</div>
+                        <p class="group-search">ПІ-49</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    @section Scripts
+{
+    @Scripts.Render("~/Scripts/Search.js")
+}

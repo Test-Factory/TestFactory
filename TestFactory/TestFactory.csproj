@@ -400,6 +400,7 @@
     <Content Include="Scripts\materialize\materialize.js" />
     <Content Include="Scripts\materialize\materialize.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Search.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -427,6 +428,7 @@
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Student\ListAllStudents.cshtml" />
+    <Content Include="Views\Student\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Charts\" />

@@ -28,17 +28,31 @@ namespace TestFactory
                 url: "group/{groupId}/students",
                 defaults : new { controller = "Student", action = "List", groupId = UrlParameter.Optional }
            );
+
             routes.MapRoute(
-                name : "studentListAll",
-                url : "students/all",
-                defaults : new { controller = "Student", action = "ListAll" }
-           );
+                   name: "studentListAll",
+                   url: "students/all",
+                   defaults: new { controller = "Student", action = "ListAll" }
+              );
+
             routes.MapRoute(
                 name: "studentList",
                 url: "students",
                 defaults: new {controller = "Student", action = "List"}
            );
-            
+
+            routes.MapRoute(
+                name: "studentSearch",
+                url: "search",
+                defaults: new { controller = "Student", action = "Search" }
+           );
+
+            routes.MapRoute(
+                name: "searchForStudents",
+                url: "searchForStudents",
+                defaults: new { controller = "Student", action = "SearchForStudents" }
+           );
+           
             #endregion
 
             #region Group map routes
