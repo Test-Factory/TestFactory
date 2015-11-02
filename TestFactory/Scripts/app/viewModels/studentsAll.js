@@ -3,6 +3,7 @@
 
     var studentProvider = new StudentProvider();
     var categoryProvider = new CategoryProvider();
+    var markProvider = new MarkProvider();
 
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
