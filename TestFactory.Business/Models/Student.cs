@@ -9,6 +9,7 @@ namespace TestFactory.Business.Models
         [Storable(Type = Field.Index.ANALYZED)]
         public virtual string FirstName { get; set; }
 
+        [Storable(Type = Field.Index.ANALYZED)]
         public virtual string LastName { get; set; }
  
         public virtual string  GroupId { get; set; }

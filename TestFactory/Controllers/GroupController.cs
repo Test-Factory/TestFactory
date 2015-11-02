@@ -46,7 +46,7 @@ namespace TestFactory.Controllers
             return Json(count);
         }
 
-        [Authorize(Roles = "Filler,Editor")]
+        [Authorize(Roles = "Filler")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -76,6 +76,7 @@ namespace TestFactory.Controllers
             return RedirectToRoute("groupStudentList", new { groupId = group.Id });
         }
 
+        [Authorize(Roles = "Filler")]
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
@@ -96,6 +97,7 @@ namespace TestFactory.Controllers
             return RedirectToRoute("Default");
         }
 
+        [Authorize(Roles = "Filler")]
         [HttpPost]
         public JsonResult Delete(string id)
         {
