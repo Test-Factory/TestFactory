@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using TestFactory.Business.Components.Managers;
@@ -22,7 +21,7 @@ namespace TestFactory.Controllers.Api
         [HttpGet]
         public IEnumerable<CategoryWebModel> Get()
         {
-            var category = categoryManager.GetList().OrderBy(c => c.Id);;
+            IEnumerable<Category> category = categoryManager.GetList().OrderBy(c => c.Id);
             var result = Mapper.Map<IEnumerable<CategoryWebModel>>(category);
             return result;
         }

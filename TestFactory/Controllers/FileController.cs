@@ -5,6 +5,7 @@ using TestFactory.Business.Models;
 using System.Web.Mvc;
 using System.Web;
 using Embedded_Resource;
+using TestFactory.Business.Components;
 
 namespace TestFactory.Controllers.Api
 {
@@ -13,14 +14,16 @@ namespace TestFactory.Controllers.Api
         private readonly CategoryManager categoryManager;
         private readonly StudentManager studentManager;
         private readonly GroupManager groupManager;
+        private UserContext user;
 
-        public FileController(CategoryManager categoryManager, StudentManager studentManager, GroupManager groupManager)
+        public FileController(CategoryManager categoryManager, StudentManager studentManager,UserManager userManager, GroupManager groupManager)
         {
             this.categoryManager = categoryManager;
             this.studentManager = studentManager;
+            this.user = new UserContext();
             this.groupManager = groupManager;
         }
-
+        [Authorize(Roles = "Filler,Editor")]
         [WordDocument]
         public ActionResult GetReport(string id)
         {
@@ -38,10 +41,14 @@ namespace TestFactory.Controllers.Api
             var tuple = new Tuple<Student, IList<Category>, Group>(student, categories, group);
             return View(tuple);
         }
-
+        [Authorize(Roles = "Filler,Editor")]
         [WordDocument]
         public ActionResult GetAllReport(string groupId)
         {
+            if (!groupManager.HasAccessToGroup(user.User.Id, groupId)) 
+            {
+            throw new HttpException(403, GlobalRes_ua.error_403);
+            }
             IList<Student> students = studentManager.GetList(groupId);
             Group group = groupManager.GetById(groupId);
             IList<Category> categories = categoryManager.GetList();

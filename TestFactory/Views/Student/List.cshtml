@@ -2,19 +2,17 @@
 @Styles.Render("~/Students/css")
 <div>
     <form>
-        <h3 id="groupName" data-bind="text: $root.group.shortName"></h3>
+        <h3 id="groupName" data-bind="text: $root.group.longName"></h3>
         <table id="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
             <thead>
                 <tr class="noselect">
                     <th class="last-name">
-
                         <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
                         <!-- ko if: $root.sortKey() == "lastName" -->
                         <div data-bind="css: selectedClassForSortedField"></div>
                         <!-- /ko -->
                     </th>
                     <th class="first-name">
-
                         <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
                         <!-- ko if: $root.sortKey() == "firstName" -->
                         <span data-bind="css: selectedClassForSortedField"></span>
@@ -22,7 +20,6 @@
                     </th>
                     <!-- ko foreach: $root.categories -->
                     <th class="marks">
-
                         <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
                         <!-- ko if: $root.sortKey() == $data.code() -->
                         <div data-bind="css: $root.selectedClassForSortedField"></div>

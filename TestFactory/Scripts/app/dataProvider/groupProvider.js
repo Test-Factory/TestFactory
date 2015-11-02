@@ -1,10 +1,17 @@
-﻿function GroupProvider() { }
+﻿function GroupProvider() {
+    var self = this;
+    self.apiPath = settings.basePath + "/api/groups";
+}
 
 $(function () {
-    var path = settings.basePath + "/api/groups";
     var contentType = "application/json; charset=utf-8";
-    GroupProvider.prototype.get = function (callback) {
-        $.get(path).done(callback).error(function () { console.log("error"); });
+
+    GroupProvider.prototype.get = function (id, callback) {
+        $.getJSON(this.apiPath, { groupId: id })
+            .done(callback)
+            .error(function(e) {
+                 console.log(e);
+        });
     }
 
     GroupProvider.prototype.post = function (data, callback) {

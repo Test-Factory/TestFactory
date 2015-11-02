@@ -190,6 +190,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\Api\GroupsController.cs" />
     <Compile Include="Filters\MvcHandleErrorAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -315,7 +316,9 @@
     <Content Include="Scripts\app\dataProvider\groupProvider.js" />
     <Content Include="Scripts\app\dataProvider\markProvider.js" />
     <Content Include="Scripts\app\models\groupModel.js" />
+    <Content Include="Scripts\app\models\studentForAllModel.js" />
     <Content Include="Scripts\app\settings\configValidation.js" />
+    <Content Include="Scripts\app\viewModels\studentsAll.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.js" />
