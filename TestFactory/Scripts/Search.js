@@ -34,3 +34,36 @@ $("#search-clear").click(function () {
     $(".card-search-container").show(0);
 });
 $("#search").keyup(getSearchResult);
+
+Delete = function (group, id) {
+    $("#dialog").dialog({
+        resizable: false,
+        height: 200,
+        modal: true,
+        buttons: {
+            "Видалити": function () {
+                $.ajax({
+                    method: "POST",
+                    url: settings.basePath + "/studentDelete/" + id,
+                    data: JSON.stringify(id),
+                    success: function (msg) {
+                        if (msg) group.parent().parent().parent().parent().remove();
+                    }
+                })
+                $(this).dialog("close");
+            },
+            "Відмінити": function () {
+                $(this).dialog("close");
+                return false;
+            }
+        }
+    });
+}
+
+Download = function (id) {
+    $.ajax({
+        method: "POST",
+        url: settings.basePath + "/group/efgerg/" + id,
+        data: JSON.stringify(id)
+    })
+}

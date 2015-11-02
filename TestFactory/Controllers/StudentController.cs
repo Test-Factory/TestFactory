@@ -18,13 +18,16 @@ namespace TestFactory.Controllers
 
         private readonly StudentManager studentManager;
 
+        private readonly CategoryManager categoryManager;
+
         private UserContext user;
 
-        public StudentController(GroupManager groupManager, StudentManager studentManager)
+        public StudentController(GroupManager groupManager, StudentManager studentManager, CategoryManager categoryManager)
         {
             this.groupManager = groupManager;
             this.studentManager = studentManager;
             this.user = new UserContext();
+            this.categoryManager = categoryManager;
         }
 
         [System.Web.Mvc.HttpGet]
@@ -58,21 +61,35 @@ namespace TestFactory.Controllers
         {
             var student = studentManager.GetList();
             studentManager.AddLuceneIndex(student);
-
-            var result = AutoMapper.Mapper.Map<List<StudentViewModel>>(student);
-            return View(result);
+            var viewStudent = AutoMapper.Mapper.Map<List<StudentViewModel>>(student);
+            var categories = categoryManager.GetList();
+            var group = groupManager.GetList();
+            var tuple = new Tuple<IList<StudentViewModel>, IList<Category>, IList<Group>>(viewStudent, categories, group);
+            return View(tuple);
         }
+
         [HttpGet]
         public ActionResult ListAll()
         {
             return View("ListAllStudents");
         }
+
         [AllowAnonymous]
         [HttpPost]
         public ActionResult SearchForStudents(string name)
         {
             var list = studentManager.Search(name);
             return Json(list);
+        }
+
+        [HttpPost]
+        public JsonResult Delete(string studentId)
+        {
+            var student = studentManager.GetById(studentId);
+            if (!groupManager.HasAccessToGroup(student.GroupId, user.User.Id))
+                throw new HttpException(403, GlobalRes_ua.error_403);
+            studentManager.Delete(studentId);
+            return Json(true);
         }
     }
 }

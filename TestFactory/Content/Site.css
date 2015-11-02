@@ -349,6 +349,21 @@ a.waves-effect.waves-light.btn.donwloadStudent {
     }
 
 
+.deleteStudent {
+    position: inherit !important;
+}
+
+.iconConteiner {
+        width: 100%;
+    border-top: 1px solid #EEEEEE;
+        display: flex;
+
+}
+
+.centerConteiner {
+    margin: 0 auto;
+    display: inline-flex;
+}
 
 p.countUsers {
     font-size: 1.25em;
@@ -481,13 +496,36 @@ box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
     font-size: 14px;
 }
 
+.result-table thead tr th {
+    text-align: center;
+        font-weight: 500;
+            padding: 8px 0px;
+
+
+}
+
+.result-table {
+    background-color: #f9f9f9;
+}
+
+.result-table tbody tr td {
+    text-align: center;
+            padding: 8px 0px;
+
+}
+
 .main-search {
     border-bottom: 1px solid #EEEEEE;
     text-align: center;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #444444;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .group-search {
     text-align: center;
+    color: #999999;
 }
 
 .search-result-conteiner {

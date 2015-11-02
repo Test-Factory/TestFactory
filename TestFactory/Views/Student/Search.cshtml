@@ -1,4 +1,4 @@
-﻿@model IList<TestFactory.MVC.ViewModels.StudentViewModel>
+﻿@model Tuple<IList<TestFactory.MVC.ViewModels.StudentViewModel>, IList<TestFactory.Business.Models.Category>, IList<TestFactory.Business.Models.Group>>
     <style>
         body {
             overflow: scroll;
@@ -9,19 +9,57 @@
     <i id="search-clear" class="material-icons">close</i>
 </div>
     <div class="search-result-conteiner">
-        @foreach(var student in Model)
+        @foreach(var student in Model.Item1)
         {
             <div class="card-search-container" id="@student.Id">
                 <div class="card-search">
                     <div class="content-search">
                         <div class="main-search">@student.FirstName @student.LastName</div>
                         <p class="group-search">ПІ-49</p>
+                        <table class="result-table">
+                            <thead>
+                                <tr>
+                                    @foreach(var category in Model.Item2)
+                                    {
+                                        <th>
+                                            @category.Code
+                                        </th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tr>
+                                    @for (int i = 0; i < student.Marks.Count; i++ )
+                                    {
+                                        <td>
+                                        @student.Marks[i].Value
+                                            </td>
+                                    }
+                            </tr>
+                        </table>
+                       
+                        <div class="iconConteiner">
+                            <div class="centerConteiner">
+                                <div class="deleteContainer" onclick="Delete($(this), '@student.Id')">
+                                        <i class="large material-icons deleteGroup deleteStudent">delete</i>
+                                </div>
+                                <a class = "deleteContainer" href="@Url.RouteUrl("studentResult", new { id = student.Id, groupId = student.Id }, null)">
+                                    <i class="large material-icons deleteGroup deleteStudent">system_update_alt</i>
+                                </a>
+                                <div class="deleteContainer" onclick="">
+                                    <i class="large material-icons deleteGroup deleteStudent">assignment</i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         }
     </div>
+    <div id="dialog" title="Видалити" style="display: none;">
+                        <p>Повернути студентів групи після видалення буде неможливо. Ви дісно хочете видалити групу?</p>
+                    </div>
     @section Scripts
 {
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
     @Scripts.Render("~/Scripts/Search.js")
 }

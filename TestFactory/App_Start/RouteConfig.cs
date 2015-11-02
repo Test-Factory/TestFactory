@@ -24,6 +24,12 @@ namespace TestFactory
            );
 
             routes.MapRoute(
+                name: "studentDelete",
+                url: "studentDelete/{studentId}",
+                defaults: new { controller = "Student", action = "Delete", studentId = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
                 name: "groupStudentList",
                 url: "group/{groupId}/students",
                 defaults : new { controller = "Student", action = "List", groupId = UrlParameter.Optional }
