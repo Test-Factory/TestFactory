@@ -32,14 +32,22 @@ namespace TestFactory.Controllers
                 return View(user);
             }
 
-            if (userManager.IsPasswordValid(user.Email, user.Password))
-            {
-                FormsAuthentication.SetAuthCookie(user.Email, false);             
-                return RedirectToRoute("Default");
-            }
-            else
+            if (!userManager.IsPasswordValid(user.Email, user.Password))
             {
                 ModelState.AddModelError("Email", "Введені дані не коректні");
+            }
+            else 
+            {
+                FormsAuthentication.SetAuthCookie(user.Email, false);
+
+                if (User.IsInRole("Filler"))
+                {
+                    return RedirectToRoute("Default");
+                }
+                if (User.IsInRole("Editor"))
+                {
+                    return RedirectToRoute("studentListAll");
+                }
             }
             return View(user);
         }

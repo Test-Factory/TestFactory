@@ -80,11 +80,12 @@
 
 .triangle-down {
             margin: 0 0 0 5px;
-            vertical-align: middle;
             display: inline-block;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
             border-top: 10px solid grey;
+            position: absolute;
+            top: 28px;
         }
 
 .triangle-up {
@@ -92,9 +93,21 @@
             border-right: 5px solid transparent;
             border-bottom: 10px solid grey;
             margin: 0 0 3px 5px;
-            vertical-align: middle;
             display: inline-block;
+            position: absolute;
+            top: 28px;
         }
+
+.triangle-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.triangle-wrapper .triangle-down,
+.triangle-wrapper .triangle-up {
+    top: 13px;
+    right: -15px;
+}
 
 .donwloadStudent {
     background-color: #9e9e9e;
@@ -114,6 +127,9 @@
 
 #tbStudentList tbody input[type=text] {
     margin: 0px;
+}
+#tbStudentList th {
+    position: relative;
 }
 .btnStudent {
     padding: 0 0.45rem;

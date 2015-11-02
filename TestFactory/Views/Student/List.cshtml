@@ -2,15 +2,17 @@
 @Styles.Render("~/Students/css")
 <div>
     <form>
-        <h3 id="groupName" data-bind="text: $root.group.longName"></h3>
+        <h3 id="groupName" data-bind="text: $root.group.shortName"></h3>
         <table id="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
             <thead>
                 <tr class="noselect">
                     <th class="last-name">
+                        <div class="triangle-wrapper">
                         <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
                         <!-- ko if: $root.sortKey() == "lastName" -->
                         <div data-bind="css: selectedClassForSortedField"></div>
                         <!-- /ko -->
+                        </div>
                     </th>
                     <th class="first-name">
                         <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
@@ -34,7 +36,7 @@
                         <input type="text"
                                data-position="bottom"
                                data-bind="textInput: $root.studentForCreate().lastName,  tooltip: { message: $root.studentForCreate().lastName.error }"
-                               maxlength=" 69"
+                               maxlength = "69"
                                placeholder="@GlobalRes_ua.surname" />
                     </td>
                     <td class="first-name">
@@ -65,6 +67,8 @@
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
+                  @if (User.IsInRole("Filler"))
+                {
                             <td class="screenMediaBelow ">
                                 <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
                             </td>
@@ -72,13 +76,15 @@
                         <td class="screenMediaAbove ">
                              <a class="  btn  btn-size btnStudent " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</a>
                         </td>
-                            
+                  }       
                         <td class="screenMediaBelow ">
                             <a class="btn btn-size btnStudent" data-bind="attr:{id: id, href: id}"><img src="~/Content/images/down.png" /></a> 
                         </td>
                         <td class="screenMediaAbove ">
                             <a class="btn btnStudent btn-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
                         </td>
+                    @if (User.IsInRole("Filler"))
+                {
                     <td class="screenMediaBelow">
                         <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent"><img src="~/Content/images/delete.png" /></a>
                     </td>
@@ -90,6 +96,7 @@
                     <div id="dialog" title="Видалити">
                         <p>Повернути сдутента після видалення буде неможливо. Ви дісно хочете його видалити?</p>
                     </div>
+                 }
                 </tr>
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
@@ -99,10 +106,10 @@
                     <!-- ko foreach: $root.studentForUpdate().marks -->
                     <td class="marks edit "><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
                     <!-- /ko -->
-                    <td colspan="3"  class="screenMediaBelow ">
+                    <td colspan="3" class="screenMediaBelow ">
                         <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></a>
                     </td>
-                    <td colspan="3"  class="screenMediaAbove ">
+                    <td colspan="3" class="screenMediaAbove ">
                         <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
                     </td>
                 </tr>
@@ -128,4 +135,3 @@
 </script>
 }
 
-   
