@@ -58,13 +58,12 @@ namespace TestFactory.Controllers.Api
             return result;
         }
 
-        [Authorize(Roles="Filler")]
         [HttpPost]
         [ValidateModel]
         public IHttpActionResult Create(StudentViewModel student)
         {
-            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
-                BadRequest();
+            if (!User.IsInRole("Filler") || !groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+                return BadRequest();
 
             Student model = Mapper.Map<Student>(student);
             model.Id = Guid.NewGuid().ToString();
@@ -80,11 +79,10 @@ namespace TestFactory.Controllers.Api
        
         [HttpPut]
         [ValidateModel]
-        [Authorize(Roles = "Filler")]
         public IHttpActionResult Update(StudentViewModel student)
         {
-            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
-                BadRequest();
+            if (!User.IsInRole("Filler") || !groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+                return BadRequest();
             var model = Mapper.Map<Student>(student);
             studentManager.Update(model);
             return Ok();
@@ -93,11 +91,10 @@ namespace TestFactory.Controllers.Api
         [HttpPost]
         [ValidateModel]
         [Route("delete")]
-        [Authorize(Roles = "Filler")]
         public IHttpActionResult Delete(StudentViewModel student)
         {
-            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
-                BadRequest();
+            if (!User.IsInRole("Filler") || !groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+                return BadRequest();
             var model = Mapper.Map<Student>(student);
             markManager.DeleteByStudentId(student.Id);
             studentManager.Delete(model.Id);
