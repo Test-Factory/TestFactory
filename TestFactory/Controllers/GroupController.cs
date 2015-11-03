@@ -53,6 +53,7 @@ namespace TestFactory.Controllers
             return PartialView();
         }
 
+        [Authorize(Roles = "Filler")]
         [HttpPost]
         public ActionResult Create(GroupViewModel group)
         {

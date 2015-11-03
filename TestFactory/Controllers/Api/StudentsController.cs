@@ -9,6 +9,8 @@ using TestFactory.Filters;
 using TestFactory.MVC.ViewModels;
 using System;
 using TestFactory.Business.Components;
+using System.Web;
+using Embedded_Resource;
 
 namespace TestFactory.Controllers.Api
 {
@@ -59,11 +61,14 @@ namespace TestFactory.Controllers.Api
         
         [HttpPost]
         [ValidateModel]
-        [Authorize(Roles = "Filler")]
         public IHttpActionResult Create(StudentViewModel student)
         {
+            if (!User.IsInRole("Filler"))
+                throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
+
             if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
-                return BadRequest();
+                throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
+
             Student model = Mapper.Map<Student>(student);
             model.Id = Guid.NewGuid().ToString();
             for (int i = 0; i < model.Marks.Count; i++)
@@ -82,7 +87,7 @@ namespace TestFactory.Controllers.Api
         public IHttpActionResult Update(StudentViewModel student)
         {
             if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
-                return BadRequest();
+                throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
             var model = Mapper.Map<Student>(student);
             studentManager.Update(model);
             return Ok();
@@ -95,7 +100,7 @@ namespace TestFactory.Controllers.Api
         public IHttpActionResult Delete(StudentViewModel student)
         {
             if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
-                return BadRequest();
+                throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
             var model = Mapper.Map<Student>(student);
             markManager.DeleteByStudentId(student.Id);
             studentManager.Delete(model.Id);
