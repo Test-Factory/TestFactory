@@ -26,7 +26,8 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations
                 CREATE TABLE [dbo].[Group] (  
                     [Id]        NVARCHAR (45) NOT NULL, 
                     [FullName]  NVARCHAR (50) NULL,     
-                    [ShortName] NVARCHAR (20) NULL,     
+                    [ShortName] NVARCHAR (20) NULL,
+                    [Faculty]   NVARCHAR (20) NULL,     
                     PRIMARY KEY CLUSTERED ([Id] ASC));  
 					
 
@@ -64,6 +65,7 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations
                     [FirstName]    NVARCHAR (30)  NULL,
                     [LastName]     NVARCHAR (30)  NULL,
                     [Roles_id]     NVARCHAR (45)  NULL,
+                    [Faculty]   NVARCHAR (20) NULL,
                     PRIMARY KEY CLUSTERED ([Id] ASC),
                     CONSTRAINT [FK_User_Role] FOREIGN KEY ([Roles_id]) REFERENCES [dbo].[Role] ([Id])
                 );
