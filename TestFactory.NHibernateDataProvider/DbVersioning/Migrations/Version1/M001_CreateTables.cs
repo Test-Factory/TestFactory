@@ -9,14 +9,6 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations
         {
             Execute.Sql(
                 @" 
-                              CREATE TABLE [dbo].[VersionInfo] (
-                    [Version]     BIGINT          NOT NULL,
-                    [AppliedOn]   DATETIME        NULL,
-                    [Description] NVARCHAR (1024) NULL
-                );
-
-
-
                 CREATE TABLE [dbo].[Role] (
                     [Id]   NVARCHAR (45) NOT NULL,
                     [Name] NVARCHAR (30) NULL,
