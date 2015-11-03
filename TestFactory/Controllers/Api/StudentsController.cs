@@ -33,9 +33,15 @@ namespace TestFactory.Controllers.Api
         [HttpGet]
         public IEnumerable<StudentViewModel> Get()
         {
-            IEnumerable<Student> students;
-            students = studentManager.GetList().OrderBy(s => s.LastName);
-            var result = Mapper.Map<IEnumerable<StudentViewModel>>(students);
+            var students = new List<Student>();
+            var groupsForFaculty = groupManager.GetListForFaculty(user.User.Faculty);
+            foreach (var g in groupsForFaculty)
+            {
+                var student = studentManager.GetList(g.Id);
+                students.AddRange(student);
+            }
+            IEnumerable<Student> sortedStudents = students.OrderBy(s => s.LastName).ToList();
+            var result = Mapper.Map<IEnumerable<StudentViewModel>>(sortedStudents);
             return result;
         }
 
