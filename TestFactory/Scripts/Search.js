@@ -1,10 +1,11 @@
-﻿var ItemId = 0;
+﻿var sett = {}
+   sett.ItemId = 0;
 
 var getSearchResult = function () {
     if ($("#search").val()=='') $(".card-search-container").show(0);
-    clearTimeout(ItemId);
+    clearTimeout(sett.ItemId);
     $(this).removeClass('success', 100);
-    ItemId = setTimeout(function () {
+    sett.ItemId = setTimeout(function () {
         var value = getSearchResult.val();
         if (!value || !value.trim()) {
             $('#search').addClass('success');
