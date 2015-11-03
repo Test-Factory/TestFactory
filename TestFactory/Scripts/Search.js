@@ -2,7 +2,8 @@
    sett.ItemId = 0;
 
 var getSearchResult = function () {
-    if ($("#search").val()=='') $(".card-search-container").show(0);
+    if ($("#search").val() == '') $(".card-search-container").show(0);
+
     clearTimeout(sett.ItemId);
     $(this).removeClass('success', 100);
     sett.ItemId = setTimeout(function () {
