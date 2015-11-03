@@ -59,9 +59,16 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult Search()
         {
-            var student = studentManager.GetList();
-            studentManager.AddLuceneIndex(student);
-            var viewStudent = AutoMapper.Mapper.Map<List<StudentViewModel>>(student);
+            var groupsForUser = groupManager.GetListForFaculty(user.User.Faculty);
+
+            var students = new List<Student>();
+            foreach(var gr in groupsForUser)
+            {
+                var student = studentManager.GetList(gr.Id);
+                students.AddRange(student);
+            }
+            studentManager.AddLuceneIndex(students);
+            var viewStudent = AutoMapper.Mapper.Map<List<StudentViewModel>>(students);
             var categories = categoryManager.GetList();
             var group = groupManager.GetList();
             var tuple = new Tuple<IList<StudentViewModel>, IList<Category>, IList<Group>>(viewStudent, categories, group);
