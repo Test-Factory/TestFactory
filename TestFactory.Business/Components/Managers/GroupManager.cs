@@ -13,23 +13,6 @@ namespace TestFactory.Business.Components.Managers
             return provider.GetCount(gropId);
         }
 
-        private IList<Group> GetUsersGroups(IList<GroupForUser> UserGroupsId) 
-        {
-            var ListGroup = new List<Group>();
-            foreach (var gr in UserGroupsId)
-            {
-                var groupById = provider.GetById(gr.GroupId);
-                ListGroup.Add(groupById);
-            }
-            return ListGroup;
-        }
-
-        public IList<Group> GetListForUser(string userId)
-        {
-            var UserGroupsId = provider.GetListForUser(userId);
-            return GetUsersGroups(UserGroupsId);
-        }
-
         public bool HasAccessToGroup(string faculty, string groupId)
         {
             var ListGroup = GetListForFaculty(faculty);

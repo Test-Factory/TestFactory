@@ -90,7 +90,7 @@ namespace TestFactory.Controllers
             var student = studentManager.GetById(studentId);
             var group = groupManager.GetById(student.GroupId);
 
-            if (group.Faculty != user.User.Faculty)
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
                 throw new HttpException(403, GlobalRes_ua.error_403);
 
             studentManager.Delete(studentId);

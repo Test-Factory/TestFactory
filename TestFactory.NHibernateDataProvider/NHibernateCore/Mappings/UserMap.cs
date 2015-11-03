@@ -21,9 +21,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.Faculty);
 
-            References(x => x.Roles).Class<Role>().Not.LazyLoad();
-
-            HasMany(x => x.ManagerGroup).KeyColumn("UserId").Cascade.All().Not.LazyLoad();
+            References(x => x.Roles).Class<Role>().Not.LazyLoad();         
         }
     }
 }

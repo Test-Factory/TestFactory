@@ -65,18 +65,9 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations
                     [FirstName]    NVARCHAR (30)  NULL,
                     [LastName]     NVARCHAR (30)  NULL,
                     [Roles_id]     NVARCHAR (45)  NULL,
-                    [Faculty]   NVARCHAR (20) NULL,
+                    [Faculty]      NVARCHAR (20) NULL,
                     PRIMARY KEY CLUSTERED ([Id] ASC),
                     CONSTRAINT [FK_User_Role] FOREIGN KEY ([Roles_id]) REFERENCES [dbo].[Role] ([Id])
-                );
-                    
-                CREATE TABLE [dbo].[GroupForUser] (
-                    [Id]      NVARCHAR (45) NOT NULL,
-                    [GroupId] NVARCHAR (45) NOT NULL,
-                    [UserId]  NVARCHAR (45) NOT NULL,
-                    PRIMARY KEY CLUSTERED ([Id] ASC),
-	                CONSTRAINT [FK_GroupForUser_Group] FOREIGN KEY ([GroupId]) REFERENCES [dbo].[Group] ([Id]),
-                    CONSTRAINT [FK_GroupForUser_User] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id])
                 );
             ");
         }
@@ -96,7 +87,6 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations
 
                 DROP TABLE [dbo].[User]
 
-                DROP TABLE [dbo].[GroupForUser]
             ");
         }
     }

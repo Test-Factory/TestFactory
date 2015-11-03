@@ -19,17 +19,6 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
             });
         }
 
-        public IList<GroupForUser> GetListForUser(string userId)
-        {
-            return Execute(session =>
-            {
-                return session
-                    .CreateCriteria(typeof(GroupForUser))
-                    .Add(Restrictions.Eq("UserId", userId))
-                    .List<GroupForUser>();
-            });
-        }
-
         public Group GetByShortName(string shortName)
         {
             return Execute(session =>

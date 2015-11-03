@@ -14,15 +14,13 @@ namespace TestFactory.Controllers
         private readonly GroupManager groupManager;
         private readonly UserManager userManager;
         private UserContext user;
-        private GroupForUserManager groupForUserManager;
         private StudentManager studentManager;
 
-        public GroupController(GroupManager groupManager, StudentManager studentManager, UserManager userManager, GroupForUserManager groupForUserManager)
+        public GroupController(GroupManager groupManager, StudentManager studentManager, UserManager userManager)
         {
             this.groupManager = groupManager;
             this.user = new UserContext();
             this.userManager = userManager;
-            this.groupForUserManager = groupForUserManager;
             this.studentManager = studentManager;
         }
 
@@ -101,18 +99,21 @@ namespace TestFactory.Controllers
             return RedirectToRoute("Default");
         }
 
-        [Authorize(Roles = "Filler")]
+        
         [HttpPost]
-        public JsonResult Delete(string id)
+        public ActionResult Delete(string id)
         {
-            if (user.User.Faculty == groupManager.GetById(id).Faculty)
+
+            if (!User.IsInRole("Filler"))
+                throw new HttpException(403, GlobalRes_ua.error_403);
+
+            if (user.User.Faculty != groupManager.GetById(id).Faculty)
             {
-                groupForUserManager.DeleteByGroupId(id);
-                studentManager.DeleteByGroupId(id);
-                groupManager.Delete(id);
-                return Json(true);
+                throw new HttpException(403, GlobalRes_ua.error_403);
             }
-            return Json(false);
+            studentManager.DeleteByGroupId(id);
+            groupManager.Delete(id);
+            return Json(true);
         }
     }
 }

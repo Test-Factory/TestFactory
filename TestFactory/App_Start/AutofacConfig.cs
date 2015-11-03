@@ -34,8 +34,6 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<CategoryManager>();
 
-            builder.RegisterType<GroupForUserManager>();
-
             builder.RegisterType<NHibernateRoleDataProvider>()
                 .As<IRoleDataProvider>();
 
@@ -53,10 +51,7 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<NHibernateCategoryDataProvider>()
                 .As<ICategoryDataProvider>();
-
-            builder.RegisterType<NHibernateGroupForUserDataProvider>()
-               .As<IGroupForUserDataProvider>();
-
+          
             var container = builder.Build();
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

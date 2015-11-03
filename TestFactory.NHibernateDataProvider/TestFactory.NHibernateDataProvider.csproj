@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataProviders\NHibernateGroupForUserDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateMarkDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateRoleDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateDataProviderBase.cs" />
@@ -73,7 +72,6 @@
     <Compile Include="DbVersioning\Migrations\Version1\M001_CreateTables.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M002_DefaultData.cs" />
     <Compile Include="DbVersioning\Migrator.cs" />
-    <Compile Include="NHibernateCore\Mappings\GroupForUserMap.cs" />
     <Compile Include="NHibernateCore\SessionHelper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />
     <Compile Include="NHibernateCore\Mappings\RoleMap.cs" />
