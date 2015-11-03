@@ -76,7 +76,13 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
+            if (user.User.Faculty != groupManager.GetById(group.Id).Faculty)
+            {
+                throw new HttpException(403, GlobalRes_ua.error_403);
+            }
+
             group.Faculty = user.User.Faculty;
+
             var model = AutoMapper.Mapper.Map<Group>(group);
 
             if (groupManager.IsIncludeHTMLAttributes(model))
