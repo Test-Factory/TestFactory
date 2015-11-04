@@ -13,10 +13,46 @@
         {
             <div class="card-search-container" id="@student.Id">
                 <div class="card-search">
-                    <div class="content-search">
-                        <div class="main-search">@student.FirstName @student.LastName</div>
+                    <div class="content-search back" style="display: none">
+                        <div class="main-search" style="padding-bottom: 2px;">
+                            <div style="    display: inline-flex;">
+                                @Html.EditorFor(thisStudent => student.FirstName, new { htmlAttributes = new { @class = "search-firstName-input" } })
+                                @Html.EditorFor(thisStudent => student.LastName, new { htmlAttributes = new { @class = "search-lastName-input" } })
+                            </div>
+                        </div>
+                        <div>
+                            @for(int i = 0; i < Model.Item2.Count; i++)
+                            {
+                                <div style="width: 100%; display: inline-block">
+                                    <div style="float: left; font-size: 12px; margin: 0 !important">@Model.Item2[i].Name:</div>
+                                    @Html.EditorFor(thisStudent => student.Marks[i].Value, new { htmlAttributes = new { @class = "search-marks-input" } })
+                                </div>
+                            }
+                                
+                        </div>
+                        <div class="iconConteiner">
+                            <div class="centerConteiner">
+                                <div class="deleteContainer" onclick="Delete($(this), '@student.Id')">
+                                        <i class="large material-icons deleteGroup deleteStudent">delete</i>
+                                </div>
+                                <a class = "deleteContainer" href="@Url.RouteUrl("studentResult", new { id = student.Id, groupId = student.Id }, null)">
+                                    <i class="large material-icons deleteGroup deleteStudent">system_update_alt</i>
+                                </a>
+                                <div class="deleteContainer" onclick="swapCard(this)">
+                                    <i class="large material-icons deleteGroup deleteStudent">assignment</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-search front">
+                        <div class="main-search">
+                            <div style="    margin-bottom: 6px;">
+                                @student.FirstName @student.LastName
+                            </div>
+
+                        </div>
                         <p class="group-search">ПІ-49</p>
-                        <table class="result-table">
+                        <table class="result-table" style="    margin-bottom: 13.5px;">
                             <thead>
                                 <tr>
                                     @foreach(var category in Model.Item2)
@@ -45,7 +81,7 @@
                                 <a class = "deleteContainer" href="@Url.RouteUrl("studentResult", new { id = student.Id, groupId = student.Id }, null)">
                                     <i class="large material-icons deleteGroup deleteStudent">system_update_alt</i>
                                 </a>
-                                <div class="deleteContainer" onclick="">
+                                <div class="deleteContainer" onclick="swapCard(this)">
                                     <i class="large material-icons deleteGroup deleteStudent">assignment</i>
                                 </div>
                             </div>
@@ -55,6 +91,12 @@
             </div>
         }
     </div>
+    <script>
+        swapCard = function (card) {
+            $(card).parent().parent().parent().hide();
+            $(card).parent().parent().parent().parent().find(".back").show();
+        }
+    </script>
     <div id="dialog" title="Видалити" style="display: none;">
                         <p>Повернути студентів групи після видалення буде неможливо. Ви дісно хочете видалити групу?</p>
                     </div>
