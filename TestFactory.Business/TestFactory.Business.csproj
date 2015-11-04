@@ -92,20 +92,24 @@
     <Compile Include="Components\Lucene\Searcher.cs" />
     <Compile Include="Components\Lucene\Attributes\Storable.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
+    <Compile Include="Components\Managers\BaseManagerForView.cs" />
     <Compile Include="Components\Managers\GroupManager.cs" />
     <Compile Include="Components\Managers\MarkManager.cs" />
     <Compile Include="Components\Managers\RoleManager.cs" />
     <Compile Include="Components\Managers\StudentManager.cs" />
     <Compile Include="Components\Managers\CategoryManager.cs" />
+    <Compile Include="Components\Managers\StudentWithGroupManager.cs" />
     <Compile Include="Components\Managers\UserManager.cs" />
     <Compile Include="Components\Roles\RolsProvider.cs" />
     <Compile Include="Components\UserContext.cs" />
     <Compile Include="DataProviderContracts\IDataProvider.cs" />
+    <Compile Include="DataProviderContracts\IDataProviderForView.cs" />
     <Compile Include="DataProviderContracts\IGroupDataProvider.cs" />
     <Compile Include="DataProviderContracts\IMarkDataProvider.cs" />
     <Compile Include="DataProviderContracts\IRoleDataProvider.cs" />
     <Compile Include="DataProviderContracts\IStudentDataProvider.cs" />
     <Compile Include="DataProviderContracts\ICategoryDataProvider.cs" />
+    <Compile Include="DataProviderContracts\IStudentWithGroupDataProvider.cs" />
     <Compile Include="DataProviderContracts\IUserDataProvider.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Error.cs" />
@@ -114,6 +118,7 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\StudentWithGroup.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
