@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TestFactory.Business.Components.Managers;
 using TestFactory.MVC.ViewModels;
 using TestFactory.Business.Models;
 
@@ -21,8 +22,12 @@ namespace TestFactory.App_Start
             Mapper
                 .CreateMap<Student, StudentViewModel>()
                 .IncludeBase<BaseModel, BaseViewModel>();
+
             Mapper
                 .CreateMap<StudentWithGroup, StudentWithGroupViewModel>();
+
+            Mapper
+               .CreateMap<AverageMarkForFaculty, AverageMarkForFacultyViewModel>();
 
             Mapper
                 .CreateMap<Category, CategoryWebModel>()
@@ -42,6 +47,8 @@ namespace TestFactory.App_Start
                 .IncludeBase<BaseViewModel, BaseModel>();
 
             Mapper.CreateMap<StudentWithGroupViewModel, StudentWithGroup>();
+
+            Mapper.CreateMap<AverageMarkForFacultyViewModel, AverageMarkForFaculty>();
 
             Mapper.CreateMap<CategoryWebModel, Category>()
                 .IncludeBase<BaseViewModel, BaseModel>();

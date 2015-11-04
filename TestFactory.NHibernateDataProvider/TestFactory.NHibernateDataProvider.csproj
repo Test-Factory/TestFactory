@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProviders\NHibernateAverageMarkForFacultyDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateDataProviderBaseForView.cs" />
     <Compile Include="DataProviders\NHibernateMarkDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateRoleDataProvider.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="DbVersioning\Migrations\Version1\M001_CreateTables.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M002_DefaultData.cs" />
     <Compile Include="DbVersioning\Migrator.cs" />
+    <Compile Include="NHibernateCore\Mappings\AverageMarkForFacultyMap.cs" />
     <Compile Include="NHibernateCore\Mappings\StudentWithGroupMap.cs" />
     <Compile Include="NHibernateCore\SessionHelper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />

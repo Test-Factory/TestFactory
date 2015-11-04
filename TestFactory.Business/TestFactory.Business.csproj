@@ -91,6 +91,9 @@
     <Compile Include="Components\Lucene\BaseSearcher.cs" />
     <Compile Include="Components\Lucene\Searcher.cs" />
     <Compile Include="Components\Lucene\Attributes\Storable.cs" />
+    <Compile Include="Components\Managers\AverageMarkForFacultyManager.cs" />
+    <Compile Include="DataProviderContracts\IAverageMarkForFacultyDataProvider.cs" />
+    <Compile Include="Models\AverageMarkForFaculty.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
     <Compile Include="Components\Managers\BaseManagerForView.cs" />
     <Compile Include="Components\Managers\GroupManager.cs" />
