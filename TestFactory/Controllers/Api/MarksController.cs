@@ -26,22 +26,5 @@ namespace TestFactory.Controllers.Api
             averageMark = Math.Round(averageMark, 2);
             return averageMark.ToString();
         }
-        //[HttpGet]
-        //[Route("~/api/students/{studentId}/marks")]
-        //[ValidateModel]
-        //public IEnumerable<MarkWebModel> Get(string studentId)
-        //{
-        //    if (string.IsNullOrEmpty(studentId))
-        //    {
-        //        throw new HttpResponseException(HttpStatusCode.PreconditionFailed);
-        //    }
-        //    var marks = markManager.Get(studentId).OrderBy(m => m.CategoryId);
-        //    if (marks == null)
-        //    {
-        //        throw new HttpResponseException(HttpStatusCode.NotFound);
-        //    }
-        //    var result = Mapper.Map<IEnumerable<MarkWebModel>>(marks);
-        //    return result;
-        //}
     }
 }

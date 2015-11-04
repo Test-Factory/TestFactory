@@ -61,17 +61,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProviders\NHibernateAverageMarkForFacultyDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateDataProviderBaseForView.cs" />
     <Compile Include="DataProviders\NHibernateMarkDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateRoleDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateDataProviderBase.cs" />
     <Compile Include="DataProviders\NHibernateGroupDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateStudentDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateCategoryDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateStudentWithGroupDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateUserDataProvider.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M003_BackUpLiveDb.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M001_CreateTables.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M002_DefaultData.cs" />
     <Compile Include="DbVersioning\Migrator.cs" />
+    <Compile Include="NHibernateCore\Mappings\AverageMarkForFacultyMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\StudentWithGroupMap.cs" />
     <Compile Include="NHibernateCore\SessionHelper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />
     <Compile Include="NHibernateCore\Mappings\RoleMap.cs" />
