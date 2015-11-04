@@ -21,6 +21,8 @@ namespace TestFactory.App_Start
             Mapper
                 .CreateMap<Student, StudentViewModel>()
                 .IncludeBase<BaseModel, BaseViewModel>();
+            Mapper
+                .CreateMap<StudentWithGroup, StudentWithGroupViewModel>();
 
             Mapper
                 .CreateMap<Category, CategoryWebModel>()
@@ -38,6 +40,8 @@ namespace TestFactory.App_Start
         {
             Mapper.CreateMap<StudentViewModel, Student>()
                 .IncludeBase<BaseViewModel, BaseModel>();
+
+            Mapper.CreateMap<StudentWithGroupViewModel, StudentWithGroup>();
 
             Mapper.CreateMap<CategoryWebModel, Category>()
                 .IncludeBase<BaseViewModel, BaseModel>();
