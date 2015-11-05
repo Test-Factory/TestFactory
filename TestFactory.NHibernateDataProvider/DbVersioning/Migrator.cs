@@ -26,7 +26,6 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning
 
         public void MigrateToLatest()
         {
-            //CreateDatabaseIfNotExist();
 
             var announcer = new TextWriterAnnouncer(s => Debug.WriteLine(s));
             var assembly = Assembly.GetExecutingAssembly();
@@ -38,22 +37,6 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning
             {
                 var runner = new MigrationRunner(assembly, migrationContext, processor);
                 runner.MigrateUp(true);
-            }
-        }
-
-        public void CreateDatabaseIfNotExist()
-        {
-            var builder = new SqlConnectionStringBuilder(this.connectionString);
-            var dbName = builder.InitialCatalog;
-            
-            builder.InitialCatalog = string.Empty;
-            using (var connection = new SqlConnection(builder.ConnectionString))
-            {
-                 var command = new SqlCommand(string.Format(@"
-                   IF  NOT EXISTS (SELECT name FROM sys.databases WHERE name = '{0}')
-                    CREATE DATABASE {0}", dbName), connection);// "IF..." don`t work on staging
-                connection.Open();
-                command.ExecuteNonQuery();
             }
         }
     }

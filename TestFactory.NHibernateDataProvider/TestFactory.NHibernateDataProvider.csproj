@@ -74,7 +74,8 @@
     <Compile Include="DbVersioning\Migrations\Version1\M003_BackUpLiveDb.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M001_CreateTables.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M002_DefaultData.cs" />
-    <Compile Include="DbVersioning\Migrations\Version1\M004_AverageMarksForFacultyView.cs" />
+    <Compile Include="DbVersioning\Migrations\Version2\M002_StudentWithGroupView.cs" />
+    <Compile Include="DbVersioning\Migrations\Version2\M001_AverageMarksForFacultyView.cs" />
     <Compile Include="DbVersioning\Migrator.cs" />
     <Compile Include="NHibernateCore\Mappings\AverageMarkForFacultyMap.cs" />
     <Compile Include="NHibernateCore\Mappings\StudentWithGroupMap.cs" />
@@ -97,7 +98,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DbVersioning\Migrations\Version2\" />
+    <EmbeddedResource Include="Scripts\Version1\AverageMarkForFacultyView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Version1\BackUpData.sql" />
+    <EmbeddedResource Include="Scripts\Version1\BackUpDataDown.sql" />
+    <EmbeddedResource Include="Scripts\Version1\CreateTablesDown.sql" />
+    <EmbeddedResource Include="Scripts\Version1\CreateTablesUp.sql" />
+    <EmbeddedResource Include="Scripts\Version1\DefaultDataDown.sql" />
+    <EmbeddedResource Include="Scripts\Version1\DefaultDataUp.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Version1\StudentWithGroupView.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
