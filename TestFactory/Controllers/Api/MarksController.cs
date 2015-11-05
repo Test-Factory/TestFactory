@@ -1,7 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
+using AutoMapper;
+using TestFactory.Business.Components;
 using TestFactory.Business.Components.Managers;
+using TestFactory.Business.Models;
 using TestFactory.Filters;
+using TestFactory.MVC.ViewModels;
 
 namespace TestFactory.Controllers.Api
 {
@@ -9,22 +15,24 @@ namespace TestFactory.Controllers.Api
     public class MarksController: ApiController
     {
         private readonly MarkManager markManager;
-        private readonly StudentManager studentManager;
+        private readonly AverageMarkForFacultyManager averageMarkForFacultyManager;
+        private UserContext user;
 
-        public MarksController(MarkManager markManager, StudentManager studentManager)
+        public MarksController(MarkManager markManager, AverageMarkForFacultyManager averageMarkForFacultyManager)
         {
             this.markManager = markManager;
-            this.studentManager = studentManager;
+            this.averageMarkForFacultyManager = averageMarkForFacultyManager;
+            this.user = new UserContext();
         }
 
         [HttpGet]
         [Route("average")]
         [ValidateModel]
-        public string GetAverageMarkByCaregotyId([FromUri]string categoryId)
+        public IEnumerable<AverageMarkForFacultyViewModel> GetAverageMarks()
         {
-            double averageMark = markManager.AveregeMarkByCategoryId(categoryId);
-            averageMark = Math.Round(averageMark, 2);
-            return averageMark.ToString();
+           var averageMarks = averageMarkForFacultyManager.GetMarksForFaculty(user.User.Faculty).OrderBy(c=>c.Id);
+            var result = Mapper.Map<IEnumerable<AverageMarkForFacultyViewModel>>(averageMarks);
+            return result;
         }
     }
 }
