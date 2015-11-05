@@ -27,11 +27,11 @@
                         $.ajax({
                             method: "POST",
                             url: settings.basePath + "/group/delete/" + id,
-                            data: JSON.stringify(id),
+                            data: JSON.stringify(id).error(function () { location = "/Error/403" }),
                             success: function (msg) {
                                 if (msg) group.parent().parent().parent().parent().parent().remove();
                             }
-                        })
+                        }).error(function () { location = "/Error/403" });
                         $(this).dialog("close");
                     },
                     "Відмінити": function () {
