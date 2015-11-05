@@ -101,16 +101,15 @@ namespace TestFactory.Controllers
 
         
         [HttpPost]
-        public ActionResult Delete(string id)
+        public JsonResult Delete(string id)
         {
 
             if (!User.IsInRole("Filler"))
-                throw new HttpException(403, GlobalRes_ua.error_403);
+                return Json(false);
 
             if (user.User.Faculty != groupManager.GetById(id).Faculty)
-            {
-                throw new HttpException(403, GlobalRes_ua.error_403);
-            }
+                return Json("error");
+
             studentManager.DeleteByGroupId(id);
             groupManager.Delete(id);
             return Json(true);

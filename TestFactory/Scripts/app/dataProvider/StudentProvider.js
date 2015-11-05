@@ -19,7 +19,12 @@ $(function () {
             url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback).error(function () { location = "/Error/403" });;
+        }).done(callback).error(function (e) {
+            if (e.responseText)
+                location = "/login";
+            else
+                location = "/Error/403";
+        });
     }
 
     StudentProvider.prototype.put = function (data, callback) {
@@ -28,7 +33,12 @@ $(function () {
             url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback).error(function () { location = "/Error/403" });;
+        }).done(callback).error(function (e) {
+            if (e.responseText)
+                location = "/login";
+            else
+                location = "/Error/403";
+        });
     }
 
     StudentProvider.prototype.delete= function (data,callback) {
@@ -37,7 +47,13 @@ $(function () {
             url: this.apiPath + "/delete",
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback).error(function () { location = "/Error/403" });
+        }).done(callback).error(function (e)
+        {
+            if (e.responseText)
+                location = "/login";
+            else
+                location = "/Error/403";
+        });
     }
 });
 

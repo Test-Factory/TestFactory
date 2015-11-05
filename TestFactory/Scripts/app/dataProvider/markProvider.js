@@ -5,8 +5,8 @@
 
 $(function () {
     var contentType = "application/json; charset=utf-8";
-    MarkProvider.prototype.get = function (id, callback) {
-        $.get(this.apiPath + "/average", { categoryId: id })
+    MarkProvider.prototype.get = function (callback) {
+        $.get(this.apiPath + "/average")
             .done(callback)
             .error(function () { console.log("error"); });
     }

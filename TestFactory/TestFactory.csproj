@@ -308,13 +308,16 @@
     <None Include="Properties\PublishProfiles\TestFactoriesStaging - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TestFactory - FTP %285%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TestFactory - Web Deploy %285%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactory - Web Deploy.pubxml" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\app\dataProvider\categoryProvider.js" />
     <Content Include="Scripts\app\dataProvider\groupProvider.js" />
     <Content Include="Scripts\app\dataProvider\markProvider.js" />
+    <Content Include="Scripts\app\models\averageMarksForFacultyModel.js" />
     <Content Include="Scripts\app\models\groupModel.js" />
     <Content Include="Scripts\app\models\studentForAllModel.js" />
     <Content Include="Scripts\app\settings\configValidation.js" />
@@ -353,6 +356,7 @@
     <Content Include="Scripts\Highcharts-4.0.1\js\themes\sand-signika.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\themes\skies.js" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %2810%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %2811%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %284%29.pubxml" />
@@ -363,6 +367,7 @@
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %289%29.pubxml" />
     <None Include="Properties\PublishProfiles\testfactorystaging - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %2810%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %2811%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %284%29.pubxml" />
@@ -411,7 +416,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
@@ -426,7 +433,6 @@
     <Content Include="Views\File\GetAllReport.cshtml" />
     <Content Include="Views\File\GenerateChart.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
-    <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Student\ListAllStudents.cshtml" />
     <Content Include="Views\Student\Search.cshtml" />
   </ItemGroup>
