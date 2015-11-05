@@ -475,18 +475,46 @@ div#content {
     -webkit-box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
 -moz-box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
 box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
+transform: rotateY(180deg);
+transition: transform .5s;
 }
 
 .card-search {
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 4px;
     color: #444444;
+    transform: rotateY(180deg);
+
+}
+
+.search-marks-input {
+    width: 40px !important;
+    float: right;
+    margin: 0 !important;
+    height: 16px !important;
+    font-size: 12px !important;
+    text-align: center;
+}
+
+.search-firstName-input {
+    font-size: 12px !important;
+    margin: 0px 2% 0px 0px !important;
+    width: 49% !important;
+    height: 25px !important;
+}
+
+.search-lastName-input {
+    font-size: 12px !important;
+    margin: 0 !important;
+    width: 49% !important;
+    height: 25px !important;
 }
 
     .card-search .content-search {
         background-color: rgba(0, 0, 0, 0);
         box-shadow: none;
         padding: 10px 20px 10px;
+        margin-top: 0px;
     }
 
     .card-search h5 {

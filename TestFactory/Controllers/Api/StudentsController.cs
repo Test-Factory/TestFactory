@@ -18,30 +18,32 @@ namespace TestFactory.Controllers.Api
     public class StudentsController : ApiController
     {
         private readonly StudentManager studentManager;
+        private readonly StudentWithGroupManager studentWithGroupManager;
         private readonly GroupManager groupManager;
         private readonly MarkManager markManager;
         private UserContext user;
 
-        public StudentsController(StudentManager studentManager, GroupManager groupManager, MarkManager markManager)
+        public StudentsController(StudentWithGroupManager studentWithGroupManager, StudentManager studentManager, GroupManager groupManager, MarkManager markManager)
         {
             this.studentManager = studentManager;
+            this.studentWithGroupManager = studentWithGroupManager;
             this.groupManager = groupManager;
             this.markManager = markManager;
             this.user = new UserContext();
         }
 
         [HttpGet]
-        public IEnumerable<StudentViewModel> Get()
+        public IEnumerable<StudentWithGroupViewModel> Get()
         {
-            var students = new List<Student>();
+            var students = new List<StudentWithGroup>();
             var groupsForFaculty = groupManager.GetListForFaculty(user.User.Faculty);
             foreach (var g in groupsForFaculty)
             {
-                var student = studentManager.GetList(g.Id);
+                var student = studentWithGroupManager.GetByGroupId(g.Id);
                 students.AddRange(student);
             }
-            IEnumerable<Student> sortedStudents = students.OrderBy(s => s.LastName).ToList();
-            var result = Mapper.Map<IEnumerable<StudentViewModel>>(sortedStudents);
+            IEnumerable<StudentWithGroup> sortedStudents = students.OrderBy(s => s.LastName).ToList();
+            var result = Mapper.Map<IEnumerable<StudentWithGroupViewModel>>(sortedStudents);
             return result;
         }
 

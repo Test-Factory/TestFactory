@@ -317,6 +317,7 @@
     <Content Include="Scripts\app\dataProvider\categoryProvider.js" />
     <Content Include="Scripts\app\dataProvider\groupProvider.js" />
     <Content Include="Scripts\app\dataProvider\markProvider.js" />
+    <Content Include="Scripts\app\models\averageMarksForFacultyModel.js" />
     <Content Include="Scripts\app\models\groupModel.js" />
     <Content Include="Scripts\app\models\studentForAllModel.js" />
     <Content Include="Scripts\app\settings\configValidation.js" />
