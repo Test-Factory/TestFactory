@@ -44,7 +44,6 @@ namespace TestFactory.Controllers
             return Json(count);
         }
 
-        [Authorize(Roles = "Filler")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -101,15 +100,12 @@ namespace TestFactory.Controllers
 
         
         [HttpPost]
+        [Authorize(Roles="Filler")]
         public ActionResult Delete(string id)
         {
-
-            if (!User.IsInRole("Filler"))
-                throw new HttpException(403, GlobalRes_ua.error_403);
-
-            if (user.User.Faculty != groupManager.GetById(id).Faculty)
+            if (!User.IsInRole("Filler") || user.User.Faculty != groupManager.GetById(id).Faculty)
             {
-                throw new HttpException(403, GlobalRes_ua.error_403);
+                return Json(false);
             }
             studentManager.DeleteByGroupId(id);
             groupManager.Delete(id);

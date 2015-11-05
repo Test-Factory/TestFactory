@@ -18,9 +18,9 @@ $(function () {
         $.ajax({
             method: "POST",
             url: path,
-            data: JSON.stringify(data),
+            data: JSON.stringify(data).error(function () { location = "/Error/403" }),
             contentType: contentType,
-        }).done(callback);
+        }).done(callback).error(function () { location = "/Error/403" });;
     }
 
     GroupProvider.prototype.put = function (data, callback) {
@@ -29,6 +29,6 @@ $(function () {
             url: path,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback);
+        }).done(callback).error(function () { location = "/Error/403" });;
     }
 });
