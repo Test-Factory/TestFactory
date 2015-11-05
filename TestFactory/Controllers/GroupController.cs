@@ -44,6 +44,7 @@ namespace TestFactory.Controllers
             return Json(count);
         }
 
+        [Authorize(Roles = "Filler")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -100,13 +101,15 @@ namespace TestFactory.Controllers
 
         
         [HttpPost]
-        [Authorize(Roles="Filler")]
-        public ActionResult Delete(string id)
+        public JsonResult Delete(string id)
         {
-            if (!User.IsInRole("Filler") || user.User.Faculty != groupManager.GetById(id).Faculty)
-            {
+
+            if (!User.IsInRole("Filler"))
                 return Json(false);
-            }
+
+            if (user.User.Faculty != groupManager.GetById(id).Faculty)
+                return Json("error");
+
             studentManager.DeleteByGroupId(id);
             groupManager.Delete(id);
             return Json(true);

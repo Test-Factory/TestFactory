@@ -19,7 +19,7 @@
 
     Delete = function (group, id) {
         debugger;
-            $("#dialog").dialog({
+        $("#dialog").dialog({       
                 resizable: false,
                 height: 200,
                 modal: true,
@@ -30,10 +30,13 @@
                             url: settings.basePath + "/group/delete/" + id,
                             data: JSON.stringify(id),
                             success: function (msg) {
-                                if (msg)
+                                if (msg === true)
                                     group.parent().parent().parent().parent().parent().remove();
+                                else if (msg === false)
+                                    location = "login";
                                 else
                                     location = "/Error/403";
+
                             }
                         })
                         $(this).dialog("close");
