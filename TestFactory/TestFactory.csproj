@@ -357,6 +357,7 @@
     <Content Include="Scripts\Highcharts-4.0.1\js\themes\skies.js" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %2810%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %2811%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %2812%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - FTP %284%29.pubxml" />
@@ -368,6 +369,7 @@
     <None Include="Properties\PublishProfiles\testfactorystaging - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %2810%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %2811%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %2812%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\TestFactoryStaging - Web Deploy %284%29.pubxml" />

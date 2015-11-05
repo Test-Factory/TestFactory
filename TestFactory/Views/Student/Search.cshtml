@@ -47,7 +47,7 @@
                                 <a class = "deleteContainer" href="@Url.RouteUrl("studentResult", new { id = student.Id, groupId = student.Id }, null)">
                                     <i class="large material-icons deleteGroup deleteStudent">system_update_alt</i>
                                 </a>
-                                <div class="deleteContainer" onclick="submitStudent(this, @numberForm); swapCard(this)">
+                                <div class="deleteContainer" onclick="submitStudent(this, @numberForm); swapCard(this, 'back')">
                                     <i class="large material-icons deleteGroup deleteStudent">done</i>
                                 </div>
                             </div>
@@ -107,9 +107,13 @@
         }
     </div>
     <script>
-        swapCard = function (card) {
-            $(card).parent().parent().parent().parent().find(".back").toggle();
-            $(card).parent().parent().parent().parent().find(".front").toggle();
+        swapCard = function (card, thisCard) {
+            if (thisCard == 'back') $(card).parents('.card-search-container').css('border', '1px solid transparent');
+            else {
+                $(card).parents('.card-search-container').css('border', '1px solid darkgrey');
+            }
+            $(card).parents('.card-search').find(".back").toggle();
+            $(card).parents('.card-search').find(".front").toggle();
         }
         submitStudent = function (div, number) {
             $.post('/student/update',

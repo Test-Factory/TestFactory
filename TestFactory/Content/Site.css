@@ -473,10 +473,11 @@ div#content {
     display: inline-table;
     margin: 1%;
     -webkit-box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
--moz-box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
-box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
-transform: rotateY(180deg);
-transition: transform .5s;
+    -moz-box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
+    box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
+    transform: rotateY(180deg);
+    transition: transform .5s;
+    border: 1px solid transparent;
 }
 
 .card-search {
