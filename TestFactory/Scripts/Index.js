@@ -18,6 +18,7 @@
     })
 
     Delete = function (group, id) {
+        debugger;
             $("#dialog").dialog({
                 resizable: false,
                 height: 200,
@@ -27,11 +28,14 @@
                         $.ajax({
                             method: "POST",
                             url: settings.basePath + "/group/delete/" + id,
-                            data: JSON.stringify(id).error(function () { location = "/Error/403" }),
+                            data: JSON.stringify(id),
                             success: function (msg) {
-                                if (msg) group.parent().parent().parent().parent().parent().remove();
+                                if (msg)
+                                    group.parent().parent().parent().parent().parent().remove();
+                                else
+                                    location = "/Error/403";
                             }
-                        }).error(function () { location = "/Error/403" });
+                        })
                         $(this).dialog("close");
                     },
                     "Відмінити": function () {
