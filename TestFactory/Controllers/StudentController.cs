@@ -8,6 +8,7 @@ using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
 using TestFactory.Business.Components;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace TestFactory.Controllers
@@ -84,6 +85,7 @@ namespace TestFactory.Controllers
 
         [AllowAnonymous]
         [HttpPost]
+        [ValidateInput(true)]
         public ActionResult SearchForStudents(string name)
         {
             var list = studentManager.Search(name);
@@ -101,6 +103,16 @@ namespace TestFactory.Controllers
                 throw new HttpException(403, GlobalRes_ua.error_403);
 
             studentManager.Delete(studentId);
+            return Json(true);
+        }
+
+        [HttpPost]
+        public JsonResult Update(StudentViewModel student)
+        {
+            if (!User.IsInRole("Filler") || !groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+                return Json(false);
+            var model = Mapper.Map<Student>(student);
+            studentManager.Update(model);
             return Json(true);
         }
     }

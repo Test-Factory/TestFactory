@@ -13,7 +13,14 @@ var getSearchResult = function () {
             $(".cardWrapper").show(0);
             return;
         }
-        $.ajax(
+        var valid = value.split('');
+        var success = true;
+        for (var i = 0; i < valid.length; i++)
+        {
+            if(valid[i] == '>' || valid[i] == '<')success = false;
+        }
+        if (success) {
+            $.ajax(
             {
                 url: "/searchForStudents",
                 type: "POST",
@@ -25,6 +32,10 @@ var getSearchResult = function () {
                     }
                 }
             });
+        }
+        else {
+            $(".card-search-container").hide(0);
+        }
     }, 500);
 }
 $(document).ready(function () {
@@ -49,7 +60,7 @@ Delete = function (group, id) {
                     url: settings.basePath + "/studentDelete/" + id,
                     data: JSON.stringify(id),
                     success: function (msg) {
-                        if (msg) group.parent().parent().parent().parent().remove();
+                        if (msg) group.parent().parent().parent().parent().parent().remove();
                     }
                 })
                 $(this).dialog("close");

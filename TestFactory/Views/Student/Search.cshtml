@@ -4,28 +4,37 @@
             overflow: scroll;
         }
     </style>
+    @{
+        int numberForm = -1;
+      }
 <div class="search">
     <input  class="form-search" type="search" placeholder="Введіть ім'я студента" id="search" maxlength="100"/>
     <i id="search-clear" class="material-icons">close</i>
 </div>
     <div class="search-result-conteiner">
-        @foreach(var student in Model.Item1)
+        @foreach (var student in Model.Item1)
         {
+            numberForm++;
             <div class="card-search-container" id="@student.Id">
                 <div class="card-search">
-                    <form class="content-search back" style="display: none">
+                    <form method="post" action="/student/update" class="content-search back" style="display: none">
+                        @Html.HiddenFor(students=>student.Id)
+                        @Html.HiddenFor(students=>student.GroupId)
                         <div class="main-search" style="padding-bottom: 2px;">
                             <div style="display: inline-flex;">
-                                @Html.EditorFor(thisStudent => student.FirstName, new { htmlAttributes = new { @class = "search-firstName-input" } })
-                                @Html.EditorFor(thisStudent => student.LastName, new { htmlAttributes = new { @class = "search-lastName-input" } })
+                                @Html.EditorFor(thisStudent => student.FirstName, new { htmlAttributes = new { @class = "search-firstName-input", @maxlength="69"} })
+                                @Html.EditorFor(thisStudent => student.LastName, new { htmlAttributes = new { @class = "search-lastName-input", @maxlength="69" } })
                             </div>
                         </div>
                         <div>
-                            @for(int i = 0; i < Model.Item2.Count; i++)
+                            @for (int i = 0; i < Model.Item2.Count; i++)
                             {
+                                @Html.HiddenFor(students => student.Marks[i].StudentId);
+                                @Html.HiddenFor(students => student.Marks[i].CategoryId);
+                                @Html.HiddenFor(students => student.Marks[i].Id);
                                 <div style="width: 100%; display: inline-block">
                                     <div style="float: left; font-size: 12px; margin: 0 !important">@Model.Item2[i].Name:</div>
-                                    @Html.EditorFor(thisStudent => student.Marks[i].Value, new { htmlAttributes = new { @class = "search-marks-input" } })
+                                    @Html.EditorFor(thisStudent => student.Marks[i].Value, new { htmlAttributes = new { @class = "search-marks-input", @min="0", @max="100" } })
                                 </div>
                             }
                                 
@@ -38,7 +47,7 @@
                                 <a class = "deleteContainer" href="@Url.RouteUrl("studentResult", new { id = student.Id, groupId = student.Id }, null)">
                                     <i class="large material-icons deleteGroup deleteStudent">system_update_alt</i>
                                 </a>
-                                <div class="deleteContainer" onclick="swapCard(this)"> <!--document.forms[0].submit();-->
+                                <div class="deleteContainer" onclick="submitStudent(this, @numberForm); swapCard(this)">
                                     <i class="large material-icons deleteGroup deleteStudent">done</i>
                                 </div>
                             </div>
@@ -51,11 +60,17 @@
                             </div>
 
                         </div>
-                        <p class="group-search">ПІ-49</p>
+                        @foreach(var group in Model.Item3)
+                        {
+                            if(group.Id == student.GroupId)
+                            {
+                                <p class="group-search">@group.ShortName</p>
+                            }
+                        }
                         <table class="result-table" style="    margin-bottom: 13.5px;">
                             <thead>
                                 <tr>
-                                    @foreach(var category in Model.Item2)
+                                    @foreach (var category in Model.Item2)
                                     {
                                         <th>
                                             @category.Code
@@ -64,11 +79,11 @@
                                 </tr>
                             </thead>
                             <tr>
-                                    @for (int i = 0; i < student.Marks.Count; i++ )
+                                    @for (int i = 0; i < student.Marks.Count; i++)
                                     {
-                                        <td>
-                                        @student.Marks[i].Value
-                                            </td>
+                                        <td class="mark">
+                                            @student.Marks[i].Value
+                                        </td>
                                     }
                             </tr>
                         </table>
@@ -95,7 +110,19 @@
         swapCard = function (card) {
             $(card).parent().parent().parent().parent().find(".back").toggle();
             $(card).parent().parent().parent().parent().find(".front").toggle();
-            }
+        }
+        submitStudent = function (div, number) {
+            $.post('/student/update',
+                $(div).parents(".back").serialize(),
+                function (data) {
+                    if (data) {
+                        for (var i = 0; i < $(div).parents('.card-search').find('.mark').length; i++) {
+                            $(div).parents('.card-search').find('.mark').eq(i).html($(div).parents('.card-search').find('.search-marks-input').eq(i).val())
+                        }
+                    }
+                });
+        }
+
     </script>
     <div id="dialog" title="Видалити" style="display: none;">
                         <p>Повернути студентів групи після видалення буде неможливо. Ви дісно хочете видалити групу?</p>

@@ -24,6 +24,12 @@ namespace TestFactory
            );
 
             routes.MapRoute(
+                name: "studentUpdateSearch",
+                url: "student/update/{id}",
+                defaults: new { controller = "Student", action = "Update", id = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
                 name: "studentDelete",
                 url: "studentDelete/{studentId}",
                 defaults: new { controller = "Student", action = "Delete", studentId = UrlParameter.Optional }
