@@ -2,7 +2,7 @@
     var self = this;
 
     var studentProvider = new StudentProvider();
-    var categoryProvider = new CategoryProvider();
+    //var categoryProvider = new CategoryProvider();
     var markProvider = new MarkProvider();
 
     self.students = ko.observableArray();
@@ -83,9 +83,9 @@
     }, self);
 
     self.init = function () {
-        categoryProvider.get(function (data) {
+        markProvider.get(function (data) {
             $(data).each(function (index, element) {
-                var mappedItem = new CategoryModel(element);
+                var mappedItem = new AverageMarksForFacultyModel(element);
                 self.categories.push(mappedItem);
             });
         });
