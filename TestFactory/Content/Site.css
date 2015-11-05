@@ -475,12 +475,16 @@ div#content {
     -webkit-box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
 -moz-box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
 box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
+transform: rotateY(180deg);
+transition: transform .5s;
 }
 
 .card-search {
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 4px;
     color: #444444;
+    transform: rotateY(180deg);
+
 }
 
 .search-marks-input {
@@ -510,6 +514,7 @@ box-shadow: 0px 0px 3px 1px rgba(238,238,238,1);
         background-color: rgba(0, 0, 0, 0);
         box-shadow: none;
         padding: 10px 20px 10px;
+        margin-top: 0px;
     }
 
     .card-search h5 {

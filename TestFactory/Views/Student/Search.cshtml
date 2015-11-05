@@ -13,9 +13,9 @@
         {
             <div class="card-search-container" id="@student.Id">
                 <div class="card-search">
-                    <div class="content-search back" style="display: none">
+                    <form class="content-search back" style="display: none">
                         <div class="main-search" style="padding-bottom: 2px;">
-                            <div style="    display: inline-flex;">
+                            <div style="display: inline-flex;">
                                 @Html.EditorFor(thisStudent => student.FirstName, new { htmlAttributes = new { @class = "search-firstName-input" } })
                                 @Html.EditorFor(thisStudent => student.LastName, new { htmlAttributes = new { @class = "search-lastName-input" } })
                             </div>
@@ -38,12 +38,12 @@
                                 <a class = "deleteContainer" href="@Url.RouteUrl("studentResult", new { id = student.Id, groupId = student.Id }, null)">
                                     <i class="large material-icons deleteGroup deleteStudent">system_update_alt</i>
                                 </a>
-                                <div class="deleteContainer" onclick="swapCard(this)">
-                                    <i class="large material-icons deleteGroup deleteStudent">assignment</i>
+                                <div class="deleteContainer" onclick="swapCard(this)"> <!--document.forms[0].submit();-->
+                                    <i class="large material-icons deleteGroup deleteStudent">done</i>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="content-search front">
                         <div class="main-search">
                             <div style="    margin-bottom: 6px;">
@@ -93,9 +93,9 @@
     </div>
     <script>
         swapCard = function (card) {
-            $(card).parent().parent().parent().hide();
-            $(card).parent().parent().parent().parent().find(".back").show();
-        }
+            $(card).parent().parent().parent().parent().find(".back").toggle();
+            $(card).parent().parent().parent().parent().find(".front").toggle();
+            }
     </script>
     <div id="dialog" title="Видалити" style="display: none;">
                         <p>Повернути студентів групи після видалення буде неможливо. Ви дісно хочете видалити групу?</p>
