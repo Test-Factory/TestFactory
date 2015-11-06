@@ -48,4 +48,7 @@
                 }
             });
     }
+        var realistic = $("td:nth-child(3).marks").val();
+        console.log(realistic);
+
 });

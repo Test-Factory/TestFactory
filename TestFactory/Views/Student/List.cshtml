@@ -113,13 +113,19 @@
                         <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
                     </td>
                 </tr>
-                <!-- /ko -->
+                <!-- /ko -->              
             </tbody>
+            <tr>
+                <td colspan="3">Average marks </td>@*TODO: add to resourse*@
+                <td class="Realistuc" id="Rea"></td>
+                <!-- /ko -->
+            </tr>           
         </table>
     </form>
 
 </div>
 @Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
+@Scripts.Render("~/Scripts/Index.js")
 @section Scripts{
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 <script>
