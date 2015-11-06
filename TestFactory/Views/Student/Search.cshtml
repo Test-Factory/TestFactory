@@ -26,7 +26,7 @@
                                 @Html.EditorFor(thisStudent => student.LastName, new { htmlAttributes = new { @class = "search-lastName-input", @maxlength="69" } })
                             </div>
                         </div>
-                        <div>
+                        <div class="marks-container">
                             @for (int i = 0; i < Model.Item2.Count; i++)
                             {
                                 @Html.HiddenFor(students => student.Marks[i].StudentId);
@@ -47,7 +47,7 @@
                                 <a class = "deleteContainer" href="@Url.RouteUrl("studentResult", new { id = student.Id, groupId = student.Id }, null)">
                                     <i class="large material-icons deleteGroup deleteStudent">system_update_alt</i>
                                 </a>
-                                <div class="deleteContainer" onclick="submitStudent(this, @numberForm); swapCard(this, 'back')">
+                                <div class="deleteContainer" onclick="submitStudent(this, @numberForm);">
                                     <i class="large material-icons deleteGroup deleteStudent">done</i>
                                 </div>
                             </div>
@@ -58,7 +58,6 @@
                             <div style="    margin-bottom: 6px;">
                                 @student.FirstName @student.LastName
                             </div>
-
                         </div>
                         @foreach(var group in Model.Item3)
                         {
@@ -67,7 +66,7 @@
                                 <p class="group-search">@group.ShortName</p>
                             }
                         }
-                        <table class="result-table" style="    margin-bottom: 13.5px;">
+                        <table class="result-table" style="margin-bottom: 13.5px;">
                             <thead>
                                 <tr>
                                     @foreach (var category in Model.Item2)
@@ -106,31 +105,9 @@
             </div>
         }
     </div>
-    <script>
-        swapCard = function (card, thisCard) {
-            if (thisCard == 'back') $(card).parents('.card-search-container').css('border', '1px solid transparent');
-            else {
-                $(card).parents('.card-search-container').css('border', '1px solid darkgrey');
-            }
-            $(card).parents('.card-search').find(".back").toggle();
-            $(card).parents('.card-search').find(".front").toggle();
-        }
-        submitStudent = function (div, number) {
-            $.post('/student/update',
-                $(div).parents(".back").serialize(),
-                function (data) {
-                    if (data) {
-                        for (var i = 0; i < $(div).parents('.card-search').find('.mark').length; i++) {
-                            $(div).parents('.card-search').find('.mark').eq(i).html($(div).parents('.card-search').find('.search-marks-input').eq(i).val())
-                        }
-                    }
-                });
-        }
-
-    </script>
     <div id="dialog" title="Видалити" style="display: none;">
-                        <p>Повернути студентів групи після видалення буде неможливо. Ви дісно хочете видалити групу?</p>
-                    </div>
+         <p>Повернути студентів групи після видалення буде неможливо. Ви дісно хочете видалити групу?</p>
+    </div>
     @section Scripts
 {
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>

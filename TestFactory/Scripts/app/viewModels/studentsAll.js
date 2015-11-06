@@ -9,6 +9,7 @@
 
     self.sortDescending = ko.observable(false);
     self.sortKey = ko.observable("lastName");
+    self.preloader = ko.observable(true);
 
     self.sortingByMark = function (key, id, code) {
         self.sortKey(code());
@@ -95,7 +96,7 @@
                 sortStudentMarksByCategoryIdDesc(mappedStudent);
                 self.students.push(mappedStudent);
             });
-
+            self.preloader(false);
         });
         self.sortingByName("lastName");
     }
