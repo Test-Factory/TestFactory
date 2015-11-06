@@ -32,7 +32,7 @@ namespace TestFactory.Controllers
                 return View(user);
             }
 
-            if (!userManager.IsPasswordValid(user.Email, user.Password))
+            if (!userManager.IsRoleAssigned(user.Email, user.Password))
             {
                 ModelState.AddModelError("Email", "Введені дані не коректні");
             }

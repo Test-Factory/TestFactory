@@ -17,11 +17,9 @@ namespace TestFactory.Business.Components.Managers
         {
             var ListGroup = GetListForFaculty(faculty);
 
-            Group currentGroup = provider.GetById(groupId);
-
-            foreach (var group in ListGroup)
+            foreach (var item in ListGroup)
             {
-                if (group.Id == currentGroup.Id)
+                if (item.Id == groupId)
                 {
                     return true;
                 }
@@ -39,14 +37,9 @@ namespace TestFactory.Business.Components.Managers
 
         public bool GroupIsAlreadyExist(string shortName) 
         {
-            var a = provider.GetByShortName(shortName);
-
-            if (a != null)
-            {
-                return true;
-            }
-            return false;
+            return provider.GetByShortName(shortName) != null ? true : false;
         }
+
         public IList<Group> GetListForFaculty(string faculty)
         {
             return provider.GetListForFaculty(faculty);
