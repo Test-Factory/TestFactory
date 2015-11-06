@@ -92,17 +92,33 @@ swapCard = function (card, thisCard) {
 
 submitStudent = function (div, number) {
     var modelIsValid = true;
-
-    for (var i = 0; i < $(div).parents('.card-search').find('.search-marks-input').length; i++) {
-        var input = $(div).parents('.card-search').find('.search-marks-input').eq(i);
-        if (input.val() > 100 || input.val() < 0) {
-            input.css({
+    var input = $(div).parents('.card-search').find('.search-marks-input');
+    for (var i = 0; i < input.length; i++) {
+        if (input.eq(i).val() > 100 || input.eq(i).val() < 0) {
+            input.eq(i).css({
                 'border-bottom': '1px solid red !important',
                 'box-shadow': '0 1px 0 0 red !important'
             });
             modelIsValid = false;
         }
     }
+    var firstName = $(div).parents('.card-search').find('.search-firstName-input').eq(0);
+    var lastName = $(div).parents('.card-search').find('.search-lastName-input').eq(0)
+    var validateFirstName = firstName.val().split('');
+    var validateLastName = lastName.val().split('');
+    for (var i = 0; i < validateFirstName.length; i++) {
+        if (validateFirstName[i] == '>' || validateFirstName[i] == '<') {
+            modelIsValid = false;
+            firstName.addClass('input-validation-error');
+        }
+    }
+    for (var i = 0; i < validateLastName.length; i++) {
+        if (validateLastName[i] == '>' || validateLastName[i] == '<') {
+            modelIsValid = false;
+            lastName.addClass('input-validation-error');
+        }
+    }
+
     if (modelIsValid) {
         swapCard(div, 'back');
         $.post('/student/update',
