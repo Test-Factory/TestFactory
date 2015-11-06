@@ -80,3 +80,24 @@ Download = function (id) {
         data: JSON.stringify(id)
     })
 }
+
+swapCard = function (card, thisCard) {
+    if (thisCard == 'back') $(card).parents('.card-search-container').css('border', '1px solid transparent');
+    else {
+        $(card).parents('.card-search-container').css('border', '1px solid darkgrey');
+    }
+    $(card).parents('.card-search').find(".back").toggle();
+    $(card).parents('.card-search').find(".front").toggle();
+}
+
+submitStudent = function (div, number) {
+    $.post('/student/update',
+        $(div).parents(".back").serialize(),
+        function (data) {
+            if (data) {
+                for (var i = 0; i < $(div).parents('.card-search').find('.mark').length; i++) {
+                    $(div).parents('.card-search').find('.mark').eq(i).html($(div).parents('.card-search').find('.search-marks-input').eq(i).val())
+                }
+            }
+        });
+}
