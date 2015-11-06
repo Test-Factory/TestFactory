@@ -1,68 +1,69 @@
 ﻿@Styles.Render("~/Students/css")
-<div>
-    <form>
-        <table id="tbStudentList" >
-            <thead>
-                <tr class="noselect">
-                    <th class="last-name">
-                        <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
-                        <!-- ko if: $root.sortKey() == "lastName" -->
-                        <span data-bind="css: selectedClassForSortedField"></span>
+    <div>
+        <form>
+            <table id="tbStudentList" >
+                <thead>
+                    <tr class="noselect">
+                        <th class="last-name">
+                            <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
+                            <!-- ko if: $root.sortKey() == "lastName" -->
+                            <span data-bind="css: selectedClassForSortedField"></span>
+                            <!-- /ko -->
+                        </th>
+                        <th class="first-name">
+                            <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
+                            <!-- ko if: $root.sortKey() == "firstName" -->
+                            <span data-bind="css: selectedClassForSortedField"></span>
+                            <!-- /ko -->
+                        </th>
+                        <th class="group">
+                            <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">Група</a> @*TODO: add to resourse*@
+                            <!-- ko if: $root.sortKey() == "groupShortName" -->
+                            <span data-bind="css: selectedClassForSortedField"></span>
+                            <!-- /ko -->
+                        </th>
+                        <!-- ko foreach: $root.categories -->
+                        <th class="marks">
+                            <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
+                            <!-- ko if: $root.sortKey() == $data.code() -->
+                            <span data-bind="css: $root.selectedClassForSortedField"></span>
+                            <!-- /ko -->
+                        </th>
                         <!-- /ko -->
-                    </th>
-                    <th class="first-name">
-                        <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
-                        <!-- ko if: $root.sortKey() == "firstName" -->
-                        <span data-bind="css: selectedClassForSortedField"></span>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Average marks </td>@*TODO: add to resourse*@
+                        <!-- ko foreach: $root.categories -->
+                        <td class="marks" data-bind="text: average"></td>
                         <!-- /ko -->
-                    </th>
-                    <th class="group">
-                        <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">Група</a> @*TODO: add to resourse*@
-                        <!-- ko if: $root.sortKey() == "groupShortName" -->
-                        <span data-bind="css: selectedClassForSortedField"></span>
+                    </tr>                              
+                </thead>
+                <tr >
+                    <td colspan="9">
+                        <!-- ko if: $root.preloader() -->
+                        <div class="progress ">
+                            <div class="indeterminate"></div>
+                        </div>
                         <!-- /ko -->
-                    </th>
-                    <!-- ko foreach: $root.categories -->
-                    <th class="marks">
-                        <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
-                        <!-- ko if: $root.sortKey() == $data.code() -->
-                        <span data-bind="css: $root.selectedClassForSortedField"></span>
-                        <!-- /ko -->
-                    </th>
-                    <!-- /ko -->
+                    </td>
                 </tr>
-                <tr>
-                    <td colspan="3">Average marks </td>@*TODO: add to resourse*@
-                    <!-- ko foreach: $root.categories -->
-                    <td class="marks" data-bind="text: average"></td>
-                    <!-- /ko -->
-                </tr>                              
-            </thead>
-            <tr >
-                <td colspan="9">
-                    <!-- ko if: $root.preloader() -->
-                    <div class="progress ">
-                        <div class="indeterminate"></div>
-                    </div>
-                    <!-- /ko -->
-                </td>
-            </tr>
-            <tbody data-bind="foreach: students">
+                <tbody data-bind="foreach: students">
 
-                <tr>
-                    <td class="last-name" data-bind="text: lastName"></td>
-                    <td class="first-name" data-bind="text:  firstName"></td>
-                    <td data-bind="text: groupShortName"></td>
-                    <!-- ko foreach: marks -->
-                    <td class="marks" data-bind="text: value" max="100 "></td>
-                    <!-- /ko -->
-                </tr>
+                    <tr>
+                        <td class="last-name" data-bind="text: lastName"></td>
+                        <td class="first-name" data-bind="text:  firstName"></td>
+                        <td data-bind="text: groupShortName"></td>
+                        <!-- ko foreach: marks -->
+                        <td class="marks" data-bind="text: value" max="100 "></td>
+                        <!-- /ko -->
+                    </tr>
                 
-            </tbody>
-        </table>
-    </form>
+                </tbody>
+            </table>
+        </form>
 
-</div>
+    </div>
+
 @Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
 @section Scripts{
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
