@@ -7,26 +7,26 @@
                     <th class="last-name">
                         <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
                         <!-- ko if: $root.sortKey() == "lastName" -->
-                            <span data-bind="css: selectedClassForSortedField"></span>
+                        <span data-bind="css: selectedClassForSortedField"></span>
                         <!-- /ko -->
                     </th>
                     <th class="first-name">
                         <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
                         <!-- ko if: $root.sortKey() == "firstName" -->
-                            <span data-bind="css: selectedClassForSortedField"></span>
+                        <span data-bind="css: selectedClassForSortedField"></span>
                         <!-- /ko -->
                     </th>
                     <th class="group">
                         <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">Група</a> @*TODO: add to resourse*@
                         <!-- ko if: $root.sortKey() == "groupShortName" -->
-                            <span data-bind="css: selectedClassForSortedField"></span>
+                        <span data-bind="css: selectedClassForSortedField"></span>
                         <!-- /ko -->
                     </th>
                     <!-- ko foreach: $root.categories -->
                     <th class="marks">
                         <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
                         <!-- ko if: $root.sortKey() == $data.code() -->
-                            <span data-bind="css: $root.selectedClassForSortedField"></span>
+                        <span data-bind="css: $root.selectedClassForSortedField"></span>
                         <!-- /ko -->
                     </th>
                     <!-- /ko -->
@@ -38,7 +38,17 @@
                     <!-- /ko -->
                 </tr>                              
             </thead>
+            <tr >
+                <td colspan="9">
+                    <!-- ko if: $root.preloader() == "true" -->
+                    <div class="progress preloader">
+                        <div class="indeterminate"></div>
+                    </div>
+                    <!-- /ko -->
+                </td>
+            </tr>
             <tbody data-bind="foreach: students">
+
                 <tr>
                     <td class="last-name" data-bind="text: lastName"></td>
                     <td class="first-name" data-bind="text:  firstName"></td>
