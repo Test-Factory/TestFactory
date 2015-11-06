@@ -91,13 +91,28 @@ swapCard = function (card, thisCard) {
 }
 
 submitStudent = function (div, number) {
-    $.post('/student/update',
-        $(div).parents(".back").serialize(),
-        function (data) {
-            if (data) {
-                for (var i = 0; i < $(div).parents('.card-search').find('.mark').length; i++) {
-                    $(div).parents('.card-search').find('.mark').eq(i).html($(div).parents('.card-search').find('.search-marks-input').eq(i).val())
+    var modelIsValid = true;
+
+    for (var i = 0; i < $(div).parents('.card-search').find('.search-marks-input').length; i++) {
+        var input = $(div).parents('.card-search').find('.search-marks-input').eq(i);
+        if (input.val() > 100 || input.val() < 0) {
+            input.css({
+                'border-bottom': '1px solid red !important',
+                'box-shadow': '0 1px 0 0 red !important'
+            });
+            modelIsValid = false;
+        }
+    }
+    if (modelIsValid) {
+        swapCard(div, 'back');
+        $.post('/student/update',
+            $(div).parents(".back").serialize(),
+            function (data) {
+                if (data) {
+                    for (var i = 0; i < $(div).parents('.card-search').find('.mark').length; i++) {
+                        $(div).parents('.card-search').find('.mark').eq(i).html($(div).parents('.card-search').find('.search-marks-input').eq(i).val())
+                    }
                 }
-            }
-        });
+            });
+    }
 }

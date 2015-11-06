@@ -44,8 +44,13 @@ textarea { min-height: 75px; }
 .field-validation-valid { display: none; }
 
 .input-validation-error {
-    background-color: #fee;
-    border: 1px solid #f00;
+    border-bottom: 1px solid #f00 !important;
+    box-shadow: 0 1px 0 0 #f00 !important;
+}
+
+.input-validation-error:hover{
+    border-bottom: 1px solid #26a69a !important;
+    box-shadow: 0 1px 0 0 #26a69a !important;
 }
 
 .validation-summary-errors {
