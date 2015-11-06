@@ -77,7 +77,7 @@ namespace TestFactory.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Filler, Editor")]
+        [Authorize(Roles = "Editor")]
         public ActionResult ListAll()
         {
             return View("ListAllStudents");
