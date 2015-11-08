@@ -39,5 +39,20 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning
                 runner.MigrateUp(true);
             }
         }
+        public void MigrateDown(long targetVersion)
+        {
+
+            var announcer = new TextWriterAnnouncer(s => Debug.WriteLine(s));
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var migrationContext = new RunnerContext(announcer);
+            var options = new MigrationOptions { PreviewOnly = false, Timeout = 60 };
+            var factory = new FluentMigrator.Runner.Processors.SqlServer.SqlServer2012ProcessorFactory();
+            using (var processor = factory.Create(connectionString, announcer, options))
+            {
+                var runner = new MigrationRunner(assembly, migrationContext, processor);
+                runner.MigrateDown(targetVersion, true);
+            }
+        }
     }
 }

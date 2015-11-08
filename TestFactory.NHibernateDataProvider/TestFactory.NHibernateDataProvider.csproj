@@ -98,7 +98,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Scripts\Version1\AverageMarkForFacultyView.sql" />
+    <EmbeddedResource Include="Scripts\Version2\AverageMarkForFacultyView.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Version1\BackUpData.sql" />
@@ -109,7 +109,7 @@
     <EmbeddedResource Include="Scripts\Version1\DefaultDataUp.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Scripts\Version1\StudentWithGroupView.sql" />
+    <EmbeddedResource Include="Scripts\Version2\StudentWithGroupView.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
