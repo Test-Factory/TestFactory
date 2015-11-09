@@ -14,6 +14,7 @@ namespace TestFactory.Business.Components.Managers
         public IEnumerable<FrequencyMarkForFacultyByCategory> GetMarksForFaculty(string id)
         {
             return provider.GetMarksForFaculty(id);
+        }
    
     }
 }
