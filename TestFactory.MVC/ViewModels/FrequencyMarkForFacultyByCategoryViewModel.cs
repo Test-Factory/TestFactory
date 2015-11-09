@@ -11,6 +11,7 @@ namespace TestFactory.MVC.ViewModels
         public virtual string Faculty { get; set; }
         public virtual string Code { get; set; }
         public virtual string Id { get; set; }
+        public virtual int Value { get; set; }
         public virtual float Count { get; set; }
     }
 }

@@ -15,24 +15,40 @@ namespace TestFactory.Controllers.Api
     public class MarksController: ApiController
     {
         private readonly MarkManager markManager;
+        private readonly CategoryManager categoryManager;
         private readonly AverageMarkForFacultyManager averageMarkForFacultyManager;
+        private readonly FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager;
         private UserContext user;
 
-        public MarksController(MarkManager markManager, AverageMarkForFacultyManager averageMarkForFacultyManager)
+        public MarksController(MarkManager markManager, AverageMarkForFacultyManager averageMarkForFacultyManager, CategoryManager categoryManager, FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager)
         {
             this.markManager = markManager;
+            this.categoryManager = categoryManager;
             this.averageMarkForFacultyManager = averageMarkForFacultyManager;
+            this.frequencyMarkForFacultyByCategoryManager = frequencyMarkForFacultyByCategoryManager;
             this.user = new UserContext();
         }
 
         [HttpGet]
         [Route("average")]
-        [ValidateModel]
         public IEnumerable<AverageMarkForFacultyViewModel> GetAverageMarks()
         {
            var averageMarks = averageMarkForFacultyManager.GetMarksForFaculty(user.User.Faculty).OrderBy(c=>c.Id);
             var result = Mapper.Map<IEnumerable<AverageMarkForFacultyViewModel>>(averageMarks);
             return result;
+        }
+        [HttpGet]
+        [Route("frequency")]
+        public void GetFrequencyMarks()
+        {
+            //string[] categories = categoryManager.GetList().Select(c => c.Code);
+            var frequencyMarksForCategoryR = frequencyMarkForFacultyByCategoryManager.GetMarksForFaculty(user.User.Faculty).Where(f => f.Code == "R");
+            double mForR ;
+            foreach (var f in frequencyMarksForCategoryR)
+            {
+                 //mForR += f
+            }
+
         }
     }
 }

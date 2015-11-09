@@ -18,6 +18,8 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 
             Id(x => x.Id);
 
+            Map(x => x.Value);
+
             Map(x => x.Count);
         }
     }
