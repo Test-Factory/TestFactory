@@ -116,6 +116,7 @@
     <Compile Include="DataProviderContracts\IUserDataProvider.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\FrequencyMarkForFacultyByCategory.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Mark.cs" />
     <Compile Include="Models\Role.cs" />
