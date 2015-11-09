@@ -503,6 +503,12 @@ div#content {
 .studentMarkDetails {
     font-size: 0.9em;
     padding: 0px;
+    text-align: center;
+}
+
+.iconAverage {
+    top: 3px;
+    position: relative;
 }
 
 .search-marks-input {
