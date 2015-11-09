@@ -92,7 +92,9 @@
     <Compile Include="Components\Lucene\Searcher.cs" />
     <Compile Include="Components\Lucene\Attributes\Storable.cs" />
     <Compile Include="Components\Managers\AverageMarkForFacultyManager.cs" />
+    <Compile Include="Components\Managers\FrequencyMarkForFacultyByCategoryManager.cs" />
     <Compile Include="DataProviderContracts\IAverageMarkForFacultyDataProvider.cs" />
+    <Compile Include="DataProviderContracts\IFrequencyMarkForFacultyByCategoryDataProvider.cs" />
     <Compile Include="Models\AverageMarkForFaculty.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
     <Compile Include="Components\Managers\BaseManagerForView.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="DataProviderContracts\IUserDataProvider.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\FrequencyMarkForFacultyByCategory.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Mark.cs" />
     <Compile Include="Models\Role.cs" />

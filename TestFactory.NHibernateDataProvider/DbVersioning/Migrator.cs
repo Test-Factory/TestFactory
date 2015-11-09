@@ -40,8 +40,7 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning
             }
         }
         public void MigrateDown(long targetVersion)
-        {
-
+        {     
             var announcer = new TextWriterAnnouncer(s => Debug.WriteLine(s));
             var assembly = Assembly.GetExecutingAssembly();
 

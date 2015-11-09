@@ -8,7 +8,7 @@ using FluentMigrator;
 namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations.Version2
 {
      [Migration(201511052216)]
-    public class M002_StudentWithGroupView   : Migration
+    public class M022_StudentWithGroupView   : Migration
     {
          public override void Up()
          {

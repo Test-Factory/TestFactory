@@ -8,7 +8,7 @@ using FluentMigrator;
 namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations.Version2
 {
      [Migration(201511051002)]
-    public class M001_AverageMarksForFacultyView   : Migration
+    public class M021_AverageMarksForFacultyView   : Migration
     {
          public override void Up()
          {
