@@ -3,12 +3,18 @@
 
     var studentProvider = new StudentProvider();
     var markProvider = new MarkProvider();
+    var firstSorting = "lastName";
+    var pathForMarProvider= {
+        everage: "/average",
+        deviation: "/standardDeviation"
+    };
 
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
+    self.standardDeviation = ko.observableArray();
 
     self.sortDescending = ko.observable(false);
-    self.sortKey = ko.observable("lastName");
+    self.sortKey = ko.observable(firstSorting);
     self.preloader = ko.observable(true);
 
     self.sortingByMark = function (key, id, code) {
@@ -84,11 +90,18 @@
 
     self.init = function () {
         var averageMarks = [];
-        markProvider.get(function (data) {
+        markProvider.get(pathForMarProvider.everage, function (data) {
             $(data).each(function (index, element) {
                 averageMarks[index] = element;
                 var mappedItem = new AverageMarksForFacultyModel(element);
                 self.categories.push(mappedItem);
+            });
+        });
+        markProvider.get(pathForMarProvider.deviation, function (data) {
+            $(data).each(function (index, element) {
+                //self.standardDeviation[index] = element;
+                //var mappedItem = new AverageMarksForFacultyModel(element);
+                self.standardDeviation.push(element);
             });
         });
 

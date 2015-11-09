@@ -31,12 +31,19 @@
                         </th>
                         <!-- /ko -->
                     </tr>
-                    <tr>
+                    <tr >
                         <td colspan="3">Average marks </td>@*TODO: add to resourse*@
                         <!-- ko foreach: $root.categories -->
-                        <td rowspan="2" class="marks" data-bind="text: average"></td>
+                        <td  class="marks" data-bind="text: average"></td>
                         <!-- /ko -->
-                    </tr>                              
+                       
+                    </tr> 
+                    <tr>
+                        <td colspan="3">Standard deviation marks </td>@*TODO: add to resourse*@
+                        <!-- ko foreach: $root.standardDeviation -->
+                        <td  class="marks" data-bind="text: $data"></td>
+                        <!-- /ko --> 
+                    </tr>                             
                 </thead>
                 <tr >
                     <td colspan="9">
