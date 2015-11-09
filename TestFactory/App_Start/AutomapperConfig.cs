@@ -30,6 +30,9 @@ namespace TestFactory.App_Start
                .CreateMap<AverageMarkForFaculty, AverageMarkForFacultyViewModel>();
 
             Mapper
+              .CreateMap<FrequencyMarkForFacultyByCategory, FrequencyMarkForFacultyByCategoryViewModel>();
+
+            Mapper
                 .CreateMap<Category, CategoryWebModel>()
                 .IncludeBase<BaseModel, BaseViewModel>();
 
@@ -49,6 +52,8 @@ namespace TestFactory.App_Start
             Mapper.CreateMap<StudentWithGroupViewModel, StudentWithGroup>();
 
             Mapper.CreateMap<AverageMarkForFacultyViewModel, AverageMarkForFaculty>();
+
+            Mapper.CreateMap<FrequencyMarkForFacultyByCategoryViewModel, FrequencyMarkForFacultyByCategory>();
 
             Mapper.CreateMap<CategoryWebModel, Category>()
                 .IncludeBase<BaseViewModel, BaseModel>();

@@ -38,11 +38,16 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<AverageMarkForFacultyManager>();
 
+            builder.RegisterType<FrequencyMarkForFacultyByCategoryManager>();
+
             builder.RegisterType<NHibernateRoleDataProvider>()
                 .As<IRoleDataProvider>();
 
             builder.RegisterType<NHibernateAverageMarkForFacultyDataProvider>()
                 .As<IAverageMarkForFacultyDataProvider>();
+
+            builder.RegisterType<NHibernateFrequencyMarkForFacultyByCategoryDataProvider>()
+               .As<IFrequencyMarkForFacultyByCategoryDataProvider>();
 
             builder.RegisterType<NHibernateUserDataProvider>()
                 .As<IUserDataProvider>();

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="DataProviders\NHibernateAverageMarkForFacultyDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateDataProviderBaseForView.cs" />
+    <Compile Include="DataProviders\NHibernateFrequencyMarkForFacultyByCategoryDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateMarkDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateRoleDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateDataProviderBase.cs" />
