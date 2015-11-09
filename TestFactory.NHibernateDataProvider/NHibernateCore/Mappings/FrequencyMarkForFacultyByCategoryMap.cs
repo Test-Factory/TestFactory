@@ -12,11 +12,17 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
      {
         public FrequencyMarkForFacultyByCategoryMap()
         {
+            ReadOnly();
+
+            CompositeId()
+                .KeyProperty(x => x.CategoryId)
+                .KeyProperty(x => x.Value); 
+
             Map(x => x.Faculty);
 
             Map(x => x.Code);
 
-            Id(x => x.Id);
+            Map(x => x.CategoryId);
 
             Map(x => x.Value);
 

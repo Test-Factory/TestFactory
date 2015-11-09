@@ -1,6 +1,6 @@
 create view FrequencyMarkForFacultyByCategory
 as
-select  g.Faculty, c.Code,  c.Id, m.Value,  COUNT(m.Value) Count
+select g.Faculty, c.Code,  c.Id as CategoryId, m.Value,  COUNT(m.Value) Count
     from [Mark] m
     join Student s on m.StudentId = s.Id
     join [Group] g on s.GroupId = g.Id

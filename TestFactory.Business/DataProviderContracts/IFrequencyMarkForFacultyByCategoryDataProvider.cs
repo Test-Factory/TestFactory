@@ -9,6 +9,6 @@ namespace TestFactory.Business.DataProviderContracts
 {
     public interface IFrequencyMarkForFacultyByCategoryDataProvider :   IDataProviderForView<FrequencyMarkForFacultyByCategory>
     {
-        IEnumerable<FrequencyMarkForFacultyByCategory> GetMarksForFaculty(string id);   
+        IList<FrequencyMarkForFacultyByCategory> GetMarksForFaculty(string faculty);   
     }
 }

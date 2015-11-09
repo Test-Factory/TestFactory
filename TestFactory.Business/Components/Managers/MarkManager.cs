@@ -13,6 +13,11 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetByStudentId(studentId);
         }
+
+        public int CountMarksForCategory(string categoryId)
+        {
+            return provider.CountMarksForCategory(categoryId);
+        }
         public IEnumerable<Mark> GetMarksByCategoryId(string categoryId)
         {
             return provider.GetMarksByCategoryId(categoryId);

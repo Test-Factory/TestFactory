@@ -7,5 +7,6 @@ namespace TestFactory.Business.DataProviderContracts
     {
         IList<Mark> GetByStudentId(string studentId);
         IEnumerable<Mark> GetMarksByCategoryId(string categoryId);
+        int CountMarksForCategory(string categoryId);
     }
 }

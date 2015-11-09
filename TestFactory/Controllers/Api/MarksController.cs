@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -38,17 +39,33 @@ namespace TestFactory.Controllers.Api
             return result;
         }
         [HttpGet]
-        [Route("frequency")]
-        public void GetFrequencyMarks()
+        [Route("standardDeviation")]
+        public ArrayList GetStandardDeviationMarks()
         {
-            //string[] categories = categoryManager.GetList().Select(c => c.Code);
-            var frequencyMarksForCategoryR = frequencyMarkForFacultyByCategoryManager.GetMarksForFaculty(user.User.Faculty).Where(f => f.Code == "R");
-            double mForR ;
-            foreach (var f in frequencyMarksForCategoryR)
+            var categories = categoryManager.GetList().ToList();
+            var standardDeviationMarks = new ArrayList();
+            var frequencyMarksForCategory = frequencyMarkForFacultyByCategoryManager.GetMarksForFaculty(user.User.Faculty).OrderBy(f => f.CategoryId).ToList(); 
+            foreach (var c in categories)
             {
-                 //mForR += f
+                var count = markManager.CountMarksForCategory(c.Id);
+                var sd = this.GetStandardDeviationMarkByCategoryId(frequencyMarksForCategory.Where(f => f.CategoryId == c.Id), count);
+                standardDeviationMarks.Add(Math.Round(sd,2));
             }
+            return standardDeviationMarks;
+        }
 
+        private double GetStandardDeviationMarkByCategoryId(IEnumerable<FrequencyMarkForFacultyByCategory> frequencyMarks, int count)
+        {
+            var frequencyMarksList = frequencyMarks.ToList();
+            double M = 0;
+            double D = 0;
+            foreach (var f in frequencyMarksList)
+            {
+                M += (f.Value * ((double)f.Count / count));
+                D += (Math.Pow(f.Value, 2) * ((double)f.Count / count));
+            }
+            double standardDeviation = Math.Sqrt((D - Math.Pow(M,2)));
+            return standardDeviation;
         }
     }
 }
