@@ -8,7 +8,7 @@ namespace TestFactory.Business.Components.Managers
     {
         public GroupManager(IGroupDataProvider provider) : base(provider) { }
 
-        public int GetCount(string gropId)
+        public int GetStudentsCount(string gropId)
         {
             return provider.GetCount(gropId);
         }
@@ -25,14 +25,6 @@ namespace TestFactory.Business.Components.Managers
                 }
             }
             return false;
-        }
-
-        public bool IsIncludeHTMLAttributes(Group group)
-        {
-            string regEx = @"<\\?([A-Z][A-Z0-9]*)\b[^>]*>";
-            System.Text.RegularExpressions.Regex regular = new System.Text.RegularExpressions.Regex(regEx, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-            var matches = regular.Match(group.FullName + group.ShortName);
-            return matches.Success;
         }
 
         public bool GroupIsAlreadyExist(string shortName) 

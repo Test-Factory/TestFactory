@@ -8,12 +8,10 @@ namespace TestFactory.MVC.ViewModels
     {
         [Required(ErrorMessage="Поле повинно бути заповненим")]
         [DataType(DataType.Text)]
-        [AllowHtml]
         public virtual string FullName { get; set; }
 
         [Required(ErrorMessage="Поле повинно бути заповненим")]
         [DataType(DataType.Text)]
-        [AllowHtml]
         public virtual string ShortName { get; set; }
 
         [ScaffoldColumn(false)]

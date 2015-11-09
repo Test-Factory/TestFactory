@@ -577,3 +577,6 @@ div#content {
 .search-result-conteiner {
     display: inline;
 }
+#delete-group{
+display:none;
+}

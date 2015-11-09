@@ -1,4 +1,5 @@
 ﻿@model TestFactory.MVC.ViewModels.GroupViewModel
+@using Embedded_Resource
 @Styles.Render("~/Students/css")
 <div>
     <form>
@@ -93,8 +94,8 @@
                         <a class="  btn  btn-size btnStudent " data-bind="click:$root.deleteStudent">@GlobalRes_ua.delete</a>
                     </td>
                     
-                    <div id="delete-student" title="Видалити">
-                        <p>Повернути сдутента після видалення буде неможливо. Ви дісно хочете його видалити?</p>
+                    <div id="delete-student" title="@GlobalRes_ua.delete">
+                        <p>@GlobalRes_ua.conformationOnDeleteStudent</p>
                     </div>
                  }
                 </tr>

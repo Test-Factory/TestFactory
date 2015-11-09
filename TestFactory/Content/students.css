@@ -147,7 +147,7 @@ a.btn.btn-size.btnStudent {
     background: BLACK;
     opacity: 0.9;
 }
-#delete-group, #delete-student {
+#delete-student {
 display:none;
 }
 

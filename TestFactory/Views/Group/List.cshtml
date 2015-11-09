@@ -32,10 +32,10 @@
                             </a>
                         </div>
                         <div class="card-action actions updateGroup">
-                            @if(User.IsInRole("Editor"))
-                                {
-                                    <a style="width:95%;" class = "waves-effect waves-light btn donwloadStudent" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)">@GlobalRes_ua.download</a>
-                                }
+                            @if (User.IsInRole("Editor"))
+                            {
+                                <a class="waves-effect waves-light btn donwloadStudent" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)" style="width:95%;">@GlobalRes_ua.download</a>
+                            }
                                 @if (User.IsInRole("Filler"))
                             {    
                             <a class="waves-effect waves-light btn donwloadStudent" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)">@GlobalRes_ua.download</a>                                              
@@ -54,8 +54,8 @@
             </div>
         </div>
     }
-    <div id="delete-group" title="Видалити" style="display: none;">
-                        <p>Повернути студентів групи після видалення буде неможливо. Ви дісно хочете видалити групу?</p>
+    <div id="delete-group" title="@GlobalRes_ua.delete">
+                        <p>@GlobalRes_ua.conformationOnDeleteGroup</p>
                     </div>
     <div id="createGroup">
         <div id="create">

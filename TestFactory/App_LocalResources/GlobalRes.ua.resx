@@ -216,4 +216,7 @@
   <data name="deleting" xml:space="preserve">
     <value>Видалення</value>
   </data>
+  <data name="conformationOnDeleteGroup" xml:space="preserve">
+    <value>Повернути групу після видалення буде неможливо. Ви дісно хочете її видалити?</value>
+  </data>
 </root>

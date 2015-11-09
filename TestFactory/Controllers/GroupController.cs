@@ -34,13 +34,13 @@ namespace TestFactory.Controllers
         
         public ActionResult GetStudentCount(string id)
         {
-            int count = groupManager.GetCount(id);
+            int count = groupManager.GetStudentsCount(id);
             return View(count);
         }
 
         public ActionResult GetStudentsCount(string id)
         {
-            int count = groupManager.GetCount(id);
+            int count = groupManager.GetStudentsCount(id);
             return Json(count);
         }
 
@@ -57,7 +57,7 @@ namespace TestFactory.Controllers
         {
             group.Faculty = user.User.Faculty;
             var model = AutoMapper.Mapper.Map<Group>(group);
-            if (groupManager.IsIncludeHTMLAttributes(model) || groupManager.GroupIsAlreadyExist(model.ShortName))
+            if (groupManager.GroupIsAlreadyExist(model.ShortName))
             {
                 throw new HttpException(403, GlobalRes_ua.forbidenAction);
             }
@@ -83,11 +83,6 @@ namespace TestFactory.Controllers
             group.Faculty = user.User.Faculty;
 
             var model = AutoMapper.Mapper.Map<Group>(group);
-
-            if (groupManager.IsIncludeHTMLAttributes(model))
-            {
-                throw new HttpException(403, GlobalRes_ua.forbidenAction);
-            }
 
             if (!ModelState.IsValid)
             {
