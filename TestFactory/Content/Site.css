@@ -370,6 +370,10 @@ a.waves-effect.waves-light.btn.donwloadStudent {
     display: inline-flex;
 }
 
+.center {
+    text-align: center;
+}
+
 p.countUsers {
     font-size: 1.25em;
     padding-right: 8px;

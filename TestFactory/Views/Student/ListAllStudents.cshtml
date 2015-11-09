@@ -23,7 +23,7 @@
                             <!-- /ko -->
                         </th>
                         <!-- ko foreach: $root.categories -->
-                        <th class="marks">
+                        <th class="marks center">
                             <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
                             <!-- ko if: $root.sortKey() == $data.code() -->
                             <span data-bind="css: $root.selectedClassForSortedField"></span>
@@ -34,7 +34,7 @@
                     <tr >
                         <td colspan="3">Average marks </td>@*TODO: add to resourse*@
                         <!-- ko foreach: $root.categories -->
-                        <td  class="marks" data-bind="text: average"></td>
+                        <td  class="marks center" data-bind="text: average"></td>
                         <!-- /ko -->
                        
                     </tr> 
