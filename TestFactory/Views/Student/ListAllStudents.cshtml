@@ -34,7 +34,7 @@
                     <tr>
                         <td colspan="3">Average marks </td>@*TODO: add to resourse*@
                         <!-- ko foreach: $root.categories -->
-                        <td class="marks" data-bind="text: average"></td>
+                        <td rowspan="2" class="marks" data-bind="text: average"></td>
                         <!-- /ko -->
                     </tr>                              
                 </thead>
@@ -54,7 +54,17 @@
                         <td class="first-name" data-bind="text:  firstName"></td>
                         <td data-bind="text: groupShortName"></td>
                         <!-- ko foreach: marks -->
-                        <td class="marks" data-bind="text: value" max="100 "></td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td rowspan="2" class="marks studentMark" data-bind="text: value" style="font-size: 1.5em; text-align: center; padding-left: 0px; padding-right:0px;"></td>
+                                    <td class="studentMarkDetails" data-bind="text: averageDeviation"></td>
+                                </tr>
+                                <tr>
+                                    <td class="studentMarkDetails">0</td>
+                                </tr>
+                            </table>
+                        </td>
                         <!-- /ko -->
                     </tr>
                 
@@ -68,7 +78,7 @@
 @section Scripts{
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 <script>
-
+    $('.tooltipped').tooltip({ delay: 50 });
     var globalView = null;
     $(document).ready(function () {
         var viewModel = new StudentsAllViewModel();

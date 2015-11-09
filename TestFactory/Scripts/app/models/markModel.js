@@ -1,8 +1,11 @@
-﻿function MarkModel(item) {
+﻿function MarkModel(item, averageMark) {
     var self = this;
     self.id = ko.observable(item ? item.Id : "");
     self.studentId = ko.observable(item ? item.StudentId : "");
     self.categoryId = ko.observable(item ? item.CategoryId : "");
+    if (averageMark != null) {
+        self.averageDeviation = ko.observable(item ? Math.abs(item.Value - averageMark.Average).toFixed(2) : "");
+    }
     self.value = ko.observable(item ? item.Value : "").extend({
         required: {
             params: true,

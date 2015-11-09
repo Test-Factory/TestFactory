@@ -62,6 +62,7 @@ function StudentsViewModel(group) {
                 var getMark = function (item) {
                     return item.categoryId() == id();
                 }
+
                 var leftMark = ko.utils.arrayFilter(left.marks(), getMark)[0];
                 var rightMark = ko.utils.arrayFilter(right.marks(), getMark)[0];
 
@@ -76,6 +77,22 @@ function StudentsViewModel(group) {
         }
 
     }
+
+    //self.averedgeRealisticMarkForGroup = ko.computed(function () {
+    //    var total = 0, avaredge = 0;
+    //    id = 'R';
+    //    code = '028ac41d-ce0b-49e3-8ec7-3cd016e8f14b';
+
+    //    var getMark = function (item) {
+    //        return item.categoryId() == id();
+    //    }
+
+    //    for (var i = 0; i < self.students().length; i++) {
+    //        total += self.students[i].categories[0].value();
+    //    avaredge = total / (self.students[i].lenth);
+    //    }
+    //    return avaredge;
+    //});
 
     self.sortingByName = function (key) {
         self.sortKey(key);
@@ -101,7 +118,6 @@ function StudentsViewModel(group) {
             });
             self.sortDescending(true);
         }
-
     }
 
     self.selectedClassForSortedField = ko.pureComputed(function () {

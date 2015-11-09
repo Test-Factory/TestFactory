@@ -493,6 +493,18 @@ div#content {
 
 }
 
+.studentMark {
+    font-size: 1.5em;
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.studentMarkDetails {
+    font-size: 0.9em;
+    padding: 0px;
+}
+
 .search-marks-input {
     width: 40px !important;
     float: right;
