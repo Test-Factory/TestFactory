@@ -89,15 +89,19 @@
                        
                         <div class="iconConteiner">
                             <div class="centerConteiner">
-                                <div class="deleteContainer" onclick="Delete($(this), '@student.Id')">
-                                        <i class="large material-icons deleteGroup deleteStudent">delete</i>
-                                </div>
+                                @if (User.IsInRole("Filler")){
+                                    <div class="deleteContainer" onclick="Delete($(this), '@student.Id')">
+                                            <i class="large material-icons deleteGroup deleteStudent">delete</i>
+                                    </div>
+                                }
                                 <a class = "deleteContainer" href="@Url.RouteUrl("studentResult", new { id = student.Id, groupId = student.Id }, null)">
                                     <i class="large material-icons deleteGroup deleteStudent">system_update_alt</i>
                                 </a>
-                                <div class="deleteContainer" onclick="swapCard(this)">
-                                    <i class="large material-icons deleteGroup deleteStudent">assignment</i>
-                                </div>
+                                @if (User.IsInRole("Filler")){
+                                    <div class="deleteContainer" onclick="swapCard(this)">
+                                        <i class="large material-icons deleteGroup deleteStudent">assignment</i>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
