@@ -1,21 +1,26 @@
-﻿$(document).ready(function () {
+﻿Index = (function () {
+    var localStrings = {};
 
-    $("#addGroup").on("click", function () {
-        $("#createGroup").show();
-    })
-    $(".groupUpdate").on("click", function () {		
-                var $groupContainer = $(this).parents('.group-container').first();		
-                $('#updateGroup',$groupContainer).show();		
-    })
+    var createGroupPopUp = function () {
+        $("#addGroup").on("click", function () {
+            $("#createGroup").show();
+        })
+        $(".declineCreate").on("click", function () {
+            $("#createGroup").hide();
+        })
+    }();
 
-    $(".declineCreate").on("click", function () {
-        $("#createGroup").hide();
-    })
+    var updateGroupPopUp = function () {
+        $(".groupUpdate").on("click", function () {
+            var $groupContainer = $(this).parents('.group-container').first();
+            $('#updateGroup', $groupContainer).show();
+        })
 
-    $(".declineUpdate").on("click", function () {
-        var $groupContainer = $(this).parents('.group-container').first();
-        $('#updateGroup', $groupContainer).hide();
-    })
+        $(".declineUpdate").on("click", function () {
+            var $groupContainer = $(this).parents('.group-container').first();
+            $('#updateGroup', $groupContainer).hide();
+        })
+    }();
 
     Delete = function (group, id) {
         $("#delete-group").dialog({       
@@ -47,7 +52,5 @@
                 }
             });
     }
-        var realistic = $("td:nth-child(3).marks").val();
-        console.log(realistic);
-
-});
+   
+})();
