@@ -1,4 +1,4 @@
-﻿function StudentForAllModel(item) {
+﻿function StudentForAllModel(item, averageMarks) {
     var self = this;
 
     self.id = ko.observable(item ? item.Id : "");
@@ -9,9 +9,11 @@
 
     self.marks = ko.observableArray();
     if (item && item.Marks) {
+        var index = 0;
         item.Marks.forEach(function (element) {
-            var mappedItem = new MarkModel(element);
+            var mappedItem = new MarkModel(element, averageMarks[index]);
             self.marks.push(mappedItem);
+            index++;
         });
     }
 }

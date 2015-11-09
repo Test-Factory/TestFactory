@@ -83,8 +83,10 @@
     }, self);
 
     self.init = function () {
+        var averageMarks = [];
         markProvider.get(function (data) {
             $(data).each(function (index, element) {
+                averageMarks[index] = element;
                 var mappedItem = new AverageMarksForFacultyModel(element);
                 self.categories.push(mappedItem);
             });
@@ -92,7 +94,7 @@
 
         studentProvider.get(function (data) {
             $(data).each(function (index, element) {
-                var mappedStudent = new StudentForAllModel(element);
+                var mappedStudent = new StudentForAllModel(element, averageMarks);
                 sortStudentMarksByCategoryIdDesc(mappedStudent);
                 self.students.push(mappedStudent);
             });
