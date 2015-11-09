@@ -370,6 +370,10 @@ a.waves-effect.waves-light.btn.donwloadStudent {
     display: inline-flex;
 }
 
+.center {
+    text-align: center;
+}
+
 p.countUsers {
     font-size: 1.25em;
     padding-right: 8px;
@@ -503,6 +507,12 @@ div#content {
 .studentMarkDetails {
     font-size: 0.9em;
     padding: 0px;
+    text-align: center;
+}
+
+.iconAverage {
+    top: 3px;
+    position: relative;
 }
 
 .search-marks-input {
