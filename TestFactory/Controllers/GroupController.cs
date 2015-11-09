@@ -105,10 +105,14 @@ namespace TestFactory.Controllers
         {
 
             if (!User.IsInRole("Filler"))
+            { 
                 return Json(false);
+            }
 
             if (user.User.Faculty != groupManager.GetById(id).Faculty)
+            { 
                 return Json("error");
+            }
 
             studentManager.DeleteByGroupId(id);
             groupManager.Delete(id);

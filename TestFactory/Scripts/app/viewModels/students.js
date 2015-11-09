@@ -124,7 +124,7 @@ function StudentsViewModel(group) {
     };
 
     self.deleteStudent = function (student) {
-        $("#dialog").dialog({
+        $("#delete-student").dialog({
             resizable: false,
             height: 200,
             modal: true,

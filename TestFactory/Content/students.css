@@ -147,6 +147,8 @@ a.btn.btn-size.btnStudent {
     background: BLACK;
     opacity: 0.9;
 }
-#dialog {
-display:none;}
+#delete-group, #delete-student {
+display:none;
+}
+
 /* ----------------------------------------------------------*/

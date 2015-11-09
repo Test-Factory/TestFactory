@@ -18,8 +18,7 @@
     })
 
     Delete = function (group, id) {
-        debugger;
-        $("#dialog").dialog({       
+        $("#delete-group").dialog({       
                 resizable: false,
                 height: 200,
                 modal: true,

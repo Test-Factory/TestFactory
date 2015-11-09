@@ -49,7 +49,7 @@ $("#search-clear").click(function () {
 $("#search").keyup(getSearchResult);
 
 Delete = function (group, id) {
-    $("#dialog").dialog({
+    $("#delete-group").dialog({
         resizable: false,
         height: 200,
         modal: true,

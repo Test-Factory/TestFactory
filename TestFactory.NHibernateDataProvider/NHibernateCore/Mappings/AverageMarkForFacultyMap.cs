@@ -15,8 +15,11 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
         public AverageMarkForFacultyMap()
         {
             Map(x => x.Faculty);
+
             Map(x => x.Code);
+
             Id(x => x.Id);
+
             Map(x => x.Average);
         }
     }
