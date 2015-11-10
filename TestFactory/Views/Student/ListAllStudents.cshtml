@@ -17,7 +17,7 @@
                             <!-- /ko -->
                         </th>
                         <th class="group">
-                            <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">Група</a> @*TODO: add to resourse*@
+                            <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">@GlobalRes_ua.group</a> 
                             <!-- ko if: $root.sortKey() == "groupShortName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>
                             <!-- /ko -->
@@ -32,7 +32,7 @@
                         <!-- /ko -->
                     </tr>
                     <tr >
-                        <td colspan="3">Average marks </td>@*TODO: add to resourse*@
+                        <td colspan="3">@GlobalRes_ua.averageMarks </td>
                         <!-- ko foreach: $root.categories -->
                         <td class="marks center" data-bind="text: average"></td>
                         <!-- /ko -->

@@ -79,6 +79,15 @@ namespace Embedded_Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Середні оцінки.
+        /// </summary>
+        public static string averageMarks {
+            get {
+                return ResourceManager.GetString("averageMarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Відмінити.
         /// </summary>
         public static string cancel {
@@ -246,6 +255,15 @@ namespace Embedded_Resource {
         public static string forbidenAction {
             get {
                 return ResourceManager.GetString("forbidenAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Група.
+        /// </summary>
+        public static string group {
+            get {
+                return ResourceManager.GetString("group", resourceCulture);
             }
         }
         
