@@ -228,4 +228,7 @@
   <data name="group" xml:space="preserve">
     <value>Група</value>
   </data>
+  <data name="invalidData" xml:space="preserve">
+    <value>Дані введені некоректно</value>
+  </data>
 </root>
