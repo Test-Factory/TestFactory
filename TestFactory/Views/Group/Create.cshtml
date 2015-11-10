@@ -24,6 +24,14 @@
         </div>
 
         <div class="form-group">
+            <label class="control-label col-md-2 createPop-Up">@GlobalRes_ua.yearOfStartingEducation</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control createPop-Up", max = "2050", min = "1960", pattern = "[0-9]" } })
+                @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10 createPop-Up">
                 <button type="reset" class="btn grey btn-default declineCreate">@GlobalRes_ua.cancel</button>
                 <input type="submit" value="@GlobalRes_ua.save" class="btn btn-default" />

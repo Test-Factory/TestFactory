@@ -15,9 +15,9 @@ namespace TestFactory.Controllers
 
         private readonly UserManager userManager;
 
-        private UserContext user;
+        private readonly UserContext user;
 
-        private StudentManager studentManager;
+        private readonly StudentManager studentManager;
 
         public GroupController(GroupManager groupManager, StudentManager studentManager, UserManager userManager)
         {
@@ -41,7 +41,7 @@ namespace TestFactory.Controllers
             return View(count);
         }
 
-        public ActionResult GetStudentsCount(string id)
+        public JsonResult GetStudentsCount(string id)
         {
             int count = groupManager.GetStudentsCount(id);
             return Json(count);
@@ -58,11 +58,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Create(GroupViewModel group)
         {
-            group.Faculty = user.User.Faculty;
-
-            var model = AutoMapper.Mapper.Map<Group>(group);
-
-            if (groupManager.GroupIsAlreadyExist(model.ShortName))
+            if (groupManager.GroupIsAlreadyExist(group.ShortName))
             {
                 throw new HttpException(403, GlobalRes_ua.forbidenAction);
             }
@@ -72,6 +68,8 @@ namespace TestFactory.Controllers
                 return RedirectToRoute("Default");
             }
 
+            group.Faculty = user.User.Faculty;
+            var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Create(model);
 
             return RedirectToRoute("groupStudentList", new { groupId = group.Id });
@@ -86,15 +84,13 @@ namespace TestFactory.Controllers
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
 
-            group.Faculty = user.User.Faculty;
-
-            var model = AutoMapper.Mapper.Map<Group>(group);
-
             if (!ModelState.IsValid)
             {
                 return View(group);
             }
 
+            group.Faculty = user.User.Faculty;
+            var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Update(model);
 
             return RedirectToRoute("Default");
@@ -104,7 +100,6 @@ namespace TestFactory.Controllers
         [HttpPost]
         public JsonResult Delete(string id)
         {
-
             if (!User.IsInRole("Filler"))
             { 
                 return Json(false);

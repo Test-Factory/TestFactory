@@ -17,6 +17,8 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.GroupId).Not.Nullable();
 
+            Map(x => x.Year);
+
             HasMany(x => x.Marks).KeyColumn("StudentId").Cascade.All().Not.LazyLoad().Inverse();
         }
     }

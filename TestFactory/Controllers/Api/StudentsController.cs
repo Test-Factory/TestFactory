@@ -25,7 +25,7 @@ namespace TestFactory.Controllers.Api
 
         private readonly MarkManager markManager;
 
-        private UserContext user;
+        private readonly UserContext user;
 
         public StudentsController(StudentWithGroupManager studentWithGroupManager, StudentManager studentManager, GroupManager groupManager, MarkManager markManager)
         {
@@ -41,9 +41,9 @@ namespace TestFactory.Controllers.Api
         {
             var students = new List<StudentWithGroup>();
             var groupsForFaculty = groupManager.GetListForFaculty(user.User.Faculty);
-            foreach (var g in groupsForFaculty)
+            foreach (var group in groupsForFaculty)
             {
-                var student = studentWithGroupManager.GetByGroupId(g.Id);
+                var student = studentWithGroupManager.GetByGroupId(group.Id);
                 students.AddRange(student);
             }
             IList<StudentWithGroup> sortedStudents = students.OrderBy(s => s.LastName).ToList();
@@ -54,7 +54,6 @@ namespace TestFactory.Controllers.Api
         [HttpGet]
         public IList<StudentViewModel> Get([FromUri]string groupId)
         {
-            IEnumerable<Student> students;
             if (string.IsNullOrEmpty(groupId))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -64,7 +63,7 @@ namespace TestFactory.Controllers.Api
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-
+            IEnumerable<Student> students;
             students = studentManager.GetList(groupId).OrderBy(s => s.LastName);
             var result = Mapper.Map<IList<StudentViewModel>>(students);
             return result;
@@ -75,10 +74,18 @@ namespace TestFactory.Controllers.Api
         public IHttpActionResult Create(StudentViewModel student)
         {
             if (!User.IsInRole("Filler"))
+            {
                 return BadRequest("error");
+            }
 
             if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+            {
                 return BadRequest();
+            }
+
+            var currentGroup = groupManager.GetById(student.GroupId);
+
+            student.Year = currentGroup.Year;
 
             Student model = Mapper.Map<Student>(student);
             model.Id = Guid.NewGuid().ToString();
@@ -97,10 +104,14 @@ namespace TestFactory.Controllers.Api
         public IHttpActionResult Update(StudentViewModel student)
         {
             if (!User.IsInRole("Filler"))
+            {
                 return BadRequest("error");
+            }
 
             if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+            {
                 return BadRequest();
+            }
 
             var model = Mapper.Map<Student>(student);
             studentManager.Update(model);
@@ -113,10 +124,14 @@ namespace TestFactory.Controllers.Api
         public IHttpActionResult Delete(StudentViewModel student)
         {
             if (!User.IsInRole("Filler"))
+            {
                 return BadRequest("error");
+            }
 
             if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
-                return BadRequest();         
+            {
+                return BadRequest();
+            }
      
             studentManager.Delete(student.Id);
             return Ok();

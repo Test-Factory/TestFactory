@@ -19,6 +19,9 @@ namespace TestFactory.MVC.ViewModels
         [Required]
         public virtual string GroupId { get; set; }
 
+        [ScaffoldColumn(false)]
+        public virtual int Year { get; set; }
+
         public virtual IList<Mark> Marks { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace TestFactory.Controllers.Api
 
         private readonly FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager;
 
-        private UserContext user;
+        private readonly UserContext user;
 
         public MarksController(MarkManager markManager, AverageMarkForFacultyManager averageMarkForFacultyManager, CategoryManager categoryManager, FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager)
         {
@@ -42,6 +42,7 @@ namespace TestFactory.Controllers.Api
            var result = Mapper.Map<IList<AverageMarkForFacultyViewModel>>(averageMarks);
            return result;
         }
+
         [HttpGet]
         [Route("standardDeviation")]
         public ArrayList GetStandardDeviationMarks()

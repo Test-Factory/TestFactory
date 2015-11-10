@@ -13,7 +13,8 @@ namespace TestFactory.Controllers.Api
     public class GroupsController : ApiController
     {
         private readonly GroupManager groupManager;
-        private UserContext user;
+
+        private readonly UserContext user;
 
         public GroupsController( GroupManager groupManager)
         {
@@ -40,10 +41,10 @@ namespace TestFactory.Controllers.Api
         }
 
         [HttpGet]
-        public IEnumerable<GroupViewModel> Get()
+        public IList<GroupViewModel> Get()
         {
-            IEnumerable<Group> groups = groupManager.GetList();
-            var result = Mapper.Map<IEnumerable<GroupViewModel>>(groups);
+            IList<Group> groups = groupManager.GetList();
+            var result = Mapper.Map<IList<GroupViewModel>>(groups);
             return result;
         }
     }
