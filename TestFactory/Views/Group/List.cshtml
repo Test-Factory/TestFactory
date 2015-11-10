@@ -29,6 +29,7 @@
                             <a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = item.Id }, null)">
                                 <p id="textLik">@item.ShortName</p>                               
                                 @{Html.RenderAction("GetStudentCount", "Group", new { id = item.Id });}
+                                <p id="year">@item.Year</p>
                             </a>
                         </div>
                         <div class="card-action actions updateGroup">
@@ -49,7 +50,7 @@
             </div>
             <div class="updateGroup" id="updateGroup">
                 <div id="update">
-                    @Html.Partial("Update", item)
+                    @Html.Partial("Update",item)
                 </div>
             </div>
         </div>

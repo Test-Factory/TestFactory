@@ -23,6 +23,7 @@ CREATE TABLE [dbo].[Role] (
                     [FullName]  NVARCHAR (50) NULL,
                     [ShortName] NVARCHAR (20) NULL,
                     [Faculty]   NVARCHAR (20) NULL,
+					[Year]      SMALLINT      NULL,
                     PRIMARY KEY CLUSTERED ([Id] ASC)
                 );
 
@@ -31,6 +32,7 @@ CREATE TABLE [dbo].[Role] (
                     [FirstName] NVARCHAR (70) NULL,
                     [LastName]  NVARCHAR (70) NULL,
                     [GroupId]   NVARCHAR (45) NOT NULL,
+					[Year]      SMALLINT      NULL,
                     PRIMARY KEY CLUSTERED ([Id] ASC),
                     CONSTRAINT [FK_Student_Group] FOREIGN KEY ([GroupId]) REFERENCES [dbo].[Group] ([Id]) ON DELETE CASCADE                  
                 );

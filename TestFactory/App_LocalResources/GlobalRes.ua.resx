@@ -231,4 +231,7 @@
   <data name="invalidData" xml:space="preserve">
     <value>Дані введені некоректно</value>
   </data>
+  <data name="yearOfStartingEducation" xml:space="preserve">
+    <value>Рік початку навчання</value>
+  </data>
 </root>
