@@ -13,7 +13,9 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
         {
             Table("StudentWithGroup");
             ReadOnly();
+
             Id(x => x.Id);
+
             Map(x => x.FirstName);
 
             Map(x => x.LastName); 
