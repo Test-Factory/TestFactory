@@ -25,19 +25,28 @@ namespace TestFactory.Business.Components.Managers
                 return false;
             }
 
-            if (IsPasswordValid(user, password))
-            {
-                HttpContext.Current.User = new System.Security.Principal
-                        .GenericPrincipal(new System.Security.Principal.GenericIdentity(user.FirstName), new[] { user.Roles.Name });
-                return true;
-            }
-         
-            return false;
+            return CheckCorrectPassword(user, password);
         }
 
         public bool IsPasswordValid(User user, string password)
         {
             return (bool)HashDecoder.VerifyHash(password, user.Password, user.PasswordSalt);
+        }
+
+        private bool CheckCorrectPassword(User user, string password)
+        {
+            if (IsPasswordValid(user, password))
+            {
+                SetRole(user);
+                return true;
+            }
+            return false;
+        }
+
+        private void SetRole(User user)
+        {
+            HttpContext.Current.User = new System.Security.Principal
+                        .GenericPrincipal(new System.Security.Principal.GenericIdentity(user.FirstName), new[] { user.Roles.Name });
         }
     }
 }

@@ -11,10 +11,10 @@ namespace TestFactory.Business.Components.Managers
     public class StudentWithGroupManager  : BaseManagerForView<StudentWithGroup, IStudentWithGroupDataProvider>
     {
         public StudentWithGroupManager(IStudentWithGroupDataProvider provider) : base(provider) { }
+
         public IList<StudentWithGroup> GetByGroupId(string groupId)
         {
             return provider.GetByGroupId(groupId);
         }
-       
     }
 }

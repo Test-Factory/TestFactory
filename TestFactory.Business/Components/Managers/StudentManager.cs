@@ -24,12 +24,8 @@ namespace TestFactory.Business.Components.Managers
             }
         }
   
-        public void AddLuceneIndex(IList<Student> students = null)
+        public void AddLuceneIndex(IList<Student> students)
         {
-            if (students == null)
-            {
-                students = GetList();
-            }
             var searcher = new Searcher<Student>(luceneDirectory);
             searcher.ClearIndex();
             searcher.AddUpdateIndex(students);
@@ -37,15 +33,11 @@ namespace TestFactory.Business.Components.Managers
 
         public IList<string> Search(string name)
         {
-
-
             var searcher = new Searcher<Student>(luceneDirectory);
-            var listFirstName = searcher.Search(name, "Name");
-
-            var list = new List<Student>();
+            var list = searcher.Search(name, "Name");
             var result = new List<string>();
 
-            foreach (var item in listFirstName)
+            foreach (var item in list)
             {
                 if (!result.Contains(item.Id))
                 {
