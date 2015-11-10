@@ -76,22 +76,6 @@ function StudentsViewModel(group, sortingBy) {
 
     }
 
-    //self.averedgeRealisticMarkForGroup = ko.computed(function () {
-    //    var total = 0, avaredge = 0;
-    //    id = 'R';
-    //    code = '028ac41d-ce0b-49e3-8ec7-3cd016e8f14b';
-
-    //    var getMark = function (item) {
-    //        return item.categoryId() == id();
-    //    }
-
-    //    for (var i = 0; i < self.students().length; i++) {
-    //        total += self.students[i].categories[0].value();
-    //    avaredge = total / (self.students[i].lenth);
-    //    }
-    //    return avaredge;
-    //});
-
     self.sortingByName = function (key) {
         self.sortKey(key);
         if (self.sortDescending()) {
@@ -165,6 +149,7 @@ function StudentsViewModel(group, sortingBy) {
             }
         });
     }
+
     self.addStudent = function () {
         closeAllEditing();
         mapStudent(new StudentModel(), self.studentForCreate());
@@ -196,10 +181,6 @@ function StudentsViewModel(group, sortingBy) {
                     }
                 }
             }
-
-
-
-
             closeAllEditing();
             self.students.splice(0, 0, newStudent);
             self.addStudent();
