@@ -20,6 +20,10 @@ namespace TestFactory.App_Start
                .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper
+              .CreateMap<Subject, SubjectViewModel>()
+              .IncludeBase<BaseModel, BaseViewModel>();
+
+            Mapper
                 .CreateMap<Student, StudentViewModel>()
                 .IncludeBase<BaseModel, BaseViewModel>();
 
@@ -56,6 +60,9 @@ namespace TestFactory.App_Start
             Mapper.CreateMap<FrequencyMarkForFacultyByCategoryViewModel, FrequencyMarkForFacultyByCategory>();
 
             Mapper.CreateMap<CategoryWebModel, Category>()
+                .IncludeBase<BaseViewModel, BaseModel>();
+
+            Mapper.CreateMap<SubjectViewModel, Subject>()
                 .IncludeBase<BaseViewModel, BaseModel>();
 
             Mapper.CreateMap<MarkWebModel, Mark>()
