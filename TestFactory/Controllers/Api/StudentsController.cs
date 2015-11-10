@@ -18,9 +18,13 @@ namespace TestFactory.Controllers.Api
     public class StudentsController : ApiController
     {
         private readonly StudentManager studentManager;
+
         private readonly StudentWithGroupManager studentWithGroupManager;
+
         private readonly GroupManager groupManager;
+
         private readonly MarkManager markManager;
+
         private UserContext user;
 
         public StudentsController(StudentWithGroupManager studentWithGroupManager, StudentManager studentManager, GroupManager groupManager, MarkManager markManager)
@@ -73,7 +77,7 @@ namespace TestFactory.Controllers.Api
             if (!User.IsInRole("Filler"))
                 return BadRequest("error");
 
-            if (user.User.Faculty != groupManager.GetById(student.GroupId).Faculty)
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
                 return BadRequest();
 
             Student model = Mapper.Map<Student>(student);
@@ -95,7 +99,7 @@ namespace TestFactory.Controllers.Api
             if (!User.IsInRole("Filler"))
                 return BadRequest("error");
 
-            if (user.User.Faculty != groupManager.GetById(student.GroupId).Faculty)
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
                 return BadRequest();
 
             var model = Mapper.Map<Student>(student);
@@ -111,12 +115,10 @@ namespace TestFactory.Controllers.Api
             if (!User.IsInRole("Filler"))
                 return BadRequest("error");
 
-            if (user.User.Faculty != groupManager.GetById(student.GroupId).Faculty)
-                return BadRequest();
-
-            var model = Mapper.Map<Student>(student);
-            markManager.DeleteByStudentId(student.Id);
-            studentManager.Delete(model.Id);
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+                return BadRequest();         
+     
+            studentManager.Delete(student.Id);
             return Ok();
         }
     }

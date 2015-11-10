@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Models;
+using System.Linq;
 
 namespace TestFactory.Business.Components.Managers
 {
@@ -15,16 +16,9 @@ namespace TestFactory.Business.Components.Managers
 
         public bool HasAccessToGroup(string faculty, string groupId)
         {
-            var ListGroup = GetListForFaculty(faculty);
+           var ListGroups = GetListForFaculty(faculty);
 
-            foreach (var item in ListGroup)
-            {
-                if (item.Id == groupId)
-                {
-                    return true;
-                }
-            }
-            return false;
+           return ListGroups.Any(x => x.Id == groupId) != null ? true : false;
         }
 
         public bool GroupIsAlreadyExist(string shortName) 

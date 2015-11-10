@@ -97,7 +97,6 @@ namespace TestFactory.Controllers
         public JsonResult Delete(string studentId)
         {
             var student = studentManager.GetById(studentId);
-            var group = groupManager.GetById(student.GroupId);
 
             if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
                 throw new HttpException(403, GlobalRes_ua.error_403);
