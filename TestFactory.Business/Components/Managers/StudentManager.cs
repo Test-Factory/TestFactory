@@ -23,17 +23,7 @@ namespace TestFactory.Business.Components.Managers
                 return Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "App_Data", CultureInfo.CurrentCulture.ToString(), "lucene_index");
             }
         }
-
-        public void DeleteByGroupId(string id)
-        {
-            var groupForUserList = provider.GetByGroupId(id);
-            
-            foreach (var el in groupForUserList)
-            {
-                provider.Delete(el.Id);
-            }
-        }
-
+  
         public void AddLuceneIndex(IList<Student> students = null)
         {
             if (students == null)

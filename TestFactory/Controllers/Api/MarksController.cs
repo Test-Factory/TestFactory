@@ -16,9 +16,13 @@ namespace TestFactory.Controllers.Api
     public class MarksController: ApiController
     {
         private readonly MarkManager markManager;
+
         private readonly CategoryManager categoryManager;
+
         private readonly AverageMarkForFacultyManager averageMarkForFacultyManager;
+
         private readonly FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager;
+
         private UserContext user;
 
         public MarksController(MarkManager markManager, AverageMarkForFacultyManager averageMarkForFacultyManager, CategoryManager categoryManager, FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager)
@@ -44,11 +48,15 @@ namespace TestFactory.Controllers.Api
         {
             var categories = categoryManager.GetList().ToList();
             var standardDeviationMarks = new ArrayList();
-            var frequencyMarksForCategory = frequencyMarkForFacultyByCategoryManager.GetMarksForFaculty(user.User.Faculty).OrderBy(f => f.CategoryId).ToList(); 
+            var frequencyMarksForCategory = frequencyMarkForFacultyByCategoryManager
+                                            .GetMarksForFaculty(user.User.Faculty)
+                                            .OrderBy(f => f.CategoryId).ToList(); 
+
             foreach (var c in categories)
             {
                 var count = markManager.CountMarksForCategory(c.Id);
-                var sd = this.GetStandardDeviationMarkByCategoryId(frequencyMarksForCategory.Where(f => f.CategoryId == c.Id), count);
+                var sd = this.GetStandardDeviationMarkByCategoryId(frequencyMarksForCategory
+                          .Where(f => f.CategoryId == c.Id), count);
                 standardDeviationMarks.Add(Math.Round(sd,2));
             }
             return standardDeviationMarks;

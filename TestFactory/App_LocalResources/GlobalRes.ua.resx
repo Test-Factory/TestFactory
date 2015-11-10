@@ -222,4 +222,7 @@
   <data name="standardDeviationMarks" xml:space="preserve">
     <value>Середнє квадратичне відхилення</value>
   </data>
+  <data name="invalidData" xml:space="preserve">
+    <value>Введені дані некоректні</value>
+  </data>
 </root>

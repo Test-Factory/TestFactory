@@ -12,8 +12,11 @@ namespace TestFactory.Controllers
     public class GroupController : Controller
     {
         private readonly GroupManager groupManager;
+
         private readonly UserManager userManager;
+
         private UserContext user;
+
         private StudentManager studentManager;
 
         public GroupController(GroupManager groupManager, StudentManager studentManager, UserManager userManager)
@@ -56,7 +59,9 @@ namespace TestFactory.Controllers
         public ActionResult Create(GroupViewModel group)
         {
             group.Faculty = user.User.Faculty;
+
             var model = AutoMapper.Mapper.Map<Group>(group);
+
             if (groupManager.GroupIsAlreadyExist(model.ShortName))
             {
                 throw new HttpException(403, GlobalRes_ua.forbidenAction);
@@ -66,6 +71,7 @@ namespace TestFactory.Controllers
             {
                 return RedirectToRoute("Default");
             }
+
             groupManager.Create(model);
 
             return RedirectToRoute("groupStudentList", new { groupId = group.Id });
@@ -104,12 +110,11 @@ namespace TestFactory.Controllers
                 return Json(false);
             }
 
-            if (user.User.Faculty != groupManager.GetById(id).Faculty)
+            if (!groupManager.HasAccessToGroup(user.User.Faculty, id))
             { 
                 return Json("error");
             }
 
-            studentManager.DeleteByGroupId(id);
             groupManager.Delete(id);
             return Json(true);
         }

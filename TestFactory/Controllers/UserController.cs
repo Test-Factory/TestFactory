@@ -2,6 +2,7 @@
 using TestFactory.MVC.ViewModels;
 using TestFactory.Business.Components.Managers;
 using System.Web.Security;
+using Embedded_Resource;
 
 namespace TestFactory.Controllers
 {
@@ -34,7 +35,7 @@ namespace TestFactory.Controllers
 
             if (!userManager.IsRoleAssigned(user.Email, user.Password))
             {
-                ModelState.AddModelError("Email", "Введені дані не коректні");
+                ModelState.AddModelError("Email", GlobalRes_ua.invalidData);
             }
             else 
             {
@@ -43,11 +44,8 @@ namespace TestFactory.Controllers
                 if (User.IsInRole("Filler"))
                 {
                     return RedirectToRoute("Default");
-                }
-                if (User.IsInRole("Editor"))
-                {
-                    return RedirectToRoute("studentListAll");
-                }
+                }             
+                return RedirectToRoute("studentListAll");
             }
             return View(user);
         }

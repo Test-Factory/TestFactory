@@ -14,11 +14,13 @@ namespace TestFactory.Controllers.Api
     {
         private readonly GroupManager groupManager;
         private UserContext user;
+
         public GroupsController( GroupManager groupManager)
         {
             this.groupManager = groupManager;
             this.user = new UserContext();
         }
+
         [HttpGet]
         public GroupViewModel Get([FromUri]string groupId)
         {
@@ -26,7 +28,9 @@ namespace TestFactory.Controllers.Api
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
+
             Group group = groupManager.GetById(groupId);
+
             if (group == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -34,6 +38,7 @@ namespace TestFactory.Controllers.Api
             var result = Mapper.Map<GroupViewModel>(group);
             return result;
         }
+
         [HttpGet]
         public IEnumerable<GroupViewModel> Get()
         {
