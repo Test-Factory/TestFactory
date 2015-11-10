@@ -71,6 +71,7 @@
     <Compile Include="DataProviders\NHibernateStudentDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateCategoryDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateStudentWithGroupDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateSubjectDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateUserDataProvider.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M013_BackUpLiveDb.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M011_CreateTables.cs" />
