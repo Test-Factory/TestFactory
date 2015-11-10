@@ -10,7 +10,6 @@ using TestFactory.Business.Components;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace TestFactory.Controllers
 {
     public class StudentController : Controller
@@ -21,7 +20,7 @@ namespace TestFactory.Controllers
 
         private readonly CategoryManager categoryManager;
 
-        private UserContext user;
+        private readonly UserContext user;
 
         public StudentController(GroupManager groupManager, StudentManager studentManager, CategoryManager categoryManager)
         {
@@ -61,17 +60,19 @@ namespace TestFactory.Controllers
         public ActionResult Search()
         {
             var groupsForUser = groupManager.GetListForFaculty(user.User.Faculty);
-
             var students = new List<Student>();
+
             foreach(var gr in groupsForUser)
             {
                 var student = studentManager.GetList(gr.Id);
                 students.AddRange(student);
             }
             studentManager.AddLuceneIndex(students);
+
             var viewStudent = AutoMapper.Mapper.Map<List<StudentViewModel>>(students);
             var categories = categoryManager.GetList();
             var group = groupManager.GetList();
+
             var tuple = new Tuple<IList<StudentViewModel>, IList<Category>, IList<Group>>(viewStudent, categories, group);
             return View(tuple);
         }
@@ -86,7 +87,7 @@ namespace TestFactory.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateInput(true)]
-        public ActionResult SearchForStudents(string name)
+        public JsonResult SearchForStudents(string name)
         {
             var list = studentManager.Search(name);
             return Json(list);
@@ -99,7 +100,9 @@ namespace TestFactory.Controllers
             var student = studentManager.GetById(studentId);
 
             if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+            {
                 throw new HttpException(403, GlobalRes_ua.error_403);
+            }
 
             studentManager.Delete(studentId);
             return Json(true);
@@ -109,7 +112,9 @@ namespace TestFactory.Controllers
         public JsonResult Update(StudentViewModel student)
         {
             if (!User.IsInRole("Filler") || !groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+            {
                 return Json(false);
+            }
             var model = Mapper.Map<Student>(student);
             studentManager.Update(model);
             return Json(true);

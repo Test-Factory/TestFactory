@@ -17,7 +17,7 @@ namespace TestFactory.Controllers.Api
 
         private readonly GroupManager groupManager;
 
-        private UserContext user;
+        private readonly UserContext user;
 
         public FileController(CategoryManager categoryManager, StudentManager studentManager,UserManager userManager, GroupManager groupManager)
         {

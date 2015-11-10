@@ -9,6 +9,7 @@ namespace TestFactory.Controllers
     public class UserController : Controller
     {
         UserManager userManager;
+
         RoleManager roleManager;
 
         public UserController(UserManager userManager, RoleManager roleManager)
@@ -40,11 +41,11 @@ namespace TestFactory.Controllers
             else 
             {
                 FormsAuthentication.SetAuthCookie(user.Email, false);
-
                 if (User.IsInRole("Filler"))
                 {
                     return RedirectToRoute("Default");
-                }             
+                }
+     
                 return RedirectToRoute("studentListAll");
             }
             return View(user);
