@@ -129,7 +129,7 @@
     var globalView = null;
     $(document).ready(function () {
         var group = @Html.Raw(Json.Encode(Model));
-        var viewModel = new StudentsViewModel(group);
+        var viewModel = new StudentsViewModel(group, "lastName");
         globalView = viewModel;
         ko.applyBindings(viewModel);
     });

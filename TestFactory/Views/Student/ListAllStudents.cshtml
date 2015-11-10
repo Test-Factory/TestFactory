@@ -88,7 +88,7 @@
     $('.tooltipped').tooltip({ delay: 50 });
     var globalView = null;
     $(document).ready(function () {
-        var viewModel = new StudentsAllViewModel();
+        var viewModel = new StudentsAllViewModel("lastName");
         globalView = viewModel;
         ko.applyBindings(viewModel);
     });
