@@ -94,7 +94,7 @@ submitStudent = function (div, number) {
     var modelIsValid = true;
     var input = $(div).parents('.card-search').find('.search-marks-input');
     for (var i = 0; i < input.length; i++) {
-        if (input.eq(i).val() > 100 || input.eq(i).val() < 0) {
+        if (input.eq(i).val() > 100 || input.eq(i).val() < 0 || input.eq(i).val == '') {
             input.eq(i).css({
                 'border-bottom': '1px solid red !important',
                 'box-shadow': '0 1px 0 0 red !important'
@@ -120,11 +120,11 @@ submitStudent = function (div, number) {
     }
 
     if (modelIsValid) {
-        swapCard(div, 'back');
         $.post('/student/update',
             $(div).parents(".back").serialize(),
             function (data) {
                 if (data) {
+                    swapCard(div, 'back');
                     for (var i = 0; i < $(div).parents('.card-search').find('.mark').length; i++) {
                         $(div).parents('.card-search').find('.mark').eq(i).html($(div).parents('.card-search').find('.search-marks-input').eq(i).val())
                     }

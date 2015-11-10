@@ -1,4 +1,5 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
+
 namespace TestFactory.Business.Models
 {
     public class Mark : BaseModel
