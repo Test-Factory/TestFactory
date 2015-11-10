@@ -8,7 +8,7 @@ namespace TestFactory.Business.DataProviderContracts
 {
     public interface IDataProviderForView <T>
     {
-        IEnumerable<T> GetList();
+        IList<T> GetList();
 
         T GetById(string id);
 

@@ -1,9 +1,8 @@
-﻿function  StudentsAllViewModel(parameters) {
+﻿function  StudentsAllViewModel(sortingBy) {
     var self = this;
 
     var studentProvider = new StudentProvider();
     var markProvider = new MarkProvider();
-    var firstSorting = "lastName";
     var pathForMarProvider= {
         everage: "/average",
         deviation: "/standardDeviation"
@@ -14,7 +13,7 @@
     self.standardDeviation = ko.observableArray();
 
     self.sortDescending = ko.observable(false);
-    self.sortKey = ko.observable(firstSorting);
+    self.sortKey = ko.observable(sortingBy);
     self.preloader = ko.observable(true);
 
     self.sortingByMark = function (key, id, code) {
@@ -98,9 +97,7 @@
             });
         });
         markProvider.get(pathForMarProvider.deviation, function (data) {
-            $(data).each(function (index, element) {
-                //self.standardDeviation[index] = element;
-                //var mappedItem = new AverageMarksForFacultyModel(element);
+            $(data).each(function (index, element) {s
                 self.standardDeviation.push(element);
             });
         });

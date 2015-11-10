@@ -12,16 +12,18 @@
     }
 };
 
-function StudentsViewModel(group) {
+function StudentsViewModel(group, sortingBy) {
 
     var self = this;
     self.group = new GroupModel(group);
+    self.sortDescending = ko.observable(false);
 
     var studentProvider = new StudentProvider(self.group.id);
     var categoryProvider = new CategoryProvider();
 
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
+    self.sortKey = ko.observable(sortingBy);
 
     self.studentForUpdate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForCreate = ko.validatedObservable(new StudentModel(), { deep: true });
@@ -30,12 +32,8 @@ function StudentsViewModel(group) {
     self.mods = {
         display: "display",
         edit: "edit",
-        create: "create",
         deleting: "delete"
     };
-
-    self.sortDescending = ko.observable(false);
-    self.sortKey = ko.observable("lastName");
 
     self.sortingByMark = function (key, id, code) {
         self.sortKey(code());

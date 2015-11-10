@@ -11,11 +11,11 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
 {
     public class NHibernateStudentWithGroupDataProvider: NHibernateDataProviderBaseForView<StudentWithGroup>, IStudentWithGroupDataProvider
     {
-        public IEnumerable<StudentWithGroup> GetByGroupId(string groupId)
+        public IList<StudentWithGroup> GetByGroupId(string groupId)
         {
             return Execute(session =>
             {
-                IEnumerable<StudentWithGroup> students = session
+                IList<StudentWithGroup> students = session
                                      .Query<StudentWithGroup>()
                                      .Where(s => s.GroupId == groupId)
                                      .ToList<StudentWithGroup>();

@@ -36,11 +36,11 @@ namespace TestFactory.Controllers.Api
 
         [HttpGet]
         [Route("average")]
-        public IEnumerable<AverageMarkForFacultyViewModel> GetAverageMarks()
+        public IList<AverageMarkForFacultyViewModel> GetAverageMarks()
         {
            var averageMarks = averageMarkForFacultyManager.GetMarksForFaculty(user.User.Faculty).OrderBy(c=>c.Id);
-            var result = Mapper.Map<IEnumerable<AverageMarkForFacultyViewModel>>(averageMarks);
-            return result;
+           var result = Mapper.Map<IList<AverageMarkForFacultyViewModel>>(averageMarks);
+           return result;
         }
         [HttpGet]
         [Route("standardDeviation")]

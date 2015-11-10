@@ -40,7 +40,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
             }
         }
 
-        public virtual IEnumerable<TEntity> GetList()
+        public virtual IList<TEntity> GetList()
         {
             return Execute(session =>
             {

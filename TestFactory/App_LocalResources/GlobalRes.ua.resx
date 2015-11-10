@@ -222,7 +222,10 @@
   <data name="standardDeviationMarks" xml:space="preserve">
     <value>Середнє квадратичне відхилення</value>
   </data>
-  <data name="invalidData" xml:space="preserve">
-    <value>Введені дані некоректні</value>
+  <data name="averageMarks" xml:space="preserve">
+    <value>Середні оцінки</value>
+  </data>
+  <data name="group" xml:space="preserve">
+    <value>Група</value>
   </data>
 </root>
