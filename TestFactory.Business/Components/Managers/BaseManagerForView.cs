@@ -11,12 +11,13 @@ namespace TestFactory.Business.Components.Managers
         where T: class
         where TProvider: IDataProviderForView<T>
     {
-         protected TProvider provider;
+        protected TProvider provider;
 
         protected BaseManagerForView(TProvider provider)
         {
             this.provider = provider;
         }
+
         public virtual IEnumerable<T> GetList()
         {
            return provider.GetList();

@@ -11,6 +11,5 @@ namespace TestFactory.Business.DataProviderContracts
         IList<T> GetList();
 
         T GetById(string id);
-
     }
 }

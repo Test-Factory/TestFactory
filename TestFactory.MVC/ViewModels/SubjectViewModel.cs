@@ -9,6 +9,7 @@ namespace TestFactory.MVC.ViewModels
     public class SubjectViewModel: BaseViewModel
     {
         public virtual string Name { get; set; }
+
         public virtual string GroupId { get; set; }
     }
 }

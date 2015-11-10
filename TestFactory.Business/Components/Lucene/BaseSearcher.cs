@@ -15,7 +15,6 @@ namespace TestFactory.Business.Components.Lucene
 {
     public class BaseSearcher
     {
-
         protected const int HITS_LIMIT = 1000;
 
         protected string path;

@@ -97,7 +97,7 @@
             });
         });
         markProvider.get(pathForMarProvider.deviation, function (data) {
-            $(data).each(function (index, element) {s
+            $(data).each(function (index, element) {
                 self.standardDeviation.push(element);
             });
         });

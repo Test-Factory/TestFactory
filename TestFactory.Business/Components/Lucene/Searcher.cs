@@ -118,7 +118,9 @@ namespace TestFactory.Business.Components.Lucene
         private IList<T> search(string searchQuery, string searchField = "")
         {
             if (String.IsNullOrEmpty(searchQuery))
+            {
                 return new List<T>();
+            }
             using (var searcher = new IndexSearcher(directory, false))
             {
                 var analyzer = new StandardAnalyzer(Version.LUCENE_30);

@@ -6,7 +6,9 @@ namespace TestFactory.Business.DataProviderContracts
     public interface IMarkDataProvider : IDataProvider<Mark>
     {
         IList<Mark> GetByStudentId(string studentId);
+
         IEnumerable<Mark> GetMarksByCategoryId(string categoryId);
+
         int CountMarksForCategory(string categoryId);
     }
 }

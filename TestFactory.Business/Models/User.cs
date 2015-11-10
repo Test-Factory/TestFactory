@@ -23,8 +23,6 @@ namespace TestFactory.Business.Models
         public User()
         {
             AdminGroup = new List<Group>();
-
-          
         }
     }
 }
