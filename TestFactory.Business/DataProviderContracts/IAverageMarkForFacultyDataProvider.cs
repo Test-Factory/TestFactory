@@ -10,6 +10,6 @@ namespace TestFactory.Business.DataProviderContracts
 {
     public interface IAverageMarkForFacultyDataProvider: IDataProviderForView<AverageMarkForFaculty>
     {
-        IEnumerable<AverageMarkForFaculty> GetMarksForFaculty(string id);
+        IList<AverageMarkForFaculty> GetMarksForFaculty(string id);
     }
 }

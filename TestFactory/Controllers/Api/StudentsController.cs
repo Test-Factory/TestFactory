@@ -33,7 +33,7 @@ namespace TestFactory.Controllers.Api
         }
 
         [HttpGet]
-        public IEnumerable<StudentWithGroupViewModel> Get()
+        public IList<StudentWithGroupViewModel> Get()
         {
             var students = new List<StudentWithGroup>();
             var groupsForFaculty = groupManager.GetListForFaculty(user.User.Faculty);
@@ -42,13 +42,13 @@ namespace TestFactory.Controllers.Api
                 var student = studentWithGroupManager.GetByGroupId(g.Id);
                 students.AddRange(student);
             }
-            IEnumerable<StudentWithGroup> sortedStudents = students.OrderBy(s => s.LastName).ToList();
-            var result = Mapper.Map<IEnumerable<StudentWithGroupViewModel>>(sortedStudents);
+            IList<StudentWithGroup> sortedStudents = students.OrderBy(s => s.LastName).ToList();
+            var result = Mapper.Map<IList<StudentWithGroupViewModel>>(sortedStudents);
             return result;
         }
 
         [HttpGet]
-        public IEnumerable<StudentViewModel> Get([FromUri]string groupId)
+        public IList<StudentViewModel> Get([FromUri]string groupId)
         {
             IEnumerable<Student> students;
             if (string.IsNullOrEmpty(groupId))
@@ -62,7 +62,7 @@ namespace TestFactory.Controllers.Api
             }
 
             students = studentManager.GetList(groupId).OrderBy(s => s.LastName);
-            var result = Mapper.Map<IEnumerable<StudentViewModel>>(students);
+            var result = Mapper.Map<IList<StudentViewModel>>(students);
             return result;
         }
 

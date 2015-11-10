@@ -9,6 +9,6 @@ namespace TestFactory.Business.DataProviderContracts
 {
     public interface IStudentWithGroupDataProvider: IDataProviderForView<StudentWithGroup>
     {
-        IEnumerable<StudentWithGroup> GetByGroupId(string groupId);
+        IList<StudentWithGroup> GetByGroupId(string groupId);
     }
 }
