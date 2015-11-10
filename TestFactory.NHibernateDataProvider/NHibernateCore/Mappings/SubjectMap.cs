@@ -14,7 +14,9 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
         public SubjectMap()
         {
             Id(x => x.Id);
+
             Map(x => x.Name);
+
             Map(x => x.GroupId);
         }
     }

@@ -18,11 +18,13 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.CountMarksForCategory(categoryId);
         }
+
         public IEnumerable<Mark> GetMarksByCategoryId(string categoryId)
         {
             return provider.GetMarksByCategoryId(categoryId);
         }
-        public void DeleteByStudentId(string studentId) 
+
+        public void DeleteByStudentId(string studentId)
         {
             IList<Mark> studentMarks = provider.GetByStudentId(studentId);
             foreach (var el in studentMarks)

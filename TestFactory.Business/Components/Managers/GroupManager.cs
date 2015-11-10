@@ -17,7 +17,6 @@ namespace TestFactory.Business.Components.Managers
         public bool HasAccessToGroup(string faculty, string groupId)
         {
            var ListGroups = GetListForFaculty(faculty);
-
            return ListGroups.Any(x => x.Id == groupId) != null ? true : false;
         }
 

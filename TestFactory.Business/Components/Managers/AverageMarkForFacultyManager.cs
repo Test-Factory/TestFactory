@@ -11,6 +11,7 @@ namespace TestFactory.Business.Components.Managers
     public class AverageMarkForFacultyManager: BaseManagerForView<AverageMarkForFaculty, IAverageMarkForFacultyDataProvider>
     {
         public AverageMarkForFacultyManager(IAverageMarkForFacultyDataProvider provider) : base(provider) { }
+
         public IEnumerable<AverageMarkForFaculty> GetMarksForFaculty(string id)
         {
             return provider.GetMarksForFaculty(id);

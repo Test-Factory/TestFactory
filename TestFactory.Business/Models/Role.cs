@@ -1,5 +1,4 @@
 ﻿
-
 namespace TestFactory.Business.Models
 {
     public class Role : BaseModel

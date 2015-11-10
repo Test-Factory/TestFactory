@@ -22,7 +22,6 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                                      .ToList<AverageMarkForFaculty>();
                 return averageMarks;
             });
-            return null;
         }
     }
 }

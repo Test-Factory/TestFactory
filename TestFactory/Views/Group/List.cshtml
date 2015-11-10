@@ -1,10 +1,7 @@
 ﻿@model List<GroupViewModel>
-    @using TestFactory.Business.Components.Managers;
-               @using TestFactory.Business.Models;
-               @using TestFactory.MVC.ViewModels;
-               @using TestFactory.Business.Components;
-    @using Embedded_Resource
-   @if (User.IsInRole("Filler")) { 
+ 
+   @if (User.IsInRole("Filler")) 
+   { 
     <div id="forCreate">
         <a class="waves-effect waves-light btn-large" href="#" id="addGroup">
             <i id="addIcon" class="large material-icons left">note_add</i>
@@ -25,21 +22,21 @@
                             <div class="deleteContainer" onclick="Delete($(this), '@item.Id')">
                                 <i class="large material-icons deleteGroup">delete</i>
                             </div>  
-                                }
+                             }
                             <a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = item.Id }, null)">
-                                <p id="textLik">@item.ShortName</p>                               
+                                <p class="textLik">@item.ShortName</p>                               
                                 @{Html.RenderAction("GetStudentCount", "Group", new { id = item.Id });}
-                                <p id="year">@item.Year</p>
+                                <p class="year">@item.Year</p>
                             </a>
                         </div>
-                        <div class="card-action actions updateGroup">
-                            @if (User.IsInRole("Editor"))
-                            {
-                                <a class="waves-effect waves-light btn donwloadStudent" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)" style="width:95%;">@GlobalRes_ua.download</a>
-                            }
-                                @if (User.IsInRole("Filler"))
-                            {    
-                            <a class="waves-effect waves-light btn donwloadStudent" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)">@GlobalRes_ua.download</a>                                              
+                        <div class="card-action actions updateGroup">                        
+                                    @if (User.IsInRole("Editor"))
+                                    {
+                                        <a class="waves-effect waves-light btn donwloadStudentForEditor" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)">@GlobalRes_ua.download</a>
+                                    }                                      
+                                    @if (User.IsInRole("Filler"))
+                            {   
+                               <a class="waves-effect waves-light btn donwloadStudent" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)">@GlobalRes_ua.download</a>
                                     <div class="groupUpdate">
                                         <a class="toEdit waves-effect waves-light btn group-update">@GlobalRes_ua.edit</a>
                                     </div>
@@ -56,15 +53,10 @@
         </div>
     }
     <div id="delete-group" title="@GlobalRes_ua.delete">
-                        <p>@GlobalRes_ua.conformationOnDeleteGroup</p>
-                    </div>
+         <p>@GlobalRes_ua.conformationOnDeleteGroup</p>
+    </div>
     <div id="createGroup">
         <div id="create">
             @Html.Partial("Create", new GroupViewModel())
         </div>
     </div>
-    @Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
-@section Scripts{
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
-        @Scripts.Render("~/Scripts/Index.js")
-    }

@@ -14,13 +14,6 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
     {
         public IList<FrequencyMarkForFacultyByCategory> GetMarksForFaculty(string faculty)
         {
-            //return Execute(session =>
-            //{
-                //IEnumerable<FrequencyMarkForFacultyByCategory> frequencyMarks = session
-                //                     .Query<FrequencyMarkForFacultyByCategory>()
-                //                     .Where(f => f.Faculty == faculty)
-                //                     .ToList<FrequencyMarkForFacultyByCategory>();
-                //return frequencyMarks;
             return Execute(session =>
             {
                 return session
@@ -28,7 +21,6 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                     .Add(Restrictions.Eq("Faculty", faculty))
                     .List<FrequencyMarkForFacultyByCategory>();
             });
-           // });
         }
     }
 }

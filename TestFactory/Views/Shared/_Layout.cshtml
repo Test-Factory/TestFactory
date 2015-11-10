@@ -9,11 +9,9 @@
         @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/materialize/css/materialize.min.css")
         @Styles.Render("~/Content/Site.css")
-        <title>@ViewBag.Title</title>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
     </head>
     <body>
@@ -60,7 +58,9 @@
         @Scripts.Render("~/bundles/knockout")
         @Scripts.Render("~/bundles/app")
         @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/Scripts/Index.js")
         @RenderSection("scripts", required: false)
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>    
         <script>
         $(document).ready(function () {
         if (!navigator.cookieEnabled) {

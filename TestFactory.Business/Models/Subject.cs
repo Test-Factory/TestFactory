@@ -9,6 +9,7 @@ namespace TestFactory.Business.Models
     public class Subject  : BaseModel
     {
         public virtual string Name { get; set; }
+
         public virtual string GroupId { get; set; }
     }
 }

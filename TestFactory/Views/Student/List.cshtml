@@ -1,5 +1,4 @@
 ﻿@model TestFactory.MVC.ViewModels.GroupViewModel
-@using Embedded_Resource
 @Styles.Render("~/Students/css")
 <div>
     <form>
@@ -120,12 +119,8 @@
     </form>
 
 </div>
-@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
-@Scripts.Render("~/Scripts/Index.js")
 @section Scripts{
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 <script>
-
     var globalView = null;
     $(document).ready(function () {
         var group = @Html.Raw(Json.Encode(Model));

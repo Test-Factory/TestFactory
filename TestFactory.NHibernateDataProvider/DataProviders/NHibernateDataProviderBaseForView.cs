@@ -48,6 +48,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                 return listTEntity;
             });
         }
+
         public virtual TEntity GetById(string id)
         {
             return Execute(session =>
