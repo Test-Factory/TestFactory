@@ -9,6 +9,7 @@ namespace TestFactory.Business.Components
         private static Random random = new Random();
         private const int MinSaltSize = 4;
         private const int MaxSaltSize = 8;
+        private const int MaxLengthSalt = 32;
 
         public static string ComputeHash(string plainText, string saltValue)
         {
@@ -62,8 +63,7 @@ namespace TestFactory.Business.Components
         public static string GenarateSalt()
         {
             var random = new RNGCryptoServiceProvider();
-            int max_length = 32;
-            byte[] salt = new byte[max_length];
+            byte[] salt = new byte[MaxLengthSalt];
             random.GetNonZeroBytes(salt);
 
             return Convert.ToBase64String(salt);
