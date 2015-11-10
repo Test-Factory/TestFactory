@@ -17,20 +17,14 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
             }
         }
 
-        public bool IsUserInRole(string username, string rolename)
+        public bool IsUserInRole(string username, string roleName)
         {
             using (ISession session = SessionHelper.OpenSession())
             {
                 var usr = session.CreateCriteria(typeof(User))
                                 .Add(NHibernate.Criterion.Restrictions.Eq("Roles", username))
                                 .UniqueResult<User>();
-
-                    if (usr.Roles.Name.Equals(rolename))
-                    {
-                        return true;
-                    }
-
-                return false;
+                return usr.Roles.Name.Equals(roleName);
             }
         }
     }

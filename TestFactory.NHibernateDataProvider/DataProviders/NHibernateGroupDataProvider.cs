@@ -29,6 +29,7 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                     .UniqueResult<Group>();
             });
         }
+
         public IList<Group> GetListForFaculty(string faculty)
         {
             return Execute(session =>

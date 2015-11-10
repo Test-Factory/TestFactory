@@ -39,6 +39,7 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning
                 runner.MigrateUp(true);
             }
         }
+
         public void MigrateDown(long targetVersion)
         {     
             var announcer = new TextWriterAnnouncer(s => Debug.WriteLine(s));
