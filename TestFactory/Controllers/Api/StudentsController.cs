@@ -83,6 +83,10 @@ namespace TestFactory.Controllers.Api
                 return BadRequest();
             }
 
+            var currentGroup = groupManager.GetById(student.GroupId);
+
+            student.Year = currentGroup.Year;
+
             Student model = Mapper.Map<Student>(student);
             model.Id = Guid.NewGuid().ToString();
             for (int i = 0; i < model.Marks.Count; i++)

@@ -401,5 +401,14 @@ namespace Embedded_Resource {
                 return ResourceManager.GetString("testHolland", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Рік початку навчання.
+        /// </summary>
+        public static string yearOfStartingEducation {
+            get {
+                return ResourceManager.GetString("yearOfStartingEducation", resourceCulture);
+            }
+        }
     }
 }

@@ -16,6 +16,8 @@ namespace TestFactory.Business.Models
 
         public virtual IList<Mark> Marks { get; set; }
 
+        public virtual int Year { get; set; }
+
         public Student()
         {
             Marks = new List<Mark>();
