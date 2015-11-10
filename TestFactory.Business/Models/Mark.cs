@@ -8,6 +8,7 @@ namespace TestFactory.Business.Models
 
         public virtual string CategoryId { get; set; }
 
+        [Required]
         public virtual int Value { get; set; }
     }
 }
