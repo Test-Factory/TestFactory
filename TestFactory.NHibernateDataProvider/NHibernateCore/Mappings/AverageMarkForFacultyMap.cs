@@ -14,6 +14,8 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
     {
         public AverageMarkForFacultyMap()
         {
+            ReadOnly();
+
             Map(x => x.Faculty);
 
             Map(x => x.Code);
