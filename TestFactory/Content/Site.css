@@ -383,6 +383,7 @@ p.countUsers {
     position: relative;
     text-align: right;
     top: -4px;
+    left: 14px;
 }
 
 @media screen and (max-width: 560px) {
@@ -613,5 +614,25 @@ p.countUsers {
 }
 a.toDetails:hover {
     color:#26A69A;
-   
+}
+.borderTable {
+    border-top: solid 1px;
+    padding: 10px;
+}
+.borderLeftTable {
+    border-left: solid 1px;
+    border-top: solid 1px;
+    padding: 10px;
+}
+.forPerson {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: -22px;
+    left: -26px;
+    float: right;
+}
+i.person {
+    font-size: 1.5rem;
+    color: #A9A9A9 !important;
 }
