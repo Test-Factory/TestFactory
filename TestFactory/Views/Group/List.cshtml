@@ -26,7 +26,7 @@
                             <a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = item.Id }, null)">
                                 <p class="textLik">@item.ShortName</p>
                                 <div class="forPerson">
-                                   <i class="large material-icons person">perm_identity</i>
+                                   <i class="large material-icons person">group</i>
                                 </div>                               
                                 @{Html.RenderAction("GetStudentCount", "Group", new { id = item.Id });}
                                 <p class="year">@item.Year</p>
