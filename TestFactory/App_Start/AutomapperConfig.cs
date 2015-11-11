@@ -37,11 +37,11 @@ namespace TestFactory.App_Start
               .CreateMap<FrequencyMarkForFacultyByCategory, FrequencyMarkForFacultyByCategoryViewModel>();
 
             Mapper
-                .CreateMap<Category, CategoryWebModel>()
+                .CreateMap<Category, CategoryViewModel>()
                 .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper
-               .CreateMap<Mark, MarkWebModel>()
+               .CreateMap<Mark, MarkViewModel>()
                .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper.CreateMap<Group, GroupViewModel>()
@@ -59,13 +59,13 @@ namespace TestFactory.App_Start
 
             Mapper.CreateMap<FrequencyMarkForFacultyByCategoryViewModel, FrequencyMarkForFacultyByCategory>();
 
-            Mapper.CreateMap<CategoryWebModel, Category>()
+            Mapper.CreateMap<CategoryViewModel, Category>()
                 .IncludeBase<BaseViewModel, BaseModel>();
 
             Mapper.CreateMap<SubjectViewModel, Subject>()
                 .IncludeBase<BaseViewModel, BaseModel>();
 
-            Mapper.CreateMap<MarkWebModel, Mark>()
+            Mapper.CreateMap<MarkViewModel, Mark>()
                .IncludeBase<BaseViewModel, BaseModel>();
 
             Mapper.CreateMap<GroupViewModel, Group>()

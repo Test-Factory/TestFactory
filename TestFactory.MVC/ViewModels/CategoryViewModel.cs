@@ -1,7 +1,7 @@
 ﻿
 namespace TestFactory.MVC.ViewModels
 {
-    public class CategoryWebModel   : BaseViewModel
+    public class CategoryViewModel   : BaseViewModel
     {
         public virtual string Name { get; set; }
 

@@ -7,6 +7,7 @@ namespace TestFactory.MVC.ViewModels
     public class StudentViewModel : BaseViewModel
     {
         [Required]
+        [ScaffoldColumn(false)]
         [DataType(DataType.Text)]
         [StringLength(255)]
         public virtual string FirstName { get; set; }
@@ -17,6 +18,7 @@ namespace TestFactory.MVC.ViewModels
         public virtual string LastName { get; set; }
 
         [Required]
+        [ScaffoldColumn(false)]
         public virtual string GroupId { get; set; }
 
         [ScaffoldColumn(false)]

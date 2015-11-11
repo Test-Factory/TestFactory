@@ -2,12 +2,14 @@
 
 namespace TestFactory.MVC.ViewModels
 {
-    public class MarkWebModel : BaseViewModel
+    public class MarkViewModel : BaseViewModel
     {
         [Required]
+        [ScaffoldColumn(false)]
         public virtual string StudentId { get; set; }
 
         [Required]
+        [ScaffoldColumn(false)]
         public virtual string CategoryId { get; set; }
 
         [Required]
