@@ -24,6 +24,7 @@ function StudentsViewModel(group, sortingBy) {
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
     self.sortKey = ko.observable(sortingBy);
+    self.preloader = ko.observable(true);
 
     self.studentForUpdate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForCreate = ko.validatedObservable(new StudentModel(), { deep: true });
@@ -176,7 +177,7 @@ function StudentsViewModel(group, sortingBy) {
                 sortStudentMarksByCategoryIdDesc(mappedStudent);
                 self.students.push(mappedStudent);
             });
-
+            self.preloader(false);
         });
         self.sortingByName("lastName");
     }

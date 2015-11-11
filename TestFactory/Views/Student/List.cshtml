@@ -8,10 +8,10 @@
                 <tr class="noselect">
                     <th class="last-name">
                         <div class="triangle-wrapper">
-                        <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
-                        <!-- ko if: $root.sortKey() == "lastName" -->
-                        <div data-bind="css: selectedClassForSortedField"></div>
-                        <!-- /ko -->
+                            <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
+                            <!-- ko if: $root.sortKey() == "lastName" -->
+                            <div data-bind="css: selectedClassForSortedField"></div>
+                            <!-- /ko -->
                         </div>
                     </th>
                     <th class="first-name">
@@ -31,34 +31,43 @@
                 </tr>
                 @if (User.IsInRole("Filler"))
                 { 
-                <tr>
-                    <td class="last-name">
-                        <input type="text"
-                               data-position="bottom"
-                               data-bind="textInput: $root.studentForCreate().lastName,  tooltip: { message: $root.studentForCreate().lastName.error }"
-                               maxlength = "69"
-                               placeholder="@GlobalRes_ua.surname" />
-                    </td>
-                    <td class="first-name">
-                        <input type="text"
-                               data-position="bottom"
-                               data-bind="textInput: $root.studentForCreate().firstName, tooltip: { message: $root.studentForCreate().firstName.error }"
-                               maxlength="69"
-                               placeholder="@GlobalRes_ua.name" />
-                    </td>
-                    <!-- ko foreach: $root.studentForCreate().marks -->
-                    <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
-                    <!-- /ko -->
-                    <td colspan="3" class="screenMediaAbove ">
-                        <button class="btn btn-success  " data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
-                    </td>
-                    <td colspan="3" class="screenMediaBelow ">
-                        <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
+                    <tr>
+                        <td class="last-name">
+                            <input type="text"
+                                   data-position="bottom"
+                                   data-bind="textInput: $root.studentForCreate().lastName,  tooltip: { message: $root.studentForCreate().lastName.error }"
+                                   maxlength = "69"
+                                   placeholder="@GlobalRes_ua.surname" />
+                        </td>
+                        <td class="first-name">
+                            <input type="text"
+                                   data-position="bottom"
+                                   data-bind="textInput: $root.studentForCreate().firstName, tooltip: { message: $root.studentForCreate().firstName.error }"
+                                   maxlength="69"
+                                   placeholder="@GlobalRes_ua.name" />
+                        </td>
+                        <!-- ko foreach: $root.studentForCreate().marks -->
+                        <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
+                        <!-- /ko -->
+                        <td colspan="3" class="screenMediaAbove ">
+                            <button class="btn btn-success  " data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
+                        </td>
+                        <td colspan="3" class="screenMediaBelow ">
+                            <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 }
             </thead>
+            <tr>
+                <td colspan="9">
+                    <!-- ko if: $root.preloader() -->
+                    <div class="progress ">
+                        <div class="indeterminate"></div>
+                    </div>
+                    <!-- /ko -->
+                </td>
+            </tr>
             <tbody data-bind="foreach: students">
                 <!-- ko if: mode() == $root.mods.display -->
                 <tr>
