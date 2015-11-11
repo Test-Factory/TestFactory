@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace TestFactory.MVC.ViewModels
 {
     public class StudentWithGroupViewModel
     {
+        [ScaffoldColumn(false)]
         public virtual string Id { get; set; }
 
         public virtual string FirstName { get; set; }
@@ -17,6 +19,7 @@ namespace TestFactory.MVC.ViewModels
 
         public virtual string ShortName { get; set; }
 
+        [ScaffoldColumn(false)]
         public virtual string GroupId { get; set; }
 
         public virtual IList<Mark> Marks { get; set; }
