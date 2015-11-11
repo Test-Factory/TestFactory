@@ -234,4 +234,28 @@
   <data name="yearOfStartingEducation" xml:space="preserve">
     <value>Рік початку навчання</value>
   </data>
+  <data name="appriciate" xml:space="preserve">
+    <value>цінують</value>
+  </data>
+  <data name="closeTypes" xml:space="preserve">
+    <value>Близькі типи</value>
+  </data>
+  <data name="detailedDescription" xml:space="preserve">
+    <value>Детальний опис</value>
+  </data>
+  <data name="like" xml:space="preserve">
+    <value>подобається</value>
+  </data>
+  <data name="mainFeatures" xml:space="preserve">
+    <value>Характерні особливості</value>
+  </data>
+  <data name="oppositeType" xml:space="preserve">
+    <value>Протилежний тип</value>
+  </data>
+  <data name="peopleOfSuchType" xml:space="preserve">
+    <value>Людям типу</value>
+  </data>
+  <data name="preferredOccupation" xml:space="preserve">
+    <value>Надається перевага професії</value>
+  </data>
 </root>

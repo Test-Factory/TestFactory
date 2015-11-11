@@ -1,7 +1,9 @@
 ﻿@model Tuple<IList<TestFactory.Business.Models.Student>, IList<TestFactory.Business.Models.Category>, TestFactory.Business.Models.Group>
+@using Embedded_Resource
 @{
     Layout = null;
 }
+    
 
 <!DOCTYPE html>
 
@@ -76,66 +78,63 @@
                                 <h3 style="text-align: center">@typ</h3>
                                 if (mark.Value == maxi)
                                 {
-                                    <div><strong>Близькі типи:</strong>  @type.ACloseTypes</div>
-                                    <div><strong>Протилежний тип:</strong> @type.OppositeType.</div>
+                                    <div><strong>@GlobalRes_ua.closeTypes:</strong>  @type.ACloseTypes</div>
+                                    <div><strong>@GlobalRes_ua.oppositeType:</strong> @type.OppositeType.</div>
                                 }
                                 <div>
-                                     <strong>Характерні особливості:</strong>
+                                     <strong>@GlobalRes_ua.mainFeatures:</strong>
                                     <ul>
-                                     @{
-                                string[] spl = type.Features.Split(new Char[] { ';' });
+                                @{
+                                        string[] spl = type.Features.Split(new Char[] { ';' });
 
-                                for (int i = 0; i < spl.Length; i++)
-                                {
-                                                        <li>@spl[i]</li>
+                                        for (int i = 0; i < spl.Length; i++)
+                                        {
+                                            <li>@spl[i]</li>
+                                        }
                                 }
-                                     }
                                     </ul>
                                 </div>
                                 <div>
-                                    <strong>Надається перевага професії</strong>
+                                    <strong>@GlobalRes_ua.preferredOccupation</strong>
                                     @type.PreferredAreasOfActivity
                                 </div>
                                 if (mark.Value == maxi)
                                 {
-                                        <div>
-                                        <strong>Детальний опис</strong>
-                                        @type.Details
-
-                                        </div>
-                    
+                                <div>
+                                      <strong>@GlobalRes_ua.detailedDescription</strong>
+                                      @type.Details
+                                </div>
                                     <table class="striped" style="width: 600px;">
                                         <thead>
                                           <tr>
-                                              <th data-field="id" style="text-align: center;">Людям типу "@type.Name" подобається</th>
-                                              <th style="border-left: solid 1px; text-align: center;" data-field="name">Люди типу "@type.Name" цінують</th>
+                                              <th data-field="id" style="text-align: center;">@GlobalRes_ua.peopleOfSuchType "@type.Name" @GlobalRes_ua.like</th>
+                                              <th style="border-left: solid 1px; text-align: center;" data-field="name">@GlobalRes_ua.peopleOfSuchType "@type.Name" @GlobalRes_ua.appriciate</th>
                                           </tr>
                                         </thead>
-
                                         <tbody>
                                           <tr>
                                             <td class="borderTable">
                                                 <ul>
-                                                         @{
-                                    string[] splLike = type.Likes.Split(new Char[] { ';' });
+                                        @{
+                                            string[] splLike = type.Likes.Split(new Char[] { ';' });
 
-                                    for (int i = 0; i < splLike.Length; i++)
-                                    {
-                                                                    <li>@splLike[i]</li>
-                                    }
-                                                         }
+                                            for (int i = 0; i < splLike.Length; i++)
+                                            {
+                                                 <li>@splLike[i]</li>
+                                            }
+                                        }
                                                 </ul>
                                             </td>
                                             <td class="borderLeftTable">
                                                 <ul>
-                                                    @{
-                                    string[] splAppreciate = type.Appreciate.Split(new Char[] { ';' });
+                                        @{
+                                            string[] splAppreciate = type.Appreciate.Split(new Char[] { ';' });
 
-                                    for (int i = 0; i < splAppreciate.Length; i++)
-                                    {
-                                                                            <li>@splAppreciate[i]</li>
-                                    }
-                                                    }
+                                            for (int i = 0; i < splAppreciate.Length; i++)
+                                            {
+                                                  <li>@splAppreciate[i]</li>
+                                            }
+                                        }
                                                 </ul>
                                             </td>
                                           </tr>
