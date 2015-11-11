@@ -111,6 +111,19 @@ namespace TestFactory
 
             #endregion
 
+            #region Subject map routes
+            routes.MapRoute(
+              name : "subjectList",
+              url : "subjects",  // TODO: group/{groupId}/subjects
+              defaults : new { controller = "Subject", action = "List" }
+            );
+
+            routes.MapRoute(
+              name : "subjectCreate",
+              url : "subject/create",
+              defaults : new { controller = "Subject", action = "Create" }
+         );
+
             #region Chart map routes
             routes.MapRoute(
                 name: "GenerateChart",
@@ -140,6 +153,10 @@ namespace TestFactory
                url: "group/{groupId}/{Id}",
                defaults: new { controller = "File", action = "GetReport", groupId = UrlParameter.Optional, Id = UrlParameter.Optional }
                );
+            #endregion
+
+
+
             #endregion
 
             routes.MapRoute(
