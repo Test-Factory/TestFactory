@@ -71,9 +71,9 @@ namespace TestFactory.Business.Components.Lucene
         {
             var doc = new Document();
             var properties = typeof(T).GetProperties();
+            var concatName = ConcatName(properties, TValue);
+            doc.Add(new Field("Name", concatName.ToString(), Field.Store.YES, Field.Index.ANALYZED));
 
-            var formingName = "";
-            var attrSave = new Storable().Type;
             foreach (PropertyInfo property in properties)
             {
                 var attr = property.GetCustomAttribute<Storable>();
@@ -82,20 +82,23 @@ namespace TestFactory.Business.Components.Lucene
                 string fieldName = property.Name;
                 object fieldValue = property.GetValue(TValue);
 
-                if (fieldName == "FirstName"){
-                    attrSave = attr.Type;
-                    formingName += fieldValue + " ";
-                }
-                else
-                if (fieldName == "LastName")
-                {
-                    formingName += fieldValue;
-                }
-                else
-                    doc.Add(new Field(fieldName, fieldValue.ToString(), Field.Store.YES, attr.Type));
+                doc.Add(new Field(fieldName, fieldValue.ToString(), Field.Store.YES, attr.Type));
             }
-            doc.Add(new Field("Name", formingName.ToString(), Field.Store.YES, attrSave));
             return doc;
+        }
+
+        private string ConcatName(PropertyInfo[] properties, T TValue)
+        {
+            string name = "";
+            foreach (PropertyInfo property in properties)
+            {
+                var attrName = property.GetCustomAttribute<FieldName>();
+                if (attrName == null)
+                    continue;
+                object stringValue = property.GetValue(TValue);
+                name += stringValue + " ";
+            }
+            return name;
         }
 
         public IList<T> Search(string input, string fieldName = "")
