@@ -80,7 +80,7 @@ function StudentsViewModel(group, sortingBy) {
 
     self.editStudent = function (student) {
         closeAllEditing();
-        mapStudent(student, self.studentForUpdate());
+        self.studentForUpdate().mapFrom(student);
         self.studentForUpdate.valueHasMutated();
 
         student.mode(self.mods.edit);
@@ -94,8 +94,7 @@ function StudentsViewModel(group, sortingBy) {
             buttons: {
                 "Видалити": function () {
                     closeAllEditing();
-                    mapStudent(student, self.studentForDelete());
-
+                    self.studentForDelete().mapFrom(student);
                     self.categories.removeAll();
                     self.students.remove(student);
 
@@ -103,7 +102,7 @@ function StudentsViewModel(group, sortingBy) {
 
                     var studentServerModel = toServerStudentModel(self.studentForDelete());
                     studentProvider.delete(studentServerModel, function () {
-                        mapStudent(self.studentForDelete(), student);
+                        student.mapFrom(self.studentForDelete());
                         student.mode(self.mods.deleting);
                     });
                     $(this).dialog("close");
@@ -117,7 +116,8 @@ function StudentsViewModel(group, sortingBy) {
 
     self.addStudent = function () {
         closeAllEditing();
-        mapStudent(new StudentModel(), self.studentForCreate());
+        var newStudent = new StudentModel();
+        self.studentForCreate().mapFrom(newStudent);
         for (var c in self.categories()) {
             var mark = new MarkModel();
             mark.categoryId(self.categories()[c].id());
@@ -135,7 +135,7 @@ function StudentsViewModel(group, sortingBy) {
         var studentServerModel = toServerStudentModel(self.studentForCreate());
         studentProvider.post(studentServerModel, function (data) {
             var newStudent = new StudentModel();
-            mapStudent(self.studentForCreate(), newStudent);
+            newStudent.mapFrom(self.studentForCreate());
             newStudent.id(data.Id);
             for (i in newStudent.marks()) {
                 newStudent.marks()[i].studentId(newStudent.id());
@@ -158,7 +158,7 @@ function StudentsViewModel(group, sortingBy) {
         }
         var studentServerModel = toServerStudentModel(self.studentForUpdate());
         studentProvider.put(studentServerModel, function () {
-            mapStudent(self.studentForUpdate(), student);
+            student.mapFrom(self.studentForUpdate());
             student.mode(self.mods.display);
         });
     }
@@ -220,16 +220,4 @@ function StudentsViewModel(group, sortingBy) {
             Value: mark.value()
         }
     }
-
-    function mapStudent(from, to) {
-        to.id(from.id());
-        to.firstName(from.firstName());
-        to.lastName(from.lastName());
-        to.groupId(from.groupId());
-        to.marks.removeAll();
-        for (var m in from.marks()) {
-            to.marks.push(from.marks()[m]);
-        }
-    }
-
 }

@@ -35,4 +35,14 @@
         });
     }
 }
+StudentModel.prototype.mapFrom = function mapStudent(from) {
+    this.id(from.id());
+    this.firstName(from.firstName());
+    this.lastName(from.lastName());
+    this.groupId(from.groupId());
+    this.marks.removeAll();
+    for (var m in from.marks()) {
+        this.marks.push(from.marks()[m]);
+    }
+}
 
