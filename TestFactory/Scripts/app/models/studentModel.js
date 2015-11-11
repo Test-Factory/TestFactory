@@ -8,14 +8,19 @@
     }
     }).extend({
         maxLength: {
-            params: 255,
-            message: "Перевищує ліміт в 255 символів."
+            params: 70,
+            message: "Перевищує ліміт в 70 символів."
         }
     });
     self.lastName = ko.observable(item ? item.LastName : "").extend({
         required: {
             params: true,
             message: "Це поле є обов'язковим"
+        }
+    }).extend({
+        maxLength: {
+            params: 70,
+            message: "Перевищує ліміт в 70 символів."
         }
     });
     self.groupId = ko.observable(item ? item.GroupId : "");

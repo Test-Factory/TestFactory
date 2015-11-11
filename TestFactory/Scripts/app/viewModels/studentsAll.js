@@ -20,36 +20,12 @@
         self.sortKey(code());
         if (self.sortDescending()) {
             self.students.sort(function (left, right) {
-
-                var getMark = function (item) {
-                    return item.categoryId() == id();
-                }
-                var leftMark = ko.utils.arrayFilter(left.marks(), getMark)[0];
-                var rightMark = ko.utils.arrayFilter(right.marks(), getMark)[0];
-
-                if (leftMark.value() == rightMark.value())
-                    return 0;
-                else if (leftMark.value() < rightMark.value())
-                    return 1;
-                else
-                    return -1;
+                return compareMarksModelDesc(left, right, categoryId);
             });
             self.sortDescending(false);
         } else {
             self.students.sort(function (left, right) {
-
-                var getMark = function (item) {
-                    return item.categoryId() == id();
-                }
-                var leftMark = ko.utils.arrayFilter(left.marks(), getMark)[0];
-                var rightMark = ko.utils.arrayFilter(right.marks(), getMark)[0];
-
-                if (leftMark.value() == rightMark.value())
-                    return 0;
-                else if (leftMark.value() < rightMark.value())
-                    return -1;
-                else
-                    return 1;
+                return compareMarksModelAsc(left, right, categoryId);
             });
             self.sortDescending(true);
         }
@@ -60,23 +36,12 @@
         self.sortKey(key);
         if (self.sortDescending()) {
             self.students.sort(function (left, right) {
-
-                if (left[key]().toUpperCase() == right[key]().toUpperCase())
-                    return 0;
-                else if (left[key]().toUpperCase() < right[key]().toUpperCase())
-                    return 1;
-                else
-                    return -1;
+                return compareByKeyDesc(left, right, key);
             });
             self.sortDescending(false);
         } else {
             self.students.sort(function (left, right) {
-                if (left[key]().toUpperCase() == right[key]().toUpperCase())
-                    return 0;
-                else if (left[key]().toUpperCase() < right[key]().toUpperCase())
-                    return -1;
-                else
-                    return 1;
+                return compareByKeyAsc(left, right, key);
             });
             self.sortDescending(true);
         }
