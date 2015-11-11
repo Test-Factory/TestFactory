@@ -6,10 +6,10 @@ namespace TestFactory.Business.Models
 {
     public class Student : BaseModel
     {
-        [Storable(Type = Field.Index.ANALYZED)]
+        [FieldName]
         public virtual string FirstName { get; set; }
 
-        [Storable(Type = Field.Index.ANALYZED)]
+        [FieldName]
         public virtual string LastName { get; set; }
  
         public virtual string  GroupId { get; set; }

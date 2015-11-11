@@ -111,6 +111,11 @@ namespace TestFactory.Controllers
         [HttpPost]
         public JsonResult Update(StudentViewModel student)
         {
+            if (!ModelState.IsValid)
+            {
+                return Json(false);
+            }
+
             if (!User.IsInRole("Filler") || !groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
             {
                 return Json(false);
