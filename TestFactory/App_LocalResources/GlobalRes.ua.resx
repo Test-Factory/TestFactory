@@ -234,4 +234,13 @@
   <data name="yearOfStartingEducation" xml:space="preserve">
     <value>Рік початку навчання</value>
   </data>
+  <data name="createSubject" xml:space="preserve">
+    <value>Новий предмет</value>
+  </data>
+  <data name="nameSubject" xml:space="preserve">
+    <value>Назва предмета</value>
+  </data>
+  <data name="required" xml:space="preserve">
+    <value>Поле має бути встановлено</value>
+  </data>
 </root>
