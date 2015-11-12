@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NHibernate.Criterion;
 using NHibernate.Linq;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.DataProviderContracts;
@@ -14,13 +15,13 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
     {
         public IList<AverageMarkForFaculty> GetMarksForFaculty(string facultyId)
         {
+
             return Execute(session =>
             {
-                IList<AverageMarkForFaculty> averageMarks = session
-                                     .Query<AverageMarkForFaculty>()
-                                     .Where(s => s.FacultyId == facultyId)
-                                     .ToList<AverageMarkForFaculty>();
-                return averageMarks;
+                return session
+                    .CreateCriteria(typeof(AverageMarkForFaculty))
+                    .Add(Restrictions.Eq("FacultyId", facultyId))
+                    .List<AverageMarkForFaculty>();
             });
         }
     }

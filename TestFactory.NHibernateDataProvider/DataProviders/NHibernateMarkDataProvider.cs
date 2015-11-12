@@ -11,16 +11,24 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
     {
         public IList<Mark> GetByStudentId(string studentId)
         {
-            return Execute(session => session.Query<Mark>()
-                .Where(s => s.StudentId == studentId)
-                .ToList<Mark>());
+            return Execute(session =>
+            {
+                return session
+                    .CreateCriteria(typeof(Mark))
+                    .Add(Restrictions.Eq("StudentId", studentId))
+                    .List<Mark>();
+            });
         }
 
-        public IEnumerable<Mark> GetMarksByCategoryId(string id)
+        public IList<Mark> GetMarksByCategoryId(string categoryId)
         {
-            return Execute(session => session.Query<Mark>()
-                .Where(s => s.CategoryId == id)
-                .ToList<Mark>());
+            return Execute(session =>
+            {
+                return session
+                    .CreateCriteria(typeof(Mark))
+                    .Add(Restrictions.Eq("CategoryId", categoryId))
+                    .List<Mark>();
+            });
         }
 
         public int CountMarksForCategory(string categoryId)

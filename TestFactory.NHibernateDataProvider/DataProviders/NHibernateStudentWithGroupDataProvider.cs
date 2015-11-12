@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NHibernate.Criterion;
 using NHibernate.Linq;
 using TestFactory.Business.DataProviderContracts;
 using TestFactory.Business.Models;
@@ -15,11 +16,10 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
         {
             return Execute(session =>
             {
-                IList<StudentWithGroup> students = session
-                                     .Query<StudentWithGroup>()
-                                     .Where(s => s.GroupId == groupId)
-                                     .ToList<StudentWithGroup>();
-                return students;
+                return session
+                    .CreateCriteria(typeof(StudentWithGroup))
+                    .Add(Restrictions.Eq("GroupId", groupId))
+                    .List<StudentWithGroup>();
             });
         }
     }

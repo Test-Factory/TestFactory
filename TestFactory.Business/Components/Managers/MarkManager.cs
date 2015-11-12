@@ -19,7 +19,7 @@ namespace TestFactory.Business.Components.Managers
             return provider.CountMarksForCategory(categoryId);
         }
 
-        public IEnumerable<Mark> GetMarksByCategoryId(string categoryId)
+        public IList<Mark> GetMarksByCategoryId(string categoryId)
         {
             return provider.GetMarksByCategoryId(categoryId);
         }
