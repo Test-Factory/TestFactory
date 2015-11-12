@@ -83,7 +83,7 @@ INSERT [dbo].[Student] ([Id], [FirstName], [LastName], [GroupId], [Year]) VALUES
 GO
 INSERT [dbo].[Student] ([Id], [FirstName], [LastName], [GroupId], [Year]) VALUES (N'53c66c00-1f77-44fb-816d-97cfd4ad72c8', N'Таїса', N'Бойко', N'5de0fbe3-9301-465f-abe7-fa46042dbd55', 2015)
 GO
-INSERT dbo].[Student] ([Id], [FirstName], [LastName], [GroupId], [Year]) VALUES (N'552c4279-b317-4086-966e-ebc00d21ce1d', N'Б', N'Наумчук', N'022483b5-32de-454b-a6c7-41c0b213e82f', 2015)
+INSERT [dbo].[Student] ([Id], [FirstName], [LastName], [GroupId], [Year]) VALUES (N'552c4279-b317-4086-966e-ebc00d21ce1d', N'Б', N'Наумчук', N'022483b5-32de-454b-a6c7-41c0b213e82f', 2015)
 GO
 INSERT [dbo].[Student] ([Id], [FirstName], [LastName], [GroupId], [Year]) VALUES (N'5a9fa324-d21c-4683-8500-2cade928215f', N'О', N'Ліневич', N'1cb8a5d5-e644-48f8-b8b6-ee0c3cf4700f', 2015)
 GO
