@@ -59,19 +59,17 @@
                     <tr>
                         <td class="last-name" data-bind="text: lastName"></td>
                         <td class="first-name" data-bind="text:  firstName"></td>
-                        <td data-bind="text: groupShortName"></td>
+                        <td class="group-name" data-bind="text: groupShortName"></td>
                         <!-- ko foreach: marks -->
                         <td>
                             <table>
                                 <tr>
-                                    <td class="marks studentMark" data-bind="text: value" style="font-size: 1.6em; text-align: center; padding: 10px 0 0 0;"></td>
+                                    <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding: 10px 0 0 0;"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td class="studentMarkDetails">
-                                        <i class="tiny material-icons iconAverage">chevron_left</i>
-                                        <label class="greenText" data-bind="text: averageDeviation"></label>
-                                        <i class="tiny material-icons iconAverage">chevron_right</i>
+                                            <label class="greenText" data-bind="text: averageDeviation, style: { color: averageDeviation() < 0 ? 'coral' : 'seagreen' }"></label>
                                     </td>
                                 </tr>
                             </table>
