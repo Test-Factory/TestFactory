@@ -90,8 +90,10 @@
   <ItemGroup>
     <Compile Include="Components\HashDecoder.cs" />
     <Compile Include="Components\Lucene\BaseSearcher.cs" />
+    <Compile Include="Components\Managers\LuceneManager.cs" />
     <Compile Include="Components\Lucene\Searcher.cs" />
     <Compile Include="Components\Lucene\Attributes\Storable.cs" />
+    <Compile Include="Components\Lucene\ExtractorStandardBehaviours.cs" />
     <Compile Include="Components\Managers\AverageMarkForFacultyManager.cs" />
     <Compile Include="Components\Managers\FrequencyMarkForFacultyByCategoryManager.cs" />
     <Compile Include="Components\Managers\SubjectManager.cs" />

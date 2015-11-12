@@ -69,36 +69,8 @@ namespace TestFactory.Business.Components.Lucene
 
         private Document MapTValueToDoc(T TValue)
         {
-            var doc = new Document();
-            var properties = typeof(T).GetProperties();
-            var concatName = ConcatName(properties, TValue);
-            doc.Add(new Field("Name", concatName.ToString(), Field.Store.YES, Field.Index.ANALYZED));
-
-            foreach (PropertyInfo property in properties)
-            {
-                var attr = property.GetCustomAttribute<Storable>();
-                if (attr == null)
-                    continue;
-                string fieldName = property.Name;
-                object fieldValue = property.GetValue(TValue);
-
-                doc.Add(new Field(fieldName, fieldValue.ToString(), Field.Store.YES, attr.Type));
-            }
-            return doc;
-        }
-
-        private string ConcatName(PropertyInfo[] properties, T TValue)
-        {
-            string name = "";
-            foreach (PropertyInfo property in properties)
-            {
-                var attrName = property.GetCustomAttribute<FieldName>();
-                if (attrName == null)
-                    continue;
-                object stringValue = property.GetValue(TValue);
-                name += stringValue + " ";
-            }
-            return name;
+            var putFunc = new LuceneManager<T>(ExtractorStandardBehaviours<T>.ToDoc);
+            return putFunc.MapTValueToDoc(TValue);
         }
 
         public IList<T> Search(string input, string fieldName = "")
@@ -156,20 +128,8 @@ namespace TestFactory.Business.Components.Lucene
 
         private T MapDocToTValue(Document doc)
         {
-            T res = new T();
-
-            var properties = typeof(T).GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                var attr = property.GetCustomAttribute<Storable>();
-                if (attr == null)
-                    continue;
-                string fieldName = property.Name;
-                var val = TypeDescriptor.GetConverter(property.PropertyType)
-                            .ConvertFrom(doc.Get(fieldName));
-                property.SetValue(res, val);
-            }
-            return res;
+            var putFunc = new LuceneManager<T>(ExtractorStandardBehaviours<T>.ToTValue);
+            return putFunc.MapDocToTValue(doc);
         }
 
         private void fillIndexes()
