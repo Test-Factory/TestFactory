@@ -79,7 +79,10 @@
     <Compile Include="DbVersioning\Migrations\Version2\M022_StudentWithGroupView.cs" />
     <Compile Include="DbVersioning\Migrations\Version2\M021_AverageMarksForFacultyView.cs" />
     <Compile Include="DbVersioning\Migrations\Version2\M023_FrequencyMarkForFacultyByCategoryView.cs" />
-    <Compile Include="DbVersioning\Migrations\Version3\M031_CreateTableSubject.cs" />
+    <Compile Include="DbVersioning\Migrations\Version3\M031_TableFactoryWithData.cs" />
+    <Compile Include="DbVersioning\Migrations\Version3\M032_CreateTableSubject.cs" />
+    <Compile Include="DbVersioning\Migrations\Version3\M033_ColumnFacultyIdTbUser.cs" />
+    <Compile Include="DbVersioning\Migrations\Version3\M034_ColumnFacultyIdTbGroup.cs" />
     <Compile Include="DbVersioning\Migrator.cs" />
     <Compile Include="NHibernateCore\Mappings\AverageMarkForFacultyMap.cs" />
     <Compile Include="NHibernateCore\Mappings\FrequencyMarkForFacultyByCategoryMap.cs" />
@@ -120,9 +123,22 @@
   <ItemGroup>
     <EmbeddedResource Include="DbVersioning\Scripts\Version2\FrequencyMarkForFacultyByCategoryView.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DbVersioning\Scripts\Version3\CreateTableFacultyWithDefaultData.sql" />
+    <EmbeddedResource Include="DbVersioning\Scripts\Version3\DropSubject.sql" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbVersioning\Scripts\Version3\CreateTableSubject.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbVersioning\Scripts\Version3\ChangeFacultyToFacultyIdTbUser.sql" />
+    <EmbeddedResource Include="DbVersioning\Scripts\Version3\DeleteFucultyIdTbUser.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbVersioning\Scripts\Version3\ChangeFacultyToFacultyIdTbGroupAndChangeView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbVersioning\Scripts\Version3\DeleteFacultyIdTbGroupAndOldView.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
