@@ -16,7 +16,7 @@
     self.sortKey = ko.observable();
     self.preloader = ko.observable(true);
 
-    self.sortingByMark = function (key, id, code) {
+    self.sortingByMark = function (key, categoryId, code) {
         self.sortKey(code());
         if (self.sortDescending()) {
             self.students.sort(function (left, right) {
