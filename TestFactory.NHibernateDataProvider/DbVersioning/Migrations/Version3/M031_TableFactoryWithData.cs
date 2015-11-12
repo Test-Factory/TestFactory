@@ -8,7 +8,7 @@ using FluentMigrator;
 namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations.Version3
 {
     [Migration(201511101037)]
-    public class M031_TableFacultyWithData   : Migration
+    public class M031_TableFacultyWithData: Migration
     {
         public override void Up()
         {
