@@ -1,0 +1,10 @@
+ CREATE TABLE [dbo].[Faculty] (
+    [Id]        NVARCHAR (50) NOT NULL,
+	[Name] NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+INSERT [dbo].[Faculty] ([Id], [Name]) VALUES (N'49132E51-720E-46AD-A139-BED84F8D616F', N'FOFF');
+GO
+INSERT [dbo].[Faculty] ([Id], [Name]) VALUES (N'FBF5D69A-54F8-4146-AC9C-417BAA3E5122', N'FICT');

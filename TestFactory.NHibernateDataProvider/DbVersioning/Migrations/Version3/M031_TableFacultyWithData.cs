@@ -8,16 +8,16 @@ using FluentMigrator;
 namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations.Version3
 {
     [Migration(201511101037)]
-    public class M031_CreateTableSubject: Migration 
+    public class M031_TableFacultyWithData   : Migration
     {
         public override void Up()
         {
-            Execute.EmbeddedScript("CreateTableSubject.sql");
+            Execute.EmbeddedScript("CreateTableFacultyWithDefaultData.sql");
         }
 
         public override void Down()
         {
-            Execute.Sql("drop table [Subject]");
+            Execute.Sql("drop table [Faculty]");
         }
     }
 }

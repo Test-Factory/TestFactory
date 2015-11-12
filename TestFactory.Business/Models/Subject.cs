@@ -10,6 +10,6 @@ namespace TestFactory.Business.Models
     {
         public virtual string Name { get; set; }
 
-        public virtual string GroupId { get; set; }
+        public virtual string FacultyId { get; set; }
     }
 }

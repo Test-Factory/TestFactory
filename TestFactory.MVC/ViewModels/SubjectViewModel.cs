@@ -16,7 +16,7 @@ namespace TestFactory.MVC.ViewModels
         public virtual string Name { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual string GroupId { get; set; }
+        public virtual string FacultyId { get; set; }
 
         public SubjectViewModel()
         {

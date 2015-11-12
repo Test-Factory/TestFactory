@@ -49,7 +49,7 @@ namespace TestFactory.Controllers
             {
                 return RedirectToRoute("Default");
             }
-            subject.GroupId = "1cb8a5d5-e644-48f8-b8b6-ee0c3cf4700f";
+            //subject.FacultyId = "1cb8a5d5-e644-48f8-b8b6-ee0c3cf4700f";
             var model = Mapper.Map<Subject>(subject);
             subjectManager.Create(model);
 

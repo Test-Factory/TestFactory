@@ -17,7 +17,7 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 
             Map(x => x.Name);
 
-            Map(x => x.GroupId);
+            Map(x => x.FacultyId);
         }
     }
 }
