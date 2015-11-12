@@ -23,7 +23,7 @@ function StudentsViewModel(group, sortingBy) {
 
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
-    self.sortKey = ko.observable(sortingBy);
+    self.sortKey = ko.observable();
     self.preloader = ko.observable(true);
 
     self.studentForUpdate = ko.validatedObservable(new StudentModel(), { deep: true });
@@ -36,15 +36,15 @@ function StudentsViewModel(group, sortingBy) {
         deleting: "delete"
     };
 
-    self.sortingByMark = function (key, categoryId, code) {
+    self.sortingByMark = function(key, categoryId, code) {
         self.sortKey(code());
         if (self.sortDescending()) {
-            self.students.sort(function (left, right) {
+            self.students.sort(function(left, right) {
                 return compareMarksModelDesc(left, right, categoryId);
             });
             self.sortDescending(false);
         } else {
-            self.students.sort(function (left, right) {
+            self.students.sort(function(left, right) {
                 return compareMarksModelAsc(left, right, categoryId);
             });
             self.sortDescending(true);
@@ -52,33 +52,26 @@ function StudentsViewModel(group, sortingBy) {
 
     }
 
-    self.sortingByName = function (key) {
+    self.sortingByName = function(key) {
         self.sortKey(key);
         if (self.sortDescending()) {
-            self.students.sort(function (left, right) {
+            self.students.sort(function(left, right) {
                 return compareByKeyDesc(left, right, key);
             });
             self.sortDescending(false);
         } else {
-            self.students.sort(function (left, right) {
+            self.students.sort(function(left, right) {
                 return compareByKeyAsc(left, right, key);
             });
             self.sortDescending(true);
         }
     }
 
-    self.selectedClassForSortedField = ko.pureComputed(function () {
+    self.selectedClassForSortedField = ko.pureComputed(function() {
         return self.sortDescending() ? "triangle-up" : "triangle-down";
     }, self);
 
-    self.downloadReport = function (student) {
-        var studentServerModel = toServerStudentModel(student);
-        studentProvider.loadReport(studentServerModel, function () {
-            console.log("result");
-        });
-    }
-
-    self.editStudent = function (student) {
+    self.editStudent = function(student) {
         closeAllEditing();
         self.studentForUpdate().mapFrom(student);
         self.studentForUpdate.valueHasMutated();
@@ -86,13 +79,13 @@ function StudentsViewModel(group, sortingBy) {
         student.mode(self.mods.edit);
     };
 
-    self.deleteStudent = function (student) {
+    self.deleteStudent = function(student) {
         $("#delete-student").dialog({
             resizable: false,
             height: 200,
             modal: true,
             buttons: {
-                "Видалити": function () {
+                "Видалити": function() {
                     closeAllEditing();
                     self.studentForDelete().mapFrom(student);
                     self.categories.removeAll();
@@ -100,21 +93,21 @@ function StudentsViewModel(group, sortingBy) {
 
                     student.mode(self.mods.deleting);
 
-                    var studentServerModel = toServerStudentModel(self.studentForDelete());
-                    studentProvider.delete(studentServerModel, function () {
+                    var studentServerModel = self.studentForDelete().toServerModel(self.group.id());
+                    studentProvider.delete(studentServerModel, function() {
                         student.mapFrom(self.studentForDelete());
                         student.mode(self.mods.deleting);
                     });
                     $(this).dialog("close");
                 },
-                Відмінити: function () {
+                Відмінити: function() {
                     $(this).dialog("close");
                 }
             }
         });
     }
 
-    self.addStudent = function () {
+    self.addStudent = function() {
         closeAllEditing();
         var newStudent = new StudentModel();
         self.studentForCreate().mapFrom(newStudent);
@@ -128,12 +121,12 @@ function StudentsViewModel(group, sortingBy) {
         ko.validation.group(self.studentForCreate);
     };
 
-    self.saveAddedStudent = function () {
+    self.saveAddedStudent = function() {
         if (!self.studentForCreate.isValid()) {
             return false;
         }
-        var studentServerModel = toServerStudentModel(self.studentForCreate());
-        studentProvider.post(studentServerModel, function (data) {
+        var studentServerModel = self.studentForCreate().toServerModel(self.group.id());
+        studentProvider.post(studentServerModel, function(data) {
             var newStudent = new StudentModel();
             newStudent.mapFrom(self.studentForCreate());
             newStudent.id(data.Id);
@@ -152,72 +145,42 @@ function StudentsViewModel(group, sortingBy) {
         });
     };
 
-    self.saveEditedStudent = function (student) {
+    self.saveEditedStudent = function(student) {
         if (!self.studentForUpdate.isValid()) {
             return false;
         }
-        var studentServerModel = toServerStudentModel(self.studentForUpdate());
-        studentProvider.put(studentServerModel, function () {
+        var studentServerModel = self.studentForUpdate().toServerModel(self.group.id());
+        studentProvider.put(studentServerModel, function() {
             student.mapFrom(self.studentForUpdate());
             student.mode(self.mods.display);
         });
     }
-    self.init = function () {
-        categoryProvider.get(function (data) {
-            $(data).each(function (index, element) {
+    self.init = function() {
+        categoryProvider.get(function(data) {
+            $(data).each(function(index, element) {
                 var mappedItem = new CategoryModel(element);
                 self.categories.push(mappedItem);
             });
             self.addStudent();
         });
 
-        studentProvider.get(function (data) {
-            $(data).each(function (index, element) {
+        studentProvider.get(function(data) {
+            $(data).each(function(index, element) {
                 var mappedStudent = new StudentModel(element, self.mods.display);
-                sortStudentMarksByCategoryIdDesc(mappedStudent);
+                mappedStudent.sortMarksByCategoryIdDesc();
                 self.students.push(mappedStudent);
             });
             self.preloader(false);
         });
-        self.sortingByName("lastName");
+        self.sortingByName(sortingBy);
     }
 
     self.init();
-
-    function sortStudentMarksByCategoryIdDesc(student) {
-        student.marks.sort(function (leftMark, rightMark) {
-            if (leftMark.categoryId() == rightMark.categoryId())
-                return 0;
-            else if (leftMark.categoryId() < rightMark.categoryId())
-                return -1;
-            else
-                return 1;
-        });
-    }
 
     function closeAllEditing() {
         for (var k in self.students()) {
             self.students()[k].mode(self.mods.display);
         }
         self.studentForUpdate().mode(self.mods.display);
-    }
-
-    function toServerStudentModel(student) {
-        return {
-            Id: student.id(),
-            FirstName: student.firstName(),
-            LastName: student.lastName(),
-            GroupId: self.group.id(),
-            Marks: ko.utils.arrayMap(student.marks(), toServerMarkModel)
-        }
-    }
-
-    function toServerMarkModel(mark) {
-        return {
-            Id: mark.id(),
-            StudentId: mark.studentId(),
-            CategoryId: mark.categoryId(),
-            Value: mark.value()
-        }
     }
 }

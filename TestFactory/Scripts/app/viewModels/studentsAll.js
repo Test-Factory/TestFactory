@@ -13,7 +13,7 @@
     self.standardDeviation = ko.observableArray();
 
     self.sortDescending = ko.observable(false);
-    self.sortKey = ko.observable(sortingBy);
+    self.sortKey = ko.observable();
     self.preloader = ko.observable(true);
 
     self.sortingByMark = function (key, id, code) {
@@ -70,24 +70,13 @@
         studentProvider.get(function (data) {
             $(data).each(function (index, element) {
                 var mappedStudent = new StudentForAllModel(element, averageMarks);
-                sortStudentMarksByCategoryIdDesc(mappedStudent);
+                mappedStudent.sortMarksByCategoryIdDesc();
                 self.students.push(mappedStudent);
             });
             self.preloader(false);
         });
-        self.sortingByName("lastName");
+        self.sortingByName(sortingBy);
     }
 
     self.init();
-
-    function sortStudentMarksByCategoryIdDesc(student) {
-        student.marks.sort(function (leftMark, rightMark) {
-            if (leftMark.categoryId() == rightMark.categoryId())
-                return 0;
-            else if (leftMark.categoryId() < rightMark.categoryId())
-                return -1;
-            else
-                return 1;
-        });
-    }
 }

@@ -48,3 +48,12 @@ function compareByKeyAsc(left, right, key) {
     else
         return 1;
 }
+
+function compareStudentMarksByCategoryIdDesc(leftMark, rightMark) {
+    if (leftMark.categoryId() == rightMark.categoryId())
+        return 0;
+    else if (leftMark.categoryId() < rightMark.categoryId())
+        return -1;
+    else
+        return 1;
+}

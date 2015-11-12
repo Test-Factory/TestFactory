@@ -32,3 +32,12 @@
     }
     });
 }
+MarkModel.prototype.toServerModel = function () {
+    return {
+        Id: this.id(),
+        StudentId: this.studentId(),
+        CategoryId: this.categoryId(),
+        Value: this.value()
+    }
+}
+

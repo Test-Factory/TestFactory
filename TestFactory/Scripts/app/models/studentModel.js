@@ -45,4 +45,25 @@ StudentModel.prototype.mapFrom = function mapStudent(from) {
         this.marks.push(from.marks()[m]);
     }
 }
+StudentModel.prototype.toServerModel = function (groupId) {
+    var serverMarks = this.marks();
+    var m = [];
+    serverMarks.forEach(function (element) {
+        m.push(element.toServerModel());
+    });
+
+    return {
+        Id: this.id(),
+        FirstName: this.firstName(),
+        LastName: this.lastName(),
+        GroupId: groupId,
+        Marks: m //error
+    }
+}
+
+StudentModel.prototype.sortMarksByCategoryIdDesc = function () { 
+    this.marks.sort(function (leftMark, rightMark) {
+        return compareStudentMarksByCategoryIdDesc(leftMark, rightMark);
+    });
+}
 

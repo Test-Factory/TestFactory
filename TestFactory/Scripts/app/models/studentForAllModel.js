@@ -17,3 +17,8 @@
         });
     }
 }
+StudentForAllModel.prototype.sortMarksByCategoryIdDesc = function () {
+    this.marks.sort(function (leftMark, rightMark) {
+        return compareStudentMarksByCategoryIdDesc(leftMark, rightMark);
+    });
+}
