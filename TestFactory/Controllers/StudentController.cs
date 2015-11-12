@@ -46,7 +46,7 @@ namespace TestFactory.Controllers
                 throw new HttpException(404, GlobalRes_ua.error_404);
             }
 
-            if (group.Faculty != user.User.Faculty)
+            if (group.FacultyId != user.User.FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
             }
@@ -59,7 +59,7 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult Search()
         {
-            var groupsForUser = groupManager.GetListForFaculty(user.User.Faculty);
+            var groupsForUser = groupManager.GetListForFaculty(user.User.FacultyId);
             var students = new List<Student>();
 
             foreach(var gr in groupsForUser)
@@ -99,7 +99,7 @@ namespace TestFactory.Controllers
         {
             var student = studentManager.GetById(studentId);
 
-            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+            if (!groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
@@ -116,7 +116,7 @@ namespace TestFactory.Controllers
                 return Json(false);
             }
 
-            if (!User.IsInRole("Filler") || !groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+            if (!User.IsInRole("Filler") || !groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 return Json(false);
             }

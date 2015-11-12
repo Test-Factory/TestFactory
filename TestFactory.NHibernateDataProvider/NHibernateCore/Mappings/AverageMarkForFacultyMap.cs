@@ -16,7 +16,7 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
         {
             ReadOnly();
 
-            Map(x => x.Faculty);
+            Map(x => x.FacultyId);
 
             Map(x => x.Code);
 

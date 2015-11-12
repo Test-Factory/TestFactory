@@ -8,7 +8,7 @@ namespace TestFactory.Business.Models
 {
      public class FrequencyMarkForFacultyByCategory
     {
-        public virtual string Faculty { get; set; }
+        public virtual string FacultyId { get; set; }
 
         public virtual string Code { get; set; }
 
@@ -21,7 +21,7 @@ namespace TestFactory.Business.Models
         #region overrides 
         protected bool Equals(FrequencyMarkForFacultyByCategory other)
         {
-            return string.Equals(Faculty, other.Faculty) && string.Equals(Code, other.Code) && string.Equals(CategoryId, other.CategoryId) && Value == other.Value && Count == other.Count;
+            return string.Equals(FacultyId, other.FacultyId) && string.Equals(Code, other.Code) && string.Equals(CategoryId, other.CategoryId) && Value == other.Value && Count == other.Count;
         }
 
         public override bool Equals(object obj)
@@ -39,7 +39,7 @@ namespace TestFactory.Business.Models
         {
             unchecked
             {
-                int hashCode = (Faculty != null ? Faculty.GetHashCode() : 0);
+                int hashCode = (FacultyId != null ? FacultyId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Code != null ? Code.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (CategoryId != null ? CategoryId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Value;

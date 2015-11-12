@@ -8,7 +8,7 @@ namespace TestFactory.Business.Models
 {
     public class AverageMarkForFaculty
     {
-        public virtual string Faculty { get; set; }
+        public virtual string FacultyId { get; set; }
 
         public virtual string Code { get; set; }
 

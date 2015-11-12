@@ -38,7 +38,7 @@ namespace TestFactory.Controllers.Api
         [Route("average")]
         public IList<AverageMarkForFacultyViewModel> GetAverageMarks()
         {
-           var averageMarks = averageMarkForFacultyManager.GetMarksForFaculty(user.User.Faculty).OrderBy(c=>c.Id);
+            var averageMarks = averageMarkForFacultyManager.GetMarksForFaculty(user.User.FacultyId).OrderBy(c => c.Id);
            var result = Mapper.Map<IList<AverageMarkForFacultyViewModel>>(averageMarks);
            return result;
         }
@@ -50,7 +50,7 @@ namespace TestFactory.Controllers.Api
             var categories = categoryManager.GetList().ToList();
             var standardDeviationMarks = new ArrayList();
             var frequencyMarksForCategory = frequencyMarkForFacultyByCategoryManager
-                                            .GetMarksForFaculty(user.User.Faculty)
+                                            .GetMarksForFaculty(user.User.FacultyId)
                                             .OrderBy(f => f.CategoryId).ToList(); 
 
             foreach (var c in categories)

@@ -7,7 +7,7 @@ namespace TestFactory.Business.Models
 
         public virtual string ShortName { get; set; }
 
-        public virtual string Faculty { get; set; }
+        public virtual string FacultyId { get; set; }
 
         public virtual int Year { get; set; }
     }

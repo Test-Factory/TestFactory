@@ -40,7 +40,7 @@ namespace TestFactory.Controllers.Api
         public IList<StudentWithGroupViewModel> Get()
         {
             var students = new List<StudentWithGroup>();
-            var groupsForFaculty = groupManager.GetListForFaculty(user.User.Faculty);
+            var groupsForFaculty = groupManager.GetListForFaculty(user.User.FacultyId);
             foreach (var group in groupsForFaculty)
             {
                 var student = studentWithGroupManager.GetByGroupId(group.Id);
@@ -78,7 +78,7 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+            if (!groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 return BadRequest();
             }
@@ -108,7 +108,7 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+            if (!groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 return BadRequest();
             }
@@ -128,7 +128,7 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            if (!groupManager.HasAccessToGroup(user.User.Faculty, student.GroupId))
+            if (!groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 return BadRequest();
             }

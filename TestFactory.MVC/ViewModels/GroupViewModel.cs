@@ -15,7 +15,7 @@ namespace TestFactory.MVC.ViewModels
         public virtual string ShortName { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual string Faculty { get; set; }
+        public virtual string FacultyId { get; set; }
 
         [Required(ErrorMessage = "Поле повинно бути заповненим")]
         [DataType(DataType.Text)]

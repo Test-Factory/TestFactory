@@ -18,7 +18,7 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
                 .KeyProperty(x => x.CategoryId)
                 .KeyProperty(x => x.Value); 
 
-            Map(x => x.Faculty);
+            Map(x => x.FacultyId);
 
             Map(x => x.Code);
 

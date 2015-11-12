@@ -8,7 +8,7 @@ namespace TestFactory.MVC.ViewModels
 {
     public class AverageMarkForFacultyViewModel
     {
-        public virtual string Faculty { get; set; }
+        public virtual string FacultyId { get; set; }
 
         public virtual string Code { get; set; }
 

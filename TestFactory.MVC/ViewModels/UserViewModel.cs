@@ -13,6 +13,6 @@ namespace TestFactory.MVC.ViewModels
         public string Password { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual string Faculty { get; set; }      
+        public virtual string FacultyId { get; set; }      
     }
 }

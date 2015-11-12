@@ -12,13 +12,13 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
 {
     public class NHibernateFrequencyMarkForFacultyByCategoryDataProvider: NHibernateDataProviderBaseForView<FrequencyMarkForFacultyByCategory>, IFrequencyMarkForFacultyByCategoryDataProvider
     {
-        public IList<FrequencyMarkForFacultyByCategory> GetMarksForFaculty(string faculty)
+        public IList<FrequencyMarkForFacultyByCategory> GetMarksForFaculty(string facultyId)
         {
             return Execute(session =>
             {
                 return session
                     .CreateCriteria(typeof(FrequencyMarkForFacultyByCategory))
-                    .Add(Restrictions.Eq("Faculty", faculty))
+                    .Add(Restrictions.Eq("FacultyId", facultyId))
                     .List<FrequencyMarkForFacultyByCategory>();
             });
         }

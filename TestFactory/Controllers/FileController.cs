@@ -38,9 +38,9 @@ namespace TestFactory.Controllers.Api
                 throw new HttpException(404, GlobalRes_ua.error_404);
             }   
 
-            Group group = groupManager.GetById(student.GroupId);         
+            Group group = groupManager.GetById(student.GroupId);
 
-            if (group.Faculty != user.User.Faculty)
+            if (group.FacultyId != user.User.FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }          
@@ -59,7 +59,7 @@ namespace TestFactory.Controllers.Api
         {
             Group group = groupManager.GetById(groupId);
 
-            if (group.Faculty != user.User.Faculty)
+            if (group.FacultyId != user.User.FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }

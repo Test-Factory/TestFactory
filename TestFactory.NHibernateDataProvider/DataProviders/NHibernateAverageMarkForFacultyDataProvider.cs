@@ -12,13 +12,13 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
 {
     public class NHibernateAverageMarkForFacultyDataProvider: NHibernateDataProviderBaseForView<AverageMarkForFaculty>, IAverageMarkForFacultyDataProvider
     {
-        public IList<AverageMarkForFaculty> GetMarksForFaculty(string faculty)
+        public IList<AverageMarkForFaculty> GetMarksForFaculty(string facultyId)
         {
             return Execute(session =>
             {
                 IList<AverageMarkForFaculty> averageMarks = session
                                      .Query<AverageMarkForFaculty>()
-                                     .Where(s => s.Faculty == faculty)
+                                     .Where(s => s.FacultyId == facultyId)
                                      .ToList<AverageMarkForFaculty>();
                 return averageMarks;
             });

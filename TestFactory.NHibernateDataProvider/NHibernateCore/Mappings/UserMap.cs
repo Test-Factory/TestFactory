@@ -19,7 +19,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.LastName);
 
-            Map(x => x.Faculty);
+            Map(x => x.FacultyId);
 
             References(x => x.Roles).Class<Role>().Not.LazyLoad();         
         }

@@ -30,7 +30,7 @@ namespace TestFactory.Controllers
         [Authorize(Roles = "Filler,Editor")]
         public ActionResult List()
         {
-            var groups = groupManager.GetListForFaculty(user.User.Faculty);
+            var groups = groupManager.GetListForFaculty(user.User.FacultyId);
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
@@ -68,7 +68,7 @@ namespace TestFactory.Controllers
                 return RedirectToRoute("Default");
             }
 
-            group.Faculty = user.User.Faculty;
+            group.FacultyId = user.User.FacultyId;
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Create(model);
 
@@ -79,7 +79,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
-            if (user.User.Faculty != groupManager.GetById(group.Id).Faculty)
+            if (user.User.FacultyId != groupManager.GetById(group.Id).FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
@@ -89,7 +89,7 @@ namespace TestFactory.Controllers
                 return View(group);
             }
 
-            group.Faculty = user.User.Faculty;
+            group.FacultyId = user.User.FacultyId;
             var model = AutoMapper.Mapper.Map<Group>(group);
             groupManager.Update(model);
 
@@ -105,7 +105,7 @@ namespace TestFactory.Controllers
                 return Json(false);
             }
 
-            if (!groupManager.HasAccessToGroup(user.User.Faculty, id))
+            if (!groupManager.HasAccessToGroup(user.User.FacultyId, id))
             { 
                 return Json("error");
             }

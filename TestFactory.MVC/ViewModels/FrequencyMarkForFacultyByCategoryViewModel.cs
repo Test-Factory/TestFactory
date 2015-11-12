@@ -10,7 +10,7 @@ namespace TestFactory.MVC.ViewModels
     public class FrequencyMarkForFacultyByCategoryViewModel
     {
         [ScaffoldColumn(false)]
-        public virtual string Faculty { get; set; }
+        public virtual string FacultyId { get; set; }
 
         public virtual string Code { get; set; }
 
