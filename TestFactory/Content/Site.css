@@ -24,6 +24,10 @@ fieldset {
     padding: 0 1.4em 1.4em 1.4em;
 }
 
+.greenText {
+    color: green;
+}
+
 legend {
     font-size: 1.2em;
     font-weight: bold;
