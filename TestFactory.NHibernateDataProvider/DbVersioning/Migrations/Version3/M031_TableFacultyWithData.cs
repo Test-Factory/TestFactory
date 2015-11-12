@@ -15,6 +15,7 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations.Version3
             Execute.EmbeddedScript("CreateTableFacultyWithDefaultData.sql");
         }
 
+
         public override void Down()
         {
             Execute.Sql("drop table [Faculty]");
