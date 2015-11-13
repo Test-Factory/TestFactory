@@ -13,21 +13,68 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>@Model.Item3.FullName</title>
     <style>
-        .borderTable {
-            border-top: solid 1px;
-            padding: 10px;
-        }
-        .borderLeftTable {
-            border-left: solid 1px;
-            border-top: solid 1px;
-            padding: 10px;
-        }
-    </style>
+    .borderTable {
+        border-top: solid 1px;
+        padding: 10px;
+    }
+
+    .borderLeftTable {
+        border-left: solid 1px;
+        border-top: solid 1px;
+        padding: 10px;
+    }
+
+    .mainBlock {
+        width: 60%;
+        margin: 0 20%;
+    }
+
+    .main-header {
+        text-align: center;
+        page-break-before: always;
+    }
+
+    .forCategory {
+        float: left;
+        display: inline;
+        line-height: 1.5;
+        margin-left: 20px;
+        margin-top: 40px;
+    }
+
+    .wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    .inner {
+        width: 100%;
+        overflow: hidden;
+        line-height: 1.5;
+    }
+
+    h3.type {
+        text-align: center;
+    }
+
+    table.striped {
+        width: 600px;
+    }
+
+    th.typeName {
+        text-align: center;
+    }
+
+    appriciations {
+        border-left: solid 1px;
+        text-align: center;
+    }
+</style>
 </head>
 <body>
     @for (int ind = 0; ind < Model.Item1.Count; ind++)
     {
-        <div style="width: 60%; margin: 0 20%">
+        <div class ="mainBlock">
             @{    //sort Marks
             var mas = Model.Item1[ind].Marks;
             int s = -1;
@@ -49,10 +96,12 @@
                 }
             }
                         }
-            <h2 style="text-align: center;  page-break-before: always;">@{ var t = Model.Item1[ind].FirstName + " " + Model.Item1[ind].LastName + " (" + Model.Item3.ShortName + ")";} @t</h2>
+            <h2 class="main-header">@{
+                var t = Model.Item1[ind].FirstName + " " + Model.Item1[ind].LastName + " (" + Model.Item3.ShortName + ")";} @t
+            </h2>
             <div>
                     @{Html.RenderAction("GenerateChart", "File", new { student = Model.Item1[ind], category = Model.Item2});}
-                    <div style="float: left; display: inline; line-height: 1.5; margin-left: 20px; margin-top: 40px;">
+                    <div class="forCategory">
                         @foreach (var mark in Model.Item1[ind].Marks)
                         {
                             foreach (var type in Model.Item2)
@@ -65,9 +114,9 @@
                         }
                     </div>
             </div>
-            <div style="width: 800px; margin: 0 auto;">
+            <div class="wrapper">
         
-                <div style="width: 100%; overflow: hidden; line-height: 1.5;">
+                <div class="inner">
                     @foreach (var mark in Model.Item1[ind].Marks)
                     {
                         foreach (var type in Model.Item2)
@@ -75,7 +124,7 @@
                             if (mark.CategoryId == type.Id)
                             {
                                 var typ = type.Name + " тип";
-                                <h3 style="text-align: center">@typ</h3>
+                                <h3 class="type">@typ</h3>
                                 if (mark.Value == maxi)
                                 {
                                     <div><strong>@GlobalRes_ua.closeTypes:</strong>  @type.ACloseTypes</div>
@@ -104,11 +153,11 @@
                                       <strong>@GlobalRes_ua.detailedDescription</strong>
                                       @type.Details
                                 </div>
-                                    <table class="striped" style="width: 600px;">
+                                    <table class="striped">
                                         <thead>
                                           <tr>
-                                              <th data-field="id" style="text-align: center;">@GlobalRes_ua.peopleOfSuchType "@type.Name" @GlobalRes_ua.like</th>
-                                              <th style="border-left: solid 1px; text-align: center;" data-field="name">@GlobalRes_ua.peopleOfSuchType "@type.Name" @GlobalRes_ua.appriciate</th>
+                                              <th data-field="id" class="typeName">@GlobalRes_ua.peopleOfSuchType "@type.Name" @GlobalRes_ua.like</th>
+                                              <th data-field="name" class="appriciations">@GlobalRes_ua.peopleOfSuchType "@type.Name" @GlobalRes_ua.appriciate</th>
                                           </tr>
                                         </thead>
                                         <tbody>
