@@ -131,6 +131,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\StudentWithGroup.cs" />
     <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\SubjectWithGroup.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
