@@ -32,6 +32,8 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<SubjectManager>();
 
+            builder.RegisterType<SubjectWithGroupManager>();
+
             builder.RegisterType<RoleManager>();
 
             builder.RegisterType<RolsProvider>();
@@ -65,6 +67,9 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<NHibernateStudentDataProvider>()
                .As<IStudentDataProvider>();
+
+            builder.RegisterType<NHibernateSubjectWithGroupDataProvider>()
+               .As<ISubjectWithGroupDataProvider>();
 
             builder.RegisterType<NHibernateMarkDataProvider>()
                 .As<IMarkDataProvider>();
