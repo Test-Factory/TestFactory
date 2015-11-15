@@ -11,17 +11,10 @@ namespace TestFactory.Controllers.Api
     [RoutePrefix("api/categories")]
     public class CategoriesController: ApiController
     {
-        private readonly CategoryManager categoryManager;
-
-        public CategoriesController(CategoryManager categoryManager)
-        {
-            this.categoryManager = categoryManager;
-        }
-
         [HttpGet]
         public IEnumerable<CategoryViewModel> Get()
         {
-            IEnumerable<Category> category = categoryManager.GetList().OrderBy(c => c.Id);
+            IEnumerable<Category> category = Framework.categoryManager.GetList().OrderBy(c => c.Id);
             var result = Mapper.Map<IEnumerable<CategoryViewModel>>(category);
             return result;
         }

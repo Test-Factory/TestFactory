@@ -11,14 +11,11 @@ namespace TestFactory.Controllers.Api
 {
       [RoutePrefix("api/groups")]
     public class GroupsController : ApiController
-    {
-        private readonly GroupManager groupManager;
-
+    {     
         private readonly UserContext user;
 
-        public GroupsController( GroupManager groupManager)
-        {
-            this.groupManager = groupManager;
+        public GroupsController()
+        {       
             this.user = new UserContext();
         }
 
@@ -30,7 +27,7 @@ namespace TestFactory.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            Group group = groupManager.GetById(groupId);
+            Group group = Framework.groupManager.GetById(groupId);
 
             if (group == null)
             {
@@ -43,7 +40,7 @@ namespace TestFactory.Controllers.Api
         [HttpGet]
         public IList<GroupViewModel> Get()
         {
-            IList<Group> groups = groupManager.GetList();
+            IList<Group> groups = Framework.groupManager.GetList();
             var result = Mapper.Map<IList<GroupViewModel>>(groups);
             return result;
         }

@@ -14,20 +14,11 @@ namespace TestFactory.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly GroupManager groupManager;
-
-        private readonly StudentManager studentManager;
-
-        private readonly CategoryManager categoryManager;
-
         private readonly UserContext user;
 
-        public StudentController(GroupManager groupManager, StudentManager studentManager, CategoryManager categoryManager)
+        public StudentController()
         {
-            this.groupManager = groupManager;
-            this.studentManager = studentManager;
-            this.user = new UserContext();
-            this.categoryManager = categoryManager;
+           this.user = new UserContext();
         }
 
         [HttpGet]
@@ -39,7 +30,7 @@ namespace TestFactory.Controllers
                 throw new HttpException(400, GlobalRes_ua.error_400);
             }
 
-            Group group = groupManager.GetById(groupId);
+            Group group = Framework.groupManager.GetById(groupId);
 
             if (group == null)
             {
@@ -59,19 +50,19 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult Search()
         {
-            var groupsForUser = groupManager.GetListForFaculty(user.User.FacultyId);
+            var groupsForUser = Framework.groupManager.GetListForFaculty(user.User.FacultyId);
             var students = new List<Student>();
 
             foreach(var gr in groupsForUser)
             {
-                var student = studentManager.GetList(gr.Id);
+                var student = Framework.studentManager.GetList(gr.Id);
                 students.AddRange(student);
             }
-            studentManager.AddLuceneIndex(students);
+            Framework.studentManager.AddLuceneIndex(students);
 
             var viewStudent = AutoMapper.Mapper.Map<List<StudentViewModel>>(students);
-            var categories = categoryManager.GetList();
-            var group = groupManager.GetList();
+            var categories = Framework.categoryManager.GetList();
+            var group = Framework.groupManager.GetList();
 
             var tuple = new Tuple<IList<StudentViewModel>, IList<Category>, IList<Group>>(viewStudent, categories, group);
             return View(tuple);
@@ -89,7 +80,7 @@ namespace TestFactory.Controllers
         [ValidateInput(true)]
         public JsonResult SearchForStudents(string name)
         {
-            var list = studentManager.Search(name);
+            var list = Framework.studentManager.Search(name);
             return Json(list);
         }
 
@@ -97,14 +88,14 @@ namespace TestFactory.Controllers
         [Authorize(Roles = "Filler")]
         public JsonResult Delete(string studentId)
         {
-            var student = studentManager.GetById(studentId);
+            var student = Framework.studentManager.GetById(studentId);
 
-            if (!groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
+            if (!Framework.groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
 
-            studentManager.Delete(studentId);
+            Framework.studentManager.Delete(studentId);
             return Json(true);
         }
 
@@ -116,12 +107,12 @@ namespace TestFactory.Controllers
                 return Json(false);
             }
 
-            if (!User.IsInRole("Filler") || !groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
+            if (!User.IsInRole("Filler") || !Framework.groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 return Json(false);
             }
             var model = Mapper.Map<Student>(student);
-            studentManager.Update(model);
+            Framework.studentManager.Update(model);
             return Json(true);
         }
     }
