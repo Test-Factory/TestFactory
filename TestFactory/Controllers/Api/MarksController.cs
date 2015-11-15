@@ -15,22 +15,10 @@ namespace TestFactory.Controllers.Api
     [RoutePrefix("api/marks")]
     public class MarksController: ApiController
     {
-        private readonly MarkManager markManager;
-
-        private readonly CategoryManager categoryManager;
-
-        private readonly AverageMarkForFacultyManager averageMarkForFacultyManager;
-
-        private readonly FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager;
-
         private readonly UserContext user;
 
-        public MarksController(MarkManager markManager, AverageMarkForFacultyManager averageMarkForFacultyManager, CategoryManager categoryManager, FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager)
-        {
-            this.markManager = markManager;
-            this.categoryManager = categoryManager;
-            this.averageMarkForFacultyManager = averageMarkForFacultyManager;
-            this.frequencyMarkForFacultyByCategoryManager = frequencyMarkForFacultyByCategoryManager;
+        public MarksController()
+        {          
             this.user = new UserContext();
         }
 
@@ -38,7 +26,7 @@ namespace TestFactory.Controllers.Api
         [Route("average")]
         public IList<AverageMarkForFacultyViewModel> GetAverageMarks()
         {
-            var averageMarks = averageMarkForFacultyManager.GetMarksForFaculty(user.User.FacultyId).OrderBy(c => c.Id);
+            var averageMarks = Framework.averageMarkForFacultyManager.GetMarksForFaculty(user.User.FacultyId).OrderBy(c => c.Id);
            var result = Mapper.Map<IList<AverageMarkForFacultyViewModel>>(averageMarks);
            return result;
         }
@@ -47,15 +35,15 @@ namespace TestFactory.Controllers.Api
         [Route("standardDeviation")]
         public ArrayList GetStandardDeviationMarks()
         {
-            var categories = categoryManager.GetList().ToList();
+            var categories = Framework.categoryManager.GetList().ToList();
             var standardDeviationMarks = new ArrayList();
-            var frequencyMarksForCategory = frequencyMarkForFacultyByCategoryManager
+            var frequencyMarksForCategory = Framework.frequencyMarkForFacultyByCategoryManager
                                             .GetMarksForFaculty(user.User.FacultyId)
                                             .OrderBy(f => f.CategoryId).ToList(); 
 
             foreach (var c in categories)
             {
-                var count = markManager.CountMarksForCategory(c.Id);
+                var count = Framework.markManager.CountMarksForCategory(c.Id);
                 var sd = this.GetStandardDeviationMarkByCategoryId(frequencyMarksForCategory
                           .Where(f => f.CategoryId == c.Id), count);
                 standardDeviationMarks.Add(Math.Round(sd,2));

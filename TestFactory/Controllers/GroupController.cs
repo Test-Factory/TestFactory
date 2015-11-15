@@ -10,40 +10,31 @@ using Embedded_Resource;
 namespace TestFactory.Controllers
 {
     public class GroupController : Controller
-    {
-        private readonly GroupManager groupManager;
-
-        private readonly UserManager userManager;
-
+    {     
         private readonly UserContext user;
 
-        private readonly StudentManager studentManager;
-
-        public GroupController(GroupManager groupManager, StudentManager studentManager, UserManager userManager)
-        {
-            this.groupManager = groupManager;
+        public GroupController( )
+        {          
             this.user = new UserContext();
-            this.userManager = userManager;
-            this.studentManager = studentManager;
         }
 
         [Authorize(Roles = "Filler,Editor")]
         public ActionResult List()
         {
-            var groups = groupManager.GetListForFaculty(user.User.FacultyId);
+            var groups = Framework.groupManager.GetListForFaculty(user.User.FacultyId);
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
         
         public ActionResult GetStudentCount(string id)
         {
-            int count = groupManager.GetStudentsCount(id);
+            int count = Framework.groupManager.GetStudentsCount(id);
             return View(count);
         }
 
         public JsonResult GetStudentsCount(string id)
         {
-            int count = groupManager.GetStudentsCount(id);
+            int count = Framework.groupManager.GetStudentsCount(id);
             return Json(count);
         }
 
@@ -58,7 +49,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Create(GroupViewModel group)
         {
-            if (groupManager.GroupIsAlreadyExist(group.ShortName))
+            if (Framework.groupManager.GroupIsAlreadyExist(group.ShortName))
             {
                 throw new HttpException(403, GlobalRes_ua.forbidenAction);
             }
@@ -70,7 +61,7 @@ namespace TestFactory.Controllers
 
             group.FacultyId = user.User.FacultyId;
             var model = AutoMapper.Mapper.Map<Group>(group);
-            groupManager.Create(model);
+            Framework.groupManager.Create(model);
 
             return RedirectToRoute("groupStudentList", new { groupId = group.Id });
         }
@@ -79,7 +70,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
-            if (user.User.FacultyId != groupManager.GetById(group.Id).FacultyId)
+            if (user.User.FacultyId != Framework.groupManager.GetById(group.Id).FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
@@ -91,7 +82,7 @@ namespace TestFactory.Controllers
 
             group.FacultyId = user.User.FacultyId;
             var model = AutoMapper.Mapper.Map<Group>(group);
-            groupManager.Update(model);
+            Framework.groupManager.Update(model);
 
             return RedirectToRoute("Default");
         }
@@ -105,12 +96,12 @@ namespace TestFactory.Controllers
                 return Json(false);
             }
 
-            if (!groupManager.HasAccessToGroup(user.User.FacultyId, id))
+            if (!Framework.groupManager.HasAccessToGroup(user.User.FacultyId, id))
             { 
                 return Json("error");
             }
 
-            groupManager.Delete(id);
+            Framework.groupManager.Delete(id);
             return Json(true);
         }
     }

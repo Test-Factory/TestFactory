@@ -13,17 +13,11 @@ namespace TestFactory.Controllers
 {
     public class SubjectController : Controller
     {
-        private readonly SubjectManager subjectManager;
-
-        public SubjectController(SubjectManager subjectManager)
-        {
-            this.subjectManager = subjectManager;
-        }
 
         [Authorize(Roles = "Filler,Editor")]
         public ActionResult List()
         {
-            var subjects = subjectManager.GetList();   //TODO: getByGroupId()
+            var subjects = Framework.subjectManager.GetList();   //TODO: getByGroupId()
             var result = Mapper.Map<IList<SubjectViewModel>>(subjects);
             return View(result);
         }
@@ -51,7 +45,7 @@ namespace TestFactory.Controllers
             }
             //subject.FacultyId = "1cb8a5d5-e644-48f8-b8b6-ee0c3cf4700f";
             var model = Mapper.Map<Subject>(subject);
-            subjectManager.Create(model);
+            Framework.subjectManager.Create(model);
 
             return RedirectToRoute("subjectList"); //, new { groupId = subject.Id });
         }

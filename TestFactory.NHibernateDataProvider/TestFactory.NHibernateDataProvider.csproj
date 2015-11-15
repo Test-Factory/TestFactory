@@ -72,6 +72,7 @@
     <Compile Include="DataProviders\NHibernateCategoryDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateStudentWithGroupDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateSubjectDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateSubjectWithGroupDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateUserDataProvider.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M013_BackUpLiveDb.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M011_CreateTables.cs" />
@@ -83,11 +84,14 @@
     <Compile Include="DbVersioning\Migrations\Version3\M032_CreateTableSubject.cs" />
     <Compile Include="DbVersioning\Migrations\Version3\M033_ColumnFacultyIdTbUser.cs" />
     <Compile Include="DbVersioning\Migrations\Version3\M034_ColumnFacultyIdTbGroup.cs" />
+    <Compile Include="DbVersioning\Migrations\Version3\M035_CreateTbSubject_Group.cs" />
+    <Compile Include="DbVersioning\Migrations\Version3\M036_CreateViewSubjectWithGroup.cs" />
     <Compile Include="DbVersioning\Migrator.cs" />
     <Compile Include="NHibernateCore\Mappings\AverageMarkForFacultyMap.cs" />
     <Compile Include="NHibernateCore\Mappings\FrequencyMarkForFacultyByCategoryMap.cs" />
     <Compile Include="NHibernateCore\Mappings\StudentWithGroupMap.cs" />
     <Compile Include="NHibernateCore\Mappings\SubjectMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\SubjectWithGroupMap.cs" />
     <Compile Include="NHibernateCore\SessionHelper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />
     <Compile Include="NHibernateCore\Mappings\RoleMap.cs" />
@@ -139,6 +143,15 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbVersioning\Scripts\Version3\DeleteFacultyIdTbGroupAndOldView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbVersioning\Scripts\Version3\CreateTbSubject_Group.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbVersioning\Scripts\Version3\DropTbSubject_Group.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbVersioning\Scripts\Version3\CreateViewSubjectWithGroup.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

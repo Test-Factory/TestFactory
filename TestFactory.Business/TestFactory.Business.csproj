@@ -97,9 +97,11 @@
     <Compile Include="Components\Managers\AverageMarkForFacultyManager.cs" />
     <Compile Include="Components\Managers\FrequencyMarkForFacultyByCategoryManager.cs" />
     <Compile Include="Components\Managers\SubjectManager.cs" />
+    <Compile Include="Components\Managers\SubjectWithGroupManager.cs" />
     <Compile Include="DataProviderContracts\IAverageMarkForFacultyDataProvider.cs" />
     <Compile Include="DataProviderContracts\IFrequencyMarkForFacultyByCategoryDataProvider.cs" />
     <Compile Include="DataProviderContracts\ISubjectDataProvider.cs" />
+    <Compile Include="DataProviderContracts\ISubjectWithGroupDataProvider.cs" />
     <Compile Include="Models\AverageMarkForFaculty.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
     <Compile Include="Components\Managers\BaseManagerForView.cs" />
@@ -131,6 +133,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\StudentWithGroup.cs" />
     <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\SubjectWithGroup.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

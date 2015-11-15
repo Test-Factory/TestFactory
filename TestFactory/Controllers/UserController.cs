@@ -8,16 +8,7 @@ namespace TestFactory.Controllers
 {
     public class UserController : Controller
     {
-        UserManager userManager;
-
-        RoleManager roleManager;
-
-        public UserController(UserManager userManager, RoleManager roleManager)
-        {
-            this.userManager = userManager;
-            this.roleManager = roleManager;
-        }
-
+     
         [HttpGet]
         [AllowAnonymous]
         public ActionResult LogIn()
@@ -34,7 +25,7 @@ namespace TestFactory.Controllers
                 return View(user);
             }
 
-            if (!userManager.IsRoleAssigned(user.Email, user.Password))
+            if (!Framework.userManager.IsRoleAssigned(user.Email, user.Password))
             {
                 ModelState.AddModelError("Email", GlobalRes_ua.invalidData);
             }

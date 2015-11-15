@@ -17,22 +17,10 @@ namespace TestFactory.Controllers.Api
     [RoutePrefix("api/students")]
     public class StudentsController : ApiController
     {
-        private readonly StudentManager studentManager;
-
-        private readonly StudentWithGroupManager studentWithGroupManager;
-
-        private readonly GroupManager groupManager;
-
-        private readonly MarkManager markManager;
-
         private readonly UserContext user;
 
-        public StudentsController(StudentWithGroupManager studentWithGroupManager, StudentManager studentManager, GroupManager groupManager, MarkManager markManager)
+        public StudentsController()
         {
-            this.studentManager = studentManager;
-            this.studentWithGroupManager = studentWithGroupManager;
-            this.groupManager = groupManager;
-            this.markManager = markManager;
             this.user = new UserContext();
         }
 
@@ -40,10 +28,10 @@ namespace TestFactory.Controllers.Api
         public IList<StudentWithGroupViewModel> Get()
         {
             var students = new List<StudentWithGroup>();
-            var groupsForFaculty = groupManager.GetListForFaculty(user.User.FacultyId);
+            var groupsForFaculty = Framework.groupManager.GetListForFaculty(user.User.FacultyId);
             foreach (var group in groupsForFaculty)
             {
-                var student = studentWithGroupManager.GetByGroupId(group.Id);
+                var student = Framework.studentWithGroupManager.GetByGroupId(group.Id);
                 students.AddRange(student);
             }
             IList<StudentWithGroup> sortedStudents = students.OrderBy(s => s.LastName).ToList();
@@ -58,13 +46,13 @@ namespace TestFactory.Controllers.Api
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            var group = groupManager.GetById(groupId);
+            var group = Framework.groupManager.GetById(groupId);
             if (group == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             IEnumerable<Student> students;
-            students = studentManager.GetList(groupId).OrderBy(s => s.LastName);
+            students = Framework.studentManager.GetList(groupId).OrderBy(s => s.LastName);
             var result = Mapper.Map<IList<StudentViewModel>>(students);
             return result;
         }
@@ -78,12 +66,12 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            if (!groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
+            if (!Framework.groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 return BadRequest();
             }
 
-            var currentGroup = groupManager.GetById(student.GroupId);
+            var currentGroup = Framework.groupManager.GetById(student.GroupId);
 
             student.Year = currentGroup.Year;
 
@@ -94,7 +82,7 @@ namespace TestFactory.Controllers.Api
                 model.Marks[i].Id = Guid.NewGuid().ToString();
                 model.Marks[i].StudentId = model.Id;
             }
-            studentManager.Create(model);
+            Framework.studentManager.Create(model);
             return Ok(model);
         }
 
@@ -108,13 +96,13 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            if (!groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
+            if (!Framework.groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 return BadRequest();
             }
 
             var model = Mapper.Map<Student>(student);
-            studentManager.Update(model);
+            Framework.studentManager.Update(model);
             return Ok();
         }
 
@@ -128,12 +116,12 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            if (!groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
+            if (!Framework.groupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
             {
                 return BadRequest();
             }
-     
-            studentManager.Delete(student.Id);
+
+            Framework.studentManager.Delete(student.Id);
             return Ok();
         }
     }
