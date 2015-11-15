@@ -8,6 +8,11 @@
         deviation: "/standardDeviation"
     };
 
+    //self.myViewModel = {
+    //    groupNames: (['ПІ 52', 'ПІ 51', 'ПІК 12', 'КІ 1']),
+    //    years:(['2015',2010])
+    //};
+
     self.students = ko.observableArray();
     self.categories = ko.observableArray();
     self.standardDeviation = ko.observableArray();

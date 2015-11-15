@@ -1,5 +1,13 @@
 ﻿@Styles.Render("~/Students/css")
+@*<p>
+    Фільтр по </p>
+<p>
+    групам:<select data-bind="options: myViewModel.groupNames"></select>
+    рокам <select data-bind="options: myViewModel.years"></select>
+</p>*@
+
     <div>
+        <span data-bind="text: myViewModel.personName"></span>
         <form>
             <table id="tbStudentList" >
                 <thead>

@@ -648,3 +648,6 @@ i.person {
     font-size: 1.5rem;
     color: #A9A9A9 !important;
 }
+select {
+    display:block
+}
