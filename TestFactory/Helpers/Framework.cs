@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TestFactory.Business.Components;
 using TestFactory.Business.Components.Managers;
 
 namespace TestFactory
@@ -10,16 +11,27 @@ namespace TestFactory
     public static class Framework
     {
 
-        public static GroupManager groupManager
+        public static GroupManager GroupManager
          {
-             get { 
+             get 
+             { 
                  return DependencyResolver.Current.GetService<GroupManager>();
              }
          }
-        public static StudentManager studentManager
+
+        public static StudentManager StudentManager
         {
-            get { 
+            get 
+            { 
                 return DependencyResolver.Current.GetService<StudentManager>(); 
+            }
+        }
+
+        public static UserManager userManager
+        {
+            get
+            {
+                return DependencyResolver.Current.GetService<UserManager>(); 
             }
         }
 
@@ -31,30 +43,7 @@ namespace TestFactory
             }
         }
 
-        public static UserManager userManager
-        {
-            get {
-                return DependencyResolver.Current.GetService<UserManager>(); 
-            }
-        }
-
-        public static RoleManager roleManager
-        {
-            get
-            {
-                return DependencyResolver.Current.GetService<RoleManager>();
-            }
-        }
-
-        public static SubjectManager subjectManager
-        {
-            get
-            {
-                return DependencyResolver.Current.GetService<SubjectManager>();
-            }
-        }
-
-        public static SubjectMarkManager subjectMarkManager
+        public static SubjectMarkManager SubjectMarkManager
         {
             get
             {
@@ -62,14 +51,15 @@ namespace TestFactory
             }
         }
 
-        public static MarkManager markManager
+        public static MarkManager MarkManager
         {
-            get { 
+            get
+        {
                 return DependencyResolver.Current.GetService<MarkManager>(); 
             }
         }
 
-        public static CategoryManager categoryManager
+        public static CategoryManager CategoryManager
         {
             get
             {
@@ -77,7 +67,7 @@ namespace TestFactory
             }
         }
 	   
-        public static StudentWithGroupManager studentWithGroupManager
+        public static StudentWithGroupManager StudentWithGroupManager
         {
             get
             {
@@ -85,7 +75,7 @@ namespace TestFactory
             }
         }
        
-        public static AverageMarkForFacultyManager averageMarkForFacultyManager
+        public static AverageMarkForFacultyManager AverageMarkForFacultyManager
         {
             get
             {
@@ -93,11 +83,19 @@ namespace TestFactory
             }
         }
         
-        public static FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager
+        public static FrequencyMarkForFacultyByCategoryManager FrequencyMarkForFacultyByCategoryManager
         {
             get
             {
                 return DependencyResolver.Current.GetService<FrequencyMarkForFacultyByCategoryManager>();
+            }
+        }
+
+        public static UserContext UserContext
+        {
+            get
+            {
+                return new UserContext();
             }
         }
     }

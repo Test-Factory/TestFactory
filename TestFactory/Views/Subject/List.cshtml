@@ -13,9 +13,9 @@
                             <div data-bind="css: selectedClassForSortedField"></div>
                         </div>
                     </th>
-                   
-                @if (User.IsInRole("Filler"))
-                {
+
+    @if (User.IsInRole(RoleNames.Filler))
+    {
                     <tr>
                         <td class="last-name">
                             <!-- typeahead binding handler  -->
@@ -33,14 +33,14 @@
 
                         </td>
                     </tr>
-                }
+    }
             </thead>
             <tbody data-bind="foreach: subjectsInGroup.subjects">
                 <!-- ko if: mode() == $root.mods.display -->
                 <tr>
                     <td class="last-name" data-bind="text: name"></td>
                     @if (User.IsInRole("Filler"))
-                    {
+    {
                         <td class="screenMediaBelow ">
                             <a class="  btn btn-size btnStudent" data-bind="click: $root.editSubject"><img src="~/Content/images/edit.png" /></a>
                         </td>
@@ -66,7 +66,7 @@
         </table>
     </form>
 
-</div>
+                                </div>
 @section Scripts{
     <script>
         var globalView = null;
@@ -78,5 +78,5 @@
         });
 
     </script>
-}
+    }
 

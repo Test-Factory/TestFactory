@@ -1,6 +1,6 @@
 ﻿@model List<GroupViewModel>
 
-   @if (User.IsInRole("Filler")) 
+   @if (User.IsInRole(RoleNames.Filler)) 
    { 
     <div id="forCreate">
         <a class="waves-effect waves-light btn-large" href="#" id="addGroup">
@@ -17,7 +17,7 @@
                 <div class="col s12 m6">
                     <div class="card blue-grey darken-1 card-action">
                         <div class="card-content white-text">
-                            @if(User.IsInRole("Filler"))
+                            @if (User.IsInRole(RoleNames.Filler))
                             {        
                             <div class="deleteContainer" onclick="Delete($(this), '@item.Id')">
                                 <i class="large material-icons deleteGroup">delete</i>
@@ -33,11 +33,11 @@
                             </a>
                         </div>
                         <div class="card-action actions updateGroup">                        
-                                    @if (User.IsInRole("Editor"))
+                                    @if (User.IsInRole(RoleNames.Editor))
                                     {
                                         <a class="waves-effect waves-light btn donwloadStudentForEditor" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)">@GlobalRes_ua.download</a>
                                     }                                      
-                                    @if (User.IsInRole("Filler"))
+                                    @if (User.IsInRole(RoleNames.Filler))
                             {   
                                <a class="waves-effect waves-light btn donwloadStudent" href="@Url.RouteUrl("studentsResult", new { groupId = item.Id }, null)">@GlobalRes_ua.download</a>
                                     <div class="groupUpdate">

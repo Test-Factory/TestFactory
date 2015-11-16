@@ -9,12 +9,27 @@
         deviation: "/standardDeviation"
     };
 
-    //self.myViewModel = {
-    //    groupNames: (['ПІ 52', 'ПІ 51', 'ПІК 12', 'КІ 1']),
-    //    years:(['2015',2010])
-    //};
+    self.temporary = {
+        groupNames: ([' ', 'ПІ 52', 'ПІ 51', 'ПІК 13', 'КІ 1']),
+        years:(['2015','2014'])
+    };
 
     self.students = ko.observableArray();
+
+    self.searchByStudentsGroups = ko.observable('');
+
+    self.searchByStudentsYearOfStartEducation = ko.observable('');
+
+    self.filteredRecords = ko.computed(function () {
+        return ko.utils.arrayFilter(self.students(), function (rec) {
+            return (
+                      (self.searchByStudentsGroups().length == 0 || rec.groupShortName().toLowerCase().indexOf(self.searchByStudentsGroups().toLowerCase()) > -1)
+                &&
+                      (self.searchByStudentsYearOfStartEducation().length == 0 || rec.Year().toLowerCase().indexOf(self.searchByStudentsYearOfStartEducation().toLowerCase()) > -1)
+                   )
+        });
+    });
+
     self.categories = ko.observableArray();
     self.standardDeviation = ko.observableArray();
 
@@ -86,6 +101,8 @@
         });
         self.sortingByName(sortingBy);
     }
+
+    
 
     self.init();
 }

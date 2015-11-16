@@ -1,13 +1,11 @@
 ﻿@Styles.Render("~/Students/css")
-@*<p>
-    Фільтр по </p>
-<p>
-    групам:<select data-bind="options: myViewModel.groupNames"></select>
-    рокам <select data-bind="options: myViewModel.years"></select>
-</p>*@
+<p id="forSelect">
+    Фільтр по
+    групам: <select data-bind="options:temporary.groupNames, value:searchByStudentsGroups, valueupdate:'onkeydown'" />
+    рокам: <select data-bind="options:temporary.groupNames, value:searchByStudentsGroups, valueupdate:'onkeydown'"/>
+</p>
 
     <div>
-        @*<span data-bind="text: myViewModel.personName"></span>*@
         <form>
             <table id="tbStudentList" >
                 <thead>
@@ -62,11 +60,11 @@
                         <!-- /ko -->
                     </td>
                 </tr>
-                <tbody data-bind="foreach: students">
+                <tbody data-bind="foreach: filteredRecords">
 
                     <tr>
                         <td class="last-name" data-bind="text: lastName"></td>
-                        <td class="first-name" data-bind="text:  firstName"></td>
+                        <td class="first-name" data-bind="text: firstName"></td>
                         <td class="group-name" data-bind="text: groupShortName"></td>
                         <!-- ko foreach: marks -->
                         <td>
@@ -84,12 +82,10 @@
                         </td>
                         <!-- /ko -->
                     </tr>
-                
                 </tbody>
             </table>
         </form>
-
-    </div>
+    </div
 @section Scripts{
 <script>
     $('.tooltipped').tooltip({ delay: 50 });

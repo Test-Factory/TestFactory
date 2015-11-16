@@ -15,18 +15,12 @@ namespace TestFactory.Controllers.Api
     [RoutePrefix("api/marks")]
     public class MarksController: ApiController
     {
-        private readonly UserContext user;
-
-        public MarksController()
-        {          
-            this.user = new UserContext();
-        }
 
         [HttpGet]
         [Route("average")]
         public IList<AverageMarkForFacultyViewModel> GetAverageMarks()
         {
-            var averageMarks = Framework.averageMarkForFacultyManager.GetMarksForFaculty(user.User.FacultyId).OrderBy(c => c.Id);
+            var averageMarks = Framework.AverageMarkForFacultyManager.GetMarksForFaculty(Framework.UserContext.User.FacultyId).OrderBy(c => c.Id);
            var result = Mapper.Map<IList<AverageMarkForFacultyViewModel>>(averageMarks);
            return result;
         }
@@ -35,15 +29,15 @@ namespace TestFactory.Controllers.Api
         [Route("standardDeviation")]
         public ArrayList GetStandardDeviationMarks()
         {
-            var categories = Framework.categoryManager.GetList().ToList();
+            var categories = Framework.CategoryManager.GetList().ToList();
             var standardDeviationMarks = new ArrayList();
-            var frequencyMarksForCategory = Framework.frequencyMarkForFacultyByCategoryManager
-                                            .GetMarksForFaculty(user.User.FacultyId)
+            var frequencyMarksForCategory = Framework.FrequencyMarkForFacultyByCategoryManager
+                                            .GetMarksForFaculty(Framework.UserContext.User.FacultyId)
                                             .OrderBy(f => f.CategoryId).ToList(); 
 
             foreach (var c in categories)
             {
-                var count = Framework.markManager.CountMarksForCategory(c.Id);
+                var count = Framework.MarkManager.CountMarksForCategory(c.Id);
                 var sd = this.GetStandardDeviationMarkByCategoryId(frequencyMarksForCategory
                           .Where(f => f.CategoryId == c.Id), count);
                 standardDeviationMarks.Add(Math.Round(sd,2));

@@ -1,4 +1,5 @@
 ﻿@model Tuple<IList<TestFactory.MVC.ViewModels.StudentViewModel>, IList<TestFactory.Business.Models.Category>, IList<TestFactory.Business.Models.Group>>
+
     <style>
         body {
             overflow: scroll;
@@ -8,7 +9,7 @@
         int numberForm = -1;
       }
 <div class="search">
-    <input  class="form-search" type="search" placeholder="Введіть ім'я студента" id="search" maxlength="100"/>
+    <input  class="form-search" type="search" placeholder="@GlobalRes_ua.enterNameOfStudent" id="search" maxlength="100"/>
     <i id="search-clear" class="material-icons">close</i>
 </div>
     <div class="search-result-conteiner">
@@ -89,7 +90,8 @@
                        
                         <div class="iconConteiner">
                             <div class="centerConteiner">
-                                @if (User.IsInRole("Filler")){
+                                @if (User.IsInRole(RoleNames.Filler))
+                                {
                                     <div class="deleteContainer" onclick="Delete($(this), '@student.Id')">
                                             <i class="large material-icons deleteGroup deleteStudent">delete</i>
                                     </div>
@@ -97,7 +99,8 @@
                                 <a class = "deleteContainer" href="@Url.RouteUrl("studentResult", new { id = student.Id, groupId = student.Id }, null)">
                                     <i class="large material-icons deleteGroup deleteStudent">system_update_alt</i>
                                 </a>
-                                @if (User.IsInRole("Filler")){
+                                @if (User.IsInRole(RoleNames.Filler))
+                                {
                                     <div class="deleteContainer" onclick="swapCard(this)">
                                         <i class="large material-icons deleteGroup deleteStudent">assignment</i>
                                     </div>
@@ -109,8 +112,8 @@
             </div>
         }
     </div>
-    <div id="delete-group" title="Видалити" style="display: none;">
-         <p>Повернути студентів групи після видалення буде неможливо. Ви дісно хочете видалити групу?</p>
+    <div id="delete-group" title="@GlobalRes_ua.delete" style="display: none;">
+         <p>@GlobalRes_ua.conformationOnDeleteGroup</p>
     </div>
     @section Scripts
 {
