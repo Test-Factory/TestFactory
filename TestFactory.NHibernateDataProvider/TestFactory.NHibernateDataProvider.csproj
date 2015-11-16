@@ -72,6 +72,7 @@
     <Compile Include="DataProviders\NHibernateCategoryDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateStudentWithGroupDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateSubjectDataProvider.cs" />
+    <Compile Include="DataProviders\NHibernateSubjectMarkDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateSubjectWithGroupDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateUserDataProvider.cs" />
     <Compile Include="DbVersioning\Migrations\Version1\M013_BackUpLiveDb.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="NHibernateCore\Mappings\FrequencyMarkForFacultyByCategoryMap.cs" />
     <Compile Include="NHibernateCore\Mappings\StudentWithGroupMap.cs" />
     <Compile Include="NHibernateCore\Mappings\SubjectMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\SubjectMarkMap.cs" />
     <Compile Include="NHibernateCore\Mappings\SubjectWithGroupMap.cs" />
     <Compile Include="NHibernateCore\SessionHelper.cs" />
     <Compile Include="NHibernateCore\Mappings\GroupMap.cs" />

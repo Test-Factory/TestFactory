@@ -76,6 +76,7 @@
     <Compile Include="ViewModels\MarkViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\StudentWithGroupViewModel.cs" />
+    <Compile Include="ViewModels\SubjectMarkViewModel.cs" />
     <Compile Include="ViewModels\SubjectViewModel.cs" />
     <Compile Include="ViewModels\SubjectWithGroupViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />

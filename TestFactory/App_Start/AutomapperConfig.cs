@@ -47,6 +47,10 @@ namespace TestFactory.App_Start
                .CreateMap<Mark, MarkViewModel>()
                .IncludeBase<BaseModel, BaseViewModel>();
 
+            Mapper
+              .CreateMap<SubjectMark, SubjectMarkViewModel>()
+              .IncludeBase<BaseModel, BaseViewModel>();
+
             Mapper.CreateMap<Group, GroupViewModel>()
                .IncludeBase<BaseModel, BaseViewModel>()
                .ForMember(groupvm => groupvm.Students, otp => otp.Ignore());
@@ -68,6 +72,9 @@ namespace TestFactory.App_Start
                 .IncludeBase<BaseViewModel, BaseModel>();
 
             Mapper.CreateMap<SubjectViewModel, Subject>()
+                .IncludeBase<BaseViewModel, BaseModel>();
+
+            Mapper.CreateMap<SubjectMarkViewModel, SubjectMark>()
                 .IncludeBase<BaseViewModel, BaseModel>();
 
             Mapper.CreateMap<MarkViewModel, Mark>()

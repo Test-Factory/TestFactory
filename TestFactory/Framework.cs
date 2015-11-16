@@ -46,6 +46,14 @@ namespace TestFactory
             }
         }
 
+        public static SubjectMarkManager subjectMarkManager
+        {
+            get
+            {
+                return DependencyResolver.Current.GetService<SubjectMarkManager>();
+            }
+        }
+
         public static MarkManager markManager
         {
             get { 

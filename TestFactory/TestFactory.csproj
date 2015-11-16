@@ -192,6 +192,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Controllers\Api\GroupsController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\SubjectMarkController.cs" />
     <Compile Include="Filters\MvcHandleErrorAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

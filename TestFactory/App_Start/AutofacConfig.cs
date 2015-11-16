@@ -32,6 +32,8 @@ namespace TestFactory.App_Start
 
             builder.RegisterType<SubjectManager>();
 
+            builder.RegisterType<SubjectMarkManager>();
+
             builder.RegisterType<SubjectWithGroupManager>();
 
             builder.RegisterType<RoleManager>();
