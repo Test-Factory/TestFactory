@@ -1,0 +1,47 @@
+﻿@model IList<SubjectViewModel>
+
+    @if (User.IsInRole("Filler"))
+    {
+        <div id="forCreate">
+            <a class="waves-effect waves-light btn-large" href="#" id="addGroup">
+                <i id="addIcon" class="large material-icons left">note_add</i>
+                <div id="groupAdd">@GlobalRes_ua.createSubject</div>
+            </a>
+        </div>
+    }
+    @foreach (var item in Model)
+    {
+
+        <div class="group-container">
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card blue-grey darken-1 card-action">
+                        <div class="card-content white-text">
+                            @*@if (User.IsInRole("Filler"))
+                            {
+                                <div class="deleteContainer" onclick="Delete($(this), '@item.Id')">
+                                    <i class="large material-icons deleteGroup">delete</i>
+                                </div>
+                            }*@
+                            <a class="toDetails" href="@Url.RouteUrl("", new { subjectId = item.Id }, null)"> @*TODO: redirect to list student with marks for subject *@ 
+                                <p class="textLik">@item.Name</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="updateGroup" id="updateGroup">
+                @*<div id="update">
+                    @Html.Partial("Update", item)
+                </div>*@
+            </div>
+        </div>
+    }
+    <div id="delete-group" title="@GlobalRes_ua.delete">
+        <p>@GlobalRes_ua.conformationOnDeleteGroup</p>
+    </div>
+    <div id="createGroup">
+        <div id="create">
+            @Html.Partial("Create", new SubjectViewModel())
+        </div>
+    </div>

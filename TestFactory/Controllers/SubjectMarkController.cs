@@ -19,5 +19,41 @@ namespace TestFactory.Controllers
             var result = Mapper.Map<IList<SubjectMarkViewModel>>(mark);
             return View(result);
         }
+
+        [HttpPost]
+        public JsonResult Update(SubjectMarkViewModel marks)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(false);
+            }
+
+            if (!User.IsInRole("Filler"))
+            {
+                return Json(true);
+            }
+
+            var model = Mapper.Map<SubjectMark>(marks);
+            Framework.subjectMarkManager.Update(model);
+            return Json(true);
+        }
+
+        [HttpPost]
+        public JsonResult Create(SubjectMarkViewModel marks)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(false);
+            }
+
+            if (!User.IsInRole("Filler"))
+            {
+                return Json(false);
+            }
+
+            var model = Mapper.Map<SubjectMark>(marks);
+            Framework.subjectMarkManager.Create(model);
+            return Json(true);
+        }
     }
 }
