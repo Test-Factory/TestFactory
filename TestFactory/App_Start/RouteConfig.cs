@@ -110,7 +110,13 @@ namespace TestFactory
               name : "subjectCreate",
               url : "subject/create",
               defaults : new { controller = "Subject", action = "Create" }
-         );
+            );
+
+            routes.MapRoute(
+                name: "subjectMark",
+                url: "group/{groupId}/subject/{subjectId}",
+                defaults: new { controller = "SubjectMark", action = "List", groupId = UrlParameter.Optional, subjectId = UrlParameter.Optional }
+             );
 
             #region Chart map routes
             routes.MapRoute(
