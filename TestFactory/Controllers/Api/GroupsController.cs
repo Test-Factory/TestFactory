@@ -27,7 +27,7 @@ namespace TestFactory.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            Group group = Framework.groupManager.GetById(groupId);
+            Group group = Framework.GroupManager.GetById(groupId);
 
             if (group == null)
             {
@@ -40,7 +40,7 @@ namespace TestFactory.Controllers.Api
         [HttpGet]
         public IList<GroupViewModel> Get()
         {
-            IList<Group> groups = Framework.groupManager.GetList();
+            IList<Group> groups = Framework.GroupManager.GetList();
             var result = Mapper.Map<IList<GroupViewModel>>(groups);
             return result;
         }

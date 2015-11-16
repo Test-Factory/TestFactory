@@ -15,7 +15,7 @@ namespace TestFactory.Controllers
     {
         public ActionResult List()
         {
-            var mark = Framework.subjectMarkManager.GetList();
+            var mark = Framework.SubjectMarkManager.GetList();
             var result = Mapper.Map<IList<SubjectMarkViewModel>>(mark);
             return View(result);
         }

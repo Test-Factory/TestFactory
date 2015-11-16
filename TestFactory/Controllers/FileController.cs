@@ -4,8 +4,9 @@ using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using System.Web.Mvc;
 using System.Web;
-using Embedded_Resource;
 using TestFactory.Business.Components;
+using Embedded_Resource;
+using RoleNames = TestFactory.Resources.RoleNames;
 
 namespace TestFactory.Controllers.Api
 {
@@ -18,25 +19,25 @@ namespace TestFactory.Controllers.Api
             this.user = new UserContext();         
         }
 
-        [Authorize(Roles = "Filler,Editor")]
+        [Authorize(Roles = RoleNames.AllRoles)]
         [WordDocument]
         public ActionResult GetReport(string id)
         {
-            Student student = Framework.studentManager.GetById(id);
+            Student student = Framework.StudentManager.GetById(id);
 
             if (student == null)
             {
                 throw new HttpException(404, GlobalRes_ua.error_404);
             }
 
-            Group group = Framework.groupManager.GetById(student.GroupId);
+            Group group = Framework.GroupManager.GetById(student.GroupId);
 
             if (group.FacultyId != user.User.FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
 
-            IList<Category> categories = Framework.categoryManager.GetList();
+            IList<Category> categories = Framework.CategoryManager.GetList();
 
             ViewBag.WordDocumentFilename = "(" + group.ShortName + ") " + student.FirstName + " " + student.LastName;
 
@@ -44,20 +45,20 @@ namespace TestFactory.Controllers.Api
             return View(tuple);
         }
 
-        [Authorize(Roles = "Filler,Editor")]
+        [Authorize(Roles = RoleNames.AllRoles)]
         [WordDocument]
         public ActionResult GetAllReport(string groupId)
         {
-            Group group = Framework.groupManager.GetById(groupId);
+            Group group = Framework.GroupManager.GetById(groupId);
 
             if (group.FacultyId != user.User.FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
 
-            IList<Student> students = Framework.studentManager.GetList(groupId);
+            IList<Student> students = Framework.StudentManager.GetList(groupId);
 
-            IList<Category> categories = Framework.categoryManager.GetList();
+            IList<Category> categories = Framework.CategoryManager.GetList();
 
             ViewBag.WordDocumentFilename = group.ShortName;
 

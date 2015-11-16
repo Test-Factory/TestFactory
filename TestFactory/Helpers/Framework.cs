@@ -10,35 +10,27 @@ namespace TestFactory
     public static class Framework
     {
 
-        public static GroupManager groupManager
+        public static GroupManager GroupManager
          {
              get { 
                  return DependencyResolver.Current.GetService<GroupManager>();
              }
          }
-        public static StudentManager studentManager
+        public static StudentManager StudentManager
         {
             get { 
                 return DependencyResolver.Current.GetService<StudentManager>(); 
             }
         }
 
-        public static UserManager userManager
+        public static UserManager UserManager
         {
             get {
                 return DependencyResolver.Current.GetService<UserManager>(); 
             }
         }
 
-        public static RoleManager roleManager
-        {
-            get
-            {
-                return DependencyResolver.Current.GetService<RoleManager>();
-            }
-        }
-
-        public static SubjectManager subjectManager
+        public static SubjectManager SubjectManager
         {
             get
             {
@@ -46,7 +38,7 @@ namespace TestFactory
             }
         }
 
-        public static SubjectMarkManager subjectMarkManager
+        public static SubjectMarkManager SubjectMarkManager
         {
             get
             {
@@ -54,14 +46,14 @@ namespace TestFactory
             }
         }
 
-        public static MarkManager markManager
+        public static MarkManager MarkManager
         {
             get { 
                 return DependencyResolver.Current.GetService<MarkManager>(); 
             }
         }
 
-        public static CategoryManager categoryManager
+        public static CategoryManager CategoryManager
         {
             get
             {
@@ -69,7 +61,7 @@ namespace TestFactory
             }
         }
 	   
-        public static StudentWithGroupManager studentWithGroupManager
+        public static StudentWithGroupManager StudentWithGroupManager
         {
             get
             {
@@ -77,7 +69,7 @@ namespace TestFactory
             }
         }
        
-        public static AverageMarkForFacultyManager averageMarkForFacultyManager
+        public static AverageMarkForFacultyManager AverageMarkForFacultyManager
         {
             get
             {
@@ -85,7 +77,7 @@ namespace TestFactory
             }
         }
         
-        public static FrequencyMarkForFacultyByCategoryManager frequencyMarkForFacultyByCategoryManager
+        public static FrequencyMarkForFacultyByCategoryManager FrequencyMarkForFacultyByCategoryManager
         {
             get
             {

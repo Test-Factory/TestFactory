@@ -1,4 +1,5 @@
 ﻿@model TestFactory.MVC.ViewModels.GroupViewModel
+
 @Styles.Render("~/Students/css")
 <div>
     <form>
@@ -29,7 +30,7 @@
                     </th>
                     <!-- /ko -->
                 </tr>
-                @if (User.IsInRole("Filler"))
+                @if (User.IsInRole(RoleNames.Filler))
                 { 
                     <tr>
                         <td class="last-name">
@@ -76,7 +77,7 @@
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
-                  @if (User.IsInRole("Filler"))
+                  @if (User.IsInRole(RoleNames.Filler))
                 {
                             <td class="screenMediaBelow ">
                                 <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
@@ -92,7 +93,7 @@
                         <td class="screenMediaAbove ">
                             <a class="btn btnStudent btn-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
                         </td>
-                    @if (User.IsInRole("Filler"))
+                    @if (User.IsInRole(RoleNames.Filler))
                 {
                     <td class="screenMediaBelow">
                         <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent"><img src="~/Content/images/delete.png" /></a>

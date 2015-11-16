@@ -1,6 +1,6 @@
 ﻿@model IList<SubjectViewModel>
 
-    @if (User.IsInRole("Filler"))
+    @if (User.IsInRole(RoleNames.Filler))
     {
         <div id="forCreate">
             <a class="waves-effect waves-light btn-large" href="#" id="addGroup">

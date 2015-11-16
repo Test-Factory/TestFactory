@@ -14,7 +14,7 @@ namespace TestFactory.Controllers.Api
         [HttpGet]
         public IEnumerable<CategoryViewModel> Get()
         {
-            IEnumerable<Category> category = Framework.categoryManager.GetList().OrderBy(c => c.Id);
+            IEnumerable<Category> category = Framework.CategoryManager.GetList().OrderBy(c => c.Id);
             var result = Mapper.Map<IEnumerable<CategoryViewModel>>(category);
             return result;
         }

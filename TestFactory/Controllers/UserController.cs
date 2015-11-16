@@ -3,6 +3,7 @@ using TestFactory.MVC.ViewModels;
 using TestFactory.Business.Components.Managers;
 using System.Web.Security;
 using Embedded_Resource;
+using RoleNames = TestFactory.Resources.RoleNames;
 
 namespace TestFactory.Controllers
 {
@@ -25,14 +26,14 @@ namespace TestFactory.Controllers
                 return View(user);
             }
 
-            if (!Framework.userManager.IsRoleAssigned(user.Email, user.Password))
+            if (!Framework.UserManager.IsRoleAssigned(user.Email, user.Password))
             {
                 ModelState.AddModelError("Email", GlobalRes_ua.invalidData);
             }
             else 
             {
                 FormsAuthentication.SetAuthCookie(user.Email, false);
-                if (User.IsInRole("Filler"))
+                if (User.IsInRole(RoleNames.Filler))
                 {
                     return RedirectToRoute("Default");
                 }
