@@ -40,7 +40,7 @@ namespace TestFactory.Controllers.Api
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            var group = Framework.groupManager.GetById(groupId);
+            var group = Framework.GroupManager.GetById(groupId);
             if (group == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -67,9 +67,9 @@ namespace TestFactory.Controllers.Api
             model.Id = Guid.NewGuid().ToString();
             model.FacultyId = user.User.FacultyId;
             Framework.SubjectManager.Create(model);
-            var group = Framework.groupManager.GetById("1cb8a5d5-e644-48f8-b8b6-ee0c3cf4700f"); //TODO: move to manager
+            var group = Framework.GroupManager.GetById("1cb8a5d5-e644-48f8-b8b6-ee0c3cf4700f"); //TODO: move to manager
             group.Subjects.Add(model);
-            Framework.groupManager.Update(group);
+            Framework.GroupManager.Update(group);
             return Ok(model);
         }
 

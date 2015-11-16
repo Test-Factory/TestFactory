@@ -59,7 +59,7 @@ namespace TestFactory.Controllers.Api
             {
                 return BadRequest("error");
             }
-            var currentGroup = Framework.groupManager.GetById(student.GroupId);
+            var currentGroup = Framework.GroupManager.GetById(student.GroupId);
 
             student.Year = currentGroup.Year;
 

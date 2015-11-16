@@ -26,7 +26,7 @@ namespace TestFactory.Controllers
                 return View(user);
             }
 
-            if (!Framework.UserManager.IsRoleAssigned(user.Email, user.Password))
+            if (!Framework.userManager.IsRoleAssigned(user.Email, user.Password))
             {
                 ModelState.AddModelError("Email", GlobalRes_ua.invalidData);
             }
