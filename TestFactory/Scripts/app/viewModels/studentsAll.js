@@ -3,6 +3,7 @@
 
     var studentProvider = new StudentProvider();
     var markProvider = new MarkProvider();
+    //todo: move urls to providers
     var pathForMarProvider= {
         everage: "/average",
         deviation: "/standardDeviation"
@@ -59,6 +60,7 @@
 
     self.init = function () {
         var averageMarks = [];
+        //todo: move urls to providers
         markProvider.get(pathForMarProvider.everage, function (data) {
             $(data).each(function (index, element) {
                 averageMarks[index] = element;
@@ -66,6 +68,8 @@
                 self.categories.push(mappedItem);
             });
         });
+        //todo: move urls to providers
+
         markProvider.get(pathForMarProvider.deviation, function (data) {
             $(data).each(function (index, element) {
                 self.standardDeviation.push(element);

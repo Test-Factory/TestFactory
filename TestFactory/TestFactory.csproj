@@ -191,6 +191,7 @@
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Controllers\Api\GroupsController.cs" />
+    <Compile Include="Controllers\Api\SubjectsController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\SubjectMarkController.cs" />
     <Compile Include="Filters\MvcHandleErrorAttribute.cs" />
@@ -286,6 +287,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\materialize\font\material-design-icons\Material-Design-Icons.eot" />
@@ -320,12 +322,18 @@
     <Content Include="Scripts\app\dataProvider\categoryProvider.js" />
     <Content Include="Scripts\app\dataProvider\groupProvider.js" />
     <Content Include="Scripts\app\dataProvider\markProvider.js" />
+    <Content Include="Scripts\app\dataProvider\subjectProvider.js" />
     <Content Include="Scripts\app\models\averageMarksForFacultyModel.js" />
     <Content Include="Scripts\app\models\groupModel.js" />
     <Content Include="Scripts\app\models\studentForAllModel.js" />
+    <Content Include="Scripts\app\models\subjectModel.js" />
+    <Content Include="Scripts\app\models\subjectsInGroups.js" />
     <Content Include="Scripts\app\settings\compureModels.js" />
     <Content Include="Scripts\app\settings\configValidation.js" />
     <Content Include="Scripts\app\viewModels\studentsAll.js" />
+    <Content Include="Scripts\app\viewModels\subjects.js" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.js" />
@@ -411,6 +419,10 @@
     <Content Include="Scripts\materialize\materialize.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Search.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -441,7 +453,6 @@
     <Content Include="Views\Student\ListAllStudents.cshtml" />
     <Content Include="Views\Student\Search.cshtml" />
     <Content Include="Views\Subject\List.cshtml" />
-    <Content Include="Views\Subject\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Charts\" />
