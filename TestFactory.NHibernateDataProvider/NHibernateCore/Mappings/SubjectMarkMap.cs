@@ -17,6 +17,8 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
 
             Map(x => x.SubjectId).Not.Nullable();
 
+            Map(x => x.StudentId);
+
             Map(x => x.Value);
         }
     }
