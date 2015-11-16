@@ -11,5 +11,7 @@ namespace TestFactory.Business.Models
         public virtual string Name { get; set; }
 
         public virtual string FacultyId { get; set; }
+
+        public virtual IList<Group> Groups { get; set; }
     }
 }

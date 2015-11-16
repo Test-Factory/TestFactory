@@ -11,5 +11,10 @@ namespace TestFactory.Business.Components.Managers
     public class SubjectManager   : BaseManager<Subject, ISubjectDataProvider>
     {
         public SubjectManager(ISubjectDataProvider provider) : base(provider) { }
+
+        public IList<Subject> GetForFaculty(string facultyId)
+        {
+            return provider.GetForFaculty(facultyId);
+        }
     }
 }

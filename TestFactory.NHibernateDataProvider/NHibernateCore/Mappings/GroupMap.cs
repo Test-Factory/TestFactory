@@ -16,6 +16,13 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
             Map(x => x.FacultyId);
 
             Map(x => x.Year);
+
+            HasManyToMany<Subject>(x => x.Subjects)
+                .Table("Subject_Group")
+                .ParentKeyColumn("GroupId")
+                .ChildKeyColumn("SubjectId")
+                .Cascade.All()
+                .Not.LazyLoad();
         }
     }
 }

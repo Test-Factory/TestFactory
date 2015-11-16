@@ -18,6 +18,13 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
             Map(x => x.Name);
 
             Map(x => x.FacultyId);
+
+            HasManyToMany<Group>(x => x.Groups)
+                .Table("Subject_Group")
+                .ParentKeyColumn("SubjectId")
+                .ChildKeyColumn("GroupId")
+                .Inverse()
+                .Not.LazyLoad();
         }
     }
 }

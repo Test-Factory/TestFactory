@@ -22,10 +22,12 @@ namespace TestFactory.MVC.ViewModels
         public virtual string Year { get; set; }
 
         public virtual IList<StudentViewModel> Students { get; set; }
+        public virtual IList<SubjectViewModel> Subjects { get; set; }
 
         public GroupViewModel()
         {
             Students = new List<StudentViewModel>();
+            Subjects = new List<SubjectViewModel>();
             Id = Guid.NewGuid().ToString();
         }
     }
