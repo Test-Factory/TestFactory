@@ -649,5 +649,9 @@ i.person {
     color: #A9A9A9 !important;
 }
 select {
-    display:block
+    display:inline-block;
+    width:20%;
+}
+#forSelect {
+    font-size: 1.1em;
 }
