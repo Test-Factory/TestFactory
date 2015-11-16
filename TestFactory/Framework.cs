@@ -23,6 +23,14 @@ namespace TestFactory
             }
         }
 
+        public static SubjectManager SubjectManager
+        {
+            get
+            {
+                return DependencyResolver.Current.GetService<SubjectManager>();
+            }
+        }
+
         public static UserManager userManager
         {
             get {
