@@ -9,16 +9,9 @@ using TestFactory.MVC.ViewModels;
 
 namespace TestFactory.Controllers.Api
 {
-      [RoutePrefix("api/groups")]
+    [RoutePrefix("api/groups")]
     public class GroupsController : ApiController
     {     
-        private readonly UserContext user;
-
-        public GroupsController()
-        {       
-            this.user = new UserContext();
-        }
-
         [HttpGet]
         public GroupViewModel Get([FromUri]string groupId)
         {

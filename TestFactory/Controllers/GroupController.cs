@@ -12,17 +12,11 @@ namespace TestFactory.Controllers
 {
     public class GroupController : Controller
     {     
-        private readonly UserContext user;
-
-        public GroupController( )
-        {          
-            this.user = new UserContext();
-        }
 
         [Authorize(Roles = RoleNames.AllRoles)]
         public ActionResult List()
         {
-            var groups = Framework.GroupManager.GetListForFaculty(user.User.FacultyId);
+            var groups = Framework.GroupManager.GetListForFaculty(Framework.UserContext.User.FacultyId);
             var result = AutoMapper.Mapper.Map<List<GroupViewModel>>(groups);
             return View(result);
         }
@@ -60,7 +54,7 @@ namespace TestFactory.Controllers
                 return RedirectToRoute("Default");
             }
 
-            group.FacultyId = user.User.FacultyId;
+            group.FacultyId = Framework.UserContext.User.FacultyId;
             var model = AutoMapper.Mapper.Map<Group>(group);
             Framework.GroupManager.Create(model);
 
@@ -71,7 +65,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public ActionResult Update(GroupViewModel group)
         {
-            if (user.User.FacultyId != Framework.GroupManager.GetById(group.Id).FacultyId)
+            if (Framework.UserContext.User.FacultyId != Framework.GroupManager.GetById(group.Id).FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
@@ -81,7 +75,7 @@ namespace TestFactory.Controllers
                 return View(group);
             }
 
-            group.FacultyId = user.User.FacultyId;
+            group.FacultyId = Framework.UserContext.User.FacultyId;
             var model = AutoMapper.Mapper.Map<Group>(group);
             Framework.GroupManager.Update(model);
 
@@ -97,7 +91,7 @@ namespace TestFactory.Controllers
                 return Json(false);
             }
 
-            if (!Framework.GroupManager.HasAccessToGroup(user.User.FacultyId, id))
+            if (!Framework.GroupManager.HasAccessToGroup(Framework.UserContext.User.FacultyId, id))
             { 
                 return Json("error");
             }

@@ -15,18 +15,12 @@ namespace TestFactory.Controllers.Api
     [RoutePrefix("api/marks")]
     public class MarksController: ApiController
     {
-        private readonly UserContext user;
-
-        public MarksController()
-        {          
-            this.user = new UserContext();
-        }
 
         [HttpGet]
         [Route("average")]
         public IList<AverageMarkForFacultyViewModel> GetAverageMarks()
         {
-            var averageMarks = Framework.AverageMarkForFacultyManager.GetMarksForFaculty(user.User.FacultyId).OrderBy(c => c.Id);
+            var averageMarks = Framework.AverageMarkForFacultyManager.GetMarksForFaculty(Framework.UserContext.User.FacultyId).OrderBy(c => c.Id);
            var result = Mapper.Map<IList<AverageMarkForFacultyViewModel>>(averageMarks);
            return result;
         }
@@ -38,7 +32,7 @@ namespace TestFactory.Controllers.Api
             var categories = Framework.CategoryManager.GetList().ToList();
             var standardDeviationMarks = new ArrayList();
             var frequencyMarksForCategory = Framework.FrequencyMarkForFacultyByCategoryManager
-                                            .GetMarksForFaculty(user.User.FacultyId)
+                                            .GetMarksForFaculty(Framework.UserContext.User.FacultyId)
                                             .OrderBy(f => f.CategoryId).ToList(); 
 
             foreach (var c in categories)

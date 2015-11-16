@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TestFactory.Business.Components;
 using TestFactory.Business.Components.Managers;
 
 namespace TestFactory
@@ -12,20 +13,24 @@ namespace TestFactory
 
         public static GroupManager GroupManager
          {
-             get { 
+             get 
+             { 
                  return DependencyResolver.Current.GetService<GroupManager>();
              }
          }
+
         public static StudentManager StudentManager
         {
-            get { 
+            get 
+            { 
                 return DependencyResolver.Current.GetService<StudentManager>(); 
             }
         }
 
         public static UserManager UserManager
         {
-            get {
+            get 
+            {
                 return DependencyResolver.Current.GetService<UserManager>(); 
             }
         }
@@ -48,7 +53,8 @@ namespace TestFactory
 
         public static MarkManager MarkManager
         {
-            get { 
+            get
+            { 
                 return DependencyResolver.Current.GetService<MarkManager>(); 
             }
         }
@@ -82,6 +88,14 @@ namespace TestFactory
             get
             {
                 return DependencyResolver.Current.GetService<FrequencyMarkForFacultyByCategoryManager>();
+            }
+        }
+
+        public static UserContext UserContext
+        {
+            get
+            {
+                return new UserContext();
             }
         }
     }

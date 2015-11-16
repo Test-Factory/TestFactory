@@ -34,7 +34,7 @@ namespace TestFactory.Controllers
             }
 
             var model = Mapper.Map<SubjectMark>(marks);
-            Framework.subjectMarkManager.Update(model);
+            Framework.SubjectMarkManager.Update(model);
             return Json(true);
         }
 
@@ -52,7 +52,7 @@ namespace TestFactory.Controllers
             }
 
             var model = Mapper.Map<SubjectMark>(marks);
-            Framework.subjectMarkManager.Create(model);
+            Framework.SubjectMarkManager.Create(model);
             return Json(true);
         }
     }

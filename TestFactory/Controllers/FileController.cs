@@ -12,12 +12,6 @@ namespace TestFactory.Controllers.Api
 {
     public class FileController : Controller
     {
-        private readonly UserContext user;
-
-        public FileController()
-        {          
-            this.user = new UserContext();         
-        }
 
         [Authorize(Roles = RoleNames.AllRoles)]
         [WordDocument]
@@ -32,7 +26,7 @@ namespace TestFactory.Controllers.Api
 
             Group group = Framework.GroupManager.GetById(student.GroupId);
 
-            if (group.FacultyId != user.User.FacultyId)
+            if (group.FacultyId != Framework.UserContext.User.FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
@@ -51,7 +45,7 @@ namespace TestFactory.Controllers.Api
         {
             Group group = Framework.GroupManager.GetById(groupId);
 
-            if (group.FacultyId != user.User.FacultyId)
+            if (group.FacultyId != Framework.UserContext.User.FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }

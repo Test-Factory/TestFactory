@@ -17,18 +17,12 @@ namespace TestFactory.Controllers.Api
     [RoutePrefix("api/students")]
     public class StudentsController : ApiController
     {
-        private readonly UserContext user;
-
-        public StudentsController()
-        {
-            this.user = new UserContext();
-        }
 
         [HttpGet]
         public IList<StudentWithGroupViewModel> Get()
         {
             var students = new List<StudentWithGroup>();
-            var groupsForFaculty = Framework.GroupManager.GetListForFaculty(user.User.FacultyId);
+            var groupsForFaculty = Framework.GroupManager.GetListForFaculty(Framework.UserContext.User.FacultyId);
             foreach (var group in groupsForFaculty)
             {
                 var student = Framework.StudentWithGroupManager.GetByGroupId(group.Id);
@@ -66,7 +60,7 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            if (!Framework.GroupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
+            if (!Framework.GroupManager.HasAccessToGroup(Framework.UserContext.User.FacultyId, student.GroupId))
             {
                 return BadRequest();
             }
@@ -96,7 +90,7 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            if (!Framework.GroupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
+            if (!Framework.GroupManager.HasAccessToGroup(Framework.UserContext.User.FacultyId, student.GroupId))
             {
                 return BadRequest();
             }
@@ -116,7 +110,7 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            if (!Framework.GroupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
+            if (!Framework.GroupManager.HasAccessToGroup(Framework.UserContext.User.FacultyId, student.GroupId))
             {
                 return BadRequest();
             }

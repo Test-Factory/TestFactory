@@ -15,12 +15,6 @@ namespace TestFactory.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly UserContext user;
-
-        public StudentController()
-        {
-           this.user = new UserContext();
-        }
 
         [HttpGet]
         [Authorize(Roles = RoleNames.AllRoles)]
@@ -38,7 +32,7 @@ namespace TestFactory.Controllers
                 throw new HttpException(404, GlobalRes_ua.error_404);
             }
 
-            if (group.FacultyId != user.User.FacultyId)
+            if (group.FacultyId != Framework.UserContext.User.FacultyId)
             {
                 throw new HttpException(403, GlobalRes_ua.noAccessToGroup);
             }
@@ -51,7 +45,7 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult Search()
         {
-            var groupsForUser = Framework.GroupManager.GetListForFaculty(user.User.FacultyId);
+            var groupsForUser = Framework.GroupManager.GetListForFaculty(Framework.UserContext.User.FacultyId);
             var students = new List<Student>();
 
             foreach(var gr in groupsForUser)
@@ -91,7 +85,7 @@ namespace TestFactory.Controllers
         {
             var student = Framework.StudentManager.GetById(studentId);
 
-            if (!Framework.GroupManager.HasAccessToGroup(user.User.FacultyId, student.GroupId))
+            if (!Framework.GroupManager.HasAccessToGroup(Framework.UserContext.User.FacultyId, student.GroupId))
             {
                 throw new HttpException(403, GlobalRes_ua.error_403);
             }
@@ -109,7 +103,7 @@ namespace TestFactory.Controllers
             }
 
             if (!User.IsInRole(RoleNames.Filler) || !Framework.GroupManager
-                .HasAccessToGroup(user.User.FacultyId, student.GroupId))
+                .HasAccessToGroup(Framework.UserContext.User.FacultyId, student.GroupId))
             {
                 return Json(false);
             }
