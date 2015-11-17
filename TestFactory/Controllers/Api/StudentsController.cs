@@ -59,12 +59,6 @@ namespace TestFactory.Controllers.Api
             {
                 return BadRequest("error");
             }
-
-            if (!Framework.GroupManager.HasAccessToGroup(Framework.UserContext.User.FacultyId, student.GroupId))
-            {
-                return BadRequest();
-            }
-
             var currentGroup = Framework.GroupManager.GetById(student.GroupId);
 
             student.Year = currentGroup.Year;

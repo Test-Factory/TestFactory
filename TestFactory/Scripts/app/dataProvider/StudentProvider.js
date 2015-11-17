@@ -12,7 +12,6 @@ $(function () {
         $.getJSON(this.apiPath, { groupId: this.groupId }).done(callback).error(function () { console.log("error"); });
     }
 
-    
     StudentProvider.prototype.post = function (data, callback) {
         $.ajax({
             method: "POST",

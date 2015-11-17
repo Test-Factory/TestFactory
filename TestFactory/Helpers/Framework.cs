@@ -27,9 +27,9 @@ namespace TestFactory
             }
         }
 
-        public static UserManager UserManager
+        public static UserManager userManager
         {
-            get 
+            get
             {
                 return DependencyResolver.Current.GetService<UserManager>(); 
             }
@@ -54,7 +54,7 @@ namespace TestFactory
         public static MarkManager MarkManager
         {
             get
-            { 
+        {
                 return DependencyResolver.Current.GetService<MarkManager>(); 
             }
         }

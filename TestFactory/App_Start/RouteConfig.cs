@@ -12,28 +12,16 @@ namespace TestFactory
             #region Student map
 
             routes.MapRoute(
-                name: "studentCreate",
-                url: "group/{groupId}/students/create",
-                defaults: new {controller = "Student", action = "Create"}
-           );
-
-            routes.MapRoute(
-                name: "studentUpdate",
-                url: "group/{groupId}/students/update",
-                defaults: new {controller = "Student", action = "Update"}
-           );
-
-            routes.MapRoute(
                 name: "studentUpdateSearch",
                 url: "student/update/{id}",
                 defaults: new { controller = "Student", action = "Update", id = UrlParameter.Optional }
                 );
 
-            routes.MapRoute(
-                name: "studentDelete",
-                url: "studentDelete/{studentId}",
-                defaults: new { controller = "Student", action = "Delete", studentId = UrlParameter.Optional }
-                );
+            //routes.MapRoute(
+            //    name: "studentDelete",
+            //    url: "studentDelete/{studentId}",
+            //    defaults: new { controller = "Student", action = "Delete", studentId = UrlParameter.Optional }
+            //    );
 
             routes.MapRoute(
                 name: "groupStudentList",
@@ -114,7 +102,7 @@ namespace TestFactory
             #region Subject map routes
             routes.MapRoute(
               name : "subjectList",
-              url : "subjects",  // TODO: group/{groupId}/subjects
+              url : "subjects",  
               defaults : new { controller = "Subject", action = "List" }
             );
 

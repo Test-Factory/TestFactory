@@ -19,10 +19,14 @@ namespace TestFactory
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                         "~/Scripts/knockout-{version}.js",
                         "~/Scripts/knockout.validation.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/typeahead").Include(
+                        "~/Scripts/typeahead.bundle.js",
+                        "~/Scripts/bloodhound.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory(
                         "~/Scripts/app","*.js", true));
 
-            
 
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // используйте средство построения на сайте http://modernizr.com, чтобы выбрать только нужные тесты.
@@ -32,6 +36,7 @@ namespace TestFactory
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Students/css").Include("~/Content/students.css"));
             bundles.Add(new StyleBundle("~/Error/css").Include("~/Content/error.css"));
+            bundles.Add(new StyleBundle("~/Typeahead/css").Include("~/Content/typeahead.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

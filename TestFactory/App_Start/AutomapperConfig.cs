@@ -72,7 +72,9 @@ namespace TestFactory.App_Start
                 .IncludeBase<BaseViewModel, BaseModel>();
 
             Mapper.CreateMap<SubjectViewModel, Subject>()
-                .IncludeBase<BaseViewModel, BaseModel>();
+                .IncludeBase<BaseViewModel, BaseModel>()
+                .ForMember(s=>s.Groups, otp=>otp.Ignore())
+                .ForMember(s=> s.FacultyId, otp=>otp.Ignore());
 
             Mapper.CreateMap<SubjectMarkViewModel, SubjectMark>()
                 .IncludeBase<BaseViewModel, BaseModel>();

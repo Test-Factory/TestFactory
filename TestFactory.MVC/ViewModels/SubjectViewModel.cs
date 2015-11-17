@@ -15,9 +15,6 @@ namespace TestFactory.MVC.ViewModels
         [StringLength(100, ErrorMessage = "Перевищує ліміт в 100 символів")] 
         public virtual string Name { get; set; }
 
-        [ScaffoldColumn(false)]
-        public virtual string FacultyId { get; set; }
-
         public SubjectViewModel()
         {
             Id = Guid.NewGuid().ToString();
