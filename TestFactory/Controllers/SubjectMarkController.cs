@@ -21,6 +21,30 @@ namespace TestFactory.Controllers
             var markForSubject = Framework.SubjectMarkManager.GetList();
             var subject = Framework.SubjectManager.GetById(subjectId);
 
+            if (students.Count != markForSubject.Count)
+            {
+                foreach (var st in students)
+                {
+                    bool isToAssess = false;
+                    foreach (var mr in markForSubject)
+                    {
+                        if (st.Id.Equals(mr.StudentId))
+                        {
+                            isToAssess = true;
+                            break;
+                        }
+                    }
+                    if (!isToAssess)
+                    {
+                        var newMark = new SubjectMark();
+                        newMark.StudentId = st.Id;
+                        newMark.SubjectId = subject.Id;
+                        newMark.Value = null;
+                        markForSubject.Add(newMark);
+                    }
+                }
+            }
+
             var resultGroup = Mapper.Map<GroupViewModel>(group);
             var resultStudents = Mapper.Map<IList<StudentViewModel>>(students);
             var resultMark = Mapper.Map<IList<SubjectMarkViewModel>>(markForSubject);
@@ -31,39 +55,33 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(SubjectMarkViewModel marks)
+        public void Update(SubjectMarkViewModel marks)
         {
-            if (!ModelState.IsValid)
-            {
-                return Json(false);
-            }
-
             if (!User.IsInRole("Filler"))
             {
-                return Json(true);
+                throw new HttpException(403, GlobalRes_ua.error_403);
             }
 
-            var model = Mapper.Map<SubjectMark>(marks);
-            Framework.SubjectMarkManager.Update(model);
-            return Json(true);
+            if (ModelState.IsValid)
+            {
+                var model = Mapper.Map<SubjectMark>(marks);
+                Framework.SubjectMarkManager.Update(model);
+            }
         }
 
         [HttpPost]
-        public JsonResult Create(SubjectMarkViewModel marks)
+        public void Create(SubjectMarkViewModel marks)
         {
-            if (!ModelState.IsValid)
-            {
-                return Json(false);
-            }
-
             if (!User.IsInRole("Filler"))
             {
-                return Json(false);
+                throw new HttpException(403, GlobalRes_ua.error_403);
             }
 
-            var model = Mapper.Map<SubjectMark>(marks);
-            Framework.SubjectMarkManager.Create(model);
-            return Json(true);
+            if (ModelState.IsValid)
+            {
+                var model = Mapper.Map<SubjectMark>(marks);
+                Framework.SubjectMarkManager.Create(model);
+            }
         }
     }
 }

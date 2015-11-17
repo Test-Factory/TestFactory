@@ -76,7 +76,7 @@ namespace TestFactory.Controllers.Api
 
         [HttpPut]
         [ValidateModel]
-        public IHttpActionResult Update(SubjectViewModel subject)
+        public IHttpActionResult Update(SubjectWithGroupViewModel subject)
         {
             if (!User.IsInRole("Filler"))
             {
