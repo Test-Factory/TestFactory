@@ -67,6 +67,9 @@ namespace TestFactory.App_Start
             builder.RegisterType<NHibernateSubjectDataProvider>()
                .As<ISubjectDataProvider>();
 
+            builder.RegisterType<NHibernateSubjectMarkDataProvider>()
+               .As<ISubjectMarkDataProvider>();
+
             builder.RegisterType<NHibernateStudentDataProvider>()
                .As<IStudentDataProvider>();
 
