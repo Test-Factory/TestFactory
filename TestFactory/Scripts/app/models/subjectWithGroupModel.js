@@ -1,6 +1,6 @@
-﻿function SubjectModel(item, defaultMode) {
+﻿function SubjectWithGroupModel(item, defaultMode) {
     var self = this;
-    self.id = ko.observable(item ? item.SubjectId : "");
+    self.subjectId = ko.observable(item ? item.SubjectId : "");
     self.groupId = ko.observable(item ? item.GroupId : "");
     self.name = ko.observable(item ? item.Name : "").extend({
         required: {
@@ -15,17 +15,16 @@
     });
     self.mode = ko.observable(defaultMode || "display");
 }
-SubjectModel.prototype.mapFrom = function mapSubject(from) {
-    this.id(from.id());
+SubjectWithGroupModel.prototype.mapFrom = function mapSubject(from) {
+    this.subjectId(from.subjectId());
     this.groupId(from.groupId());
     this.name(from.name());
 }
 
-SubjectModel.prototype.toServerModel = function () {
+SubjectWithGroupModel.prototype.toServerModel = function () {
     return {
-        SubjectId: this.id(),
+        SubjectId: this.subjectId(),
         GroupId: this.groupId(),
         Name: this.name()
     }
 }
-

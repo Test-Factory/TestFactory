@@ -30,7 +30,6 @@ namespace TestFactory.Controllers.Api
             var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId);
             var result = subjects.Select(s=>s.Name).ToArray();
             return result;
-            //new [] {"Math", "Literature", "Programming", "Databases", "Algorithms"};
         }
         
         [HttpGet]
@@ -46,28 +45,30 @@ namespace TestFactory.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             IEnumerable<Subject> subjects;
-            subjects = Framework.SubjectManager.GetList().OrderBy(s => s.Name); //TODO: error
+            subjects = Framework.SubjectManager.GetList().OrderBy(s => s.Name);
             var result = Mapper.Map<IList<SubjectViewModel>>(subjects);
             return result;
         }
 
         [HttpPost]
         [ValidateModel]
-        public IHttpActionResult Create(SubjectViewModel subject)
+        public IHttpActionResult Create(SubjectWithGroupViewModel subject)
         {
             if (!User.IsInRole("Filler"))
             {
                 return BadRequest("error");
             }
-            //if (!Framework.groupManager.HasAccessToGroup(user.User.FacultyId, subject.GroupId))
-            //{
-            //    return BadRequest();
-            //}
+            var group = Framework.GroupManager.GetById(subject.GroupId);
+            var result = group.Subjects.Any(s => s.Name == subject.Name);
+            if (result)
+            {
+                return BadRequest();
+            }
+
             Subject model = Mapper.Map<Subject>(subject);
             model.Id = Guid.NewGuid().ToString();
             model.FacultyId = user.User.FacultyId;
             Framework.SubjectManager.Create(model);
-            var group = Framework.GroupManager.GetById("1cb8a5d5-e644-48f8-b8b6-ee0c3cf4700f"); //TODO: move to manager
             group.Subjects.Add(model);
             Framework.GroupManager.Update(group);
             return Ok(model);
@@ -96,9 +97,6 @@ namespace TestFactory.Controllers.Api
             {
                 return BadRequest("error");
             }
-            //var group = Framework.groupManager.GetById("1cb8a5d5-e644-48f8-b8b6-ee0c3cf4700f"); //TODO: move to manager
-            //group.Subjects.Remove(Mapper.Map<Subject>(subject));
-            //Framework.groupManager.Update(group);
             Framework.SubjectManager.Delete(subject.Id);
             return Ok();
         }

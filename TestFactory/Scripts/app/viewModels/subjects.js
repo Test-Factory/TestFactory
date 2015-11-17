@@ -26,7 +26,6 @@
                     minLength: 1
                 };
                 $(element).typeahead(baseOptions, options);
-
                 // typeahed on select update observable
                 $(element).bind('typeahead:selected', function (obj, data, name) {
                     allBindings().value(data);
@@ -104,6 +103,7 @@ function SubjectViewModel(group) {
         if (!self.subjectForCreate.isValid()) {
             return false;
         }
+        self.subjectForCreate().groupId(self.subjectsInGroup.id());
         var subjectServerModel = self.subjectForCreate().toServerModel();
         subjectProvider.post(subjectServerModel, function(data) {
             var newSubject = new SubjectModel();

@@ -329,6 +329,7 @@
     <Content Include="Scripts\app\models\studentForAllModel.js" />
     <Content Include="Scripts\app\models\subjectModel.js" />
     <Content Include="Scripts\app\models\subjectsInGroups.js" />
+    <Content Include="Scripts\app\models\subjectWithGroupModel.js" />
     <Content Include="Scripts\app\settings\compureModels.js" />
     <Content Include="Scripts\app\settings\configValidation.js" />
     <Content Include="Scripts\app\viewModels\studentsAll.js" />
@@ -454,7 +455,7 @@
     <Content Include="Views\Student\ListAllStudents.cshtml" />
     <Content Include="Views\Student\Search.cshtml" />
     <Content Include="Views\Subject\List.cshtml" />
-	<Content Include="Views\Subject\Marks.cshtml" />
+    <Content Include="Views\Subject\Marks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Charts\" />

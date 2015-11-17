@@ -15,6 +15,19 @@ namespace TestFactory.App_Start
         }
         private static void RegisterToViewModel()
         {
+
+            Mapper
+               .CreateMap<SubjectWithGroupViewModel, Subject>()
+               .ForMember(s => s.FacultyId, otp => otp.Ignore())
+               .ForMember(s => s.Groups, otp => otp.Ignore())
+                .ForMember(s => s.Id, opt => opt.MapFrom(src => src.SubjectId));
+
+            Mapper
+               .CreateMap<Subject, SubjectWithGroupViewModel>()
+               .ForMember(s => s.GroupId, otp => otp.Ignore())
+                .ForMember(s => s.SubjectId, opt => opt.MapFrom(src => src.Id)); 
+
+
             Mapper
                .CreateMap<User, UserViewModel>()
                .IncludeBase<BaseModel, BaseViewModel>();
@@ -32,6 +45,7 @@ namespace TestFactory.App_Start
 
             Mapper
                 .CreateMap<SubjectWithGroup, SubjectWithGroupViewModel>();
+
 
             Mapper
                .CreateMap<AverageMarkForFaculty, AverageMarkForFacultyViewModel>();
