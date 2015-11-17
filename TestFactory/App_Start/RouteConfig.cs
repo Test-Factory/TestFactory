@@ -102,7 +102,7 @@ namespace TestFactory
             #region Subject map routes
             routes.MapRoute(
               name : "subjectList",
-              url : "subjects",  // TODO: group/{groupId}/subjects
+              url : "subjects",  
               defaults : new { controller = "Subject", action = "List" }
             );
 
