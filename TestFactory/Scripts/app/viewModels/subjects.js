@@ -56,8 +56,8 @@ function SubjectViewModel(group) {
     }
 
     self.preloader = ko.observable(true);
-    self.subjectForUpdate = ko.validatedObservable(new SubjectModel(), { deep: true });
-    self.subjectForCreate = ko.validatedObservable(new SubjectModel(), { deep: true });
+    self.subjectForUpdate = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
+    self.subjectForCreate = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
 
     self.mods = {
         display: "display",
@@ -108,7 +108,7 @@ function SubjectViewModel(group) {
         subjectProvider.post(subjectServerModel, function(data) {
             var newSubject = new SubjectModel();
             newSubject.mapFrom(self.subjectForCreate());
-            newSubject.id(data.Id);
+            newSubject.subjectId(data.Id);
             closeAllEditing();
             self.subjectsInGroup.subjects.splice(0, 0, newSubject);
             self.addSubject();
@@ -120,6 +120,7 @@ function SubjectViewModel(group) {
             return false;
         }
         var subjectServerModel = self.subjectForUpdate().toServerModel();
+        subjectServerModel.GroupId = self.subjectsInGroup.id();
         subjectProvider.put(subjectServerModel, function() {
             subject.mapFrom(self.subjectForUpdate());
             subject.mode(self.mods.display);

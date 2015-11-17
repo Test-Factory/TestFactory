@@ -18,6 +18,7 @@ namespace TestFactory.Controllers
         public ActionResult List(string groupId)
         {
             var group = Framework.GroupManager.GetById(groupId);
+            //group.
             var result = Mapper.Map<GroupViewModel>(group);
             return View(result);
         }

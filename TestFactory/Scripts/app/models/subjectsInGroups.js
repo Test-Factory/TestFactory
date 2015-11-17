@@ -8,7 +8,7 @@
 
     if (item && item.Subjects) {
         item.Subjects.forEach(function (element) {
-            var mappedItem = new SubjectModel(element);
+            var mappedItem = new SubjectWithGroupModel(element);
             self.subjects.push(mappedItem);
         });
     }

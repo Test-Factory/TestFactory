@@ -83,8 +83,9 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
-            var model = Mapper.Map<Subject>(subject);
-            model.FacultyId = user.User.FacultyId;
+            var model = Framework.SubjectManager.GetById(subject.SubjectId);
+            model.Name = subject.Name;
+            model.Groups.Add(Framework.GroupManager.GetById(subject.GroupId));
             Framework.SubjectManager.Update(model);
             return Ok();
         }
