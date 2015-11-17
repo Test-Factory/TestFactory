@@ -118,6 +118,18 @@ namespace TestFactory
                 defaults: new { controller = "SubjectMark", action = "List", groupId = UrlParameter.Optional, subjectId = UrlParameter.Optional }
              );
 
+            routes.MapRoute(
+                name: "createSubjectMark",
+                url: "subjectMark/Create",
+                defaults: new { controller = "SubjectMark", action = "Create" }
+             );
+
+            routes.MapRoute(
+                name: "updateSubjectMark",
+                url: "subjectMark/Update",
+                defaults: new { controller = "SubjectMark", action = "Update" }
+             );
+
             #region Chart map routes
             routes.MapRoute(
                 name: "GenerateChart",

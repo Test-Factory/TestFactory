@@ -19,6 +19,10 @@ td, th {
     padding: 10px 5px;
 }
 
+.widthInput {
+    width: 80px !important;
+}
+
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
 }

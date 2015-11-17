@@ -454,7 +454,8 @@
     <Content Include="Views\Student\ListAllStudents.cshtml" />
     <Content Include="Views\Student\Search.cshtml" />
     <Content Include="Views\Subject\List.cshtml" />
-	<Content Include="Views\Subject\Marks.cshtml" />
+    <Content Include="Views\Subject\Marks.cshtml" />
+    <Content Include="Views\SubjectMark\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Charts\" />
