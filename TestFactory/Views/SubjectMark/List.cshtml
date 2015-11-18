@@ -10,7 +10,7 @@
                 <th>Оцінка</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="mark-content">
         @foreach(var student in Model.Item3)
         {
             for (int i = 0; i < Model.Item4.Count; i++ )
@@ -36,7 +36,19 @@
                                                 @Html.HiddenFor(marks => SubjectId)
                                                 @Html.HiddenFor(marks => Id)
                                                 @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @min = 1, @max = 5 } })
-                                                <input type="submit" value="@GlobalRes_ua.save" class="btn btn-default" />
+                                                
+                                                <button class="btn btn-default" onclick="SubmitForm(this, '/subjectMark/Create')">@GlobalRes_ua.save</button>
+                                            <div class="preloader-wrapper big active preloader-size">
+                                                    <div class="spinner-layer spinner-blue-only">
+                                                      <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                      </div><div class="gap-patch">
+                                                        <div class="circle"></div>
+                                                      </div><div class="circle-clipper right">
+                                                        <div class="circle"></div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
                                             }
                                         </td>
                                 }
@@ -50,7 +62,19 @@
                                                 @Html.HiddenFor(marks => SubjectId)
                                                 @Html.HiddenFor(marks => Id)
                                                 @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @min = 1, @max = 5 } })
-                                                <input type="submit" value="@GlobalRes_ua.save" class="btn btn-default" />
+                                                
+                                                <button class="btn btn-default" onclick="SubmitForm(this, '/subjectMark/Update')">@GlobalRes_ua.save</button>
+                                                <div class="preloader-wrapper big active preloader-size">
+                                                    <div class="spinner-layer spinner-blue-only">
+                                                      <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                      </div><div class="gap-patch">
+                                                        <div class="circle"></div>
+                                                      </div><div class="circle-clipper right">
+                                                        <div class="circle"></div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
                                             }
                                         </td>
                                 }
@@ -60,3 +84,12 @@
         }
     </tbody>
 </table>
+    <script>
+        SubmitForm = function (elem, path) {
+            $.post(
+                path,
+                JSON.stringify($(elem).parents(form).serialize()),
+                function (data) { alert(data) }
+            )
+        }
+    </script>

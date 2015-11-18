@@ -19,6 +19,15 @@ td, th {
     padding: 10px 5px;
 }
 
+.mark-content td, th {
+    padding: 0px 0px;
+}
+
+.preloader-size {
+    width: 30px !important;
+    height: 30px !important;
+}
+
 .widthInput {
     width: 80px !important;
 }
