@@ -55,33 +55,37 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
-        public void Update(SubjectMarkViewModel marks)
+        public JsonResult Update(SubjectMarkViewModel marks)
         {
             if (!User.IsInRole("Filler"))
             {
-                throw new HttpException(403, GlobalRes_ua.error_403);
+                return Json(false);
             }
 
             if (ModelState.IsValid)
             {
                 var model = Mapper.Map<SubjectMark>(marks);
                 Framework.SubjectMarkManager.Update(model);
+                return Json(true);
             }
+            return Json(false);
         }
 
         [HttpPost]
-        public void Create(SubjectMarkViewModel marks)
+        public JsonResult Create(SubjectMarkViewModel marks)
         {
             if (!User.IsInRole("Filler"))
             {
-                throw new HttpException(403, GlobalRes_ua.error_403);
+                return Json(false);
             }
 
             if (ModelState.IsValid)
             {
                 var model = Mapper.Map<SubjectMark>(marks);
                 Framework.SubjectMarkManager.Create(model);
+                return Json(true);
             }
+            return Json(false);
         }
     }
 }
