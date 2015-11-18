@@ -20,8 +20,10 @@ function StudentsViewModel(group, sortingBy) {
 
     var studentProvider = new StudentProvider(self.group.id);
     var categoryProvider = new CategoryProvider();
+    var subjectProvider = new SubjectProvider();
 
     self.students = ko.observableArray();
+    self.subjects = ko.observableArray();
     self.categories = ko.observableArray();
     self.sortKey = ko.observable();
     self.preloader = ko.observable(true);
@@ -170,9 +172,15 @@ function StudentsViewModel(group, sortingBy) {
                 mappedStudent.sortMarksByCategoryIdDesc();
                 self.students.push(mappedStudent);
             });
-            self.preloader(false);
+        });
+        subjectProvider.getAll(function (data) {
+            $(data).each(function (index, element) {
+                var mappedSubject = new SubjectModel(element, self.mods.display);
+                self.subjects.push(mappedSubject);
+            });
         });
         self.sortingByName(sortingBy);
+        self.preloader(false);
     }
 
     self.init();

@@ -40,14 +40,25 @@ bindingHandlersManager.addTypeahead();
 
 function SubjectViewModel(group) {
     var self = this;
-
     self.subjectsInGroup = new SubjectsInGroupModel(group);
+    self.subjects = ko.observableArray();
+    var subjectProvider = new SubjectProvider(self.subjectsInGroup.id);
+    subjectProvider.getAll(function (data) {
+        $(data).each(function (index, element) {
+            var mappedSubject = new SubjectModel(element, self.mods.display);
+            self.subjects.push(mappedSubject);
+        });
+    });
+
+
+
+    
 
     self.availableSubjects = self.subjectsInGroup.subjects;
     self.sortDescending = ko.observable(false);
     self.sortingKey = ko.observable("name");
 
-    var subjectProvider = new SubjectProvider(self.subjectsInGroup.id);
+  
 
     self.searchSubjects = function (searchTerm, callback, asyncCallback) {
         subjectProvider.getAll(function (arr) {
@@ -58,6 +69,7 @@ function SubjectViewModel(group) {
     self.preloader = ko.observable(true);
     self.subjectForUpdate = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
     self.subjectForCreate = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
+    self.subjecttForDelete = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
 
     self.mods = {
         display: "display",
@@ -82,6 +94,34 @@ function SubjectViewModel(group) {
         return self.sortDescending() ? "triangle-up" : "triangle-down";
     }, self);
 
+    self.deleteSubject = function (subject) {
+        $("#delete-student").dialog({
+            resizable: false,
+            height: 200,
+            modal: true,
+            buttons: {
+                "Видалити": function () {
+                    closeAllEditing();
+                    self.subjecttForDelete().mapFrom(subject);
+                    //self.categories.removeAll();
+                    //self.students.remove(student);
+                    subject.mode(self.mods.deleting);
+                    var subjectServerModel = self.subjecttForDelete().toServerModel();
+                    subjectServerModel.GroupId = self.subjectsInGroup.id();
+                    subjectProvider.delete(subjectServerModel, function () {
+                        subject.mapFrom(self.subjecttForDelete());
+                        subject.mode(self.mods.deleting);
+                    });
+                    $(this).dialog("close");
+                },
+                Відмінити: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }
+
+
     self.editSubject = function(subject) {
         closeAllEditing();
         self.subjectForUpdate().mapFrom(subject);
@@ -92,7 +132,7 @@ function SubjectViewModel(group) {
 
     self.addSubject = function() {
         closeAllEditing();
-        var newSubject = new SubjectModel();
+        var newSubject = new SubjectWithGroupModel();
         self.subjectForCreate().mapFrom(newSubject);
         self.subjectForCreate().mode(self.mods.create);
 
@@ -106,7 +146,7 @@ function SubjectViewModel(group) {
         self.subjectForCreate().groupId(self.subjectsInGroup.id());
         var subjectServerModel = self.subjectForCreate().toServerModel();
         subjectProvider.post(subjectServerModel, function(data) {
-            var newSubject = new SubjectModel();
+            var newSubject = new SubjectWithGroupModel();
             newSubject.mapFrom(self.subjectForCreate());
             newSubject.subjectId(data.Id);
             closeAllEditing();

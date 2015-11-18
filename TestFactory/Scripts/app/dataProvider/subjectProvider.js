@@ -37,4 +37,13 @@ $(function () {
             contentType: contentType,
         }).done(callback);
     }
+
+    SubjectProvider.prototype.delete = function (data, callback) {
+        $.ajax({
+            method: "DELETE",
+            url: this.apiPath,
+            data: JSON.stringify(data),
+            contentType: contentType,
+        }).done(callback);
+    }
 });
