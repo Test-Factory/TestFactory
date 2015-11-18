@@ -39,7 +39,7 @@
                                                 
                                                 <div style="display: inline-block">
                                                       <div class="preloader-wrapper big active preloader-size preloader-visibility">
-                                                        <div class="spinner-layer spinner-blue-only">
+                                                        <div class="spinner-layer spinner-yellow-only">
                                                           <div class="circle-clipper left">
                                                             <div class="circle"></div>
                                                           </div><div class="gap-patch">
@@ -64,11 +64,10 @@
                                             @using (Html.BeginForm("Update", "SubjectMark", FormMethod.Post, new { @class = "form-mark" }))
                                             {
                                                 @Html.AntiForgeryToken()
+                                                @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @onblur = "SubmitForm(this, '/subjectMark/Update')" } })
                                                 @Html.HiddenFor(marks => StudentId)
                                                 @Html.HiddenFor(marks => SubjectId)
                                                 @Html.HiddenFor(marks => Id)
-                                                @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @onblur = "SubmitForm(this, '/subjectMark/Update')" } })
-                                                
                                                 <div style="display: inline-block">
                                                     <div class="preloader-wrapper big active preloader-size preloader-visibility">
                                                         <div class="spinner-layer spinner-yellow-only">
@@ -96,18 +95,4 @@
         }
     </tbody>
 </table>
-    <script>
-        SubmitForm = function (elem, path) {
-            $(elem).parents(".form-mark").find(".preloader-visibility").show();
-            $(elem).parent(".form-mark").find(".icon-mark").hide();
-            var json = JSON.stringify($(elem).parents(".form-mark").serialize());
-            $.post(
-                path,
-                json,
-                function (data) {
-                    $(elem).parents(".form-mark").find(".preloader-visibility").hide();
-                    $(elem).parent(".form-mark").find(".icon-mark").show();
-                }
-            )
-        }
-    </script>
+    @Scripts.Render("~/Scripts/SubjectMark.js")
