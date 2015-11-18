@@ -31,11 +31,18 @@ td, th {
 
     .icon-mark i.large {
         font-size: 2.2em;
-        color: green;
     }
 
 .preloader-visibility {
     display: none;
+}
+
+.bad-icon {
+    color: red;
+}
+
+.ok-icon {
+    color: green;
 }
 
 .preloader-size {
