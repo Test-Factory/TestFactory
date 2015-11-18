@@ -24,6 +24,7 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
                 .ParentKeyColumn("SubjectId")
                 .ChildKeyColumn("GroupId")
                 .Inverse()
+                .Cascade.SaveUpdate()
                 .Not.LazyLoad();
         }
     }

@@ -21,7 +21,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
                 .Table("Subject_Group")
                 .ParentKeyColumn("GroupId")
                 .ChildKeyColumn("SubjectId")
-                .Cascade.All()
+                .Cascade.SaveUpdate()
                 .Not.LazyLoad();
         }
     }

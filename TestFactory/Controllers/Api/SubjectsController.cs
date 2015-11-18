@@ -25,10 +25,10 @@ namespace TestFactory.Controllers.Api
 
         [HttpGet]
         [Route("all")]
-        public string[] GetAll()
+         public IList<SubjectViewModel> GetAll()
         {
-            var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId);
-            var result = subjects.Select(s=>s.Name).ToArray();
+            var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId).ToList();
+            var result = Mapper.Map<IList<SubjectViewModel>>(subjects);
             return result;
         }
         
@@ -87,18 +87,6 @@ namespace TestFactory.Controllers.Api
             model.Name = subject.Name;
             model.Groups.Add(Framework.GroupManager.GetById(subject.GroupId));
             Framework.SubjectManager.Update(model);
-            return Ok();
-        }
-
-        [HttpDelete]
-        [ValidateModel]
-        public IHttpActionResult Delete(SubjectViewModel subject)
-        {
-            if (!User.IsInRole("Filler"))
-            {
-                return BadRequest("error");
-            }
-            Framework.SubjectManager.Delete(subject.Id);
             return Ok();
         }
     }
