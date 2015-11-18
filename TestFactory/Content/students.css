@@ -1,4 +1,33 @@
-﻿/* Styles for student list view
+﻿/* Styles sidebar
+-----------------------------------------------------------*/
+.side-nav {
+    width: 200px;
+    background-color: #eeeeee !important;
+    top: 64px
+}
+.side-nav .activeItem {
+    te: bold;
+}
+.side-nav .collapsible-body { background-color: #eeeeee !important; }
+
+.side-nav .collapsible-body .collection {
+    border: 0;
+    border-bottom: 0;
+    margin: 0 0 0 1rem;
+    padding: 0;
+}
+
+.collapsible-body .collection .dropItem {
+    padding: 0 0 0 1rem !important;
+    margin: 0 !important;
+}
+
+.side-nav .ietmSidebar .collapsible-header {
+    margin: 0;
+    padding: 1rem 1rem;
+}
+
+/* Styles for student list view
 -----------------------------------------------------------*/
 .screenMediaBelow {
     display: none;

@@ -1,62 +1,93 @@
-﻿@using TestFactory.MVC.ViewModels;
+﻿@using System.Web.Http.Tracing
+@using TestFactory.MVC.ViewModels;
 @model Tuple<GroupViewModel, SubjectViewModel, IList<StudentViewModel>, IList<SubjectMarkViewModel>>
+@Styles.Render("~/Students/css")
+<ul class="side-nav fixed">
+    <ul class="collapsible">
+        <li class="ietmSidebar activeItem">
+            <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new { groupId = @Model.Item1.Id }, null) ">Holand</a>
+        </li>
+        <li class="ietmSidebar">
+            <a class="  collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
+            <div class="collapsible-body">
+                <ul class="collection" data-bind="foreach: subjects">
+                    <li class=" "><a data-bind="text: name" class="dropItem collapsible-header waves-effect waves-teal " href="@Url.RouteUrl("subjectMark", new { groupId = @Model.Item1.Id, subjectId = @Model.Item2.Id }, null)"></a></li>
+                </ul>
+            </div>
 
+        </li>
+    </ul>
+</ul>
     <h3>@Model.Item2.Name (@Model.Item1.ShortName)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Прізвище</th>
-                <th>Ім'я</th>
-                <th>Оцінка</th>
-            </tr>
-        </thead>
-        <tbody>
+<table>
+    <thead>
+        <tr>
+            <th>Прізвище</th>
+            <th>Ім'я</th>
+            <th>Оцінка</th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach(var student in Model.Item3)
         {
             for (int i = 0; i < Model.Item4.Count; i++ )
             {
                 if (student.Id == Model.Item4[i].StudentId)
                 {
-                            <tr>
-                                <td>@student.LastName</td>
-                                <td>@student.FirstName</td>
-                                @{
-                                    var Value = Model.Item4[i].Value;
-                                    var Id = Model.Item4[i].Id;
-                                    var SubjectId = Model.Item4[i].SubjectId;
-                                    var StudentId = Model.Item4[i].StudentId;
-                                }
-                                @if (Model.Item4[i].Value == null)
-                                {    
-                                        <td>
-                                            @using (Html.BeginForm("Create", "SubjectMark", FormMethod.Post))
-                                            {
-                                                @Html.AntiForgeryToken()
-                                                @Html.HiddenFor(marks => StudentId)
-                                                @Html.HiddenFor(marks => SubjectId)
-                                                @Html.HiddenFor(marks => Id)
-                                                @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @min = 1, @max = 5 } })
-                                                <input type="submit" value="@GlobalRes_ua.save" class="btn btn-default" />
-                                            }
-                                        </td>
-                                }
-                                else
+                    <tr>
+                        <td>@student.LastName</td>
+                        <td>@student.FirstName</td>
+                        @{
+                            var Value = Model.Item4[i].Value;
+                            var Id = Model.Item4[i].Id;
+                            var SubjectId = Model.Item4[i].SubjectId;
+                            var StudentId = Model.Item4[i].StudentId;
+                        }
+                        @if (Model.Item4[i].Value == null)
+                        {    
+                            <td>
+                                @using (Html.BeginForm("Create", "SubjectMark", FormMethod.Post))
                                 {
-                                    <td>
-                                            @using (Html.BeginForm("Update", "SubjectMark", FormMethod.Post))
-                                            {
-                                                @Html.AntiForgeryToken()
-                                                @Html.HiddenFor(marks => StudentId)
-                                                @Html.HiddenFor(marks => SubjectId)
-                                                @Html.HiddenFor(marks => Id)
-                                                @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @min = 1, @max = 5 } })
-                                                <input type="submit" value="@GlobalRes_ua.save" class="btn btn-default" />
-                                            }
-                                        </td>
+                                    @Html.AntiForgeryToken()
+                                    @Html.HiddenFor(marks => StudentId)
+                                    @Html.HiddenFor(marks => SubjectId)
+                                    @Html.HiddenFor(marks => Id)
+                                    @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @min = 1, @max = 5 } })
+                                    <input type="submit" value="@GlobalRes_ua.save" class="btn btn-default" />
                                 }
-                            </tr>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @using (Html.BeginForm("Update", "SubjectMark", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.HiddenFor(marks => StudentId)
+                                    @Html.HiddenFor(marks => SubjectId)
+                                    @Html.HiddenFor(marks => Id)
+                                    @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @min = 1, @max = 5 } })
+                                    <input type="submit" value="@GlobalRes_ua.save" class="btn btn-default" />
+                                }
+                            </td>
+                        }
+                    </tr>
                 }
             }
         }
     </tbody>
 </table>
+@section Scripts{
+    <script>
+        var globalView = null;
+        $(document).ready(function () {
+            var group = @Html.Raw(Json.Encode(Model.Item1));
+            var viewModel = new SubjectViewModel(group);
+            globalView = viewModel;
+            ko.applyBindings(viewModel);
+        });
+
+    </script>
+}
+
+

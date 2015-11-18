@@ -1,10 +1,28 @@
-﻿@model TestFactory.MVC.ViewModels.GroupViewModel
+﻿@using TestFactory
+@model GroupViewModel
 
 @Styles.Render("~/Students/css")
+<ul  class="side-nav fixed">
+        <ul class="collapsible">
+            <li class="ietmSidebar activeItem">
+                <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new { groupId = Model.Id }, null) ">Holand</a>
+            </li>
+            <li  class="ietmSidebar">
+                <a class="  collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
+                <div class="collapsible-body"  >
+                    <ul class="collection" data-bind ="foreach: subjects">
+                        <li  class=" "><a  data-bind="text: name" class="dropItem collapsible-header waves-effect waves-teal " href="@Url.RouteUrl("subjectMark", new { groupId = Model.Id, subjectId = "e3618bd0-fb56-4666-8258-a8697e3c787e" }, null)"></a></li>
+                    </ul>
+                </div>
+
+            </li>
+        </ul>
+</ul>
+
 <div>
     <form>
         <h3 id="groupName" data-bind="text: $root.group.fullName"></h3>
-        <h5 ><a class="toDetails" href="@Url.RouteUrl("subjectList", new { groupId = Model.Id }, null)">Предмети</a></h5> @*TODO: recourse*@
+        <h5><a class="toDetails" href="@Url.RouteUrl("subjectList", new {groupId = Model.Id}, null)">Предмети</a></h5> @*TODO: recourse*@
         <table id="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
             <thead>
                 <tr class="noselect">
@@ -31,14 +49,14 @@
                     </th>
                     <!-- /ko -->
                 </tr>
-                @if (User.IsInRole(RoleNames.Filler))
-                { 
+                @if (User.IsInRole(Resources.RoleNames.Filler))
+                {
                     <tr>
                         <td class="last-name">
                             <input type="text"
                                    data-position="bottom"
                                    data-bind="textInput: $root.studentForCreate().lastName,  tooltip: { message: $root.studentForCreate().lastName.error }"
-                                   maxlength = "69"
+                                   maxlength="69"
                                    placeholder="@GlobalRes_ua.surname" />
                         </td>
                         <td class="first-name">
@@ -78,36 +96,36 @@
                     <!-- ko foreach: marks -->
                     <td class="marks" data-bind="text: value" max="100  "></td>
                     <!-- /ko -->
-                  @if (User.IsInRole(RoleNames.Filler))
-                {
-                            <td class="screenMediaBelow ">
-                                <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
-                            </td>
+                    @if (User.IsInRole(Resources.RoleNames.Filler))
+                    {
+                        <td class="screenMediaBelow ">
+                            <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
+                        </td>
 
                         <td class="screenMediaAbove ">
-                             <a class="  btn  btn-size btnStudent " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</a>
+                            <a class="  btn  btn-size btnStudent " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</a>
                         </td>
-                  }       
-                        <td class="screenMediaBelow ">
-                            <a class="btn btn-size btnStudent" data-bind="attr:{id: id, href: id}"><img src="~/Content/images/down.png" /></a> 
-                        </td>
-                        <td class="screenMediaAbove ">
-                            <a class="btn btnStudent btn-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
-                        </td>
-                    @if (User.IsInRole(RoleNames.Filler))
-                {
-                    <td class="screenMediaBelow">
-                        <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent"><img src="~/Content/images/delete.png" /></a>
+                    }
+                    <td class="screenMediaBelow ">
+                        <a class="btn btn-size btnStudent" data-bind="attr:{id: id, href: id}"><img src="~/Content/images/down.png" /></a>
                     </td>
-              
-                    <td class="screenMediaAbove">
-                        <a class="  btn  btn-size btnStudent " data-bind="click:$root.deleteStudent">@GlobalRes_ua.delete</a>
+                    <td class="screenMediaAbove ">
+                        <a class="btn btnStudent btn-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
                     </td>
-                    
-                    <div id="delete-student" title="@GlobalRes_ua.delete">
-                        <p>@GlobalRes_ua.conformationOnDeleteStudent</p>
-                    </div>
-                 }
+                    @if (User.IsInRole(Resources.RoleNames.Filler))
+                    {
+                        <td class="screenMediaBelow">
+                            <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent"><img src="~/Content/images/delete.png" /></a>
+                        </td>
+
+                        <td class="screenMediaAbove">
+                            <a class="  btn  btn-size btnStudent " data-bind="click:$root.deleteStudent">@GlobalRes_ua.delete</a>
+                        </td>
+
+                        <div id="delete-student" title="@GlobalRes_ua.delete">
+                            <p>@GlobalRes_ua.conformationOnDeleteStudent</p>
+                        </div>
+                    }
                 </tr>
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
@@ -124,22 +142,21 @@
                         <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
                     </td>
                 </tr>
-                <!-- /ko -->              
+                <!-- /ko -->
             </tbody>
         </table>
     </form>
 
 </div>
 @section Scripts{
-<script>
-    var globalView = null;
-    $(document).ready(function () {
-        var group = @Html.Raw(Json.Encode(Model));
-        var viewModel = new StudentsViewModel(group, "lastName");
-        globalView = viewModel;
-        ko.applyBindings(viewModel);
-    });
+    <script>
+        var globalView = null;
+        $(document).ready(function() {
+            var group = @Html.Raw(Json.Encode(Model));
+            var viewModel = new StudentsViewModel(group, "lastName");
+            globalView = viewModel;
+            ko.applyBindings(viewModel);
+        });
 
-</script>
+    </script>
 }
-
