@@ -23,6 +23,10 @@ td, th {
     padding: 0px 0px;
 }
 
+.preloader-visibility {
+    display: none;
+}
+
 .preloader-size {
     width: 30px !important;
     height: 30px !important;
