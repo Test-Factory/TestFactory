@@ -5,12 +5,15 @@
 <ul  class="side-nav fixed">
     <ul class="collapsible">
         <li class="ietmSidebar activeItem">
-            <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new { groupId = Model.Id }, null) ">Holand</a>
+            <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new {groupId = Model.Id}, null) ">Holand</a>
         </li>
         <li  class="ietmSidebar">
             <a class="  collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
             <div class="collapsible-body"  >
-                <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   +  Новий предмет</a>
+                @if (User.IsInRole(Resources.RoleNames.Filler))
+                {
+                    <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   +  Новий предмет</a>
+                }
                 <ul class="collection" data-bind ="foreach: subjects">
                     <li>
                         <!-- ko if: mode() == $root.mods.edit -->
@@ -18,10 +21,13 @@
                         <input type="text" data-position="bottom" data-bind="textInput: $root.subjectForUpdate().name,  tooltip: { message: $root.subjectForUpdate().name.error }" maxlength="100" />
                         <!-- /ko -->
                         <!-- ko if: mode() == $root.mods.display -->
-                        <a data-bind="click: $root.editSubject" class="dropItem collapsible-header waves-effect waves-teal "><img src="~/Content/images/edit16.png" /></a>
+                        @if (User.IsInRole(Resources.RoleNames.Filler))
+                        {
+                            <a data-bind="click: $root.editSubject" class="dropItem collapsible-header waves-effect waves-teal "><img src="~/Content/images/edit16.png" /></a>
+                        }
                         <a data-bind="text: name, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a>
                         <!-- /ko -->
-                     </li>
+                    </li>
                 </ul>
             </div>
 
@@ -37,12 +43,12 @@
                data-bind="textInput: $root.subjectForCreate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().name.error }"
                maxlength="100"
                placeholder="Name" />  @*TODO: add recourse*@
-        </div>
+    </div>
     <div class="modal-footer">
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
     </div>
-    </div>
+</div>
 <div>
     <form>
         <h3 id="groupName" data-bind="text: $root.group.fullName" ></h3>
