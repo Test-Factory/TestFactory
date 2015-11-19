@@ -13,6 +13,7 @@ header, footer, nav, section { display: block; }
 div#content {
     overflow: hidden;
     z-index: 0;
+    margin-left: 17% !important;
 }
 
 td, th {
