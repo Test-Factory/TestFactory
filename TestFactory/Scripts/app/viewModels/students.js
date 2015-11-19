@@ -182,6 +182,10 @@ function StudentsViewModel(group, sortingBy) {
             self.addSubject();
         });
     };
+    self.redirectToMarksSubject = function(subjectId) {
+        var url = "/group/" + self.group.id() + "/subject/" + subjectId();
+        location = url;
+    }
 
     self.init = function() {
         categoryProvider.get(function(data) {

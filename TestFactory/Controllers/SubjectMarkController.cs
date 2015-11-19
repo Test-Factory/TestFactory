@@ -18,7 +18,7 @@ namespace TestFactory.Controllers
         {
             var students = Framework.StudentManager.GetList(groupId);
             var group = Framework.GroupManager.GetById(groupId);
-            var markForSubject = Framework.SubjectMarkManager.GetList();
+            var markForSubject = Framework.SubjectMarkManager.GetMarkForSubject(subjectId);
             var subject = Framework.SubjectManager.GetById(subjectId);
 
             if (students.Count != markForSubject.Count)
@@ -57,7 +57,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public JsonResult Update(SubjectMarkViewModel marks)
         {
-            if (!User.IsInRole("Filler"))
+            if (!User.IsInRole("Filler") || marks.Value < 0)
             {
                 return Json(false);
             }
@@ -74,7 +74,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public JsonResult Create(SubjectMarkViewModel marks)
         {
-            if (!User.IsInRole("Filler"))
+            if (!User.IsInRole("Filler") || marks.Value < 0)
             {
                 return Json(false);
             }

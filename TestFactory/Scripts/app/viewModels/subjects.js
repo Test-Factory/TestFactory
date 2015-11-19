@@ -50,6 +50,35 @@ function SubjectViewModel(group) {
         });
     });
 
+    self.redirectToMarksSubject = function (subjectId) {
+        var url = "/group/" + self.subjectsInGroup.id() + "/subject/" + subjectId();
+        location = url;
+    }
+
+    self.addSubject = function () {
+        closeAllEditing();
+        var newSubject = new SubjectWithGroupModel();
+        self.subjectForCreate().mapFrom(newSubject);
+        self.subjectForCreate().mode(self.mods.create);
+
+        ko.validation.group(self.subjectForCreate); //TODO: ???
+    };
+
+    self.saveAddedSubject = function () {
+        if (!self.subjectForCreate.isValid()) {
+            return false;
+        }
+        self.subjectForCreate().groupId(self.subjectsInGroup.id());
+        var subjectServerModel = self.subjectForCreate().toServerModel();
+        subjectProvider.post(subjectServerModel, function (data) {
+            var newSubject = new SubjectWithGroupModel();
+            newSubject.mapFrom(self.subjectForCreate());
+            newSubject.subjectId(data.Id);
+            closeAllEditing();
+            self.subjects.splice(0, 0, newSubject);
+            self.addSubject();
+        });
+    };
 
 
     

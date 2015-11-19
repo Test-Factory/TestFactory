@@ -3,28 +3,42 @@
 
 @Styles.Render("~/Students/css")
 <ul  class="side-nav fixed">
-        <ul class="collapsible">
-            <li class="ietmSidebar activeItem">
-                <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new { groupId = Model.Id }, null) ">Holand</a>
-            </li>
-            <li  class="ietmSidebar">
-                <a class="  collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
-                <div class="collapsible-body"  >
-                    <ul class="collection" data-bind ="foreach: subjects">
-                        <li  class=" "><a  data-bind="text: name" class="dropItem collapsible-header waves-effect waves-teal " href="@Url.RouteUrl("subjectMark", new { groupId = Model.Id, subjectId = "e3618bd0-fb56-4666-8258-a8697e3c787e" }, null)"></a></li>
-                    </ul>
-                </div>
+    <ul class="collapsible">
+        <li class="ietmSidebar activeItem">
+            <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new { groupId = Model.Id }, null) ">Holand</a>
+        </li>
+        <li  class="ietmSidebar">
+            <a class="  collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
+            <div class="collapsible-body"  >
+                <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + </a>
+                <ul class="collection" data-bind ="foreach: subjects">
+                    <li><a data-bind="text: name, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a></li>
+                </ul>
+            </div>
 
-            </li>
-        </ul>
+        </li>
+    </ul>
 </ul>
 
+<div id="createSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+    <div class="modal-content">
+        <h4>Створення предмета </h4>
+        <input id="subjectPicker" type="text"
+               data-position="bottom"
+               data-bind="textInput: $root.subjectForCreate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().name.error }"
+               maxlength="100"
+               placeholder="Name" />  @*TODO: add recourse*@
+        </div>
+    <div class="modal-footer">
+        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
+    </div>
+    </div>
 <div>
     <form>
-        <h3 id="groupName" data-bind="text: $root.group.fullName"></h3>
-        <h5><a class="toDetails" href="@Url.RouteUrl("subjectList", new {groupId = Model.Id}, null)">Предмети</a></h5> @*TODO: recourse*@
+        <h3 id="groupName" data-bind="text: $root.group.fullName" ></h3>
         <table id="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
-            <thead>
+            <thead >
                 <tr class="noselect">
                     <th class="last-name">
                         <div class="triangle-wrapper">
@@ -152,6 +166,7 @@
     <script>
         var globalView = null;
         $(document).ready(function() {
+            $('.modal-trigger').leanModal();
             var group = @Html.Raw(Json.Encode(Model));
             var viewModel = new StudentsViewModel(group, "lastName");
             globalView = viewModel;

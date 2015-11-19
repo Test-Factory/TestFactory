@@ -25,10 +25,10 @@ namespace TestFactory.Controllers.Api
 
         [HttpGet]
         [Route("all")]
-         public IList<SubjectViewModel> GetAll()
+         public IList<SubjectWithGroupViewModel> GetAll()
         {
             var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId).ToList();
-            var result = Mapper.Map<IList<SubjectViewModel>>(subjects);
+            var result = Mapper.Map<IList<SubjectWithGroupViewModel>>(subjects);
             return result;
         }
         
