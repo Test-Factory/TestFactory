@@ -18,7 +18,7 @@
         </li>
     </ul>
 </ul>
-    <h3>@Model.Item2.Name (@Model.Item1.ShortName)</h3>
+    <h3>(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = Model.Item1.Id }, null)">@Model.Item1.ShortName</a>) @Model.Item2.Name</h3>
     <table>
         <thead>
             <tr>

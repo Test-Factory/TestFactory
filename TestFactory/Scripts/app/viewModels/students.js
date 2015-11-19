@@ -31,6 +31,7 @@ function StudentsViewModel(group, sortingBy) {
     self.studentForUpdate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForCreate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForDelete = ko.validatedObservable(new StudentModel(), { deep: true });
+    self.subjectForCreate = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
 
     self.mods = {
         display: "display",
@@ -157,6 +158,31 @@ function StudentsViewModel(group, sortingBy) {
             student.mode(self.mods.display);
         });
     }
+    self.addSubject = function () {
+        closeAllEditing();
+        var newSubject = new SubjectWithGroupModel();
+        self.subjectForCreate().mapFrom(newSubject);
+        self.subjectForCreate().mode(self.mods.create);
+
+        ko.validation.group(self.subjectForCreate); //TODO: ???
+    };
+
+    self.saveAddedSubject = function () {
+        if (!self.subjectForCreate.isValid()) {
+            return false;
+        }
+        self.subjectForCreate().groupId(self.group.id());
+        var subjectServerModel = self.subjectForCreate().toServerModel();
+        subjectProvider.post(subjectServerModel, function (data) {
+            var newSubject = new SubjectWithGroupModel();
+            newSubject.mapFrom(self.subjectForCreate());
+            newSubject.subjectId(data.Id);
+            closeAllEditing();
+            self.subjects.splice(0, 0, newSubject);
+            self.addSubject();
+        });
+    };
+
     self.init = function() {
         categoryProvider.get(function(data) {
             $(data).each(function(index, element) {

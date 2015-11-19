@@ -15,28 +15,28 @@
         };
     },
    
-    addTypeahead: function() {
-        ko.bindingHandlers['typeahead'] = {
-            init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-                var options = valueAccessor() || {};
-                // call bootstrap type ahead
-                var baseOptions = {
-                    hint: true,
-                    highlight: true,
-                    minLength: 1
-                };
-                $(element).typeahead(baseOptions, options);
-                // typeahed on select update observable
-                $(element).bind('typeahead:selected', function (obj, data, name) {
-                    allBindings().value(data);
-                });
-            }
-        };
-    }
+    //addTypeahead: function() {
+    //    ko.bindingHandlers['typeahead'] = {
+    //        init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+    //            var options = valueAccessor() || {};
+    //            // call bootstrap type ahead
+    //            var baseOptions = {
+    //                hint: true,
+    //                highlight: true,
+    //                minLength: 1
+    //            };
+    //            $(element).typeahead(baseOptions, options);
+    //            // typeahed on select update observable
+    //            $(element).bind('typeahead:selected', function (obj, data, name) {
+    //                allBindings().value(data);
+    //            });
+    //        }
+    //    };
+    //}
 }
 
 bindingHandlersManager.addTooltips();
-bindingHandlersManager.addTypeahead();
+//bindingHandlersManager.addTypeahead();
 
 function SubjectViewModel(group) {
     var self = this;
@@ -130,30 +130,7 @@ function SubjectViewModel(group) {
         subject.mode(self.mods.edit);
     };
 
-    self.addSubject = function() {
-        closeAllEditing();
-        var newSubject = new SubjectWithGroupModel();
-        self.subjectForCreate().mapFrom(newSubject);
-        self.subjectForCreate().mode(self.mods.create);
-
-        ko.validation.group(self.subjectForCreate); //TODO: ???
-    };
-
-    self.saveAddedSubject = function() {
-        if (!self.subjectForCreate.isValid()) {
-            return false;
-        }
-        self.subjectForCreate().groupId(self.subjectsInGroup.id());
-        var subjectServerModel = self.subjectForCreate().toServerModel();
-        subjectProvider.post(subjectServerModel, function(data) {
-            var newSubject = new SubjectWithGroupModel();
-            newSubject.mapFrom(self.subjectForCreate());
-            newSubject.subjectId(data.Id);
-            closeAllEditing();
-            self.subjectsInGroup.subjects.splice(0, 0, newSubject);
-            self.addSubject();
-        });
-    };
+    
 
     self.saveEditedSubject = function(subject) {
         if (!self.subjectForUpdate.isValid()) {
