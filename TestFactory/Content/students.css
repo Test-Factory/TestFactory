@@ -1,7 +1,7 @@
 ﻿/* Styles sidebar
 -----------------------------------------------------------*/
 .side-nav {
-    width: 15%;
+    width: 16%;
     background-color: #eeeeee !important;
     top: 64px
 }
@@ -23,6 +23,9 @@
 .side-nav .ietmSidebar .collapsible-header {
     margin: 0;
     padding: 1rem 1rem;
+}
+.boldSubjectSadebar {
+    font-weight: bold;
 }
 
 /* Styles for student list view
