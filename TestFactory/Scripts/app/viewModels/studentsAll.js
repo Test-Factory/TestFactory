@@ -11,22 +11,27 @@
         deviation: "/standardDeviation"
     };
 
+    var pathForGroupProvider = {
+        name: "/name",
+        year:"/year"
+    };
+
     self.students = ko.observableArray();
 
     self.groupNames = ko.observableArray();
     
     self.groupYears = ko.observableArray();
 
-    self.searchByStudentsGroups = ko.observable('');
+    self.searchByStudentsGroups = ko.observable();
 
-    self.searchByStudentsYearOfStartEducation = ko.observable('');
+    self.searchByStudentsYearOfStartEducation = ko.observable();
 
     self.filteredRecords = ko.computed(function () {
         return ko.utils.arrayFilter(self.students(), function (rec) {
             return (
                       (self.searchByStudentsGroups().length == 0 || rec.groupShortName().toLowerCase().indexOf(self.searchByStudentsGroups().toLowerCase()) > -1)
                 &&
-                      (self.searchByStudentsYearOfStartEducation().length == 0 || rec.year().toLowerCase().indexOf(self.searchByStudentsYearOfStartEducation().toLowerCase()) > -1)
+                      (rec.year() == self.searchByStudentsYearOfStartEducation() || self.searchByStudentsYearOfStartEducation == null)
                    )
         });
     });
@@ -92,13 +97,6 @@
             });
         });
 
-        groupProvider.get(function (data) {
-            self.groupNames.push(' ');
-            $(data).each(function (index, element) {
-                self.groupNames.push(element);
-            });
-        });
-
         studentProvider.get(function (data) {
             $(data).each(function (index, element) {
                 var mappedStudent = new StudentForAllModel(element, averageMarks);
@@ -107,6 +105,22 @@
             });
             self.preloader(false);
         });
+
+        groupProvider.getNames(pathForGroupProvider.name, function (data) {
+            self.groupNames.push(' ');
+            $(data).each(function (index, element) {
+                self.groupNames.push(element);
+            });
+        });
+
+        groupProvider.getYears(pathForGroupProvider.year, function (data) {
+            self.groupYears.push(null);
+            $(data).each(function (index, element) {
+                self.groupYears.push(element);
+            });
+        });
+
+        
         self.sortingByName(sortingBy);
     }
 

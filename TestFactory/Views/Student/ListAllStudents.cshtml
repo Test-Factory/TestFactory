@@ -4,6 +4,11 @@
     групам: <select data-bind="options: groupNames, value:searchByStudentsGroups, valueupdate:'onkeydown'" />
     рокам: <select data-bind="options: groupNames, value:searchByStudentsGroups, valueupdate:'onkeydown'" />
 </div>
+<div id="forSelect">
+    Фільтр по
+    групам: <select data-bind="options: groupYears, value:searchByStudentsYearOfStartEducation, valueupdate:'onkeydown'" />
+    рокам: <select data-bind="options: groupYears, value:searchByStudentsYearOfStartEducation, valueupdate:'onkeydown'" />
+</div>
 
 @*<a class='dropdown-button btn' data-bind = "value: searchByStudentsGroups" href = '#' data-activates='dropdown1'>Групи</a>
     <ul data-bind="foreach: groups, value:searchByStudentsGroups, valueupdate:'onkeydown'" id='dropdown1' class='dropdown-content'>
@@ -69,7 +74,7 @@
                 <tbody data-bind="foreach: filteredRecords">
 
                     <tr>
-                        <td class="last-name" data-bind="text: lastName"></td>
+                        <td class="last-name" data-bind="text: year"></td>
                         <td class="first-name" data-bind="text: firstName"></td>
                         <td class="group-name" data-bind="text: groupShortName"></td>
                         <!-- ko foreach: marks -->
@@ -92,6 +97,7 @@
             </table>
         </form>
     </div>
+
 @section Scripts{
 <script>
     $('.tooltipped').tooltip({ delay: 50 });

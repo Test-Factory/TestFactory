@@ -32,10 +32,20 @@ namespace TestFactory.Controllers.Api
         }
 
         [HttpGet]
-        public string[] Get()
+        [Route("name")]
+        public string[] GetNames()
         {
             IList<Group> groups = Framework.GroupManager.GetList();
             var result = groups.Select(x => x.ShortName).Distinct().ToArray();
+            return result;
+        }
+
+        [HttpGet]
+        [Route("year")]
+        public int[] GetYears()
+        {
+            IList<Group> groups = Framework.GroupManager.GetList();
+            var result = groups.Select(x => x.Year).Distinct().ToArray();
             return result;
         }
 
