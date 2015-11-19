@@ -18,12 +18,12 @@
         </li>
     </ul>
 </ul>
-    <h3 style="margin-top: 6%">@Model.Item2.Name (@Model.Item1.ShortName)</h3>
-    <table>
+    <h3>(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = Model.Item1.Id }, null)">@Model.Item1.ShortName</a>) @Model.Item2.Name</h3>
+    <table style="width: 500px;">
         <thead>
             <tr>
-                <th>Прізвище</th>
-                <th>Ім'я</th>
+                <th style="width: 35%;">Прізвище</th>
+                <th style="width: 40%">Ім'я</th>
                 <th>Оцінка</th>
             </tr>
         </thead>
@@ -49,7 +49,7 @@
                                             @using (Html.BeginForm("Create", "SubjectMark", FormMethod.Post, new { @class = "form-mark" }))
                                             {
                                                 @Html.AntiForgeryToken()
-                                                @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @onblur = "SubmitForm(this, '/subjectMark/Create')" } })
+                                                @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @min="0", @max=@Int32.MaxValue, @onblur = "SubmitForm(this, '/subjectMark/Create')" } })
                                                 @Html.HiddenFor(marks => StudentId)
                                                 @Html.HiddenFor(marks => SubjectId)
                                                 @Html.HiddenFor(marks => Id)
@@ -84,7 +84,7 @@
                                             @using (Html.BeginForm("Update", "SubjectMark", FormMethod.Post, new { @class = "form-mark" }))
                                             {
                                                 @Html.AntiForgeryToken()
-                                                @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @onblur = "SubmitForm(this, '/subjectMark/Update')" } })
+                                                @Html.EditorFor(model => Value, new { htmlAttributes = new { @class = "form-control widthInput", @min="0", @max=@Int32.MaxValue, @onblur = "SubmitForm(this, '/subjectMark/Update')" } })
                                                 @Html.HiddenFor(marks => StudentId)
                                                 @Html.HiddenFor(marks => SubjectId)
                                                 @Html.HiddenFor(marks => Id)
@@ -119,6 +119,7 @@
     </tbody>
 </table>
 @section Scripts{
+    @Scripts.Render("~/Scripts/SubjectMark.js")
     <script>
         var globalView = null;
         $(document).ready(function () {

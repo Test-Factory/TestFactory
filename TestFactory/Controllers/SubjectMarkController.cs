@@ -57,7 +57,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public JsonResult Update(SubjectMarkViewModel marks)
         {
-            if (!User.IsInRole("Filler"))
+            if (!User.IsInRole("Filler") || marks.Value < 0)
             {
                 return Json(false);
             }
@@ -74,7 +74,7 @@ namespace TestFactory.Controllers
         [HttpPost]
         public JsonResult Create(SubjectMarkViewModel marks)
         {
-            if (!User.IsInRole("Filler"))
+            if (!User.IsInRole("Filler") || marks.Value < 0)
             {
                 return Json(false);
             }

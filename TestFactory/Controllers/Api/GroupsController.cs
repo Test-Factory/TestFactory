@@ -2,6 +2,7 @@
 using System.Net;
 using System.Web.Http;
 using AutoMapper;
+using System.Linq;
 using TestFactory.Business.Models;
 using TestFactory.Business.Components;
 using TestFactory.Business.Components.Managers;
@@ -31,11 +32,12 @@ namespace TestFactory.Controllers.Api
         }
 
         [HttpGet]
-        public IList<GroupViewModel> Get()
+        public string[] Get()
         {
             IList<Group> groups = Framework.GroupManager.GetList();
-            var result = Mapper.Map<IList<GroupViewModel>>(groups);
+            var result = groups.Select(x => x.ShortName).Distinct().ToArray();
             return result;
         }
+
     }
 }
