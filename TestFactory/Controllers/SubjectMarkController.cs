@@ -18,7 +18,7 @@ namespace TestFactory.Controllers
         {
             var students = Framework.StudentManager.GetList(groupId);
             var group = Framework.GroupManager.GetById(groupId);
-            var markForSubject = Framework.SubjectMarkManager.GetList();
+            var markForSubject = Framework.SubjectMarkManager.GetMarkForSubject(subjectId);
             var subject = Framework.SubjectManager.GetById(subjectId);
 
             if (students.Count != markForSubject.Count)
