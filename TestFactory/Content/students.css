@@ -1,13 +1,11 @@
 ﻿/* Styles sidebar
 -----------------------------------------------------------*/
 .side-nav {
-    width: 200px;
+    width: 14%;
     background-color: #eeeeee !important;
     top: 64px
 }
-.side-nav .activeItem {
-    te: bold;
-}
+
 .side-nav .collapsible-body { background-color: #eeeeee !important; }
 
 .side-nav .collapsible-body .collection {
