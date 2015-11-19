@@ -32,6 +32,7 @@ function StudentsViewModel(group, sortingBy) {
     self.studentForCreate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForDelete = ko.validatedObservable(new StudentModel(), { deep: true });
     self.subjectForCreate = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
+    self.subjectForUpdate = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
 
     self.mods = {
         display: "display",
@@ -73,6 +74,7 @@ function StudentsViewModel(group, sortingBy) {
     self.selectedClassForSortedField = ko.pureComputed(function() {
         return self.sortDescending() ? "triangle-up" : "triangle-down";
     }, self);
+
 
     self.editStudent = function(student) {
         closeAllEditing();
@@ -182,6 +184,24 @@ function StudentsViewModel(group, sortingBy) {
             self.addSubject();
         });
     };
+    self.editSubject = function (subject) {
+        closeAllEditing();
+        self.subjectForUpdate().mapFrom(subject);
+        self.subjectForUpdate.valueHasMutated();
+        subject.mode(self.mods.edit);
+    };
+
+    self.saveEditedSubject = function (subject) {
+        if (!self.subjectForUpdate.isValid()) {
+            return false;
+        }
+        var subjectServerModel = self.subjectForUpdate().toServerModel();
+        subjectServerModel.GroupId = self.group.id();
+        subjectProvider.put(subjectServerModel, function () {
+            subject.mapFrom(self.subjectForUpdate());
+            subject.mode(self.mods.display);
+        });
+    };
     self.redirectToMarksSubject = function(subjectId) {
         var url = "/group/" + self.group.id() + "/subject/" + subjectId();
         location = url;
@@ -203,6 +223,7 @@ function StudentsViewModel(group, sortingBy) {
                 self.students.push(mappedStudent);
             });
         });
+
         subjectProvider.getAll(function (data) {
             $(data).each(function (index, element) {
                 var mappedSubject = new SubjectModel(element, self.mods.display);

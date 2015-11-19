@@ -5,14 +5,24 @@
 <ul class="side-nav fixed">
     <ul class="collapsible">
         <li class="ietmSidebar activeItem">
-            <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new {groupId = @Model.Item1.Id}, null) ">Holand</a>
+            <a class="  collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new {groupId = @Model.Item1.Id}, null) ">Holand</a>
         </li>
         <li class="ietmSidebar">
-            <a class="  collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
+            <a class=" active collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
             <div class="collapsible-body">
-                <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + </a>
+                <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + Створення предмета </a>
                 <ul class="collection" data-bind="foreach: subjects">
-                    <li class=" "><a data-bind="text: name, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a></li>
+                    <!-- ko if: mode() == $root.mods.edit -->
+                    <a data-bind="click: $root.saveEditedSubject" class="dropItem collapsible-header waves-effect waves-teal "><i class="tiny material-icons">done</i></a>
+                    <input type="text" data-position="bottom" data-bind="textInput: $root.subjectForUpdate().name,  tooltip: { message: $root.subjectForUpdate().name.error }" maxlength="100" />
+                    <!-- /ko -->
+                    <!-- ko if: mode() == $root.mods.display -->
+                    <a data-bind="click: $root.editSubject" class="dropItem collapsible-header waves-effect waves-teal "><img src="~/Content/images/edit16.png" /></a>
+                    
+                    <a  data-bind="text: name,click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a>
+                    
+                  
+                    <!-- /ko -->
                 </ul>
             </div>
 
@@ -33,108 +43,109 @@
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
     </div>
 </div>
-<div>
-<h3>(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new {groupId = Model.Item1.Id}, null)">@Model.Item1.ShortName</a>) @Model.Item2.Name</h3>
-<table style="width: 500px;">
-    <thead>
-        <tr>
-            <th style="width: 35%;">Прізвище</th>
-            <th style="width: 40%">Ім'я</th>
-            <th>Оцінка</th>
-        </tr>
-    </thead>
-    <tbody class="mark-content">
-        @foreach (var student in Model.Item3)
-        {
-            for (int i = 0; i < Model.Item4.Count; i++)
+<div id="">
+    
+    <h3>(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new {groupId = Model.Item1.Id}, null)">@Model.Item1.ShortName</a>) @Model.Item2.Name</h3>
+    <table style="width: 500px;">
+        <thead>
+            <tr>
+                <th style="width: 35%;">Прізвище</th>
+                <th style="width: 40%">Ім'я</th>
+                <th>Оцінка</th>
+            </tr>
+        </thead>
+        <tbody class="mark-content">
+            @foreach (var student in Model.Item3)
             {
-                if (student.Id == Model.Item4[i].StudentId)
+                for (int i = 0; i < Model.Item4.Count; i++)
                 {
-                    <tr>
-                        <td>@student.LastName</td>
-                        <td>@student.FirstName</td>
-                        @{
-                            var Value = Model.Item4[i].Value;
-                            var Id = Model.Item4[i].Id;
-                            var SubjectId = Model.Item4[i].SubjectId;
-                            var StudentId = Model.Item4[i].StudentId;
-                        }
-                        @if (Model.Item4[i].Value == null)
-                        {
-                            <td>
-                                @using (Html.BeginForm("Create", "SubjectMark", FormMethod.Post, new {@class = "form-mark"}))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    @Html.EditorFor(model => Value, new {htmlAttributes = new {@class = "form-control widthInput", @min = "0", @max = @Int32.MaxValue, @onblur = "SubmitForm(this, '/subjectMark/Create')"}})
-                                    @Html.HiddenFor(marks => StudentId)
-                                    @Html.HiddenFor(marks => SubjectId)
-                                    @Html.HiddenFor(marks => Id)
+                    if (student.Id == Model.Item4[i].StudentId)
+                    {
+                        <tr>
+                            <td>@student.LastName</td>
+                            <td>@student.FirstName</td>
+                            @{
+                                var Value = Model.Item4[i].Value;
+                                var Id = Model.Item4[i].Id;
+                                var SubjectId = Model.Item4[i].SubjectId;
+                                var StudentId = Model.Item4[i].StudentId;
+                            }
+                            @if (Model.Item4[i].Value == null)
+                            {
+                                <td>
+                                    @using (Html.BeginForm("Create", "SubjectMark", FormMethod.Post, new {@class = "form-mark"}))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.EditorFor(model => Value, new {htmlAttributes = new {@class = "form-control widthInput", @min = "0", @max = @Int32.MaxValue, @onblur = "SubmitForm(this, '/subjectMark/Create')"}})
+                                        @Html.HiddenFor(marks => StudentId)
+                                        @Html.HiddenFor(marks => SubjectId)
+                                        @Html.HiddenFor(marks => Id)
 
-                                    <div style="display: inline-block">
-                                        <div class="preloader-wrapper big active preloader-size preloader-visibility">
-                                            <div class="spinner-layer spinner-yellow-only">
-                                                <div class="circle-clipper left">
-                                                    <div class="circle"></div>
-                                                </div><div class="gap-patch">
-                                                          <div class="circle"></div>
-                                                      </div><div class="circle-clipper right">
-                                                                <div class="circle"></div>
-                                                            </div>
+                                        <div style="display: inline-block">
+                                            <div class="preloader-wrapper big active preloader-size preloader-visibility">
+                                                <div class="spinner-layer spinner-yellow-only">
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div><div class="gap-patch">
+                                                              <div class="circle"></div>
+                                                          </div><div class="circle-clipper right">
+                                                                    <div class="circle"></div>
+                                                                </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div style="display: inline-block">
-                                        <div class="icon-mark icon-mark-ok">
-                                            <i class="large material-icons">done</i>
-                                        </div>
-                                        <div class="icon-mark icon-mark-bad">
-                                            <i class="large material-icons">report</i>
-                                        </div>
-                                    </div>
-                                }
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                @using (Html.BeginForm("Update", "SubjectMark", FormMethod.Post, new {@class = "form-mark"}))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    @Html.EditorFor(model => Value, new {htmlAttributes = new {@class = "form-control widthInput", @min = "0", @max = @Int32.MaxValue, @onblur = "SubmitForm(this, '/subjectMark/Update')"}})
-                                    @Html.HiddenFor(marks => StudentId)
-                                    @Html.HiddenFor(marks => SubjectId)
-                                    @Html.HiddenFor(marks => Id)
-                                    <div style="display: inline-block">
-                                        <div class="preloader-wrapper big active preloader-size preloader-visibility">
-                                            <div class="spinner-layer spinner-yellow-only">
-                                                <div class="circle-clipper left">
-                                                    <div class="circle"></div>
-                                                </div><div class="gap-patch">
-                                                          <div class="circle"></div>
-                                                      </div><div class="circle-clipper right">
-                                                                <div class="circle"></div>
-                                                            </div>
+                                        <div style="display: inline-block">
+                                            <div class="icon-mark icon-mark-ok">
+                                                <i class="large material-icons">done</i>
+                                            </div>
+                                            <div class="icon-mark icon-mark-bad">
+                                                <i class="large material-icons">report</i>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div style="display: inline-block">
-                                        <div class="icon-mark icon-mark-ok">
-                                            <i class="large material-icons ok-icon">done</i>
+                                    }
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @using (Html.BeginForm("Update", "SubjectMark", FormMethod.Post, new {@class = "form-mark"}))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.EditorFor(model => Value, new {htmlAttributes = new {@class = "form-control widthInput", @min = "0", @max = @Int32.MaxValue, @onblur = "SubmitForm(this, '/subjectMark/Update')"}})
+                                        @Html.HiddenFor(marks => StudentId)
+                                        @Html.HiddenFor(marks => SubjectId)
+                                        @Html.HiddenFor(marks => Id)
+                                        <div style="display: inline-block">
+                                            <div class="preloader-wrapper big active preloader-size preloader-visibility">
+                                                <div class="spinner-layer spinner-yellow-only">
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div><div class="gap-patch">
+                                                              <div class="circle"></div>
+                                                          </div><div class="circle-clipper right">
+                                                                    <div class="circle"></div>
+                                                                </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="icon-mark icon-mark-bad">
-                                            <i class="large material-icons bad-icon">report</i>
+                                        <div style="display: inline-block">
+                                            <div class="icon-mark icon-mark-ok">
+                                                <i class="large material-icons ok-icon">done</i>
+                                            </div>
+                                            <div class="icon-mark icon-mark-bad">
+                                                <i class="large material-icons bad-icon">report</i>
+                                            </div>
                                         </div>
-                                    </div>
-                                }
-                            </td>
-                        }
-                    </tr>
+                                    }
+                                </td>
+                            }
+                        </tr>
+                    }
                 }
             }
-        }
-    </tbody>
-</table>
-    </div>
+        </tbody>
+    </table>
+</div>
 @section Scripts{
     @Scripts.Render("~/Scripts/SubjectMark.js")
     <script>
@@ -142,7 +153,8 @@
         $(document).ready(function() {
             $('.modal-trigger').leanModal();
             var group = @Html.Raw(Json.Encode(Model.Item1));
-            var viewModel = new SubjectViewModel(group);
+            var subject = @Html.Raw(Json.Encode(Model.Item2));
+            var viewModel = new SubjectViewModel(group, subject);
             globalView = viewModel;
             ko.applyBindings(viewModel);
         });

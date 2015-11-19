@@ -38,8 +38,9 @@
 bindingHandlersManager.addTooltips();
 //bindingHandlersManager.addTypeahead();
 
-function SubjectViewModel(group) {
+function SubjectViewModel(group, subject) {
     var self = this;
+    self.subject = new SubjectModel(subject);
     self.subjectsInGroup = new SubjectsInGroupModel(group);
     self.subjects = ko.observableArray();
     var subjectProvider = new SubjectProvider(self.subjectsInGroup.id);
@@ -54,7 +55,10 @@ function SubjectViewModel(group) {
         var url = "/group/" + self.subjectsInGroup.id() + "/subject/" + subjectId();
         location = url;
     }
-
+    self.chechedSubject = ko.observable(false);
+    self.boldSubjectSadebar = ko.pureComputed(function () {
+        return self.chechedSubject() ? "boldSubjectSadebar" : "";
+    }, self);
     self.addSubject = function () {
         closeAllEditing();
         var newSubject = new SubjectWithGroupModel();

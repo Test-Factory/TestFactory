@@ -10,9 +10,18 @@
         <li  class="ietmSidebar">
             <a class="  collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
             <div class="collapsible-body"  >
-                <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + </a>
+                <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   +  Новий предмет</a>
                 <ul class="collection" data-bind ="foreach: subjects">
-                    <li><a data-bind="text: name, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a></li>
+                    <li>
+                        <!-- ko if: mode() == $root.mods.edit -->
+                        <a data-bind="click: $root.saveEditedSubject" class="dropItem collapsible-header waves-effect waves-teal "><i class="tiny material-icons">done</i></a>
+                        <input type="text" data-position="bottom" data-bind="textInput: $root.subjectForUpdate().name,  tooltip: { message: $root.subjectForUpdate().name.error }" maxlength="100" />
+                        <!-- /ko -->
+                        <!-- ko if: mode() == $root.mods.display -->
+                        <a data-bind="click: $root.editSubject" class="dropItem collapsible-header waves-effect waves-teal "><img src="~/Content/images/edit16.png" /></a>
+                        <a data-bind="text: name, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a>
+                        <!-- /ko -->
+                     </li>
                 </ul>
             </div>
 
@@ -144,8 +153,8 @@
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
-                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().lastName,  tooltip: { message: $root.studentForUpdate().lastName.error }" maxlength="255" /></td>
-                    <td class="first-name edit "><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().firstName,  tooltip: { message: $root.studentForUpdate().firstName.error }" maxlength="255" /></td>
+                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().lastName,  tooltip: { message: $root.studentForUpdate().lastName.error }" maxlength="60" /></td>
+                    <td class="first-name edit "><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().firstName,  tooltip: { message: $root.studentForUpdate().firstName.error }" maxlength="60" /></td>
                     <!-- ko foreach: $root.studentForUpdate().marks -->
                     <td class="marks edit "><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
                     <!-- /ko -->

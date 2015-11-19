@@ -225,6 +225,7 @@
     <Content Include="Content\images\document_save.png" />
     <Content Include="Content\images\down.png" />
     <Content Include="Content\images\edit.png" />
+    <Content Include="Content\images\edit16.png" />
     <Content Include="Content\images\error.jpg" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\sort-down.png" />

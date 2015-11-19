@@ -16,7 +16,7 @@
     self.mode = ko.observable(defaultMode || "display");
 }
 SubjectModel.prototype.mapFrom = function mapSubject(from) {
-    this.id(from.id());
+    this.id(from.id ? from.id() : from.subjectId());
     this.groupId(from.groupId());
     this.name(from.name());
 }
