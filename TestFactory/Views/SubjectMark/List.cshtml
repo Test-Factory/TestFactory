@@ -1,4 +1,5 @@
 ﻿@using System.Web.Http.Tracing
+@using TestFactory
 @using TestFactory.MVC.ViewModels;
 @model Tuple<GroupViewModel, SubjectViewModel, IList<StudentViewModel>, IList<SubjectMarkViewModel>>
 @Styles.Render("~/Students/css")
@@ -10,14 +11,20 @@
         <li class="ietmSidebar">
             <a class=" active collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
             <div class="collapsible-body">
-                <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + Створення предмета </a>
+                @if (User.IsInRole(Resources.RoleNames.Filler))
+                {
+                    <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + Створення предмета </a>
+                }
                 <ul class="collection" data-bind="foreach: subjects">
                     <!-- ko if: mode() == $root.mods.edit -->
                     <a data-bind="click: $root.saveEditedSubject" class="dropItem collapsible-header waves-effect waves-teal "><i class="tiny material-icons">done</i></a>
                     <input type="text" data-position="bottom" data-bind="textInput: $root.subjectForUpdate().name,  tooltip: { message: $root.subjectForUpdate().name.error }" maxlength="100" />
                     <!-- /ko -->
                     <!-- ko if: mode() == $root.mods.display -->
-                    <a data-bind="click: $root.editSubject" class="dropItem collapsible-header waves-effect waves-teal "><img src="~/Content/images/edit16.png" /></a>
+                    @if (User.IsInRole(Resources.RoleNames.Filler))
+                    {
+                        <a data-bind="click: $root.editSubject" class="dropItem collapsible-header waves-effect waves-teal "><img src="~/Content/images/edit16.png" /></a>
+                    }
                     
                     <a  data-bind="text: name,click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a>
                     
