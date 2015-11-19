@@ -14,6 +14,14 @@ $(function () {
         });
     }
 
+    GroupProvider.prototype.get = function (callback) {
+        $.getJSON(this.apiPath)
+            .done(callback)
+            .error(function (e) {
+                console.log(e);
+            });
+    }
+
     GroupProvider.prototype.post = function (data, callback) {
         $.ajax({
             method: "POST",

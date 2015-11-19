@@ -3,6 +3,8 @@
 
     var studentProvider = new StudentProvider();
     var markProvider = new MarkProvider();
+    var groupProvider = new GroupProvider();
+
     //todo: move urls to providers
     var pathForMarProvider= {
         everage: "/average",
@@ -15,6 +17,8 @@
     };
 
     self.students = ko.observableArray();
+
+    self.groups = ko.observableArray();
 
     self.searchByStudentsGroups = ko.observable('');
 
@@ -88,6 +92,13 @@
         markProvider.get(pathForMarProvider.deviation, function (data) {
             $(data).each(function (index, element) {
                 self.standardDeviation.push(element);
+            });
+        });
+
+        groupProvider.get(function (data) {
+            $(data).each(function (index, element) {
+                var mappedGroup = new GroupModel(element);
+                self.groups.push(mappedGroup);
             });
         });
 

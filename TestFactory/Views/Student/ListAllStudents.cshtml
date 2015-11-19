@@ -2,8 +2,18 @@
 <p id="forSelect">
     Фільтр по
     групам: <select data-bind="options:temporary.groupNames, value:searchByStudentsGroups, valueupdate:'onkeydown'" />
-    рокам: <select data-bind="options:temporary.groupNames, value:searchByStudentsGroups, valueupdate:'onkeydown'"/>
+    рокам: <select data-bind="options:temporary.groupNames, value:searchByStudentsGroups, valueupdate:'onkeydown'" />
 </p>
+@*фільтр по
+    групам: <select data-bind="foreach: groups, value:searchByStudentsGroups, valueupdate:'onkeydown'">
+                <option data-bind="text:shortName" />
+    </select>*@
+
+@*<a class='dropdown-button btn' data-bind = "value: searchByStudentsGroups" href = '#' data-activates='dropdown1'>Групи</a>
+    <ul data-bind="foreach: groups, value:searchByStudentsGroups, valueupdate:'onkeydown'" id='dropdown1' class='dropdown-content'>
+        <li><a data-bind="text: shortName, value:shortName" href="#"></a></li>
+        <li class="divider"></li>
+    </ul>*@
 
     <div>
         <form>

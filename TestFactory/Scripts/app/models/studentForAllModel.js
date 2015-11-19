@@ -6,6 +6,7 @@
     self.lastName = ko.observable(item ? item.LastName : "");
     self.groupId = ko.observable(item ? item.GroupId : "");
     self.groupShortName = ko.observable(item ? item.ShortName : "");
+    self.year = ko.observable(item ? item.Year : "");
 
     self.marks = ko.observableArray();
     if (item && item.Marks) {
