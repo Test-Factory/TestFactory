@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Security.Cryptography.X509Certificates;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace TestFactory.Controllers.Api
         [Route("all")]
          public IList<SubjectWithGroupViewModel> GetAll()
         {
-            var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId).ToList();
+            var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId).OrderBy(s => s.Name);
             var result = Mapper.Map<IList<SubjectWithGroupViewModel>>(subjects);
             return result;
         }
@@ -69,8 +70,6 @@ namespace TestFactory.Controllers.Api
             model.Id = Guid.NewGuid().ToString();
             model.FacultyId = user.User.FacultyId;
             Framework.SubjectManager.Create(model);
-            group.Subjects.Add(model);
-            Framework.GroupManager.Update(group);
             return Ok(model);
         }
 
@@ -82,10 +81,8 @@ namespace TestFactory.Controllers.Api
             {
                 return BadRequest("error");
             }
-
             var model = Framework.SubjectManager.GetById(subject.SubjectId);
             model.Name = subject.Name;
-            model.Groups.Add(Framework.GroupManager.GetById(subject.GroupId));
             Framework.SubjectManager.Update(model);
             return Ok();
         }
