@@ -18,6 +18,8 @@ namespace TestFactory.Business.Models
 
         public virtual string GroupId { get; set; }
 
+        public virtual int Year { get; set; }
+
         public virtual IList<Mark> Marks { get; set; }
 
         public StudentWithGroup()
