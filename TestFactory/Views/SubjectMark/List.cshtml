@@ -11,14 +11,14 @@
             <a class="  collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
             <div class="collapsible-body">
                 <ul class="collection" data-bind="foreach: subjects">
-                    <li class=" "><a data-bind="text: name" class="dropItem collapsible-header waves-effect waves-teal " href="@Url.RouteUrl("subjectMark", new { groupId = @Model.Item1.Id, subjectId = @Model.Item2.Id }, null)"></a></li>
+                    <li class=" "><a data-bind="text: name, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a></li>
                 </ul>
             </div>
 
         </li>
     </ul>
 </ul>
-    <h3>@Model.Item2.Name (@Model.Item1.ShortName)</h3>
+    <h3 style="margin-top: 6%">@Model.Item2.Name (@Model.Item1.ShortName)</h3>
     <table>
         <thead>
             <tr>

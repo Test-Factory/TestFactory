@@ -9,6 +9,7 @@ body {
 html { line-height: 1.45; }
 
 header, footer, nav, section { display: block; }
+header{ opacity: 1;}
 
 div#content {
     overflow: hidden;
@@ -170,7 +171,7 @@ a {
 
 form {
     /*margin-left: 1%;*/
-    margin-top: 3%;
+    margin-top: 6%;
 }
 
 label { font-size: 1.2em; }

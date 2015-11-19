@@ -50,6 +50,11 @@ function SubjectViewModel(group) {
         });
     });
 
+    self.redirectToMarksSubject = function (subjectId) {
+        var url = "/group/" + self.subjectsInGroup.id() + "/subject/" + subjectId();
+        location = url;
+    }
+
 
 
     
