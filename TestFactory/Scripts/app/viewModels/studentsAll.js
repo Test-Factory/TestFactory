@@ -11,14 +11,11 @@
         deviation: "/standardDeviation"
     };
 
-    self.temporary = {
-        groupNames: ([' ', 'ПІ 52', 'ПІ 51', 'ПІК 13', 'КІ 1']),
-        years:(['2015','2014'])
-    };
-
     self.students = ko.observableArray();
 
-    self.groups = ko.observableArray();
+    self.groupNames = ko.observableArray();
+    
+    self.groupYears = ko.observableArray();
 
     self.searchByStudentsGroups = ko.observable('');
 
@@ -29,7 +26,7 @@
             return (
                       (self.searchByStudentsGroups().length == 0 || rec.groupShortName().toLowerCase().indexOf(self.searchByStudentsGroups().toLowerCase()) > -1)
                 &&
-                      (self.searchByStudentsYearOfStartEducation().length == 0 || rec.Year().toLowerCase().indexOf(self.searchByStudentsYearOfStartEducation().toLowerCase()) > -1)
+                      (self.searchByStudentsYearOfStartEducation().length == 0 || rec.year().toLowerCase().indexOf(self.searchByStudentsYearOfStartEducation().toLowerCase()) > -1)
                    )
         });
     });
@@ -96,9 +93,9 @@
         });
 
         groupProvider.get(function (data) {
+            self.groupNames.push(' ');
             $(data).each(function (index, element) {
-                var mappedGroup = new GroupModel(element);
-                self.groups.push(mappedGroup);
+                self.groupNames.push(element);
             });
         });
 
