@@ -22,7 +22,7 @@
     
     self.groupYears = ko.observableArray();
 
-    self.searchByStudentsGroups = ko.observable();
+    self.searchByStudentsGroups = ko.observable('');
 
     self.searchByStudentsYearOfStartEducation = ko.observable();
 
@@ -30,12 +30,13 @@
         return ko.utils.arrayFilter(self.students(), function (rec) {
             return (
                       (self.searchByStudentsGroups().length == 0 || rec.groupShortName().toLowerCase().indexOf(self.searchByStudentsGroups().toLowerCase()) > -1)
-                &&
-                      (rec.year() == self.searchByStudentsYearOfStartEducation() || self.searchByStudentsYearOfStartEducation == null)
+                ||
+                      (self.searchByStudentsYearOfStartEducation == null || rec.year() == self.searchByStudentsYearOfStartEducation())
                    )
         });
     });
 
+   
     self.categories = ko.observableArray();
     self.standardDeviation = ko.observableArray();
 
@@ -97,14 +98,7 @@
             });
         });
 
-        studentProvider.get(function (data) {
-            $(data).each(function (index, element) {
-                var mappedStudent = new StudentForAllModel(element, averageMarks);
-                mappedStudent.sortMarksByCategoryIdDesc();
-                self.students.push(mappedStudent);
-            });
-            self.preloader(false);
-        });
+       
 
         groupProvider.getNames(pathForGroupProvider.name, function (data) {
             self.groupNames.push(' ');
@@ -114,12 +108,19 @@
         });
 
         groupProvider.getYears(pathForGroupProvider.year, function (data) {
-            self.groupYears.push(null);
             $(data).each(function (index, element) {
                 self.groupYears.push(element);
             });
         });
 
+        studentProvider.get(function (data) {
+            $(data).each(function (index, element) {
+                var mappedStudent = new StudentForAllModel(element, averageMarks);
+                mappedStudent.sortMarksByCategoryIdDesc();
+                self.students.push(mappedStudent);
+            });
+            self.preloader(false);
+        });
         
         self.sortingByName(sortingBy);
     }

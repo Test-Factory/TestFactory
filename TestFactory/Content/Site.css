@@ -691,6 +691,14 @@ select {
     display:inline-block;
     width:20%;
 }
-#forSelect {
+.select-one {
     font-size: 1.1em;
+}
+.select-two {
+    font-size: 1.1em;
+}
+div#select-two {
+    position: relative;
+    left: 304px;
+    top: -45px;
 }
