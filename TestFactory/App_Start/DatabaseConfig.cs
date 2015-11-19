@@ -6,8 +6,7 @@ namespace TestFactory.App_Start
     {
         public static void MigrateDatabase(string connectionString)
         {
-            var migrator = new Migrator(connectionString);
-            migrator.MigrateDown(201511051002);
+            var migrator = new Migrator(connectionString);        
             migrator.MigrateToLatest();    
         }
     }
