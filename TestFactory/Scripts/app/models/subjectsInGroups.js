@@ -3,12 +3,11 @@
     self.id = ko.observable(item ? item.Id : "");
     self.fullName = ko.observable(item ? item.FullName : "");
 
-
     self.subjects = ko.observableArray();
 
     if (item && item.Subjects) {
         item.Subjects.forEach(function (element) {
-            var mappedItem = new SubjectWithGroupModel(element);
+            var mappedItem = new SubjectModel(element);
             self.subjects.push(mappedItem);
         });
     }

@@ -192,7 +192,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Controllers\Api\GroupsController.cs" />
     <Compile Include="Controllers\Api\SubjectsController.cs" />
-    <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\SubjectMarkController.cs" />
     <Compile Include="Filters\MvcHandleErrorAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -456,7 +455,6 @@
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Student\ListAllStudents.cshtml" />
     <Content Include="Views\Student\Search.cshtml" />
-    <Content Include="Views\Subject\List.cshtml" />
     <Content Include="Views\SubjectMark\List.cshtml" />
   </ItemGroup>
   <ItemGroup>

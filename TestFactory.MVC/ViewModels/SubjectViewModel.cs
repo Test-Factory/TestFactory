@@ -14,6 +14,7 @@ namespace TestFactory.MVC.ViewModels
         [DataType(DataType.Text)]
         [StringLength(100, ErrorMessage = "Перевищує ліміт в 100 символів")] 
         public virtual string Name { get; set; }
+        public virtual string GroupId { get; set; }
 
         public SubjectViewModel()
         {

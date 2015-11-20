@@ -16,14 +16,14 @@
     self.mode = ko.observable(defaultMode || "display");
 }
 SubjectModel.prototype.mapFrom = function mapSubject(from) {
-    this.id(from.id ? from.id() : from.subjectId());
+    this.id(from.id());
     this.groupId(from.groupId());
     this.name(from.name());
 }
 
 SubjectModel.prototype.toServerModel = function () {
     return {
-        SubjectId: this.id(),
+        Id: this.id(),
         GroupId: this.groupId(),
         Name: this.name()
     }

@@ -26,10 +26,10 @@ namespace TestFactory.Controllers.Api
 
         [HttpGet]
         [Route("all")]
-         public IList<SubjectWithGroupViewModel> GetAll()
+         public IList<SubjectViewModel> GetAll()
         {
             var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId).OrderBy(s => s.Name);
-            var result = Mapper.Map<IList<SubjectWithGroupViewModel>>(subjects);
+            var result = Mapper.Map<IList<SubjectViewModel>>(subjects);
             return result;
         }
         
@@ -53,7 +53,7 @@ namespace TestFactory.Controllers.Api
 
         [HttpPost]
         [ValidateModel]
-        public IHttpActionResult Create(SubjectWithGroupViewModel subject)
+        public IHttpActionResult Create(SubjectViewModel subject)
         {
             if (!User.IsInRole("Filler"))
             {
@@ -75,7 +75,7 @@ namespace TestFactory.Controllers.Api
 
         [HttpPut]
         [ValidateModel]
-        public IHttpActionResult Update(SubjectWithGroupViewModel subject)
+        public IHttpActionResult Update(SubjectViewModel subject)
         {
             if (!User.IsInRole("Filler"))
             {

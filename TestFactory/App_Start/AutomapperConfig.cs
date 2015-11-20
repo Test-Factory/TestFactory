@@ -17,12 +17,12 @@ namespace TestFactory.App_Start
         {
 
             Mapper
-               .CreateMap<SubjectWithGroupViewModel, Subject>()
+               .CreateMap<SubjectViewModel, Subject>()
                .ForMember(s => s.FacultyId, otp => otp.Ignore())
                .ForMember(s => s.Groups, otp => otp.Ignore());
 
             Mapper
-               .CreateMap<Subject, SubjectWithGroupViewModel>()
+               .CreateMap<Subject, SubjectViewModel>()
                .ForMember(s => s.GroupId, otp => otp.Ignore()); 
 
 
@@ -41,9 +41,9 @@ namespace TestFactory.App_Start
             Mapper
                 .CreateMap<StudentWithGroup, StudentWithGroupViewModel>();
 
-            Mapper
-                .CreateMap<SubjectWithGroup, SubjectWithGroupViewModel>()
-               .ForMember(s => s.Id, opt => opt.MapFrom(sg => sg.SubjectId)); 
+            //Mapper
+            //    .CreateMap<SubjectWithGroup, SubjectWithGroupViewModel>()
+            //   .ForMember(s => s.Id, opt => opt.MapFrom(sg => sg.SubjectId)); 
 
             Mapper
                .CreateMap<AverageMarkForFaculty, AverageMarkForFacultyViewModel>();
@@ -76,8 +76,8 @@ namespace TestFactory.App_Start
 
             Mapper.CreateMap<AverageMarkForFacultyViewModel, AverageMarkForFaculty>();
 
-            Mapper.CreateMap<SubjectWithGroupViewModel, SubjectWithGroup>()
-               .ForMember(s => s.SubjectId, opt => opt.MapFrom(sg => sg.Id)); 
+            //Mapper.CreateMap<SubjectWithGroupViewModel, SubjectWithGroup>()
+            //   .ForMember(s => s.SubjectId, opt => opt.MapFrom(sg => sg.Id)); 
 
 
             Mapper.CreateMap<FrequencyMarkForFacultyByCategoryViewModel, FrequencyMarkForFacultyByCategory>();

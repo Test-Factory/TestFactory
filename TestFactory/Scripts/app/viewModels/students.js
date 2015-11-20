@@ -31,8 +31,8 @@ function StudentsViewModel(group, sortingBy) {
     self.studentForUpdate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForCreate = ko.validatedObservable(new StudentModel(), { deep: true });
     self.studentForDelete = ko.validatedObservable(new StudentModel(), { deep: true });
-    self.subjectForCreate = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
-    self.subjectForUpdate = ko.validatedObservable(new SubjectWithGroupModel(), { deep: true });
+    self.subjectForCreate = ko.validatedObservable(new SubjectModel(), { deep: true });
+    self.subjectForUpdate = ko.validatedObservable(new SubjectModel(), { deep: true });
 
     self.mods = {
         display: "display",
@@ -162,10 +162,9 @@ function StudentsViewModel(group, sortingBy) {
     }
     self.addSubject = function () {
         closeAllEditing();
-        var newSubject = new SubjectWithGroupModel();
+        var newSubject = new SubjecModel();
         self.subjectForCreate().mapFrom(newSubject);
         self.subjectForCreate().mode(self.mods.create);
-
         ko.validation.group(self.subjectForCreate); //TODO: ???
     };
 
@@ -176,9 +175,9 @@ function StudentsViewModel(group, sortingBy) {
         self.subjectForCreate().groupId(self.group.id());
         var subjectServerModel = self.subjectForCreate().toServerModel();
         subjectProvider.post(subjectServerModel, function (data) {
-            var newSubject = new SubjectWithGroupModel();
+            var newSubject = new SubjectModel();
             newSubject.mapFrom(self.subjectForCreate());
-            newSubject.subjectId(data.Id);
+            newSubject.id(data.Id);
             closeAllEditing();
             self.subjects.splice(0, 0, newSubject);
             self.addSubject();
@@ -202,7 +201,7 @@ function StudentsViewModel(group, sortingBy) {
             subject.mode(self.mods.display);
         });
     };
-    self.redirectToMarksSubject = function(subjectId) {
+    self.redirectToMarksSubject = function(subjectId) { //TODO: refactor to redirect
         var url = "/group/" + self.group.id() + "/subject/" + subjectId();
         location = url;
     }
