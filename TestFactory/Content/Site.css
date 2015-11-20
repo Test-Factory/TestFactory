@@ -715,6 +715,5 @@ div#select-one {
     top: 55px;
 }
 nav.blue-grey.darken-1 {
-z-index:10000;
-
+    z-index:1000;
 }
