@@ -55,10 +55,7 @@ function SubjectViewModel(group, subject) {
         var url = "/group/" + self.subjectsInGroup.id() + "/subject/" + subjectId();
         location = url;
     }
-    self.chechedSubject = ko.observable(false);
-    self.boldSubjectSadebar = ko.pureComputed(function () {
-        return self.chechedSubject() ? "boldSubjectSadebar" : "";
-    }, self);
+
     self.addSubject = function () {
         closeAllEditing();
         var newSubject = new SubjectWithGroupModel();

@@ -81,7 +81,7 @@ namespace TestFactory.Controllers.Api
             {
                 return BadRequest("error");
             }
-            var model = Framework.SubjectManager.GetById(subject.SubjectId);
+            var model = Framework.SubjectManager.GetById(subject.Id);
             model.Name = subject.Name;
             Framework.SubjectManager.Update(model);
             return Ok();

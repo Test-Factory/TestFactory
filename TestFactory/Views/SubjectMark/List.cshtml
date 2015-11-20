@@ -26,8 +26,7 @@
                         <a data-bind="click: $root.editSubject" class="dropItem collapsible-header waves-effect waves-teal "><img src="~/Content/images/edit16.png" /></a>
                     }
                     
-                    <a  data-bind="text: name,click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a>
-                    
+                    <a data-bind="text: name, css:{boldSubjectSidebar: id() == $root.subject.id()} ,click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a>
                   
                     <!-- /ko -->
                 </ul>

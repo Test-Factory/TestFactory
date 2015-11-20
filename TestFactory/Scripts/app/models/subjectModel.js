@@ -1,6 +1,6 @@
 ﻿function SubjectModel(item, defaultMode) {
     var self = this;
-    self.id = ko.observable(item ? item.SubjectId : "");
+    self.id = ko.observable(item ? item.Id : "");
     self.groupId = ko.observable(item ? item.GroupId : "");
     self.name = ko.observable(item ? item.Name : "").extend({
         required: {
