@@ -180,7 +180,9 @@ function StudentsViewModel(group, sortingBy) {
             newSubject.id(data.Id);
             closeAllEditing();
             self.subjects.splice(0, 0, newSubject);
+            self.redirectToMarksSubject(newSubject.id);
             self.addSubject();
+            
         });
     };
     self.editSubject = function (subject) {
