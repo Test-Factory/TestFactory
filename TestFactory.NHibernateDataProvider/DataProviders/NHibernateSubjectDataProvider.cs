@@ -21,5 +21,15 @@ namespace TestFactory.NHibernateDataProvider.DataProviders
                     .List<Subject>();
             });
         }
+        public Subject GetByName(string name)
+        {
+            return Execute(session =>
+            {
+                return session
+                    .CreateCriteria<Subject>()
+                    .Add(Restrictions.Eq("Name", name))
+                    .UniqueResult<Subject>();
+            });
+        }
     }
 }

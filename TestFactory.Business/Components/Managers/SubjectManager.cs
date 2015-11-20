@@ -16,5 +16,9 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetForFaculty(facultyId);
         }
+        public bool SubjectIsAlreadyExist(string name)
+        {
+            return provider.GetByName(name) != null ? true : false;
+        }
     }
 }

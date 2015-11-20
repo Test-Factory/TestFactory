@@ -10,6 +10,8 @@ using TestFactory.Business.Components;
 using TestFactory.Business.Models;
 using TestFactory.Filters;
 using TestFactory.MVC.ViewModels;
+using Embedded_Resource;
+using System.Web;
 
 namespace TestFactory.Controllers.Api
 {
@@ -55,6 +57,10 @@ namespace TestFactory.Controllers.Api
         [ValidateModel]
         public IHttpActionResult Create(SubjectViewModel subject)
         {
+            if (Framework.SubjectManager.SubjectIsAlreadyExist(subject.Name))
+            {
+                throw new HttpException(403, GlobalRes_ua.forbidenAction);
+            }
             if (!User.IsInRole("Filler"))
             {
                 return BadRequest("error");
@@ -77,6 +83,10 @@ namespace TestFactory.Controllers.Api
         [ValidateModel]
         public IHttpActionResult Update(SubjectViewModel subject)
         {
+            if (Framework.SubjectManager.SubjectIsAlreadyExist(subject.Name))
+            {
+                throw new HttpException(403, GlobalRes_ua.forbidenAction);
+            }
             if (!User.IsInRole("Filler"))
             {
                 return BadRequest("error");
