@@ -31,6 +31,14 @@ td, th {
     top: 9px;
 }
 
+.icon-mark-ok {
+    color: green;
+}
+
+.icon-mark-bad {
+    color: red;
+}
+
     .icon-mark i.large {
         font-size: 2.2em;
     }
@@ -691,6 +699,18 @@ select {
     display:inline-block;
     width:20%;
 }
-#forSelect {
+.select-one {
     font-size: 1.1em;
+}
+.select-two {
+    font-size: 1.1em;
+}
+div#select-two {
+    position: relative;
+    left: 304px;
+    top: 5px;
+}
+div#select-one {
+    position: relative;
+    top: 55px;
 }
