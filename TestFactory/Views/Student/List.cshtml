@@ -5,10 +5,10 @@
 <ul  class="side-nav fixed">
     <ul class="collapsible">
         <li class="ietmSidebar activeItem">
-            <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new {groupId = Model.Id}, null) ">Holand</a>
+            <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new {groupId = Model.Id}, null) ">TestFactory</a>
         </li>
         <li  class="ietmSidebar">
-            <a class="  collapsible-header  waves-effect waves-teal" href="#">Subjects</a>
+            <a class="  collapsible-header  waves-effect waves-teal" href="#">Предмети</a>
             <div class="collapsible-body"  >
                 @if (User.IsInRole(Resources.RoleNames.Filler))
                 {

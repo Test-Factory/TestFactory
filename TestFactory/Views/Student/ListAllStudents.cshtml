@@ -1,22 +1,12 @@
 ﻿@Styles.Render("~/Students/css")
-<div id = "select-one">
-    Фільтр по
-    групам: <select data-bind="options: groupNames, value:searchByStudentsGroups, valueupdate:'onkeydown'" />
-    рокам: <select data-bind="options: groupNames, value:searchByStudentsGroups, valueupdate:'onkeydown'" />
-</div>
-<div id="select-two">
-   
-    по рокам: <select data-bind="options: groupYears, value:searchByStudentsYearOfStartEducation, valueupdate:'onkeydown'" />
-    рокам: <select data-bind="options: groupYears, value:searchByStudentsYearOfStartEducation, valueupdate:'onkeydown'" />
-</div>
-
-@*<a class='dropdown-button btn' data-bind = "value: searchByStudentsGroups" href = '#' data-activates='dropdown1'>Групи</a>
-    <ul data-bind="foreach: groups, value:searchByStudentsGroups, valueupdate:'onkeydown'" id='dropdown1' class='dropdown-content'>
-        <li><a data-bind="text: shortName, value:shortName" href="#"></a></li>
-        <li class="divider"></li>
-    </ul>*@
-
-    <div>
+<div id = "selectors">
+    <div id = "group-filter">
+        <p class="dropdown">Фільтр по групам </p><select  data-bind="options: groupNames, value:searchByStudentsGroups, optionsCaption: 'Усі', valueupdate:'onkeydown'"></select></p>
+    </div>
+        <div id="year-filter">
+            <p class="dropdown">по старту навчання <select data-bind="options: groupYears, value:searchByStudentsYearOfStartEducation, optionsCaption:'Усі',valueupdate:'onkeydown'"></select></p>
+        </div>
+    </div>
         <form>
             <table id="tbStudentList" >
                 <thead>
@@ -71,7 +61,7 @@
                         <!-- /ko -->
                     </td>
                 </tr>
-                <tbody data-bind="foreach: filteredRecords">
+                <tbody data-bind="foreach: filteredRecords2">
 
                     <tr>
                         <td class="last-name" data-bind="text: lastName"></td>
