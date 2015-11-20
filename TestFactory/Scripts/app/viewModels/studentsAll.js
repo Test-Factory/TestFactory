@@ -30,7 +30,7 @@
         return ko.utils.arrayFilter(self.students(), function (rec) {
             return (
                       (self.searchByStudentsGroups().length == 0 || rec.groupShortName().toLowerCase().indexOf(self.searchByStudentsGroups().toLowerCase()) > -1)
-                ||
+                &&
                       (self.searchByStudentsYearOfStartEducation == null || rec.year() == self.searchByStudentsYearOfStartEducation())
                    )
         });

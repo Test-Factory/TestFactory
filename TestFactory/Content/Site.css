@@ -700,5 +700,9 @@ select {
 div#select-two {
     position: relative;
     left: 304px;
-    top: -45px;
+    top: 5px;
+}
+div#select-one {
+    position: relative;
+    top: 55px;
 }
