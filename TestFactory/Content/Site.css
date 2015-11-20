@@ -177,6 +177,10 @@ a {
     /*color:#FFF;*/
 }
 
+.form-mark {
+    margin-top: 0px;
+}
+
 form {
     /*margin-left: 1%;*/
     margin-top: 6%;
@@ -697,22 +701,31 @@ i.person {
 }
 select {
     display:inline-block;
+    width:20%;
 }
 .select-one {
     font-size: 1.1em;
 }
+
 .select-two {
     font-size: 1.1em;
 }
+
 div#select-two {
     position: relative;
     left: 304px;
     top: 5px;
 }
+
 div#select-one {
     position: relative;
     top: 55px;
 }
+
 nav.blue-grey.darken-1 {
-z-index:10000;
+    z-index:1000;
+}
+
+.padding-td-subject-marks {
+    padding: 10px !important;
 }

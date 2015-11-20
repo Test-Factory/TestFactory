@@ -23,6 +23,8 @@ SubmitForm = function (elem, path) {
                 $(elem).parents(".form-mark").find(".preloader-visibility").hide();
                 $(elem).parent(".form-mark").find(".icon-mark-bad").show();
                 timer.Item = setTimeout(function () { $(elem).parent(".form-mark").find(".icon-mark-bad").hide(); }, 4000);
+                $(elem).removeClass("valid");
+                $(elem).addClass("input-validation-error");
             }
         }
     )
