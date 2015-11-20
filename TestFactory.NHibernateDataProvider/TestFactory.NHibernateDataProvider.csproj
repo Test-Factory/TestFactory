@@ -85,8 +85,7 @@
     <Compile Include="DbVersioning\Migrations\Version3\M033_ColumnFacultyIdTbUser.cs" />
     <Compile Include="DbVersioning\Migrations\Version3\M034_ColumnFacultyIdTbGroup.cs" />
     <Compile Include="DbVersioning\Migrations\Version3\M035_CreateTbSubject_Group.cs" />
-    <Compile Include="DbVersioning\Migrations\Version3\M036_CreateViewSubjectWithGroup.cs" />
-    <Compile Include="DbVersioning\Migrations\Version3\M037_CreateTableSubjectMark.cs" />
+    <Compile Include="DbVersioning\Migrations\Version3\M036_CreateTableSubjectMark.cs" />
     <Compile Include="DbVersioning\Migrator.cs" />
     <Compile Include="NHibernateCore\Mappings\AverageMarkForFacultyMap.cs" />
     <Compile Include="NHibernateCore\Mappings\FrequencyMarkForFacultyByCategoryMap.cs" />
@@ -150,9 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbVersioning\Scripts\Version3\DropTbSubject_Group.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DbVersioning\Scripts\Version3\CreateViewSubjectWithGroup.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DbVersioning\Scripts\Version3\CreateTableSubjectMark.sql" />
