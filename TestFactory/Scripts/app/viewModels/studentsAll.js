@@ -5,6 +5,7 @@
     var markProvider = new MarkProvider();
     var groupProvider = new GroupProvider();
     var subjectProvider = new SubjectProvider();
+    var subjectMarkProvider = new SubjectMarkProvider();
 
 
     //todo: move urls to providers
@@ -25,6 +26,8 @@
     self.groupYears = ko.observableArray();
 
     self.subjects = ko.observableArray();
+
+    self.subjectsMarks = ko.observableArray();
 
     self.searchByStudentsGroups = ko.observable('');
 
@@ -132,6 +135,12 @@
         });
 
         subjectProvider.getAll(function (data) {
+            $(data).each(function (index, element) {
+                self.subjects.push(element);
+            });
+        });
+
+        subjectMarkProvider.getAll(function (data) {
             $(data).each(function (index, element) {
                 self.subjects.push(element);
             });

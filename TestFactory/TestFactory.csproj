@@ -191,6 +191,7 @@
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Controllers\Api\GroupsController.cs" />
+    <Compile Include="Controllers\Api\SubjectsMarkController.cs" />
     <Compile Include="Controllers\Api\SubjectsController.cs" />
     <Compile Include="Controllers\SubjectMarkController.cs" />
     <Compile Include="Filters\MvcHandleErrorAttribute.cs" />
@@ -325,6 +326,7 @@
     <Content Include="Scripts\app\dataProvider\categoryProvider.js" />
     <Content Include="Scripts\app\dataProvider\groupProvider.js" />
     <Content Include="Scripts\app\dataProvider\markProvider.js" />
+    <Content Include="Scripts\app\dataProvider\subjectMarkProvider.js" />
     <Content Include="Scripts\app\dataProvider\subjectProvider.js" />
     <Content Include="Scripts\app\models\averageMarksForFacultyModel.js" />
     <Content Include="Scripts\app\models\groupModel.js" />
