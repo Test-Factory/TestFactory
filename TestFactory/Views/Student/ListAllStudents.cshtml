@@ -60,9 +60,9 @@
                         <!-- /ko -->
                     </td>
                 </tr>
-                <tbody data-bind="foreach: filteredRecords2">
+                <tbody data-bind="foreach: filteredRecords2" class="student-content">
 
-                    <tr>
+                    <tr class="allStudents">
                         <td class="last-name" data-bind="text: lastName"></td>
                         <td class="first-name" data-bind="text: firstName"></td>
                         <td class="group-name" data-bind="text: groupShortName"></td>
@@ -70,11 +70,11 @@
                         <td>
                             <table>
                                 <tr>
-                                    <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding: 10px 0 0 0;"></td>
-                                    
+                                    <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>
+                                   
                                 </tr>
                                 <tr>
-                                    <td class="studentMarkDetails">
+                                    <td class="studentMarkDetails" style="padding-bottom: 4px;">
                                             <label class="greenText" data-bind="text: averageDeviation, style: { color: averageDeviation() < 0 ? 'coral' : 'seagreen' }"></label>
                                     </td>
                                 </tr>
