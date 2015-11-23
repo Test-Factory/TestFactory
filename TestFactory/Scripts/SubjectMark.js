@@ -19,7 +19,7 @@ SubmitForm = function (elem, path) {
                 $(elem).removeClass("valid");
             }
             else {
-                Materialize.toast('Дані не коректні!', 4000)
+                Materialize.toast('Дані некоректні!', 4000)
                 $(elem).parents(".form-mark").find(".preloader-visibility").hide();
                 $(elem).parent(".form-mark").find(".icon-mark-bad").show();
                 timer.Item = setTimeout(function () { $(elem).parent(".form-mark").find(".icon-mark-bad").hide(); }, 4000);
