@@ -17,7 +17,7 @@ namespace TestFactory.Controllers
     {
 
         [HttpGet]
-        [Authorize(Roles = RoleNames.AllRoles)]
+        [Authorize(Roles = RoleNames.Filler)]
         public ActionResult List(string groupId = null)
         {
             if (String.IsNullOrEmpty(groupId))
@@ -95,6 +95,7 @@ namespace TestFactory.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = RoleNames.Filler)]
         public JsonResult Update(StudentViewModel student)
         {
             if (!ModelState.IsValid)

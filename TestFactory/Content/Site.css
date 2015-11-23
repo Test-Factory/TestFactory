@@ -72,6 +72,7 @@ td, th {
 
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
+    width: 120px;
 }
 /* Styles for basic forms
 -----------------------------------------------------------*/

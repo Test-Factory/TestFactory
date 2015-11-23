@@ -8,9 +8,11 @@ using Embedded_Resource;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
+using RoleNames = TestFactory.Resources.RoleNames;
 
 namespace TestFactory.Controllers
 {
+    [Authorize(Roles = RoleNames.Filler)]
     public class SubjectMarkController : Controller
     {
         [HttpGet]
