@@ -74,6 +74,20 @@ td, th {
     font-size: 1.1em;
     width: 120px;
 }
+
+.allStudents td{
+    padding: 0px 5px;
+}
+
+.allStudents:nth-child(2n+1) {
+    background-color: white;
+}
+
+.allStudents {
+    border-bottom: 1px solid;
+    border-bottom-color: gainsboro;
+}
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 
