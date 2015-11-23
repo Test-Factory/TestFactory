@@ -741,6 +741,12 @@ div#selectors {
 }
 
 div#group-filter {
-    margin-bottom: 8%;
+    margin-bottom: 6%;
     font-size: 14px;
+    margin-top: 2%;
+}
+#clearFilter {
+    border-bottom:2px;
+    border-bottom-style:dashed;
+    cursor:pointer;
 }
