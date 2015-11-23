@@ -59,11 +59,11 @@ namespace TestFactory.Controllers.Api
         {
             if (Framework.SubjectManager.SubjectIsAlreadyExist(subject.Name))
             {
-                throw new HttpException(403, GlobalRes_ua.forbidenAction);
+                return BadRequest();
             }
             if (!User.IsInRole("Filler"))
             {
-                return BadRequest("error");
+                return BadRequest();
             }
             var group = Framework.GroupManager.GetById(subject.GroupId);
             var result = group.Subjects.Any(s => s.Name == subject.Name);
@@ -83,15 +83,16 @@ namespace TestFactory.Controllers.Api
         [ValidateModel]
         public IHttpActionResult Update(SubjectViewModel subject)
         {
-            if (Framework.SubjectManager.SubjectIsAlreadyExist(subject.Name))
-            {
-                throw new HttpException(403, GlobalRes_ua.forbidenAction);
-            }
+            
             if (!User.IsInRole("Filler"))
             {
                 return BadRequest("error");
             }
             var model = Framework.SubjectManager.GetById(subject.Id);
+            if ((Framework.SubjectManager.SubjectIsAlreadyExist(subject.Name)) && !(subject.Name == model.Name))
+            {
+                throw new HttpException(403, GlobalRes_ua.forbidenAction);
+            }
             model.Name = subject.Name;
             Framework.SubjectManager.Update(model);
             return Ok();
