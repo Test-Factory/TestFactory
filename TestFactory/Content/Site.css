@@ -84,11 +84,19 @@ td, th {
     border: 1px solid gainsboro;
 }
 
-.table-menu-button {
+.table-menu {
     text-align: center;
     border: 1px solid gainsboro;
     padding: 4px;
 }
+
+.table-menu-button {
+    cursor: pointer;
+}
+
+    .table-menu-button:hover {
+        background-color: gainsboro;
+    }
 
 .allStudents td{
     padding: 0px 5px;
