@@ -185,23 +185,28 @@ function StudentsViewModel(group, sortingBy) {
             
         });
     };
+    self.editingSubject = new SubjectModel();
     self.editSubject = function (subject) {
         closeAllEditing();
+        $('#editSubject').openModal();
         self.subjectForUpdate().mapFrom(subject);
         self.subjectForUpdate.valueHasMutated();
         subject.mode(self.mods.edit);
+        self.editingSubject.mapFrom(subject);
     };
 
     self.saveEditedSubject = function (subject) {
         if (!self.subjectForUpdate.isValid()) {
             return false;
         }
+        
         var subjectServerModel = self.subjectForUpdate().toServerModel();
         subjectServerModel.GroupId = self.group.id();
         subjectProvider.put(subjectServerModel, function () {
-            subject.mapFrom(self.subjectForUpdate());
-            subject.mode(self.mods.display);
+            self.editingSubject.mode(self.mods.display)
+            self.subjects.push(self.subjectForUpdate);
         });
+        $('#editSubject').closeModal();
     };
     self.redirectToMarksSubject = function(subjectId) { //TODO: refactor to redirect
         var url = "/group/" + self.group.id() + "/subject/" + subjectId();

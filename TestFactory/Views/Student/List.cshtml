@@ -2,191 +2,186 @@
 @model GroupViewModel
 
 @Styles.Render("~/Students/css")
-<ul  class="side-nav fixed">
-    <ul class="collapsible">
-        <li class="ietmSidebar activeItem">
-            <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new {groupId = Model.Id}, null) ">TestFactory</a>
-        </li>
-        <li  class="ietmSidebar">
-            <a class="  collapsible-header  waves-effect waves-teal" href="#">Предмети</a>
-            <div class="collapsible-body"  >
-                @if (User.IsInRole(Resources.RoleNames.Filler))
-                {
-                    <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   +  Новий предмет</a>
-                }
-                <ul class="collection" data-bind ="foreach: subjects">
-                    <li>
-                        <!-- ko if: mode() == $root.mods.edit -->
-                        <a data-bind="click: $root.saveEditedSubject" class="dropItem collapsible-header waves-effect waves-teal "><i class="tiny material-icons">done</i></a>
-                        <input type="text" data-position="bottom" data-bind="textInput: $root.subjectForUpdate().name,  tooltip: { message: $root.subjectForUpdate().name.error }" maxlength="100" />
-                        <!-- /ko -->
-                        <!-- ko if: mode() == $root.mods.display -->
+<div class="popup__overlay">
+    <ul class="side-nav fixed">
+        <ul class="collapsible">
+            <li class="ietmSidebar activeItem">
+                <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new { groupId = Model.Id }, null) ">TestFactory</a>
+            </li>
+            <li class="ietmSidebar">
+                <a class="  collapsible-header  waves-effect waves-teal" href="#">Предмети</a>
+                <div class="collapsible-body">
+                    @if (User.IsInRole(Resources.RoleNames.Filler))
+                    {
+                        <a id="create" class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   +  Новий предмет</a>
+                    }
+                    <ul class="collection" data-bind="foreach: subjects">
+                        <li>
+                            <!-- ko if: mode() == $root.mods.display -->
+                            @if (User.IsInRole(Resources.RoleNames.Filler))
+                            {
+                                <a data-bind="click: $root.editSubject" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "><img src="~/Content/images/16edit.png" /></a>
+                            }
+                            <a data-bind="text: name, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
+                            <!-- /ko -->
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </ul>
+    <div id="editSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+        <div class="modal-content">
+            <h4>Редагування предмета </h4>
+            <input id="subjectPicker" type="text"
+                   data-position="bottom"
+                   data-bind="textInput: $root.subjectForUpdate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().name.error }"
+                   maxlength="100"
+                   placeholder="Name" />
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
+        </div>
+    </div>
+
+    <div id="createSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+        <div class="modal-content">
+            <h4>Створення предмета </h4>
+            <input id="subjectPicker" type="text"
+                   data-position="bottom"
+                   data-bind="textInput: $root.subjectForCreate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().name.error }"
+                   maxlength="100"
+                   placeholder="Name" />  @*TODO: add recourse*@
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+                <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
+            </div>
+        </div>
+
+
+
+        <div>
+            <form>
+                <h3 id="groupName" data-bind="text: $root.group.fullName"></h3>
+                <table id="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+                    <thead>
+                        <tr class="noselect">
+                            <th class="last-name">
+                                <div class="triangle-wrapper">
+                                    <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
+                                    <!-- ko if: $root.sortKey() == "lastName" -->
+                                    <div data-bind="css: selectedClassForSortedField"></div>
+                                    <!-- /ko -->
+                                </div>
+                            </th>
+                            <th class="first-name">
+                                <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
+                                <!-- ko if: $root.sortKey() == "firstName" -->
+                                <span data-bind="css: selectedClassForSortedField"></span>
+                                <!-- /ko -->
+                            </th>
+                            <!-- ko foreach: $root.categories -->
+                            <th class="marks">
+                                <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
+                                <!-- ko if: $root.sortKey() == $data.code() -->
+                                <div data-bind="css: $root.selectedClassForSortedField"></div>
+                                <!-- /ko -->
+                            </th>
+                            <!-- /ko -->
+                        </tr>
                         @if (User.IsInRole(Resources.RoleNames.Filler))
                         {
-                            <a data-bind="click: $root.editSubject" class="dropItem collapsible-header waves-effect waves-teal "><img src="~/Content/images/edit16.png" /></a>
+                            <tr>
+                                <td class="last-name">
+                                    <input type="text"
+                                           data-position="bottom"
+                                           data-bind="textInput: $root.studentForCreate().lastName,  tooltip: { message: $root.studentForCreate().lastName.error }"
+                                           maxlength="69"
+                                           placeholder="@GlobalRes_ua.surname" />
+                                </td>
+                                <td class="first-name">
+                                    <input type="text"
+                                           data-position="bottom"
+                                           data-bind="textInput: $root.studentForCreate().firstName, tooltip: { message: $root.studentForCreate().firstName.error }"
+                                           maxlength="69"
+                                           placeholder="@GlobalRes_ua.name" />
+                                </td>
+                                <!-- ko foreach: $root.studentForCreate().marks -->
+                                <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
+                                <!-- /ko -->
+                                <td colspan="3" class="screenMediaAbove ">
+                                    <button class="btn btn-success  " data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
+                                </td>
+                                <td colspan="3" class="screenMediaBelow ">
+                                    <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
+
+                                </td>
+                            </tr>
                         }
-                        <a data-bind="text: name, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a>
-                        <!-- /ko -->
-                    </li>
-                </ul>
-            </div>
-
-        </li>
-    </ul>
-</ul>
-
-<div id="createSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
-    <div class="modal-content">
-        <h4>Створення предмета </h4>
-        <input id="subjectPicker" type="text"
-               data-position="bottom"
-               data-bind="textInput: $root.subjectForCreate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().name.error }"
-               maxlength="100"
-               placeholder="Name" />  @*TODO: add recourse*@
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
-        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
-    </div>
-</div>
-<div>
-    <form>
-        <h3 id="groupName" data-bind="text: $root.group.fullName" ></h3>
-        <table id="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
-            <thead >
-                <tr class="noselect">
-                    <th class="last-name">
-                        <div class="triangle-wrapper">
-                            <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
-                            <!-- ko if: $root.sortKey() == "lastName" -->
-                            <div data-bind="css: selectedClassForSortedField"></div>
-                            <!-- /ko -->
-                        </div>
-                    </th>
-                    <th class="first-name">
-                        <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
-                        <!-- ko if: $root.sortKey() == "firstName" -->
-                        <span data-bind="css: selectedClassForSortedField"></span>
-                        <!-- /ko -->
-                    </th>
-                    <!-- ko foreach: $root.categories -->
-                    <th class="marks">
-                        <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
-                        <!-- ko if: $root.sortKey() == $data.code() -->
-                        <div data-bind="css: $root.selectedClassForSortedField"></div>
-                        <!-- /ko -->
-                    </th>
-                    <!-- /ko -->
-                </tr>
-                @if (User.IsInRole(Resources.RoleNames.Filler))
-                {
+                    </thead>
                     <tr>
-                        <td class="last-name">
-                            <input type="text"
-                                   data-position="bottom"
-                                   data-bind="textInput: $root.studentForCreate().lastName,  tooltip: { message: $root.studentForCreate().lastName.error }"
-                                   maxlength="69"
-                                   placeholder="@GlobalRes_ua.surname" />
-                        </td>
-                        <td class="first-name">
-                            <input type="text"
-                                   data-position="bottom"
-                                   data-bind="textInput: $root.studentForCreate().firstName, tooltip: { message: $root.studentForCreate().firstName.error }"
-                                   maxlength="69"
-                                   placeholder="@GlobalRes_ua.name" />
-                        </td>
-                        <!-- ko foreach: $root.studentForCreate().marks -->
-                        <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
-                        <!-- /ko -->
-                        <td colspan="3" class="screenMediaAbove ">
-                            <button class="btn btn-success  " data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
-                        </td>
-                        <td colspan="3" class="screenMediaBelow ">
-                            <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
-
+                        <td colspan="9">
+                            <!-- ko if: $root.preloader() -->
+                            <div class="progress ">
+                                <div class="indeterminate"></div>
+                            </div>
+                            <!-- /ko -->
                         </td>
                     </tr>
-                }
-            </thead>
-            <tr>
-                <td colspan="9">
-                    <!-- ko if: $root.preloader() -->
-                    <div class="progress ">
-                        <div class="indeterminate"></div>
-                    </div>
-                    <!-- /ko -->
-                </td>
-            </tr>
-            <tbody data-bind="foreach: students">
-                <!-- ko if: mode() == $root.mods.display -->
-                <tr>
-                    <td class="last-name" data-bind="text: lastName"></td>
-                    <td class="first-name" data-bind="text: firstName"></td>
-                    <!-- ko foreach: marks -->
-                    <td class="marks" data-bind="text: value" max="100  "></td>
-                    <!-- /ko -->
-                    @if (User.IsInRole(Resources.RoleNames.Filler))
-                    {
-                        <td class="screenMediaBelow ">
-                            <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
-                        </td>
+                    <tbody data-bind="foreach: students">
+                        <!-- ko if: mode() == $root.mods.display -->
+                        <tr>
+                            <td class="last-name" data-bind="text: lastName"></td>
+                            <td class="first-name" data-bind="text: firstName"></td>
+                            <!-- ko foreach: marks -->
+                            <td class="marks" data-bind="text: value" max="100  "></td>
+                            <!-- /ko -->
+                            @if (User.IsInRole(Resources.RoleNames.Filler))
+                            {
+                                <td class="screenMediaBelow ">
+                                    <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
+                                </td>
 
-                        <td class="screenMediaAbove ">
-                            <a class="  btn  btn-size btnStudent " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</a>
-                        </td>
-                    }
-                    <td class="screenMediaBelow ">
-                        <a class="btn btn-size btnStudent" data-bind="attr:{id: id, href: id}"><img src="~/Content/images/down.png" /></a>
-                    </td>
-                    <td class="screenMediaAbove ">
-                        <a class="btn btnStudent btn-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
-                    </td>
-                    @if (User.IsInRole(Resources.RoleNames.Filler))
-                    {
-                        <td class="screenMediaBelow">
-                            <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent"><img src="~/Content/images/delete.png" /></a>
-                        </td>
+                                <td class="screenMediaAbove ">
+                                    <a class="  btn  btn-size btnStudent " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</a>
+                                </td>
+                            }
+                            <td class="screenMediaBelow ">
+                                <a class="btn btn-size btnStudent" data-bind="attr:{id: id, href: id}"><img src="~/Content/images/down.png" /></a>
+                            </td>
+                            <td class="screenMediaAbove ">
+                                <a class="btn btnStudent btn-size" data-bind="attr:{id: id, href: id}">@GlobalRes_ua.download</a>
+                            </td>
+                            @if (User.IsInRole(Resources.RoleNames.Filler))
+                            {
+                                <td class="screenMediaBelow">
+                                    <a class="  btn  btn-size btnStudent " data-bind="click: $root.deleteStudent"><img src="~/Content/images/delete.png" /></a>
+                                </td>
 
-                        <td class="screenMediaAbove">
-                            <a class="  btn  btn-size btnStudent " data-bind="click:$root.deleteStudent">@GlobalRes_ua.delete</a>
-                        </td>
+                                <td class="screenMediaAbove">
+                                    <a class="  btn  btn-size btnStudent " data-bind="click:$root.deleteStudent">@GlobalRes_ua.delete</a>
+                                </td>
 
-                        <div id="delete-student" title="@GlobalRes_ua.delete">
-                            <p>@GlobalRes_ua.conformationOnDeleteStudent</p>
-                        </div>
-                    }
-                </tr>
-                <!-- /ko -->
-                <!-- ko if: mode() == $root.mods.edit -->
-                <tr>
-                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().lastName,  tooltip: { message: $root.studentForUpdate().lastName.error }" maxlength="60" /></td>
-                    <td class="first-name edit "><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().firstName,  tooltip: { message: $root.studentForUpdate().firstName.error }" maxlength="60" /></td>
-                    <!-- ko foreach: $root.studentForUpdate().marks -->
-                    <td class="marks edit "><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
-                    <!-- /ko -->
-                    <td colspan="3" class="screenMediaBelow ">
-                        <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></a>
-                    </td>
-                    <td colspan="3" class="screenMediaAbove ">
-                        <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
-                    </td>
-                </tr>
-                <!-- /ko -->
-            </tbody>
-        </table>
-    </form>
+                                <div id="delete-student" title="@GlobalRes_ua.delete">
+                                    <p>@GlobalRes_ua.conformationOnDeleteStudent</p>
+                                </div>
+                            }
+                        </tr>
+                        <!-- /ko -->
 
-</div>
+                    </tbody>
+                </table>
+            </form>
+
+        </div>
+    </div>
 @section Scripts{
     <script>
         var globalView = null;
         $(document).ready(function() {
-            $('.modal-trigger').leanModal({
-                dismissible: true, // Modal can be dismissed by clicking outside of the modal
-                opacity: .5, // Opacity of modal background
-                in_duration: 300, // Transition in duration
-                out_duration: 200, // Transition out duration
-            });
+            $('#create').leanModal();
             var group = @Html.Raw(Json.Encode(Model));
             var viewModel = new StudentsViewModel(group, "lastName");
             globalView = viewModel;

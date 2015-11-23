@@ -220,6 +220,8 @@
       <DependentUpon>TestFactoryData.mdf</DependentUpon>
     </Content>
     <Content Include="Content\error.css" />
+    <Content Include="Content\images\16edit.png" />
+    <Content Include="Content\images\17edit.png" />
     <Content Include="Content\images\delete.png" />
     <Content Include="Content\images\document_save.png" />
     <Content Include="Content\images\down.png" />
@@ -329,7 +331,6 @@
     <Content Include="Scripts\app\models\studentForAllModel.js" />
     <Content Include="Scripts\app\models\subjectModel.js" />
     <Content Include="Scripts\app\models\subjectsInGroups.js" />
-    <Content Include="Scripts\app\models\subjectWithGroupModel.js" />
     <Content Include="Scripts\app\settings\compureModels.js" />
     <Content Include="Scripts\app\settings\configValidation.js" />
     <Content Include="Scripts\app\viewModels\studentsAll.js" />

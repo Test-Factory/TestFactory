@@ -16,20 +16,18 @@
                     <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + Створення предмета </a>
                 }
                 <ul class="collection" data-bind="foreach: subjects">
-                    <!-- ko if: mode() == $root.mods.edit -->
-                    <a data-bind="click: $root.saveEditedSubject" class="dropItem collapsible-header waves-effect waves-teal "><i class="tiny material-icons">done</i></a>
-                    <input type="text" data-position="bottom" data-bind="textInput: $root.subjectForUpdate().name,  tooltip: { message: $root.subjectForUpdate().name.error }" maxlength="100" />
-                    <!-- /ko -->
-                    <!-- ko if: mode() == $root.mods.display -->
-                    @if (User.IsInRole(Resources.RoleNames.Filler))
-                    {
-                        <a data-bind="click: $root.editSubject" class="dropItem collapsible-header waves-effect waves-teal "><img src="~/Content/images/edit16.png" /></a>
-                    }
-                    
-                    <a data-bind="text: name, css:{boldSubjectSidebar: id() == $root.subject.id()} ,click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem collapsible-header waves-effect waves-teal "></a>
-                  
-                    <!-- /ko -->
-                </ul>
+                    <li>
+                        <!-- ko if: mode() == $root.mods.display -->
+                        @if (User.IsInRole(Resources.RoleNames.Filler))
+                        {
+                            <a data-bind="click: $root.editSubject" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "><img src="~/Content/images/16edit.png" /></a>
+                        }
+                        <a data-bind="text: name, css:{boldSubjectSidebar: id() == $root.subject.id()} ,click: function(){ $root.redirectToMarksSubject(id);}"
+                           class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
+
+                        <!-- /ko -->
+                    </li>
+</ul>
             </div>
 
         </li>
@@ -47,6 +45,20 @@
     <div class="modal-footer">
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
+    </div>
+</div>
+<div id="editSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+    <div class="modal-content">
+        <h4>Редагування предмета </h4>
+        <input id="subjectPicker" type="text"
+            data-position="bottom"
+            data-bind="textInput: $root.subjectForUpdate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().name.error }"
+            maxlength="100"
+            placeholder="Name" />
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
     </div>
 </div>
 <div id="">
