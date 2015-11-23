@@ -8,9 +8,11 @@ using Embedded_Resource;
 using TestFactory.Business.Components.Managers;
 using TestFactory.Business.Models;
 using TestFactory.MVC.ViewModels;
+using RoleNames = TestFactory.Resources.RoleNames;
 
 namespace TestFactory.Controllers
 {
+    [Authorize(Roles = RoleNames.Filler)]
     public class SubjectMarkController : Controller
     {
         [HttpGet]
@@ -21,29 +23,7 @@ namespace TestFactory.Controllers
             var markForSubject = Framework.SubjectMarkManager.GetMarkForSubject(subjectId);
             var subject = Framework.SubjectManager.GetById(subjectId);
 
-            if (students.Count != markForSubject.Count)
-            {
-                foreach (var st in students)
-                {
-                    bool isToAssess = false;
-                    foreach (var mr in markForSubject)
-                    {
-                        if (st.Id.Equals(mr.StudentId))
-                        {
-                            isToAssess = true;
-                            break;
-                        }
-                    }
-                    if (!isToAssess)
-                    {
-                        var newMark = new SubjectMark();
-                        newMark.StudentId = st.Id;
-                        newMark.SubjectId = subject.Id;
-                        newMark.Value = null;
-                        markForSubject.Add(newMark);
-                    }
-                }
-            }
+            markForSubject = Framework.SubjectMarkManager.SetNullProportyForMark(students, markForSubject, subject.Id);
 
             var resultGroup = Mapper.Map<GroupViewModel>(group);
             var resultStudents = Mapper.Map<IList<StudentViewModel>>(students);

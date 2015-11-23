@@ -24,7 +24,14 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <div class="nav-wrapper">
                     <div class="left">
-                        <a href=@Url.RouteUrl("Default") class="left brand-logo">@GlobalRes_ua.testHolland</a>
+                        @if (User.IsInRole(RoleNames.Filler))
+                        {
+                            <a href=@Url.RouteUrl("Default") class="left brand-logo">@GlobalRes_ua.testHolland</a>
+                        }
+                        else
+                        {
+                            <a href="/students/all" class="left brand-logo">@GlobalRes_ua.testHolland</a>
+                        }
                     </div>
                     <div class="right">
                         <a href="#" data-activates="mobile-nav" class="right button-collapse"><i class="mdi-navigation-more-vert"></i></a>
@@ -70,7 +77,6 @@
         }  
          });
         </script>
-       
     </body>
 </html>
 

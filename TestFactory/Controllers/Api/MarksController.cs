@@ -15,7 +15,6 @@ namespace TestFactory.Controllers.Api
     [RoutePrefix("api/marks")]
     public class MarksController: ApiController
     {
-
         [HttpGet]
         [Route("average")]
         public IList<AverageMarkForFacultyViewModel> GetAverageMarks()

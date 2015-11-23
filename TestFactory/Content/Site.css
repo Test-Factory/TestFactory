@@ -17,6 +17,10 @@ div#content {
     margin-left: 17% !important; 
 }
 
+.form-mark .form-control {
+    margin-bottom: 0px;
+}
+
 td, th {
     padding: 10px 5px;
 }
@@ -68,6 +72,7 @@ td, th {
 
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
+    width: 120px;
 }
 /* Styles for basic forms
 -----------------------------------------------------------*/
