@@ -13,7 +13,7 @@
             <div class="collapsible-body">
                 @if (User.IsInRole(Resources.RoleNames.Filler))
                 {
-                    <a class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + Створення предмета </a>
+                    <a id="create" class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + Новий предмета </a>
                 }
                 <ul class="collection" data-bind="foreach: subjects">
                     <li>
@@ -174,7 +174,7 @@
     <script>
         var globalView = null;
         $(document).ready(function() {
-            $('.modal-trigger').leanModal();
+            $('#create').leanModal();
             var group = @Html.Raw(Json.Encode(Model.Item1));
             var subject = @Html.Raw(Json.Encode(Model.Item2));
             var viewModel = new SubjectViewModel(group, subject);

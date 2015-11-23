@@ -14,28 +14,9 @@
             }
         };
     },
-    //addTypeahead: function() {
-    //    ko.bindingHandlers['typeahead'] = {
-    //        init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-    //            var options = valueAccessor() || {};
-    //            // call bootstrap type ahead
-    //            var baseOptions = {
-    //                hint: true,
-    //                highlight: true,
-    //                minLength: 1
-    //            };
-    //            $(element).typeahead(baseOptions, options);
-    //            // typeahed on select update observable
-    //            $(element).bind('typeahead:selected', function (obj, data, name) {
-    //                allBindings().value(data);
-    //            });
-    //        }
-    //    };
-    //}
 }
 
 bindingHandlersManager.addTooltips();
-//bindingHandlersManager.addTypeahead();
 
 function SubjectViewModel(group, subject) {
     var self = this;
@@ -54,7 +35,7 @@ function SubjectViewModel(group, subject) {
     subjectProvider.getAll(function (data) {
         $(data).each(function (index, element) {
             var mappedSubject = new SubjectModel(element, self.mods.display);
-            self.subjects.push(mappedSubject); //TODO: to init();
+            self.subjects.push(mappedSubject); 
         });
     });
 
@@ -68,7 +49,7 @@ function SubjectViewModel(group, subject) {
         var newSubject = new SubjectpModel();
         self.subjectForCreate().mapFrom(newSubject);
         self.subjectForCreate().mode(self.mods.create);
-        ko.validation.group(self.subjectForCreate); //TODO: ???
+        ko.validation.group(self.subjectForCreate); 
     };
 
     self.saveAddedSubject = function () {
@@ -88,13 +69,15 @@ function SubjectViewModel(group, subject) {
         });
     };
 
-
+    self.editingSubject = new SubjectModel();
     self.editSubject = function(subject) {
         closeAllEditing();
+        $('#editSubject').openModal();
         self.subjectForUpdate().mapFrom(subject);
         self.subjectForUpdate.valueHasMutated();
 
         subject.mode(self.mods.edit);
+        self.editingSubject.mapFrom(subject);
     }; 
 
     self.saveEditedSubject = function(subject) {
@@ -104,9 +87,10 @@ function SubjectViewModel(group, subject) {
         var subjectServerModel = self.subjectForUpdate().toServerModel();
         subjectServerModel.GroupId = self.subjectsInGroup.id();
         subjectProvider.put(subjectServerModel, function() {
-            subject.mapFrom(self.subjectForUpdate());
-            subject.mode(self.mods.display);
+            self.editingSubject.mode(self.mods.display)
+            self.subjects.push(self.subjectForUpdate);
         });
+        $('#editSubject').closeModal();
     };
 
     function closeAllEditing() {
