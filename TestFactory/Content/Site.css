@@ -73,6 +73,21 @@ td, th {
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
     width: 120px;
+    text-align: center;
+}
+
+.noselect {
+    border: 1px solid gainsboro;
+}
+
+#tbStudentList {
+    border: 1px solid gainsboro;
+}
+
+.table-menu-button {
+    text-align: center;
+    border: 1px solid gainsboro;
+    padding: 4px;
 }
 
 .allStudents td{
