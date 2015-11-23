@@ -1,13 +1,19 @@
 ﻿@Styles.Render("~/Students/css")
 
     <div id="group-filter">
-        Фільтр по групам <select data-bind="options: groupNames, value:searchByStudentsGroups, optionsCaption: 'Оберіть групу', valueupdate:'onkeydown'"></select>
-            по старту навчання <select data-bind="options: groupYears, value:searchByStudentsYearOfStartEducation, optionsCaption:'Оберіть рік',valueupdate:'onkeydown'"></select>
+          Фільтр по старту навчання <select data-bind="options: groupYears, value:searchByStudentsYearOfStartEducation, optionsCaption:'Оберіть рік',valueupdate:'onkeydown'"></select>
+            по групам <select data-bind="options: uniqueGroupNames, value:searchByStudentsGroups, optionsCaption: 'Оберіть групу', valueupdate:'onkeydown'"></select>
+        <span id="clearFilter" data-bind="click: resetDropdowns">Очистити фільтри</span>
         </div>
-
+<div>
         <form>
             <table id="tbStudentList" >
                 <thead>
+                    <tr>
+                        <th colspan="5" class="table-menu-button">Оцінки:</th>
+                        <th colspan="2" class="table-menu-button">Предмети</th>
+                        <th colspan="2" class="table-menu-button" style="background-color: gainsboro">Тест Холланда</th>
+                    </tr>
                     <tr class="noselect">
                         <th class="last-name">
                             <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
@@ -59,9 +65,9 @@
                         <!-- /ko -->
                     </td>
                 </tr>
-                <tbody data-bind="foreach: filteredRecords2">
+                <tbody data-bind="foreach: filteredRecords2" class="student-content">
 
-                    <tr>
+                    <tr class="allStudents">
                         <td class="last-name" data-bind="text: lastName"></td>
                         <td class="first-name" data-bind="text: firstName"></td>
                         <td class="group-name" data-bind="text: groupShortName"></td>
@@ -69,11 +75,11 @@
                         <td>
                             <table>
                                 <tr>
-                                    <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding: 10px 0 0 0;"></td>
-                                    
+                                    <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>
+                                   
                                 </tr>
                                 <tr>
-                                    <td class="studentMarkDetails">
+                                    <td class="studentMarkDetails" style="padding-bottom: 4px;">
                                             <label class="greenText" data-bind="text: averageDeviation, style: { color: averageDeviation() < 0 ? 'coral' : 'seagreen' }"></label>
                                     </td>
                                 </tr>

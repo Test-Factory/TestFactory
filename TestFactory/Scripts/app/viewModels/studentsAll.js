@@ -29,19 +29,28 @@
     self.filteredRecords = ko.computed(function () {
         return ko.utils.arrayFilter(self.students(), function (rec) {
             return (
+                      (self.searchByStudentsYearOfStartEducation() == null || rec.year() == self.searchByStudentsYearOfStartEducation())
+                   )
+        });
+    });
+    
+    self.uniqueGroupNames = ko.dependentObservable(function() {
+        var groups = ko.utils.arrayMap(self.filteredRecords(), function(item){ return item.groupShortName()})
+        return ko.utils.arrayGetDistinctValues(groups).sort();
+    });
+
+    self.filteredRecords2 = ko.computed(function () {
+        return ko.utils.arrayFilter(self.filteredRecords(), function (rec) {
+            return (
                       (self.searchByStudentsGroups() == null || self.searchByStudentsGroups().length == 0 || rec.groupShortName().toLowerCase().indexOf(self.searchByStudentsGroups().toLowerCase()) > -1)
                    )
         });
     });
 
-   
-    self.filteredRecords2 = ko.computed(function () {
-        return ko.utils.arrayFilter(self.filteredRecords(), function (rec) {
-            return (
-                      (self.searchByStudentsYearOfStartEducation() == null || rec.year() == self.searchByStudentsYearOfStartEducation())
-                   )
-        });
-    });
+    self.resetDropdowns = function () {
+        self.searchByStudentsYearOfStartEducation(null);
+        self.searchByStudentsGroups(null);
+    }
 
     self.categories = ko.observableArray();
     self.standardDeviation = ko.observableArray();

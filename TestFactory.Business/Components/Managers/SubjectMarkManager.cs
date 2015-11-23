@@ -16,5 +16,34 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetMarkForSubject(subjectId);
         }
+
+        public IList<SubjectMark> SetNullProportyForMark(IList<Student> students, IList<SubjectMark> markForSubject, string subjectId)
+        {
+            if (students.Count != markForSubject.Count)
+            {
+                foreach (var st in students)
+                {
+                    bool isToAssess = false;
+                    foreach (var mr in markForSubject)
+                    {
+                        if (st.Id.Equals(mr.StudentId))
+                        {
+                            isToAssess = true;
+                            break;
+                        }
+                    }
+                    if (!isToAssess)
+                    {
+                        var newMark = new SubjectMark();
+                        newMark.StudentId = st.Id;
+                        newMark.SubjectId = subjectId;
+                        newMark.Value = null;
+                        markForSubject.Add(newMark);
+                    }
+                }
+            }
+            return markForSubject;
+        }
+
     }
 }

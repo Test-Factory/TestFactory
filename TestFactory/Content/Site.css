@@ -17,6 +17,10 @@ div#content {
     margin-left: 17% !important; 
 }
 
+.form-mark .form-control {
+    margin-bottom: 0px;
+}
+
 td, th {
     padding: 10px 5px;
 }
@@ -68,7 +72,37 @@ td, th {
 
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
+    width: 120px;
+    text-align: center;
 }
+
+.noselect {
+    border: 1px solid gainsboro;
+}
+
+#tbStudentList {
+    border: 1px solid gainsboro;
+}
+
+.table-menu-button {
+    text-align: center;
+    border: 1px solid gainsboro;
+    padding: 4px;
+}
+
+.allStudents td{
+    padding: 0px 5px;
+}
+
+.allStudents:nth-child(2n+1) {
+    background-color: white;
+}
+
+.allStudents {
+    border-bottom: 1px solid;
+    border-bottom-color: gainsboro;
+}
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 
@@ -736,6 +770,12 @@ div#selectors {
 }
 
 div#group-filter {
-    margin-bottom: 8%;
+    margin-bottom: 2%;
     font-size: 14px;
+    margin-top: 2%;
+}
+#clearFilter {
+    border-bottom:2px;
+    border-bottom-style:dashed;
+    cursor:pointer;
 }
