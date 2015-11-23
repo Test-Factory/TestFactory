@@ -1,10 +1,11 @@
 ﻿@Styles.Render("~/Students/css")
 
     <div id="group-filter">
-        Фільтр по групам <select data-bind="options: groupNames, value:searchByStudentsGroups, optionsCaption: 'Оберіть групу', valueupdate:'onkeydown'"></select>
-            по старту навчання <select data-bind="options: groupYears, value:searchByStudentsYearOfStartEducation, optionsCaption:'Оберіть рік',valueupdate:'onkeydown'"></select>
+          Фільтр по старту навчання <select data-bind="options: groupYears, value:searchByStudentsYearOfStartEducation, optionsCaption:'Оберіть рік',valueupdate:'onkeydown'"></select>
+            по групам <select data-bind="options: uniqueGroupNames, value:searchByStudentsGroups, optionsCaption: 'Оберіть групу', valueupdate:'onkeydown'"></select>
+        <span data-bind="click: resetDropdowns">Очистити фільтри</span>
         </div>
-
+<div>
         <form>
             <table id="tbStudentList" >
                 <thead>
