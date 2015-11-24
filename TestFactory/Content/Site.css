@@ -59,6 +59,25 @@ td, th {
     color: green;
 }
 
+.button-block {
+    display: inline-flex;
+    display: inline-flexbox;
+    display: -webkit-inline-box;
+    width: 100%;
+}
+
+.subject-button, .test-button {
+    width: 20%;
+}
+
+.description-buttons {
+    width: 60%;
+}
+
+.cels-padding {
+    padding: 13px 5px 13px 5px !important;
+}
+
 .preloader-size {
     width: 28px !important;
     height: 28px !important;
@@ -73,12 +92,17 @@ td, th {
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
     width: 120px;
+    min-width: 120px;
     white-space: nowrap;
 }
 
 th.subjects {
     white-space: nowrap;
-    padding: 10px;
+    padding: 0px 10px;
+}
+
+.content-subjects {
+    display: none;
 }
 
 .center-text {
