@@ -15,19 +15,19 @@
                         <th colspan="2" class="table-menu table-menu-button" style="background-color: gainsboro">Тест Холланда</th>
                     </tr>
                     <tr class="noselect border-table-tr">
-                        <th class="last-name">
+                        <th class="last-name center-text">
                             <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
                             <!-- ko if: $root.sortKey() == "lastName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>
                             <!-- /ko -->
                         </th>
-                        <th class="first-name">
+                        <th class="first-name center-text">
                             <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
                             <!-- ko if: $root.sortKey() == "firstName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>
                             <!-- /ko -->
                         </th>
-                        <th class="group">
+                        <th class="group center-text">
                             <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">@GlobalRes_ua.group</a> 
                             <!-- ko if: $root.sortKey() == "groupShortName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>

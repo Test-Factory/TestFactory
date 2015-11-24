@@ -73,6 +73,9 @@ td, th {
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
     width: 120px;
+}
+
+.center-text {
     text-align: center;
 }
 
