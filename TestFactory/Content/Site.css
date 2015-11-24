@@ -79,6 +79,10 @@ td, th {
     text-align: center;
 }
 
+.preloader-content {
+    padding: 0;
+}
+
 .border-table-tr {
     border: 1px solid gainsboro;
 }
