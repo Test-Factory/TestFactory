@@ -6,14 +6,14 @@
         <span id="clearFilter" data-bind="click: resetDropdowns">Очистити фільтри</span>
         </div>
 <div>
-        <form>
+    <div class="button-block">
+                <div class="table-menu description-buttons">Оцінки:</div>
+                <div class="table-menu table-menu-button subject-button" onclick="Holland()">Предмети</div>
+                <div class="table-menu table-menu-button test-button" onclick="Subjects()" style="background-color: gainsboro">Тест Холланда</div>
+            </div>
+        <form style="overflow-x: auto">
             <table id="tbStudentList" class="border-table">
                 <thead>
-                    <tr>
-                        <th colspan="5" class="table-menu">Оцінки:</th>
-                        <th colspan="2" class="table-menu table-menu-button">Предмети</th>
-                        <th colspan="2" class="table-menu table-menu-button" style="background-color: gainsboro">Тест Холланда</th>
-                    </tr>
                     <tr class="noselect border-table-tr">
                         <th class="last-name center-text">
                             <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
@@ -34,28 +34,28 @@
                             <!-- /ko -->
                         </th>
                         <!-- ko foreach: $root.categories -->
-                        <th class="marks center">
+                        <th class="content-test marks center">
                             <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
                             <!-- ko if: $root.sortKey() == $data.code() -->
                             <span data-bind="css: $root.selectedClassForSortedField"></span>
                             <!-- /ko -->
                         </th>
                         <!-- /ko -->
-                        @*<!-- ko foreach: $root.subjects -->
-                        <th class="subjects">
+                        <!-- ko foreach: $root.subjects -->
+                        <th class="subjects content-subjects">
                             <a class="btn-flat sort-link" data-bind="text: Name"></a>
                             
                         </th>
-                        <!-- /ko -->*@
+                        <!-- /ko -->
                     </tr>
-                    <tr >
+                    <tr class="content-test">
                         <td colspan="3">@GlobalRes_ua.averageMarks </td>
                         <!-- ko foreach: $root.categories -->
                         <td class="marks center" data-bind="text: average"></td>
                         <!-- /ko -->
 
                     </tr> 
-                    <tr >
+                    <tr class="content-test">
                         <td colspan="3">@GlobalRes_ua.standardDeviationMarks </td>
                         <!-- ko foreach: $root.standardDeviation -->
                         <td class="marks center" data-bind="text: $data"></td>
@@ -75,11 +75,11 @@
                 <tbody data-bind="foreach: filteredRecords2" class="student-content">
 
                     <tr class="allStudents">
-                        <td class="last-name" data-bind="text: lastName"></td>
-                        <td class="first-name" data-bind="text: firstName"></td>
-                        <td class="group-name" data-bind="text: groupShortName"></td>
+                        <td class="cels-padding last-name " data-bind="text: lastName"></td>
+                        <td class="cels-padding first-name " data-bind="text: firstName"></td>
+                        <td class="cels-padding group-name " data-bind="text: groupShortName"></td>
                         <!-- ko foreach: marks -->
-                        <td>
+                        <td class="content-test">
                             <table>
                                 <tr>
                                     <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>
@@ -106,6 +106,18 @@
 <script>
     $('.tooltipped').tooltip({ delay: 50 });
     var globalView = null;
+    function Holland() {
+        $('.content-test').hide();
+        $('.content-subjects').show();
+        $('.subject-button').css('background-color', 'gainsboro');
+        $('.test-button').css('background-color', 'transparent');
+    }
+    function Subjects() {
+        $('.content-test').show();
+        $('.content-subjects').hide();
+        $('.test-button').css('background-color', 'gainsboro');
+        $('.subject-button').css('background-color', 'transparent');
+    }
     $(document).ready(function () {
         var viewModel = new StudentsAllViewModel("lastName");
         globalView = viewModel;
