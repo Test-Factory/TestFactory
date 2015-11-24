@@ -73,6 +73,12 @@ td, th {
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
     width: 120px;
+    white-space: nowrap;
+}
+
+th.subjects {
+    white-space: nowrap;
+    padding: 10px;
 }
 
 .center-text {
