@@ -7,14 +7,14 @@
         </div>
 <div>
         <form>
-            <table id="tbStudentList" >
+            <table id="tbStudentList" class="border-table">
                 <thead>
                     <tr>
                         <th colspan="5" class="table-menu">Оцінки:</th>
                         <th colspan="2" class="table-menu table-menu-button">Предмети</th>
                         <th colspan="2" class="table-menu table-menu-button" style="background-color: gainsboro">Тест Холланда</th>
                     </tr>
-                    <tr class="noselect">
+                    <tr class="noselect border-table-tr">
                         <th class="last-name">
                             <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
                             <!-- ko if: $root.sortKey() == "lastName" -->
@@ -44,6 +44,7 @@
                         @*<!-- ko foreach: $root.subjects -->
                         <th class="subjects">
                             <a class="btn-flat sort-link" data-bind="text: Name"></a>
+                            
                         </th>
                         <!-- /ko -->*@
                     </tr>
@@ -91,6 +92,9 @@
                             </table>
                         </td>
                         <!-- /ko -->
+                        @*<!-- ko foreach: $root.subjectsMarks -->
+                        <td class="subjectsMarks" data-bind="text: Value"></td>
+                        <!-- /ko -->*@
                     </tr>
                 </tbody>
             </table>
