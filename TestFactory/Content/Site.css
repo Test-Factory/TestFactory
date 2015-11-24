@@ -76,11 +76,11 @@ td, th {
     text-align: center;
 }
 
-.noselect {
+.border-table-tr {
     border: 1px solid gainsboro;
 }
 
-#tbStudentList {
+.border-table {
     border: 1px solid gainsboro;
 }
 

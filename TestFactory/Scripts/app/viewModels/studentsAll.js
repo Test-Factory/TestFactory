@@ -142,7 +142,7 @@
 
         subjectMarkProvider.getAll(function (data) {
             $(data).each(function (index, element) {
-                self.subjects.push(element);
+                self.subjectsMarks.push(element);
             });
         });
 
