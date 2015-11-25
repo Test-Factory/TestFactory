@@ -46,6 +46,7 @@ function SubjectViewModel(group, subject) {
 
     self.addSubject = function () {
         closeAllEditing();
+        $('#createSubject').openModal();
         var newSubject = new SubjectpModel();
         self.subjectForCreate().mapFrom(newSubject);
         self.subjectForCreate().mode(self.mods.create);
@@ -67,6 +68,7 @@ function SubjectViewModel(group, subject) {
             self.redirectToMarksSubject(newSubject.id);
             self.addSubject();
         });
+        $('#createSubject').closeModal();
     };
 
     self.editingSubject = new SubjectModel();

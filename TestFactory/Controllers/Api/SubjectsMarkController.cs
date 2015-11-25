@@ -29,7 +29,7 @@ namespace TestFactory.Controllers.Api
         [Route("subjectMarkAll")]
         public List<SubjectMarkViewModel> GetAll()
         {
-            var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId).OrderBy(s => s.Name);
+            var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId).OrderBy(s => s.ShortName);
             List<SubjectMark> subjectsMarks = new List<SubjectMark>();
             foreach (var subj in subjects)
             {

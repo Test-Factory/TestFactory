@@ -16,9 +16,11 @@ namespace TestFactory.Business.Components.Managers
         {
             return provider.GetForFaculty(facultyId);
         }
-        public bool SubjectIsAlreadyExist(string name)
+        public bool SubjectIsAlreadyExist(string shortName, string longName)
         {
-            return provider.GetByName(name) != null ? true : false;
+            var shortNameSubject = provider.GetByShortName(shortName) != null? true : false;
+            var longNameSubject = provider.GetByLongName(longName) != null? true : false;
+            return (shortNameSubject && longNameSubject);
         }
     }
 }

@@ -13,7 +13,7 @@
                 <div class="collapsible-body">
                     @if (User.IsInRole(Resources.RoleNames.Filler))
                     {
-                        <a id="create" class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   +  Новий предмет</a>
+                        <a id="create" data-bind="click: $root.addSubject" class="dropItem collapsible-header waves-effect waves-teal modal-trigger">   +  Новий предмет</a>
                     }
                     <ul class="collection" data-bind="foreach: subjects">
                         <li>
@@ -22,7 +22,7 @@
                             {
                                 <a data-bind="click: $root.editSubject" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "><img src="~/Content/images/16edit.png" /></a>
                             }
-                            <a data-bind="text: name, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
+                            <a data-bind="text: shortName, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
                             <!-- /ko -->
                         </li>
                     </ul>
@@ -35,9 +35,9 @@
             <h4>Редагування предмета </h4>
             <input id="subjectPicker" type="text"
                    data-position="bottom"
-                   data-bind="textInput: $root.subjectForUpdate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().name.error }"
+                   data-bind="textInput: $root.subjectForUpdate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().shortName.error }"
                    maxlength="100"
-                   placeholder="Name" />
+                   placeholder="shortName" />
         </div>
         <div class="modal-footer">
             <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
@@ -45,22 +45,29 @@
         </div>
     </div>
 
-    <div id="createSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+    <div id="createSubject" class="modal form-horizontal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+
+        <h4 >Створення предмета </h4>
         <div class="modal-content">
-            <h4>Створення предмета </h4>
             <input id="subjectPicker" type="text"
                    data-position="bottom"
-                   data-bind="textInput: $root.subjectForCreate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().name.error }"
+                   data-bind="textInput: $root.subjectForCreate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().shortName.error }"
                    maxlength="100"
-                   placeholder="Name" />  @*TODO: add recourse*@
+                   placeholder="shortName" />  @*TODO: add recourse*@
+                <input id="subjectPicker" type="text"
+                       data-position="bottom"
+                       data-bind="textInput: $root.subjectForCreate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().longName.error }"
+                       maxlength="100"
+                       placeholder="longName" />
             </div>
-            <div class="modal-footer">
-                <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
-                <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
+            @*TODO: add recourse*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 createPop-Up">
+                <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+                <a href="#!" class="btn btn-default modal-action " data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
             </div>
         </div>
-
-
+        </div>
 
         <div>
             <form>
@@ -181,7 +188,6 @@
     <script>
         var globalView = null;
         $(document).ready(function() {
-            $('#create').leanModal();
             var group = @Html.Raw(Json.Encode(Model));
             var viewModel = new StudentsViewModel(group, "lastName");
             globalView = viewModel;

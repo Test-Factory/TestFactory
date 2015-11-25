@@ -7,9 +7,10 @@ using TestFactory.Business.Models;
 
 namespace TestFactory.Business.DataProviderContracts
 {
-    public interface ISubjectDataProvider     : IDataProvider<Subject>
+    public interface ISubjectDataProvider    : IDataProvider<Subject>
     {
         IList<Subject> GetForFaculty(string faculty);
-        Subject GetByName(string name);
+        Subject GetByShortName(string shortName);
+        Subject GetByLongName(string longName);
     }
 }

@@ -162,7 +162,8 @@ function StudentsViewModel(group, sortingBy) {
     }
     self.addSubject = function () {
         closeAllEditing();
-        var newSubject = new SubjecModel();
+        $('#createSubject').openModal();
+        var newSubject = new SubjectModel();
         self.subjectForCreate().mapFrom(newSubject);
         self.subjectForCreate().mode(self.mods.create);
         ko.validation.group(self.subjectForCreate); //TODO: ???
@@ -184,6 +185,7 @@ function StudentsViewModel(group, sortingBy) {
             self.addSubject();
             
         });
+        $('#createSubject').closeModal();
     };
     self.editingSubject = new SubjectModel();
     self.editSubject = function (subject) {

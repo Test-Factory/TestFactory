@@ -15,7 +15,9 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
         {
             Id(x => x.Id);
 
-            Map(x => x.Name);
+            Map(x => x.LongName);
+
+            Map(x => x.ShortName);
 
             Map(x => x.FacultyId);
 

@@ -8,7 +8,8 @@ namespace TestFactory.Business.Models
 {
     public class Subject  : BaseModel
     {
-        public virtual string Name { get; set; }
+        public virtual string LongName { get; set; }
+        public virtual string ShortName { get; set; }
 
         public virtual string FacultyId { get; set; }
 

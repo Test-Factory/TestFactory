@@ -13,7 +13,8 @@ namespace TestFactory.MVC.ViewModels
         [Required(ErrorMessage =  "Поле має бути встановлено")] 
         [DataType(DataType.Text)]
         [StringLength(100, ErrorMessage = "Перевищує ліміт в 100 символів")] 
-        public virtual string Name { get; set; }
+        public virtual string ShortName { get; set; }
+        public virtual string LongName { get; set; }
         public virtual string GroupId { get; set; }
 
         public SubjectViewModel()

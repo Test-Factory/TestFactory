@@ -30,7 +30,7 @@ namespace TestFactory.Controllers.Api
         [Route("all")]
          public IList<SubjectViewModel> GetAll()
         {
-            var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId).OrderBy(s => s.Name);
+            var subjects = Framework.SubjectManager.GetForFaculty(user.User.FacultyId).OrderBy(s => s.ShortName);
             var result = Mapper.Map<IList<SubjectViewModel>>(subjects);
             return result;
         }
@@ -48,7 +48,7 @@ namespace TestFactory.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             IEnumerable<Subject> subjects;
-            subjects = Framework.SubjectManager.GetList().OrderBy(s => s.Name);
+            subjects = Framework.SubjectManager.GetList().OrderBy(s => s.ShortName);
             var result = Mapper.Map<IList<SubjectViewModel>>(subjects);
             return result;
         }
@@ -57,7 +57,7 @@ namespace TestFactory.Controllers.Api
         [ValidateModel]
         public IHttpActionResult Create(SubjectViewModel subject)
         {
-            if (Framework.SubjectManager.SubjectIsAlreadyExist(subject.Name))
+            if (Framework.SubjectManager.SubjectIsAlreadyExist(subject.ShortName,subject.LongName))
             {
                 return BadRequest();
             }
@@ -66,7 +66,7 @@ namespace TestFactory.Controllers.Api
                 return BadRequest();
             }
             var group = Framework.GroupManager.GetById(subject.GroupId);
-            var result = group.Subjects.Any(s => s.Name == subject.Name);
+            var result = group.Subjects.Any(s => (s.ShortName == subject.ShortName) || (s.LongName == subject.LongName));
             if (result)
             {
                 return BadRequest();
@@ -89,11 +89,12 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
             var model = Framework.SubjectManager.GetById(subject.Id);
-            if ((Framework.SubjectManager.SubjectIsAlreadyExist(subject.Name)) && !(subject.Name == model.Name))
+            if ((Framework.SubjectManager.SubjectIsAlreadyExist(subject.ShortName, subject.LongName)) && !(subject.LongName == model.LongName) && !(subject.ShortName == model.ShortName))//TODO: exist for shortName
             {
                 throw new HttpException(403, GlobalRes_ua.forbidenAction);
             }
-            model.Name = subject.Name;
+            model.ShortName = subject.ShortName;
+            model.LongName = subject.LongName;
             Framework.SubjectManager.Update(model);
             return Ok();
         }

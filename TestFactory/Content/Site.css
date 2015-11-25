@@ -228,7 +228,7 @@ div#image {
 }
 
 div#createGroup, div#updateGroup {
-    background: black;
+    background: #000;
     display: none;
     height: 100%;
     opacity: 0.97;
@@ -368,6 +368,7 @@ h4.createPop-Up, h4.updatePop-Up { margin-left: 10px; }
 div.createPop-Up, div.updatePop-Up {
     left: 100px;
     position: relative;
+    display: inline;
     top: 20px;
 }
 
