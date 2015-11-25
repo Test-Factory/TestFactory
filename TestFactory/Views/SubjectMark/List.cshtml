@@ -62,8 +62,8 @@
     </div>
 </div>
 <div id="">
-    
-    <h3>(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new {groupId = Model.Item1.Id}, null)">@Model.Item1.ShortName</a>) @Model.Item2.LongName</h3>
+    <h3 style="display: inline">(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new {groupId = Model.Item1.Id}, null)">@Model.Item1.ShortName</a>) </h3>
+    <h3 data-bind="text: $root.subject.longName"></h3>
     <table style="width: 500px;">
         <thead>
             <tr>
