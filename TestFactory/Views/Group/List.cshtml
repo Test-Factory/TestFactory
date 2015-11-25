@@ -49,6 +49,7 @@
                 </div>
             </div>
             <div class="updateGroup" id="updateGroup">
+                <div class="pop-up-overlay"></div>
                 <div id="update">
                     @Html.Partial("Update",item)
                 </div>
@@ -58,8 +59,9 @@
     <div id="delete-group" title="@GlobalRes_ua.delete">
         <p>@GlobalRes_ua.conformationOnDeleteGroup</p>
     </div>
-    <div id="createGroup">
-        <div id="create">
-            @Html.Partial("Create", new GroupViewModel())
-        </div>
-    </div>
+               <div id="createGroup">
+                   <div class="pop-up-overlay"></div>
+                   <div id="create">
+                       @Html.Partial("Create", new GroupViewModel())
+                   </div>
+               </div>

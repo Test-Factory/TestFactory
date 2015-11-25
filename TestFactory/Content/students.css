@@ -1,17 +1,19 @@
 ﻿/* Styles sidebar
 -----------------------------------------------------------*/
-#createSubject{
-    background: white;
+#createSubject, #editSubject {
+    background: white !important;
     border-radius: 3px !important;
     height: 300px !important;
-    left: 35% !important;
+    left: 0 !important;
     opacity: 1;
-    position: fixed;
+    position: absolute;
     top: 25% !important;
     width: 370px !important;
-    z-index: 1000;
+    z-index: 1100;
 }
-#createSubject h4{
+#createSubject h4, #editSubject h4{
+    margin: 1.14rem 0 0.912rem 10px;
+}{
     margin: 1.14rem 0 0.912rem 10px;
 }
 
