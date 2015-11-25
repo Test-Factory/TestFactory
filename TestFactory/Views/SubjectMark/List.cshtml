@@ -22,7 +22,7 @@
                         {
                             <a data-bind="click: $root.editSubject" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "><img src="~/Content/images/16edit.png" /></a>
                         }
-                        <a data-bind="text: name, css:{boldSubjectSidebar: id() == $root.subject.id()} ,click: function(){ $root.redirectToMarksSubject(id);}"
+                        <a data-bind="text: shortName, css:{boldSubjectSidebar: id() == $root.subject.id()} ,click: function(){ $root.redirectToMarksSubject(id);}"
                            class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
 
                         <!-- /ko -->
@@ -38,9 +38,9 @@
         <h4>Створення предмета </h4>
         <input id="subjectPicker" type="text"
                data-position="bottom"
-               data-bind="textInput: $root.subjectForCreate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().name.error }"
+               data-bind="textInput: $root.subjectForCreate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().shortName.error }"
                maxlength="100"
-               placeholder="Name" />  @*TODO: add recourse*@
+               placeholder="shortName" />  @*TODO: add recourse*@
     </div>
     <div class="modal-footer">
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
@@ -51,10 +51,10 @@
     <div class="modal-content">
         <h4>Редагування предмета </h4>
         <input id="subjectPicker" type="text"
-            data-position="bottom"
-            data-bind="textInput: $root.subjectForUpdate().name ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().name.error }"
-            maxlength="100"
-            placeholder="Name" />
+               data-position="bottom"
+               data-bind="textInput: $root.subjectForUpdate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().longName.error }"
+               maxlength="100"
+               placeholder="longName" />
     </div>
     <div class="modal-footer">
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
@@ -63,7 +63,7 @@
 </div>
 <div id="">
     
-    <h3>(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new {groupId = Model.Item1.Id}, null)">@Model.Item1.ShortName</a>) @Model.Item2.Name</h3>
+    <h3>(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new {groupId = Model.Item1.Id}, null)">@Model.Item1.ShortName</a>) @Model.Item2.LongName</h3>
     <table style="width: 500px;">
         <thead>
             <tr>
