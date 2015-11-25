@@ -17,6 +17,7 @@ SubmitForm = function (elem, path) {
                 $(elem).parent(".form-mark").find(".icon-mark-ok").show();
                 timer.Item = setTimeout(function () { $(elem).parent(".form-mark").find(".icon-mark-ok").hide(); }, 4000);
                 $(elem).removeClass("valid");
+                $(elem).removeClass("input-validation-error");
             }
             else {
                 Materialize.toast('Дані некоректні!', 4000)

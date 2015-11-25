@@ -85,6 +85,15 @@ td, th {
     top: 9px;
 }
 
+.mark-content-wrapper {
+    width: 100%;
+}
+
+#mark-content {
+    margin: 0 auto;
+    width: 500px;
+}
+
 .widthInput {
     width: 80px !important;
 }
