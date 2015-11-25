@@ -25,7 +25,8 @@ SubmitForm = function (elem, path) {
                 $(elem).parent(".form-mark").find(".icon-mark-bad").show();
                 timer.Item = setTimeout(function () { $(elem).parent(".form-mark").find(".icon-mark-bad").hide(); }, 4000);
                 $(elem).removeClass("valid");
-                $(elem).addClass("input-validation-error");
+                $(elem).addClass("input-validation-error")
+                timer.Item = setTimeout(function () {$(elem).removeClass("input-validation-error")}, 4000);
             }
         }
     )
