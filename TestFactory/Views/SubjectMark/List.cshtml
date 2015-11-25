@@ -36,11 +36,17 @@
 <div id="createSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
     <div class="modal-content">
         <h4>Створення предмета </h4>
+      
+        <input id="subjectPicker" type="text"
+               data-position="bottom"
+               data-bind="textInput: $root.subjectForCreate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().longName.error }"
+               maxlength="100"
+               placeholder="longName" />
         <input id="subjectPicker" type="text"
                data-position="bottom"
                data-bind="textInput: $root.subjectForCreate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().shortName.error }"
-               maxlength="100"
-               placeholder="shortName" />  @*TODO: add recourse*@
+               maxlength="15"
+               placeholder="shortName" /> @*TODO: add recourse*@
     </div>
     <div class="modal-footer">
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
@@ -50,6 +56,12 @@
 <div id="editSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
     <div class="modal-content">
         <h4>Редагування предмета </h4>
+       
+        <input id="subjectPicker" type="text"
+               data-position="bottom"
+               data-bind="textInput: $root.subjectForUpdate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().shortName.error }"
+               maxlength="15"
+               placeholder="shortName" />
         <input id="subjectPicker" type="text"
                data-position="bottom"
                data-bind="textInput: $root.subjectForUpdate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().longName.error }"

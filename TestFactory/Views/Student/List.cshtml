@@ -35,8 +35,13 @@
             <h4>Редагування предмета </h4>
             <input id="subjectPicker" type="text"
                    data-position="bottom"
-                   data-bind="textInput: $root.subjectForUpdate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().shortName.error }"
+                   data-bind="textInput: $root.subjectForUpdate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().longName.error }"
                    maxlength="100"
+                   placeholder="longName" />
+            <input id="subjectPicker" type="text"
+                   data-position="bottom"
+                   data-bind="textInput: $root.subjectForUpdate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().shortName.error }"
+                   maxlength="15"
                    placeholder="shortName" />
         </div>
         <div class="modal-footer">
@@ -49,16 +54,18 @@
 
         <h4 >Створення предмета </h4>
         <div class="modal-content">
-            <input id="subjectPicker" type="text"
-                   data-position="bottom"
-                   data-bind="textInput: $root.subjectForCreate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().shortName.error }"
-                   maxlength="100"
-                   placeholder="shortName" />  @*TODO: add recourse*@
+              @*TODO: add recourse*@
                 <input id="subjectPicker" type="text"
                        data-position="bottom"
                        data-bind="textInput: $root.subjectForCreate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().longName.error }"
                        maxlength="100"
                        placeholder="longName" />
+            <input id="subjectPicker" type="text"
+                   data-position="bottom"
+                   data-bind="textInput: $root.subjectForCreate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().shortName.error }"
+                   maxlength="15"
+                   placeholder="shortName" />
+
             </div>
             @*TODO: add recourse*@
         <div class="form-group">

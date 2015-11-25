@@ -182,10 +182,11 @@ function StudentsViewModel(group, sortingBy) {
             closeAllEditing();
             self.subjects.splice(0, 0, newSubject);
             self.redirectToMarksSubject(newSubject.id);
+            $('#createSubject').closeModal();
             self.addSubject();
             
         });
-        $('#createSubject').closeModal();
+       
     };
     self.editingSubject = new SubjectModel();
     self.editSubject = function (subject) {
