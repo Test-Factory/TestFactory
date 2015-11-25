@@ -103,7 +103,7 @@
                                         var StudentId = Model.Item4[i].StudentId;
                                     if (Model.Item4[i].Value == null)
                                     {
-                                        <td>
+                                        <td class="mark-input">
                                             @using (Html.BeginForm("Create", "SubjectMark", FormMethod.Post, new {@class = "form-mark"}))
                                             {
                                                 @Html.AntiForgeryToken()
@@ -138,7 +138,7 @@
                                     }
                                     else
                                     {
-                                        <td>
+                                        <td class="mark-input">
                                             @using (Html.BeginForm("Update", "SubjectMark", FormMethod.Post, new {@class = "form-mark"}))
                                             {
                                                 @Html.AntiForgeryToken()
