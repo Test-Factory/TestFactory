@@ -32,7 +32,7 @@ SubjectModel.prototype.mapFrom = function mapSubject(from) {
     this.groupId(from.groupId());
     this.shortName(from.shortName());
     this.longName(from.longName());
-    this.mode("display");
+    this.mode(from.mode() ? from.mode() : "display");
 }
 
 SubjectModel.prototype.toServerModel = function () {

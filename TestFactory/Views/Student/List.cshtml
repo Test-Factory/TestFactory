@@ -13,7 +13,7 @@
                 <div class="collapsible-body">
                     @if (User.IsInRole(Resources.RoleNames.Filler))
                     {
-                        <a id="create" data-bind="click: $root.addSubject" class="dropItem collapsible-header waves-effect waves-teal modal-trigger">   +  Новий предмет</a>
+                        <a  data-bind="click: $root.addSubject" class="dropItem collapsible-header waves-effect waves-teal modal-trigger">   +  Новий предмет</a>
                     }
                     <ul class="collection" data-bind="foreach: subjects">
                         <li>
