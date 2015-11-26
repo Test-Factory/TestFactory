@@ -10,7 +10,7 @@ namespace TestFactory.MVC.ViewModels
         public virtual string StudentId { get; set; }
 
         [Required]
-        public virtual int? Value { get; set; }
+        public virtual float? Value { get; set; }
 
         public SubjectMarkViewModel()
         {
