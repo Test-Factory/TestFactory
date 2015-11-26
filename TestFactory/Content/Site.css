@@ -106,8 +106,21 @@ td, th {
     top: 9px;
 }
 
+.mark-content-wrapper {
+    width: 100%;
+}
+
+#mark-content {
+    margin: 0 auto;
+    width: 400px;
+}
+
 .widthInput {
     width: 80px !important;
+}
+
+.mark-input {
+    min-width: 116px;
 }
 
 .last-name, .first-name, .group-name {
