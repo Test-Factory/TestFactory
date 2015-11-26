@@ -93,7 +93,7 @@ function SubjectViewModel(group, subject) {
             self.editingSubject.mode(self.mods.display)
             self.subjects.push(self.subjectForUpdate);
         });
-        self.redirectToMarksSubject(self.editingSubject.id)
+        self.redirectToMarksSubject(self.subject.id)
 
         $('#editSubject').closeModal();
     };

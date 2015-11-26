@@ -1,4 +1,30 @@
-﻿
+﻿.header-marks-subject{
+    position: fixed;
+    width: 100%;
+    background:  #F3F3F4;
+    margin: 0;
+    padding: 1rem;
+    top: 126px;
+    border-bottom:none;
+}
+
+.title-subject{
+    
+    position:fixed;
+    background: #F3F3F4;
+    width: 100%;
+    padding: 1rem;
+    margin:0;
+    top:64px;
+}
+.title-subject h3 {
+    margin:auto; display: inline;
+}
+
+
+.form-horizontal h4{
+    text-align: center;
+}
 body {
     background-color: #fff;
     color: #232323;
@@ -240,28 +266,37 @@ div#image {
     top: 0px;
 }
 
-div#createGroup, div#updateGroup {
-    background: #000;
-    display: none;
-    height: 100%;
-    opacity: 0.97;
-    left: 0px;
-    position: fixed;
-    top: 64px;
-    width: 100%;
-    z-index: 100;
+h4 .createPop-Up{
+    text-align:center;
 }
 
+ div#createGroup, div#updateGroup {
+    display: none;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.pop-up-overlay{
+    position: absolute;
+background-color: #000;
+opacity: 0.5;
+left: 0;
+top: 0;
+width: 100%;
+height: 100vh;
+}
 div#create, div#update {
     background: white;
     border-radius: 3px;
     height: 378px;
     left: 35%;
-    opacity: 1;
-    position: fixed;
+    position: absolute;
     top: 25%;
     width: 370px;
-    z-index: 1000;
+    z-index: 1100;
 }
 
 a {
