@@ -82,6 +82,7 @@ function SubjectViewModel(group, subject) {
     self.editingSubject = new SubjectModel();
 
     self.editSubject = function(subject) {
+        closeAllEditing();
         $('#editSubject').openModal();
         self.subjectForUpdate().mapFrom(subject);
         self.subjectForUpdate.valueHasMutated();
@@ -99,7 +100,7 @@ function SubjectViewModel(group, subject) {
         subjectProvider.put(subjectServerModel, function () {
             if (self.subject.id() == self.subjectForUpdate().id()) {
                 self.subject.longName(self.subjectForUpdate().longName());
-            } else {
+            } 
                 self.subjects().forEach(function (element)
                 {
                     if (self.subjectForUpdate().id() == element.id()) {
@@ -107,9 +108,10 @@ function SubjectViewModel(group, subject) {
                         element.mapFrom(self.subjectForUpdate());
                     }     
                 })
-            }
+            
             $('#editSubject').closeModal();
         });
+        
         };
 
     function closeAllEditing() {
