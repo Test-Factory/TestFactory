@@ -1,5 +1,6 @@
 ﻿function StudentModel(item, defaultMode) {
     var self = this;
+    self.mode = ko.observable(defaultMode || "display");
     self.id = ko.observable(item ? item.Id : "");
     self.firstName = ko.observable(item ? item.FirstName : "").extend({
         required: {
@@ -40,6 +41,7 @@ StudentModel.prototype.mapFrom = function mapStudent(from) {
     this.firstName(from.firstName());
     this.lastName(from.lastName());
     this.groupId(from.groupId());
+    this.mode(from.mode() ? from.mode() : "display");
     this.marks.removeAll();
     for (var m in from.marks()) {
         this.marks.push(from.marks()[m]);

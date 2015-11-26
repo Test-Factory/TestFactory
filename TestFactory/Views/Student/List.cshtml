@@ -188,6 +188,21 @@
                             }
                         </tr>
                         <!-- /ko -->
+                        <!-- ko if: mode() == $root.mods.edit -->
+                        <tr>
+                            <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().lastName,  tooltip: { message: $root.studentForUpdate().lastName.error }" maxlength="60" /></td>
+                            <td class="first-name edit "><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().firstName,  tooltip: { message: $root.studentForUpdate().firstName.error }" maxlength="60" /></td>
+                            <!-- ko foreach: $root.studentForUpdate().marks -->
+                            <td class="marks edit "><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
+                            <!-- /ko -->
+                            <td colspan="3" class="screenMediaBelow ">
+                                <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></a>
+                            </td>
+                            <td colspan="3" class="screenMediaAbove ">
+                                <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
+                            </td>
+                        </tr>
+                        <!-- /ko -->
 
                     </tbody>
                 </table>
