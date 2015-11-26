@@ -15,24 +15,25 @@
             <table id="tbStudentList" class="border-table">
                 <thead>
                     <tr class="noselect border-table-tr">
-                        <th class="last-name center-text">
+                        <th class="last-name center-text" style="position: absolute; z-index: 1000; background-color: #F3F3F4;">
                             <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
                             <!-- ko if: $root.sortKey() == "lastName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>
                             <!-- /ko -->
                         </th>
-                        <th class="first-name center-text">
+                        <th class="first-name center-text" style="position: absolute; margin-left: 120px; z-index: 1000; ; background-color: #F3F3F4;">
                             <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
                             <!-- ko if: $root.sortKey() == "firstName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>
                             <!-- /ko -->
                         </th>
-                        <th class="group center-text">
+                        <th class="group center-text" style="position: absolute; margin-left: 240px; z-index: 1000; ; background-color: #F3F3F4; min-width: 120px;">
                             <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">@GlobalRes_ua.group</a> 
                             <!-- ko if: $root.sortKey() == "groupShortName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>
                             <!-- /ko -->
                         </th>
+                        <th colspan="3" class="th-content-hide" style="min-width: 360px"></th>
                         <!-- ko foreach: $root.categories -->
                         <th class="content-test marks center">
                             <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
@@ -128,12 +129,14 @@
         $('.content-subjects').show();
         $('.subject-button').css('background-color', 'gainsboro');
         $('.test-button').css('background-color', 'transparent');
+        $('.th-content-hide').attr("colspan","3");
     }
     function Subjects() {
         $('.content-test').show();
         $('.content-subjects').hide();
         $('.test-button').css('background-color', 'gainsboro');
         $('.subject-button').css('background-color', 'transparent');
+        $('.th-content-hide').attr("colspan", "2");
     }
     $(document).ready(function () {
         var viewModel = new StudentsAllViewModel("lastName");
