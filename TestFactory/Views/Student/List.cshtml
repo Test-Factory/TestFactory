@@ -6,14 +6,14 @@
     <ul class="side-nav fixed">
         <ul class="collapsible">
             <li class="ietmSidebar activeItem">
-                <a class=" active collapsible-header  waves-effect waves-teal" href="@Url.RouteUrl("groupStudentList", new { groupId = Model.Id }, null) ">Тест Холланда</a>
+                <a class=" active collapsible-header  waves-effect waves-teal" href="@Url.RouteUrl("groupStudentList", new { groupId = Model.Id }, null) ">@GlobalRes_ua.testHolland</a>
             </li>
             <li class="ietmSidebar">
-                <a class="  collapsible-header  waves-effect waves-teal" href="#">Предмети</a>
+                <a class="  collapsible-header  waves-effect waves-teal" href="#">@GlobalRes_ua.subject</a>
                 <div class="collapsible-body">
                     @if (User.IsInRole(Resources.RoleNames.Filler))
                     {
-                        <a id="create" data-bind="click: $root.addSubject" class="dropItem collapsible-header waves-effect waves-teal modal-trigger">   +  Новий предмет</a>
+                        <a  data-bind="click: $root.addSubject" class="dropItem collapsible-header waves-effect waves-teal modal-trigger">   @GlobalRes_ua.newSubject</a>
                     }
                     <ul class="collection" data-bind="foreach: subjects">
                         <li>
@@ -31,7 +31,7 @@
         </ul>
     </ul>
     <div id="editSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
-         <h4>Редагування предмета </h4>
+         <h4>@GlobalRes_ua.updateSubject </h4>
         <div class="modal-content">
             <input id="subjectPicker" type="text"
                    data-position="bottom"
@@ -54,13 +54,13 @@
 
     <div id="createSubject" class="modal " data-bind="validationOptions: {errorElementClass: 'invalid'}">
 
-        <h4 >Створення предмета </h4>
+        <h4 >@GlobalRes_ua.createSubject </h4>
         <div class="modal-content">
 
-            <input id="subjectPicker" type="text"
-                   data-position="bottom"
-                   data-bind="textInput: $root.subjectForCreate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().longName.error }"
-                   maxlength="100"
+                <input id="subjectPicker" type="text"
+                       data-position="bottom"
+                       data-bind="textInput: $root.subjectForCreate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().longName.error }"
+                       maxlength="100"
                    placeholder="@GlobalRes_ua.longName" />
             <input id="subjectPicker" type="text"
                    data-position="bottom"
@@ -186,6 +186,21 @@
                                     <p>@GlobalRes_ua.conformationOnDeleteStudent</p>
                                 </div>
                             }
+                        </tr>
+                        <!-- /ko -->
+                        <!-- ko if: mode() == $root.mods.edit -->
+                        <tr>
+                            <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().lastName,  tooltip: { message: $root.studentForUpdate().lastName.error }" maxlength="60" /></td>
+                            <td class="first-name edit "><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().firstName,  tooltip: { message: $root.studentForUpdate().firstName.error }" maxlength="60" /></td>
+                            <!-- ko foreach: $root.studentForUpdate().marks -->
+                            <td class="marks edit "><input type="text" data-position="bottom" data-bind="textInput: value,  tooltip: { message: value.error }" max="100" /></td>
+                            <!-- /ko -->
+                            <td colspan="3" class="screenMediaBelow ">
+                                <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></a>
+                            </td>
+                            <td colspan="3" class="screenMediaAbove ">
+                                <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
+                            </td>
                         </tr>
                         <!-- /ko -->
 

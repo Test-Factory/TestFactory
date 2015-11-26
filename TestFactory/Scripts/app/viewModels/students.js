@@ -79,9 +79,8 @@ function StudentsViewModel(group, sortingBy) {
     self.editStudent = function(student) {
         closeAllEditing();
         self.studentForUpdate().mapFrom(student);
-        self.studentForUpdate.valueHasMutated();
-
         student.mode(self.mods.edit);
+        //self.studentForUpdate.valueHasMutated();
     };
 
     self.deleteStudent = function(student) {

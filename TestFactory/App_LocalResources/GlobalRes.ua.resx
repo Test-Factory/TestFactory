@@ -258,9 +258,6 @@
   <data name="preferredOccupation" xml:space="preserve">
     <value>Надається перевага професії</value>
   </data>
-  <data name="createSubject" xml:space="preserve">
-    <value>Новий предмет</value>
-  </data>
   <data name="nameSubject" xml:space="preserve">
     <value>Назва предмета</value>
   </data>
@@ -269,5 +266,17 @@
   </data>
   <data name="enterNameOfStudent" xml:space="preserve">
     <value>Введіть ім'я студента</value>
+  </data>
+  <data name="createSubject" xml:space="preserve">
+    <value>Створіть предмет</value>
+  </data>
+  <data name="newSubject" xml:space="preserve">
+    <value>+ Новий предмет</value>
+  </data>
+  <data name="subject" xml:space="preserve">
+    <value>Предмети</value>
+  </data>
+  <data name="updateSubject" xml:space="preserve">
+    <value>Редагуйте предмет</value>
   </data>
 </root>
