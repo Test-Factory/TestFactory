@@ -10,7 +10,6 @@ padding: 1.46rem 0 1.168rem 0;
 margin: 0;
         
     }
-  
 
 .tbStudentList .headerTbSudent{
     position: fixed;
@@ -24,7 +23,7 @@ margin: 0;
     float:right !important;
     padding-right:3%;
 }
-#createSubject, #editSubject {
+ #editSubject {
     background: white !important;
     border-radius: 3px !important;
     height: 330px !important;
