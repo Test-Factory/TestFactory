@@ -14,7 +14,7 @@
             <div class="collapsible-body">
                 @if (User.IsInRole(Resources.RoleNames.Filler))
                 {
-                    <a id="create" class="dropItem collapsible-header waves-effect waves-teal modal-trigger" href="#createSubject">   + Новий предмета </a>
+                    <a data-bind="click: $root.addSubject" class="dropItem collapsible-header waves-effect waves-teal modal-trigger" >   + Новий предмета </a>
                 }
                 <ul class="collection" data-bind="foreach: subjects">
                     <li>
@@ -49,7 +49,7 @@
     </div>
     <div class="btn-popup">
         <div class="col-md-offset-2 col-md-10">
-            <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">@GlobalRes_ua.cancel</a>
+            <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">exit</a>
             <a href="#!" class="btn btn-default modal-action " data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
         </div>
     </div>
@@ -62,29 +62,29 @@
                data-position="bottom"
                data-bind="textInput: $root.subjectForUpdate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().longName.error }"
                maxlength="100"
-               placeholder="@GlobalRes_ua.longName" />
+               placeholder="longName" />
         <input id="subjectPicker" type="text"
                data-position="bottom"
                data-bind="textInput: $root.subjectForUpdate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().shortName.error }"
                maxlength="15"
-               placeholder="@GlobalRes_ua.shortName" />     
+               placeholder="shortName" />     
     </div>
     <div class="btn-popup ">
         <div class="col-md-offset-2 col-md-10">
-            <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">@GlobalRes_ua.cancel</a>
+            <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">exit</a>
             <a href="#!" class="btn btn-default modal-action " data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
         </div>
         </div>
 </div>
 <div >
     <div  class="title-subject">
-        <h3>(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = Model.Item1.Id }, null)">@Model.Item1.ShortName</a>) </h3>
-        <h3  class = "subject-name"data-bind="text: $root.subject.longName"></h3>
+        <h3 >(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = Model.Item1.Id }, null)">@Model.Item1.ShortName</a>) </h3>
+        <h3  data-bind="text: $root.subject.longName"></h3>
     </div>
     <table style="width: 500px;">
         <thead class="header-marks-subject">
                 <tr>
-                    <th style="width: 47%;">Прізвище</th>
+                    <th style="width: 35%;">Прізвище</th>
                     <th style="width: 40%">Ім'я</th>
                     <th>Оцінка</th>
                 </tr>

@@ -188,7 +188,9 @@ function StudentsViewModel(group, sortingBy) {
         });
        
     };
+
     self.editingSubject = new SubjectModel();
+
     self.editSubject = function (subject) {
         $('#editSubject').openModal();
         self.subjectForUpdate().mapFrom(subject);
@@ -206,7 +208,7 @@ function StudentsViewModel(group, sortingBy) {
         subjectProvider.put(subjectServerModel, function () {
                 self.subjects().forEach(function (element) {
                     if (self.subjectForUpdate().id() == element.id()) {
-                        self.subjectForUpdate().mode = self.mods.display;
+                        self.subjectForUpdate().mode(self.mods.display);
                         element.mapFrom(self.subjectForUpdate());
                     }
                 })

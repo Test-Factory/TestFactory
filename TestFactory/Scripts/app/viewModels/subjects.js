@@ -44,17 +44,10 @@ function SubjectViewModel(group, subject) {
         location = url;
     }
 
-    self.sortingByName = function () {
-        self.subjects.sort(function (left, right) {
-            return compareByKeyAsc(left, right, "shortName");
-        });
-    };
-
-
     self.addSubject = function () {
-        //closeAllEditing();
+        closeAllEditing();
         $('#createSubject').openModal();
-        var newSubject = new SubjectpModel();
+        var newSubject = new SubjectModel();
         self.subjectForCreate().mapFrom(newSubject);
         self.subjectForCreate().mode(self.mods.create);
         ko.validation.group(self.subjectForCreate); 
@@ -104,7 +97,7 @@ function SubjectViewModel(group, subject) {
                 self.subjects().forEach(function (element)
                 {
                     if (self.subjectForUpdate().id() == element.id()) {
-                        self.subjectForUpdate().mode = self.mods.display;
+                        self.subjectForUpdate().mode(self.mods.display);
                         element.mapFrom(self.subjectForUpdate());
                     }     
                 })
