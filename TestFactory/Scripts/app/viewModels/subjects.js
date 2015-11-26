@@ -66,9 +66,10 @@ function SubjectViewModel(group, subject) {
             closeAllEditing();
             self.subjects.splice(0, 0, newSubject);
             self.redirectToMarksSubject(newSubject.id);
+            $('#createSubject').closeModal();
             self.addSubject();
         });
-        $('#createSubject').closeModal();
+      
     };
 
     self.editingSubject = new SubjectModel();
@@ -92,6 +93,8 @@ function SubjectViewModel(group, subject) {
             self.editingSubject.mode(self.mods.display)
             self.subjects.push(self.subjectForUpdate);
         });
+        self.redirectToMarksSubject(self.editingSubject.id)
+
         $('#editSubject').closeModal();
     };
 
