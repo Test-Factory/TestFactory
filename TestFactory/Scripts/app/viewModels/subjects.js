@@ -98,7 +98,7 @@ function SubjectViewModel(group, subject) {
        
         subjectProvider.put(subjectServerModel, function () {
             if (self.subject.id() == self.subjectForUpdate().id()) {
-                self.redirectToMarksSubject(self.subject.id);
+                self.subject.longName(self.subjectForUpdate().longName());
             } else {
                 self.subjects().forEach(function (element)
                 {
