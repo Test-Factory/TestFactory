@@ -47,7 +47,7 @@ StudentModel.prototype.mapFrom = function mapStudent(from) {
 }
 StudentModel.prototype.toServerModel = function (groupId) {
     var serverMarks = this.marks();
-    var m = [];
+    var m = [];//TODO: !!!
     serverMarks.forEach(function (element) {
         m.push(element.toServerModel());
     });

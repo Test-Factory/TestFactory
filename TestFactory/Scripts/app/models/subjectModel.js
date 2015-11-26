@@ -1,5 +1,6 @@
 ﻿function SubjectModel(item, defaultMode) {
     var self = this;
+    self.mode = ko.observable(defaultMode || "display");
     self.id = ko.observable(item ? item.Id : "");
     self.groupId = ko.observable(item ? item.GroupId : "");
     self.shortName = ko.observable(item ? item.ShortName : "").extend({
@@ -31,6 +32,7 @@ SubjectModel.prototype.mapFrom = function mapSubject(from) {
     this.groupId(from.groupId());
     this.shortName(from.shortName());
     this.longName(from.longName());
+    this.mode("display");
 }
 
 SubjectModel.prototype.toServerModel = function () {

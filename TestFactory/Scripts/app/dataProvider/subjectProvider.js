@@ -35,7 +35,8 @@ $(function () {
             url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback);
+        }).done(callback)
+        .error(function () { console.log("error"); });
     }
 
     SubjectProvider.prototype.delete = function (data, callback) {

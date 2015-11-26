@@ -190,7 +190,6 @@ function StudentsViewModel(group, sortingBy) {
     };
     self.editingSubject = new SubjectModel();
     self.editSubject = function (subject) {
-        closeAllEditing();
         $('#editSubject').openModal();
         self.subjectForUpdate().mapFrom(subject);
         self.subjectForUpdate.valueHasMutated();
@@ -205,13 +204,12 @@ function StudentsViewModel(group, sortingBy) {
         var subjectServerModel = self.subjectForUpdate().toServerModel();
         subjectServerModel.GroupId = self.group.id();
         subjectProvider.put(subjectServerModel, function () {
-            self.subjects.removeAll();
-            subjectProvider.getAll(function (data) {
-                $(data).each(function (index, element) {
-                    var mappedSubject = new SubjectModel(element, self.mods.display);
-                    self.subjects.push(mappedSubject);
-                });
-            });
+                self.subjects().forEach(function (element) {
+                    if (self.subjectForUpdate().id() == element.id()) {
+                        self.subjectForUpdate().mode = self.mods.display;
+                        element.mapFrom(self.subjectForUpdate());
+                    }
+                })
             $('#editSubject').closeModal();
         });
        

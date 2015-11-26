@@ -44,8 +44,15 @@ function SubjectViewModel(group, subject) {
         location = url;
     }
 
+    self.sortingByName = function () {
+        self.subjects.sort(function (left, right) {
+            return compareByKeyAsc(left, right, "shortName");
+        });
+    };
+
+
     self.addSubject = function () {
-        closeAllEditing();
+        //closeAllEditing();
         $('#createSubject').openModal();
         var newSubject = new SubjectpModel();
         self.subjectForCreate().mapFrom(newSubject);
@@ -75,7 +82,6 @@ function SubjectViewModel(group, subject) {
     self.editingSubject = new SubjectModel();
 
     self.editSubject = function(subject) {
-        closeAllEditing();
         $('#editSubject').openModal();
         self.subjectForUpdate().mapFrom(subject);
         self.subjectForUpdate.valueHasMutated();
@@ -89,21 +95,21 @@ function SubjectViewModel(group, subject) {
         }
         var subjectServerModel = self.subjectForUpdate().toServerModel();
         subjectServerModel.GroupId = self.subjectsInGroup.id();
-        subjectProvider.put(subjectServerModel, function() {
+       
+        subjectProvider.put(subjectServerModel, function () {
             if (self.subject.id() == self.subjectForUpdate().id()) {
                 self.redirectToMarksSubject(self.subject.id);
             } else {
-                self.subjects.removeAll();
-                subjectProvider.getAll(function (data) {
-                    $(data).each(function (index, element) {
-                        var mappedSubject = new SubjectModel(element, self.mods.display);
-                        self.subjects.push(mappedSubject);
-                    });
-                });
+                self.subjects().forEach(function (element)
+                {
+                    if (self.subjectForUpdate().id() == element.id()) {
+                        self.subjectForUpdate().mode = self.mods.display;
+                        element.mapFrom(self.subjectForUpdate());
+                    }     
+                })
             }
+            $('#editSubject').closeModal();
         });
-       
-        $('#editSubject').closeModal();
         };
 
     function closeAllEditing() {
