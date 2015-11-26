@@ -1,8 +1,8 @@
 ﻿@using System.Web.Http.Tracing
 @using TestFactory
 @using TestFactory.MVC.ViewModels;
-@Styles.Render("~/Students/css")
-@model Tuple<GroupViewModel, SubjectViewModel, IList<StudentViewModel>, IList<SubjectMarkViewModel>>
+@Styles.Render("~/Students/css");
+@model Tuple<GroupViewModel, SubjectViewModel,IList<StudentViewModel>,IList<SubjectMarkViewModel>>
 
 <ul class="side-nav fixed">
     <ul class="collapsible">
@@ -49,8 +49,8 @@
     </div>
     <div class="btn-popup">
         <div class="col-md-offset-2 col-md-10">
-            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
-            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
+            <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+            <a href="#!" class="btn btn-default modal-action " data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
         </div>
     </div>
 </div>
@@ -71,8 +71,8 @@
     </div>
     <div class="btn-popup ">
         <div class="col-md-offset-2 col-md-10">
-            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
-            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
+            <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+            <a href="#!" class="btn btn-default modal-action " data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
         </div>
         </div>
 </div>
@@ -122,9 +122,11 @@
                                 <div class="spinner-layer spinner-yellow-only">
                                     <div class="circle-clipper left">
                                         <div class="circle"></div>
-                                    </div><div class="gap-patch">
+                                    </div>
+                                    <div class="gap-patch">
                                         <div class="circle"></div>
-                                    </div><div class="circle-clipper right">
+                                    </div>
+                                    <div class="circle-clipper right">
                                         <div class="circle"></div>
                                     </div>
                                 </div>
@@ -156,9 +158,11 @@
                                 <div class="spinner-layer spinner-yellow-only">
                                     <div class="circle-clipper left">
                                         <div class="circle"></div>
-                                    </div><div class="gap-patch">
+                                    </div>
+                                    <div class="gap-patch">
                                         <div class="circle"></div>
-                                    </div><div class="circle-clipper right">
+                                    </div>
+                                    <div class="circle-clipper right">
                                         <div class="circle"></div>
                                     </div>
                                 </div>
@@ -187,7 +191,7 @@
             </tbody>
         </table>
     </div>
-</div>
+
 @section Scripts{
     @Scripts.Render("~/Scripts/SubjectMark.js")
     <script>
