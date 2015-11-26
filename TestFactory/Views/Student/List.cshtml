@@ -46,7 +46,7 @@
         </div>
         <div class="btn-popup ">
             <div class="col-md-offset-2 col-md-10 ">
-                <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+                <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">@GlobalRes_ua.cancel</a>
                 <a href="#!" class="btn btn-default modal-action " data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
             </div>
         </div>
@@ -56,22 +56,22 @@
 
         <h4 >Створення предмета </h4>
         <div class="modal-content">
-              @*TODO: add recourse*@
-                <input id="subjectPicker" type="text"
-                       data-position="bottom"
-                       data-bind="textInput: $root.subjectForCreate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().longName.error }"
-                       maxlength="100"
-                       placeholder="longName" />
+
+            <input id="subjectPicker" type="text"
+                   data-position="bottom"
+                   data-bind="textInput: $root.subjectForCreate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().longName.error }"
+                   maxlength="100"
+                   placeholder="@GlobalRes_ua.longName" />
             <input id="subjectPicker" type="text"
                    data-position="bottom"
                    data-bind="textInput: $root.subjectForCreate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().shortName.error }"
                    maxlength="15"
-                   placeholder="shortName" />
+                   placeholder="@GlobalRes_ua.shortName" />
 
             </div>
         <div class="btn-popup">
             <div class="col-md-offset-2 col-md-10">
-                <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+                <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">@GlobalRes_ua.cancel</a>
                 <a href="#!" class="btn btn-default modal-action " data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
             </div>
         </div>
@@ -148,7 +148,7 @@
                         </td>
                     </tr>
                     <tbody class="bodyTbStudent" data-bind="foreach: students">
-                        <div style="width: 100%; height: 200px; "></div>
+                        <div style="width: 100%; height: 155px; "></div>
                         <!-- ko if: mode() == $root.mods.display -->
                         <tr>
                             <td class="last-name" data-bind="text: lastName"></td>
