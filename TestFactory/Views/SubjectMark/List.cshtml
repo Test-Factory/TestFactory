@@ -1,12 +1,13 @@
 ﻿@using System.Web.Http.Tracing
 @using TestFactory
 @using TestFactory.MVC.ViewModels;
-@model Tuple<GroupViewModel, SubjectViewModel, IList<StudentViewModel>, IList<SubjectMarkViewModel>>
 @Styles.Render("~/Students/css")
+@model Tuple<GroupViewModel, SubjectViewModel, IList<StudentViewModel>, IList<SubjectMarkViewModel>>
+
 <ul class="side-nav fixed">
     <ul class="collapsible">
         <li class="ietmSidebar activeItem">
-            <a class="  collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new {groupId = @Model.Item1.Id}, null) ">Тест Холланда</a>
+            <a class="  collapsible-header  waves-effect waves-teal" href="@Url.RouteUrl("groupStudentList", new {groupId = @Model.Item1.Id}, null)">Тест Холланда</a>
         </li>
         <li class="ietmSidebar">
             <a class=" active collapsible-header  waves-effect waves-teal" href="#">Предмети</a>
@@ -24,19 +25,17 @@
                         }
                         <a data-bind="text: shortName, css:{boldSubjectSidebar: id() == $root.subject.id()} ,click: function(){ $root.redirectToMarksSubject(id);}"
                            class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
-
                         <!-- /ko -->
                     </li>
-</ul>
+                </ul>
             </div>
-
         </li>
     </ul>
 </ul>
 <div id="createSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+    <h4>Створення предмета </h4>
     <div class="modal-content">
-        <h4>Створення предмета </h4>
-      
+        
         <input id="subjectPicker" type="text"
                data-position="bottom"
                data-bind="textInput: $root.subjectForCreate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().longName.error }"
@@ -46,17 +45,19 @@
                data-position="bottom"
                data-bind="textInput: $root.subjectForCreate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForCreate().shortName.error }"
                maxlength="15"
-               placeholder="shortName" /> 
+               placeholder="shortName" />
     </div>
-    <div class="btn-popup ">
+    <div class="btn-popup">
         <div class="col-md-offset-2 col-md-10">
             <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
             <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
         </div>
+    </div>
 </div>
 <div id="editSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+    <h4>Редагування предмета </h4>
     <div class="modal-content">
-        <h4>Редагування предмета </h4>
+        
         <input id="subjectPicker" type="text"
                data-position="bottom"
                data-bind="textInput: $root.subjectForUpdate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().longName.error }"
@@ -72,6 +73,7 @@
         <div class="col-md-offset-2 col-md-10">
             <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
             <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
+        </div>
         </div>
 </div>
 <div >
