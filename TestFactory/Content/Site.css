@@ -48,7 +48,7 @@ div#content {
 }
 
 td, th {
-    padding: 10px 5px;
+       padding: 20px 5px;
 }
 
 .mark-content td, th {
@@ -627,6 +627,7 @@ ul#nav-mobile {
 .field-validation-error {
     left: 10px;
     position: relative;
+    font-size: 1.06em;
 }
 
 input[type=text].updatePop-Up, input[type=text].createPop-Up {
@@ -873,6 +874,12 @@ div#group-filter {
     border-bottom-style:dashed;
     cursor:pointer;
 }
-.text-danger {
-    display:block;
+span[for = "Year"] {
+    padding: 5px;
+}
+.declineCreate {
+    color: #FFF;
+}
+h3.subject-name {
+font-size: 2.4rem;
 }
