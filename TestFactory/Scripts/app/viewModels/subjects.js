@@ -73,12 +73,12 @@ function SubjectViewModel(group, subject) {
     };
 
     self.editingSubject = new SubjectModel();
+
     self.editSubject = function(subject) {
         closeAllEditing();
         $('#editSubject').openModal();
         self.subjectForUpdate().mapFrom(subject);
         self.subjectForUpdate.valueHasMutated();
-
         subject.mode(self.mods.edit);
         self.editingSubject.mapFrom(subject);
     }; 
@@ -90,13 +90,20 @@ function SubjectViewModel(group, subject) {
         var subjectServerModel = self.subjectForUpdate().toServerModel();
         subjectServerModel.GroupId = self.subjectsInGroup.id();
         subjectProvider.put(subjectServerModel, function() {
-            self.editingSubject.mode(self.mods.display)
-            self.subjects.push(self.subjectForUpdate);
+            if (self.subject.id() == self.subjectForUpdate().id()) {
+                self.redirectToMarksSubject(self.subject.id);
+            }
+            self.subjects.removeAll();
+            subjectProvider.getAll(function (data) {
+                $(data).each(function (index, element) {
+                    var mappedSubject = new SubjectModel(element, self.mods.display);
+                    self.subjects.push(mappedSubject);
+                });
+            });
         });
-        self.redirectToMarksSubject(self.subject.id)
-
+       
         $('#editSubject').closeModal();
-    };
+        };
 
     function closeAllEditing() {
         for (var k in self.subjectsInGroup.subjects()) {
@@ -104,5 +111,4 @@ function SubjectViewModel(group, subject) {
         }
         self.subjectForUpdate().mode(self.mods.display);
     }
-
 };

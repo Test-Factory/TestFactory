@@ -160,6 +160,7 @@ function StudentsViewModel(group, sortingBy) {
             student.mode(self.mods.display);
         });
     }
+
     self.addSubject = function () {
         closeAllEditing();
         $('#createSubject').openModal();
@@ -173,18 +174,17 @@ function StudentsViewModel(group, sortingBy) {
         if (!self.subjectForCreate.isValid()) {
             return false;
         }
+         $('#createSubject').closeModal();
         self.subjectForCreate().groupId(self.group.id());
         var subjectServerModel = self.subjectForCreate().toServerModel();
         subjectProvider.post(subjectServerModel, function (data) {
             var newSubject = new SubjectModel();
             newSubject.mapFrom(self.subjectForCreate());
             newSubject.id(data.Id);
+           
             closeAllEditing();
             self.subjects.splice(0, 0, newSubject);
             self.redirectToMarksSubject(newSubject.id);
-            $('#createSubject').closeModal();
-            self.addSubject();
-            
         });
        
     };
@@ -202,14 +202,19 @@ function StudentsViewModel(group, sortingBy) {
         if (!self.subjectForUpdate.isValid()) {
             return false;
         }
-        
         var subjectServerModel = self.subjectForUpdate().toServerModel();
         subjectServerModel.GroupId = self.group.id();
         subjectProvider.put(subjectServerModel, function () {
-            self.editingSubject.mode(self.mods.display)
-            self.subjects.push(self.subjectForUpdate);
+            self.subjects.removeAll();
+            subjectProvider.getAll(function (data) {
+                $(data).each(function (index, element) {
+                    var mappedSubject = new SubjectModel(element, self.mods.display);
+                    self.subjects.push(mappedSubject);
+                });
+            });
+            $('#editSubject').closeModal();
         });
-        $('#editSubject').closeModal();
+       
     };
     self.redirectToMarksSubject = function(subjectId) { //TODO: refactor to redirect
         var url = "/group/" + self.group.id() + "/subject/" + subjectId();
