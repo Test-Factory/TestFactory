@@ -102,6 +102,7 @@ td, th {
 
 .cels-padding {
     padding: 13px 5px 13px 5px !important;
+    max-width: 120px;
 }
 
 .preloader-size {
