@@ -92,14 +92,15 @@ function SubjectViewModel(group, subject) {
         subjectProvider.put(subjectServerModel, function() {
             if (self.subject.id() == self.subjectForUpdate().id()) {
                 self.redirectToMarksSubject(self.subject.id);
-            }
-            self.subjects.removeAll();
-            subjectProvider.getAll(function (data) {
-                $(data).each(function (index, element) {
-                    var mappedSubject = new SubjectModel(element, self.mods.display);
-                    self.subjects.push(mappedSubject);
+            } else {
+                self.subjects.removeAll();
+                subjectProvider.getAll(function (data) {
+                    $(data).each(function (index, element) {
+                        var mappedSubject = new SubjectModel(element, self.mods.display);
+                        self.subjects.push(mappedSubject);
+                    });
                 });
-            });
+            }
         });
        
         $('#editSubject').closeModal();
