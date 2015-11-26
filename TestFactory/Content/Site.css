@@ -1,4 +1,25 @@
-﻿
+﻿.header-marks-subject{
+    position: fixed;
+    width: 100%;
+    background:  #F3F3F4;
+    margin: 0;
+    padding: 1rem;
+    top: 111px;
+    border-bottom:none;
+}
+
+.title-subject{
+    position:fixed;
+    background: #F3F3F4;
+    width: 100%;
+    margin:0;
+    top:64px;
+}
+
+
+.form-horizontal h4{
+    text-align: center;
+}
 body {
     background-color: #fff;
     color: #232323;
@@ -225,6 +246,10 @@ div#image {
     opacity: 0.97;
     position: relative;
     top: 0px;
+}
+
+h4 .createPop-Up{
+    text-align:center;
 }
 
  div#createGroup, div#updateGroup {

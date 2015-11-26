@@ -2,11 +2,11 @@
 @model GroupViewModel
 
 @Styles.Render("~/Students/css")
-<div class="popup__overlay">
+
     <ul class="side-nav fixed">
         <ul class="collapsible">
             <li class="ietmSidebar activeItem">
-                <a class=" active collapsible-header  waves-effect waves-teal" href=" @Url.RouteUrl("groupStudentList", new { groupId = Model.Id }, null) ">Тест Холланда</a>
+                <a class=" active collapsible-header  waves-effect waves-teal" href="@Url.RouteUrl("groupStudentList", new { groupId = Model.Id }, null) ">Тест Холланда</a>
             </li>
             <li class="ietmSidebar">
                 <a class="  collapsible-header  waves-effect waves-teal" href="#">Предмети</a>
@@ -45,12 +45,12 @@
                    maxlength="15"
                    placeholder="shortName" />
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 createPop-Up">
+        <div class="btn-popup ">
+            <div class="col-md-offset-2 col-md-10 ">
                 <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">exit</a>
                 <a href="#!" class="btn btn-default modal-action " data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
-                </div>
             </div>
+        </div>
     </div>
 
     <div id="createSubject" class="modal " data-bind="validationOptions: {errorElementClass: 'invalid'}">
@@ -70,9 +70,8 @@
                    placeholder="shortName" />
 
             </div>
-            @*TODO: add recourse*@
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 createPop-Up">
+        <div class="btn-popup">
+            <div class="col-md-offset-2 col-md-10">
                 <a href="#!" class="btn grey btn-default declineCreate  modal-action modal-close waves-effect waves-green btn-flat">exit</a>
                 <a href="#!" class="btn btn-default modal-action " data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
             </div>
@@ -82,62 +81,64 @@
         <div>
             <form>
                 <h3 id="groupName" data-bind="text: $root.group.fullName"></h3>
-                <table id="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
-                    <thead>
-                        <tr class="noselect">
-                            <th class="last-name">
-                                <div class="triangle-wrapper">
-                                    <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
-                                    <!-- ko if: $root.sortKey() == "lastName" -->
-                                    <div data-bind="css: selectedClassForSortedField"></div>
+                <table class="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+                    
+                        
+                        <thead class="headerTbSudent">
+                            <tr class="noselect">
+                                <th class="last-name">
+                                    <div class="triangle-wrapper">
+                                        <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
+                                        <!-- ko if: $root.sortKey() == "lastName" -->
+                                        <div data-bind="css: selectedClassForSortedField"></div>
+                                        <!-- /ko -->
+                                    </div>
+                                </th>
+                                <th class="first-name">
+                                    <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
+                                    <!-- ko if: $root.sortKey() == "firstName" -->
+                                    <span data-bind="css: selectedClassForSortedField"></span>
                                     <!-- /ko -->
-                                </div>
-                            </th>
-                            <th class="first-name">
-                                <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
-                                <!-- ko if: $root.sortKey() == "firstName" -->
-                                <span data-bind="css: selectedClassForSortedField"></span>
+                                </th>
+                                <!-- ko foreach: $root.categories -->
+                                <th class="marks">
+                                    <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
+                                    <!-- ko if: $root.sortKey() == $data.code() -->
+                                    <div data-bind="css: $root.selectedClassForSortedField"></div>
+                                    <!-- /ko -->
+                                </th>
                                 <!-- /ko -->
-                            </th>
-                            <!-- ko foreach: $root.categories -->
-                            <th class="marks">
-                                <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
-                                <!-- ko if: $root.sortKey() == $data.code() -->
-                                <div data-bind="css: $root.selectedClassForSortedField"></div>
-                                <!-- /ko -->
-                            </th>
-                            <!-- /ko -->
-                        </tr>
-                        @if (User.IsInRole(Resources.RoleNames.Filler))
-                        {
-                            <tr>
-                                <td class="last-name">
-                                    <input type="text"
-                                           data-position="bottom"
-                                           data-bind="textInput: $root.studentForCreate().lastName,  tooltip: { message: $root.studentForCreate().lastName.error }"
-                                           maxlength="69"
-                                           placeholder="@GlobalRes_ua.surname" />
-                                </td>
-                                <td class="first-name">
-                                    <input type="text"
-                                           data-position="bottom"
-                                           data-bind="textInput: $root.studentForCreate().firstName, tooltip: { message: $root.studentForCreate().firstName.error }"
-                                           maxlength="69"
-                                           placeholder="@GlobalRes_ua.name" />
-                                </td>
-                                <!-- ko foreach: $root.studentForCreate().marks -->
-                                <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
-                                <!-- /ko -->
-                                <td colspan="3" class="screenMediaAbove ">
-                                    <button class="btn btn-success  " data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
-                                </td>
-                                <td colspan="3" class="screenMediaBelow ">
-                                    <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
-
-                                </td>
                             </tr>
-                        }
-                    </thead>
+                            @if (User.IsInRole(Resources.RoleNames.Filler))
+                            {
+                                <tr>
+                                    <td class="last-name">
+                                        <input type="text"
+                                               data-position="bottom"
+                                               data-bind="textInput: $root.studentForCreate().lastName,  tooltip: { message: $root.studentForCreate().lastName.error }"
+                                               maxlength="69"
+                                               placeholder="@GlobalRes_ua.surname" />
+                                    </td>
+                                    <td class="first-name">
+                                        <input type="text"
+                                               data-position="bottom"
+                                               data-bind="textInput: $root.studentForCreate().firstName, tooltip: { message: $root.studentForCreate().firstName.error }"
+                                               maxlength="69"
+                                               placeholder="@GlobalRes_ua.name" />
+                                    </td>
+                                    <!-- ko foreach: $root.studentForCreate().marks -->
+                                    <td class="marks"><input type="text" data-bind="textInput: value,  tooltip: { message: value.error }" placeholder=" 0 " max="100" /></td>
+                                    <!-- /ko -->
+                                    <td colspan="3" class="screenMediaAbove ">
+                                        <button class="btn btn-success  " data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
+                                    </td>
+                                    <td colspan="3" class="screenMediaBelow ">
+                                        <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </thead> 
                     <tr>
                         <td colspan="9">
                             <!-- ko if: $root.preloader() -->
@@ -147,7 +148,8 @@
                             <!-- /ko -->
                         </td>
                     </tr>
-                    <tbody data-bind="foreach: students">
+                    <tbody class="bodyTbStudent" data-bind="foreach: students">
+                        <div style="width: 100%; height: 200px; "></div>
                         <!-- ko if: mode() == $root.mods.display -->
                         <tr>
                             <td class="last-name" data-bind="text: lastName"></td>

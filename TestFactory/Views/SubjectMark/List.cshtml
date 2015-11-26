@@ -48,7 +48,7 @@
                maxlength="15"
                placeholder="shortName" /> @*TODO: add recourse*@
     </div>
-    <div class="modal-footer">
+    <div class="btn-popup ">
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
     </div>
@@ -68,16 +68,18 @@
                maxlength="100"
                placeholder="longName" />
     </div>
-    <div class="modal-footer">
+    <div class="btn-popup ">
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
         <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
     </div>
 </div>
 <div id="">
-    <h3 style="display: inline">(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new {groupId = Model.Item1.Id}, null)">@Model.Item1.ShortName</a>) </h3>
-    <h3 data-bind="text: $root.subject.longName"></h3>
+    <div class="title-subject">
+        <h3 style="display: inline">(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new {groupId = Model.Item1.Id}, null)">@Model.Item1.ShortName</a>) </h3>
+        <h3 style="display: inline" data-bind="text: $root.subject.longName"></h3>
+    </div>
     <table style="width: 500px;">
-        <thead>
+        <thead class="header-marks-subject">
             <tr>
                 <th style="width: 35%;">Прізвище</th>
                 <th style="width: 40%">Ім'я</th>
@@ -85,6 +87,7 @@
             </tr>
         </thead>
         <tbody class="mark-content">
+            <div style="width: 100%; height: 75px;"></div>
             @foreach (var student in Model.Item3)
             {
                 for (int i = 0; i < Model.Item4.Count; i++)
