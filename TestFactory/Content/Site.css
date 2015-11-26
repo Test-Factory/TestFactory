@@ -404,7 +404,7 @@ a.toEdit { cursor: pointer; }
 
 p#textLik:hover { color: #26A69A; }
 
-label.createPop-Up { margin-left: 10px; }
+label.createPop-Up { margin-left: 23px; }
 
 h4.createPop-Up, h4.updatePop-Up { margin-left: 10px; }
 
@@ -464,12 +464,12 @@ input.createPop-up, input.updatePop-Up {
 .errorFill { border-bottom: 3px solid red; }
 
 input#FullName, input#ShortName {
-    margin-left: 10px;
-    width: 340px;
+    margin-left: 23px;
+    width: 312px;
 }
 input#Year {  
-    margin-left:10px;
-    width:340px;
+    margin-left:23px;
+    width:312px;
 }
 .blue-grey.darken-1 { background-color: white !important; }
 
