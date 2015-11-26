@@ -49,34 +49,35 @@
                placeholder="shortName" /> 
     </div>
     <div class="btn-popup ">
-        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
-        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
-    </div>
+        <div class="col-md-offset-2 col-md-10">
+            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveAddedSubject">@GlobalRes_ua.save</a>
+        </div>
 </div>
 <div id="editSubject" class="modal" data-bind="validationOptions: {errorElementClass: 'invalid'}">
     <div class="modal-content">
         <h4>Редагування предмета </h4>
-       
-        <input id="subjectPicker" type="text"
-               data-position="bottom"
-               data-bind="textInput: $root.subjectForUpdate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().shortName.error }"
-               maxlength="15"
-               placeholder="shortName" />
         <input id="subjectPicker" type="text"
                data-position="bottom"
                data-bind="textInput: $root.subjectForUpdate().longName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().longName.error }"
                maxlength="100"
                placeholder="longName" />
+        <input id="subjectPicker" type="text"
+               data-position="bottom"
+               data-bind="textInput: $root.subjectForUpdate().shortName ,validationOptions: {errorElementClass: 'invalid'},tooltip: { message: $root.subjectForUpdate().shortName.error }"
+               maxlength="15"
+               placeholder="shortName" />     
     </div>
     <div class="btn-popup ">
-        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
-        <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
-    </div>
+        <div class="col-md-offset-2 col-md-10">
+            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat">exit</a>
+            <a href="#!" class="btn btn-success modal-action modal-close waves-effect waves-green btn-flat" data-bind="click: $root.saveEditedSubject">@GlobalRes_ua.save</a>
+        </div>
 </div>
-<div id="">
+<div >
     <div  class="title-subject">
-        <h3 style="display: inline">(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = Model.Item1.Id }, null)">@Model.Item1.ShortName</a>) </h3>
-        <h3 style="display: inline" data-bind="text: $root.subject.longName"></h3>
+        <h3 >(<a class="toDetails" href="@Url.RouteUrl("groupStudentList", new { groupId = Model.Item1.Id }, null)">@Model.Item1.ShortName</a>) </h3>
+        <h3  data-bind="text: $root.subject.longName"></h3>
     </div>
     <table style="width: 500px;">
         <thead class="header-marks-subject">
@@ -87,7 +88,7 @@
                 </tr>
             </thead>
             <tbody class="mark-content">
-                <div style="width: 100%; height: 80px;"></div>
+                <div style="width: 100%; height: 100px;"></div>
                 @foreach (var student in Model.Item3)
                 {
                 for (int i = 0; i < Model.Item4.Count; i++)
