@@ -72,27 +72,44 @@
                         <!-- /ko -->
                     </td>
                 </tr>
-                <tbody data-bind="foreach: filteredRecords2" class="student-content">
-
+                <tbody class="student-content">
                     <tr class="allStudents">
-                        <td class="cels-padding last-name " data-bind="text: lastName"></td>
-                        <td class="cels-padding first-name " data-bind="text: firstName"></td>
-                        <td class="cels-padding group-name " data-bind="text: groupShortName"></td>
-                        <!-- ko foreach: marks -->
-                        <td class="content-test">
-                            <table>
-                                <tr>
-                                    <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>
-                                   
-                                </tr>
-                                <tr>
-                                    <td class="studentMarkDetails" style="padding-bottom: 4px;">
-                                            <label class="greenText" data-bind="text: averageDeviation, style: { color: averageDeviation() < 0 ? 'coral' : 'seagreen' }"></label>
-                                    </td>
-                                </tr>
-                            </table>
+                        <td colspan="3" style="position: absolute">
+                            <div style="position: absolute">
+                                <table data-bind="foreach: filteredRecords2">
+                                    <tr class="allStudents">
+                                        <td class="cels-padding last-name " data-bind="text: lastName"></td>
+                                        <td class="cels-padding first-name " data-bind="text: firstName"></td>
+                                        <td class="cels-padding group-name " data-bind="text: groupShortName"></td>
+                                    </tr>
+                                </table>
+                            </div>
                         </td>
-                        <!-- /ko -->
+                        <td colspan="2"></td>
+                        <td colspan="6" class="content-test">
+                            <div>
+                                <table data-bind="foreach: filteredRecords2">
+                                    <tr class="allStudents">
+                                        <!-- ko foreach: marks -->
+                                        <td>
+                                             <table>
+                                                    <tr>
+                                                        <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>
+                                   
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="studentMarkDetails" style="padding-bottom: 4px;">
+                                                                <label class="greenText" data-bind="text: averageDeviation, style: { color: averageDeviation() < 0 ? 'coral' : 'seagreen' }"></label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                        </td>
+                                        <!-- /ko -->
+                                        </tr>
+                                </table>
+                            </div>
+                        </td>
+                        
                         @*<!-- ko foreach: $root.subjectsMarks -->
                         <td class="subjectsMarks" data-bind="text: Value"></td>
                         <!-- /ko -->*@
