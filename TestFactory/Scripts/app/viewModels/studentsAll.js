@@ -53,7 +53,12 @@
                    )
         });
     });
-
+    //self.listMarks = ko.dependentObservable(function () {
+    //    var arr1 = [];
+    //    var arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) { return item.marks() })
+    //    var arr1 = ko.utils.arrayMap(arrOfMarks, function (a) { return a.value() })
+    //    console.log(arr1);
+    //});
     self.resetDropdowns = function () {
         self.searchByStudentsYearOfStartEducation(null);
         self.searchByStudentsGroups(null);
