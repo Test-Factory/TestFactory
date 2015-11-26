@@ -4,16 +4,21 @@
     background:  #F3F3F4;
     margin: 0;
     padding: 1rem;
-    top: 110px;
+    top: 126px;
     border-bottom:none;
 }
 
 .title-subject{
+    
     position:fixed;
     background: #F3F3F4;
     width: 100%;
+    padding: 1rem;
     margin:0;
     top:64px;
+}
+.title-subject h3 {
+    margin:auto; display: inline;
 }
 
 
