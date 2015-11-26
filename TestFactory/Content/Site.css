@@ -873,3 +873,6 @@ div#group-filter {
     border-bottom-style:dashed;
     cursor:pointer;
 }
+.text-danger {
+    display:block;
+}
