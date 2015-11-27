@@ -182,6 +182,7 @@
                 var aver = averageArrOfMarks[i];
                 if(aver!=null)averageMarkConteiner.eq(i).html(aver.toFixed(2));
             }
+
         });
         
         self.sortingByName(sortingBy);
