@@ -18,7 +18,7 @@ namespace TestFactory.Controllers
         [HttpGet]
         public ActionResult List(string groupId, string subjectId)
         {
-            var students = Framework.StudentManager.GetList(groupId);
+            var students = Framework.StudentManager.GetList(groupId).OrderBy(c => c.LastName).ToList();
             var group = Framework.GroupManager.GetById(groupId);
             var markForSubject = Framework.SubjectMarkManager.GetMarkForSubject(subjectId);
             var subject = Framework.SubjectManager.GetById(subjectId);
