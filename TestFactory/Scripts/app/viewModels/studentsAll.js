@@ -174,13 +174,15 @@
                         averageArrOfMarks[i] += arrOfMarks[j][i].value._latestValue;
                 }
             }
-            for (var i = 0; i < averageArrOfMarks.length; i++) {
-                averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
-            }
-            var averageMarkConteiner = $(".averagemarks");
-            for (var i = 0; i < averageMarkConteiner.length; i++) {
-                var aver = averageArrOfMarks[i];
-                if(aver!=null)averageMarkConteiner.eq(i).html(aver.toFixed(2));
+            if (arrOfMarks.length != null) {
+                for (var i = 0; i < averageArrOfMarks.length; i++) {
+                    averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
+                }
+                var averageMarkConteiner = $(".averagemarks");
+                for (var i = 0; i < averageMarkConteiner.length; i++) {
+                    var aver = averageArrOfMarks[i];
+                    if (aver != null) averageMarkConteiner.eq(i).html(aver.toFixed(2));
+                }
             }
 
         });
