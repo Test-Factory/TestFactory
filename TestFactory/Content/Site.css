@@ -40,7 +40,7 @@ header{ opacity: 1;}
 div#content {
     overflow: hidden;
     z-index: 0;
-    margin-left: 17% !important; 
+    margin-left: 220px !important; 
 }
 
 .form-mark .form-control {

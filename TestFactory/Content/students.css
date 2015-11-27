@@ -13,7 +13,7 @@ margin: 0;
 
 .tbStudentList .headerTbSudent{
     position: fixed;
-    top: 145px;
+    top: 140px;
     width: 100%;
     background: #F3F3F4;
     border-bottom:0;
@@ -53,7 +53,8 @@ margin: 0;
 .side-nav {
     width: 16%;
     background-color: #eeeeee !important;
-    top: 64px
+    top: 64px;
+    width: 200px;
 }
 .inlineSubject{
      display:inline!important;
