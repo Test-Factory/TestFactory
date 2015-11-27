@@ -31,6 +31,10 @@
 
     self.searchByStudentsGroups = ko.observable('');
 
+    self.RecalculateAverageMarksArrayHelper = ko.observableArray();
+
+    self.RecalculateAverageMarksArray = ko.observableArray();
+
     self.searchByStudentsYearOfStartEducation = ko.observable('');
 
     self.filteredRecords = ko.computed(function () {
@@ -53,12 +57,7 @@
                    )
         });
     });
-    //self.listMarks = ko.dependentObservable(function () {
-    //    var arr1 = [];
-    //    var arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) { return item.marks() })
-    //    var arr1 = ko.utils.arrayMap(arrOfMarks, function (a) { return a.value() })
-    //    console.log(arr1);
-    //});
+
     self.resetDropdowns = function () {
         self.searchByStudentsYearOfStartEducation(null);
         self.searchByStudentsGroups(null);
@@ -158,6 +157,31 @@
                 self.students.push(mappedStudent);
             });
             self.preloader(false);
+        });
+
+        self.listMarks = ko.dependentObservable(function () {
+            var arr1 = [];
+            var arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
+                return item.marks()
+            });
+            var averageArrOfMarks = [];
+            var forAverage = 0;
+
+            for (var j = 0; j < arrOfMarks.length ; j++) {
+                for (var i = 0; i < arrOfMarks[j].length ; i++) {
+                    if (j == 0) averageArrOfMarks[i] = arrOfMarks[j][i].value._latestValue;
+                    else
+                        averageArrOfMarks[i] += arrOfMarks[j][i].value._latestValue;
+                }
+            }
+            for (var i = 0; i < averageArrOfMarks.length; i++) {
+                averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
+            }
+            var averageMarkConteiner = $(".averagemarks");
+            for (var i = 0; i < averageMarkConteiner.length; i++) {
+                var aver = averageArrOfMarks[i];
+                if(aver!=null)averageMarkConteiner.eq(i).html(aver.toFixed(2));
+            }
         });
         
         self.sortingByName(sortingBy);
