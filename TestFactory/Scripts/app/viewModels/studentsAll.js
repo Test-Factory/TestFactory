@@ -104,12 +104,12 @@
             for (var j = 0; j < arrOfMarks.length ; j++) {
                 for (var i = 0; i < arrOfMarks[j].length ; i++) {
 
-                    if (j == 0) averageArrOfMarks[i] = arrOfMarks[j][i].value._latestValue;
+                    if (averageArrOfMarks[i] == undefined) averageArrOfMarks[i] = arrOfMarks[j][i].value._latestValue;
                     else
                         averageArrOfMarks[i] += arrOfMarks[j][i].value._latestValue;
 
                     var cell = standardDeviation[i][arrOfMarks[j][i].value._latestValue];
-                    if (cell == null) standardDeviation[i][arrOfMarks[j][i].value._latestValue] = 1;
+                    if (cell == undefined) standardDeviation[i][arrOfMarks[j][i].value._latestValue] = 1;
                     else
                         standardDeviation[i][arrOfMarks[j][i].value._latestValue]++;
                 }
@@ -117,18 +117,26 @@
 
             var dispersion = [];
             var mathematicalExpectation = [];
+            var standardDeviationCount = [];
 
             for (var i = 0; i < standardDeviation.length; i++) {
-                alert(standardDeviation[i].length)
+                for (var j = 0; j < standardDeviation[i].length; j++) {
+                    if (standardDeviation[i][j] != undefined && standardDeviationCount[i] != undefined) standardDeviationCount[i] += standardDeviation[i][j];
+                    else
+                        if (standardDeviation[i][j] != undefined) standardDeviationCount[i] = standardDeviation[i][j];
+                }
+            }
+
+            for (var i = 0; i < standardDeviation.length; i++) {
                 for (var j = 0; j < standardDeviation[i].length; j++) {
                     if (standardDeviation[i][j] != undefined) {
-                        standardDeviation[i][j] = standardDeviation[i][j] / standardDeviation[i].length;
-
-                        if (mathematicalExpectation[i] != null) mathematicalExpectation[i] = standardDeviation[i][j] * j;
+                        standardDeviation[i][j] = standardDeviation[i][j] / standardDeviationCount[i];
+                        console.log(mathematicalExpectation[i] + " " )
+                        if (mathematicalExpectation[i] == undefined) mathematicalExpectation[i] = standardDeviation[i][j] * j;
                         else
                             mathematicalExpectation[i] += standardDeviation[i][j] * j;
 
-                        if (dispersion[i] != null) dispersion[i] = standardDeviation[i][j] * j * j;
+                        if (dispersion[i] == undefined) dispersion[i] = standardDeviation[i][j] * j * j;
                         else
                             dispersion[i] += standardDeviation[i][j] * j * j;
                         console.log(standardDeviation[i][j] + " " + j);
@@ -142,10 +150,12 @@
 
             
 
-            if (arrOfMarks.length != null && arrOfMarks.length!=0) {
+            if (arrOfMarks.length != null && arrOfMarks.length != 0) {
                 for (var i = 0; i < averageArrOfMarks.length; i++) {
                     averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
                 }
+
+                //push average marks
                 var averageMarkConteiner = $(".averagemarks");
                 var averageMarksName = $(".averagemarks .averageMarksNameColumn").html();
                 averageMarkConteiner.eq(0).html('<td colspan="3" class="averageMarksNameColumn">' + averageMarksName + '</td>');
@@ -157,7 +167,18 @@
                         averageMarkConteiner.eq(0).html(conteinerHTML);
                     }
                 }
-                console.log(averageMarkConteiner.eq(0).html())
+
+                //push mathematical expectation marks
+                var mathematicalExpectationContainer = $(".mathematicalExpectation");
+                var mathematicalExpectationName = $(".mathematicalExpectation .mathematicalExpectationNameColumn").html();
+                mathematicalExpectationContainer.eq(0).html('<td colspan="3" class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</td>');
+                for (var i = 0 ; i < dispersion.length; i++) {
+                    var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
+                    if (dispersion[i] != null) {
+                        conteinerHTML += "<td class='marks center'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</td>";
+                        mathematicalExpectationContainer.eq(0).html(conteinerHTML);
+                    }
+                }
             }
         });
     }
