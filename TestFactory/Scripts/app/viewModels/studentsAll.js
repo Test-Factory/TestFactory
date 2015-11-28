@@ -102,7 +102,7 @@
                         averageArrOfMarks[i] += arrOfMarks[j][i].value._latestValue;
                 }
             }
-            if (arrOfMarks.length != null) {
+            if (arrOfMarks.length != null && arrOfMarks.length!=0) {
                 for (var i = 0; i < averageArrOfMarks.length; i++) {
                     averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
                 }
