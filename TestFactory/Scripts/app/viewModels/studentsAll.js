@@ -86,6 +86,44 @@
 
     }
 
+    self.listMarks = function () {
+        ko.dependentObservable(function () {
+            var arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
+                return item.marks()
+            });
+            var averageArrOfMarks = [];
+            var standardDeviation = [];
+            var forAverage = 0;
+
+            for (var j = 0; j < arrOfMarks.length ; j++) {
+                for (var i = 0; i < arrOfMarks[j].length ; i++) {
+                    if (j == 0) averageArrOfMarks[i] = arrOfMarks[j][i].value._latestValue;
+                    else
+                        averageArrOfMarks[i] += arrOfMarks[j][i].value._latestValue;
+                }
+            }
+            if (arrOfMarks.length != null) {
+                for (var i = 0; i < averageArrOfMarks.length; i++) {
+                    averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
+                }
+                var averageMarkConteiner = $(".averagemarks");
+                var averageMarksName = $(".averagemarks .averageMarksNameColumn").html();
+                averageMarkConteiner.eq(0).html('<td colspan="3" class="averageMarksNameColumn">' + averageMarksName + '</td>');
+                for (var i = 0; i < averageArrOfMarks.length; i++) {
+                    var aver = averageArrOfMarks[i];
+                    var conteinerHTML = averageMarkConteiner.eq(0).html();
+                    if (aver != null) {
+                        conteinerHTML += "<td class='marks center'>" + aver.toFixed(2) + "</td>";
+                        averageMarkConteiner.eq(0).html(conteinerHTML);
+                    }
+                }
+                console.log(averageMarkConteiner.eq(0).html())
+            }
+
+
+        });
+    }
+
     self.sortingByName = function (key) {
         self.sortKey(key);
         if (self.sortDescending()) {
@@ -157,34 +195,7 @@
                 self.students.push(mappedStudent);
             });
             self.preloader(false);
-        });
-
-        self.listMarks = ko.dependentObservable(function () {
-            var arr1 = [];
-            var arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
-                return item.marks()
-            });
-            var averageArrOfMarks = [];
-            var forAverage = 0;
-
-            for (var j = 0; j < arrOfMarks.length ; j++) {
-                for (var i = 0; i < arrOfMarks[j].length ; i++) {
-                    if (j == 0) averageArrOfMarks[i] = arrOfMarks[j][i].value._latestValue;
-                    else
-                        averageArrOfMarks[i] += arrOfMarks[j][i].value._latestValue;
-                }
-            }
-            if (arrOfMarks.length != null) {
-                for (var i = 0; i < averageArrOfMarks.length; i++) {
-                    averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
-                }
-                var averageMarkConteiner = $(".averagemarks");
-                for (var i = 0; i < averageMarkConteiner.length; i++) {
-                    var aver = averageArrOfMarks[i];
-                    if (aver != null) averageMarkConteiner.eq(i).html(aver.toFixed(2));
-                }
-            }
-
+            self.listMarks();
         });
         
         self.sortingByName(sortingBy);
