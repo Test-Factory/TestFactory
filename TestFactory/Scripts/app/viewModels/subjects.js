@@ -32,6 +32,12 @@ function SubjectViewModel(group, subject) {
     };
     var subjectProvider = new SubjectProvider(self.subjectsInGroup.id);
 
+    self.sizeTable = function () {
+        $("thead tr:nth-child(1) th").each(function (index, element) {
+            $("thead tr:nth-child(1) th:nth-child(" + (index + 1) + ")").width($("tbody tr:nth-child(2) td:nth-child(" + (index + 1) + ")").width());
+        });
+    }
+
     subjectProvider.getAll(function (data) {
         $(data).each(function (index, element) {
             var mappedSubject = new SubjectModel(element, self.mods.display);
@@ -114,7 +120,9 @@ function SubjectViewModel(group, subject) {
             $('#editSubject').closeModal();
         });
         
-        };
+    };
+
+    self.sizeTable();
 
     function closeAllEditing() {
         for (var k in self.subjectsInGroup.subjects()) {

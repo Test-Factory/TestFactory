@@ -84,8 +84,9 @@
     <table style="width: 500px;">
         <thead class="header-marks-subject">
                 <tr>
-                    <th style="width: 300px">Прізвище, Ім'я</th>
-                    <th>Оцінка</th>
+                    <th class="padding-th-subject-marks">@GlobalRes_ua.surname </th>
+                    <th class="padding-td-subject-marks">@GlobalRes_ua.name</th>
+                    <th class="padding-th-subject-marks">Оцінка</th>
                 </tr>
             </thead>
             <tbody class="mark-content">
@@ -97,7 +98,8 @@
                 if (student.Id == Model.Item4[i].StudentId)
                 {
                 <tr>
-                    <td class="padding-td-subject-marks" style="width: 300px">@student.LastName @student.FirstName</td>
+                    <td class="padding-td-subject-marks" >@student.LastName </td>
+                    <td class="padding-td-subject-marks"> @student.FirstName</td>
                     @if (User.IsInRole(Resources.RoleNames.Filler))
                     {
                     var Value = Model.Item4[i].Value;
