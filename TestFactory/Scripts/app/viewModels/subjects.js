@@ -81,7 +81,17 @@ function SubjectViewModel(group, subject) {
         self.subjectForUpdate.valueHasMutated();
         subject.mode(self.mods.edit);
         self.editingSubject.mapFrom(subject);
-    }; 
+    };
+
+    self.closeEditSubject = function () {
+        self.subjects().forEach(function (element) {
+            if (self.editingSubject.id() == element.id()) {
+                self.editingSubject.mode(self.mods.display);
+                element.mapFrom(self.editingSubject);
+            }
+        })
+        $('#editSubject').closeModal();
+    }
 
     self.saveEditedSubject = function(subject) {
         if (!self.subjectForUpdate.isValid()) {
