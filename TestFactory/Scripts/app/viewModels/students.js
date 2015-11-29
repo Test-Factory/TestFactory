@@ -182,7 +182,6 @@ function StudentsViewModel(group, sortingBy) {
             var newSubject = new SubjectModel();
             newSubject.mapFrom(self.subjectForCreate());
             newSubject.id(data.Id);
-           
             closeAllEditing();
             self.subjects.splice(0, 0, newSubject);
             self.redirectToMarksSubject(newSubject.id);

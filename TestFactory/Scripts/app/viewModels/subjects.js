@@ -67,7 +67,6 @@ function SubjectViewModel(group, subject) {
             self.subjects.splice(0, 0, newSubject);
             self.redirectToMarksSubject(newSubject.id);
             $('#createSubject').closeModal();
-            self.addSubject();
         });
       
     };

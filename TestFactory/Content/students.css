@@ -55,6 +55,7 @@ margin: 0;
     background-color: #eeeeee !important;
     top: 64px;
     width: 200px;
+    height: 100%;
 }
 .inlineSubject{
      display:inline!important;
