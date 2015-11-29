@@ -80,8 +80,10 @@ function StudentsViewModel(group, sortingBy) {
         closeAllEditing();
         self.studentForUpdate().mapFrom(student);
         student.mode(self.mods.edit);
-        //self.studentForUpdate.valueHasMutated();
+        self.studentForUpdate.valueHasMutated();
     };
+
+   
 
     self.deleteStudent = function(student) {
         $("#delete-student").dialog({
@@ -198,6 +200,15 @@ function StudentsViewModel(group, sortingBy) {
         self.editingSubject.mapFrom(subject);
     };
 
+    self.closeEditSubject = function () {
+        self.subjects().forEach(function (element) {
+            if (self.editingSubject.id() == element.id()) {
+                self.editingSubject.mode(self.mods.display);
+                element.mapFrom(self.editingSubject);
+            }})
+        $('#editSubject').closeModal();
+    }
+
     self.saveEditedSubject = function (subject) {
         if (!self.subjectForUpdate.isValid()) {
             return false;
@@ -215,7 +226,7 @@ function StudentsViewModel(group, sortingBy) {
         });
        
     };
-    self.redirectToMarksSubject = function(subjectId) { //TODO: refactor to redirect
+    self.redirectToMarksSubject = function(subjectId) { 
         var url = "/group/" + self.group.id() + "/subject/" + subjectId();
         location = url;
     }
