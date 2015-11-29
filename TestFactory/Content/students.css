@@ -124,6 +124,8 @@ margin: 0;
     
 }
 
+.marks{text-align: center;}
+
 .tbStudentList .marks input {
     width: 40px;
     }
@@ -159,7 +161,7 @@ margin: 0;
 
 .btnStudent {
             background-color: #9e9e9e;
-            padding: 0 1rem;
+            padding: 0 1.65rem;
         }
 
 .btnStudent img {
@@ -224,9 +226,7 @@ margin: 0;
 #tbStudentList th {
     position: relative;
 }
-.btnStudent {
-    padding: 0 0.45rem;
-}
+
 td.screenMediaAbove {
     padding: 15px 4px;
 }

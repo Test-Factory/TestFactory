@@ -81,8 +81,6 @@
             <form>
                 <h3 id="groupName" data-bind="text: $root.group.fullName"></h3>
                 <table class="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
-                    
-                        
                         <thead class="headerTbSudent">
                             <tr class="noselect">
                                 <th class="last-name">
@@ -108,8 +106,7 @@
                                 </th>
                                 <!-- /ko -->
                             </tr>
-                            @if (User.IsInRole(Resources.RoleNames.Filler))
-                            {
+                           
                                 <tr>
                                     <td class="last-name">
                                         <input type="text"
@@ -133,10 +130,9 @@
                                     </td>
                                     <td colspan="3" class="screenMediaBelow ">
                                         <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
-
                                     </td>
                                 </tr>
-                            }
+                           
                         </thead> 
                     <tr>
                         <td colspan="9">
@@ -214,10 +210,12 @@
     <script>
         var globalView = null;
         $(document).ready(function() {
+            
             var group = @Html.Raw(Json.Encode(Model));
             var viewModel = new StudentsViewModel(group, "lastName");
             globalView = viewModel;
             ko.applyBindings(viewModel);
+           
         });
 
     </script>

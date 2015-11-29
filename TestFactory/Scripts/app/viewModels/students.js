@@ -40,6 +40,13 @@ function StudentsViewModel(group, sortingBy) {
         deleting: "delete"
     };
 
+    self.sizeTable = function () {
+            $("thead tr:nth-child(1) th").each(function (index, element) {
+                $("thead tr:nth-child(1) th:nth-child(" + (index + 1) + ")").width($("tbody tr:nth-child(2) td:nth-child(" + (index + 1) + ")").width());
+                $("thead tr:nth-child(2) td:nth-child(" + (index + 1) + ") input").width($("tbody tr:nth-child(2) td:nth-child(" + (index + 1) + ")").width());
+            });
+    }
+
     self.sortingByMark = function(key, categoryId, code) {
         self.sortKey(code());
         if (self.sortDescending()) {
@@ -225,6 +232,7 @@ function StudentsViewModel(group, sortingBy) {
         });
        
     };
+
     self.redirectToMarksSubject = function(subjectId) { 
         var url = "/group/" + self.group.id() + "/subject/" + subjectId();
         location = url;
@@ -244,7 +252,9 @@ function StudentsViewModel(group, sortingBy) {
                 var mappedStudent = new StudentModel(element, self.mods.display);
                 mappedStudent.sortMarksByCategoryIdDesc();
                 self.students.push(mappedStudent);
+                
             });
+            self.sizeTable();
         });
 
         subjectProvider.getAll(function (data) {
@@ -254,11 +264,12 @@ function StudentsViewModel(group, sortingBy) {
             });
         });
         self.sortingByName(sortingBy);
+        
         self.preloader(false);
     }
 
     self.init();
-
+    
     function closeAllEditing() {
         for (var k in self.students()) {
             self.students()[k].mode(self.mods.display);
