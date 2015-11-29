@@ -130,7 +130,7 @@ function StudentsViewModel(group, sortingBy) {
             self.studentForCreate().marks.push(mark);
         }
         self.studentForCreate().mode(self.mods.create);
-
+        self.sizeTable();
         ko.validation.group(self.studentForCreate);
     };
 
@@ -151,7 +151,9 @@ function StudentsViewModel(group, sortingBy) {
                         break;
                     }
                 }
+                self.sizeTable();
             }
+            self.sizeTable();
             closeAllEditing();
             self.students.splice(0, 0, newStudent);
             self.addStudent();
@@ -166,7 +168,9 @@ function StudentsViewModel(group, sortingBy) {
         studentProvider.put(studentServerModel, function() {
             student.mapFrom(self.studentForUpdate());
             student.mode(self.mods.display);
+            self.sizeTable();
         });
+        self.sizeTable();
     }
 
     self.addSubject = function () {
