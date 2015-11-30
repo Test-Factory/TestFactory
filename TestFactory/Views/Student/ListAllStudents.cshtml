@@ -55,9 +55,6 @@
                     </tr> 
                     <tr class="content-test mathematicalExpectation">
                         <td colspan="3" class="mathematicalExpectationNameColumn">@GlobalRes_ua.standardDeviationMarks </td>
-                        <!-- ko foreach: $root.standardDeviation -->
-                        <td class="marks center" data-bind="text: $data"></td>
-                        <!-- /ko -->
                     </tr>                             
                 </thead>
 
@@ -91,15 +88,17 @@
                                         <!-- ko foreach: marks -->
                                         <td>
                                              <table>
-                                                    <tr>
-                                                        <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>                                 
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="studentMarkDetails" style="padding-bottom: 4px;">
-                                                                <label class="greenText" data-bind="text: averageDeviation, style: { color: averageDeviation() < 0 ? 'coral' : 'seagreen' }"></label>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                 <tbody class="markSubjectContent">
+                                                        <tr>
+                                                            <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>                                 
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="studentMarkDetails" style="padding-bottom: 4px;">
+                                                                    <label class="greenText"></label>
+                                                            </td>
+                                                        </tr>
+                                                 </tbody>
+                                            </table>
                                         </td>
                                         <!-- /ko -->
                                         </tr>

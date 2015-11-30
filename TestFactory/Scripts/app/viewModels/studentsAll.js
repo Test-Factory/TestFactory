@@ -26,6 +26,7 @@
     self.groupYears = ko.observableArray();
 
     self.subjects = ko.observableArray();
+    //self.subjectsMarks = ko.observableArray();
 
     self.searchByStudentsGroups = ko.observable('');
 
@@ -253,11 +254,11 @@
             });
         });
 
-        subjectMarkProvider.getAll(function (data) {
-            $(data).each(function (index, element) {
-                self.subjectsMarks.push(element);
-            });
-        });
+        //subjectMarkProvider.getAll(function (data) {
+        //    $(data).each(function (index, element) {
+        //        self.subjectsMarks.push(element);
+        //    });
+        //});
 
         studentProvider.get(function (data) {
             $(data).each(function (index, element) {
