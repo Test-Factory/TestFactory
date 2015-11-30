@@ -259,6 +259,7 @@ function StudentsViewModel(group, sortingBy) {
                 
             });
             self.sizeTable();
+            self.preloader(false);
         });
 
         subjectProvider.getAll(function (data) {
@@ -268,8 +269,7 @@ function StudentsViewModel(group, sortingBy) {
             });
         });
         self.sortingByName(sortingBy);
-        
-        self.preloader(false);
+       
     }
 
     self.init();
