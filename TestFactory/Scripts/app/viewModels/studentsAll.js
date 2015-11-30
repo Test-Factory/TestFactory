@@ -92,95 +92,97 @@
                 return item.marks()
             });
             var averageArrOfMarks = [];
-
-            //array 100 *n(categories mark) elements:
-            var standardDeviation = new Array();
-            for (var i = 0; i < arrOfMarks[0].length; i++) {
-                standardDeviation[i] = new Array();
-            }
-
-            var forAverage = 0;
-
-            for (var j = 0; j < arrOfMarks.length ; j++) {
-                for (var i = 0; i < arrOfMarks[j].length ; i++) {
-
-                    if (averageArrOfMarks[i] == undefined) averageArrOfMarks[i] = arrOfMarks[j][i].value._latestValue;
-                    else
-                        averageArrOfMarks[i] += arrOfMarks[j][i].value._latestValue;
-
-                    var cell = standardDeviation[i][arrOfMarks[j][i].value._latestValue];
-                    if (cell == undefined) standardDeviation[i][arrOfMarks[j][i].value._latestValue] = 1;
-                    else
-                        standardDeviation[i][arrOfMarks[j][i].value._latestValue]++;
+            if (arrOfMarks.length > 0) {
+                //array 100 *n(categories mark) elements:
+                var standardDeviation = new Array();
+                for (var i = 0; i < arrOfMarks[0].length; i++) {
+                    standardDeviation[i] = new Array();
                 }
-            }
 
-            var dispersion = [];
-            var mathematicalExpectation = [];
-            var standardDeviationCount = [];
+                var forAverage = 0;
 
-            for (var i = 0; i < standardDeviation.length; i++) {
-                for (var j = 0; j < standardDeviation[i].length; j++) {
-                    if (standardDeviation[i][j] != undefined && standardDeviationCount[i] != undefined) standardDeviationCount[i] += standardDeviation[i][j];
-                    else
-                        if (standardDeviation[i][j] != undefined) standardDeviationCount[i] = standardDeviation[i][j];
-                }
-            }
+                for (var j = 0; j < arrOfMarks.length ; j++) {
+                    for (var i = 0; i < arrOfMarks[j].length ; i++) {
 
-            for (var i = 0; i < standardDeviation.length; i++) {
-                for (var j = 0; j < standardDeviation[i].length; j++) {
-                    if (standardDeviation[i][j] != undefined) {
-                        standardDeviation[i][j] = standardDeviation[i][j] / standardDeviationCount[i];
-                        console.log(mathematicalExpectation[i] + " " )
-                        if (mathematicalExpectation[i] == undefined) mathematicalExpectation[i] = standardDeviation[i][j] * j;
+                        if (averageArrOfMarks[i] == undefined) averageArrOfMarks[i] = arrOfMarks[j][i].value._latestValue;
                         else
-                            mathematicalExpectation[i] += standardDeviation[i][j] * j;
+                            averageArrOfMarks[i] += arrOfMarks[j][i].value._latestValue;
 
-                        if (dispersion[i] == undefined) dispersion[i] = standardDeviation[i][j] * j * j;
+                        var cell = standardDeviation[i][arrOfMarks[j][i].value._latestValue];
+                        if (cell == undefined) standardDeviation[i][arrOfMarks[j][i].value._latestValue] = 1;
                         else
-                            dispersion[i] += standardDeviation[i][j] * j * j;
-                        console.log(standardDeviation[i][j] + " " + j);
-                    }
-                }
-            }
-
-            for (var i = 0; i < dispersion.length; i++) {
-                dispersion[i] = dispersion[i] - mathematicalExpectation[i] * mathematicalExpectation[i];
-            }
-
-            
-
-            if (arrOfMarks.length != null && arrOfMarks.length != 0) {
-                for (var i = 0; i < averageArrOfMarks.length; i++) {
-                    averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
-                }
-
-                //push average marks
-                var averageMarkConteiner = $(".averagemarks");
-                var averageMarksName = $(".averagemarks .averageMarksNameColumn").html();
-                averageMarkConteiner.eq(0).html('<td colspan="3" class="averageMarksNameColumn">' + averageMarksName + '</td>');
-                for (var i = 0; i < averageArrOfMarks.length; i++) {
-                    var aver = averageArrOfMarks[i];
-                    var conteinerHTML = averageMarkConteiner.eq(0).html();
-                    if (aver != null) {
-                        conteinerHTML += "<td class='marks center'>" + aver.toFixed(2) + "</td>";
-                        averageMarkConteiner.eq(0).html(conteinerHTML);
+                            standardDeviation[i][arrOfMarks[j][i].value._latestValue]++;
                     }
                 }
 
-                //push mathematical expectation marks
-                var mathematicalExpectationContainer = $(".mathematicalExpectation");
-                var mathematicalExpectationName = $(".mathematicalExpectation .mathematicalExpectationNameColumn").html();
-                mathematicalExpectationContainer.eq(0).html('<td colspan="3" class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</td>');
-                for (var i = 0 ; i < dispersion.length; i++) {
-                    var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
-                    if (dispersion[i] != null) {
-                        conteinerHTML += "<td class='marks center'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</td>";
-                        mathematicalExpectationContainer.eq(0).html(conteinerHTML);
+                var dispersion = [];
+                var mathematicalExpectation = [];
+                var standardDeviationCount = [];
+
+                for (var i = 0; i < standardDeviation.length; i++) {
+                    for (var j = 0; j < standardDeviation[i].length; j++) {
+                        if (standardDeviation[i][j] != undefined && standardDeviationCount[i] != undefined) standardDeviationCount[i] += standardDeviation[i][j];
+                        else
+                            if (standardDeviation[i][j] != undefined) standardDeviationCount[i] = standardDeviation[i][j];
+                    }
+                }
+
+                for (var i = 0; i < standardDeviation.length; i++) {
+                    for (var j = 0; j < standardDeviation[i].length; j++) {
+                        if (standardDeviation[i][j] != undefined) {
+                            standardDeviation[i][j] = standardDeviation[i][j] / standardDeviationCount[i];
+                            console.log(mathematicalExpectation[i] + " ")
+                            if (mathematicalExpectation[i] == undefined) mathematicalExpectation[i] = standardDeviation[i][j] * j;
+                            else
+                                mathematicalExpectation[i] += standardDeviation[i][j] * j;
+
+                            if (dispersion[i] == undefined) dispersion[i] = standardDeviation[i][j] * j * j;
+                            else
+                                dispersion[i] += standardDeviation[i][j] * j * j;
+                            console.log(standardDeviation[i][j] + " " + j);
+                        }
+                    }
+                }
+
+                for (var i = 0; i < dispersion.length; i++) {
+                    dispersion[i] = dispersion[i] - mathematicalExpectation[i] * mathematicalExpectation[i];
+                }
+
+
+
+                if (arrOfMarks.length != null && arrOfMarks.length != 0) {
+                    for (var i = 0; i < averageArrOfMarks.length; i++) {
+                        averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
+                    }
+
+                    //push average marks
+                    var averageMarkConteiner = $(".averagemarks");
+                    var averageMarksName = $(".averagemarks .averageMarksNameColumn").html();
+                    averageMarkConteiner.eq(0).html('<td colspan="3" class="averageMarksNameColumn">' + averageMarksName + '</td>');
+                    for (var i = 0; i < averageArrOfMarks.length; i++) {
+                        var aver = averageArrOfMarks[i];
+                        var conteinerHTML = averageMarkConteiner.eq(0).html();
+                        if (aver != null) {
+                            conteinerHTML += "<td class='marks center'>" + aver.toFixed(2) + "</td>";
+                            averageMarkConteiner.eq(0).html(conteinerHTML);
+                        }
+                    }
+
+                    //push mathematical expectation marks
+                    var mathematicalExpectationContainer = $(".mathematicalExpectation");
+                    var mathematicalExpectationName = $(".mathematicalExpectation .mathematicalExpectationNameColumn").html();
+                    mathematicalExpectationContainer.eq(0).html('<td colspan="3" class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</td>');
+                    for (var i = 0 ; i < dispersion.length; i++) {
+                        var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
+                        if (dispersion[i] != null) {
+                            conteinerHTML += "<td class='marks center'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</td>";
+                            mathematicalExpectationContainer.eq(0).html(conteinerHTML);
+                        }
                     }
                 }
             }
-        });
+            });
+
     }
 
     self.sortingByName = function (key) {
