@@ -15,6 +15,7 @@ namespace TestFactory.MVC.ViewModels
         [Required]
         [DataType(DataType.Text)]
         [StringLength(255)]
+        [CustomAttribute(new string[] {"1","2"})]
         public virtual string LastName { get; set; }
 
         [Required]
