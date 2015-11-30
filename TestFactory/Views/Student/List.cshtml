@@ -80,7 +80,7 @@
         <div>
             <form>
                 <h3 id="groupName" data-bind="text: $root.group.fullName"></h3>
-                <table class="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+                <table  class="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
                         <thead class="headerTbSudent">
                             <tr class="noselect">
                                 <th class="last-name">
@@ -147,8 +147,9 @@
                         <div style="width: 100%; height: 160px; "></div>
                         <!-- ko if: mode() == $root.mods.display -->
                         <tr>
-                            <td class="last-name" data-bind="text: lastName"></td>
-                            <td class="first-name" data-bind="text: firstName"></td>
+                            <td><span class="last-name-display" data-bind="text: lastName, tooltipOverflow: { message: lastName }"></span></td>
+                            <div class="fakeDiv"></div>
+                            <td><span class="first-name" data-bind="text: firstName,  tooltipOverflow: { message: firstName }"></span></td>
                             <!-- ko foreach: marks -->
                             <td class="marks" data-bind="text: value" max="100  "></td>
                             <!-- /ko -->

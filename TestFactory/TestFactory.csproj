@@ -190,6 +190,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Components\CustomAttribute.cs" />
     <Compile Include="Controllers\Api\GroupsController.cs" />
     <Compile Include="Controllers\Api\SubjectsMarkController.cs" />
     <Compile Include="Controllers\Api\SubjectsController.cs" />

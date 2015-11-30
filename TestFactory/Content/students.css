@@ -1,5 +1,29 @@
 ﻿/* Styles sidebar
 -----------------------------------------------------------*/
+.fakeDiv{
+    display:none;
+    font-size: 14px;
+}
+div .material-tooltip{
+    font-size: 14px!important;
+}
+.last-name-display{
+    width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+
+}
+.first-name{
+    width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+
+}
+
    #groupName {
         position: fixed;
 text-align: left;
@@ -54,7 +78,7 @@ margin: 0;
     width: 16%;
     background-color: #eeeeee !important;
     top: 64px;
-    width: 200px;
+    width: 243px;
     height: 100%;
 }
 .inlineSubject{
@@ -101,27 +125,29 @@ margin: 0;
         display: table-cell;
         padding: 0 3px;
     }
+    .side-nav {
+    width: 16%;
+    background-color: #eeeeee !important;
+    top: 64px;
+    width: 230px;
+    height: 100%;
+}
     }
 
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 850px) {
       html {
-           min-width: 770px;
+           min-width: 850px;
       }
     #groupName {
         margin-left: 5px;
     }
-
-    .tbStudentList .first-name {
-            word-wrap: break-word;
-        }
-    .tbStudentList .last-name {
-            word-wrap: break-word;
-        }
+     .side-nav {
+    width: 16%;
+    background-color: #eeeeee !important;
+    top: 64px;
+    width: 200px;
+    height: 100%;
 }
- 
-
-.tbStudentList .bodyTbStudent{
-    
 }
 
 .marks{text-align: center;}
@@ -129,14 +155,6 @@ margin: 0;
 .tbStudentList .marks input {
     width: 40px;
     }
-
-.tbStudentList .first-name {
-    word-wrap:break-word;
-}
-
-.tbStudentList .last-name {
-    word-wrap:break-word;
-}
 
 .sort-link {
     padding: 0px;
@@ -147,27 +165,23 @@ margin: 0;
             display: table-cell ;
         }
 
-.tbStudentList .first-name {
-            word-wrap: break-word;
-        }
-
-.tbStudentList .last-name {
-            word-wrap: break-word;
-        }
-
  .btnStudent:hover {
             background-color: #757575;
         }
 
 .btnStudent {
             background-color: #9e9e9e;
-            padding: 0 1.65rem;
+            padding: 0 0.8rem;
         }
 
 .btnStudent img {
                 vertical-align: middle;
                 width: 20px;
             }
+
+a.btn.btn-size.btnStudent {
+    font-size: .9em;
+}
 
 .btn-success img {
             padding-top: 5px;
@@ -230,9 +244,7 @@ margin: 0;
 td.screenMediaAbove {
     padding: 15px 4px;
 }
-a.btn.btn-size.btnStudent {
-    font-size: .9em;
-}
+
 .ui-widget-overlay {
     background: BLACK;
     opacity: 0.9;

@@ -1,18 +1,4 @@
-﻿ko.bindingHandlers.tooltip = {
-    update: function (element, valueAccessor) {
-        var options = valueAccessor() || {};
-        ko.utils.unwrapObservable(valueAccessor());
-        if (options.message()) {
-            $(element).tooltip("remove");
-            $(element).attr('data-tooltip', options.message());
-            $(element).tooltip({ delay: 0 });
-        } else {
-            $(element).tooltip("remove");
-        }
-    }
-};
-
-function StudentsViewModel(group, sortingBy) {
+﻿function StudentsViewModel(group, sortingBy) {
 
     var self = this;
     self.group = new GroupModel(group);
