@@ -129,7 +129,6 @@
                     for (var j = 0; j < standardDeviation[i].length; j++) {
                         if (standardDeviation[i][j] != undefined) {
                             standardDeviation[i][j] = standardDeviation[i][j] / standardDeviationCount[i];
-                            console.log(mathematicalExpectation[i] + " ")
                             if (mathematicalExpectation[i] == undefined) mathematicalExpectation[i] = standardDeviation[i][j] * j;
                             else
                                 mathematicalExpectation[i] += standardDeviation[i][j] * j;
@@ -137,7 +136,6 @@
                             if (dispersion[i] == undefined) dispersion[i] = standardDeviation[i][j] * j * j;
                             else
                                 dispersion[i] += standardDeviation[i][j] * j * j;
-                            console.log(standardDeviation[i][j] + " " + j);
                         }
                     }
                 }
@@ -161,7 +159,7 @@
                         var aver = averageArrOfMarks[i];
                         var conteinerHTML = averageMarkConteiner.eq(0).html();
                         if (aver != null) {
-                            conteinerHTML += "<td class='marks center'>" + aver.toFixed(2) + "</td>";
+                            conteinerHTML += "<td class='marks center averageMarks'>" + aver.toFixed(2) + "</td>";
                             averageMarkConteiner.eq(0).html(conteinerHTML);
                         }
                     }
@@ -177,6 +175,20 @@
                             mathematicalExpectationContainer.eq(0).html(conteinerHTML);
                         }
                     }
+                }
+
+                //recalculate average marks deviation
+                var averageMarks = $(".averageMarks");
+                var studentMarkForCategories = $(".studentMark");
+
+                for (var i = 0; i < studentMarkForCategories.length; i++) {
+                    var value = studentMarkForCategories.eq(i).html() - averageMarks.eq(i % averageMarks.length).html();
+                    studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").html(value.toFixed(2));
+                    if (value >= 0) {
+                        studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "green");
+                    }
+                    else
+                        studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "coral");
                 }
             }
             });
