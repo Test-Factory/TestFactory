@@ -27,8 +27,6 @@
 
     self.subjects = ko.observableArray();
 
-    self.subjectsMarks = ko.observableArray();
-
     self.searchByStudentsGroups = ko.observable('');
 
     self.RecalculateAverageMarksArrayHelper = ko.observableArray();
