@@ -86,7 +86,7 @@
                                 </table>
                             </div>
                         </td>
-                        <td colspan="2"></td>
+                        <td class="td-content-hide" colspan="2"></td>
                         <td colspan="6" class="content-test">
                             <div>
                                 <table data-bind="foreach: filteredRecords2">
@@ -145,8 +145,8 @@
         $('.content-subjects').show();
         $('.subject-button').css('background-color', 'gainsboro');
         $('.test-button').css('background-color', 'transparent');
-        $('.th-content-hide').attr("colspan", "3");
         $('.th-content-hide').css("min-width", "360px");
+        $('.td-content-hide').css("min-width", '388px');
     }
     function Subjects() {
         $('.content-test').show();
@@ -154,8 +154,8 @@
         $('.content-subjects').hide();
         $('.test-button').css('background-color', 'gainsboro');
         $('.subject-button').css('background-color', 'transparent');
-        $('.th-content-hide').attr("colspan", "2");
         $('.th-content-hide').css("min-width", "0px");
+        $('.td-content-hide').css("min-width", '0px');
     }
     $(document).ready(function () {
         var a = $(".surname").text();
