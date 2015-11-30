@@ -15,14 +15,12 @@ namespace TestFactory.Business.Models
         public virtual string  GroupId { get; set; }
 
         public virtual IList<Mark> Marks { get; set; }
-        public virtual IList<SubjectMark> SubjectMarks { get; set; }
 
         public virtual int Year { get; set; }
 
         public Student()
         {
             Marks = new List<Mark>();
-            SubjectMarks = new List<SubjectMark>();
         }
     }
 }

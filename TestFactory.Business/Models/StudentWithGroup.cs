@@ -21,10 +21,12 @@ namespace TestFactory.Business.Models
         public virtual int Year { get; set; }
 
         public virtual IList<Mark> Marks { get; set; }
+        public virtual IList<SubjectMark> SubjectMarks { get; set; }
 
         public StudentWithGroup()
         {
             Marks = new List<Mark>();
+            SubjectMarks = new List<SubjectMark>();
         }
     }
 }

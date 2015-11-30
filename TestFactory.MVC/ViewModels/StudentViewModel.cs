@@ -25,6 +25,5 @@ namespace TestFactory.MVC.ViewModels
         public virtual int Year { get; set; }
 
         public virtual IList<Mark> Marks { get; set; }
-        public virtual IList<SubjectMark> SubjectMarks { get; set; }
     }
 }
