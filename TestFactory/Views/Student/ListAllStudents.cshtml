@@ -21,13 +21,13 @@
                             <span data-bind="css: selectedClassForSortedField"></span>
                             <!-- /ko -->
                         </th>
-                        <th class="first-name center-text" style="position: absolute; margin-left: 120px; z-index: 900; ; background-color: #F3F3F4;">
+                        <th class="first-name center-text" style="position: absolute; margin-left: 132px; z-index: 900; background-color: #F3F3F4;">
                             <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
                             <!-- ko if: $root.sortKey() == "firstName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>
                             <!-- /ko -->
                         </th>
-                        <th class="group center-text" style="position: absolute; margin-left: 240px; z-index: 900; ; background-color: #F3F3F4; min-width: 120px;">
+                        <th class="group center-text" style="position: absolute; margin-left: 295px; z-index: 900;  background-color: #F3F3F4; min-width: 100px;">
                             <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">@GlobalRes_ua.group</a> 
                             <!-- ko if: $root.sortKey() == "groupShortName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>
@@ -73,9 +73,9 @@
                             <div style="position: absolute">
                                 <table data-bind="foreach: filteredRecords2">
                                     <tr class="allStudents">
-                                        <td class="cels-padding last-name " data-bind="text: lastName"></td>
-                                        <td class="cels-padding first-name " data-bind="text: firstName"></td>
-                                        <td class="cels-padding group-name " data-bind="text: groupShortName"></td>
+                                        <td class="cels-padding last-name"><div onmouseover = $(this).prop("title",$(this).html()) class="surname" data-bind="text:lastName" style="overflow:hidden"></div></td>
+                                        <td class="cels-padding first-name"><div onmouseover=$(this).prop("title",$(this).html()) class ="name" data-bind="text:firstName" style="overflow:hidden"></div></td>
+                                        <td class="cels-padding group-name "><div onmouseover=$(this).prop("title",$(this).html()) class ="groupName" data-bind="text:groupShortName" style="overflow:hidden"></div></td>
                                     </tr>
                                 </table>
                             </div>
@@ -149,6 +149,8 @@
         $('.th-content-hide').css("min-width", "0px");
     }
     $(document).ready(function () {
+        var a = $(".surname").text();
+        //$("#surname").prop("title", $("#surname").val());
         var viewModel = new StudentsAllViewModel("lastName");
         globalView = viewModel;
         ko.applyBindings(viewModel);

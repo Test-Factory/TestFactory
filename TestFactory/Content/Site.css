@@ -101,7 +101,7 @@ td, th {
 
 .cels-padding {
     padding: 13px 5px 13px 5px !important;
-    max-width: 120px;
+    max-width: 166px;
 }
 
 .preloader-size {
@@ -130,8 +130,8 @@ td, th {
 
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
-    width: 120px;
-    min-width: 120px;
+    width: 95px;
+    min-width: 95px;
     white-space: nowrap;
 }
 
@@ -891,5 +891,20 @@ span[for = "Year"] {
     color: #FFF;
 }
 h3.subject-name {
-font-size: 2.4rem;
+    font-size: 2.4rem;
+}
+.groupName {
+    margin-left: 28px;
+    width:70px;
+}
+.surname {
+    margin-right: 35px;
+    width: 125px
+}
+.name {
+    margin-left: -5px;
+    margin-top: 3px;
+}
+tr.allStudents {
+    height: 55px;
 }
