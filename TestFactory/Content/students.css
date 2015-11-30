@@ -16,7 +16,7 @@ div .material-tooltip{
 
 }
 .first-name{
-    width: 120px;
+    width: 114px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

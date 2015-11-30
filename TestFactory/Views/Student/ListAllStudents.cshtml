@@ -15,24 +15,30 @@
             <table id="tbStudentList" class="border-table">
                 <thead>
                     <tr class="noselect border-table-tr">
-                        <th class="last-name center-text" style="position: absolute; z-index: 900; background-color: #F3F3F4;">
+                        <th class="last-name center-text" id="forLastName"style="position: absolute; z-index: 900; background-color: #F3F3F4;">
+                            <div id="lastName1">
                             <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
                             <!-- ko if: $root.sortKey() == "lastName" -->
                             <span data-bind="css: selectedClassForSortedField"></span>
                             <!-- /ko -->
+                                </div>
                         </th>
-                        <th class="first-name center-text" style="position: absolute; margin-left: 132px; z-index: 900; background-color: #F3F3F4;">
-                            <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
-                            <!-- ko if: $root.sortKey() == "firstName" -->
-                            <span data-bind="css: selectedClassForSortedField"></span>
-                            <!-- /ko -->
-                        </th>
-                        <th class="group center-text" style="position: absolute; margin-left: 295px; z-index: 900;  background-color: #F3F3F4; min-width: 100px;">
-                            <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">@GlobalRes_ua.group</a> 
-                            <!-- ko if: $root.sortKey() == "groupShortName" -->
-                            <span data-bind="css: selectedClassForSortedField"></span>
-                            <!-- /ko -->
-                        </th>
+                        <th class="first-name center-text" id ="forFirstName"style="position: absolute; margin-left: 100px; z-index: 900; background-color: #F3F3F4;">
+                            <div id="firstName1">
+                                <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
+                                <!-- ko if: $root.sortKey() == "firstName" -->
+                                <span data-bind="css: selectedClassForSortedField"></span>
+                                <!-- /ko -->
+                                </div>
+</th>
+                        <th class="group center-text" id="forGroupName" style="position: absolute; margin-left: 270px; z-index: 900;  background-color: #F3F3F4; min-width: 100px;">
+                            <div id="groupName1">
+                                <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">@GlobalRes_ua.group</a>
+                                <!-- ko if: $root.sortKey() == "groupShortName" -->
+                                <span data-bind="css: selectedClassForSortedField"></span>
+                                <!-- /ko -->
+                                </div>
+</th>
                         <th colspan="2" class="th-content-hide"></th>
                         <!-- ko foreach: $root.categories -->
                         <th class="content-test marks center">
