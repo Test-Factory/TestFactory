@@ -91,16 +91,18 @@
                                         <!-- ko foreach: marks -->
                                         <td>
                                              <table>
-                                                    <tr>
-                                                        <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>
+                                                 <tbody class="markSubjectContent">
+                                                        <tr>
+                                                            <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>
                                    
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="studentMarkDetails" style="padding-bottom: 4px;">
-                                                                <label class="greenText" data-bind="text: averageDeviation, style: { color: averageDeviation() < 0 ? 'coral' : 'seagreen' }"></label>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="studentMarkDetails" style="padding-bottom: 4px;">
+                                                                    <label class="greenText"></label>
+                                                            </td>
+                                                        </tr>
+                                                  </tbody>
+                                             </table>
                                         </td>
                                         <!-- /ko -->
                                         </tr>
