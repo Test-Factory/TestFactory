@@ -103,14 +103,14 @@
                 for (var j = 0; j < arrOfMarks.length ; j++) {
                     for (var i = 0; i < arrOfMarks[j].length ; i++) {
 
-                        if (averageArrOfMarks[i] == undefined) averageArrOfMarks[i] = arrOfMarks[j][i].value._latestValue;
+                        if (averageArrOfMarks[i] == undefined) averageArrOfMarks[i] = arrOfMarks[j][i].value();
                         else
-                            averageArrOfMarks[i] += arrOfMarks[j][i].value._latestValue;
+                            averageArrOfMarks[i] += arrOfMarks[j][i].value();
 
-                        var cell = standardDeviation[i][arrOfMarks[j][i].value._latestValue];
-                        if (cell == undefined) standardDeviation[i][arrOfMarks[j][i].value._latestValue] = 1;
+                        var cell = standardDeviation[i][arrOfMarks[j][i].value()];
+                        if (cell == undefined) standardDeviation[i][arrOfMarks[j][i].value()] = 1;
                         else
-                            standardDeviation[i][arrOfMarks[j][i].value._latestValue]++;
+                            standardDeviation[i][arrOfMarks[j][i].value()]++;
                     }
                 }
 
