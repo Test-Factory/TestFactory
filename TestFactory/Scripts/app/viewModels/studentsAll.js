@@ -181,7 +181,6 @@
 
                 //recalculate average marks deviation
                 var averageMarks = $(".averageMarks");
-                alert(averageMarks.length);
                 var studentMarkForCategories = $(".studentMark");
 
                 for (var i = 0; i < studentMarkForCategories.length; i++) {
