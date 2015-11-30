@@ -105,6 +105,19 @@
                                 </table>
                             </div>
                         </td>
+
+                        <td style="display: none">
+                            <div>
+                                <table data-bind="foreach: filteredRecords2">
+                                    <tr class="allStudents">
+                                        <!-- ko foreach: subjectMarks -->
+                                        <td data-bind="text: value">
+                                        </td>
+                                        <!-- /ko -->
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
                         
                         <!-- ko foreach: $root.subjectsMarks -->
                         <td class="subjectsMarks" data-bind="text: Value"></td>
