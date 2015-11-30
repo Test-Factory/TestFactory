@@ -178,12 +178,13 @@
                         }
                     }
                 }
+
+                //recalculate average marks deviation
                 var averageMarks = $(".averageMarks");
                 alert(averageMarks.length);
                 var studentMarkForCategories = $(".studentMark");
 
                 for (var i = 0; i < studentMarkForCategories.length; i++) {
-                    console.log(averageMarks.eq(i % averageMarks.length).html() + "  " + studentMarkForCategories.eq(i).html())
                     var value = studentMarkForCategories.eq(i).html() - averageMarks.eq(i % averageMarks.length).html();
                     studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").html(value.toFixed(2));
                     if (value >= 0) {
@@ -191,7 +192,6 @@
                     }
                     else
                         studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "coral");
-                    console.log(value);
                 }
             }
             });
