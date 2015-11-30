@@ -217,24 +217,15 @@
     }, self);
 
     self.init = function () {
-        var averageMarks = [];
+        
         //todo: move urls to providers
         markProvider.get(pathForMarProvider.everage, function (data) {
             $(data).each(function (index, element) {
-                averageMarks[index] = element;
+                
                 var mappedItem = new AverageMarksForFacultyModel(element);
                 self.categories.push(mappedItem);
             });
-        });
-        //todo: move urls to providers
-
-        markProvider.get(pathForMarProvider.deviation, function (data) {
-            $(data).each(function (index, element) {
-                self.standardDeviation.push(element);
-            });
-        });
-
-       
+        });       
 
         groupProvider.getNames(pathForGroupProvider.name, function (data) {
             $(data).each(function (index, element) {
@@ -262,7 +253,7 @@
 
         studentProvider.get(function (data) {
             $(data).each(function (index, element) {
-                var mappedStudent = new StudentForAllModel(element, averageMarks);
+                var mappedStudent = new StudentForAllModel(element);
                 mappedStudent.sortMarksByCategoryIdDesc();
                 self.students.push(mappedStudent);
             });
