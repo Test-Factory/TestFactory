@@ -27,6 +27,8 @@ namespace TestFactory.NHibernateDataProvider.NHibernateCore.Mappings
             Map(x => x.Year);
 
             HasMany(x => x.Marks).KeyColumn("StudentId").Cascade.All().Not.LazyLoad().Inverse();
+
+            HasMany(x => x.SubjectMarks).KeyColumn("StudentId").Cascade.All().Not.LazyLoad().Inverse();
         }
     }
 }

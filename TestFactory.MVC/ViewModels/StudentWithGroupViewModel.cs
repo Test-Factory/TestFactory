@@ -25,5 +25,6 @@ namespace TestFactory.MVC.ViewModels
         public virtual string GroupId { get; set; }
 
         public virtual IList<Mark> Marks { get; set; }
+        public virtual IList<SubjectMark> SubjectMarks { get; set; }
     }
 }

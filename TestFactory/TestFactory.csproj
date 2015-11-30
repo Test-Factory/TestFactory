@@ -333,6 +333,7 @@
     <Content Include="Scripts\app\models\averageMarksForFacultyModel.js" />
     <Content Include="Scripts\app\models\groupModel.js" />
     <Content Include="Scripts\app\models\studentForAllModel.js" />
+    <Content Include="Scripts\app\models\subjectMark.js" />
     <Content Include="Scripts\app\models\subjectModel.js" />
     <Content Include="Scripts\app\models\subjectsInGroups.js" />
     <Content Include="Scripts\app\settings\compureModels.js" />

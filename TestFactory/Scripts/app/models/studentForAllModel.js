@@ -17,6 +17,16 @@
             index++;
         });
     }
+
+    self.subjectMarks = ko.observableArray();
+    if (item && item.SubjectMarks) {
+        var index = 0;
+        item.SubjectMarks.forEach(function (element) {
+            var mappedItem = new SubjectMarkModel(element);
+            self.subjectMarks.push(mappedItem);
+            index++;
+        })
+    }
 }
 StudentForAllModel.prototype.sortMarksByCategoryIdDesc = function () {
     this.marks.sort(function (leftMark, rightMark) {
