@@ -49,7 +49,7 @@
                         </th>
                         <!-- /ko -->
                         <!-- ko foreach: $root.subjects -->
-                        <th class="subjects content-subjects">
+                        <th class="subjects content-subjects" style="max-width: 100px; width: 100px;">
                             <a class="btn-flat sort-link" data-bind="text: ShortName"></a>
                             
                         </th>
@@ -112,12 +112,13 @@
                             </div>
                         </td>
 
-                        <td style="display: none">
+                        <td colspan="6" class="content-subject-mark" style="display: none">
                             <div>
                                 <table data-bind="foreach: filteredRecords2">
                                     <tr class="allStudents">
                                         <!-- ko foreach: subjectMarks -->
-                                        <td data-bind="text: value">
+                                        <td style="min-width: 100px">
+                                            <label data-bind="text: value"></label>
                                         </td>
                                         <!-- /ko -->
                                     </tr>
@@ -140,6 +141,7 @@
     var globalView = null;
     function Holland() {
         $('.content-test').hide();
+        $('.content-subject-mark').show();
         $('.content-subjects').show();
         $('.subject-button').css('background-color', 'gainsboro');
         $('.test-button').css('background-color', 'transparent');
@@ -148,6 +150,7 @@
     }
     function Subjects() {
         $('.content-test').show();
+        $('.content-subject-mark').hide();
         $('.content-subjects').hide();
         $('.test-button').css('background-color', 'gainsboro');
         $('.subject-button').css('background-color', 'transparent');
