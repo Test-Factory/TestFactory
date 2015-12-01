@@ -71,6 +71,7 @@
     <Compile Include="ViewModels\AverageMarkForFacultyViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\FacultyViewModel.cs" />
     <Compile Include="ViewModels\FrequencyMarkForFacultyByCategoryViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\MarkViewModel.cs" />

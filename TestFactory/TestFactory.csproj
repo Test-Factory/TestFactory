@@ -337,10 +337,12 @@
     <Content Include="Scripts\app\models\subjectMark.js" />
     <Content Include="Scripts\app\models\subjectModel.js" />
     <Content Include="Scripts\app\models\subjectsInGroups.js" />
+    <Content Include="Scripts\app\models\userModel.js" />
     <Content Include="Scripts\app\settings\compureModels.js" />
     <Content Include="Scripts\app\settings\configValidation.js" />
     <Content Include="Scripts\app\viewModels\studentsAll.js" />
     <Content Include="Scripts\app\viewModels\subjects.js" />
+    <Content Include="Scripts\app\viewModels\users.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
