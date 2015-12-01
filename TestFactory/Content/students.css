@@ -1,5 +1,6 @@
 ﻿/* Styles sidebar
 -----------------------------------------------------------*/
+.content-student{margin-left: 50px !important; }
 .fakeDiv{
     display:none;
     font-size: 14px;
@@ -8,20 +9,18 @@ div .material-tooltip{
     font-size: 14px!important;
 }
 .last-name-display{
-    width: 240px;
+    width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: block;
-
 }
 .first-name{
-    width: 114px;
+    width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: block;
-
 }
 
    #groupName {
