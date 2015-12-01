@@ -10,37 +10,33 @@ using TestFactory.MVC.ViewModels;
 
 namespace TestFactory.Controllers.Api
 {
-     [RoutePrefix("api/users")]
-    public class UsersController : ApiController
+    [RoutePrefix("api/faculties")]
+    public class FacultiesController : ApiController
     {
-         private readonly UserContext user;
-
-         public UsersController()
+        private readonly UserContext user;
+        public FacultiesController()
         {
             this.user = new UserContext();
         }
 
         [HttpGet]
-         public IList<UserViewModel> Get()
+        public IList<FacultyViewModel> Get()
         {
-            var result =  new List<UserViewModel>();
+            var result = new List<FacultyViewModel>();
             return result;
         }
-
         [HttpPost]
         [ValidateModel]
-        public IHttpActionResult Create(UserViewModel user)
+        public IHttpActionResult Create(FacultyViewModel faculty)
         {
-            var model = new UserViewModel();
+            var model = new FacultyViewModel();
             return Ok(model);
         }
-
         [HttpPut]
         [ValidateModel]
-        public IHttpActionResult Update(UserViewModel user)
+        public IHttpActionResult Update(FacultyViewModel faculty)
         {
             return Ok();
         }
-
     }
 }

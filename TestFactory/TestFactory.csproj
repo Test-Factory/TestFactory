@@ -190,10 +190,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\Api\FacultiesController.cs" />
     <Compile Include="Controllers\Api\GroupsController.cs" />
     <Compile Include="Controllers\Api\SubjectsMarkController.cs" />
     <Compile Include="Controllers\Api\SubjectsController.cs" />
-    <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\SubjectMarkController.cs" />
     <Compile Include="Filters\MvcHandleErrorAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -342,7 +343,6 @@
     <Content Include="Scripts\app\settings\configValidation.js" />
     <Content Include="Scripts\app\viewModels\studentsAll.js" />
     <Content Include="Scripts\app\viewModels\subjects.js" />
-    <Content Include="Scripts\app\viewModels\users.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
@@ -465,13 +465,13 @@
     <Content Include="Views\Student\ListAllStudents.cshtml" />
     <Content Include="Views\Student\Search.cshtml" />
     <Content Include="Views\SubjectMark\List.cshtml" />
-    <Content Include="Views\User\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Charts\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Categoty\" />
+    <Folder Include="Views\Faculty\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

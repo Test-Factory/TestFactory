@@ -10,15 +10,6 @@ namespace TestFactory.Controllers
 {
     public class UserController : Controller
     {
-
-        [HttpGet]
-       // [Authorize(Roles = RoleNames.Admin)]
-        public ActionResult List()
-        {
-            var result = new List<UserViewModel>();
-            return View("List", result);
-        }
-     
         [HttpGet]
         [AllowAnonymous]
         public ActionResult LogIn()
