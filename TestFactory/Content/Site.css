@@ -131,7 +131,7 @@ td, th {
 .last-name, .first-name, .group-name {
     font-size: 1.1em;
     width: 106px;
-    min-width: 95px;
+    min-width: 60px;
     white-space: nowrap;
 }
 
@@ -894,7 +894,7 @@ h3.subject-name {
     font-size: 2.4rem;
 }
 .groupName {
-    margin-left: 20px;
+    margin-left: -30px;
     width:80px;
 }
 .surname {
