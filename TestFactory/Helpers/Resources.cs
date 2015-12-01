@@ -12,9 +12,11 @@ namespace TestFactory
         {
             public const string Filler = "Filler";
 
-            public const string Editor = "Editor"; 
+            public const string Editor = "Editor";
 
-            public const string AllRoles  = "Editor, Filler";
+            public const string Admin = "Admin";
+
+            public const string AllRoles  = "Editor, Filler, Admin";
         }
     }
 }
