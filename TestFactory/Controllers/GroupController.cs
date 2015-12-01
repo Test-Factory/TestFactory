@@ -10,7 +10,7 @@ using RoleNames = TestFactory.Resources.RoleNames;
 
 namespace TestFactory.Controllers
 {
-    [Authorize(Roles = RoleNames.Admin)]
+    [Authorize(Roles = RoleNames.Filler)]
     public class GroupController : Controller
     {     
 
