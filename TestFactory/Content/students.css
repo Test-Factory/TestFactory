@@ -9,20 +9,18 @@ div .material-tooltip{
     font-size: 14px!important;
 }
 .last-name-display{
-    width: 240px;
+    width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: block;
-
 }
 .first-name{
-    width: 240px;
+    width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: block;
-
 }
 
    #groupName {
