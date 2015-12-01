@@ -10,7 +10,13 @@ namespace TestFactory
 {
     public static class Framework
     {
-
+        public static FacultyManager FacultyManager
+        {
+            get
+            {
+                return DependencyResolver.Current.GetService<FacultyManager>();
+            }
+        }
         public static GroupManager GroupManager
          {
              get 

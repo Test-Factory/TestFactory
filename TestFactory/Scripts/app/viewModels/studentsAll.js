@@ -255,6 +255,7 @@
             $(data).each(function (index, element) {
                 var mappedStudent = new StudentForAllModel(element);
                 mappedStudent.sortMarksByCategoryIdDesc();
+                
                 self.students.push(mappedStudent);
             });
             self.preloader(false);

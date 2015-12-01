@@ -1,5 +1,6 @@
 ﻿/* Styles sidebar
 -----------------------------------------------------------*/
+.content-student{margin-left: 50px !important; }
 .fakeDiv{
     display:none;
     font-size: 14px;
@@ -8,20 +9,18 @@ div .material-tooltip{
     font-size: 14px!important;
 }
 .last-name-display{
-    width: 240px;
+    width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: block;
-
 }
 .first-name{
-    width: 114px;
+    width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: block;
-
 }
 
    #groupName {
@@ -75,11 +74,11 @@ margin: 0;
 }
 
 .side-nav {
-    width: 16%;
+    /*width: 16%;*/
     background-color: #eeeeee !important;
     top: 64px;
     width: 243px;
-    height: 100%;
+    height: calc(100% - 64px);
 }
 .inlineSubject{
      display:inline!important;
@@ -90,7 +89,7 @@ margin: 0;
 .side-nav .collapsible-body .collection {
     border: 0;
     border-bottom: 0;
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 0.3rem;
     padding: 0;
 }
 

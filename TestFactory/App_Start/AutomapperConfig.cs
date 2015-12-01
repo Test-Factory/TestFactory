@@ -35,15 +35,15 @@ namespace TestFactory.App_Start
               .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper
+             .CreateMap<Faculty, FacultyViewModel>()
+             .IncludeBase<BaseModel, BaseViewModel>();
+
+            Mapper
                 .CreateMap<Student, StudentViewModel>()
                 .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper
                 .CreateMap<StudentWithGroup, StudentWithGroupViewModel>();
-
-            //Mapper
-            //    .CreateMap<SubjectWithGroup, SubjectWithGroupViewModel>()
-            //   .ForMember(s => s.Id, opt => opt.MapFrom(sg => sg.SubjectId)); 
 
             Mapper
                .CreateMap<AverageMarkForFaculty, AverageMarkForFacultyViewModel>();
@@ -76,10 +76,6 @@ namespace TestFactory.App_Start
 
             Mapper.CreateMap<AverageMarkForFacultyViewModel, AverageMarkForFaculty>();
 
-            //Mapper.CreateMap<SubjectWithGroupViewModel, SubjectWithGroup>()
-            //   .ForMember(s => s.SubjectId, opt => opt.MapFrom(sg => sg.Id)); 
-
-
             Mapper.CreateMap<FrequencyMarkForFacultyByCategoryViewModel, FrequencyMarkForFacultyByCategory>();
 
             Mapper.CreateMap<CategoryViewModel, Category>()
@@ -96,7 +92,10 @@ namespace TestFactory.App_Start
             Mapper.CreateMap<MarkViewModel, Mark>()
                .IncludeBase<BaseViewModel, BaseModel>();
 
-            Mapper.CreateMap<GroupViewModel, Group>()
+            Mapper.CreateMap<MarkViewModel, Mark>()
+               .IncludeBase<BaseViewModel, BaseModel>();
+
+            Mapper.CreateMap<FacultyViewModel, Faculty>()
                 .IncludeBase<BaseViewModel, BaseModel>();
         }
     }

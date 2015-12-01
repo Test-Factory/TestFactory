@@ -190,9 +190,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\Api\FacultiesController.cs" />
     <Compile Include="Controllers\Api\GroupsController.cs" />
     <Compile Include="Controllers\Api\SubjectsMarkController.cs" />
     <Compile Include="Controllers\Api\SubjectsController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\SubjectMarkController.cs" />
     <Compile Include="Filters\MvcHandleErrorAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -336,6 +338,7 @@
     <Content Include="Scripts\app\models\subjectMark.js" />
     <Content Include="Scripts\app\models\subjectModel.js" />
     <Content Include="Scripts\app\models\subjectsInGroups.js" />
+    <Content Include="Scripts\app\models\userModel.js" />
     <Content Include="Scripts\app\settings\compureModels.js" />
     <Content Include="Scripts\app\settings\configValidation.js" />
     <Content Include="Scripts\app\viewModels\studentsAll.js" />
@@ -468,6 +471,7 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Categoty\" />
+    <Folder Include="Views\Faculty\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

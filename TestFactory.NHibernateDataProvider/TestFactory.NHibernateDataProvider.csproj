@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="DataProviders\NHibernateAverageMarkForFacultyDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateDataProviderBaseForView.cs" />
+    <Compile Include="DataProviders\NHibernateFacultyDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateFrequencyMarkForFacultyByCategoryDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateMarkDataProvider.cs" />
     <Compile Include="DataProviders\NHibernateRoleDataProvider.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="DbVersioning\Migrations\Version3\M036_CreateTableSubjectMark.cs" />
     <Compile Include="DbVersioning\Migrator.cs" />
     <Compile Include="NHibernateCore\Mappings\AverageMarkForFacultyMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\FacultyMap.cs" />
     <Compile Include="NHibernateCore\Mappings\FrequencyMarkForFacultyByCategoryMap.cs" />
     <Compile Include="NHibernateCore\Mappings\StudentWithGroupMap.cs" />
     <Compile Include="NHibernateCore\Mappings\SubjectMap.cs" />
