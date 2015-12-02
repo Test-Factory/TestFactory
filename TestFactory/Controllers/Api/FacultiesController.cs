@@ -32,6 +32,13 @@ namespace TestFactory.Controllers.Api
         public IHttpActionResult Create(FacultyViewModel faculty)
         {
             var model = new FacultyViewModel();
+            model.Id = "111";
+            model.Name = faculty.Name;
+            model.Users = faculty.Users;
+            model.Users[0].Id = "1";
+            model.Users[0].FacultyId = model.Id;
+            model.Users[1].Id = "2";
+            model.Users[1].FacultyId = model.Id;
             return Ok(model);
         }
         [HttpPut]

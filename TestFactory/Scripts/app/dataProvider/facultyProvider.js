@@ -13,7 +13,7 @@ $(function () {
     FacultyProvider.prototype.post = function (data, callback) {
         $.ajax({
             method: "POST",
-            url: path,
+            url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
         }).done(callback);
@@ -22,7 +22,7 @@ $(function () {
     FacultyProvider.prototype.put = function (data, callback) {
         $.ajax({
             method: "PUT",
-            url: path,
+            url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
         }).done(callback);

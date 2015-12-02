@@ -3,6 +3,10 @@
 
     self.faculties = ko.observableArray();
     self.preloader = ko.observable(true);
+
+    self.roles = ko.observableArray();//TODO: role provider
+    self.roles.push("12dc6a23-8454-419f-ac75-2ea0560d27ef");
+    self.roles.push("316987d9-9e4e-4cc4-b32a-b64112ca20be");
    
 
     self.facultyForUpdate = ko.validatedObservable(new FacultyModel(), { deep: true });
@@ -13,12 +17,22 @@
     self.mods = {
         display: "display",
         edit: "edit",
-        deleting: "delete"
+        deleting: "delete",
+        create: "create"
     };
 
     self.addFaculty = function () {
-        closeAllEditing();
-        //self.facultyForCreate = new FacultyModel();
+        var newFaculty = new FacultyModel();
+        self.facultyForCreate().mapFrom(newFaculty);
+        for (var c = 0; c < 2; c++) {
+            var user = new UserModel();
+            user.roles_id(self.roles()[c]);
+            self.facultyForCreate().users.push(user);
+        }
+        self.facultyForCreate().mode(self.mods.create);
+        //self.sizeTable();
+        ko.validation.group(self.facultyForCreate);
+       
     }
 
     self.saveAddedSFaculty = function () {
@@ -30,10 +44,11 @@
             var newFaculty = new FacultyModel();
             newFaculty.mapFrom(self.facultyForCreate());
             newFaculty.id(data.Id);
+            newFaculty.mode(self.mods.display);
             for (i in newFaculty.users()) {
                 newFaculty.users()[i].facultyId(newFaculty.id());
                 for (j in data.Users) {
-                    if (newFaculty.users()[i].role_id() == data.Marks[j].Role_Id) {
+                    if (newFaculty.users()[i].roles_id() == data.Users[j].Roles_Id) {
                         newFaculty.users()[i].id(data.Users[j].Id);
                         break;
                     }
@@ -42,7 +57,7 @@
             }
             //self.sizeTable();
             closeAllEditing();
-            //self.students.splice(0, 0, newStudent);
+            self.faculties.splice(0, 0, newFaculty);
             self.addFaculty();
         });
     };
