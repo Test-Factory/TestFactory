@@ -14,13 +14,13 @@ namespace TestFactory.Business.Models
 
         public virtual string Roles_id { get; set; }
 
-        public virtual IList<Group> AdminGroup { get; set; }
+        //public virtual IList<Group> AdminGroup { get; set; }
 
         public virtual Role Roles{ get; set; }
 
         public User()
         {
-            AdminGroup = new List<Group>();
+            //AdminGroup = new List<Group>();
         }
     }
 }

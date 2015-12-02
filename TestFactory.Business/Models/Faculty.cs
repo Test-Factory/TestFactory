@@ -9,7 +9,7 @@ namespace TestFactory.Business.Models
     public class Faculty : BaseModel
     {
         public virtual string Name { get; set; }
-        public virtual List<User> Users { get; set; }
+        public virtual IList<User> Users { get; set; }
         public Faculty()
         {
             Users = new List<User>();

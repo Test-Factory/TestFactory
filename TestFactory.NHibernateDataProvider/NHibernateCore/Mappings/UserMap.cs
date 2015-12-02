@@ -15,7 +15,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.PasswordSalt);
 
-            Map(x => x.FacultyId);
+            Map(x => x.FacultyId).Not.Nullable();
 
             Map(x => x.Roles_id);
 

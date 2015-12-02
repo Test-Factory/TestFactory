@@ -5,31 +5,31 @@
 
 @Styles.Render("~/Students/css")
 
-<div class="content-student">
+<div class="content-admin">
     <form>
         <h3> Admin</h3>
         <table class="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
             <thead class="headerTbSudent">
                 <tr class="noselect">
-                    <th >
-                            <a class="btn-flat  sort-link" >Faculty</a>
+                    <th style="width: 120px; padding: 0px 5px;">
+                        <a class="btn-flat sort-link ">Faculty</a>
                     </th>
-                    <th>
-                        <a class="btn-flat  sort-link" >FillerEmail</a>
+                    <th style="width: 200px;  padding: 0px 5px;">
+                        <a style="text-align: left;" class="btn-flat  sort-link">FillerEmail</a>
                     </th>
-                    <th>
+                    <th style="width: 200px; padding: 0px 5px;">
                         <a class="btn-flat  sort-link">FillerPass</a>
                     </th>
-                    <th>
+                    <th style="width: 200px; padding: 0px 5px;">
                         <a class="btn-flat  sort-link">EditorEmail</a>
                     </th>
-                    <th >
+                    <th style="width: 200px; padding: 0px 5px;">
                         <a class="btn-flat  sort-link">EditorPass</a>
                     </th>
                     <th></th>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="width: 120px;">
                         <input type="text"
                                data-position="bottom"
                                data-bind="textInput: $root.facultyForCreate().name,  tooltip: { message: $root.facultyForCreate().name.error }"
@@ -37,43 +37,28 @@
                                placeholder="Faculty" />
                     </td>
                     <!-- ko foreach: $root.facultyForCreate().users -->
-                    <td>
+                    <td style="width: 200px;">
                         <input type="email"
                                data-position="bottom"
                                data-bind="textInput: email,  tooltip: { message: email.error }"
                                maxlength="50"
                                placeholder="Email" />
                     </td>
-                    <td>
+                    <td style="width: 200px;">
                         <input type="password"
                                data-position="bottom"
-                               data-bind="textInput: $root.facultyForCreate().users()[0].password,  tooltip: { message: password.error }"
+                               data-bind="textInput: password,  tooltip: { message: password.error }"
                                maxlength="255"
-                               placeholder="Email" />
+                               placeholder="pass" />
                     </td>
                     <!-- /ko -->
-                    @*<td>
-                        <input type="email"
-                               data-position="bottom"
-                               data-bind="textInput: $root.facultyForCreate().users()[1].email,  tooltip: { message: $root.facultyForCreate().users()[1].email.error }"
-                               maxlength="50"
-                               placeholder="EditorEmail" />
-                    </td>
-                    <td>
-                        <input type="password"
-                               data-position="bottom"
-                               data-bind="textInput: $root.facultyForCreate().users()[1].password,  tooltip: { message: $root.facultyForCreate().users()[1].password.error }"
-                               maxlength="255"
-                               placeholder="EditorEmail" />
-                    </td>*@
                     <td class="screenMediaAbove ">
-                        <button class="btn btn-success  " data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
+                        <button class="btn btn-success  " data-bind="click: $root.saveAddedFaculty">@GlobalRes_ua.save</button>
                     </td>
                     <td colspan="3" class="screenMediaBelow ">
                         <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
                     </td>
                 </tr>
-
             </thead>
             <tr>
                 <td colspan="6">
@@ -84,39 +69,36 @@
                     <!-- /ko -->
                 </td>
             </tr>
-            <tbody class="bodyTbStudent" data-bind="foreach: faculties">
-                @*<div style="width: 100%; height: 160px; "></div>*@
+            <tbody style="width:100%" class="" data-bind="foreach: faculties">
+                <div style="width: 100%; height: 120px; "></div>
                 <!-- ko if: mode() == $root.mods.display -->
                 <tr>
-                    <td><span class="last-name-display" data-bind="text: name, tooltipOverflow: { message: name }"></span></td>
+                    <td ><span style="width: 120px; display: block" data-bind="text: name"></span></td>
                     <div class="fakeDiv"></div>
                     <!-- ko foreach: users -->
-                    <td  data-bind="text: email"></td>
-                    <td data-bind="text: password"></td>
+                    <td ><span style="width: 180px; display: block" data-bind="text: email"></span></td>
+                    <td ><span style="width: 180px; display: block" data-bind="text: password"></span></td>
                     <!-- /ko -->
-                    @if (User.IsInRole(Resources.RoleNames.Filler))
-                    {
                         <td class="screenMediaBelow ">
-                            <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
+                            <a class="  btn btn-size btnStudent"><img src="~/Content/images/edit.png" /></a>
                         </td>
 
                         <td class="screenMediaAbove ">
-                            <a class="  btn  btn-size btnStudent " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</a>
+                            <a class="btn  btn-size btnStudent ">@GlobalRes_ua.edit</a>
                         </td>
-                    }
                 </tr>
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
                     <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.facultyForUpdate().name,  tooltip: { message: $root.facultyForUpdate().name.error }" maxlength="50" /></td>
                     <!-- ko foreach: $root.facultyForUpdate().users -->
-                    <td ><input type="text" data-position="bottom" data-bind="textInput: email,  tooltip: { message: email.error }" max="50" /></td>
-                    <td ><input type="text" data-position="bottom" data-bind="textInput: password,  tooltip: { message: password.error }" max="250" /></td>
+                    <td ><input type="text" data-position="bottom" data-bind="textInput: email,  tooltip: { message: email.error }" /></td>
+                    <td ><input type="text" data-position="bottom" data-bind="textInput: password,  tooltip: { message: password.error }"/></td>
                     <!-- /ko -->
                     <td class="screenMediaBelow ">
                         <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></a>
                     </td>
-                    <td colspan="3" class="screenMediaAbove ">
+                    <td class="screenMediaAbove ">
                         <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
                     </td>
                 </tr>
@@ -135,7 +117,6 @@
             var viewModel = new FacultiesViewModel();
             globalView = viewModel;
             ko.applyBindings(viewModel);
-
         });
     </script>
 }
