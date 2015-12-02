@@ -468,13 +468,13 @@
     <Content Include="Views\Student\ListAllStudents.cshtml" />
     <Content Include="Views\Student\Search.cshtml" />
     <Content Include="Views\SubjectMark\List.cshtml" />
+    <Content Include="Views\Faculty\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Charts\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Categoty\" />
-    <Folder Include="Views\Faculty\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

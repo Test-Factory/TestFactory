@@ -17,12 +17,6 @@ namespace TestFactory
                 defaults: new { controller = "Student", action = "Update", id = UrlParameter.Optional }
                 );
 
-            //routes.MapRoute(
-            //    name: "studentDelete",
-            //    url: "studentDelete/{studentId}",
-            //    defaults: new { controller = "Student", action = "Delete", studentId = UrlParameter.Optional }
-            //    );
-
             routes.MapRoute(
                 name: "groupStudentList",
                 url: "group/{groupId}/students",
@@ -98,6 +92,12 @@ namespace TestFactory
            );
 
             #endregion
+
+            routes.MapRoute(
+             name: "facultyList",
+             url: "faculties",
+             defaults: new { controller = "Faculty", action = "List" }
+           );
 
             #region Subject map routes
             routes.MapRoute(

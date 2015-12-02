@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+@using TestFactory
+
+@Styles.Render("~/Students/css")
+
+<div class="content-student">
+    <form>
+        <h3> Admin</h3>
+        <table class="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
+            <thead class="headerTbSudent">
+                <tr class="noselect">
+                    <th >
+                            <a class="btn-flat  sort-link" >Faculty</a>
+                    </th>
+                    <th>
+                        <a class="btn-flat  sort-link" >FillerEmail</a>
+                    </th>
+                    <th>
+                        <a class="btn-flat  sort-link">FillerPass</a>
+                    </th>
+                    <th>
+                        <a class="btn-flat  sort-link">EditorEmail</a>
+                    </th>
+                    <th >
+                        <a class="btn-flat  sort-link">EditorPass</a>
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text"
+                               data-position="bottom"
+                               data-bind="textInput: $root.facultyForCreate().name,  tooltip: { message: $root.facultyForCreate().name.error }"
+                               maxlength="50"
+                               placeholder="Faculty" />
+                    </td>
+                    <!-- ko foreach: $root.facultyForCreate().users -->
+                    <td>
+                        <input type="email"
+                               data-position="bottom"
+                               data-bind="textInput: email,  tooltip: { message: email.error }"
+                               maxlength="50"
+                               placeholder="Email" />
+                    </td>
+                    <td>
+                        <input type="password"
+                               data-position="bottom"
+                               data-bind="textInput: $root.facultyForCreate().users()[0].password,  tooltip: { message: password.error }"
+                               maxlength="255"
+                               placeholder="Email" />
+                    </td>
+                    <!-- /ko -->
+                    @*<td>
+                        <input type="email"
+                               data-position="bottom"
+                               data-bind="textInput: $root.facultyForCreate().users()[1].email,  tooltip: { message: $root.facultyForCreate().users()[1].email.error }"
+                               maxlength="50"
+                               placeholder="EditorEmail" />
+                    </td>
+                    <td>
+                        <input type="password"
+                               data-position="bottom"
+                               data-bind="textInput: $root.facultyForCreate().users()[1].password,  tooltip: { message: $root.facultyForCreate().users()[1].password.error }"
+                               maxlength="255"
+                               placeholder="EditorEmail" />
+                    </td>*@
+                    <td class="screenMediaAbove ">
+                        <button class="btn btn-success  " data-bind="click: $root.saveAddedStudent">@GlobalRes_ua.save</button>
+                    </td>
+                    <td colspan="3" class="screenMediaBelow ">
+                        <a class="btn  btn-success" data-bind="click: $root.saveAddedStudent"><img src="~/Content/images/document_save.png" /></a>
+                    </td>
+                </tr>
+
+            </thead>
+            <tr>
+                <td colspan="6">
+                    <!-- ko if: $root.preloader() -->
+                    <div class="progress ">
+                        <div class="indeterminate"></div>
+                    </div>
+                    <!-- /ko -->
+                </td>
+            </tr>
+            <tbody class="bodyTbStudent" data-bind="foreach: faculties">
+                @*<div style="width: 100%; height: 160px; "></div>*@
+                <!-- ko if: mode() == $root.mods.display -->
+                <tr>
+                    <td><span class="last-name-display" data-bind="text: name, tooltipOverflow: { message: name }"></span></td>
+                    <div class="fakeDiv"></div>
+                    <!-- ko foreach: users -->
+                    <td  data-bind="text: email"></td>
+                    <td data-bind="text: password"></td>
+                    <!-- /ko -->
+                    @if (User.IsInRole(Resources.RoleNames.Filler))
+                    {
+                        <td class="screenMediaBelow ">
+                            <a class="  btn btn-size btnStudent" data-bind="click: $root.editStudent"><img src="~/Content/images/edit.png" /></a>
+                        </td>
+
+                        <td class="screenMediaAbove ">
+                            <a class="  btn  btn-size btnStudent " data-bind="click: $root.editStudent">@GlobalRes_ua.edit</a>
+                        </td>
+                    }
+                </tr>
+                <!-- /ko -->
+                <!-- ko if: mode() == $root.mods.edit -->
+                <tr>
+                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.facultyForUpdate().name,  tooltip: { message: $root.facultyForUpdate().name.error }" maxlength="50" /></td>
+                    <!-- ko foreach: $root.facultyForUpdate().users -->
+                    <td ><input type="text" data-position="bottom" data-bind="textInput: email,  tooltip: { message: email.error }" max="50" /></td>
+                    <td ><input type="text" data-position="bottom" data-bind="textInput: password,  tooltip: { message: password.error }" max="250" /></td>
+                    <!-- /ko -->
+                    <td class="screenMediaBelow ">
+                        <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></a>
+                    </td>
+                    <td colspan="3" class="screenMediaAbove ">
+                        <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
+                    </td>
+                </tr>
+                <!-- /ko -->
+
+            </tbody>
+        </table>
+    </form>
+
+</div>
+    </div>
+@section Scripts{
+    <script>
+        var globalView = null;
+        $(document).ready(function() {
+            var viewModel = new FacultiesViewModel();
+            globalView = viewModel;
+            ko.applyBindings(viewModel);
+
+        });
+    </script>
+}
+

@@ -7,7 +7,7 @@ $(function () {
     var contentType = "application/json; charset=utf-8";
 
     FacultyProvider.prototype.get = function (callback) {
-        $.get(path).done(callback).error(function () { console.log("error"); });
+        $.get(this.apiPath).done(callback).error(function () { console.log("error"); });
     }
 
     FacultyProvider.prototype.post = function (data, callback) {

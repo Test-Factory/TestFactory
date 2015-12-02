@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -22,7 +23,8 @@ namespace TestFactory.Controllers.Api
         [HttpGet]
         public IList<FacultyViewModel> Get()
         {
-            var result = new List<FacultyViewModel>();
+            var faculties = Framework.FacultyManager.GetList();
+            var result = Mapper.Map<IList<FacultyViewModel>>(faculties);
             return result;
         }
         [HttpPost]

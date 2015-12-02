@@ -1,4 +1,4 @@
-﻿function FacultyModel(item) {
+﻿function FacultyModel(item, defaultMode) {
     var self = this;
     self.mode = ko.observable(defaultMode || "display");
     self.id = ko.observable(item ? item.Id : "");

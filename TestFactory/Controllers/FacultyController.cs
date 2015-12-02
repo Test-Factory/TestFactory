@@ -9,10 +9,10 @@ namespace TestFactory.Controllers
 {
     public class FacultyController : Controller
     {
-        public ActionResult Index()
+        public ActionResult List()
         {
             var result = new List<FacultyViewModel>();
-            return View();
+            return View("List");
         }
     }
 }
