@@ -1,5 +1,8 @@
 ﻿function FacultyModel(item, defaultMode) {
     var self = this;
+     var roles = ko.observableArray();//TODO: role provider
+    roles.push("12dc6a23-8454-419f-ac75-2ea0560d27ef");
+    roles.push("316987d9-9e4e-4cc4-b32a-b64112ca20be");
     
     self.id = ko.observable(item ? item.Id : "");
     self.name = ko.observable(item ? item.Name : "");
@@ -10,6 +13,14 @@
             var mappedItem = new UserModel(element);
             self.users.push(mappedItem);
         });
+    }
+    else {
+        for (var i = 0; i < 2; i++) {
+            var mappedItem = new UserModel();
+            mappedItem.roles_id(roles()[i]);
+            self.users.push(mappedItem);
+    }
+
 }
 }
 FacultyModel.prototype.toServerModel = function () {
