@@ -364,7 +364,7 @@ div#returnIndex {
 }
 
 div#content {
-    max-width: 1000px;
+    max-width: 1040px;
     margin: auto;
 }
 div#content {
@@ -373,7 +373,7 @@ div#content {
 div#content {
     overflow: hidden;
     z-index: 0;
-    margin-left: 200px !important; 
+    margin-left: 190px !important; 
 }
 
 .card.blue-grey.darken-1.card-action {

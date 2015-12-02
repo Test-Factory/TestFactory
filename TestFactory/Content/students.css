@@ -1,4 +1,8 @@
-﻿/* Styles sidebar
+﻿.content-admin{
+    margin: 0;
+}
+
+/* Styles sidebar
 -----------------------------------------------------------*/
 .content-student{margin-left: 50px !important; }
 .fakeDiv{
