@@ -3,19 +3,17 @@ CREATE TABLE [dbo].[Role] (
                     [Name] NVARCHAR (30) NULL,
                     PRIMARY KEY CLUSTERED ([Id] ASC)
                 );
-
-                CREATE TABLE [dbo].[User] (
-                    [Id]           NVARCHAR (45)  NOT NULL,
-                    [Email]        NVARCHAR (50)  NULL,
-                    [Password]     NVARCHAR (255) NULL,
-                    [PasswordSalt] NVARCHAR (255) NULL,
-                    [FirstName]    NVARCHAR (30)  NULL,
-                    [LastName]     NVARCHAR (30)  NULL,
-                    [Roles_id]     NVARCHAR (45)  NULL,
-                    [Faculty]      NVARCHAR (20)  NULL,
-                    PRIMARY KEY CLUSTERED ([Id] ASC),
-                    CONSTRAINT [FK_User_Role] FOREIGN KEY ([Roles_id]) REFERENCES [dbo].[Role] ([Id]) ON DELETE CASCADE
-                );
+				
+				CREATE TABLE [dbo].[User] (
+					[Id]           NVARCHAR (45)  NOT NULL,
+					[Email]        NVARCHAR (50)  NULL,
+					[Password]     NVARCHAR (255) NULL,
+					[PasswordSalt] NVARCHAR (255) NULL,
+					[Roles_id]     NVARCHAR (45)  NULL,
+					[FacultyId]    NVARCHAR (50)  NOT NULL,
+					PRIMARY KEY CLUSTERED ([Id] ASC),
+					CONSTRAINT [FK_User_Role] FOREIGN KEY ([Roles_id]) REFERENCES [dbo].[Role] ([Id]) ON DELETE CASCADE
+				);
 
 
                 CREATE TABLE [dbo].[Group] (

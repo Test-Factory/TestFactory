@@ -58,7 +58,7 @@ namespace TestFactory.Business.Components.Managers
            
 
             HttpContext.Current.User = new System.Security.Principal
-                        .GenericPrincipal(new System.Security.Principal.GenericIdentity(user.FirstName), new[] { user.Roles.Name });
+                        .GenericPrincipal(new System.Security.Principal.GenericIdentity(user.Email), new[] { user.Roles.Name });
         }
     }
 }

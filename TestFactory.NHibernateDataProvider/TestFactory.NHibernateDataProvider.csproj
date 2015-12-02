@@ -83,8 +83,8 @@
     <Compile Include="DbVersioning\Migrations\Version2\M023_FrequencyMarkForFacultyByCategoryView.cs" />
     <Compile Include="DbVersioning\Migrations\Version3\M031_TableFactoryWithData.cs" />
     <Compile Include="DbVersioning\Migrations\Version3\M032_CreateTableSubject.cs" />
-    <Compile Include="DbVersioning\Migrations\Version3\M033_ColumnFacultyIdTbUser.cs" />
-    <Compile Include="DbVersioning\Migrations\Version3\M034_ColumnFacultyIdTbGroup.cs" />
+    <Compile Include="DbVersioning\Migrations\Version3\M034_ColumnFacultyIdTbUser.cs" />
+    <Compile Include="DbVersioning\Migrations\Version3\M033_ColumnFacultyIdTbGroup.cs" />
     <Compile Include="DbVersioning\Migrations\Version3\M035_CreateTbSubject_Group.cs" />
     <Compile Include="DbVersioning\Migrations\Version3\M036_CreateTableSubjectMark.cs" />
     <Compile Include="DbVersioning\Migrator.cs" />

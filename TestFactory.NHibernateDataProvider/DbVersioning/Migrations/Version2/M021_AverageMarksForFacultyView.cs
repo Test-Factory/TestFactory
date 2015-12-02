@@ -17,7 +17,7 @@ namespace TestFactory.NHibernateDataProvider.DbVersioning.Migrations.Version2
 
          public override void Down()
          {
-             Execute.Sql(@"drop view AverageMarkForFaculty ");
+             Execute.Sql(@"drop view AverageMarkForFaculty");
          }
     }
 }
