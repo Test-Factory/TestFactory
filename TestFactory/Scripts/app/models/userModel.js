@@ -1,9 +1,9 @@
-﻿function UserModel(item) {
+﻿function UserModel(item, defaultMode) {
     var self = this;
-    self.mode = ko.observable(defaultMode || "display");
+    self.mode = ko.observable(defaultMode ? defaultMode : "display");
     self.id = ko.observable(item ? item.Id : "");
     self.email = ko.observable(item ? item.Email : "");
-    self.password = ko.observable(item ? item.SuPasswordbjectId : "");
+    self.password = ko.observable(item ? item.Password : "");
     self.roles_id = ko.observable(item ? item.Roles_id : "");
     self.facultyId = ko.observable(item ? item.FacultyId : "");
 }

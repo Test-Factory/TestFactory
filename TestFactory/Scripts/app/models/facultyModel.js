@@ -1,16 +1,16 @@
 ﻿function FacultyModel(item, defaultMode) {
     var self = this;
-    self.mode = ko.observable(defaultMode || "display");
+    
     self.id = ko.observable(item ? item.Id : "");
     self.name = ko.observable(item ? item.Name : "");
     self.users = ko.observableArray();
-
+    self.mode = ko.observable(defaultMode ? defaultMode : "display");
     if (item && item.Users) {
         item.Users.forEach(function (element) {
             var mappedItem = new UserModel(element);
             self.users.push(mappedItem);
         });
-    }
+}
 }
 FacultyModel.prototype.toServerModel = function () {
 
