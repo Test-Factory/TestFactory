@@ -8,7 +8,7 @@ namespace TestFactory.App_Start
         {
             var migrator = new Migrator(connectionString);
             migrator.MigrateDown(201510220252);
-           // migrator.MigrateToLatest();    
+            migrator.MigrateToLatest();    
         }
     }
 }

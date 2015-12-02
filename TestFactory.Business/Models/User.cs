@@ -10,8 +10,6 @@ namespace TestFactory.Business.Models
 
         public virtual string PasswordSalt { get; set; }
 
-        public virtual string FirstName { get; set; }
-
         public virtual string FacultyId { get; set; }
 
         public virtual string Roles_id { get; set; }

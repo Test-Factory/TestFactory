@@ -15,8 +15,6 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.PasswordSalt);
 
-            Map(x => x.FirstName);
-
             Map(x => x.FacultyId);
 
             Map(x => x.Roles_id);

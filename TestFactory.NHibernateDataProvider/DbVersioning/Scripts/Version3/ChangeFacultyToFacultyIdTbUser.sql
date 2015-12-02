@@ -1,6 +1,3 @@
-alter table [User] DROP COLUMN Faculty; 
-alter table [User] add FacultyId nvarchar(50) null 
-go 
 UPDATE [dbo].[User] 
 SET FacultyId ='FBF5D69A-54F8-4146-AC9C-417BAA3E5122' 
 where [dbo].[User].Email ='FillerFICT@gmail.com' or [dbo].[User].Email ='EditorFICT@gmail.com'; 
