@@ -5,135 +5,98 @@
             по групам <select data-bind="options: uniqueGroupNames, value:searchByStudentsGroups, optionsCaption: 'Оберіть групу', valueupdate:'onkeydown'"></select>
         <span id="clearFilter" data-bind="click: resetDropdowns">Очистити фільтри</span>
         </div>
-<div>
+<div class="table-wrapper">
     <div class="button-block">
                 <div class="table-menu description-buttons">Оцінки:</div>
                 <div class="table-menu table-menu-button subject-button" onclick="Holland()">Предмети</div>
                 <div class="table-menu table-menu-button test-button" onclick="Subjects()" style="background-color: gainsboro">Тест Холланда</div>
             </div>
-        <form style="overflow-x: auto">
-            <table id="tbStudentList" class="border-table">
-                <thead>
-                    <tr class="noselect border-table-tr">
-                        <th class="last-name center-text" id="forLastName"style="position: absolute; z-index: 900; background-color: #F3F3F4;">
-                            <div id="lastName1">
-                            <a class="btn-flat  sort-link" data-bind="click:  function(){ $root.sortingByName('lastName');} ">@GlobalRes_ua.surname </a>
-                            <!-- ko if: $root.sortKey() == "lastName" -->
-                            <span data-bind="css: selectedClassForSortedField"></span>
-                            <!-- /ko -->
-                                </div>
-                        </th>
-                        <th class="first-name center-text" id ="forFirstName"style="position: absolute; margin-left: 100px; z-index: 900; background-color: #F3F3F4;">
-                            <div id="firstName1">
-                                <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
-                                <!-- ko if: $root.sortKey() == "firstName" -->
+    <div class="header-table">
+            <div style="display: inline-flex; width: 30%">
+                 <div class="last-name-all text-menu">
+                    <a class="btn-flat  sort-link" data-bind="click: function () { $root.sortingByName('lastName'); } ">@GlobalRes_ua.surname </a>
+                                <!-- ko if: $root.sortKey() == "lastName" -->
                                 <span data-bind="css: selectedClassForSortedField"></span>
                                 <!-- /ko -->
-                                </div>
-</th>
-                        <th class="group center-text" id="forGroupName" style="position: absolute; margin-left: 270px; z-index: 900;  background-color: #F3F3F4; min-width: 100px;">
-                            <div id="groupName1">
-                                <a class="btn-flat  sort-link" data-bind="click: function(){ $root.sortingByName('groupShortName'); } ">@GlobalRes_ua.group</a>
-                                <!-- ko if: $root.sortKey() == "groupShortName" -->
-                                <span data-bind="css: selectedClassForSortedField"></span>
-                                <!-- /ko -->
-                                </div>
-</th>
-                        <th colspan="2" class="th-content-hide"></th>
-                        <!-- ko foreach: $root.categories -->
-                        <th class="content-test marks center">
-                            <a class="btn-flat sort-link" data-bind="text: code, click: function(){ $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
+                </div>
+                <div class="first-name-all text-menu">
+                    <a class="btn-flat  sort-link" data-bind="click: function () { $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
+                                    <!-- ko if: $root.sortKey() == "firstName" -->
+                                    <span data-bind="css: selectedClassForSortedField"></span>
+                                    <!-- /ko -->
+                </div>
+                <div class="group-name-all text-menu">
+                    <a class="btn-flat  sort-link" data-bind="click: function () { $root.sortingByName('groupShortName'); } ">@GlobalRes_ua.group</a>
+                                    <!-- ko if: $root.sortKey() == "groupShortName" -->
+                                    <span data-bind="css: selectedClassForSortedField"></span>
+                                    <!-- /ko -->
+                </div>
+            </div>
+            <div style="display: inherit; width: 70%;">
+                <!-- ko foreach: $root.categories -->
+                        <div class="content-test center categoryCode text-menu">
+                            <a class="btn-flat sort-link" data-bind="text: code, click: function () { $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
                             <!-- ko if: $root.sortKey() == $data.code() -->
                             <span data-bind="css: $root.selectedClassForSortedField"></span>
                             <!-- /ko -->
-                        </th>
-                        <!-- /ko -->
-                        <!-- ko foreach: $root.subjects -->
-                        <th class="subjects content-subjects" style="max-width: 100px; width: 100px;">
-                            <a class="btn-flat sort-link" data-bind="text: ShortName"></a>
-                            
-                        </th>
-                        <!-- /ko -->
-                    </tr>
-                    <tr class="content-test averagemarks">
-                        <td colspan="3" class="averageMarksNameColumn">@GlobalRes_ua.averageMarks </td>
-
-                    </tr> 
-                    <tr class="content-test mathematicalExpectation">
-                        <td colspan="3" class="mathematicalExpectationNameColumn">@GlobalRes_ua.standardDeviationMarks </td>
-                    </tr>                             
-                </thead>
-
-                <tr >
-                    <td colspan="9" class="preloader-content">
-                        <!-- ko if: $root.preloader() -->
-                        <div class="progress ">
-                            <div class="indeterminate"></div>
                         </div>
                         <!-- /ko -->
-                    </td>
-                </tr>
-                <tbody class="student-content">
-                    <tr class="allStudents">
-                        <td colspan="3" style="position: absolute">
-                            <div style="position: absolute">
-                                <table data-bind="foreach: filteredRecords2">
-                                    <tr class="allStudents">
-                                        <td class="cels-padding last-name"><div onmouseover=$(this).prop("title",$(this).html()) class="surname" data-bind="text:lastName" style="overflow:hidden">></div></td>
-                                        <td class="cels-padding first-name" style="width: 206px"><div onmouseover=$(this).prop("title",$(this).html()) class ="name" data-bind="text:firstName" style="overflow:hidden"></div></td>
-                                        <td class="cels-padding group-name "><div onmouseover=$(this).prop("title",$(this).html()) class ="groupName" data-bind="text:groupShortName" style="overflow:hidden"></div></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-                        <td class="td-content-hide" colspan="2"></td>
-                        <td colspan="6" class="content-test">
-                            <div>
-                                <table data-bind="foreach: filteredRecords2">
-                                    <tr class="allStudents">
-                                        <!-- ko foreach: marks -->
-                                        <td>
-                                             <table>
-                                                 <tbody class="markSubjectContent">
-                                                        <tr>
-                                                            <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 3px"></td>                                 
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="studentMarkDetails" style="padding-bottom: 4px;">
-                                                                    <label class="greenText"></label>
-                                                            </td>
-                                                        </tr>
-                                                 </tbody>
-                                            </table>
-                                        </td>
-                                        <!-- /ko -->
-                                        </tr>
-                                </table>
-                            </div>
-                        </td>
-
-                        <td colspan="6" class="content-subject-mark" style="display: none">
-                            <div>
-                                <table data-bind="foreach: filteredRecords2">
-                                    <tr class="allStudents">
-                                        <!-- ko foreach: subjectMarks -->
-                                        <td style="min-width: 100px">
-                                            <label data-bind="text: value"></label>
-                                        </td>
-                                        <!-- /ko -->
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-                        
-                        <!-- ko foreach: $root.subjectsMarks -->
-                        <td class="subjectsMarks" data-bind="text: Value"></td>
-                        <!-- /ko -->
-                    </tr>
-                </tbody>
-            </table>
-        </form>
+            </div>
     </div>
+    <div>
+        <div class="calculation-line">
+            <div class="averagemarks">
+                        <div class="averageMarksNameColumn">@GlobalRes_ua.averageMarks</div>
+                    </div>
+        </div>
+        
+        <div class="calculation-line">
+            <div class="mathematicalExpectation">
+                         <div class="mathematicalExpectationNameColumn">@GlobalRes_ua.standardDeviationMarks </div>
+                    </div>
+        </div>
+    </div>
+        <div class="main_stat_table">
+        <span class="left">
+            <div data-bind="foreach: filteredRecords2">
+                <div class="table-line-name-box" style="display: flex">
+                    <div class="name-padding last-name-all"><div onmouseover=$(this).prop("title",$(this).html())  data-bind="text: lastName" style="overflow:hidden"></div></div>
+                    <div class="name-padding first-name-all"><div onmouseover=$(this).prop("title",$(this).html())  data-bind="text: firstName" style="overflow:hidden"></div></div>
+                    <div class="name-padding group-name-all"><div onmouseover=$(this).prop("title",$(this).html()) data-bind="text: groupShortName" style="overflow:hidden"></div></div>
+                                    
+                </div>
+            </div>
+        </span>
+        <span class="center">
+                        <span class="el">
+                    <div data-bind="foreach: filteredRecords2" style="width: 100%">
+                        <div class="table-line-content">
+                        
+                        <!-- ko foreach: marks -->
+                            <div class="inlineFlex">
+                                                 <table>
+                                                     <tbody class="markSubjectContent">
+                                                            <tr>
+                                                                <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 0px;     padding-bottom: 0px;"></td>                                 
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="studentMarkDetails" style="padding-bottom: 4px;">
+                                                                        <label class="greenText"></label>
+                                                                </td>
+                                                            </tr>
+                                                     </tbody>
+                                                </table>
+                                </div>
+                                            <!-- /ko -->
+                        </div>
+                    </div>
+                
+                </span>
+
+        </span>
+    </div>
+    </div>
+    
 
 @section Scripts{
 <script>
