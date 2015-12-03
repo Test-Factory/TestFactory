@@ -3,7 +3,13 @@
     
     self.id = ko.observable(item ? item.Id : "");
     self.name = ko.observable(item ? item.Name : "")
-        .extend({ maxLength: 50 });
+        .extend({ maxLength: 50 })
+        .extend({
+            required: {
+                params: true,
+                message: "Це поле є обов'язковим"
+            }
+        });
     self.users = ko.observableArray();
     self.mode = ko.observable(defaultMode ? defaultMode : "display");
     if (item && item.Users) {

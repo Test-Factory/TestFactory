@@ -6,10 +6,22 @@
         .extend({ email: {
             params: true,
             message: "Неправильний email"
-        } })
+        }})
+        .extend({
+            required: {
+                params: true,
+                message: "Це поле є обов'язковим"
+            }
+        })
         .extend({ maxLength: 50 });
     self.password = ko.observable(item ? item.Password : "")
-        .extend({ maxLength: 255 });
+        .extend({ maxLength: 255 })
+        .extend({
+            required: {
+                params: true,
+                message: "Це поле є обов'язковим"
+            }
+        });
     self.roles_id = ko.observable(item ? item.Roles_id : "");
     self.facultyId = ko.observable(item ? item.FacultyId : "");
 }
