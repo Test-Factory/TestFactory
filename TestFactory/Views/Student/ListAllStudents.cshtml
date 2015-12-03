@@ -8,8 +8,8 @@
 <div class="table-wrapper">
     <div class="button-block">
                 <div class="table-menu description-buttons">Оцінки:</div>
-                <div class="table-menu table-menu-button subject-button" onclick="Holland()">Предмети</div>
-                <div class="table-menu table-menu-button test-button" onclick="Subjects()" style="background-color: gainsboro">Тест Холланда</div>
+                <div class="table-menu table-menu-button test-button" onclick="Holland()" style="background-color: gainsboro">Тест Холланда</div>
+                <div class="table-menu table-menu-button subject-button" onclick="Subjects()">Предмети</div>
             </div>
     <div class="header-table">
             <div style="display: inline-flex; width: 30%">
@@ -43,7 +43,7 @@
                         <!-- /ko -->
             </div>
     </div>
-    <div>
+    <div class="content-test">
         <div class="calculation-line">
             <div class="averagemarks">
                         <div class="averageMarksNameColumn">@GlobalRes_ua.averageMarks</div>
@@ -68,7 +68,7 @@
             </div>
         </span>
         <span class="center">
-                        <span class="el">
+                        <span class="el content-test">
                     <div data-bind="foreach: filteredRecords2" style="width: 100%">
                         <div class="table-line-content">
                         
@@ -103,22 +103,16 @@
     $('.tooltipped').tooltip({ delay: 50 });
     var globalView = null;
     function Holland() {
-        $('.content-test').hide();
-        $('.content-subject-mark').show();
-        $('.content-subjects').show();
-        $('.subject-button').css('background-color', 'gainsboro');
-        $('.test-button').css('background-color', 'transparent');
-        $('.th-content-hide').css("min-width", "360px");
-        $('.td-content-hide').css("min-width", '388px');
-    }
-    function Subjects() {
         $('.content-test').show();
-        $('.content-subject-mark').hide();
         $('.content-subjects').hide();
         $('.test-button').css('background-color', 'gainsboro');
         $('.subject-button').css('background-color', 'transparent');
-        $('.th-content-hide').css("min-width", "0px");
-        $('.td-content-hide').css("min-width", '0px');
+    }
+    function Subjects() {
+        $('.content-test').hide();
+        $('.content-subjects').show();
+        $('.subject-button').css('background-color', 'gainsboro');
+        $('.test-button').css('background-color', 'transparent');
     }
     $(document).ready(function () {
         var a = $(".surname").text();
