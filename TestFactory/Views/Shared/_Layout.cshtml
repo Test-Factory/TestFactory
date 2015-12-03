@@ -25,9 +25,13 @@
                         {
                             <a href=@Url.RouteUrl("Default") class="left brand-logo">Test-Factory</a>
                         }
+                        else if(User.IsInRole(RoleNames.Editor))
+                        {
+                            <a href="/students/all" class="left brand-logo">Test-Factory</a>
+                        }
                         else
                         {
-                            <a href="/students/all" class="left brand-logo">@GlobalRes_ua.testHolland</a>
+                            <a href=@Url.RouteUrl("facultyList") class="left brand-logo">Test-Factory</a>
                         }
                     </div>
                     <div class="right">

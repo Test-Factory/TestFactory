@@ -13,7 +13,7 @@ namespace TestFactory.Controllers.Api
     public class FileController : Controller
     {
 
-        [Authorize(Roles = RoleNames.AllRoles)]
+        [Authorize(Roles = RoleNames.AllUserRoles)]
         [WordDocument]
         public ActionResult GetReport(string id)
         {
@@ -39,7 +39,7 @@ namespace TestFactory.Controllers.Api
             return View(tuple);
         }
 
-        [Authorize(Roles = RoleNames.AllRoles)]
+        [Authorize(Roles = RoleNames.AllUserRoles)]
         [WordDocument]
         public ActionResult GetAllReport(string groupId)
         {

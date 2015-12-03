@@ -14,7 +14,7 @@ namespace TestFactory.Controllers
     public class GroupController : Controller
     {     
 
-        [Authorize(Roles = RoleNames.AllRoles)]
+        [Authorize(Roles = RoleNames.AllUserRoles)]
         public ActionResult List()
         {
             var groups = Framework.GroupManager.GetListForFaculty(Framework.UserContext.User.FacultyId);

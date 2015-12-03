@@ -14,9 +14,10 @@ namespace TestFactory
 
             public const string Editor = "Editor";
 
-            public const string Admin = "Admin";
+            public const string AllUserRoles = "Editor, Filler";
 
-            public const string AllRoles  = "Editor, Filler, Admin";
+            public const string Admin = "Admin";
+           
         }
     }
 }

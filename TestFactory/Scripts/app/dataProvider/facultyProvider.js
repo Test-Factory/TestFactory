@@ -16,7 +16,12 @@ $(function () {
             url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback);
+        }).done(callback).error(function (e) {
+            if (e.responseText)
+                location = "/login";
+            else
+                location = "/Error/403";
+        });;
     }
 
     FacultyProvider.prototype.put = function (data, callback) {
@@ -25,7 +30,12 @@ $(function () {
             url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback);
+        }).done(callback).error(function (e) {
+            if (e.responseText)
+                location = "/login";
+            else
+                location = "/Error/403";
+        });;
     }
 });
 
