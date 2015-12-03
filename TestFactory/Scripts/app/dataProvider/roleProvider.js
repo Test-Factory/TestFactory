@@ -1,16 +1,16 @@
-﻿function FacultyProvider() {
+﻿function RoleProvider() {
     var self = this;
-    self.apiPath = settings.basePath + "/api/faculties";
+    self.apiPath = settings.basePath + "/api/roles";
 }
 
 $(function () {
     var contentType = "application/json; charset=utf-8";
 
-    FacultyProvider.prototype.get = function (callback) {
+    RoleProvider.prototype.get = function (callback) {
         $.get(this.apiPath).done(callback).error(function () { console.log("error"); });
     }
 
-    FacultyProvider.prototype.post = function (data, callback) {
+    RoleProvider.prototype.post = function (data, callback) {
         $.ajax({
             method: "POST",
             url: this.apiPath,
@@ -19,7 +19,7 @@ $(function () {
         }).done(callback);
     }
 
-    FacultyProvider.prototype.put = function (data, callback) {
+    RoleProvider.prototype.put = function (data, callback) {
         $.ajax({
             method: "PUT",
             url: this.apiPath,
@@ -28,5 +28,3 @@ $(function () {
         }).done(callback);
     }
 });
-
-
