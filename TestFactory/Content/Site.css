@@ -949,7 +949,6 @@ th#forLastName {
 .main_stat_table .center .el {
     vertical-align: top;
     width: auto;
-    background-color: white;
     z-index: 1;
     display: flex;
 }
@@ -994,12 +993,16 @@ div {
     padding-bottom: 3px;
 }
 
-    .table-line-content:nth-child(2n+1) {
-        background: #f5f5f5;
+    .table-line-name-box:nth-child(2n+1) {
+        background: #f9f9f9;
     }
 
 .table-line-name-box:nth-child(2n) {
     background: #fff;
+}
+
+.table-line-name-box:hover {
+    background-color: rgba(129,208,177,.2);
 }
 
 .name-padding {
