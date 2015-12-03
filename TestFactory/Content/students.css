@@ -255,23 +255,17 @@ a.btn.btn-size.btnStudent {
         }
 
 .triangle-down {
-            margin: 0 0 0 5px;
             display: inline-block;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
             border-top: 10px solid grey;
-            position: absolute;
-            top: 12px;
         }
 
 .triangle-up {
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
             border-bottom: 10px solid grey;
-            margin: 0 0 3px 5px;
             display: inline-block;
-            position: absolute;
-            top: 12px;
         }
 
 .triangle-wrapper {

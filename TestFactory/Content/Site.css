@@ -920,3 +920,120 @@ div#lastName1 {
 th#forLastName {
     margin-left: -4px;
 }
+
+.main_stat_table {
+    text-align: left;
+    border-top: 0;
+    position: relative;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.main_stat_table .left {
+    vertical-align: top;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.main_stat_table .center {
+    vertical-align: top;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: 70%;
+    margin-left: 30%;
+}
+
+.main_stat_table .center .el {
+    vertical-align: top;
+    width: auto;
+    background-color: white;
+    z-index: 1;
+    display: flex;
+}
+
+
+span, a {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+div {
+    display: block;
+}
+
+.inlineFlex {
+    display: inline-flex;
+        width: 16%;
+}
+
+.mark-wrapper {
+    width: 100%;
+    height: 36px;
+}
+
+.averageMarks, .mathematicalExpectationMarks {
+    width: 11.3%;
+}
+
+.averageMarksNameColumn, .mathematicalExpectationNameColumn {
+    width: 30%;
+    padding-left: 5px;
+    font-size: 1.1em;
+}
+
+.averagemarks, .mathematicalExpectation {
+    display: flex;
+}
+
+.table-line-content {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+    .table-line-content:nth-child(2n+1) {
+        background: #F3F3F4;
+    }
+
+.table-line-name-box:nth-child(2n) {
+    background: #fff;
+}
+
+.name-padding {
+    padding: 15px 5px 14px 5px;
+    font-size: 1.1em;
+}
+
+.last-name-all, .first-name-all {
+    width: 125px;
+}
+
+.group-name-all {
+    width: 56px;
+}
+
+.categoryCode {
+    width: 16.1%;
+}
+
+.header-table {
+    border: 1px solid gainsboro;
+    width: 100%;
+    display: inline-flex;
+}
+
+.table-wrapper {
+    border: 1px solid gainsboro;
+}
+
+.calculation-line {
+    width: 100%;
+    padding: 3px 0px 3px 0px;
+}
+
+.text-menu {
+    font-weight: 900;
+}

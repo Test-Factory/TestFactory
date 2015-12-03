@@ -155,12 +155,12 @@
                     //push average marks
                     var averageMarkConteiner = $(".averagemarks");
                     var averageMarksName = $(".averagemarks .averageMarksNameColumn").html();
-                    averageMarkConteiner.eq(0).html('<td colspan="3" class="averageMarksNameColumn">' + averageMarksName + '</td>');
+                    averageMarkConteiner.eq(0).html('<div class="averageMarksNameColumn">' + averageMarksName + '</div>');
                     for (var i = 0; i < averageArrOfMarks.length; i++) {
                         var aver = averageArrOfMarks[i];
                         var conteinerHTML = averageMarkConteiner.eq(0).html();
                         if (aver != null) {
-                            conteinerHTML += "<td class='marks center averageMarks'>" + aver.toFixed(2) + "</td>";
+                            conteinerHTML += "<div class='marks center averageMarks'>" + aver.toFixed(2) + "</div>";
                             averageMarkConteiner.eq(0).html(conteinerHTML);
                         }
                     }
@@ -168,11 +168,11 @@
                     //push mathematical expectation marks
                     var mathematicalExpectationContainer = $(".mathematicalExpectation");
                     var mathematicalExpectationName = $(".mathematicalExpectation .mathematicalExpectationNameColumn").html();
-                    mathematicalExpectationContainer.eq(0).html('<td colspan="3" class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</td>');
+                    mathematicalExpectationContainer.eq(0).html('<div class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</div>');
                     for (var i = 0 ; i < dispersion.length; i++) {
                         var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
                         if (dispersion[i] != null) {
-                            conteinerHTML += "<td class='marks center'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</td>";
+                            conteinerHTML += "<div class='mathematicalExpectationMarks center'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</div>";
                             mathematicalExpectationContainer.eq(0).html(conteinerHTML);
                         }
                     }
