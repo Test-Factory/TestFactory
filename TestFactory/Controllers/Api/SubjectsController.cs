@@ -89,7 +89,7 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
             var model = Framework.SubjectManager.GetById(subject.Id);
-            if ((Framework.SubjectManager.SubjectIsAlreadyExist(subject.ShortName, subject.LongName)) && !(subject.LongName == model.LongName) && !(subject.ShortName == model.ShortName))//TODO: exist for shortName
+            if ((Framework.SubjectManager.SubjectIsAlreadyExist(subject.ShortName, subject.LongName)) && !(subject.LongName == model.LongName) && !(subject.ShortName == model.ShortName))
             {
                 throw new HttpException(403, GlobalRes_ua.forbidenAction);
             }
