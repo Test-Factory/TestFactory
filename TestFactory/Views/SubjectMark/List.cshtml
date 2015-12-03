@@ -23,8 +23,10 @@
                         {
                             <a data-bind="click: $root.editSubject" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "><img src="~/Content/images/16edit.png" /></a>
                         }
-                        <a data-bind="text: shortName, css:{boldSubjectSidebar: id() == $root.subject.id()} ,click: function(){ $root.redirectToMarksSubject(id);}"
-                           class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
+                        <div class="shortName-subject">
+                            <a data-bind="text: shortName, css:{boldSubjectSidebar: id() == $root.subject.id()} ,click: function(){ $root.redirectToMarksSubject(id);}"
+                               class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
+                        </div>
                         <!-- /ko -->
                     </li>
                 </ul>

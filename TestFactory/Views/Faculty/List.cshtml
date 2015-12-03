@@ -7,15 +7,15 @@
 
 <div class="content-admin">
     <form>
-        <h3> Admin</h3>
+        <h3>@GlobalRes_ua.admin</h3>
         <table class="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
             <thead class="headerTbSudent headerFaculty">
                 <tr class="noselect">
-                    <th class="faculty-name"> <a class="btn-flat sort-link ">Faculty</a></th>
-                    <th class="faculty-user"><a  class="btn-flat  sort-link">Filler Email</a></th>
-                    <th class="faculty-user"><a class="btn-flat  sort-link">Filler Pass</a></th>
-                    <th class="faculty-user"><a class="btn-flat  sort-link">Editor Email</a></th>
-                    <th class="faculty-user"><a class="btn-flat  sort-link">Editor Pass</a></th>
+                    <th class="faculty-name"> <a class="btn-flat sort-link ">@GlobalRes_ua.faculty</a></th>
+                    <th class="faculty-user"><a  class="btn-flat  sort-link">@GlobalRes_ua.fillerEmail</a></th>
+                    <th class="faculty-user"><a class="btn-flat  sort-link">@GlobalRes_ua.fillerPassword</a></th>
+                    <th class="faculty-user"><a class="btn-flat  sort-link">@GlobalRes_ua.editorEmail</a></th>
+                    <th class="faculty-user"><a class="btn-flat  sort-link">@GlobalRes_ua.editorPassword</a></th>
                     <th></th>
                 </tr>
                 <tr>
@@ -24,7 +24,7 @@
                                data-position="bottom"
                                data-bind="textInput: $root.facultyForCreate().name,  tooltip: { message: $root.facultyForCreate().name.error }"
                                maxlength="50"
-                               placeholder="Faculty" />
+                               placeholder="@GlobalRes_ua.faculty" />
                     </td>
                     <!-- ko foreach: $root.facultyForCreate().users -->
                     <td class="faculty-user">
@@ -32,21 +32,21 @@
                                data-position="bottom"
                                data-bind="textInput: email,  tooltip: { message: email.error}"
                                maxlength="50"
-                               placeholder="Email" />
+                               placeholder="@GlobalRes_ua.email" />
                     </td>
                     <td class="faculty-user">
                         <input type="password"
                                data-position="bottom"
                                data-bind="textInput: password,  tooltip: { message: password.error}"
                                maxlength="255"
-                               placeholder="pass" />
+                               placeholder="@GlobalRes_ua.password" />
                     </td>
                     <!-- /ko -->
                     <td class="screenMediaAbove ">
-                        <button class="btn btn-success  " data-bind="click: $root.saveAddedFaculty">@GlobalRes_ua.save</button>
+                        <button class="btn btn-success  btn-size btnFaculty" data-bind="click: $root.saveAddedFaculty">@GlobalRes_ua.save</button>
                     </td>
                     <td colspan="3" class="screenMediaBelow ">
-                        <a class="btn  btn-success " data-bind="click: $root.saveAddedFaculty"><img src="~/Content/images/document_save.png" /></a>
+                        <a class="btn  btn-success btn-size btnFaculty" data-bind="click: $root.saveAddedFaculty"><img src="~/Content/images/document_save.png" /></a>
                     </td>
                 </tr>
             </thead>

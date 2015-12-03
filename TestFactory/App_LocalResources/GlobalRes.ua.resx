@@ -279,4 +279,28 @@
   <data name="updateSubject" xml:space="preserve">
     <value>Редагуйте предмет</value>
   </data>
+  <data name="admin" xml:space="preserve">
+    <value>Адміністратор</value>
+  </data>
+  <data name="editorEmail" xml:space="preserve">
+    <value>Email редактора </value>
+  </data>
+  <data name="editorPassword" xml:space="preserve">
+    <value>Пароль редактора</value>
+  </data>
+  <data name="faculty" xml:space="preserve">
+    <value>Факультет</value>
+  </data>
+  <data name="fillerEmail" xml:space="preserve">
+    <value>Email заповнювача</value>
+  </data>
+  <data name="fillerPassword" xml:space="preserve">
+    <value>Пароль заповнювача</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
 </root>

@@ -70,6 +70,15 @@ namespace Embedded_Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Адміністратор.
+        /// </summary>
+        public static string admin {
+            get {
+                return ResourceManager.GetString("admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to цінують.
         /// </summary>
         public static string appriciate {
@@ -214,6 +223,33 @@ namespace Embedded_Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email редактора .
+        /// </summary>
+        public static string editorEmail {
+            get {
+                return ResourceManager.GetString("editorEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароль редактора.
+        /// </summary>
+        public static string editorPassword {
+            get {
+                return ResourceManager.GetString("editorPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string email {
+            get {
+                return ResourceManager.GetString("email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Введіть логін.
         /// </summary>
         public static string enterLogin {
@@ -291,6 +327,33 @@ namespace Embedded_Resource {
         public static string exit {
             get {
                 return ResourceManager.GetString("exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Факультет.
+        /// </summary>
+        public static string faculty {
+            get {
+                return ResourceManager.GetString("faculty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email заповнювача.
+        /// </summary>
+        public static string fillerEmail {
+            get {
+                return ResourceManager.GetString("fillerEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароль заповнювача.
+        /// </summary>
+        public static string fillerPassword {
+            get {
+                return ResourceManager.GetString("fillerPassword", resourceCulture);
             }
         }
         
@@ -435,6 +498,15 @@ namespace Embedded_Resource {
         public static string oppositeType {
             get {
                 return ResourceManager.GetString("oppositeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароль.
+        /// </summary>
+        public static string password {
+            get {
+                return ResourceManager.GetString("password", resourceCulture);
             }
         }
         
