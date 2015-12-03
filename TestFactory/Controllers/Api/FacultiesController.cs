@@ -25,7 +25,7 @@ namespace TestFactory.Controllers.Api
         public IList<FacultyViewModel> Get()
         {
             var faculties = Framework.FacultyManager.GetList();
-            IList<Faculty> sortedList = faculties.OrderBy(f => f.Name).ToList();
+            IList<Faculty> sortedList = faculties.Where(f => f.Users.Count() == 2).OrderBy(f => f.Name).ToList();
             var result = Mapper.Map<IList<FacultyViewModel>>(sortedList);
             return result;
         }
