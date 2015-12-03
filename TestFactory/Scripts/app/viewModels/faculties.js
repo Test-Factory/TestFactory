@@ -5,15 +5,14 @@ function FacultiesViewModel() {
     self.faculties = ko.observableArray();
     self.preloader = ko.observable(true);
 
-    self.roles = ko.observableArray();//TODO: role provider
-    self.roles.push("12dc6a23-8454-419f-ac75-2ea0560d27ef");
-    self.roles.push("316987d9-9e4e-4cc4-b32a-b64112ca20be");
+    self.roles = ko.observableArray();
    
 
     self.facultyForUpdate = ko.validatedObservable(new FacultyModel(), { deep: true });
     self.facultyForCreate = ko.validatedObservable(new FacultyModel(), { deep: true });
 
     var facultyProvider = new FacultyProvider();
+    var roleProvider = new RoleProvider();
 
     self.mods = {
         display: "display",
@@ -27,7 +26,7 @@ function FacultiesViewModel() {
         self.facultyForCreate().mapFrom(newFaculty);
         for (var c = 0; c < 2; c++) {
             var user = new UserModel();
-            user.roles_id(self.roles()[c]);
+            user.roles_id(self.roles()[c].id());
             self.facultyForCreate().users.push(user);
         }
         self.facultyForCreate().mode(self.mods.create);
@@ -68,9 +67,9 @@ function FacultiesViewModel() {
     };
 
     self.saveEditedFaculty = function (faculty) {
-        //if (!self.facultyForUpdate.isValid()) {
-        //    return false;
-        //}
+        if (!self.facultyForUpdate.isValid()) {
+            return false;
+        }
         var facultyServerModel = self.facultyForUpdate().toServerModel();
         facultyProvider.put(facultyServerModel, function () {
             faculty.mapFrom(self.facultyForUpdate());
@@ -87,6 +86,13 @@ function FacultiesViewModel() {
                 });
                 self.addFaculty();
                 self.preloader(false);
+            });
+
+            roleProvider.get(function (data) {
+                $(data).each(function (index, element) {
+                    var mappedRole = new RoleModel(element);
+                    self.roles.push(mappedRole);
+                });
             });
         }
 

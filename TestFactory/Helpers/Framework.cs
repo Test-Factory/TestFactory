@@ -25,6 +25,14 @@ namespace TestFactory
              }
          }
 
+        public static RoleManager RoleManager
+        {
+            get
+            {
+                return DependencyResolver.Current.GetService<RoleManager>();
+            }
+        }
+
         public static StudentManager StudentManager
         {
             get 

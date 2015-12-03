@@ -75,6 +75,7 @@
     <Compile Include="ViewModels\FrequencyMarkForFacultyByCategoryViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\MarkViewModel.cs" />
+    <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\StudentWithGroupViewModel.cs" />
     <Compile Include="ViewModels\SubjectMarkViewModel.cs" />

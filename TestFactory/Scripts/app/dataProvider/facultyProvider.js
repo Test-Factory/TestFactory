@@ -1,4 +1,4 @@
-﻿function FacultyProvider(groupId) {
+﻿function FacultyProvider() {
     var self = this;
     self.apiPath = settings.basePath + "/api/faculties";
 }

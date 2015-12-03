@@ -192,6 +192,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Controllers\Api\FacultiesController.cs" />
     <Compile Include="Controllers\Api\GroupsController.cs" />
+    <Compile Include="Controllers\Api\RolesController.cs" />
     <Compile Include="Controllers\Api\SubjectsMarkController.cs" />
     <Compile Include="Controllers\Api\SubjectsController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
@@ -331,11 +332,13 @@
     <Content Include="Scripts\app\dataProvider\facultyProvider.js" />
     <Content Include="Scripts\app\dataProvider\groupProvider.js" />
     <Content Include="Scripts\app\dataProvider\markProvider.js" />
+    <Content Include="Scripts\app\dataProvider\roleProvider.js" />
     <Content Include="Scripts\app\dataProvider\subjectMarkProvider.js" />
     <Content Include="Scripts\app\dataProvider\subjectProvider.js" />
     <Content Include="Scripts\app\models\averageMarksForFacultyModel.js" />
     <Content Include="Scripts\app\models\facultyModel.js" />
     <Content Include="Scripts\app\models\groupModel.js" />
+    <Content Include="Scripts\app\models\roleModel.js" />
     <Content Include="Scripts\app\models\studentForAllModel.js" />
     <Content Include="Scripts\app\models\subjectMark.js" />
     <Content Include="Scripts\app\models\subjectModel.js" />
