@@ -53,10 +53,10 @@
                     </td>
                     <!-- /ko -->
                     <td class="screenMediaAbove ">
-                        <button class="btn btn-success  " data-bind="click: $root.saveAddedSFaculty">@GlobalRes_ua.save</button>
+                        <button class="btn btn-success  " data-bind="click: $root.saveAddedFaculty">@GlobalRes_ua.save</button>
                     </td>
                     <td colspan="3" class="screenMediaBelow ">
-                        <a class="btn  btn-success" data-bind="click: $root.saveAddedSFaculty"><img src="~/Content/images/document_save.png" /></a>
+                        <a class="btn  btn-success " data-bind="click: $root.saveAddedFaculty"><img src="~/Content/images/document_save.png" /></a>
                     </td>
                 </tr>
             </thead>
@@ -80,26 +80,25 @@
                     <td ><span style="width: 180px; display: block" data-bind="text: password"></span></td>
                     <!-- /ko -->
                         <td class="screenMediaBelow ">
-                            <a class="  btn btn-size btnStudent"><img src="~/Content/images/edit.png" /></a>
+                            <a class="  btn btn-size btnStudent" data-bind="click: $root.editFaculty"><img src="~/Content/images/edit.png" /></a>
                         </td>
-
                         <td class="screenMediaAbove ">
-                            <a class="btn  btn-size btnStudent ">@GlobalRes_ua.edit</a>
+                            <a class="btn  btn-size btnStudent " data-bind="click: $root.editFaculty">@GlobalRes_ua.edit</a>
                         </td>
                 </tr>
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
-                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.facultyForUpdate().name,  tooltip: { message: $root.facultyForUpdate().name.error }" maxlength="50" /></td>
+                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.facultyForUpdate().name" maxlength="50" /></td>
                     <!-- ko foreach: $root.facultyForUpdate().users -->
-                    <td ><input type="text" data-position="bottom" data-bind="textInput: email,  tooltip: { message: email.error }" /></td>
-                    <td ><input type="text" data-position="bottom" data-bind="textInput: password,  tooltip: { message: password.error }"/></td>
+                    <td ><input type="text" data-position="bottom" data-bind="textInput: email" /></td>
+                    <td ><input type="text" data-position="bottom" data-bind="textInput: password"/></td>
                     <!-- /ko -->
                     <td class="screenMediaBelow ">
-                        <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedStudent"><img src="~/Content/images/document_save.png" /></a>
+                        <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedFaculty"><img src="~/Content/images/document_save.png" /></a>
                     </td>
                     <td class="screenMediaAbove ">
-                        <a class=" btn btnStudent " data-bind="click: $root.saveEditedStudent">@GlobalRes_ua.save</a>
+                        <a class=" btn btnStudent " data-bind="click: $root.saveEditedFaculty">@GlobalRes_ua.save</a>
                     </td>
                 </tr>
                 <!-- /ko -->

@@ -30,12 +30,11 @@
             self.facultyForCreate().users.push(user);
         }
         self.facultyForCreate().mode(self.mods.create);
-        //self.sizeTable();
         ko.validation.group(self.facultyForCreate);
        
     }
 
-    self.saveAddedSFaculty = function () {
+    self.saveAddedFaculty = function () {
         //if (!self.facultyForCreate.isValid()) {
         //    return false;
         //}
@@ -53,14 +52,30 @@
                         break;
                     }
                 }
-               // self.sizeTable();
             }
-            //self.sizeTable();
             closeAllEditing();
             self.faculties.splice(0, 0, newFaculty);
             self.addFaculty();
         });
     };
+
+    self.editFaculty = function (faculty) {
+        closeAllEditing();
+        self.facultyForUpdate().mapFrom(faculty);
+        faculty.mode(self.mods.edit);
+        self.facultyForUpdate.valueHasMutated();
+    };
+
+    self.saveEditedFaculty = function (faculty) {
+        //if (!self.facultyForUpdate.isValid()) {
+        //    return false;
+        //}
+        var facultyServerModel = self.facultyForUpdate().toServerModel();
+        facultyProvider.put(facultyServerModel, function () {
+            faculty.mapFrom(self.facultyForUpdate());
+            faculty.mode(self.mods.display);
+        });
+    }
 
         self.init = function () {
             facultyProvider.get(function (data) {

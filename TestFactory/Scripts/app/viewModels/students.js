@@ -76,8 +76,6 @@
         self.studentForUpdate.valueHasMutated();
     };
 
-   
-
     self.deleteStudent = function(student) {
         $("#delete-student").dialog({
             resizable: false,
