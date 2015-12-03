@@ -220,7 +220,7 @@
     <value>Повернути групу після видалення буде неможливо. Ви дісно хочете її видалити?</value>
   </data>
   <data name="standardDeviationMarks" xml:space="preserve">
-    <value>Середнє квадратичне відхилення</value>
+    <value>Середньоквадратичне відхилення</value>
   </data>
   <data name="averageMarks" xml:space="preserve">
     <value>Середні оцінки</value>

@@ -7,10 +7,11 @@
         </div>
 <div class="table-wrapper">
     <div class="button-block">
-                <div class="table-menu description-buttons">Оцінки:</div>
+                <div class="table-menu description-buttons">Результати:</div>
                 <div class="table-menu table-menu-button test-button" onclick="Holland()" style="background-color: gainsboro">Тест Холланда</div>
                 <div class="table-menu table-menu-button subject-button" onclick="Subjects()">Предмети</div>
-            </div>
+                <div class="table-menu table-menu-button subject-button" onclick="">Кореляція</div>
+    </div>
     <div class="header-table">
             <div style="display: inline-flex; width: 30%">
                  <div class="last-name-all text-menu">
@@ -33,6 +34,13 @@
                 </div>
             </div>
             <div style="display: inherit; width: 70%;">
+
+                <!-- ko foreach: $root.subjects -->
+                        <div class="content- center categoryCode text-menu subjects content-subjects" style="display: none;">
+                            <a class="btn-flat sort-link" data-bind="text: ShortName"></a>
+                            
+                        </div>
+               <!-- /ko -->
                 <!-- ko foreach: $root.categories -->
                         <div class="content-test center categoryCode text-menu">
                             <a class="btn-flat sort-link" data-bind="text: code, click: function () { $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
@@ -40,10 +48,10 @@
                             <span data-bind="css: $root.selectedClassForSortedField"></span>
                             <!-- /ko -->
                         </div>
-                        <!-- /ko -->
+               <!-- /ko -->
             </div>
     </div>
-    <div class="content-test">
+    <div class="content-test" style="border-bottom: 1px solid gainsboro;">
         <div class="calculation-line">
             <div class="averagemarks">
                         <div class="averageMarksNameColumn">@GlobalRes_ua.averageMarks</div>

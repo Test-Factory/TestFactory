@@ -96,7 +96,7 @@ td, th {
 }
 
 .description-buttons {
-    width: 60%;
+    width: 40%;
 }
 
 .cels-padding {
@@ -995,7 +995,7 @@ div {
 }
 
     .table-line-content:nth-child(2n+1) {
-        background: #F3F3F4;
+        background: #f5f5f5;
     }
 
 .table-line-name-box:nth-child(2n) {
