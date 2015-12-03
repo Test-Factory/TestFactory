@@ -1,6 +1,19 @@
 ﻿.content-admin{
     margin: 0;
 }
+.headerFaculty th{
+    width: 120px; padding: 0px 5px;
+}
+.faculty-name{
+    width: 110px;
+}
+.faculty-user{
+    width: 200px;
+}
+.tbody-faculty{
+    width:100%;
+}
+.faculty-property{display: block;}
 
 /* Styles sidebar
 -----------------------------------------------------------*/

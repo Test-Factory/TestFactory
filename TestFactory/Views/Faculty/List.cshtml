@@ -9,27 +9,17 @@
     <form>
         <h3> Admin</h3>
         <table class="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
-            <thead class="headerTbSudent">
+            <thead class="headerTbSudent headerFaculty">
                 <tr class="noselect">
-                    <th style="width: 120px; padding: 0px 5px;">
-                        <a class="btn-flat sort-link ">Faculty</a>
-                    </th>
-                    <th style="width: 200px;  padding: 0px 5px;">
-                        <a style="text-align: left;" class="btn-flat  sort-link">FillerEmail</a>
-                    </th>
-                    <th style="width: 200px; padding: 0px 5px;">
-                        <a class="btn-flat  sort-link">FillerPass</a>
-                    </th>
-                    <th style="width: 200px; padding: 0px 5px;">
-                        <a class="btn-flat  sort-link">EditorEmail</a>
-                    </th>
-                    <th style="width: 200px; padding: 0px 5px;">
-                        <a class="btn-flat  sort-link">EditorPass</a>
-                    </th>
+                    <th class="faculty-name"> <a class="btn-flat sort-link ">Faculty</a></th>
+                    <th class="faculty-user"><a  class="btn-flat  sort-link">Filler Email</a></th>
+                    <th class="faculty-user"><a class="btn-flat  sort-link">Filler Pass</a></th>
+                    <th class="faculty-user"><a class="btn-flat  sort-link">Editor Email</a></th>
+                    <th class="faculty-user"><a class="btn-flat  sort-link">Editor Pass</a></th>
                     <th></th>
                 </tr>
                 <tr>
-                    <td style="width: 120px;">
+                    <td class="faculty-name">
                         <input type="text"
                                data-position="bottom"
                                data-bind="textInput: $root.facultyForCreate().name,  tooltip: { message: $root.facultyForCreate().name.error }"
@@ -37,14 +27,14 @@
                                placeholder="Faculty" />
                     </td>
                     <!-- ko foreach: $root.facultyForCreate().users -->
-                    <td style="width: 200px;">
+                    <td class="faculty-user">
                         <input type="email"
                                data-position="bottom"
                                data-bind="textInput: email,  tooltip: { message: email.error}"
                                maxlength="50"
                                placeholder="Email" />
                     </td>
-                    <td style="width: 200px;">
+                    <td class="faculty-user">
                         <input type="password"
                                data-position="bottom"
                                data-bind="textInput: password,  tooltip: { message: password.error}"
@@ -69,15 +59,15 @@
                     <!-- /ko -->
                 </td>
             </tr>
-            <tbody style="width:100%" class="" data-bind="foreach: faculties">
+            <tbody class="tbody-faculty" data-bind="foreach: faculties">
                 <div style="width: 100%; height: 120px; "></div>
                 <!-- ko if: mode() == $root.mods.display -->
                 <tr>
-                    <td ><span style="width: 120px; display: block" data-bind="text: name"></span></td>
+                    <td class="faculty-name "><span class="faculty-property" data-bind="text: name"></span></td>
                     <div class="fakeDiv"></div>
                     <!-- ko foreach: users -->
-                    <td ><span style="width: 180px; display: block" data-bind="text: email"></span></td>
-                    <td ><span style="width: 180px; display: block" data-bind="text: password"></span></td>
+                    <td class="faculty-user "><span class="faculty-property" data-bind="text: email"></span></td>
+                    <td class="faculty-user "><span class="faculty-property" data-bind="text: password"></span></td>
                     <!-- /ko -->
                         <td class="screenMediaBelow ">
                             <a class="  btn btn-size btnStudent" data-bind="click: $root.editFaculty"><img src="~/Content/images/edit.png" /></a>
@@ -89,10 +79,10 @@
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
-                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.facultyForUpdate().name,  tooltip: { message: $root.facultyForUpdate().name.error }" maxlength="50" /></td>
+                    <td class="faculty-name"><input type="text" data-position="bottom" data-bind="textInput: $root.facultyForUpdate().name,  tooltip: { message: $root.facultyForUpdate().name.error }" maxlength="50" /></td>
                     <!-- ko foreach: $root.facultyForUpdate().users -->
-                    <td ><input type="text" data-position="bottom" data-bind="textInput: email,  tooltip: { message: email.error}" /></td>
-                    <td ><input type="text" data-position="bottom" data-bind="textInput: password,  tooltip: { message: password.error}" /></td>
+                    <td class="faculty-user"><input type="text" data-position="bottom" data-bind="textInput: email,  tooltip: { message: email.error}" /></td>
+                    <td class="faculty-user"><input type="text" data-position="bottom" data-bind="textInput: password,  tooltip: { message: password.error}" /></td>
                     <!-- /ko -->
                     <td class="screenMediaBelow ">
                         <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedFaculty"><img src="~/Content/images/document_save.png" /></a>

@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TestFactory.Business.Components;
+using TestFactory.Business.Models;
 using TestFactory.Filters;
 using TestFactory.MVC.ViewModels;
 
@@ -24,7 +25,8 @@ namespace TestFactory.Controllers.Api
         public IList<FacultyViewModel> Get()
         {
             var faculties = Framework.FacultyManager.GetList();
-            var result = Mapper.Map<IList<FacultyViewModel>>(faculties);
+            IList<Faculty> sortedList = faculties.OrderBy(f => f.Name).ToList();
+            var result = Mapper.Map<IList<FacultyViewModel>>(sortedList);
             return result;
         }
         [HttpPost]
