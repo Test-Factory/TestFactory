@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TestFactory.Business.Models;
 
 namespace TestFactory.MVC.ViewModels
 {
@@ -13,6 +14,15 @@ namespace TestFactory.MVC.ViewModels
         public string Password { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual string FacultyId { get; set; }      
+        public virtual string FacultyId { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual string Roles_id { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual string PasswordSalt { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual Role Roles { get; set; }
     }
 }

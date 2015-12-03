@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Security;
 using TestFactory.Business.Components;
 using TestFactory.Business.Models;
 using TestFactory.Filters;
@@ -45,15 +46,33 @@ namespace TestFactory.Controllers.Api
         [ValidateModel]
         public IHttpActionResult Create(FacultyViewModel faculty)
         {
+
+            //var model1 = new UserViewModel();
+            //model1.Id = Guid.NewGuid().ToString();
+            //model1.Email = faculty.Users[0].Email;
+            //model1.FacultyId = faculty.Id;
+            //model1.PasswordSalt = HashDecoder.GenarateSalt();
+            //model1.Password = HashDecoder.ComputeHash(faculty.Users[0].Password,model1.PasswordSalt);
+            //model1.Roles_id = "12dc6a23-8454-419f-ac75-2ea0560d27ef";
+
+            //User user = AutoMapper.Mapper.Map<User>(model1);
+
+            //Framework.userManager.Create(user);
+
             if (!User.IsInRole(RoleNames.Admin))
             {
                 return BadRequest("error");
             }
+            
+
+           // Framework.FacultyManager.Create(FAC);
+
             var model = new FacultyViewModel();
             model.Id = "111";
             model.Name = faculty.Name;
             model.Users = faculty.Users;
             model.Users[0].Id = "1";
+          
             model.Users[0].FacultyId = model.Id;
             model.Users[1].Id = "2";
             model.Users[1].FacultyId = model.Id;

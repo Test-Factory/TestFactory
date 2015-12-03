@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace TestFactory.Business.Components
 {
-    class HashDecoder
+   public  class HashDecoder
     {
         private static Random random = new Random();
         private const int MinSaltSize = 4;

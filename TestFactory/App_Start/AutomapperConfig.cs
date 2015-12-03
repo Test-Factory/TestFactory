@@ -8,7 +8,7 @@ namespace TestFactory.App_Start
     public class AutomapperConfig
     {
         public static void RegisterMaps()
-        {     
+        {
             RegisterToViewModel();
             RegisterFromViewModel();
             Mapper.AssertConfigurationIsValid();
@@ -75,6 +75,12 @@ namespace TestFactory.App_Start
             Mapper.CreateMap<StudentViewModel, Student>()
                 .IncludeBase<BaseViewModel, BaseModel>();
 
+            Mapper.CreateMap<FacultyViewModel, Faculty>()
+               .IncludeBase<BaseViewModel, BaseModel>();
+
+            Mapper.CreateMap<UserViewModel, User>()
+               .IncludeBase<BaseViewModel, BaseModel>();
+
             Mapper.CreateMap<RoleViewModel, Role>()
                 .IncludeBase<BaseViewModel, BaseModel>();
 
@@ -89,8 +95,8 @@ namespace TestFactory.App_Start
 
             Mapper.CreateMap<SubjectViewModel, Subject>()
                 .IncludeBase<BaseViewModel, BaseModel>()
-                .ForMember(s=>s.Groups, otp=>otp.Ignore())
-                .ForMember(s=> s.FacultyId, otp=>otp.Ignore());
+                .ForMember(s => s.Groups, otp => otp.Ignore())
+                .ForMember(s => s.FacultyId, otp => otp.Ignore());
 
             Mapper.CreateMap<SubjectMarkViewModel, SubjectMark>()
                 .IncludeBase<BaseViewModel, BaseModel>();
