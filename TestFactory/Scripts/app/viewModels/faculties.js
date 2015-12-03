@@ -1,4 +1,5 @@
-﻿function FacultiesViewModel() {
+﻿bindingHandlersManager.addTooltips();
+function FacultiesViewModel() {
     var self = this;
 
     self.faculties = ko.observableArray();
@@ -35,9 +36,9 @@
     }
 
     self.saveAddedFaculty = function () {
-        //if (!self.facultyForCreate.isValid()) {
-        //    return false;
-        //}
+        if (!self.facultyForCreate.isValid()) {
+            return false;
+        }
         var facultyServerModel = self.facultyForCreate().toServerModel();
         facultyProvider.post(facultyServerModel, function (data) {
             var newFaculty = new FacultyModel();

@@ -32,7 +32,7 @@
                     <td style="width: 120px;">
                         <input type="text"
                                data-position="bottom"
-                               data-bind="textInput: $root.facultyForCreate().name"
+                               data-bind="textInput: $root.facultyForCreate().name,  tooltip: { message: $root.facultyForCreate().name.error }"
                                maxlength="50"
                                placeholder="Faculty" />
                     </td>
@@ -40,14 +40,14 @@
                     <td style="width: 200px;">
                         <input type="email"
                                data-position="bottom"
-                               data-bind="textInput: email"
+                               data-bind="textInput: email,  tooltip: { message: email.error}"
                                maxlength="50"
                                placeholder="Email" />
                     </td>
                     <td style="width: 200px;">
                         <input type="password"
                                data-position="bottom"
-                               data-bind="textInput: password"
+                               data-bind="textInput: password,  tooltip: { message: password.error}"
                                maxlength="255"
                                placeholder="pass" />
                     </td>
@@ -89,10 +89,10 @@
                 <!-- /ko -->
                 <!-- ko if: mode() == $root.mods.edit -->
                 <tr>
-                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.facultyForUpdate().name" maxlength="50" /></td>
+                    <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.facultyForUpdate().name,  tooltip: { message: $root.facultyForUpdate().name.error }" maxlength="50" /></td>
                     <!-- ko foreach: $root.facultyForUpdate().users -->
-                    <td ><input type="text" data-position="bottom" data-bind="textInput: email" /></td>
-                    <td ><input type="text" data-position="bottom" data-bind="textInput: password"/></td>
+                    <td ><input type="text" data-position="bottom" data-bind="textInput: email,  tooltip: { message: email.error}" /></td>
+                    <td ><input type="text" data-position="bottom" data-bind="textInput: password,  tooltip: { message: password.error}" /></td>
                     <!-- /ko -->
                     <td class="screenMediaBelow ">
                         <a class="btn btn-size btnStudent " data-bind="click: $root.saveEditedFaculty"><img src="~/Content/images/document_save.png" /></a>

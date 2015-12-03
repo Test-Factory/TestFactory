@@ -1,4 +1,5 @@
-﻿function StudentsViewModel(group, sortingBy) {
+﻿bindingHandlersManager.addTooltips();
+function StudentsViewModel(group, sortingBy) {
 
     var self = this;
     self.group = new GroupModel(group);

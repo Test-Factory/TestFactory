@@ -1,9 +1,9 @@
 ﻿function FacultyModel(item, defaultMode) {
     var self = this;
     
-    
     self.id = ko.observable(item ? item.Id : "");
-    self.name = ko.observable(item ? item.Name : "");
+    self.name = ko.observable(item ? item.Name : "")
+        .extend({ maxLength: 50 });
     self.users = ko.observableArray();
     self.mode = ko.observable(defaultMode ? defaultMode : "display");
     if (item && item.Users) {
@@ -12,12 +12,6 @@
             self.users.push(mappedItem);
         });
     }
-    //else {
-    //    for (var i = 0; i < 2; i++) {
-    //        var mappedItem = new UserModel();
-    //        mappedItem.roles_id(roles()[i]);
-    //        self.users.push(mappedItem);
-    //}
 }
 FacultyModel.prototype.toServerModel = function () {
 

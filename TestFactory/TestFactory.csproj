@@ -342,6 +342,7 @@
     <Content Include="Scripts\app\models\subjectsInGroups.js" />
     <Content Include="Scripts\app\models\userModel.js" />
     <Content Include="Scripts\app\settings\compureModels.js" />
+    <Content Include="Scripts\app\settings\configTooltip.js" />
     <Content Include="Scripts\app\settings\configValidation.js" />
     <Content Include="Scripts\app\viewModels\faculties.js" />
     <Content Include="Scripts\app\viewModels\studentsAll.js" />
