@@ -21,6 +21,7 @@ namespace TestFactory.Controllers
         [AllowAnonymous]
         public ActionResult LogIn(UserViewModel user)
         {   
+          
             if (!ModelState.IsValid)
             {
                 return View(user);
@@ -37,7 +38,11 @@ namespace TestFactory.Controllers
                 {
                     return RedirectToRoute("Default");
                 }
-     
+                if (User.IsInRole(RoleNames.Admin))
+                {
+                    return RedirectToRoute("facultyList");
+                }
+
                 return RedirectToRoute("studentListAll");
             }
             return View(user);
