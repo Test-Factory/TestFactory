@@ -10,27 +10,30 @@
                 <div class="table-menu description-buttons">Результати:</div>
                 <div class="table-menu table-menu-button test-button" onclick="Holland()" style="background-color: gainsboro">Тест Холланда</div>
                 <div class="table-menu table-menu-button subject-button" onclick="Subjects()">Предмети</div>
-                <div class="table-menu table-menu-button subject-button" onclick="">Кореляція</div>
+                <div class="table-menu table-menu-button correlation-button" onclick="Correlation()">Кореляція</div>
     </div>
     <div class="header-table">
             <div style="display: inline-flex; width: 30%">
-                 <div class="last-name-all text-menu">
+                 <div class="last-name-all text-menu content-test-subjects">
                     <a class="btn-flat  sort-link" data-bind="click: function () { $root.sortingByName('lastName'); } ">@GlobalRes_ua.surname </a>
                                 <!-- ko if: $root.sortKey() == "lastName" -->
                                 <span data-bind="css: selectedClassForSortedField"></span>
                                 <!-- /ko -->
                 </div>
-                <div class="first-name-all text-menu">
+                <div class="first-name-all text-menu content-test-subjects">
                     <a class="btn-flat  sort-link" data-bind="click: function () { $root.sortingByName('firstName'); } ">@GlobalRes_ua.name</a>
                                     <!-- ko if: $root.sortKey() == "firstName" -->
                                     <span data-bind="css: selectedClassForSortedField"></span>
                                     <!-- /ko -->
                 </div>
-                <div class="group-name-all text-menu">
+                <div class="group-name-all text-menu content-test-subjects">
                     <a class="btn-flat  sort-link" data-bind="click: function () { $root.sortingByName('groupShortName'); } ">@GlobalRes_ua.group</a>
                                     <!-- ko if: $root.sortKey() == "groupShortName" -->
                                     <span data-bind="css: selectedClassForSortedField"></span>
                                     <!-- /ko -->
+                </div>
+                <div class="text-menu content-correlation" style="display: none">
+                    <a class="btn-flat sort-link">Предмети</a>
                 </div>
             </div>
             <div style="display: inherit; width: 70%;">
@@ -42,7 +45,7 @@
                         </div>
                <!-- /ko -->
                 <!-- ko foreach: $root.categories -->
-                        <div class="content-test center categoryCode text-menu">
+                        <div class="content-test content-correlation center categoryCode text-menu">
                             <a class="btn-flat sort-link" data-bind="text: code, click: function () { $root.sortingByMark('marks', $data.id, $data.code); } "> </a>
                             <!-- ko if: $root.sortKey() == $data.code() -->
                             <span data-bind="css: $root.selectedClassForSortedField"></span>
@@ -65,8 +68,8 @@
         </div>
     </div>
         <div class="main_stat_table">
-        <span class="left">
-            <div data-bind="foreach: filteredRecords2">
+        <span class="left-column-table">
+            <div data-bind="foreach: filteredRecords2" class="content-test-subjects">
                 <div class="table-line-name-box" style="display: flex">
                     <div class="name-padding last-name-all"><div onmouseover=$(this).prop("title",$(this).html())  data-bind="text: lastName" style="overflow:hidden"></div></div>
                     <div class="name-padding first-name-all"><div onmouseover=$(this).prop("title",$(this).html())  data-bind="text: firstName" style="overflow:hidden"></div></div>
@@ -74,8 +77,16 @@
                                     
                 </div>
             </div>
+            <div class="content-correlation" style="display:none">
+                <!-- ko foreach: $root.subjects -->
+                        <div class="table-line-name-box">
+                            <a class="btn-flat sort-link" data-bind="text: ShortName"></a>
+                            
+                        </div>
+               <!-- /ko -->
+            </div>
         </span>
-        <span class="center">
+        <span class="center-table-content">
                         <span class="el content-test">
                     <div data-bind="foreach: filteredRecords2" style="width: 100%">
                         <div class="table-line-content">
@@ -100,7 +111,6 @@
                     </div>
                 
                 </span>
-
         </span>
     </div>
     </div>
@@ -111,17 +121,33 @@
     $('.tooltipped').tooltip({ delay: 50 });
     var globalView = null;
     function Holland() {
+        $('.content-correlation').hide();
         $('.content-test').show();
         $('.content-subjects').hide();
+        $('.content-test-subjects').show();
         $('.test-button').css('background-color', 'gainsboro');
         $('.subject-button').css('background-color', 'transparent');
+        $('.correlation-button').css('background-color', 'transparent');
     }
     function Subjects() {
+        $('.content-correlation').hide();
         $('.content-test').hide();
         $('.content-subjects').show();
+        $('.content-test-subjects').show();
         $('.subject-button').css('background-color', 'gainsboro');
         $('.test-button').css('background-color', 'transparent');
+        $('.correlation-button').css('background-color', 'transparent');
     }
+    function Correlation() {
+        $('.content-test').hide();
+        $('.content-subjects').hide();
+        $('.content-test-subjects').hide();
+        $('.content-correlation').show();
+        $('.test-button').css('background-color', 'transparent');
+        $('.subject-button').css('background-color', 'transparent');
+        $('.correlation-button').css('background-color', 'gainsboro');
+    }
+
     $(document).ready(function () {
         var a = $(".surname").text();
         //$("#surname").prop("title", $("#surname").val());
