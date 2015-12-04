@@ -9,10 +9,14 @@ namespace TestFactory.MVC.ViewModels
     public class FacultyViewModel : BaseViewModel
     {
         public virtual string Name { get; set; }
+
         public virtual List<UserViewModel> Users { get; set; }
+
         public FacultyViewModel()
         {
             Users = new List<UserViewModel>();
+
+            Id = Guid.NewGuid().ToString();
         }
     }
 }

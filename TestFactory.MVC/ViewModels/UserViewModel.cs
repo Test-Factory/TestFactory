@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using TestFactory.Business.Models;
 
 namespace TestFactory.MVC.ViewModels
@@ -24,5 +25,10 @@ namespace TestFactory.MVC.ViewModels
 
         [ScaffoldColumn(false)]
         public virtual Role Roles { get; set; }
+
+        public UserViewModel()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
     }
 }

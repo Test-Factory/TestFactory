@@ -106,9 +106,6 @@ namespace TestFactory.App_Start
 
             Mapper.CreateMap<MarkViewModel, Mark>()
                .IncludeBase<BaseViewModel, BaseModel>();
-
-            Mapper.CreateMap<FacultyViewModel, Faculty>()
-                .IncludeBase<BaseViewModel, BaseModel>();
         }
     }
 }

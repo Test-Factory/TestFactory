@@ -47,36 +47,39 @@ namespace TestFactory.Controllers.Api
         public IHttpActionResult Create(FacultyViewModel faculty)
         {
 
-            //var model1 = new UserViewModel();
-            //model1.Id = Guid.NewGuid().ToString();
-            //model1.Email = faculty.Users[0].Email;
-            //model1.FacultyId = faculty.Id;
-            //model1.PasswordSalt = HashDecoder.GenarateSalt();
-            //model1.Password = HashDecoder.ComputeHash(faculty.Users[0].Password,model1.PasswordSalt);
-            //model1.Roles_id = "12dc6a23-8454-419f-ac75-2ea0560d27ef";
-
-            //User user = AutoMapper.Mapper.Map<User>(model1);
-
-            //Framework.userManager.Create(user);
-
             if (!User.IsInRole(RoleNames.Admin))
             {
                 return BadRequest("error");
             }
+
+            var newFacultyViewModel = new FacultyViewModel();
+            newFacultyViewModel.Name = faculty.Name;
+            Faculty newFaculty = AutoMapper.Mapper.Map<Faculty>(newFacultyViewModel);       
+            Framework.FacultyManager.Create(newFaculty);
+
             
+            foreach(UserViewModel uv in faculty.Users)
+            {
+                UserViewModel userViewModel = new UserViewModel();
 
-           // Framework.FacultyManager.Create(FAC);
+                userViewModel.Email = uv.Email;
 
-            var model = new FacultyViewModel();
-            model.Id = "111";
-            model.Name = faculty.Name;
-            model.Users = faculty.Users;
-            model.Users[0].Id = "1";
-          
-            model.Users[0].FacultyId = model.Id;
-            model.Users[1].Id = "2";
-            model.Users[1].FacultyId = model.Id;
-            return Ok(model);
+                userViewModel.FacultyId = newFaculty.Id;
+                
+                userViewModel.PasswordSalt = HashDecoder.GenarateSalt();
+
+                userViewModel.Password = HashDecoder.ComputeHash(uv.Password, userViewModel.PasswordSalt);
+
+                userViewModel.Roles_id = uv.Roles_id;
+
+                userViewModel.Roles = Framework.RoleManager.GetById(uv.Roles_id);
+
+                User user = AutoMapper.Mapper.Map<User>(userViewModel);
+
+                Framework.userManager.Create(user);
+            }
+
+            return Ok(newFaculty);
         }
 
       
