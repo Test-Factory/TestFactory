@@ -80,7 +80,9 @@
             <div class="content-correlation" style="display:none">
                 <!-- ko foreach: $root.subjects -->
                         <div class="table-line-name-box">
-                            <a class="btn-flat sort-link" data-bind="text: ShortName"></a>
+                            <div class="name-padding">
+                                <a class="correlation-subject" data-bind="text: ShortName"></a>
+                            </div>
                             
                         </div>
                <!-- /ko -->

@@ -1040,3 +1040,8 @@ div {
 .text-menu {
     font-weight: 900;
 }
+
+.correlation-subject {
+    font-size: 1.1em;
+    color: #343434;
+}
