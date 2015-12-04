@@ -91,7 +91,7 @@ td, th {
     width: 100%;
 }
 
-.subject-button, .test-button {
+.subject-button, .test-button, .correlation-button {
     width: 20%;
 }
 
@@ -929,7 +929,7 @@ th#forLastName {
     overflow-y: scroll;
 }
 
-.main_stat_table .left {
+.main_stat_table .left-column-table {
     vertical-align: top;
     width: 100%;
     position: absolute;
@@ -937,7 +937,7 @@ th#forLastName {
     top: 0;
 }
 
-.main_stat_table .center {
+.main_stat_table .center-table-content {
     vertical-align: top;
     overflow-y: hidden;
     overflow-x: scroll;
@@ -946,7 +946,7 @@ th#forLastName {
     margin-left: 30%;
 }
 
-.main_stat_table .center .el {
+.main_stat_table .center-table-content .el {
     vertical-align: top;
     width: auto;
     z-index: 1;
@@ -954,7 +954,7 @@ th#forLastName {
 }
 
 
-span, a {
+.left-column-table, .center-table-content, .el {
     display: inline-block;
     vertical-align: middle;
     position: relative;
@@ -1039,4 +1039,9 @@ div {
 
 .text-menu {
     font-weight: 900;
+}
+
+.correlation-subject {
+    font-size: 1.1em;
+    color: #343434;
 }
