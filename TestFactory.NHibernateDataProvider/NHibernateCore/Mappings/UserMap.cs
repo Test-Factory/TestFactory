@@ -19,7 +19,7 @@ namespace NHibernateDataProviders.NHibernateCore.Mappings
 
             Map(x => x.Roles_id);
 
-            References(x => x.Roles).Class<Role>().Not.LazyLoad().Not.Insert();         
+            References(x => x.Roles).Class<Role>().Not.LazyLoad().Not.Insert().Not.Update();         
         }
     }
 }

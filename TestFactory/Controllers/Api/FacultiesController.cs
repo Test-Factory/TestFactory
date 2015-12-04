@@ -91,6 +91,24 @@ namespace TestFactory.Controllers.Api
             {
                 return BadRequest("error");
             }
+
+            Faculty updatedFaculty = Framework.FacultyManager.GetById(faculty.Id);
+            updatedFaculty.Name = faculty.Name;
+        
+            Framework.FacultyManager.Update(updatedFaculty);
+
+            foreach (UserViewModel uv in faculty.Users)
+            {
+                User updatedUser = Framework.userManager.GetById(uv.Id);
+
+                updatedUser.Email = uv.Email;
+                
+                updatedUser.PasswordSalt = HashDecoder.GenarateSalt();
+
+                updatedUser.Password = HashDecoder.ComputeHash(uv.Password, updatedUser.PasswordSalt);
+
+                Framework.userManager.Update(updatedUser);
+            }
             return Ok();
         }
     }
