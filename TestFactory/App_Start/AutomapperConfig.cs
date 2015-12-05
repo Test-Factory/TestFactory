@@ -38,6 +38,10 @@ namespace TestFactory.App_Start
               .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper
+                .CreateMap<StudentWithGroup, Student>()
+                .IncludeBase<BaseModel, BaseModel>();
+
+            Mapper
              .CreateMap<Faculty, FacultyViewModel>()
              .IncludeBase<BaseModel, BaseViewModel>();
 

@@ -22,12 +22,34 @@ namespace TestFactory.Controllers.Api
         public IList<StudentWithGroupViewModel> Get()
         {
             var students = new List<StudentWithGroup>();
+
+
+
             var groupsForFaculty = Framework.GroupManager.GetListForFaculty(Framework.UserContext.User.FacultyId);
             foreach (var group in groupsForFaculty)
             {
                 var student = Framework.StudentWithGroupManager.GetByGroupId(group.Id);
                 students.AddRange(student);
             }
+
+            //var subjects = Framework.SubjectManager.GetList();
+
+            //for (int i = 0; i < students.Count; i++)
+            //{
+            //    var subjectMarksForStudent = new List<SubjectMark>();
+            //    for (int j = 0; j < subjects.Count; j++)
+            //    {
+            //        var newSubjectMark = new SubjectMark();
+            //        newSubjectMark.StudentId = students[i].Id;
+            //        newSubjectMark.SubjectId = subjects[i].Id;
+            //        newSubjectMark.Value = null;
+            //        Framework.SubjectMarkManager.Create(newSubjectMark);
+            //        subjectMarksForStudent.Add(newSubjectMark);
+            //    }
+            //    students[i].SubjectMarks = subjectMarksForStudent;
+            //    Framework.StudentManager.Update(Mapper.Map<Student>(students[i]));
+            //}
+
             IList<StudentWithGroup> sortedStudents = students.OrderBy(s => s.LastName).ToList();
             var result = Mapper.Map<IList<StudentWithGroupViewModel>>(sortedStudents);
             return result;
