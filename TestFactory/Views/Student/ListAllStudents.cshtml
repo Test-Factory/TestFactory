@@ -90,29 +90,52 @@
         </span>
         <span class="center-table-content">
                         <span class="el content-test">
-                    <div data-bind="foreach: filteredRecords2" style="width: 100%">
-                        <div class="table-line-content">
+                            <div data-bind="foreach: filteredRecords2" style="width: 100%">
+                                <div class="table-line-content">
                         
-                        <!-- ko foreach: marks -->
-                            <div class="inlineFlex">
-                                                 <table>
-                                                     <tbody class="markSubjectContent">
-                                                            <tr>
-                                                                <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 0px;     padding-bottom: 0px;"></td>                                 
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="studentMarkDetails" style="padding-bottom: 4px;">
-                                                                        <label class="greenText"></label>
-                                                                </td>
-                                                            </tr>
-                                                     </tbody>
-                                                </table>
+                                <!-- ko foreach: marks -->
+                                    <div class="inlineFlex">
+                                                         <table>
+                                                             <tbody class="markSubjectContent">
+                                                                    <tr>
+                                                                        <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 0px;     padding-bottom: 0px;"></td>                                 
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="studentMarkDetails" style="padding-bottom: 4px;">
+                                                                                <label class="greenText"></label>
+                                                                        </td>
+                                                                    </tr>
+                                                             </tbody>
+                                                        </table>
+                                        </div>
+                                                    <!-- /ko -->
                                 </div>
-                                            <!-- /ko -->
-                        </div>
-                    </div>
-                
-                </span>
+                            </div>
+                        </span>
+                        <span class="el content-subjects" style="display: none;">
+                            <div data-bind="foreach: filteredRecords2" style="width: 100%">
+                                <div class="table-line-content">
+                        
+                                <!-- ko foreach: subjectMarks -->
+                                    <div class="inlineFlex">
+                                        <table>
+                                            <tbody class="markSubjectContent">
+                                                <tr>
+                                                    <td class="marks studentMark" data-bind="text: value" style="font-size: 1.3em; text-align: center; padding-top: 0px;     padding-bottom: 0px;"></td>                                 
+                                                </tr>
+                                                <tr>
+                                                    <td class="studentMarkDetails" style="padding-bottom: 4px;">
+                                                            <label class="greenText"></label>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                <!-- /ko -->
+
+                                </div>
+                            </div>
+                        </span>
         </span>
     </div>
     </div>

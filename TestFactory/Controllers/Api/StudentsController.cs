@@ -17,13 +17,10 @@ namespace TestFactory.Controllers.Api
     [RoutePrefix("api/students")]
     public class StudentsController : ApiController
     {
-
         [HttpGet]
         public IList<StudentWithGroupViewModel> Get()
         {
             var students = new List<StudentWithGroup>();
-
-
 
             var groupsForFaculty = Framework.GroupManager.GetListForFaculty(Framework.UserContext.User.FacultyId);
             foreach (var group in groupsForFaculty)
@@ -32,23 +29,39 @@ namespace TestFactory.Controllers.Api
                 students.AddRange(student);
             }
 
-            //var subjects = Framework.SubjectManager.GetList();
+            var subjects = Framework.SubjectManager.GetList().OrderBy(s => s.ShortName).ToList();
 
-            //for (int i = 0; i < students.Count; i++)
-            //{
-            //    var subjectMarksForStudent = new List<SubjectMark>();
-            //    for (int j = 0; j < subjects.Count; j++)
-            //    {
-            //        var newSubjectMark = new SubjectMark();
-            //        newSubjectMark.StudentId = students[i].Id;
-            //        newSubjectMark.SubjectId = subjects[i].Id;
-            //        newSubjectMark.Value = null;
-            //        Framework.SubjectMarkManager.Create(newSubjectMark);
-            //        subjectMarksForStudent.Add(newSubjectMark);
-            //    }
-            //    students[i].SubjectMarks = subjectMarksForStudent;
-            //    Framework.StudentManager.Update(Mapper.Map<Student>(students[i]));
-            //}
+            for (int i = 0; i < students.Count; i++)
+            {
+                if (students[i].SubjectMarks.Count != subjects.Count)
+                {
+                    var subjectMarksForStudent = new List<SubjectMark>();
+                    for (int j = 0; j < subjects.Count; j++)
+                    {
+                        bool check = false;
+                        if (students[i].SubjectMarks.Count != 0)
+                        {
+                            foreach (var mark in students[i].SubjectMarks)
+                            {
+                                if (mark.SubjectId == subjects[j].Id)
+                                {
+                                    subjectMarksForStudent.Add(mark);
+                                    check = true;
+                                }
+                            }
+                        }
+                        if(!check)
+                        {
+                            var newSubjectMark = new SubjectMark();
+                            newSubjectMark.StudentId = students[i].Id;
+                            newSubjectMark.SubjectId = subjects[j].Id;
+                            newSubjectMark.Value = 0;
+                            subjectMarksForStudent.Add(newSubjectMark);
+                        }
+                    }
+                    students[i].SubjectMarks = subjectMarksForStudent;
+                }
+            }
 
             IList<StudentWithGroup> sortedStudents = students.OrderBy(s => s.LastName).ToList();
             var result = Mapper.Map<IList<StudentWithGroupViewModel>>(sortedStudents);
