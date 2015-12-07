@@ -24,6 +24,7 @@ function FacultiesViewModel() {
     };
 
     self.addFaculty = function () {
+        closeAllEditing();
         var newFaculty = new FacultyModel();
         self.facultyForCreate().mapFrom(newFaculty);
         for (var c = 0; c < 2; c++) {
@@ -69,7 +70,6 @@ function FacultiesViewModel() {
         self.oldPasswordEditor(self.facultyForUpdate().users()[1].password());
         self.facultyForUpdate().users()[0].password("***");
         self.facultyForUpdate().users()[1].password("***");
-        self.facultyForUpdate.valueHasMutated();
     };
 
     self.saveEditedFaculty = function (faculty) {
@@ -116,5 +116,4 @@ function FacultiesViewModel() {
             }
             self.facultyForUpdate().mode(self.mods.display);
         }
-
 }
