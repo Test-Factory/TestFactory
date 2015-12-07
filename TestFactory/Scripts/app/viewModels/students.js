@@ -70,7 +70,8 @@ function StudentsViewModel(group, sortingBy) {
     }, self);
 
 
-    self.editStudent = function(student) {
+    self.editStudent = function (student) {
+        
         closeAllEditing();
         self.studentForUpdate().mapFrom(student);
         student.mode(self.mods.edit);
@@ -158,7 +159,7 @@ function StudentsViewModel(group, sortingBy) {
     }
 
     self.addSubject = function () {
-        closeAllEditing();
+        //closeAllEditing();
         $('#createSubject').openModal();
         var newSubject = new SubjectModel();
         self.subjectForCreate().mapFrom(newSubject);
@@ -258,10 +259,18 @@ function StudentsViewModel(group, sortingBy) {
 
     self.init();
     
-    function closeAllEditing() {
+    var closeAllEditing = function () {
+       
         for (var k in self.students()) {
             self.students()[k].mode(self.mods.display);
+            //if ((self.students()[k]) && (self.oldMarks().length>1) && (self.oldMarks()[0].studentId() == self.students()[k].id())) {
+            //    for (var m in self.students()[k].marks()) {
+            //        self.students()[k].marks()[m].value(self.oldMarks()[m].value());
+            //    }
+            //}
         }
+       
         self.studentForUpdate().mode(self.mods.display);
     }
+
 }

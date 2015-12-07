@@ -29,6 +29,13 @@
     }
     });
 }
+MarkModel.prototype.mapFrom = function mapMark(from) {
+    this.id(from.id());
+    this.value(from.value());
+    this.studentId(from.studentId());
+    this.categoryId(from.categoryId());
+   
+}
 MarkModel.prototype.toServerModel = function () {
     return {
         Id: this.id(),

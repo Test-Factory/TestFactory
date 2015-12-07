@@ -17,16 +17,17 @@
                     <a data-bind="click: $root.addSubject" class="dropItem collapsible-header waves-effect waves-teal modal-trigger" >   @GlobalRes_ua.newSubject </a>
                 }
                 <ul class="collection" data-bind="foreach: subjects">
-                    <li>
+                    <li class="item-subject">
                         <!-- ko if: mode() == $root.mods.display -->
                         @if (User.IsInRole(Resources.RoleNames.Filler))
                         {
                             <a data-bind="click: $root.editSubject" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "><img src="~/Content/images/16edit.png" /></a>
                         }
                         <div class="shortName-subject">
-                            <a data-bind="text: shortName, css:{boldSubjectSidebar: id() == $root.subject.id()} ,click: function(){ $root.redirectToMarksSubject(id);}"
-                               class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
-                        </div>
+                            <a data-bind="text: shortName, css:{boldSubjectSidebar: id() == $root.subject.id()} ,
+                                click: function(){ $root.redirectToMarksSubject(id);}, tooltipOverflowSubjectBold: { message: shortName }" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
+                            <span class="fakeDivSubject"></span>
+                         </div>
                         <!-- /ko -->
                     </li>
                 </ul>
