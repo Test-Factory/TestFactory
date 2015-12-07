@@ -9,6 +9,10 @@
 }
 .faculty-user{
     width: 200px;
+    max-width: 200px;
+    padding:10px;
+    overflow: hidden;
+}
 }
 .tbody-faculty{
     width:100%;

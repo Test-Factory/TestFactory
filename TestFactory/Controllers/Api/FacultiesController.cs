@@ -102,11 +102,11 @@ namespace TestFactory.Controllers.Api
                 User updatedUser = Framework.userManager.GetById(uv.Id);
 
                 updatedUser.Email = uv.Email;
-                
-                updatedUser.PasswordSalt = HashDecoder.GenarateSalt();
-
-                updatedUser.Password = HashDecoder.ComputeHash(uv.Password, updatedUser.PasswordSalt);
-
+                if(updatedUser.Password != uv.Password)
+                {
+                    updatedUser.PasswordSalt = HashDecoder.GenarateSalt();
+                    updatedUser.Password = HashDecoder.ComputeHash(uv.Password, updatedUser.PasswordSalt);
+                }
                 Framework.userManager.Update(updatedUser);
             }
             return Ok();
