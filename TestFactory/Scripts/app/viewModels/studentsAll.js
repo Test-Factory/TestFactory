@@ -85,140 +85,89 @@
 
     }
 
-    self.listMarks = function (forSubject) {
+    self.listMarks = function () {
         ko.dependentObservable(function () {
 
-            var arrOfMarks;
-            if (forSubject) {
-                arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
-                    return item.subjectMarks()
-                });
-            }
-            else {
-                arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
-                    return item.marks()
-                });
-            }
-
-            var averageArrOfMarks = [];
-            if (arrOfMarks.length > 0) {
-                //array 100 *n(categories mark) elements:
-                var standardDeviation = new Array();
-                for (var i = 0; i < arrOfMarks[0].length; i++) {
-                    standardDeviation[i] = new Array();
-                }
-
-                var forAverage = 0;
-
-                for (var j = 0; j < arrOfMarks.length ; j++) {
-                    for (var i = 0; i < arrOfMarks[j].length ; i++) {
-
-                        if (averageArrOfMarks[i] == undefined) averageArrOfMarks[i] = arrOfMarks[j][i].value();
-                        else
-                            averageArrOfMarks[i] += arrOfMarks[j][i].value();
-
-                        var cell = standardDeviation[i][arrOfMarks[j][i].value()];
-                        if (cell == undefined) standardDeviation[i][arrOfMarks[j][i].value()] = 1;
-                        else
-                            standardDeviation[i][arrOfMarks[j][i].value()]++;
+            var calculateStatistics = function(arrOfMarks)
+            {
+                var averageArrOfMarks = [];
+                if (arrOfMarks.length > 0) {
+                    //array 100 *n(categories mark) elements:
+                    var standardDeviation = new Array();
+                    for (var i = 0; i < arrOfMarks[0].length; i++) {
+                        standardDeviation[i] = new Array();
                     }
-                }
 
-                var dispersion = [];
-                var mathematicalExpectation = [];
-                var standardDeviationCount = [];
+                    var forAverage = 0;
 
-                for (var i = 0; i < standardDeviation.length; i++) {
-                    for (var j = 0; j < standardDeviation[i].length; j++) {
-                        if (standardDeviation[i][j] != undefined && standardDeviationCount[i] != undefined) standardDeviationCount[i] += standardDeviation[i][j];
-                        else
-                            if (standardDeviation[i][j] != undefined) standardDeviationCount[i] = standardDeviation[i][j];
-                    }
-                }
+                    for (var j = 0; j < arrOfMarks.length ; j++) {
+                        for (var i = 0; i < arrOfMarks[j].length ; i++) {
 
-                for (var i = 0; i < standardDeviation.length; i++) {
-                    for (var j = 0; j < standardDeviation[i].length; j++) {
-                        if (standardDeviation[i][j] != undefined) {
-                            standardDeviation[i][j] = standardDeviation[i][j] / standardDeviationCount[i];
-                            if (mathematicalExpectation[i] == undefined) mathematicalExpectation[i] = standardDeviation[i][j] * j;
+                            if (averageArrOfMarks[i] == undefined) averageArrOfMarks[i] = arrOfMarks[j][i].value();
                             else
-                                mathematicalExpectation[i] += standardDeviation[i][j] * j;
+                                averageArrOfMarks[i] += arrOfMarks[j][i].value();
 
-                            if (dispersion[i] == undefined) dispersion[i] = standardDeviation[i][j] * j * j;
+                            var cell = standardDeviation[i][arrOfMarks[j][i].value()];
+                            if (cell == undefined) standardDeviation[i][arrOfMarks[j][i].value()] = 1;
                             else
-                                dispersion[i] += standardDeviation[i][j] * j * j;
+                                standardDeviation[i][arrOfMarks[j][i].value()]++;
                         }
                     }
-                }
 
-                for (var i = 0; i < dispersion.length; i++) {
-                    dispersion[i] = dispersion[i] - mathematicalExpectation[i] * mathematicalExpectation[i];
-                }
+                    var dispersion = [];
+                    var mathematicalExpectation = [];
+                    var standardDeviationCount = [];
 
-
-
-                if (arrOfMarks.length != null && arrOfMarks.length != 0) {
-                    for (var i = 0; i < averageArrOfMarks.length; i++) {
-                        averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
+                    for (var i = 0; i < standardDeviation.length; i++) {
+                        for (var j = 0; j < standardDeviation[i].length; j++) {
+                            if (standardDeviation[i][j] != undefined && standardDeviationCount[i] != undefined) standardDeviationCount[i] += standardDeviation[i][j];
+                            else
+                                if (standardDeviation[i][j] != undefined) standardDeviationCount[i] = standardDeviation[i][j];
+                        }
                     }
 
-                    //push average marks
-                    if (!forSubject) {
-                        var averageMarkConteiner = $(".averagemarks");
-                        var averageMarksName = $(".averagemarks .averageMarksNameColumn").html();
-                        averageMarkConteiner.eq(0).html('<div class="averageMarksNameColumn">' + averageMarksName + '</div>');
+                    for (var i = 0; i < standardDeviation.length; i++) {
+                        for (var j = 0; j < standardDeviation[i].length; j++) {
+                            if (standardDeviation[i][j] != undefined) {
+                                standardDeviation[i][j] = standardDeviation[i][j] / standardDeviationCount[i];
+                                if (mathematicalExpectation[i] == undefined) mathematicalExpectation[i] = standardDeviation[i][j] * j;
+                                else
+                                    mathematicalExpectation[i] += standardDeviation[i][j] * j;
+
+                                if (dispersion[i] == undefined) dispersion[i] = standardDeviation[i][j] * j * j;
+                                else
+                                    dispersion[i] += standardDeviation[i][j] * j * j;
+                            }
+                        }
+                    }
+
+                    for (var i = 0; i < dispersion.length; i++) {
+                        dispersion[i] = dispersion[i] - mathematicalExpectation[i] * mathematicalExpectation[i];
+                    }
+
+
+
+                    if (arrOfMarks.length != null && arrOfMarks.length != 0) {
                         for (var i = 0; i < averageArrOfMarks.length; i++) {
-                            var aver = averageArrOfMarks[i];
-                            var conteinerHTML = averageMarkConteiner.eq(0).html();
-                            if (aver != null) {
-                                conteinerHTML += "<div class='marks center averageMarks'>" + aver.toFixed(2) + "</div>";
-                                averageMarkConteiner.eq(0).html(conteinerHTML);
-                            }
+                            averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
                         }
-                    }
-                    else {
-                        var averageMarkConteiner = $(".averageSubjectMarks");
-                        var conteinerHTML = "";
-                        for (var i = 0; i < averageArrOfMarks.length; i++) {
-                            var aver = averageArrOfMarks[i];
-                            //var conteinerHTML = "";
-                            if (aver != null) {
-                                conteinerHTML += "<div class='marks center averSubjectMarks subjectAverageContent'>" + aver.toFixed(2) + "</div>";
-                                averageMarkConteiner.eq(0).html(conteinerHTML);
-                            }
-                        }
-                    }
 
-                    //push mathematical expectation marks
-                    if (!forSubject) {
-                        var mathematicalExpectationContainer = $(".mathematicalExpectation");
-                        var mathematicalExpectationName = $(".mathematicalExpectation .mathematicalExpectationNameColumn").html();
-                        mathematicalExpectationContainer.eq(0).html('<div class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</div>');
-                        for (var i = 0 ; i < dispersion.length; i++) {
-                            var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
-                            if (dispersion[i] != null) {
-                                conteinerHTML += "<div class='mathematicalExpectationMarks center'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</div>";
-                                mathematicalExpectationContainer.eq(0).html(conteinerHTML);
-                            }
-                        }
-                    }
-                    else {
-                        var mathematicalExpectationContainer = $(".mathematicalExpectationSublectMarks");
-                        var conteinerHTML = "";
-                        for (var i = 0 ; i < dispersion.length; i++) {
-                            
-                            if (dispersion[i] != null) {
-                                conteinerHTML += "<div class='mathematicalExpectationMarks center subjectAverageContent'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</div>";
-                                mathematicalExpectationContainer.eq(0).html(conteinerHTML);
-                            }
-                        }
+                        var data = new Object();
+                        data.averageArrOfMarks = averageArrOfMarks;
+                        data.dispersion = dispersion;
+                        data.mathematicalExpectation = mathematicalExpectation;
+
+
+                        return data;
                     }
                 }
+            }
 
-                //recalculate average marks deviation
-                if (!forSubject) {
-                    var averageMarks = $(".averageMarks");
-                    var studentMarkForCategories = $(".studentMark");
+            var pushMarks = function (data, forSubject) {
+
+                var recalculateAverageMarksDeviation = function (averageMarksContainer, thisMarksContainer) {
+                    var averageMarks = $("." + averageMarksContainer);
+                    var studentMarkForCategories = $("." + thisMarksContainer);
                     for (var i = 0; i < studentMarkForCategories.length; i++) {
                         var value = studentMarkForCategories.eq(i).html() - averageMarks.eq(i % averageMarks.length).html();
                         studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").html(value.toFixed(2));
@@ -229,22 +178,82 @@
                             studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "coral");
                     }
                 }
-            else
-            {
-                var averageMarks = $(".averSubjectMarks");
-                var studentMarkForCategories = $(".subjectMark");
 
-                for (var i = 0; i < studentMarkForCategories.length; i++) {
-                    var value = studentMarkForCategories.eq(i).html() - averageMarks.eq(i % averageMarks.length).html();
-                    studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").html(value.toFixed(2));
-                    if (value >= 0) {
-                        studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "green");
+                if (!forSubject) {
+                    //push average marks
+                    var averageMarkConteiner = $(".averagemarks");
+                    var averageMarksName = $(".averagemarks .averageMarksNameColumn").html();
+                    averageMarkConteiner.eq(0).html('<div class="averageMarksNameColumn">' + averageMarksName + '</div>');
+                    for (var i = 0; i < data.averageArrOfMarks.length; i++) {
+                        var aver = data.averageArrOfMarks[i];
+                        var conteinerHTML = averageMarkConteiner.eq(0).html();
+                        if (aver != null) {
+                            conteinerHTML += "<div class='marks center averageMarks'>" + aver.toFixed(2) + "</div>";
+                            averageMarkConteiner.eq(0).html(conteinerHTML);
+                        }
                     }
-                    else
-                        studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "coral");
+
+                    //push mathematical expectation marks
+                    var mathematicalExpectationContainer = $(".mathematicalExpectation");
+                    var mathematicalExpectationName = $(".mathematicalExpectation .mathematicalExpectationNameColumn").html();
+                    mathematicalExpectationContainer.eq(0).html('<div class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</div>');
+                    for (var i = 0 ; i < data.dispersion.length; i++) {
+                        var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
+                        if (data.dispersion[i] != null) {
+                            conteinerHTML += "<div class='mathematicalExpectationMarks center'>" + Math.sqrt(data.dispersion[i]).toFixed(2) + "</div>";
+                            mathematicalExpectationContainer.eq(0).html(conteinerHTML);
+                        }
+                    }
+
+                    //recalculate average marks deviation
+                    recalculateAverageMarksDeviation("averageMarks", "studentMark");
+                }
+                else {
+                    //push average marks
+                    var averageMarkConteiner = $(".averageSubjectMarks");
+                    var conteinerHTML = "";
+                    for (var i = 0; i < data.averageArrOfMarks.length; i++) {
+                        var aver = data.averageArrOfMarks[i];
+                        //var conteinerHTML = "";
+                        if (aver != null) {
+                            conteinerHTML += "<div class='marks center averSubjectMarks subjectAverageContent'>" + aver.toFixed(2) + "</div>";
+                            averageMarkConteiner.eq(0).html(conteinerHTML);
+                        }
+                    }
+
+                    //push mathematical expectation marks
+                    var mathematicalExpectationContainer = $(".mathematicalExpectationSublectMarks");
+                    var conteinerHTML = "";
+                    for (var i = 0 ; i < data.dispersion.length; i++) {
+
+                        if (data.dispersion[i] != null) {
+                            conteinerHTML += "<div class='mathematicalExpectationMarks center subjectAverageContent'>" + Math.sqrt(data.dispersion[i]).toFixed(2) + "</div>";
+                            mathematicalExpectationContainer.eq(0).html(conteinerHTML);
+                        }
+                    }
+
+                    //recalculate average marks deviation
+                    recalculateAverageMarksDeviation("averSubjectMarks", "subjectMark");
                 }
             }
-            }
+
+            var arrOfMarks;
+            arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
+                return item.subjectMarks()
+            });
+                
+            var dataSubjectMarks = calculateStatistics(arrOfMarks);
+            pushMarks(dataSubjectMarks, true);
+
+
+
+            arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
+                return item.marks()
+            });
+
+            var dataTestMarks = calculateStatistics(arrOfMarks);
+            pushMarks(dataTestMarks)
+                    
         });
     }
 
@@ -312,7 +321,6 @@
             });
             self.preloader(false);
             self.listMarks();
-            self.listMarks(true);
         });
         
         self.sortingByName(sortingBy);
