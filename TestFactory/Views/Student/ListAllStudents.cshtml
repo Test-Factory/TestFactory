@@ -36,7 +36,7 @@
                     <a class="btn-flat sort-link">Предмети</a>
                 </div>
             </div>
-            <div style="display: inherit; width: 70%;">
+            <div class="subject-name-conteiner" style="display: inherit; width: 70%; overflow-x: hidden">
 
                 <!-- ko foreach: $root.subjects -->
                         <div class="content- center categoryCode text-menu subjects content-subjects" style="display: none;">
@@ -68,16 +68,27 @@
         </div>
     </div>
     <div class="content-subjects" style="border-bottom: 1px solid gainsboro;">
-        <div class="calculation-line">
-            <div class="averageSubjectMarks">
-                        <div class="averageMarksNameColumn">@GlobalRes_ua.averageMarks</div>
+        <div style="display: flex">
+            <div style="width: 30%">
+                <div>
+                    <div class="calculation-line">
+                        <div style="width: 100%" class="averageMarksNameColumn">@GlobalRes_ua.averageMarks</div>
                     </div>
-        </div>
-        
-        <div class="calculation-line">
-            <div class="mathematicalExpectationSublectMarks">
-                         <div class="mathematicalExpectationNameColumn">@GlobalRes_ua.standardDeviationMarks </div>
+                    <div class="calculation-line">
+                        <div style="width: 100%" class="mathematicalExpectationNameColumn">@GlobalRes_ua.standardDeviationMarks </div>
                     </div>
+                </div>
+            </div>
+            <div style="width: 70%; overflow-x: auto" class="scroll-calculation-line">
+                <div class="calculation-line">
+                    <div class="averageSubjectMarks">
+                    </div>
+                </div>
+                <div class="calculation-line">
+                    <div class="mathematicalExpectationSublectMarks">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
         <div class="main_stat_table">
@@ -185,6 +196,16 @@
         $('.subject-button').css('background-color', 'transparent');
         $('.correlation-button').css('background-color', 'gainsboro');
     }
+
+    $('.scroll-calculation-line').on('scroll', function () {
+        $('.center-table-content').scrollLeft($(this).scrollLeft());
+        $('.subject-name-conteiner').scrollLeft($(this).scrollLeft());
+    });
+
+    $('.center-table-content').on('scroll', function () {
+        $('.scroll-calculation-line').scrollLeft($(this).scrollLeft());
+        $('.subject-name-conteiner').scrollLeft($(this).scrollLeft());
+    });
 
     $(document).ready(function () {
         var a = $(".surname").text();

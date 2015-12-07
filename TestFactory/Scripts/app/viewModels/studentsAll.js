@@ -164,8 +164,6 @@
                     //push average marks
                     if (!forSubject) {
                         var averageMarkConteiner = $(".averagemarks");
-                        var averageMarksName = $(".averagemarks .averageMarksNameColumn").html();
-                        averageMarkConteiner.eq(0).html('<div class="averageMarksNameColumn">' + averageMarksName + '</div>');
                         for (var i = 0; i < averageArrOfMarks.length; i++) {
                             var aver = averageArrOfMarks[i];
                             var conteinerHTML = averageMarkConteiner.eq(0).html();
@@ -177,13 +175,11 @@
                     }
                     else {
                         var averageMarkConteiner = $(".averageSubjectMarks");
-                        var averageMarksName = $(".averageSubjectMarks .averageMarksNameColumn").html();
-                        averageMarkConteiner.eq(0).html('<div class="averageMarksNameColumn">' + averageMarksName + '</div>');
                         for (var i = 0; i < averageArrOfMarks.length; i++) {
                             var aver = averageArrOfMarks[i];
                             var conteinerHTML = averageMarkConteiner.eq(0).html();
                             if (aver != null) {
-                                conteinerHTML += "<div class='marks center averSubjectMarks'>" + aver.toFixed(2) + "</div>";
+                                conteinerHTML += "<div class='marks center averSubjectMarks subjectAverageContent'>" + aver.toFixed(2) + "</div>";
                                 averageMarkConteiner.eq(0).html(conteinerHTML);
                             }
                         }
@@ -192,8 +188,6 @@
                     //push mathematical expectation marks
                     if (!forSubject) {
                         var mathematicalExpectationContainer = $(".mathematicalExpectation");
-                        var mathematicalExpectationName = $(".mathematicalExpectation .mathematicalExpectationNameColumn").html();
-                        mathematicalExpectationContainer.eq(0).html('<div class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</div>');
                         for (var i = 0 ; i < dispersion.length; i++) {
                             var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
                             if (dispersion[i] != null) {
@@ -204,12 +198,10 @@
                     }
                     else {
                         var mathematicalExpectationContainer = $(".mathematicalExpectationSublectMarks");
-                        var mathematicalExpectationName = $(".mathematicalExpectation .mathematicalExpectationNameColumn").html();
-                        mathematicalExpectationContainer.eq(0).html('<div class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</div>');
                         for (var i = 0 ; i < dispersion.length; i++) {
                             var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
                             if (dispersion[i] != null) {
-                                conteinerHTML += "<div class='mathematicalExpectationMarks center'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</div>";
+                                conteinerHTML += "<div class='mathematicalExpectationMarks center subjectAverageContent'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</div>";
                                 mathematicalExpectationContainer.eq(0).html(conteinerHTML);
                             }
                         }
