@@ -66,7 +66,7 @@
                     <td class="faculty-name "><span class="faculty-property" data-bind="text: name"></span></td>
                     <div class="fakeDiv"></div>
                     <!-- ko foreach: users -->
-                    <td class="faculty-user "><span class="faculty-property" data-bind="text: email"></span></td>
+                    <td class="faculty-user "><span onmouseover=$(this).prop("title",$(this).html()) class ="faculty-property" data-bind="text: email"></span></td>
                     <td class="faculty-user "><span class="faculty-property" data-bind="text: password"></span></td>
                     <!-- /ko -->
                         <td class="screenMediaBelow ">
