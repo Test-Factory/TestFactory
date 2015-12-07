@@ -11,5 +11,10 @@ namespace TestFactory.Business.Components.Managers
     public class FacultyManager : BaseManager<Faculty, IFacultyDataProvider>
     {
         public FacultyManager(IFacultyDataProvider provider) : base(provider) { }
+
+        public bool FacultyIsAlreadyExist(string name)
+        {
+            return provider.GetByName(name).Any(x => x.Name == name); 
+        }
     }
 }

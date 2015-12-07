@@ -23,7 +23,7 @@ namespace TestFactory.Business.Components.Managers
 
         public bool GroupIsAlreadyExist(string shortName) 
         {
-            return provider.GetByShortName(shortName) != null ? true : false;
+            return provider.GetByShortName(shortName) != null;
         }
 
         public IList<Group> GetListForFaculty(string faculty)

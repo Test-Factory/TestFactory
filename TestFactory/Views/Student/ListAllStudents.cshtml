@@ -39,8 +39,8 @@
             <div class="subject-name-conteiner" style="display: inherit; width: 70%; overflow-x: hidden">
 
                 <!-- ko foreach: $root.subjects -->
-                        <div class="content- center categoryCode text-menu subjects content-subjects" style="display: none;">
-                            <a class="btn-flat sort-link" data-bind="text: ShortName"></a>
+                        <div class="content- center categoryCode text-menu subjects content-subjects" style="display: none;" >
+                            <a class="btn-flat sort-link" data-bind="text: ShortName" onmouseover=$(this).prop("title",$(this).html())></a>
                             
                         </div>
                <!-- /ko -->
