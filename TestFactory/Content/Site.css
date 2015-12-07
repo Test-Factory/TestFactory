@@ -1034,6 +1034,7 @@ div {
 
 .table-wrapper {
     border: 1px solid gainsboro;
+    min-width: 950px;
 }
 
 .calculation-line {
