@@ -51,6 +51,7 @@ namespace TestFactory.Controllers.Api
             {
                 return BadRequest("error");
             }
+            
 
             var newFacultyViewModel = new FacultyViewModel();
             newFacultyViewModel.Name = faculty.Name;

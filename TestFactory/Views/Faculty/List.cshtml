@@ -7,7 +7,7 @@
 
 <div class="content-admin">
     <form>
-        <h3>@GlobalRes_ua.admin</h3>
+        <div id="header"><h3 id="admin">@GlobalRes_ua.admin</h3></div>
         <table class="tbStudentList" data-bind="validationOptions: {errorElementClass: 'invalid'}">
             <thead class="headerTbSudent headerFaculty">
                 <tr class="noselect">
@@ -60,7 +60,7 @@
                 </td>
             </tr>
             <tbody class="tbody-faculty" data-bind="foreach: faculties">
-                <div style="width: 100%; height: 120px; "></div>
+                <div style="width: 100%; height: 190px; "></div>
                 <!-- ko if: mode() == $root.mods.display -->
                 <tr>
                     <td class="faculty-name "><span class="faculty-property" data-bind="text: name"></span></td>
