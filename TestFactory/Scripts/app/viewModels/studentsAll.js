@@ -87,6 +87,7 @@
 
     self.listMarks = function (forSubject) {
         ko.dependentObservable(function () {
+
             var arrOfMarks;
             if (forSubject) {
                 arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
@@ -164,6 +165,8 @@
                     //push average marks
                     if (!forSubject) {
                         var averageMarkConteiner = $(".averagemarks");
+                        var averageMarksName = $(".averagemarks .averageMarksNameColumn").html();
+                        averageMarkConteiner.eq(0).html('<div class="averageMarksNameColumn">' + averageMarksName + '</div>');
                         for (var i = 0; i < averageArrOfMarks.length; i++) {
                             var aver = averageArrOfMarks[i];
                             var conteinerHTML = averageMarkConteiner.eq(0).html();
@@ -175,9 +178,10 @@
                     }
                     else {
                         var averageMarkConteiner = $(".averageSubjectMarks");
+                        var conteinerHTML = "";
                         for (var i = 0; i < averageArrOfMarks.length; i++) {
                             var aver = averageArrOfMarks[i];
-                            var conteinerHTML = averageMarkConteiner.eq(0).html();
+                            //var conteinerHTML = "";
                             if (aver != null) {
                                 conteinerHTML += "<div class='marks center averSubjectMarks subjectAverageContent'>" + aver.toFixed(2) + "</div>";
                                 averageMarkConteiner.eq(0).html(conteinerHTML);
@@ -188,6 +192,8 @@
                     //push mathematical expectation marks
                     if (!forSubject) {
                         var mathematicalExpectationContainer = $(".mathematicalExpectation");
+                        var mathematicalExpectationName = $(".mathematicalExpectation .mathematicalExpectationNameColumn").html();
+                        mathematicalExpectationContainer.eq(0).html('<div class="mathematicalExpectationNameColumn">' + mathematicalExpectationName + '</div>');
                         for (var i = 0 ; i < dispersion.length; i++) {
                             var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
                             if (dispersion[i] != null) {
@@ -198,8 +204,9 @@
                     }
                     else {
                         var mathematicalExpectationContainer = $(".mathematicalExpectationSublectMarks");
+                        var conteinerHTML = "";
                         for (var i = 0 ; i < dispersion.length; i++) {
-                            var conteinerHTML = mathematicalExpectationContainer.eq(0).html();
+                            
                             if (dispersion[i] != null) {
                                 conteinerHTML += "<div class='mathematicalExpectationMarks center subjectAverageContent'>" + Math.sqrt(dispersion[i]).toFixed(2) + "</div>";
                                 mathematicalExpectationContainer.eq(0).html(conteinerHTML);
@@ -212,7 +219,6 @@
                 if (!forSubject) {
                     var averageMarks = $(".averageMarks");
                     var studentMarkForCategories = $(".studentMark");
-
                     for (var i = 0; i < studentMarkForCategories.length; i++) {
                         var value = studentMarkForCategories.eq(i).html() - averageMarks.eq(i % averageMarks.length).html();
                         studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").html(value.toFixed(2));
@@ -240,7 +246,6 @@
             }
             }
         });
-
     }
 
     self.sortingByName = function (key) {
