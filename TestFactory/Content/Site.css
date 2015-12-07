@@ -974,7 +974,7 @@ div {
     height: 36px;
 }
 
-.averageMarks, .mathematicalExpectationMarks {
+.averageMarks, .mathematicalExpectationMarks, .averSubjectMarks {
     width: 11.3%;
 }
 
