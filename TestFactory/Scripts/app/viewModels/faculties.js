@@ -4,6 +4,8 @@ function FacultiesViewModel() {
 
     self.faculties = ko.observableArray();
     self.preloader = ko.observable(true);
+    self.oldPasswordFiller = ko.observable();
+    self.oldPasswordEditor = ko.observable();
 
     self.roles = ko.observableArray();
    
@@ -63,6 +65,10 @@ function FacultiesViewModel() {
         closeAllEditing();
         self.facultyForUpdate().mapFrom(faculty);
         faculty.mode(self.mods.edit);
+        self.oldPasswordFiller(self.facultyForUpdate().users()[0].password());
+        self.oldPasswordEditor(self.facultyForUpdate().users()[1].password());
+        self.facultyForUpdate().users()[0].password("***");
+        self.facultyForUpdate().users()[1].password("***");
         self.facultyForUpdate.valueHasMutated();
     };
 
@@ -71,13 +77,25 @@ function FacultiesViewModel() {
             return false;
         }
         var facultyServerModel = self.facultyForUpdate().toServerModel();
+        if (self.facultyForUpdate().users()[1].password() == "***") {
+            facultyServerModel.Users[1].Password = self.oldPasswordEditor();
+        }
+        if (self.facultyForUpdate().users()[0].password() == "***") {
+            facultyServerModel.Users[0].Password = self.oldPasswordFiller();
+        }
         facultyProvider.put(facultyServerModel, function () {
             faculty.mapFrom(self.facultyForUpdate());
             faculty.mode(self.mods.display);
         });
     }
 
-        self.init = function () {
+    self.init = function () {
+        roleProvider.get(function (data) {
+            $(data).each(function (index, element) {
+                var mappedRole = new RoleModel(element);
+                self.roles.push(mappedRole);
+            });
+        });
             facultyProvider.get(function (data) {
                 $(data).each(function (index, element) {
                     var mappedFaculty = new FacultyModel(element, self.mods.display);
@@ -86,13 +104,6 @@ function FacultiesViewModel() {
                 });
                 self.addFaculty();
                 self.preloader(false);
-            });
-
-            roleProvider.get(function (data) {
-                $(data).each(function (index, element) {
-                    var mappedRole = new RoleModel(element);
-                    self.roles.push(mappedRole);
-                });
             });
         }
 
