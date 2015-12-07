@@ -156,7 +156,8 @@
                         data.averageArrOfMarks = averageArrOfMarks;
                         data.dispersion = dispersion;
                         data.mathematicalExpectation = mathematicalExpectation;
-
+                        data.standardDeviation = standardDeviation;
+                        data.standardDeviationCount = standardDeviationCount;
 
                         return data;
                     }
@@ -237,6 +238,52 @@
                 }
             }
 
+            var CalculateCorrelation = function (data1, data2) {
+
+                var correlations = new Array();
+                for (var i = 0; i < data2.standardDeviation.length; i++) {
+                    correlations[i] = new Array();
+                }
+
+                for (var i = 0; i < data1.standardDeviation.length; i++) {
+                    for (var j = 0; j < data2.standardDeviation.length; j++) {
+                        var distributionLaw = new Array();
+                        for (var ii = 0; ii <data2.standardDeviation.length; ii++) {
+                            distributionLaw[ii] = new Array();
+                        }
+
+                        var k = 0;
+                        for (var p = 0; p < data1.standardDeviation[i].length; p++) {
+                            if (data1.standardDeviation[i][p] != undefined) {
+                                k++;
+                                distributionLaw[0][k] = p;
+                                var kk = 0;
+                                for (t = 0; t < data2.standardDeviation[j].length; t++) {
+                                    if (data2.standardDeviation[j][t] != undefined) {
+                                        kk++;
+                                        distributionLaw[kk][0] = t;
+                                        distributionLaw[kk][k] = data1.standardDeviation[i][p] * data2.standardDeviation[j][t];
+                                    }
+                                }
+                            }
+                        }
+                        var correlationMark = 0;
+                        for (var p = 1; p < distributionLaw.length; p++) {
+                            for (var t = 1; t < distributionLaw[p].length; t++) {
+                                correlationMark += distributionLaw[p][t] * distributionLaw[p][0] * distributionLaw[0][p];
+                            }
+                        }
+
+                        for (var p = 1; p < distributionLaw.length; p++) {
+                            for (var t = 1; t < distributionLaw[p].length; t++) {
+                                correlationMark = correlationMark - data1.mathematicalExpectation[i] * data2.mathematicalExpectation[j];
+                            }
+                        }
+                        correlations[i][j] = correlationMark;
+                    }
+                }
+            }
+
             var arrOfMarks;
             arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
                 return item.subjectMarks()
@@ -252,8 +299,9 @@
             });
 
             var dataTestMarks = calculateStatistics(arrOfMarks);
-            pushMarks(dataTestMarks)
-                    
+            pushMarks(dataTestMarks);
+
+            CalculateCorrelation(dataTestMarks, dataSubjectMarks); 
         });
     }
 
