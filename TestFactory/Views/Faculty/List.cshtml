@@ -20,6 +20,7 @@
                 </tr>
                 <tr>
                     <td class="faculty-name">
+
                         <input type="text"
                                data-position="bottom"
                                data-bind="textInput: $root.facultyForCreate().name,  tooltip: { message: $root.facultyForCreate().name.error }"
@@ -27,7 +28,7 @@
                                placeholder="@GlobalRes_ua.faculty" />
                     </td>
                     <!-- ko foreach: $root.facultyForCreate().users -->
-                    <td class="faculty-user">
+                    <td class="faculty-user" id="forEmail">                     
                         <input type="email"
                                data-position="bottom"
                                data-bind="textInput: email,  tooltip: { message: email.error}"

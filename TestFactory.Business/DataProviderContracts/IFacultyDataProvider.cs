@@ -9,5 +9,6 @@ namespace TestFactory.Business.DataProviderContracts
 {
     public interface IFacultyDataProvider : IDataProvider<Faculty>
     {
+        IList<Faculty> GetByName(string name);
     }
 }

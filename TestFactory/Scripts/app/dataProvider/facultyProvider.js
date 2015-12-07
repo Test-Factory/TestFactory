@@ -16,11 +16,13 @@ $(function () {
             url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback).error(function (e) {
-            if (e.responseText)
-                location = "/login";
-            else
-                location = "/Error/403";
+        }).done(callback).done(function () { Materialize.toast("Факультет з користувачами успішно створений", 4000); }).error(function (e) {
+            if (e.responseText.length == 21)
+                Materialize.toast("Факультет з таким ім'ям уже існує", 4000);
+            else if (e.responseText.length == 19)
+                location = "/Error/403"
+            else 
+                Materialize.toast('Користувач з такою електронною поштою вже існує', 4000);
         });;
     }
 
@@ -30,11 +32,13 @@ $(function () {
             url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback).error(function (e) {
-            if (e.responseText)
-                location = "/login";
+        }).done(callback).done(function () { Materialize.toast("Факультет з користувачами успішно відредагований", 4000); }).error(function (e) {
+            if (e.responseText.length == 21)
+                Materialize.toast("Факультет з таким ім'ям уже існує", 4000);
+            else if (e.responseText.length == 19)
+                location = "/Error/403"
             else
-                location = "/Error/403";
+                Materialize.toast('Користувач з такою електронною поштою вже існує', 4000);
         });;
     }
 });

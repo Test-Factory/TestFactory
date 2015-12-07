@@ -1057,3 +1057,8 @@ h3#admin {
     margin-top: 0px;
     padding-top: 15px;
     background: #F3F3F4;}
+
+.categoryCode {
+    overflow: hidden;
+    margin-right: 4px;
+}

@@ -45,26 +45,33 @@ namespace TestFactory.Controllers.Api
         [HttpPost]
         [ValidateModel]
         public IHttpActionResult Create(FacultyViewModel faculty)
-        {
+        {           
 
             if (!User.IsInRole(RoleNames.Admin))
             {
                 return BadRequest("error");
             }
-            
+            if (Framework.FacultyManager.FacultyIsAlreadyExist(faculty.Name))
+                return BadRequest("faculty");
 
             var newFacultyViewModel = new FacultyViewModel();
             newFacultyViewModel.Name = faculty.Name;
-            Faculty newFaculty = AutoMapper.Mapper.Map<Faculty>(newFacultyViewModel);       
+            Faculty newFaculty = AutoMapper.Mapper.Map<Faculty>(newFacultyViewModel);
+
+            if (faculty.Users[0].Email == faculty.Users[1].Email)
+                return BadRequest();
+
+            foreach (UserViewModel item in faculty.Users)
+            {
+                if (Framework.userManager.GetByEmail(item.Email) != null)
+                    return BadRequest();
+            }
+
             Framework.FacultyManager.Create(newFaculty);
 
-            
             foreach(UserViewModel uv in faculty.Users)
-            {
+            {            
                 UserViewModel userViewModel = new UserViewModel();
-
-                if (Framework.userManager.GetByEmail(uv.Email) != null)
-                    return BadRequest();
 
                 userViewModel.Email = uv.Email;
 
@@ -96,17 +103,28 @@ namespace TestFactory.Controllers.Api
                 return BadRequest("error");
             }
 
+            if (faculty.Users[0].Email == faculty.Users[1].Email)
+                return BadRequest();
             Faculty updatedFaculty = Framework.FacultyManager.GetById(faculty.Id);
+
+            if (Framework.FacultyManager.FacultyIsAlreadyExist(faculty.Name) && updatedFaculty.Name != faculty.Name)
+                return BadRequest("faculty");
+
             updatedFaculty.Name = faculty.Name;
+
+            foreach (UserViewModel item in faculty.Users)
+            {
+                User temporaryUpdatedUser = Framework.userManager.GetById(item.Id);
+
+                if (Framework.userManager.GetByEmail(item.Email) != null && temporaryUpdatedUser.Email != item.Email)
+                    return BadRequest();
+            }
         
             Framework.FacultyManager.Update(updatedFaculty);
 
             foreach (UserViewModel uv in faculty.Users)
             {
                 User updatedUser = Framework.userManager.GetById(uv.Id);
-
-                if (Framework.userManager.GetByEmail(uv.Email) != null && updatedUser.Email != uv.Email)
-                    return BadRequest();
 
                 updatedUser.Email = uv.Email;
 
@@ -117,7 +135,7 @@ namespace TestFactory.Controllers.Api
                 }
                 Framework.userManager.Update(updatedUser);
             }
-            updatedFaculty = Framework.FacultyManager.GetById(faculty.Id);
+            updatedFaculty = Framework.FacultyManager.GetById(faculty.Id);//something weired
             var model = Mapper.Map<FacultyViewModel>(updatedFaculty);
             return Ok(model);
         }
