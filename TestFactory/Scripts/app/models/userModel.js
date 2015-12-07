@@ -25,6 +25,14 @@
     self.roles_id = ko.observable(item ? item.Roles_id : "");
     self.facultyId = ko.observable(item ? item.FacultyId : "");
 }
+UserModel.prototype.mapFrom = function mapUser(from) {
+    this.id(from.id());
+    this.email(from.email());
+    this.password(from.password());
+    this.roles_id(from.roles_id());
+    this.facultyId(from.facultyId());
+
+}
 UserModel.prototype.toServerModel = function () {
     return {
         Id: this.id(),

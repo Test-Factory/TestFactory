@@ -1,6 +1,5 @@
 ﻿function MarkModel(item) {
     var self = this;
-    self.mode = ko.observable();
     self.id = ko.observable(item ? item.Id : "");
     self.studentId = ko.observable( item ? item.StudentId : "");
     self.categoryId = ko.observable( item ? item.CategoryId : "");
@@ -29,6 +28,13 @@
         message: "Будь ласка, введіть ціле число."
     }
     });
+}
+MarkModel.prototype.mapFrom = function mapMark(from) {
+    this.id(from.id());
+    this.value(from.value());
+    this.studentId(from.studentId());
+    this.categoryId(from.categoryId());
+   
 }
 MarkModel.prototype.toServerModel = function () {
     return {

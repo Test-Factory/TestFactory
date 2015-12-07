@@ -38,6 +38,8 @@ FacultyModel.prototype.mapFrom = function mapFaculty(from) {
     this.mode(from.mode() ? from.mode() : "display");
     this.users.removeAll();
     for (var u in from.users()) {
-        this.users.push(from.users()[u]);
+        var mappedUser = new UserModel();
+        mappedUser.mapFrom(from.users()[u]);
+        this.users.push(mappedUser);
     }
 }

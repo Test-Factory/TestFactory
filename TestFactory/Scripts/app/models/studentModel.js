@@ -44,12 +44,14 @@ StudentModel.prototype.mapFrom = function mapStudent(from) {
     this.mode(from.mode() ? from.mode() : "display");
     this.marks.removeAll();
     for (var m in from.marks()) {
-        this.marks.push(from.marks()[m]);
+        var mappedMark = new MarkModel();
+        mappedMark.mapFrom(from.marks()[m]);
+        this.marks.push(mappedMark);
     }
 }
 StudentModel.prototype.toServerModel = function (groupId) {
     var serverMarks = this.marks();
-    var m = [];//TODO: !!!
+    var markList = [];
     serverMarks.forEach(function (element) {
         m.push(element.toServerModel());
     });
@@ -59,7 +61,7 @@ StudentModel.prototype.toServerModel = function (groupId) {
         FirstName: this.firstName(),
         LastName: this.lastName(),
         GroupId: groupId,
-        Marks: m //error
+        Marks: markList 
     }
 }
 
