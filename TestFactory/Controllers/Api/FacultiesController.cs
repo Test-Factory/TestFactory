@@ -109,7 +109,9 @@ namespace TestFactory.Controllers.Api
                 }
                 Framework.userManager.Update(updatedUser);
             }
-            return Ok();
+            updatedFaculty = Framework.FacultyManager.GetById(faculty.Id);
+            var model = Mapper.Map<FacultyViewModel>(updatedFaculty);
+            return Ok(model);
         }
     }
 }

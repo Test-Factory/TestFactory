@@ -83,9 +83,11 @@ function FacultiesViewModel() {
         if (self.facultyForUpdate().users()[0].password() == "***") {
             facultyServerModel.Users[0].Password = self.oldPasswordFiller();
         }
-        facultyProvider.put(facultyServerModel, function () {
+        facultyProvider.put(facultyServerModel, function (data) {
             faculty.mapFrom(self.facultyForUpdate());
             faculty.mode(self.mods.display);
+            faculty.users()[0].password(data.Users[0].Password);
+            faculty.users()[1].password(data.Users[1].Password);
         });
     }
 
