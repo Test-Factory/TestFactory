@@ -984,7 +984,7 @@ div {
     font-size: 1.1em;
 }
 
-.averagemarks, .mathematicalExpectation {
+.averagemarks, .mathematicalExpectation, .mathematicalExpectationSublectMarks, .averageSubjectMarks {
     display: flex;
 }
 
