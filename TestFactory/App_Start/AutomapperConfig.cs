@@ -46,7 +46,8 @@ namespace TestFactory.App_Start
                 .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper
-                .CreateMap<StudentWithGroup, StudentWithGroupViewModel>();
+                .CreateMap<StudentWithGroup, StudentWithGroupViewModel>()
+                 .IncludeBase<BaseModel, BaseViewModel>();
 
             Mapper
                .CreateMap<AverageMarkForFaculty, AverageMarkForFacultyViewModel>();
@@ -74,6 +75,9 @@ namespace TestFactory.App_Start
         {
             Mapper.CreateMap<StudentViewModel, Student>()
                 .IncludeBase<BaseViewModel, BaseModel>();
+
+            Mapper.CreateMap<GroupViewModel, Group>()
+               .IncludeBase<BaseViewModel, BaseModel>();
 
             Mapper.CreateMap<FacultyViewModel, Faculty>()
                .IncludeBase<BaseViewModel, BaseModel>();
