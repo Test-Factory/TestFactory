@@ -75,6 +75,9 @@ namespace TestFactory.App_Start
             Mapper.CreateMap<StudentViewModel, Student>()
                 .IncludeBase<BaseViewModel, BaseModel>();
 
+            Mapper.CreateMap<GroupViewModel, Group>()
+               .IncludeBase<BaseViewModel, BaseModel>();
+
             Mapper.CreateMap<FacultyViewModel, Faculty>()
                .IncludeBase<BaseViewModel, BaseModel>();
 

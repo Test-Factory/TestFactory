@@ -926,7 +926,7 @@ th#forLastName {
     border-top: 0;
     position: relative;
     height: 400px;
-    overflow-y: scroll;
+    overflow-y: overlay;
 }
 
 .main_stat_table .left-column-table {
@@ -966,7 +966,7 @@ div {
 
 .inlineFlex {
     display: inline-flex;
-        width: 16%;
+        width: 116.8px;
 }
 
 .mark-wrapper {
@@ -975,7 +975,7 @@ div {
 }
 
 .averageMarks, .mathematicalExpectationMarks, .averSubjectMarks {
-    width: 11.3%;
+    width: 120px;
 }
 
 .averageMarksNameColumn, .mathematicalExpectationNameColumn {
@@ -989,7 +989,7 @@ div {
 }
 
 .subjectAverageContent {
-    min-width: 16%;
+    min-width: 120px;
 }
 
 .table-line-content {
@@ -1023,7 +1023,7 @@ div {
 }
 
 .categoryCode {
-    min-width: 14.9%;
+    min-width: 120px;
 }
 
 .header-table {
@@ -1034,6 +1034,7 @@ div {
 
 .table-wrapper {
     border: 1px solid gainsboro;
+    min-width: 950px;
 }
 
 .calculation-line {
@@ -1056,9 +1057,3 @@ h3#admin {
     margin-top: 0px;
     padding-top: 15px;
     background: #F3F3F4;}
-.categoryCode {
-    overflow: hidden;
-    overflow: hidden;
-    margin-left: 4px;
-    margin-right: 4px;
-}
