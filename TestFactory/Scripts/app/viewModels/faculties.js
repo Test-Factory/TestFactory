@@ -24,6 +24,7 @@ function FacultiesViewModel() {
     };
 
     self.addFaculty = function () {
+        closeAllEditing();
         var newFaculty = new FacultyModel();
         self.facultyForCreate().mapFrom(newFaculty);
         for (var c = 0; c < 2; c++) {
@@ -69,7 +70,6 @@ function FacultiesViewModel() {
         self.oldPasswordEditor(self.facultyForUpdate().users()[1].password());
         self.facultyForUpdate().users()[0].password("***");
         self.facultyForUpdate().users()[1].password("***");
-        self.facultyForUpdate.valueHasMutated();
     };
 
     self.saveEditedFaculty = function (faculty) {
@@ -83,9 +83,11 @@ function FacultiesViewModel() {
         if (self.facultyForUpdate().users()[0].password() == "***") {
             facultyServerModel.Users[0].Password = self.oldPasswordFiller();
         }
-        facultyProvider.put(facultyServerModel, function () {
+        facultyProvider.put(facultyServerModel, function (data) {
             faculty.mapFrom(self.facultyForUpdate());
             faculty.mode(self.mods.display);
+            faculty.users()[0].password(data.Users[0].Password);
+            faculty.users()[1].password(data.Users[1].Password);
         });
     }
 
@@ -114,5 +116,4 @@ function FacultiesViewModel() {
             }
             self.facultyForUpdate().mode(self.mods.display);
         }
-
 }
