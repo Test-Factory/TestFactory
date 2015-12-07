@@ -62,6 +62,9 @@ namespace TestFactory.Controllers.Api
             {
                 UserViewModel userViewModel = new UserViewModel();
 
+                if (Framework.userManager.GetByEmail(uv.Email) != null)
+                    return BadRequest();
+
                 userViewModel.Email = uv.Email;
 
                 userViewModel.FacultyId = newFaculty.Id;
@@ -101,7 +104,11 @@ namespace TestFactory.Controllers.Api
             {
                 User updatedUser = Framework.userManager.GetById(uv.Id);
 
+                if (Framework.userManager.GetByEmail(uv.Email) != null && updatedUser.Email != uv.Email)
+                    return BadRequest();
+
                 updatedUser.Email = uv.Email;
+
                 if(updatedUser.Password != uv.Password)
                 {
                     updatedUser.PasswordSalt = HashDecoder.GenarateSalt();
