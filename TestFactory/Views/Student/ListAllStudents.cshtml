@@ -36,7 +36,7 @@
                     <a class="btn-flat sort-link">Предмети</a>
                 </div>
             </div>
-            <div class="subject-name-conteiner" style="display: inherit; width: 70%;">
+            <div class="subject-name-conteiner" style="display: inherit; width: 70%; overflow-x: hidden">
 
                 <!-- ko foreach: $root.subjects -->
                         <div class="content- center categoryCode text-menu subjects content-subjects" style="display: none;">
@@ -199,6 +199,11 @@
 
     $('.scroll-calculation-line').on('scroll', function () {
         $('.center-table-content').scrollLeft($(this).scrollLeft());
+        $('.subject-name-conteiner').scrollLeft($(this).scrollLeft());
+    });
+
+    $('.center-table-content').on('scroll', function () {
+        $('.scroll-calculation-line').scrollLeft($(this).scrollLeft());
         $('.subject-name-conteiner').scrollLeft($(this).scrollLeft());
     });
 
