@@ -988,6 +988,10 @@ div {
     display: flex;
 }
 
+.subjectAverageContent {
+    min-width: 16%;
+}
+
 .table-line-content {
     padding-top: 3px;
     padding-bottom: 3px;
@@ -1019,7 +1023,7 @@ div {
 }
 
 .categoryCode {
-    width: 16.1%;
+    min-width: 16.1%;
 }
 
 .header-table {
