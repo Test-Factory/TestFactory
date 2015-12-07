@@ -16,14 +16,17 @@
                         <a  data-bind="click: $root.addSubject" class="dropItem collapsible-header waves-effect waves-teal modal-trigger">   @GlobalRes_ua.newSubject</a>
                     }
                     <ul class="collection" data-bind="foreach: subjects">
-                        <li>
+                        <li class="item-subject">
                             <!-- ko if: mode() == $root.mods.display -->
                             @if (User.IsInRole(Resources.RoleNames.Filler))
                             {
                                 <a data-bind="click: $root.editSubject" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "><img src="~/Content/images/16edit.png" /></a>
                             }
-                            <div class ="shortName-subject"><a data-bind="text: shortName, click: function(){ $root.redirectToMarksSubject(id);}" class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a></div>
-                           
+                            <div class="shortName-subject">
+                                <a data-bind="text: shortName, click: function(){ $root.redirectToMarksSubject(id);}, tooltipOverflowSubject: { message: shortName }"
+                                   class="dropItem inlineSubject collapsible-header waves-effect waves-teal "></a>
+                                <span class="fakeDivSubject"></span>
+                            </div>
                             <!-- /ko -->
                         </li>
                     </ul>
@@ -187,7 +190,7 @@
                         </tr>
                         <!-- /ko -->
                         <!-- ko if: mode() == $root.mods.edit -->
-                        <tr>
+                        <tr id="edit">
                             <td class="last-name edit"><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().lastName,  tooltip: { message: $root.studentForUpdate().lastName.error }" maxlength="60" /></td>
                             <td class="first-name edit "><input type="text" data-position="bottom" data-bind="textInput: $root.studentForUpdate().firstName,  tooltip: { message: $root.studentForUpdate().firstName.error }" maxlength="60" /></td>
                             <!-- ko foreach: $root.studentForUpdate().marks -->

@@ -261,6 +261,9 @@ function StudentsViewModel(group, sortingBy) {
     function closeAllEditing() {
         for (var k in self.students()) {
             self.students()[k].mode(self.mods.display);
+            for (var m in self.students()[k].marks()) {
+                self.students()[k].marks()[m].mode(self.mods.display);
+            }
         }
         self.studentForUpdate().mode(self.mods.display);
     }

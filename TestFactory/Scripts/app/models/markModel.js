@@ -1,5 +1,6 @@
 ﻿function MarkModel(item) {
     var self = this;
+    self.mode = ko.observable();
     self.id = ko.observable(item ? item.Id : "");
     self.studentId = ko.observable( item ? item.StudentId : "");
     self.categoryId = ko.observable( item ? item.CategoryId : "");

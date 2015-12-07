@@ -114,6 +114,6 @@ function FacultiesViewModel() {
             for (var k in self.faculties()) {
                 self.faculties()[k].mode(self.mods.display);
             }
-            self.facultyForUpdate().mode(self.mods.display);
+            //self.facultyForUpdate().mode(self.mods.display);
         }
 }
