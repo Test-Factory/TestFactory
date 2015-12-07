@@ -183,7 +183,7 @@
                             var aver = averageArrOfMarks[i];
                             var conteinerHTML = averageMarkConteiner.eq(0).html();
                             if (aver != null) {
-                                conteinerHTML += "<div class='marks center averageMarks'>" + aver.toFixed(2) + "</div>";
+                                conteinerHTML += "<div class='marks center averSubjectMarks'>" + aver.toFixed(2) + "</div>";
                                 averageMarkConteiner.eq(0).html(conteinerHTML);
                             }
                         }
@@ -231,6 +231,21 @@
                             studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "coral");
                     }
                 }
+            else
+            {
+                var averageMarks = $(".averSubjectMarks");
+                var studentMarkForCategories = $(".subjectMark");
+
+                for (var i = 0; i < studentMarkForCategories.length; i++) {
+                    var value = studentMarkForCategories.eq(i).html() - averageMarks.eq(i % averageMarks.length).html();
+                    studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").html(value.toFixed(2));
+                    if (value >= 0) {
+                        studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "green");
+                    }
+                    else
+                        studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "coral");
+                }
+            }
             }
         });
 
