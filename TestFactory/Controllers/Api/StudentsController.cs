@@ -29,7 +29,7 @@ namespace TestFactory.Controllers.Api
                 students.AddRange(student);
             }
 
-            var subjects = Framework.SubjectManager.GetList().OrderBy(s => s.ShortName).ToList();
+            var subjects = Framework.SubjectManager.GetForFaculty(Framework.UserContext.User.FacultyId).OrderBy(s => s.ShortName).ToList();
 
             for (int i = 0; i < students.Count; i++)
             {
