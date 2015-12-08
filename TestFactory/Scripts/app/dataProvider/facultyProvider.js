@@ -16,7 +16,7 @@ $(function () {
             url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback).done(function () { Materialize.toast("Факультет з користувачами успішно створений", 4000); }).error(function (e) {
+        }).done(callback).done(function () { Materialize.toast("Факультет з користувачами успішно створені", 4000); }).error(function (e) {
             if (e.responseText.length == 21)
                 Materialize.toast("Факультет з таким ім'ям уже існує", 4000);
             else if (e.responseText.length == 19)
@@ -32,7 +32,7 @@ $(function () {
             url: this.apiPath,
             data: JSON.stringify(data),
             contentType: contentType,
-        }).done(callback).done(function () { Materialize.toast("Факультет з користувачами успішно відредагований", 4000); }).error(function (e) {
+        }).done(callback).done(function () { Materialize.toast("Факультет з користувачами успішно відредаговані", 4000); }).error(function (e) {
             if (e.responseText.length == 21)
                 Materialize.toast("Факультет з таким ім'ям уже існує", 4000);
             else if (e.responseText.length == 19)
