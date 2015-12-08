@@ -160,6 +160,31 @@
                                 </div>
                             </div>
                         </span>
+
+                        <span class="el content-correlation" style="display: none;">
+                            <div data-bind="foreach: correlationsMarks" style="width: 100%">
+                                <div class="table-line-content">
+                        
+                                <!-- ko foreach: $data -->
+                                    <div class="inlineFlex" style="height: 45px">
+                                        <table>
+                                            <tbody class="markSubjectContent">
+                                                <tr>
+                                                    <td class="marks subjectMark" data-bind="text: $data" style="font-size: 1.3em; text-align: center; padding-top: 0px;     padding-bottom: 0px;"></td>                                 
+                                                </tr>
+                                                <tr>
+                                                    <td class="studentMarkDetails" style="padding-bottom: 4px;">
+                                                            <label class="greenText">.</label>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                <!-- /ko -->
+
+                                </div>
+                            </div>
+                        </span>
         </span>
     </div>
     </div>

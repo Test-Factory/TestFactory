@@ -26,7 +26,8 @@
     self.groupYears = ko.observableArray();
 
     self.subjects = ko.observableArray();
-    //self.subjectsMarks = ko.observableArray();
+
+    self.correlationsMarks = ko.observableArray();
 
     self.searchByStudentsGroups = ko.observable('');
 
@@ -264,7 +265,7 @@
                 for (var i = 0; i < data1.standardDeviation.length; i++) {
                     for (var j = 0; j < data2.standardDeviation.length; j++) {
                         var distributionLaw = new Array();
-                        for (var ii = 0; ii <data2.standardDeviation.length; ii++) {
+                        for (var ii = 0; ii <data2.standardDeviation.length + 1; ii++) {
                             distributionLaw[ii] = new Array();
                         }
 
@@ -295,9 +296,13 @@
                                 correlationMark = (correlationMark - data1.mathematicalExpectation[i] * data2.mathematicalExpectation[j]) / Math.sqrt(data1.dispersion[i] * data2.dispersion[j]);
                             }
                         }
-                        correlations[i][j] = correlationMark;
+                        correlations[j][i] = correlationMark.toFixed(2);
                     }
                 }
+
+                $(correlations).each(function (index, element) {
+                    self.correlationsMarks.push(element);
+                });
             }
 
             var arrOfMarks;
