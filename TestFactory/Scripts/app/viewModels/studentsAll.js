@@ -291,11 +291,8 @@
                             }
                         }
 
-                        for (var p = 1; p < distributionLaw.length; p++) {
-                            for (var t = 1; t < distributionLaw[p].length; t++) {
-                                correlationMark = (correlationMark - data1.mathematicalExpectation[i] * data2.mathematicalExpectation[j]) / Math.sqrt(data1.dispersion[i] * data2.dispersion[j]);
-                            }
-                        }
+                        correlationMark = (correlationMark - data1.mathematicalExpectation[i] * data2.mathematicalExpectation[j]) / Math.sqrt(data1.dispersion[i] * data2.dispersion[j]);
+
                         correlations[j][i] = correlationMark.toFixed(2);
                     }
                 }
