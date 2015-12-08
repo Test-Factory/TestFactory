@@ -255,71 +255,64 @@
                 }
             }
 
-            var CalculateCorrelation = function (data1, data2) {
-
-                var correlations = new Array();
-                for (var i = 0; i < data2.standardDeviation.length; i++) {
-                    correlations[i] = new Array();
-                }
-
-                for (var i = 0; i < data1.standardDeviation.length; i++) {
-                    for (var j = 0; j < data2.standardDeviation.length; j++) {
-                        var distributionLaw = new Array();
-                        for (var ii = 0; ii <data1.standardDeviation.length + 1; ii++) {
-                            distributionLaw[ii] = new Array();
-                        }
-
-                        var k = 0;
-                        for (var p = 0; p < data1.standardDeviation[i].length; p++) {
-                            if (data1.standardDeviation[i][p] != undefined) {
-                                k++;
-                                distributionLaw[0][k] = p;
-                                var kk = 0;
-                                for (t = 0; t < data2.standardDeviation[j].length; t++) {
-                                    if (data2.standardDeviation[j][t] != undefined) {
-                                        kk++;
-                                        distributionLaw[kk][0] = t;
-                                        distributionLaw[kk][k] = data1.standardDeviation[i][p] * data2.standardDeviation[j][t];
-                                    }
-                                }
+            var CalculateCorrelation = function (data1, data2, data3, data4) {
+                var sumX = 0;
+                var sumX2 = 0;
+                var sumY = 0;
+                var sumY2 = 0;
+                var sum = 0;
+                var corelation = [];
+                var corelationsAllSubject = [];
+                for (var k = 0; k < data2.averageArrOfMarks.length; k++) {
+                    corelation = [];
+                    for (var j = 0; j < data1.averageArrOfMarks.length; j++) {
+                        sumX = 0;
+                        sumX2 = 0;
+                        sumY = 0;
+                        sumY2 = 0;
+                        sum = 0;
+                        
+                        for (var i = 0; i < data3.length; i++) {
+                            var x = data3[i][k].value();
+                            var xAverage = data2.averageArrOfMarks[k];
+                            var y = data4[i][j].value();
+                            var yAverage = data1.averageArrOfMarks[j];
+                            if (x == "-") {
+                                x = xAverage;
                             }
+                            sumX = (x - xAverage);
+                            sumX2 += (sumX * sumX);
+                            sumY = (y - yAverage);
+                            sumY2 += (sumY * sumY);
+                            sum += sumX * sumY;
                         }
-                        var correlationMark = 0;
-                        for (var p = 1; p < distributionLaw.length; p++) {
-                            for (var t = 1; t < distributionLaw[p].length; t++) {
-                                correlationMark += distributionLaw[p][t] * distributionLaw[p][0] * distributionLaw[0][t];
-                            }
-                        }
-
-                        correlationMark = (correlationMark - data1.mathematicalExpectation[i] * data2.mathematicalExpectation[j]) / Math.sqrt(data1.dispersion[i] * data2.dispersion[j]);
-
-                        correlations[j][i] = correlationMark.toFixed(2);
+                        corelation.push(sum / Math.sqrt(sumX2 *sumY2));
                     }
+                    corelationsAllSubject.push(corelation);
                 }
-
-                $(correlations).each(function (index, element) {
-                    self.correlationsMarks.push(element);
-                });
+                
             }
 
-            var arrOfMarks;
-            arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
+
+
+
+            var arrOfMarksSubject = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
                 return item.subjectMarks()
             });
                 
-            var dataSubjectMarks = calculateStatistics(arrOfMarks);
+            var dataSubjectMarks = calculateStatistics(arrOfMarksSubject);
             pushMarks(dataSubjectMarks, true);
 
 
 
-            arrOfMarks = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
+            var arrOfMarksTest = ko.utils.arrayMap(self.filteredRecords2(), function (item) {
                 return item.marks()
             });
 
-            var dataTestMarks = calculateStatistics(arrOfMarks);
+            var dataTestMarks = calculateStatistics(arrOfMarksTest);
             pushMarks(dataTestMarks);
 
-            CalculateCorrelation(dataTestMarks, dataSubjectMarks); 
+            CalculateCorrelation(dataTestMarks, dataSubjectMarks, arrOfMarksSubject, arrOfMarksTest);
         });
     }
 
