@@ -286,9 +286,9 @@
                             sumY2 += (sumY * sumY);
                             sum += sumX * sumY;
                         }
-                        corelation.push(sum / Math.sqrt(sumX2 *sumY2));
+                        corelation.push((sum / Math.sqrt(sumX2 * sumY2)).toFixed(3));
                         }
-                    corelationsAllSubject.push(corelation);
+                    self.correlationsMarks.push(corelation);
                             }
                 
                         }
