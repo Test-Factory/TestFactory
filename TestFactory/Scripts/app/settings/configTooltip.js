@@ -39,7 +39,7 @@
                     $(element).tooltip("remove");
                     var width = $('.fakeDivSubject').text($(element).text()).css('font-weight', 'bold').width();
                     $('.fakeDivSubject').empty();
-                    if (width > 164) {
+                    if (width > 162) {
                         $(element).attr('data-tooltip', options.message());
                         $(element).tooltip({ delay: 0 });
                     }
@@ -56,7 +56,7 @@
                     $(element).tooltip("remove");
                     var width = $('.fakeDivSubject').text($(element).text()).width();
                     $('.fakeDivSubject').empty();
-                    if (width > 160) {
+                    if (width > 140) {
                         $(element).attr('data-tooltip', options.message());
                         $(element).tooltip({ delay: 0 });
                     }
