@@ -271,7 +271,7 @@
                         sumY = 0;
                         sumY2 = 0;
                         sum = 0;
-                        
+
                         for (var i = 0; i < data3.length; i++) {
                             var x = data3[i][k].value();
                             var xAverage = data2.averageArrOfMarks[k];
@@ -279,7 +279,7 @@
                             var yAverage = data1.averageArrOfMarks[j];
                             if (x == "-") {
                                 x = xAverage;
-                            }
+                }
                             sumX = (x - xAverage);
                             sumX2 += (sumX * sumX);
                             sumY = (y - yAverage);
@@ -287,11 +287,11 @@
                             sum += sumX * sumY;
                         }
                         corelation.push(sum / Math.sqrt(sumX2 *sumY2));
-                    }
+                        }
                     corelationsAllSubject.push(corelation);
-                }
+                            }
                 
-            }
+                        }
 
 
 
