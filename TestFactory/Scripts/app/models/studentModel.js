@@ -53,7 +53,7 @@ StudentModel.prototype.toServerModel = function (groupId) {
     var serverMarks = this.marks();
     var markList = [];
     serverMarks.forEach(function (element) {
-        m.push(element.toServerModel());
+        markList.push(element.toServerModel());
     });
 
     return {

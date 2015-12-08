@@ -55,7 +55,7 @@ namespace TestFactory.Controllers.Api
                             var newSubjectMark = new SubjectMark();
                             newSubjectMark.StudentId = students[i].Id;
                             newSubjectMark.SubjectId = subjects[j].Id;
-                            newSubjectMark.Value = 0;
+                            newSubjectMark.Value = null;
                             subjectMarksForStudent.Add(newSubjectMark);
                         }
                     }

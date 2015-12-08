@@ -3,7 +3,9 @@
     self.id = ko.observable(item ? item.Id : "");
     self.studentId = ko.observable(item ? item.StudentId : "");
     self.subjectId = ko.observable(item ? item.SubjectId : "");
-    self.value = ko.observable(item ? item.Value : "0");
+    if (item.Value != null) self.value = ko.observable(item ? item.Value : "");
+    else
+        self.value = ko.observable("-");
 }
 SubjectMarkModel.prototype.toServerModel = function () {
     return {

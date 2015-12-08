@@ -99,18 +99,28 @@
                     }
 
                     var forAverage = 0;
+                    var notValid = new Array();
 
                     for (var j = 0; j < arrOfMarks.length ; j++) {
                         for (var i = 0; i < arrOfMarks[j].length ; i++) {
+                            if (arrOfMarks[j][i].value() != '-') {
+                                if (averageArrOfMarks[i] == undefined) averageArrOfMarks[i] = arrOfMarks[j][i].value();
+                                else
+                                    averageArrOfMarks[i] += arrOfMarks[j][i].value();
 
-                            if (averageArrOfMarks[i] == undefined) averageArrOfMarks[i] = arrOfMarks[j][i].value();
+                                var cell = standardDeviation[i][arrOfMarks[j][i].value()];
+                                if (cell == undefined) standardDeviation[i][arrOfMarks[j][i].value()] = 1;
+                                else
+                                    standardDeviation[i][arrOfMarks[j][i].value()]++;
+                            }
                             else
-                                averageArrOfMarks[i] += arrOfMarks[j][i].value();
-
-                            var cell = standardDeviation[i][arrOfMarks[j][i].value()];
-                            if (cell == undefined) standardDeviation[i][arrOfMarks[j][i].value()] = 1;
-                            else
-                                standardDeviation[i][arrOfMarks[j][i].value()]++;
+                            {
+                                if (notValid[i] == undefined) {
+                                    notValid[i] = 0;
+                                }
+                                else
+                                    notValid[i]++;
+                            }
                         }
                     }
 
@@ -149,7 +159,9 @@
 
                     if (arrOfMarks.length != null && arrOfMarks.length != 0) {
                         for (var i = 0; i < averageArrOfMarks.length; i++) {
-                            averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
+                            if (notValid[i] != undefined) averageArrOfMarks[i] = averageArrOfMarks[i] / (arrOfMarks.length - notValid[i]);
+                            else
+                                averageArrOfMarks[i] = averageArrOfMarks[i] / arrOfMarks.length;
                         }
 
                         var data = new Object();
@@ -171,7 +183,11 @@
                     var studentMarkForCategories = $("." + thisMarksContainer);
                     for (var i = 0; i < studentMarkForCategories.length; i++) {
                         var value = studentMarkForCategories.eq(i).html() - averageMarks.eq(i % averageMarks.length).html();
-                        studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").html(value.toFixed(2));
+
+                        if (!isNaN(value)) studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").html(value.toFixed(2));
+                        else
+                            studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").html(".");
+
                         if (value >= 0) {
                             studentMarkForCategories.eq(i).parents(".markSubjectContent").find(".greenText").css("color", "green");
                         }
@@ -270,13 +286,13 @@
                         var correlationMark = 0;
                         for (var p = 1; p < distributionLaw.length; p++) {
                             for (var t = 1; t < distributionLaw[p].length; t++) {
-                                correlationMark += distributionLaw[p][t] * distributionLaw[p][0] * distributionLaw[0][p];
+                                correlationMark += distributionLaw[p][t] * distributionLaw[p][0] * distributionLaw[0][t];
                             }
                         }
 
                         for (var p = 1; p < distributionLaw.length; p++) {
                             for (var t = 1; t < distributionLaw[p].length; t++) {
-                                correlationMark = correlationMark - data1.mathematicalExpectation[i] * data2.mathematicalExpectation[j];
+                                correlationMark = (correlationMark - data1.mathematicalExpectation[i] * data2.mathematicalExpectation[j]) / Math.sqrt(data1.dispersion[i] * data2.dispersion[j]);
                             }
                         }
                         correlations[i][j] = correlationMark;
