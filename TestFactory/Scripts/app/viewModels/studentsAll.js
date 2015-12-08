@@ -265,7 +265,7 @@
                 for (var i = 0; i < data1.standardDeviation.length; i++) {
                     for (var j = 0; j < data2.standardDeviation.length; j++) {
                         var distributionLaw = new Array();
-                        for (var ii = 0; ii <data1.standardDeviation.length + 1; ii++) {
+                        for (var ii = 0; ii <data1.standardDeviation[i].length + 1; ii++) {
                             distributionLaw[ii] = new Array();
                         }
 
