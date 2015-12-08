@@ -64,10 +64,10 @@
                 <div style="width: 100%; height: 190px; "></div>
                 <!-- ko if: mode() == $root.mods.display -->
                 <tr>
-                    <td class="faculty-name "><span class="faculty-property" data-bind="text: name"></span></td>
+                    <td class="faculty-name"><span onmouseover=$(this).prop("title",$(this).html()) class ="faculty-property nameOfFaculty" data-bind="text: name"></span></td>
                     <div class="fakeDiv"></div>
                     <!-- ko foreach: users -->
-                    <td class="faculty-user "><span onmouseover=$(this).prop("title",$(this).html()) class ="faculty-property" data-bind="text: email"></span></td>
+                    <td class="faculty-user"><span onmouseover=$(this).prop("title",$(this).html()) class="faculty-property emailName" data-bind="text: email"></span></td>
                     <td class="faculty-user "><span class="faculty-property" >***</span></td>
                     <!-- /ko -->
                         <td class="screenMediaBelow ">

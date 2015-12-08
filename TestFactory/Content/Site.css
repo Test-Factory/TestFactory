@@ -1062,3 +1062,10 @@ h3#admin {
     overflow: hidden;
     margin-right: 4px;
 }
+span.faculty-property {
+    width: 174px;
+    overflow: hidden;
+}
+span.nameOfFaculty {
+    width: 77px;
+}
