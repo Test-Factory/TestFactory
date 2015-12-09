@@ -256,13 +256,16 @@
             }
 
             var CalculateCorrelation = function (data1, data2, data3, data4) {
+                self.correlationsMarks.removeAll();
                 var sumX = 0;
                 var sumX2 = 0;
                 var sumY = 0;
                 var sumY2 = 0;
                 var sum = 0;
                 var corelation = [];
-                var corelationsAllSubject = [];
+                if (data3.length < 2) {
+                    return;
+                }
                 for (var k = 0; k < data2.averageArrOfMarks.length; k++) {
                     corelation = [];
                     for (var j = 0; j < data1.averageArrOfMarks.length; j++) {
@@ -271,7 +274,6 @@
                         sumY = 0;
                         sumY2 = 0;
                         sum = 0;
-
                         for (var i = 0; i < data3.length; i++) {
                             var x = data3[i][k].value();
                             var xAverage = data2.averageArrOfMarks[k];
